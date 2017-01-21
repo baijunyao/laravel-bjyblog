@@ -26,7 +26,6 @@ class ArticleController extends Controller
     public function create()
     {
         $category = Category::all();
-        p($category);
         $assign = [
             'category' => $category,
         ];

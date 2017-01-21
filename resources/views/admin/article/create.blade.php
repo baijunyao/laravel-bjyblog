@@ -5,6 +5,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('/statics/editormd/css/editormd.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/statics/iCheck-1.0.2/skins/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('/statics/gentelella/vendors/switchery/dist/switchery.min.css') }}">
 @endsection
 
 @section('nav', '发布文章')
@@ -22,33 +23,35 @@
             <a href="{{ url('admin/article/create') }}">发布文章</a>
         </li>
     </ul>
-    <form class="form-inline" action="{{ url('admin/role_user/store') }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/article/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>所属分类</th>
+                <th width="7%">分类</th>
                 <td>
-                    <select name="">
-
+                    <select class="form-control" name="">
+                        @foreach($category as $v)
+                            <option value="{{ $v->id }}">{{ $v->cname }}</option>
+                        @endforeach
                     </select>
                 </td>
             </tr>
             <tr>
                 <th>标题</th>
                 <td>
-                    <input class="form-control" type="text" name="phone">
+                    <input class="form-control" type="text" name="title">
                 </td>
             </tr>
             <tr>
                 <th>作者</th>
                 <td>
-                    <input class="form-control" type="text" name="email">
+                    <input class="form-control" type="text" name="author">
                 </td>
             </tr>
             <tr>
                 <th>标签</th>
                 <td>
-                    <input class="form-control" type="text" name="password">
+                    <input class="form-control" type="text" name="keywords">
                 </td>
             </tr>
             <tr>
@@ -60,7 +63,7 @@
             <tr>
                 <th>描述</th>
                 <td>
-                    <input class="form-control" type="text" name="password">
+                    <input class="form-control" type="text" name="description">
                 </td>
             </tr>
             <tr>
@@ -71,43 +74,17 @@
                     </div>
                 </td>
             </tr>
-
-
-
             <tr>
-                <th>是否原创</th>
+                <th>置顶</th>
                 <td>
-                    <span class="inputword">允许登录</span>
-                    <input class="xb-icheck" type="radio" name="status" value="1" checked="checked">
-                    &emsp;
-                    <span class="inputword">禁止登录</span>
-                    <input class="xb-icheck" type="radio" name="status" value="2">
+                    <input class="js-switch" type="checkbox" name="is_top" value="1">
                 </td>
             </tr>
-            <tr>
-                <th>是否置顶</th>
-                <td>
-                    <span class="inputword">允许登录</span>
-                    <input class="xb-icheck" type="radio" name="status" value="1" checked="checked">
-                    &emsp;
-                    <span class="inputword">禁止登录</span>
-                    <input class="xb-icheck" type="radio" name="status" value="2">
-                </td>
-            </tr>
-            <tr>
-                <th>是否显示</th>
-                <td>
-                    <span class="inputword">允许登录</span>
-                    <input class="xb-icheck" type="radio" name="status" value="1" checked="checked">
-                    &emsp;
-                    <span class="inputword">禁止登录</span>
-                    <input class="xb-icheck" type="radio" name="status" value="2">
-                </td>
-            </tr>
+
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="添加">
+                    <input class="btn btn-success" type="submit" value="确认发布">
                 </td>
             </tr>
         </table>
@@ -116,6 +93,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('statics/gentelella/vendors/switchery/dist/switchery.min.js') }}"></script>
     <script src="{{ asset('/statics/editormd/editormd.min.js') }}"></script>
     <script src="{{ asset('/statics/iCheck-1.0.2/icheck.min.js') }}"></script>
     <script>
@@ -132,6 +110,8 @@
                 //atLink    : false,    // disable @link
                 //emailLink : false,    // disable email address auto link
                 todoList  : true,
+                placeholder: '输入文章内容',
+                toolbarAutoFixed: false,
                 path      : '{{ asset('/statics/editormd/lib') }}/'
             });
 
