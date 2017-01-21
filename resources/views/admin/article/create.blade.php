@@ -51,13 +51,15 @@
             <tr>
                 <th>标签</th>
                 <td>
-                    <input class="form-control" type="text" name="keywords">
+                    @foreach($tag as $v)
+                        {{ $v['name'] }}<input class="form-control" type="checkbox" name="tag_ids[]" value="{{ $v['name'] }}">
+                    @endforeach
                 </td>
             </tr>
             <tr>
                 <th>关键词</th>
                 <td>
-                    <input class="form-control" type="text" name="password">
+                    <input class="form-control" type="text" name="keywords">
                 </td>
             </tr>
             <tr>
