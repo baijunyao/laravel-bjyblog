@@ -26,9 +26,41 @@
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>管理组</th>
+                <th>所属分类</th>
                 <td>
+                    <select name="">
 
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>标题</th>
+                <td>
+                    <input class="form-control" type="text" name="phone">
+                </td>
+            </tr>
+            <tr>
+                <th>作者</th>
+                <td>
+                    <input class="form-control" type="text" name="email">
+                </td>
+            </tr>
+            <tr>
+                <th>标签</th>
+                <td>
+                    <input class="form-control" type="text" name="password">
+                </td>
+            </tr>
+            <tr>
+                <th>关键词</th>
+                <td>
+                    <input class="form-control" type="text" name="password">
+                </td>
+            </tr>
+            <tr>
+                <th>描述</th>
+                <td>
+                    <input class="form-control" type="text" name="password">
                 </td>
             </tr>
             <tr>
@@ -39,26 +71,31 @@
                     </div>
                 </td>
             </tr>
+
+
+
             <tr>
-                <th>手机号</th>
+                <th>是否原创</th>
                 <td>
-                    <input class="form-control" type="text" name="phone">
+                    <span class="inputword">允许登录</span>
+                    <input class="xb-icheck" type="radio" name="status" value="1" checked="checked">
+                    &emsp;
+                    <span class="inputword">禁止登录</span>
+                    <input class="xb-icheck" type="radio" name="status" value="2">
                 </td>
             </tr>
             <tr>
-                <th>邮箱</th>
+                <th>是否置顶</th>
                 <td>
-                    <input class="form-control" type="text" name="email">
+                    <span class="inputword">允许登录</span>
+                    <input class="xb-icheck" type="radio" name="status" value="1" checked="checked">
+                    &emsp;
+                    <span class="inputword">禁止登录</span>
+                    <input class="xb-icheck" type="radio" name="status" value="2">
                 </td>
             </tr>
             <tr>
-                <th>初始密码</th>
-                <td>
-                    <input class="form-control" type="text" name="password">
-                </td>
-            </tr>
-            <tr>
-                <th>状态</th>
+                <th>是否显示</th>
                 <td>
                     <span class="inputword">允许登录</span>
                     <input class="xb-icheck" type="radio" name="status" value="1" checked="checked">
