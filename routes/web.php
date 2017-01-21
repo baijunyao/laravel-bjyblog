@@ -23,8 +23,24 @@ Route::group(['namespace' => 'Home'], function () {
 
 // Admin 模块
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    // 首页控制器
     Route::group(['prefix' => 'index'], function () {
         // 后台首页
         Route::get('index', 'IndexController@index');
+    });
+
+    // 文章管理
+    Route::group(['prefix' => 'article'], function () {
+        // 文章列表
+        Route::get('index', 'ArticleController@index');
+
+        // 发布文章
+        Route::get('create', 'ArticleController@create');
+        Route::post('store', 'ArticleController@store');
+
+        // 编辑文章
+        Route::get('edit', 'ArticleController@create');
+        Route::post('update', 'ArticleController@update');
+
     });
 });

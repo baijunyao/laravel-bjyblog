@@ -13,7 +13,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //分配后台通用的左侧导航数据
+        view()->composer('admin/*',function($view){
+            //分配登录用户的数据
+            $loginUserData = [
+                'name' => '白俊遥'
+            ];
+            $view->with('loginUserData', $loginUserData);
+        });
     }
 
     /**
