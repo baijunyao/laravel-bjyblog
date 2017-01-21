@@ -52,7 +52,7 @@
                 <th>标签</th>
                 <td>
                     @foreach($tag as $v)
-                        {{ $v['name'] }}<input class="form-control" type="checkbox" name="tag_ids[]" value="{{ $v['name'] }}">
+                        {{ $v['name'] }}<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="{{ $v['id'] }}"> &emsp;
                     @endforeach
                 </td>
             </tr>
@@ -117,7 +117,7 @@
                 path      : '{{ asset('/statics/editormd/lib') }}/'
             });
 
-            $('.xb-icheck').iCheck({
+            $('.bjy-icheck').iCheck({
                 checkboxClass: "icheckbox_minimal-blue",
                 radioClass: "iradio_minimal-blue",
                 increaseArea: "20%"

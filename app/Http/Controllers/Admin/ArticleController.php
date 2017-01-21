@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Requests\Article\Store;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,8 +28,10 @@ class ArticleController extends Controller
     public function create()
     {
         $category = Category::all();
+        $tag = Tag::all();
         $assign = [
             'category' => $category,
+            'tag' => $tag
         ];
         return view('admin/article/create', $assign);
     }
@@ -35,12 +39,13 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Requests\Article\Store  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Store $request)
     {
-        //
+        $data = $request->all();
+        p($data);die;
     }
 
     /**
