@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Requests\Article\Store;
+use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -17,7 +18,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin/article/index');
+        $article = Article::orderBy('id', 'desc')->first();
+        $assign = [
+            'article' => $article
+        ];
+        return view('admin/article/index', $assign);
     }
 
     /**
@@ -37,14 +42,19 @@ class ArticleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 添加文章
      *
-     * @param  \App\Http\Requests\Requests\Article\Store  $request
-     * @return \Illuminate\Http\Response
+     * @param Store $request
+     * @param Article $article
      */
-    public function store(Store $request)
+    public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
+        $tmp['content'] = strip_tags($data['content']);
+
+        p($tmp);die;
+        $article->addData($tmp);
+        die;
         // echo clean($data['content']);die;
         p($data);die;
     }
