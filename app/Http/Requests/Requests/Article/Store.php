@@ -50,4 +50,16 @@ class Store extends FormRequest
         ];
     }
 
+    /**
+     * 定义字段名中文
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'tag_ids.required'=>'必须选择标签',
+        ];
+    }
+
 }

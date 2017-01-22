@@ -17,7 +17,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/article/index');
     }
 
     /**
@@ -44,7 +44,8 @@ class ArticleController extends Controller
      */
     public function store(Store $request)
     {
-        $data = $request->all();
+        $data = $request->except('_token');
+        // echo clean($data['content']);die;
         p($data);die;
     }
 
