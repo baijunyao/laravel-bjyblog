@@ -42,5 +42,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('edit', 'ArticleController@create');
         Route::post('update', 'ArticleController@update');
 
+        // 上传图片
+        Route::post('upload_image', 'ArticleController@upload_image');
     });
 });
