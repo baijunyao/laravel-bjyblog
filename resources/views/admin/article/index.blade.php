@@ -8,7 +8,7 @@
 <body>
 
 <dvi class="box">
-{{ htmlspecialchars($article->content) }}
+    {{ $article->content }}
 </dvi>
 
 <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
