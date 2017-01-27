@@ -41,6 +41,15 @@ class ArticleController extends Controller
         return view('admin/article/create', $assign);
     }
 
+    public function upload_image()
+    {
+        echo '{
+    success : 0 | 1,           // 0 表示上传失败，1 表示上传成功
+    message : "提示的信息，上传成功或上传失败及错误信息等。",
+    url     : "http://laravel-bjyblog.dev/statics/gentelella/production/images/img.jpg"        // 上传成功时才返回
+}';
+    }
+
     /**
      * 添加文章
      *

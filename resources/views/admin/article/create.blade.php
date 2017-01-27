@@ -117,6 +117,8 @@
                 path      : '{{ asset('/statics/editormd/lib') }}/',
                 emoji: true,
                 toolbarIcons : ['undo', 'redo', 'bold', 'del', 'italic', 'quote', 'uppercase', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'list-ul', 'list-ol', 'hr', 'link', 'reference-link', 'image', 'code', 'code-block', 'table', 'emoji', 'html-entities', 'watch', 'preview', 'search', 'fullscreen'],
+                imageUpload: true,
+                imageUploadURL : "./php/upload.php",
             });
             console.log(editormd.defaults.toolbarIcons);
             $('.bjy-icheck').iCheck({
