@@ -41,14 +41,28 @@ class ArticleController extends Controller
         return view('admin/article/create', $assign);
     }
 
+    /**
+     * 配合editormd上传图片的方法
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function upload_image()
     {
-        $data = [
-            'success' => 1,
-            'message' => '上传成功',
-            'url' => 'http://laravel-bjyblog.dev/statics/gentelella/production/images/img.jpg'
-        ];
-        return request()->json($data);
+        $result = upload('editormd-image-file', 'upload/article');
+        if ($result['status_code'] === 200) {
+            $data = [
+                'success' => 1,
+                'message' => $result['message'],
+                'url' => $result['data']['path'].$result['data']['new_name']
+            ];
+        } else {
+            $data = [
+                'success' => 0,
+                'message' => $result['message'],
+                'url' => ''
+            ];
+        }
+        return response()->json($data);
     }
 
     /**
