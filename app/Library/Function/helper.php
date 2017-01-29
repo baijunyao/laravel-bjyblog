@@ -192,4 +192,20 @@ if ( !function_exists('save_to_file') ) {
 	}
 }
 
-
+if ( !function_exists('reSubstr') ) {
+	/**
+	 * 字符串截取，支持中文和其他编码
+	 *
+	 * @param string  $str 需要转换的字符串
+	 * @param integer $start 开始位置
+	 * @param string  $length 截取长度
+	 * @param boolean $suffix 截断显示字符
+	 * @param string  $charset 编码格式
+	 * @return string
+	 */
+	function reSubstr($str, $start = 0, $length, $suffix = true, $charset = "utf-8") {
+		$slice = mb_substr($str, $start, $length, $charset);
+		$omit = mb_strlen($str) >= $length ? '...' : '';
+		return $suffix ? $slice.$omit : $slice;
+	}
+}
