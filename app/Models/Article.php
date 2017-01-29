@@ -21,6 +21,21 @@ class Article extends Base
         'click'
     ];
 
-    
+    public function addData($data)
+    {
+        // 如果没有描述;则截取文章内容的前200字作为描述
+        if (empty($data['description'])) {
+            $description = preg_replace(array('/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'), '', $data['content']);
+            $data['description'] = reSubstr($description, 0, 200, true);
+        }
+
+        // 获取第一张图片作为封面图
+        preg_match('/!\[.*\]\((.*.[jpg|jpeg|png|gif])\)/i', $data['content'], $cover);
+        $data['cover'] = $cover[1];
+        
+        p($data['cover']);die;
+
+
+    }
 
 }

@@ -15,7 +15,6 @@ class Base extends Model
      */
     public function addData($data)
     {
-
         //添加数据
         $result=$this
             ->create($data)
