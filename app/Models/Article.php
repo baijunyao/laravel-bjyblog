@@ -32,7 +32,7 @@ class Article extends Base
         // 获取第一张图片作为封面图
         preg_match('/!\[.*\]\((.*.[jpg|jpeg|png|gif])\)/i', $data['content'], $cover);
         $data['cover'] = $cover[1];
-        
+
         p($data['cover']);die;
 
 
