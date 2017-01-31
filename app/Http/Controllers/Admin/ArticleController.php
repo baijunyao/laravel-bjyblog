@@ -49,7 +49,7 @@ class ArticleController extends Controller
      */
     public function upload_image()
     {
-        $result = upload('editormd-image-file', 'upload/article');
+        $result = upload('editormd-image-file', 'uploads/article');
         if ($result['status_code'] === 200) {
             $data = [
                 'success' => 1,
@@ -98,6 +98,7 @@ class ArticleController extends Controller
      */
     public function edit()
     {
+        echo public_path();die;
         $file = public_path().'/uploads/article/20170129/588dc0e43673a.jpg';
         $image = AddTextWater($file, 'baijunyao.com');
         return $image->response();

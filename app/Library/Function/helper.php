@@ -3,7 +3,6 @@
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Eloquent\Model;
 
 if ( !function_exists('p') ) {
 	//传递数据以易于阅读的样式格式化后输出
@@ -27,8 +26,6 @@ if ( !function_exists('p') ) {
 		echo $str;
 	}
 }
-
-
 
 if ( !function_exists('ajaxReturn') ) {
 	/**

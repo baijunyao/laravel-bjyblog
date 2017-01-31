@@ -30,8 +30,27 @@ class Article extends Base
         }
 
         // 获取第一张图片作为封面图
-        preg_match('/!\[.*\]\((.*.[jpg|jpeg|png|gif])\)/i', $data['content'], $cover);
-        $data['cover'] = $cover[1];
+        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif].*)\)/i', $data['content'], $cover);
+        if (empty($cover[1])) {
+            $data['cover'] = '/uploads/article/default.jpg';
+        } else {
+            // 去掉 图片的title
+            $image = array_map(function ($v) {
+                $tmp = explode(' ', $v);
+                return $tmp[0];
+            }, $cover[1]);
+
+            // 取第一张图片作为封面图
+            $data['cover'] = $cover[0];
+
+            // 循环给图片添加水印
+            foreach ($image as $k => $v) {
+                $file = public_path().$v;
+                AddTextWater($file, 'baijunyao.com');
+            }
+        }
+        
+
 
         p($data['cover']);die;
 
