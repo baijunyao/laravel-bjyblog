@@ -76,7 +76,7 @@ class ArticleController extends Controller
     {
         $data = $request->except('_token');
         $article->addData($data);
-        redirect('admin/article/index');
+        return redirect('admin/article/index');
     }
 
     /**

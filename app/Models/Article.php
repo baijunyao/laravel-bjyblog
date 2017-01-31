@@ -34,27 +34,41 @@ class Article extends Base
         if (empty($cover[1])) {
             $data['cover'] = '/uploads/article/default.jpg';
         } else {
-            // 去掉 图片的title
-            $image = array_map(function ($v) {
-                $tmp = explode(' ', $v);
-                return $tmp[0];
-            }, $cover[1]);
-
-            // 取第一张图片作为封面图
-            $data['cover'] = $cover[0];
-
             // 循环给图片添加水印
-            foreach ($image as $k => $v) {
-                $file = public_path().$v;
+            foreach ($cover[1] as $k => $v) {
+                $image = explode(' ', $v);
+                $file = public_path().$image[0];
                 AddTextWater($file, 'baijunyao.com');
+                // 取第一张图片作为封面图
+                if ($k == 0) {
+                    $data['cover'] = $image[0];
+                }
             }
         }
-        
+        $tag_ids = $data['tag_ids'];
+        unset($data['tag_ids']);
 
+        //添加数据
+        $result=$this
+            ->create($data)
+            ->id;
+        if ($result) {
+            session()->flash('alert-message','添加成功');
+            session()->flash('alert-class','alert-success');
 
-        p($data['cover']);die;
-
-
+            // 给文章添加标签
+            $articleTag = new ArticleTag();
+            foreach ($tag_ids as $v) {
+                $tag_data = [
+                    'article_id' => $result,
+                    'tag_id' => $v
+                ];
+                $articleTag->addData($tag_data);
+            }
+            return $result;
+        }else{
+            return false;
+        }
     }
 
 }
