@@ -9,6 +9,7 @@
         "barryvdh/laravel-ide-helper": "^2.2",
         "intervention/image": "^2.3",
         "laravel/framework": "5.3.*",
+        "league/html-to-markdown": "^4.4",
         "mews/purifier": "^2.0"
     },
     "require-dev": {

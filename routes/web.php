@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'index'], function () {
         // 后台首页
         Route::get('index', 'IndexController@index');
+        // 从旧系统迁移数据
+        Route::get('migration', 'IndexController@migration');
     });
 
     // 文章管理
