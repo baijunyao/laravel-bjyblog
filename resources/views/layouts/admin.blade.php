@@ -49,7 +49,7 @@
                             <li>
                                 <a><i class="fa fa-th"></i> 文章管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/index">文章列表</a></li>
+                                    <li><a href="{{ url('admin/article/index') }}">文章列表</a></li>
                                 </ul>
                                 <ul class="nav child_menu">
                                     <li><a href="/index">添加文章</a></li>

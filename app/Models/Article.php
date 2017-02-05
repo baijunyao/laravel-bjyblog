@@ -21,6 +21,12 @@ class Article extends Base
         'click'
     ];
 
+    /**
+     * 添加文章
+     *
+     * @param array $data
+     * @return bool|mixed
+     */
     public function addData($data)
     {
         // 如果没有描述;则截取文章内容的前200字作为描述
@@ -71,4 +77,18 @@ class Article extends Base
         }
     }
 
+    /**
+     * 后台文章列表
+     *
+     * @return mixed
+     */
+    public function getAdminList()
+    {
+        $data = $this
+            ->select('articles.*', 'c.name as category_name')
+            ->join('categories as c', 'articles.category_id', 'c.id')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
+        return $data;
+    }
 }

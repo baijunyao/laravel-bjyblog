@@ -8,20 +8,20 @@ use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param Article $article
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Article $article)
     {
-        $article = Article::orderBy('id', 'desc')->first();
+        $data = $article->getAdminList();
         $assign = [
-            'article' => $article
+            'article' => $data
         ];
         return view('admin/article/index', $assign);
     }
