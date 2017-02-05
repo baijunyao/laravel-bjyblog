@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Requests\Article\Store;
 use App\Models\Article;
+use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -80,28 +81,24 @@ class ArticleController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        echo public_path();die;
-        $file = public_path().'/uploads/article/20170129/588dc0e43673a.jpg';
-        $image = AddTextWater($file, 'baijunyao.com');
-        return $image->response();
+        $article = Article::find($id);
+        $article->tag_ids = ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray();
+        $category = Category::all();
+        $tag = Tag::all();
+        $assign = [
+            'article' => $article,
+            'category' => $category,
+            'tag' => $tag
+        ];
+        return view('admin/article/edit', $assign);
+
     }
 
     /**
