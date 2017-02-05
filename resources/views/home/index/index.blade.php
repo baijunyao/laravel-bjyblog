@@ -1,10 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>白俊遥博客</title>
-</head>
-<body>
+@extends('layouts.home')
 
-</body>
-</html>
+@section('title', '发布文章')
+
+@section('keywords', '发布文章')
+
+@section('description', '发布新的文章')
+
+@section('content')
+
+@endsection
