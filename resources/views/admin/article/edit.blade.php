@@ -20,10 +20,10 @@
             <a href="{{ url('admin/article/index') }}">文章列表</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/article/create') }}">发布文章</a>
+            <a href="{{ url('admin/article/create') }}">编辑文章</a>
         </li>
     </ul>
-    <form class="form-horizontal " action="{{ url('admin/article/store') }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/article/update', [$article->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>

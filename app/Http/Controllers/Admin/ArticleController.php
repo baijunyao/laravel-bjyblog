@@ -108,10 +108,22 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Article $article, ArticleTag $articleTag, $id)
     {
-
-
+        $data = $request->except('_token');
+        p($data);
+        // 获取封面并添加水印
+        $data['cover'] = $article->getCover($data['content']);
+        // 为文章批量添加标签
+        $tag_ids = $data['tag_ids'];
+        unset($data['tag_ids']);
+        $articleTag->addTagIds($id, $tag_ids);
+        // 编辑文章
+        $map = [
+            'id' => $id
+        ];
+        $article->editData($map, $data);
+        return redirect()->back();
     }
 
     /**

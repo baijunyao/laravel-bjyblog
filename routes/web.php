@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         // 编辑文章
         Route::get('edit/{id}', 'ArticleController@edit');
-        Route::post('update', 'ArticleController@update');
+        Route::post('update/{id}', 'ArticleController@update');
 
         // 上传图片
         Route::post('upload_image', 'ArticleController@upload_image');

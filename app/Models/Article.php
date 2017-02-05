@@ -35,22 +35,9 @@ class Article extends Base
             $data['description'] = reSubstr($description, 0, 200, true);
         }
 
-        // 获取第一张图片作为封面图
-        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif].*)\)/i', $data['content'], $cover);
-        if (empty($cover[1])) {
-            $data['cover'] = '/uploads/article/default.jpg';
-        } else {
-            // 循环给图片添加水印
-            foreach ($cover[1] as $k => $v) {
-                $image = explode(' ', $v);
-                $file = public_path().$image[0];
-                AddTextWater($file, 'baijunyao.com');
-                // 取第一张图片作为封面图
-                if ($k == 0) {
-                    $data['cover'] = $image[0];
-                }
-            }
-        }
+        // 给文章的插图添加水印;并取第一张图片作为封面图
+        $data['cover'] = $this->getCover($data['content']);
+
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
 
@@ -64,17 +51,39 @@ class Article extends Base
 
             // 给文章添加标签
             $articleTag = new ArticleTag();
-            foreach ($tag_ids as $v) {
-                $tag_data = [
-                    'article_id' => $result,
-                    'tag_id' => $v
-                ];
-                $articleTag->addData($tag_data);
-            }
+            $articleTag->addTagIds($result, $tag_ids);
+
             return $result;
         }else{
             return false;
         }
+    }
+
+    /**
+     * 给文章的插图添加水印;并取第一张图片作为封面图
+     *
+     * @param $content
+     * @return string
+     */
+    public function getCover($content)
+    {
+        // 获取文章中的全部图片
+        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif].*)\)/i', $content, $images);
+        if (empty($images[1])) {
+            $cover = '/uploads/article/default.jpg';
+        } else {
+            // 循环给图片添加水印
+            foreach ($images[1] as $k => $v) {
+                $image = explode(' ', $v);
+                $file = public_path().$image[0];
+                AddTextWater($file, 'baijunyao.com');
+                // 取第一张图片作为封面图
+                if ($k == 0) {
+                    $cover = $image[0];
+                }
+            }
+        }
+        return $cover;
     }
 
     /**
