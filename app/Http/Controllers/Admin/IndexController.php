@@ -23,13 +23,16 @@ class IndexController extends Controller
 
     public function migration(Article $articleModel)
     {
+        $htmlConverter = new HtmlConverter();
+
+
         $test = \DB::connection('old')->table('article')->where('aid', 20)->first();
         $content = $test->content;
         $content = htmlspecialchars_decode($content);
+        $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">'], ['```', "\r\n```", "\r\n"], $content);
+        $content = $htmlConverter->convert($content);
         p($content);die;
-
         $data = \DB::connection('old')->table('article')->get()->toArray();
-        $htmlConverter = new HtmlConverter();
         $articleModel->truncate();
         foreach ($data as $k => $v) {
             $content = htmlspecialchars_decode($v->content);
