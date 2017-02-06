@@ -40,18 +40,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
-                <li class="b-nav-cname <eq name="cid" value="index">b-nav-active</eq> " >
+                <li class="b-nav-cname  @if($cid == 'index') b-nav-active @endif">
                 <a href="/" onclick="recordId('/',0)">首页</a>
                 </li>
-                <foreach name="categorys" item="v">
-                    <li class="b-nav-cname <eq name="cid" value="$v['cid']">b-nav-active</eq> ">
-                    <a href="{:U('Home/Index/category',array('cid'=>$v['cid']))}" onclick="return recordId('cid',{$v['cid']})">{$v['cname']}</a>
+                @foreach($category as $v)
+                    <li class="b-nav-cname @if($v->cid == $cid) b-nav-active @endif">
+                        <a href="" onclick="return recordId('cid', {{ $v->id }})">{{ $v->name }}</a>
                     </li>
-                </foreach>
-                <li class="b-nav-cname <eq name="cid" value="chat">b-nav-active</eq> ">
+                @endforeach
+                <li class="b-nav-cname @if($cid == 'chat') b-nav-active @endif">
                 <a href="{:U('Home/Index/chat')}">随言碎语</a>
                 </li>
-                <li class="b-nav-cname hidden-sm  <eq name="cid" value="git">b-nav-active</eq> ">
+                <li class="b-nav-cname hidden-sm  @if($cid == 'git') b-nav-active @endif">
                 <a href="{:U('Home/Index/git')}">开源项目</a>
                 </li>
             </ul>

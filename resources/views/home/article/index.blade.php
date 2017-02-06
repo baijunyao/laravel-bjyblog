@@ -7,6 +7,7 @@
 @section('description', '发布新的文章')
 
 @section('content')
+    {{ $loginUserData }}
     <!-- 左侧列表开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
         <notempty name="title_word">
