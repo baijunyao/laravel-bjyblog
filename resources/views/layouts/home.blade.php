@@ -45,7 +45,7 @@
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if($v->cid == $cid) b-nav-active @endif">
-                        <a href="" onclick="return recordId('cid', {{ $v->id }})">{{ $v->name }}</a>
+                        <a href="" onclick="return recordId('cid', '{{ $v->id }}')">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 <li class="b-nav-cname @if($cid == 'chat') b-nav-active @endif">
@@ -56,18 +56,18 @@
                 </li>
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
-                <empty name="Think.session.user.head_img" >
+                @if(empty($user['name']))
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
                         <a href="javascript:;" onclick="login()">登录</a>
                     </li>
-                    <else />
+                @else
                     <li class="b-user-info">
-                        <span><img class="b-head_img" src="{$Think.session.user.head_img}" alt="{$Think.session.user.nickname}" title="{$Think.session.user.nickname}"  /></span>
-                        <span class="b-nickname">{$Think.session.user.nickname}</span>
+                        <span><img class="b-head_img" src="{{ $user['avatar'] }}" alt="{{ $user['name'] }}" title="{{ $user['name'] }}"  /></span>
+                        <span class="b-nickname">{{ $user['name'] }}</span>
                         <span><a href="javascript:;" onclick="logout()">退出</a></span>
                     </li>
-                </empty>
+                @endif
             </ul>
         </div>
     </div>

@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
             $assign = [
                 'cid' => 'index',
                 'category' => $category,
+                'user' => [
+                    'name' => session('user.name'),
+                    'avatar' => session('user.avatar')
+                ]
             ];
             $view->with($assign);
         });
