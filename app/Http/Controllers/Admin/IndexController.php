@@ -23,9 +23,7 @@ class IndexController extends Controller
 
     public function migration(Article $articleModel)
     {
-        $htmlConverter = new HtmlConverter();
-
-
+        $htmlConverter = new HtmlConverter(['strip_tags' => true]);
         $test = \DB::connection('old')->table('article')->where('aid', 20)->first();
         $content = $test->content;
         $content = htmlspecialchars_decode($content);
