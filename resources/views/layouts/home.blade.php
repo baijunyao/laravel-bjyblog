@@ -74,6 +74,8 @@
 </header>
 <!-- 顶部导航结束 -->
 
+<div class="b-h-70"></div>
+
 <div id="b-content" class="container">
     <div class="row">
         @yield('content')
@@ -83,14 +85,14 @@
             <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
                 <ul class="b-all-tname">
-                    <php>$tag_i=0;</php>
-                    <foreach name="tags" key="k" item="v">
-                        <php>$tag_i++;</php>
-                        <php>$tag_i=$tag_i==5?1:$tag_i;</php>
+                    <?php $tag_i = 0; ?>
+                    @foreach($tag as $v)
+                        <?php $tag_i++; ?>
+                        <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{$tag_i}" href="{:U('Home/Index/tag',array('tid'=>$v['tid']))}" onclick="return recordId('tid',{$v['tid']})">{$v['tname']} ({$v['count']})</a>
+                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->article_count }})</a>
                         </li>
-                    </foreach>
+                    @endforeach
                 </ul>
             </div>
             <div class="b-recommend">

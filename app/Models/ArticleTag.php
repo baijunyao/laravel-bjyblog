@@ -28,5 +28,4 @@ class ArticleTag extends Base
             $this->addData($data);
         }
     }
-
 }
