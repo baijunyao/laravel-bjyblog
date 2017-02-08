@@ -98,9 +98,9 @@
             <div class="b-recommend">
                 <h4 class="b-title">置顶推荐</h4>
                 <p class="b-recommend-p">
-                    <foreach name="recommend" item="v">
-                        <a class="b-recommend-a" href="{:U('Home/Index/article',array('aid'=>$v['aid']))}" target="_blank"><span class="fa fa-th-list b-black"></span> {$v['title']}</a>
-                    </foreach>
+                    @foreach($topArticle as $v)
+                        <a class="b-recommend-a" href="{{ url('article', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                    @endforeach
                 </p>
             </div>
             <div class="b-link">
