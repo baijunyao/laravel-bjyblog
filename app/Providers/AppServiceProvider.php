@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Article;
 use App\Models\Tag;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
@@ -16,11 +17,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //分配前台通用的数据
-        view()->composer('home/*',function($view){
-            $tagModel = new Tag();
-            $tag = $tagModel->getArticleCount();
+        view()->composer('home/*', function($view){
             // 获取分类导航
             $category = Category::select('id', 'name')->get();
+            // 获取标签下的文章数统计
+            $tagModel = new Tag();
+            $tag = $tagModel->getArticleCount();
+            // 获取置顶推荐文章
+            $topArticle = Article::select('id', 'title')
+                ->where('is_top', 1)
+                ->orderBy('created_at', 'desc')
+                ->get();
+            p($topArticle);
             $assign = [
                 'cid' => 'index',
                 'category' => $category,
@@ -34,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         //分配后台通用的左侧导航数据
-        view()->composer('admin/*',function($view){
+        view()->composer('admin/*', function($view){
             //分配登录用户的数据
             $loginUserData = [
                 'name' => '白俊遥'
