@@ -6,20 +6,11 @@ class Article extends Base
 {
 
     /**
-     * 可以被批量赋值的属性
+     * 不允许被批量赋值的属性
      *
      * @var array
      */
-    protected $fillable = [
-        'category_id',
-        'title',
-        'author',
-        'content',
-        'keywords',
-        'description',
-        'is_top',
-        'click'
-    ];
+    protected $guarded = [];
 
     /**
      * 添加文章
