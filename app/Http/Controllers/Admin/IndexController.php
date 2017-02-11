@@ -23,7 +23,7 @@ class IndexController extends Controller
     }
 
 
-    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $comment)
+    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel)
     {
         $htmlConverter = new HtmlConverter(['strip_tags' => true]);
         // $test = \DB::connection('old')->table('article')->where('aid', 20)->first();
@@ -74,25 +74,25 @@ class IndexController extends Controller
 
         // 从旧系统中迁移评论
         $data = \DB::connection('old')->table('comment')->get()->toArray();
-        $comment->truncate();
+        $commentModel->truncate();
         foreach ($data as $v) {
             $comment_data = [
-                'id' => $v['cmtid'],
-                'oauth_user_id' => $v['ouid'],
-                'type' => $v['type'],
-                'pid' => $v['pid'],
-                'article_id' => $v['aid'],
-                'content' => $v['content'],
-                'status' => $v['status'],
+                'id' => $v->cmtid,
+                'oauth_user_id' => $v->ouid,
+                'type' => $v->type,
+                'pid' => $v->pid,
+                'article_id' => $v->aid,
+                'content' => $v->content,
+                'status' => $v->status,
             ];
-            $comment->create($comment_data);
+            $commentModel->create($comment_data);
             $editCommentMap = [
-                'id' => $v['id']
+                'id' => $v->cmtid,
             ];
             $editCommentData = [
-                'created_at' => date('Y-m-d H:i:s', $v['date'])
+                'created_at' => date('Y-m-d H:i:s', $v->date)
             ];
-            $articleModel->editData($editCommentMap, $editCommentData);
+            $commentModel->editData($editCommentMap, $editCommentData);
         }
         
 

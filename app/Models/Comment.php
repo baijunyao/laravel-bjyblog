@@ -5,6 +5,8 @@ namespace App\Models;
 class Comment extends Base
 {
 
+    protected $guarded = [];
+
     public function getNewData()
     {
         $data = $this->select('comments.*')
