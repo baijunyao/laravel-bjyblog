@@ -36,6 +36,9 @@ class AppServiceProvider extends ServiceProvider
             $commentModel = new Comment();
             $comment = $commentModel->getNewData();
 
+            // 获取友情链接
+            // $friendLinkModel = new
+            // $friendLink =
             $assign = [
                 'cid' => 'index',
                 'category' => $category,
