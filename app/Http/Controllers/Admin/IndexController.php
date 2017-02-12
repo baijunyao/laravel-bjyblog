@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Link;
+use DB;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use League\HTMLToMarkdown\HtmlConverter;
 
 class IndexController extends Controller
@@ -23,10 +24,10 @@ class IndexController extends Controller
     }
 
 
-    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel)
+    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, Link $linkModel)
     {
         $htmlConverter = new HtmlConverter(['strip_tags' => true]);
-        // $test = \DB::connection('old')->table('article')->where('aid', 20)->first();
+        // $test = DB::connection('old')->table('article')->where('aid', 20)->first();
         // $content = $test->content;
         // $content = htmlspecialchars_decode($content);
         // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">'], ['```', "\r\n```", "\r\n"], $content);
@@ -35,7 +36,7 @@ class IndexController extends Controller
 
         // 从旧系统中迁移文章
         // $htmlConverter = new HtmlConverter(['strip_tags' => true]);
-        // $data = \DB::connection('old')->table('article')->get()->toArray();
+        // $data = DB::connection('old')->table('article')->get()->toArray();
         // $articleModel->truncate();
         // foreach ($data as $k => $v) {
         //     $content = htmlspecialchars_decode($v->content);
@@ -62,7 +63,7 @@ class IndexController extends Controller
         // }
 
         // 从旧系统中迁移文章标签中间表
-        // $data = \DB::connection('old')->table('article_tag')->get()->toArray();
+        // $data = DB::connection('old')->table('article_tag')->get()->toArray();
         // $articleTag->truncate();
         // foreach ($data as $v) {
         //     $article_tag = [
@@ -73,30 +74,43 @@ class IndexController extends Controller
         // }
 
         // 从旧系统中迁移评论
-        $data = \DB::connection('old')->table('comment')->get()->toArray();
-        $commentModel->truncate();
-        foreach ($data as $v) {
-            $comment_data = [
-                'id' => $v->cmtid,
-                'oauth_user_id' => $v->ouid,
-                'type' => $v->type,
-                'pid' => $v->pid,
-                'article_id' => $v->aid,
-                'content' => $v->content,
-                'status' => $v->status,
-            ];
-            $commentModel->create($comment_data);
-            $editCommentMap = [
-                'id' => $v->cmtid,
-            ];
-            $editCommentData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
-            ];
-            $commentModel->editData($editCommentMap, $editCommentData);
-        }
+        // $data = DB::connection('old')->table('comment')->get()->toArray();
+        // $commentModel->truncate();
+        // foreach ($data as $v) {
+        //     $comment_data = [
+        //         'id' => $v->cmtid,
+        //         'oauth_user_id' => $v->ouid,
+        //         'type' => $v->type,
+        //         'pid' => $v->pid,
+        //         'article_id' => $v->aid,
+        //         'content' => $v->content,
+        //         'status' => $v->status,
+        //     ];
+        //     $commentModel->create($comment_data);
+        //     $editCommentMap = [
+        //         'id' => $v->cmtid,
+        //     ];
+        //     $editCommentData = [
+        //         'created_at' => date('Y-m-d H:i:s', $v->date)
+        //     ];
+        //     $commentModel->editData($editCommentMap, $editCommentData);
+        // }
         
-
-
+        // 迁移友情链接
+        // $data = DB::connection('old')->table('link')->get()->toArray();
+        // $linkModel->truncate();
+        // foreach ($data as $v) {
+        //     $link_data = [
+        //         'id' => $v->lid,
+        //         'name' => $v->lname,
+        //         'url' => $v->url,
+        //         'sort' => $v->sort
+        //     ];
+        //     if ($v->is_show === 0) {
+        //         $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
+        //     }
+        //     $linkModel->addData($link_data);
+        // }
 
     }
 
