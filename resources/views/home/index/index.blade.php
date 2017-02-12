@@ -45,8 +45,8 @@
                         <!-- 文章封面图片开始 -->
                         <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
                             <figure class="b-oa-pic b-style1">
-                                <a href="{$v['url']}" target="_blank">
-                                    <img src="{{ $v->cover }}}" alt="{$Think.config.IMAGE_TITLE_ALT_WORD}" title="{$Think.config.IMAGE_TITLE_ALT_WORD}">
+                                <a href="{{ url('article', $v->id) }}" target="_blank">
+                                    <img src="{{ asset($v->cover) }}" alt="{$Think.config.IMAGE_TITLE_ALT_WORD}" title="{$Think.config.IMAGE_TITLE_ALT_WORD}">
                                 </a>
                                 <figcaption>
                                     <a href="{{ url('article', [$v->id]) }}" target="_blank"></a>

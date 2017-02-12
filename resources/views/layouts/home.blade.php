@@ -79,7 +79,6 @@
 <div id="b-content" class="container">
     <div class="row">
         @yield('content')
-
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
             <div class="b-tags">

@@ -218,7 +218,7 @@ if ( !function_exists('AddTextWater') ) {
     function AddTextWater($file, $text, $color = '#0B94C1') {
         $image = Image::make($file);
         $image->text($text, $image->width()-10, $image->height()-10, function($font) use($color) {
-            $font->file(public_path().'/fonts/msyh.ttf');
+            $font->file(public_path('fonts/msyh.ttf'));
             $font->size(15);
             $font->color($color);
             $font->align('right');

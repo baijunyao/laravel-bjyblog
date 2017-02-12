@@ -59,15 +59,18 @@ class Article extends Base
     public function getCover($content)
     {
         // 获取文章中的全部图片
-        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif].*)\)/i', $content, $images);
+        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $content, $images);
         if (empty($images[1])) {
-            $cover = '/uploads/article/default.jpg';
+            $cover = 'uploads/article/default.jpg';
         } else {
             // 循环给图片添加水印
             foreach ($images[1] as $k => $v) {
                 $image = explode(' ', $v);
                 $file = public_path().$image[0];
-                AddTextWater($file, 'baijunyao.com');
+                if (file_exists($file)) {
+                    AddTextWater($file, 'baijunyao.com');
+                }
+
                 // 取第一张图片作为封面图
                 if ($k == 0) {
                     $cover = $image[0];
