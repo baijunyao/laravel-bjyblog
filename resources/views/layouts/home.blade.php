@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title') - laravel-bjyadmin</title>
+    <title>@yield('title') - {{ $config['WEB_NAME'] }}</title>
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="description" content="@yield('description')" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="author" content="baijunyao,baijunyao@baijunyao.com">
+    <meta name="author" content="baijunyao,{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap-theme.min.css') }}">
@@ -149,7 +149,7 @@
                     本站使用自主开发的<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a>开源博客程序搭建  © 2014-2016 baijunyao.com 版权所有 ICP证：豫ICP备14009546号-3
                 </li>
                 <li class="text-center">
-                    联系邮箱：{$Think.config.ADMIN_EMAIL}
+                    联系邮箱：{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}
                 </li>
             </ul>
             <div class="b-h-20"></div>
@@ -226,7 +226,7 @@
 <!-- 百度页面自动提交结束 -->
 
 <!-- 百度统计开始 -->
-$web_statistics
+{!! htmlspecialchars_decode($config['WEB_STATISTICS']) !!}
 <!-- 百度统计结束 -->
 @yield('js')
 </body>
