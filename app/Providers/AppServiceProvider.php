@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\FriendshipLink;
 use App\Models\Tag;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
@@ -37,14 +38,14 @@ class AppServiceProvider extends ServiceProvider
             $comment = $commentModel->getNewData();
 
             // 获取友情链接
-            // $friendLinkModel = new
-            // $friendLink =
+            $friendshipLink = FriendshipLink::select('name', 'url')->orderBy('sort')->get();
             $assign = [
                 'cid' => 'index',
                 'category' => $category,
                 'tag' => $tag,
-                'comment' => $comment,
                 'topArticle' => $topArticle,
+                'comment' => $comment,
+                'friendshipLink' => $friendshipLink,
                 'user' => [
                     'name' => session('user.name'),
                     'avatar' => session('user.avatar')

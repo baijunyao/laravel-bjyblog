@@ -126,9 +126,9 @@
                 <div class="b-link">
                     <h4 class="b-title">友情链接</h4>
                     <p>
-                        <foreach name="links" key="k" item="v">
-                            <a class="b-link-a" href="{$v[url]}" target="_blank"><span class="fa fa-link b-black"></span> {$v['lname']}</a>
-                        </foreach>
+                        @foreach($friendshipLink as $v)
+                            <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
+                        @endforeach
                     </p>
                 </div>
             </eq>
