@@ -106,20 +106,20 @@
             <div class="b-link">
                 <h4 class="b-title">最新评论</h4>
                 <div>
-                    <foreach name="new_comment" item="v">
-                        <ul class="b-new-comment <eq name="key" value="0">b-new-commit-first</eq>">
-                        <img class="b-head-img js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$v['head_img']}" alt="{$v['nickname']}">
-                        <li class="b-nickname">
-                            {$v['nickname']}<span>{$v['date']}</span>
-                        </li>
-                        <li class="b-nc-article">
-                            在<a href="{:U('Home/Index/article',array('aid'=>$v['aid']))}" target="_blank">{$v['title']}</a>中评论
-                        </li>
-                        <li class="b-content">
-                            {$v['content']}
-                        </li>
+                    @foreach($comment as $v)
+                        <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
+                            <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->head_img }}" alt="{{ $v->nickname }}">
+                            <li class="b-nickname">
+                                {{ $v->nickname }}<span>{{ wordTime($v->created_at) }}</span>
+                            </li>
+                            <li class="b-nc-article">
+                                在<a href="{{ url('article', [$v->article_id]) }}" target="_blank">{{ $v->title }}</a>中评论
+                            </li>
+                            <li class="b-content">
+                                {!! $v->content !!}
+                            </li>
                         </ul>
-                    </foreach>
+                    @endforeach
                 </div>
             </div>
             <eq name="show_link" value="1">

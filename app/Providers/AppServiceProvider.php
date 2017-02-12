@@ -40,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
                 'cid' => 'index',
                 'category' => $category,
                 'tag' => $tag,
+                'comment' => $comment,
                 'topArticle' => $topArticle,
                 'user' => [
                     'name' => session('user.name'),

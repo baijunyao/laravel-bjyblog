@@ -238,9 +238,10 @@ if ( !function_exists('wordTime') ) {
      */
     function wordTime($time) {
         // 如果是日期格式的时间;则先转为时间戳
-        $int = time() - $time;if (!is_integer($time)) {
+        if (!is_integer($time)) {
             $time = strtotime($time);
         }
+        $int = time() - $time;
         if ($int <= 2){
             $str = sprintf('刚刚', $int);
         }elseif ($int < 60){
