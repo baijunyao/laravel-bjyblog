@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Config;
 use App\Models\FriendshipLink;
 use DB;
 use App\Models\Article;
@@ -24,7 +25,7 @@ class IndexController extends Controller
     }
 
 
-    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel)
+    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel)
     {
         $htmlConverter = new HtmlConverter(['strip_tags' => true]);
         // $test = DB::connection('old')->table('article')->where('aid', 20)->first();
@@ -97,20 +98,32 @@ class IndexController extends Controller
         // }
         
         // 迁移友情链接
-        $data = DB::connection('old')->table('link')->get()->toArray();
-        $friendshipLinkModel->truncate();
-        foreach ($data as $v) {
-            $link_data = [
-                'id' => $v->lid,
-                'name' => $v->lname,
-                'url' => $v->url,
-                'sort' => $v->sort
-            ];
-            if ($v->is_show === 0) {
-                $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
-            }
-            $friendshipLinkModel->addData($link_data);
-        }
+        // $data = DB::connection('old')->table('link')->get()->toArray();
+        // $friendshipLinkModel->truncate();
+        // foreach ($data as $v) {
+        //     $link_data = [
+        //         'id' => $v->lid,
+        //         'name' => $v->lname,
+        //         'url' => $v->url,
+        //         'sort' => $v->sort
+        //     ];
+        //     if ($v->is_show === 0) {
+        //         $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
+        //     }
+        //     $friendshipLinkModel->addData($link_data);
+        // }
+
+        // 迁移配置项
+        // $data = DB::connection('old')->table('config')->get()->toArray();
+        // $configModel->truncate();
+        // foreach ($data as $v) {
+        //     $config_data = [
+        //         'id' => $v->id,
+        //         'name' => $v->name,
+        //         'value' => $v->value
+        //     ];
+        //     $configModel->addData($config_data);
+        // }
 
     }
 
