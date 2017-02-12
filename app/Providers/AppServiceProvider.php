@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\Tag;
 use App\Models\Category;
@@ -39,6 +40,7 @@ class AppServiceProvider extends ServiceProvider
 
             // 获取友情链接
             $friendshipLink = FriendshipLink::select('name', 'url')->orderBy('sort')->get();
+
             $assign = [
                 'cid' => 'index',
                 'category' => $category,
@@ -46,22 +48,25 @@ class AppServiceProvider extends ServiceProvider
                 'topArticle' => $topArticle,
                 'comment' => $comment,
                 'friendshipLink' => $friendshipLink,
-                'user' => [
-                    'name' => session('user.name'),
-                    'avatar' => session('user.avatar')
-                ]
+
             ];
             $view->with($assign);
         });
 
-        //分配后台通用的左侧导航数据
-        view()->composer('admin/*', function($view){
-            //分配登录用户的数据
-            $loginUserData = [
-                'name' => '白俊遥'
+        // 分配全站通用的数据
+        view()->composer('*', function ($view) {
+            $configModel = new Config();
+            $config = $configModel->getKeyValueArray();
+            $assign = [
+                'user' => [
+                    'name' => session('user.name'),
+                    'avatar' => session('user.avatar')
+                ],
+                'config' => $config
             ];
-            $view->with('loginUserData', $loginUserData);
+            $view->with($assign);
         });
+
     }
 
     /**
