@@ -95,6 +95,11 @@ class Article extends Base
         return $data;
     }
 
+    /**
+     * 获取前端文章列表
+     *
+     * @return mixed
+     */
     public function getHomeList()
     {
         // 获取文章分页
@@ -112,6 +117,18 @@ class Article extends Base
         foreach ($data as $k => $v) {
             $data[$k]->tag = isset($tag[$v->id]) ? $tag[$v->id] : [];
         }
+        return $data;
+    }
+
+    public function getDataById($id)
+    {
+        $data = $this->select('articles.*', 'c.name as category_name')
+            ->join('categories as c', 'articles.category_id', 'c.id')
+            ->where('articles.id', $id)
+            ->first();
+        $articleTag = new ArticleTag();
+        $tag = $articleTag->getTagNameByArticleIds([$id]);
+        $data['tag'] = current($tag);
         return $data;
     }
 
