@@ -6,6 +6,10 @@
 
 @section('description', $data->description)
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('statics/prism/prism.min.css') }}" />
+@endsection
+
 @section('content')
     <!-- 左侧文章开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
@@ -24,11 +28,13 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
-                {{ $data->content }}
+                <div class="js-content">
+                    {{ $data->content }}
+                </div>
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
                     <p class="b-copyright">
-                        {$Think.config.COPYRIGHT_WORD}
+                        {{ $config['COPYRIGHT_WORD'] }}
                     </p>
                 </eq>
                 <ul class="b-prev-next">
@@ -56,4 +62,24 @@
         <!-- 引入通用评论结束 -->
     </div>
     <!-- 左侧文章结束 -->
+@endsection
+
+@section('js')
+
+    <script src="{{ asset('statics/prism/prism.min.js') }}"></script>
+    <script src="{{ asset('statics/editormd/lib/marked.min.js') }}"></script>
+    <script>
+                {{--var str = '</script>';--}}
+        var str = $('.js-content').text();
+        console.log(str);
+        marked.setOptions({
+            sanitize: true,
+
+        })
+        var str = marked(str);
+        console.log(str);
+        $('.js-content').html(str);
+        $('pre').addClass('line-numbers');
+    </script>
+
 @endsection

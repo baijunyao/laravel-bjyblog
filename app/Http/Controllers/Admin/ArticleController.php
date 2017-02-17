@@ -76,6 +76,7 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
+
         $article->addData($data);
         return redirect('admin/article/index');
     }
@@ -111,7 +112,6 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article, ArticleTag $articleTag, $id)
     {
         $data = $request->except('_token');
-        p($data);
         // 获取封面并添加水印
         $data['cover'] = $article->getCover($data['content']);
         // 为文章批量添加标签
