@@ -29,34 +29,26 @@ class IndexController extends Controller
 
     public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel)
     {
-        // $htmlConverter = new HtmlConverter(['strip_tags' => true]);
-        // $test = DB::connection('old')->table('article')->where('aid', 103)->first();
-        // $content = $test->content;
-        // $content = htmlspecialchars_decode($content);
-        //
-        // $str = new \HTML_To_Markdown($content);
-        //
-        // echo $str;die;
-        //
-        // preg_match_all("/>(.*)?<\/a>/", $content, $a);
-        // p($a);die;
-        // $content = str_replace('textvalue="https://github.com/baijunyao/thinkphp-bjyadmin"', '', $content);
-        // echo $content;
         // $htmlConverter = new \HTML_To_Markdown();
         // $htmlConverter->set_option('strip_tags', true);
         //
+        // $test = DB::connection('old')->table('article')->where('aid', 103)->first();
+        // $content = htmlspecialchars_decode($test->content);
+        //
+        // $content = str_replace('/Upload/image/ueditor', 'uploads/article', $content);
+        //
         // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;'], ["\r\n```", "\r\n```\r\n", "\r\n", ' '], $content);
-        // $content = str_replace(["\r\n", ' '], ['|rn|', '|s|'], $content);
-        // $content = $htmlConverter->convert($content);
-        // $content = str_replace(['|rn|', '|s|'], ["\r\n", ' '], $content);
-        // echo ($content);die;
-
-
-
+        // $content = str_replace('```js', '```javascript', $content);
+        // $content = str_replace("\r\n", '|rn|', $content);
+        // $markdown = $htmlConverter->convert($content);
+        // $markdown = str_replace(['|rn|', '\*'], ["\r\n", '*'], $markdown);
+        //
+        // $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
+        //
+        // echo $markdown;die;
 
 
         // 从旧系统中迁移文章
-        // $htmlConverter = new HtmlConverter(['strip_tags' => true]);
         $htmlConverter = new \HTML_To_Markdown();
         $htmlConverter->set_option('strip_tags', true);
         $data = DB::connection('old')->table('article')->get()->toArray();
@@ -64,15 +56,15 @@ class IndexController extends Controller
         foreach ($data as $k => $v) {
             $content = htmlspecialchars_decode($v->content);
 
-            $content = str_replace('/Upload/image/ueditor', 'uploads/article', $content);
+            $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
 
             $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;'], ["\r\n```", "\r\n```\r\n", "\r\n", ' '], $content);
             $content = str_replace('```js', '```javascript', $content);
-            $content = str_replace(["\r\n"], ['|rn|'], $content);
+            $content = str_replace("\r\n", '|rn|', $content);
             $markdown = $htmlConverter->convert($content);
             $markdown = str_replace(['|rn|', '\*'], ["\r\n", '*'], $markdown);
 
-            $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
+            $markdown = str_replace('http://www.baijunyao.com/uploads/article', '/uploads/article', $markdown);
 
             $article = [
                 'id' => $v->aid,

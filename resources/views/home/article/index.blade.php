@@ -29,7 +29,7 @@
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
                 <div class="js-content">
-                    {{ $data->content }}
+                    {!! $data->content !!}}
                 </div>
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
@@ -69,7 +69,6 @@
     <script src="{{ asset('statics/prism/prism.min.js') }}"></script>
     <script src="{{ asset('statics/editormd/lib/marked.min.js') }}"></script>
     <script>
-                {{--var str = '</script>';--}}
         var str = $('.js-content').text();
         console.log(str);
         marked.setOptions({
