@@ -28,9 +28,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
-                <div class="js-content">
-                    {!! $data->content !!}}
-                </div>
+                <div class="js-content">{!! $data->content !!}}</div>
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
                     <p class="b-copyright">
