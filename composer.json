@@ -10,7 +10,9 @@
         "intervention/image": "^2.3",
         "laravel/framework": "5.3.*",
         "league/html-to-markdown": "^4.4",
-        "mews/purifier": "^2.0"
+        "mews/purifier": "^2.0",
+        "nickcernis/html-to-markdown": "^2.2",
+        "pixel418/markdownify": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
