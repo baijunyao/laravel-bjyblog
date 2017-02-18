@@ -67,16 +67,18 @@
     <script src="{{ asset('statics/prism/prism.min.js') }}"></script>
     <script src="{{ asset('statics/editormd/lib/marked.min.js') }}"></script>
     <script>
-        var str = $('.js-content').text();
-        console.log(str);
+        // 获取文章内容
+        var articleMarkdown = $('.js-content').text();
         marked.setOptions({
             sanitize: true,
-
         })
-        var str = marked(str);
-        console.log(str);
-        $('.js-content').html(str);
+        // markdown 转 html
+        var articleHtml = marked(articleMarkdown);
+        $('.js-content').html(articleHtml);
+        // 添加行数
         $('pre').addClass('line-numbers');
+        // 新页面跳转
+        $('.js-content a').attr('target', '_blank')
     </script>
 
 @endsection
