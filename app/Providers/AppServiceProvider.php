@@ -55,8 +55,7 @@ class AppServiceProvider extends ServiceProvider
 
         // 分配全站通用的数据
         view()->composer('*', function ($view) {
-            $configModel = new Config();
-            $config = $configModel->getKeyValueArray();
+            $config = Config::pluck('value','name');
             $assign = [
                 'user' => [
                     'name' => session('user.name'),

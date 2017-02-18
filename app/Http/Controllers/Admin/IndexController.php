@@ -27,15 +27,21 @@ class IndexController extends Controller
 
     public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel)
     {
-        // $htmlConverter = new HtmlConverter(['strip_tags' => true]);
-        // $test = DB::connection('old')->table('article')->where('aid', 96)->first();
-        // $content = $test->content;
-        // $content = htmlspecialchars_decode($content);
-        // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;'], ["\r\n```", "\r\n```\r\n", "\r\n", ' '], $content);
-        // $content = str_replace(["\r\n", ' '], ['|rn|', '|s|'], $content);
-        // $content = $htmlConverter->convert($content);
-        // $content = str_replace(['|rn|', '|s|'], ["\r\n", ' '], $content);
-        // echo ($content);die;
+        $htmlConverter = new HtmlConverter(['strip_tags' => true]);
+        $str = '<a href="https://github.com/baijunyao/thinkphp-bjyadmin">2222</a>';
+        echo $htmlConverter->convert($str);die;
+
+
+        $test = DB::connection('old')->table('article')->where('aid', 103)->first();
+        $content = $test->content;
+        $content = htmlspecialchars_decode($content);
+        $content = str_replace('textvalue="https://github.com/baijunyao/thinkphp-bjyadmin"', '', $content);
+        echo $content;
+        $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;'], ["\r\n```", "\r\n```\r\n", "\r\n", ' '], $content);
+        $content = str_replace(["\r\n", ' '], ['|rn|', '|s|'], $content);
+        $content = $htmlConverter->convert($content);
+        $content = str_replace(['|rn|', '|s|'], ["\r\n", ' '], $content);
+        echo ($content);die;
 
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter(['strip_tags' => true]);
