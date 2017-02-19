@@ -30,40 +30,34 @@ class IndexController extends Controller
     public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel)
     {
         // $htmlConverter = new \HTML_To_Markdown();
-        // $htmlConverter->set_option('strip_tags', true);
-        //
-        // $test = DB::connection('old')->table('article')->where('aid', 103)->first();
+        // $test = DB::connection('old')->table('article')->where('aid', 105)->first();
         // $content = htmlspecialchars_decode($test->content);
-        //
+        // $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
         // $content = str_replace('/Upload/image/ueditor', 'uploads/article', $content);
-        //
-        // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;'], ["\r\n```", "\r\n```\r\n", "\r\n", ' '], $content);
+        // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", ' ', "\r\n"], $content);
         // $content = str_replace('```js', '```javascript', $content);
         // $content = str_replace("\r\n", '|rn|', $content);
+        // $content = str_replace(['</p><p>', '<p>'], ['|rn|', ''], $content);
         // $markdown = $htmlConverter->convert($content);
         // $markdown = str_replace(['|rn|', '\*'], ["\r\n", '*'], $markdown);
-        //
         // $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
-        //
         // echo $markdown;die;
 
 
         // 从旧系统中迁移文章
         $htmlConverter = new \HTML_To_Markdown();
-        $htmlConverter->set_option('strip_tags', true);
         $data = DB::connection('old')->table('article')->get()->toArray();
         $articleModel->truncate();
         foreach ($data as $k => $v) {
             $content = htmlspecialchars_decode($v->content);
-
+            $content = str_replace('<p><br/></p>', '|rn|', $content);
             $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
-
             $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;'], ["\r\n```", "\r\n```\r\n", "\r\n", ' '], $content);
             $content = str_replace('```js', '```javascript', $content);
             $content = str_replace("\r\n", '|rn|', $content);
+            $content = str_replace(['</p><p>', '<p>'], ['|rn|', ''], $content);
             $markdown = $htmlConverter->convert($content);
             $markdown = str_replace(['|rn|', '\*'], ["\r\n", '*'], $markdown);
-
             $markdown = str_replace('http://www.baijunyao.com/uploads/article', '/uploads/article', $markdown);
 
             $article = [

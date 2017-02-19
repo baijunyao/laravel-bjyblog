@@ -120,7 +120,6 @@
                 imageUpload: true,
                 imageUploadURL : '{{ url('admin/article/upload_image') }}',
             });
-            console.log(editormd.defaults.toolbarIcons);
             $('.bjy-icheck').iCheck({
                 checkboxClass: "icheckbox_minimal-blue",
                 radioClass: "iradio_minimal-blue",

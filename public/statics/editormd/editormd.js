@@ -2012,7 +2012,7 @@
                 smartLists  : true,
                 smartypants : true
             };
-            
+            console.log(editormd.markedRenderer(markdownToC, rendererOptions));
             marked.setOptions(markedOptions);
                     
             var newMarkdownDoc = editormd.$marked(cmValue, markedOptions);
@@ -3968,7 +3968,6 @@
         } else {
             saveTo.remove();
         }
-        
         div.addClass("markdown-body " + this.classPrefix + "html-preview").append(markdownParsed);
         
         var tocContainer = (settings.tocContainer !== "") ? $(settings.tocContainer) : div;

@@ -28,7 +28,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
-                <div class="js-content">{!! $data->content !!}}</div>
+                <div class="js-content">{!! $data->content !!}</div>
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
                     <p class="b-copyright">
@@ -69,11 +69,16 @@
     <script>
         // 获取文章内容
         var articleMarkdown = $('.js-content').text();
+        console.log(articleMarkdown);
         marked.setOptions({
             sanitize: true,
+            gfm: true,
+            gfmBreaks: true
         })
         // markdown 转 html
         var articleHtml = marked(articleMarkdown);
+        articleHtml = articleHtml.replace(/\n\s*\n*/g," <br />\n");
+        console.log(articleHtml);
         $('.js-content').html(articleHtml);
         // 添加行数
         $('pre').addClass('line-numbers');
