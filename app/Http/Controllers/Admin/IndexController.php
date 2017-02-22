@@ -66,7 +66,7 @@ class IndexController extends Controller
             $content = str_replace('</p>', '|rn|', $content);
             $markdown = $htmlConverter->convert($content);
             $markdown = htmlspecialchars($markdown);
-            $markdown = str_replace(['|rn|', '\*', '\_', '|s|'], ["\r\n", '*', '_', ' '], $markdown);
+            $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
             $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
             $article = [
                 'id' => $v->aid,
