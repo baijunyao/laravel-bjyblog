@@ -58,7 +58,7 @@ class IndexController extends Controller
         foreach ($data as $k => $v) {
             $content = htmlspecialchars_decode($v->content);
             $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
-            $content = str_replace('/Upload/image/ueditor', 'uploads/article', $content);
+            $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
             $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", ' ', "\r\n"], $content);
             $content = str_replace('```js', '```javascript', $content);
             $content = str_replace("\r\n", '|rn|', $content);
