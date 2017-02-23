@@ -31,7 +31,7 @@ class IndexController extends Controller
     {
         // $htmlConverter = new HtmlConverter();
         // // $htmlConverter = new \HTML_To_Markdown();
-        // $test = DB::connection('old')->table('article')->where('aid', 90)->first();
+        // $test = DB::connection('old')->table('article')->where('aid', 105)->first();
         // $content = htmlspecialchars_decode($test->content);
         // $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
         // $content = str_replace('/Upload/image/ueditor', 'uploads/article', $content);
@@ -40,12 +40,10 @@ class IndexController extends Controller
         // $content = str_replace("\r\n", '|rn|', $content);
         // $content = str_replace('<p>', '', $content);
         // $content = str_replace('</p>', '|rn|', $content);
-        // // $content = str_replace(' ', '|s|', $content);
-        // // $content = htmlspecialchars($content);
-        // // echo $content;die;
         // $markdown = $htmlConverter->convert($content);
         // $markdown = htmlspecialchars($markdown);
         // $markdown = str_replace(['|rn|', '\*', '\_', '|s|'], ["\r\n", '*', '_', ' '], $markdown);
+        // $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
         // $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
         // echo $markdown;die;
 
@@ -67,6 +65,7 @@ class IndexController extends Controller
             $markdown = $htmlConverter->convert($content);
             $markdown = htmlspecialchars($markdown);
             $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
+            $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
             $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
             $article = [
                 'id' => $v->aid,
