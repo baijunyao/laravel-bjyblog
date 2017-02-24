@@ -8,6 +8,11 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('statics/prism/prism.min.css') }}" />
+    <style>
+        .js-content p{
+            margin-bottom: 20px;;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -82,14 +87,8 @@
         $.each($('.js-content p'), function (index, val) {
             var html = $(val).html();
             $(val).html(html.replace(/\n/g,"<br>"));
-            $(val).after('<br>');
         })
-        // 代码自带边距  所以可以不保留前面的br
-        $.each($('pre'), function (index, val) {
-            $(val).prev().remove();
-        })
-        // ol 下不需要br
-        $('ol br').remove();
+
         // 添加行数
         $('pre').addClass('line-numbers');
         // 新页面跳转
