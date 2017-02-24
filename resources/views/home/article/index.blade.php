@@ -43,19 +43,20 @@
                 <ul class="b-prev-next">
                     <li class="b-prev">
                         上一篇：
-                        <empty name="article['prev']">
+                        @if(is_null($prev))
                             <span>没有了</span>
-                            <else />
-                            <a href="{$article['prev']['url']}">{$article['prev']['title']}</a>
-                        </empty>
+                        @else
+                            <a href="{{ url('article', [$prev->id]) }}">{{ $prev->title }}</a>
+                        @endif
+
                     </li>
                     <li class="b-next">
                         下一篇：
-                        <empty name="article['next']">
+                        @if(is_null($next))
                             <span>没有了</span>
-                            <else />
-                            <a href="{$article['next']['url']}">{$article['next']['title']}</a>
-                        </empty>
+                        @else
+                            <a href="{{ url('article', [$next->id]) }}">{{ $next->title }}</a>
+                        @endif
                     </li>
                 </ul>
             </div>
