@@ -12,7 +12,10 @@
         "league/html-to-markdown": "^4.4",
         "mews/purifier": "^2.0",
         "nickcernis/html-to-markdown": "^2.2",
-        "pixel418/markdownify": "^2.2"
+        "pixel418/markdownify": "^2.2",
+        "laravel/socialite": "~2.0",
+        "socialiteproviders/weibo": "~2.0",
+        "socialiteproviders/qq": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

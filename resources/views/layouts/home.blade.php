@@ -180,15 +180,6 @@
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
                         <a href="{:U('Home/User/oauth_login',array('type'=>'douban'))}"><img src="{{ asset('images/home/douban-login.png') }}" alt="豆瓣登录" title="豆瓣登录"></a>
                     </li>
-                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{:U('Home/User/oauth_login',array('type'=>'renren'))}"><img src="{{ asset('images/home/renren-login.png') }}" alt="人人登录" title="人人登录"></a>
-                    </li>
-                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{:U('Home/User/oauth_login',array('type'=>'kaixin'))}"><img src="{{ asset('images/home/kaixin-login.png') }}" alt="开心网登录" title="开心网登录"></a>
-                    </li>
-                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{:U('Home/User/oauth_login',array('type'=>''))}"><img src="" alt="待定" title="待定"></a>
-                    </li>
                 </ul>
             </div>
         </div>
