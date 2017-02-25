@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/css/bjy.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/index.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/css/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('statics/animate/animate.min.css') }}">
     @yield('css')
 </head>
 <body>
