@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('auth/{service}', 'Auth\AuthController@redirectToProvider');
+Route::get('Api/Index/oauth/type/{service}', 'Auth\AuthController@handleProviderCallback');
+// Route::get('auth/{service}/callback', 'Auth\AuthController@handleProviderCallback');
 
 // Home 模块
 Route::group(['namespace' => 'Home'], function () {
