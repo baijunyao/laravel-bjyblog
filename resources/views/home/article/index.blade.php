@@ -68,7 +68,7 @@
         </script>
         <div class="row b-comment">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
-                <img class="b-head-img" src="<empty name="Think.session.user.head_img">__HOME_IMAGE__/default_head_img.gif<else/>{$Think.session.user.head_img}</empty>" alt="白俊遥博客" title="白俊遥博客">
+                <img class="b-head-img" src="<empty name="Think.session.user.head_img">__HOME_IMAGE__/default_head_img.gif<else/>{$Think.session.user.avatar}</empty>" alt="白俊遥博客" title="白俊遥博客">
                 <div class="b-box-textarea">
                     <div class="b-box-content" contenteditable="true" onfocus="delete_hint(this)">请先登录后发表评论</div>
                     <ul class="b-emote-submit">
@@ -97,7 +97,7 @@
                 <volist name="comment" id="v">
                     <div class="row b-user b-parent">
                         <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                            <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$v['head_img']}" alt="白俊遥博客" title="白俊遥博客">
+                            <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$v['avatar']}" alt="白俊遥博客" title="白俊遥博客">
                         </div>
                         <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                             <p class="b-content">
@@ -109,7 +109,7 @@
                             <foreach name="v['child']" item="n">
                                 <div class="row b-user b-child">
                                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                        <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$n['head_img']}" alt="白俊遥博客" title="白俊遥博客">
+                                        <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$n['avatar']}" alt="白俊遥博客" title="白俊遥博客">
                                     </div>
                                     <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                         <li class="b-content">

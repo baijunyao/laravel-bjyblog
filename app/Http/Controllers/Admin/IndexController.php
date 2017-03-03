@@ -160,7 +160,7 @@ class IndexController extends Controller
                 'id' => $v->id,
                 'type' => $v->type,
                 'nickname' => $v->nickname,
-                'avatar' => $v->head_img,
+                'avatar' => $v->avatar,
                 'openid' => $v->openid,
                 'access_token' => $v->access_token,
                 'last_login_ip' => $v->last_login_ip,

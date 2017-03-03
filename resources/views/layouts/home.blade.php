@@ -107,7 +107,7 @@
                 <div>
                     @foreach($comment as $v)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
-                            <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->head_img }}" alt="{{ $v->nickname }}">
+                            <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->avatar }}" alt="{{ $v->nickname }}">
                             <li class="b-nickname">
                                 {{ $v->nickname }}<span>{{ wordTime($v->created_at) }}</span>
                             </li>
