@@ -159,7 +159,7 @@ class IndexController extends Controller
             $oauthUserData = [
                 'id' => $v->id,
                 'type' => $v->type,
-                'nickname' => $v->nickname,
+                'name' => $v->nickname,
                 'avatar' => $v->avatar,
                 'openid' => $v->openid,
                 'access_token' => $v->access_token,

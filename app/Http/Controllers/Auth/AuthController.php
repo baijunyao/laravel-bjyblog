@@ -51,7 +51,7 @@ class AuthController extends Controller
                 'id' => $oldUserData->id
             ];
             $editData = [
-                'nickname' => $user->nickname,
+                'name' => $user->nickname,
                 'avatar' => $user->avatar,
                 'access_token' => $user->token,
                 'last_login_ip' => $request->getClientIp(),
@@ -62,7 +62,7 @@ class AuthController extends Controller
         } else {
             $data = [
                 'type' => $type[$service],
-                'nickname' => $user->nickname,
+                'name' => $user->nickname,
                 'avatar' => $user->avatar,
                 'openid' => $user->id,
                 'access_token' => $user->token,
@@ -76,7 +76,7 @@ class AuthController extends Controller
         $sessionData = [
             'user' => [
                 'id' => $user_id,
-                'nickname' => $user->nickname,
+                'name' => $user->nickname,
                 'avatar' => $user->avatar,
                 'type' => $type[$service],
                 'is_admin' => 0

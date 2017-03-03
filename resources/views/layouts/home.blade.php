@@ -107,9 +107,9 @@
                 <div>
                     @foreach($comment as $v)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
-                            <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->avatar }}" alt="{{ $v->nickname }}">
+                            <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->avatar }}" alt="{{ $v->name }}">
                             <li class="b-nickname">
-                                {{ $v->nickname }}<span>{{ wordTime($v->created_at) }}</span>
+                                {{ $v->name }}<span>{{ wordTime($v->created_at) }}</span>
                             </li>
                             <li class="b-nc-article">
                                 在<a href="{{ url('article', [$v->article_id]) }}" target="_blank">{{ $v->title }}</a>中评论

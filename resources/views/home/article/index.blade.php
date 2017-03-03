@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                             <p class="b-content">
-                                <span class="b-user-name">{$v['nickname']}</span>：{$v['content']}
+                                <span class="b-user-name">{$v['name']}</span>：{$v['content']}
                             </p>
                             <p class="b-date">
                                 {:date('Y-m-d H:i:s',$v['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$v['cmtid']}" username="{$v['nickname']}" onclick="reply(this)">回复</a>
@@ -113,7 +113,7 @@
                                     </div>
                                     <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                         <li class="b-content">
-                                            <span class="b-reply-name">{$n['nickname']}</span>
+                                            <span class="b-reply-name">{$n['name']}</span>
                                             <span class="b-reply">回复</span>
                                             <span class="b-user-name">{$n['reply_name']}</span>：{$n['content']}
                                         </li>
