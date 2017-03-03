@@ -63,8 +63,8 @@
                     </li>
                 @else
                     <li class="b-user-info">
-                        <span><img class="b-head_img" src="{{ $user['avatar'] }}" alt="{{ $user['name'] }}" title="{{ $user['name'] }}"  /></span>
-                        <span class="b-nickname">{{ $user['name'] }}</span>
+                        <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}"  /></span>
+                        <span class="b-nickname">{{ session('user.name') }}</span>
                         <span><a href="javascript:;" onclick="logout()">退出</a></span>
                     </li>
                 @endif
