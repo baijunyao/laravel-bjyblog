@@ -11,6 +11,15 @@
 |
 */
 
+
+// Home 模块
+Route::group(['namespace' => 'Home'], function () {
+    // 首页
+    Route::get('/', 'IndexController@index');
+    // 文章详情页
+    Route::get('article/{id}', 'ArticleController@index');
+});
+
 // auth
 Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     // 第三方登录
@@ -23,17 +32,6 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
         Route::get('logout', 'OAuthController@logout');
     });
 });
-Route::get('', 'Auth\AuthController@redirectToProvider');
-Route::get('', 'Auth\AuthController@handleProviderCallback');
-
-// Home 模块
-Route::group(['namespace' => 'Home'], function () {
-    // 首页
-    Route::get('/', 'IndexController@index');
-    // 文章详情页
-    Route::get('article/{id}', 'ArticleController@index');
-});
-
 
 // Admin 模块
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
