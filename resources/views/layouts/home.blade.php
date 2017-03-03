@@ -56,7 +56,7 @@
                 </li>
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
-                @if(empty($user['name']))
+                @if(empty(session('user.name')))
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
                         <a href="javascript:;" onclick="login()">登录</a>
@@ -65,7 +65,7 @@
                     <li class="b-user-info">
                         <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}"  /></span>
                         <span class="b-nickname">{{ session('user.name') }}</span>
-                        <span><a href="javascript:;" onclick="logout()">退出</a></span>
+                        <span><a href="{{ url('auth/oauth/logout') }}">退出</a></span>
                     </li>
                 @endif
             </ul>
@@ -172,10 +172,10 @@
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
                 <ul class="row">
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/qq') }}"><img src="{{ asset('images/home/qq-login.png') }}" alt="QQ登录" title="QQ登录"></a>
+                        <a href="{{ url('auth/oauth/redirectToProvider/qq') }}"><img src="{{ asset('images/home/qq-login.png') }}" alt="QQ登录" title="QQ登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/weibo') }}"><img src="{{ asset('images/home/sina-login.png') }}" alt="微博登录" title="微博登录"></a>
+                        <a href="{{ url('auth/oauth/redirectToProvider/weibo') }}"><img src="{{ asset('images/home/sina-login.png') }}" alt="微博登录" title="微博登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
                         <a href="{:U('Home/User/oauth_login',array('type'=>'douban'))}"><img src="{{ asset('images/home/douban-login.png') }}" alt="豆瓣登录" title="豆瓣登录"></a>

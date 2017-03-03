@@ -57,10 +57,6 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $config = Config::pluck('value','name');
             $assign = [
-                'user' => [
-                    'name' => session('user.name'),
-                    'avatar' => session('user.avatar')
-                ],
                 'config' => $config
             ];
             $view->with($assign);

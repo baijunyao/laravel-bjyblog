@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Models\OauthUser;
 use Socialite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AuthController extends Controller
+class OAuthController extends Controller
 {
     /**
      * oauth跳转
@@ -86,5 +87,17 @@ class AuthController extends Controller
         session($sessionData);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(session('last_url', url('/')));
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        Auth::logout();
+        session()->forget('user');
+        return redirect()->back();
     }
 }

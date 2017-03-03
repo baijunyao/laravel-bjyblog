@@ -11,8 +11,20 @@
 |
 */
 
-Route::get('auth/{service}', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/{service}/callback', 'Auth\AuthController@handleProviderCallback');
+// auth
+Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
+    // 第三方登录
+    Route::group(['prefix' => 'oauth'], function () {
+        // 重定向
+        Route::get('redirectToProvider/{service}', 'OAuthController@redirectToProvider');
+        // 获取用户资料并登录
+        Route::get('handleProviderCallback/{service}', 'OAuthController@handleProviderCallback');
+        // 退出登录
+        Route::get('logout', 'OAuthController@logout');
+    });
+});
+Route::get('', 'Auth\AuthController@redirectToProvider');
+Route::get('', 'Auth\AuthController@handleProviderCallback');
 
 // Home 模块
 Route::group(['namespace' => 'Home'], function () {
