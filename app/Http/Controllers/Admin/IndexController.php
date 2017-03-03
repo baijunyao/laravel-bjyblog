@@ -155,11 +155,9 @@ class IndexController extends Controller
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
         $oauthUserModel->truncate();
-        die;
         foreach ($data as $v) {
-            $config_data = [
+            $oauthUserData = [
                 'id' => $v->id,
-                'user_id' => $v->uid,
                 'type' => $v->type,
                 'nickname' => $v->nickname,
                 'avatar' => $v->head_img,
@@ -170,7 +168,14 @@ class IndexController extends Controller
                 'email' => $v->email,
                 'is_admin' => $v->is_admin
             ];
-            $configModel->addData($config_data);
+            $oauthUserModel->addData($oauthUserData);
+            $editOauthUserMap = [
+                'id' => $v->id,
+            ];
+            $editOauthUserData = [
+                'created_at' => date('Y-m-d H:i:s', $v->create_time)
+            ];
+            $oauthUserModel->editData($editOauthUserMap, $editOauthUserData);
         }
 
 

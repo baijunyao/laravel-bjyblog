@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class OauthUser extends Model
+class OauthUser extends Base
 {
-    //
+    protected $guarded = [];
 }
