@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Config;
 use App\Models\FriendshipLink;
+use App\Models\OauthUser;
 use DB;
 use App\Models\Article;
 use App\Models\ArticleTag;
@@ -27,7 +28,7 @@ class IndexController extends Controller
     }
 
 
-    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel)
+    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel, OauthUser $oauthUserModel)
     {
         // $htmlConverter = new HtmlConverter();
         // // $htmlConverter = new \HTML_To_Markdown();
@@ -49,46 +50,45 @@ class IndexController extends Controller
 
 
         // 从旧系统中迁移文章
-        // $htmlConverter = new \HTML_To_Markdown();
-        $htmlConverter = new HtmlConverter();
-        $data = DB::connection('old')->table('article')->get()->toArray();
-        $articleModel->truncate();
-        foreach ($data as $k => $v) {
-            $content = htmlspecialchars_decode($v->content);
-            $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
-            $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
-            $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", ' ', "\r\n"], $content);
-            $content = str_replace('```js', '```javascript', $content);
-            $content = str_replace("\r\n", '|rn|', $content);
-            $content = str_replace('<p>', '', $content);
-            $content = str_replace('</p>', '|rn|', $content);
-            $markdown = $htmlConverter->convert($content);
-            $markdown = htmlspecialchars($markdown);
-            $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
-            $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
-            $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
-            $article = [
-                'id' => $v->aid,
-                'category_id' => $v->cid,
-                'title' => $v->title,
-                'author' => $v->author,
-                'content' => $markdown,
-                'description' => $v->description,
-                'keywords' => $v->keywords,
-                'cover' => $articleModel->getCover($markdown),
-                'is_top' => $v->is_top,
-                'click' => $v->click,
-            ];
-            $articleModel->create($article);
-            $editArticleMap = [
-                'id' => $v->aid
-            ];
-
-            $editArticleData = [
-                'created_at' => date('Y-m-d H:i:s', $v->addtime)
-            ];
-            $articleModel->editData($editArticleMap, $editArticleData);
-        }
+        // $htmlConverter = new HtmlConverter();
+        // $data = DB::connection('old')->table('article')->get()->toArray();
+        // $articleModel->truncate();
+        // foreach ($data as $k => $v) {
+        //     $content = htmlspecialchars_decode($v->content);
+        //     $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
+        //     $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
+        //     $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", ' ', "\r\n"], $content);
+        //     $content = str_replace('```js', '```javascript', $content);
+        //     $content = str_replace("\r\n", '|rn|', $content);
+        //     $content = str_replace('<p>', '', $content);
+        //     $content = str_replace('</p>', '|rn|', $content);
+        //     $markdown = $htmlConverter->convert($content);
+        //     $markdown = htmlspecialchars($markdown);
+        //     $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
+        //     $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
+        //     $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
+        //     $article = [
+        //         'id' => $v->aid,
+        //         'category_id' => $v->cid,
+        //         'title' => $v->title,
+        //         'author' => $v->author,
+        //         'content' => $markdown,
+        //         'description' => $v->description,
+        //         'keywords' => $v->keywords,
+        //         'cover' => $articleModel->getCover($markdown),
+        //         'is_top' => $v->is_top,
+        //         'click' => $v->click,
+        //     ];
+        //     $articleModel->create($article);
+        //     $editArticleMap = [
+        //         'id' => $v->aid
+        //     ];
+        //
+        //     $editArticleData = [
+        //         'created_at' => date('Y-m-d H:i:s', $v->addtime)
+        //     ];
+        //     $articleModel->editData($editArticleMap, $editArticleData);
+        // }
 
         // 从旧系统中迁移文章标签中间表
         // $data = DB::connection('old')->table('article_tag')->get()->toArray();
@@ -151,6 +151,29 @@ class IndexController extends Controller
         //     ];
         //     $configModel->addData($config_data);
         // }
+
+        // 迁移第三方登录用户表
+        $data = DB::connection('old')->table('oauth_user')->get()->toArray();
+        $oauthUserModel->truncate();
+        die;
+        foreach ($data as $v) {
+            $config_data = [
+                'id' => $v->id,
+                'user_id' => $v->uid,
+                'type' => $v->type,
+                'nickname' => $v->nickname,
+                'avatar' => $v->head_img,
+                'openid' => $v->openid,
+                'access_token' => $v->access_token,
+                'last_login_ip' => $v->last_login_ip,
+                'login_times' => $v->login_times,
+                'email' => $v->email,
+                'is_admin' => $v->is_admin
+            ];
+            $configModel->addData($config_data);
+        }
+
+
 
     }
 
