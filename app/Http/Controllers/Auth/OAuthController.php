@@ -45,7 +45,7 @@ class OAuthController extends Controller
             'type' => $type[$service],
             'openid' => $user->id
         ];
-        $oldUserData = $oauthUserModel->select('id', 'login_times', 'is_admin')->where($countMap)->first();
+        $oldUserData = $oauthUserModel->select('id', 'login_times', 'is_admin', 'email')->where($countMap)->first();
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         if ($oldUserData) {
             $editMap = [
@@ -80,7 +80,8 @@ class OAuthController extends Controller
                 'name' => $user->nickname,
                 'avatar' => $user->avatar,
                 'type' => $type[$service],
-                'is_admin' => 0
+                'is_admin' => 0,
+                'email' => $oldUserData->email
             ]
         ];
         // 将数据存入数据库
