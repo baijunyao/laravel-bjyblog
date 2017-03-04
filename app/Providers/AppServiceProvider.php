@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
             // 获取最新评论
             $commentModel = new Comment();
-            $comment = $commentModel->getNewData();
+            $newComment = $commentModel->getNewData();
 
             // 获取友情链接
             $friendshipLink = FriendshipLink::select('name', 'url')->orderBy('sort')->get();
@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
                 'category' => $category,
                 'tag' => $tag,
                 'topArticle' => $topArticle,
-                'comment' => $comment,
+                'newComment' => $newComment,
                 'friendshipLink' => $friendshipLink,
 
             ];

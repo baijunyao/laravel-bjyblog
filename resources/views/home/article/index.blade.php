@@ -80,7 +80,7 @@
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input type="button" value="评 论" aid="{$Think.get.aid}" pid="0" onclick="comment(this)">
+                            <input type="button" value="评 论" aid="{{ request()->id }}" pid="0" onclick="comment(this)">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -94,45 +94,45 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">
-                <volist name="comment" id="v">
-                    <div class="row b-user b-parent">
-                        <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                            <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$v['avatar']}" alt="白俊遥博客" title="白俊遥博客">
-                        </div>
-                        <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
-                            <p class="b-content">
-                                <span class="b-user-name">{$v['name']}</span>：{$v['content']}
-                            </p>
-                            <p class="b-date">
-                                {:date('Y-m-d H:i:s',$v['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$v['cmtid']}" username="{$v['nickname']}" onclick="reply(this)">回复</a>
-                            </p>
-                            <foreach name="v['child']" item="n">
-                                <div class="row b-user b-child">
-                                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                        <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$n['avatar']}" alt="白俊遥博客" title="白俊遥博客">
-                                    </div>
-                                    <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
-                                        <li class="b-content">
-                                            <span class="b-reply-name">{$n['name']}</span>
-                                            <span class="b-reply">回复</span>
-                                            <span class="b-user-name">{$n['reply_name']}</span>：{$n['content']}
-                                        </li>
-                                        <li class="b-date">
-                                            {:date('Y-m-d H:i:s',$n['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$n['cmtid']}" username="{$n['reply_name']}" onclick="reply(this)">回复</a>
-                                        </li>
-                                        <li class="b-clear-float"></li>
-                                    </ul>
+            @foreach($comment as $k => $v)
+                <div class="row b-user b-parent">
+                    <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
+                        <img class="b-user-pic js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{$v['avatar']}" alt="白俊遥博客" title="白俊遥博客">
+                    </div>
+                    <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
+                        <p class="b-content">
+                            <span class="b-user-name">{$v['name']}</span>：{$v['content']}
+                        </p>
+                        <p class="b-date">
+                            {:date('Y-m-d H:i:s',$v['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$v['cmtid']}" username="{$v['nickname']}" onclick="reply(this)">回复</a>
+                        </p>
+                        <foreach name="v['child']" item="n">
+                            <div class="row b-user b-child">
+                                <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
+                                    <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$n['avatar']}" alt="白俊遥博客" title="白俊遥博客">
                                 </div>
-                            </foreach>
-                            <div class="b-clear-float"></div>
-                        </div>
+                                <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
+                                    <li class="b-content">
+                                        <span class="b-reply-name">{$n['name']}</span>
+                                        <span class="b-reply">回复</span>
+                                        <span class="b-user-name">{$n['reply_name']}</span>：{$n['content']}
+                                    </li>
+                                    <li class="b-date">
+                                        {:date('Y-m-d H:i:s',$n['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$n['cmtid']}" username="{$n['reply_name']}" onclick="reply(this)">回复</a>
+                                    </li>
+                                    <li class="b-clear-float"></li>
+                                </ul>
+                            </div>
+                        </foreach>
+                        <div class="b-clear-float"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="b-border"></div>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="b-border"></div>
                     </div>
-                </volist>
+                </div>
+            @endforeach
             </div>
         </div>
         <!-- 引入通用评论结束 -->

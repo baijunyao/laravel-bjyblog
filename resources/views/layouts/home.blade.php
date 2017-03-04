@@ -105,7 +105,7 @@
             <div class="b-link">
                 <h4 class="b-title">最新评论</h4>
                 <div>
-                    @foreach($comment as $v)
+                    @foreach($newComment as $v)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
                             <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->avatar }}" alt="{{ $v->name }}">
                             <li class="b-nickname">
