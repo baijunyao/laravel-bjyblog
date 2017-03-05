@@ -63,7 +63,7 @@
         </div>
         <!-- 引入通用评论开始 -->
         <script>
-            var userEmail='{$user_email}';
+            var userEmail='{{ session('user.email') }}';
             tuzkiNumber=1;
         </script>
         <div class="row b-comment">
@@ -97,33 +97,34 @@
             @foreach($comment as $k => $v)
                 <div class="row b-user b-parent">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                        <img class="b-user-pic js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{$v['avatar']}" alt="白俊遥博客" title="白俊遥博客">
+                        <img class="b-user-pic js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v['avatar'] }}" alt="白俊遥博客" title="白俊遥博客">
                     </div>
                     <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                         <p class="b-content">
-                            <span class="b-user-name">{$v['name']}</span>：{$v['content']}
+                            <span class="b-user-name">{{ $v['name'] }}</span>：{!! $v['content'] !!}
                         </p>
                         <p class="b-date">
-                            {:date('Y-m-d H:i:s',$v['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$v['cmtid']}" username="{$v['nickname']}" onclick="reply(this)">回复</a>
+                            {{ $v['created_at'] }} <a href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}" onclick="reply(this)">回复</a>
                         </p>
                         <foreach name="v['child']" item="n">
+                        @foreach($v['child'] as $m => $n)
                             <div class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                    <img class="b-user-pic js-head-img" src="__HOME_IMAGE__/qq_default.jpg" _src="{$n['avatar']}" alt="白俊遥博客" title="白俊遥博客">
+                                    <img class="b-user-pic js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $n['avatar'] }}" alt="白俊遥博客" title="白俊遥博客">
                                 </div>
                                 <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                     <li class="b-content">
-                                        <span class="b-reply-name">{$n['name']}</span>
+                                        <span class="b-reply-name">{{ $n['name'] }}</span>
                                         <span class="b-reply">回复</span>
-                                        <span class="b-user-name">{$n['reply_name']}</span>：{$n['content']}
+                                        <span class="b-user-name">{{ $n['reply_name'] }}</span>：{!! $n['content'] !!}
                                     </li>
                                     <li class="b-date">
-                                        {:date('Y-m-d H:i:s',$n['date'])} <a href="javascript:;" aid="{$Think.get.aid}" pid="{$n['cmtid']}" username="{$n['reply_name']}" onclick="reply(this)">回复</a>
+                                        {{ $n['created_at'] }} <a href="javascript:;" aid="{{ request()->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}" onclick="reply(this)">回复</a>
                                     </li>
                                     <li class="b-clear-float"></li>
                                 </ul>
                             </div>
-                        </foreach>
+                        @endforeach
                         <div class="b-clear-float"></div>
                     </div>
                 </div>
