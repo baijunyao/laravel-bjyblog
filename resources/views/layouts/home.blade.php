@@ -45,7 +45,7 @@
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if($v->cid == $cid) b-nav-active @endif">
-                        <a href="" onclick="return recordId('cid', '{{ $v->id }}')">{{ $v->name }}</a>
+                        <a href="{{ url('category/'.$v->id) }}" onclick="return recordId('cid', '{{ $v->id }}')">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 <li class="b-nav-cname @if($cid == 'chat') b-nav-active @endif">

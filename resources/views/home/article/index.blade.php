@@ -90,7 +90,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-title">
                 <ul class="row">
                     <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">最新评论</li>
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">总共<span>{:count($comment)}</span>条评论</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">总共<span>{{ count($comment) }}</span>条评论</li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">
