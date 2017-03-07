@@ -141,6 +141,9 @@
     <!-- 左侧文章结束 -->
 @endsection
 
+
+
+
 @section('js')
     <script src="{{ asset('statics/prism/prism.min.js') }}"></script>
     <script src="{{ asset('statics/editormd/lib/marked.min.js') }}"></script>
