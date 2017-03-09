@@ -11,13 +11,14 @@
 |
 */
 
-
 // Home 模块
 Route::group(['namespace' => 'Home'], function () {
     // 首页
     Route::get('/', 'IndexController@index');
-    // 文章详情页
+    // 文章详情
     Route::get('article/{id}', 'IndexController@article');
+    // 分类
+    Route::get('category/{id}', 'IndexController@category');
 });
 
 // auth

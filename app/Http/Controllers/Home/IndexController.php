@@ -66,5 +66,24 @@ class IndexController extends Controller
         return view('home/index/article', $assign);
     }
 
+    /**
+     * 获取栏目下的文章
+     *
+     * @param Article $articleModel
+     * @param $id
+     * @return mixed
+     */
+    public function category(Article $articleModel, $id)
+    {
+        $map = [
+            'articles.category_id' => $id
+        ];
+        $article = $articleModel->getHomeList($map);
+        $assign = [
+            'article' => $article,
+            'title_word' => ''
+        ];
+        return view('home/index/index', $assign);
+    }
 
 }
