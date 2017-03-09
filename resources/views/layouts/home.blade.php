@@ -40,18 +40,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
-                <li class="b-nav-cname  @if($cid == 'index') b-nav-active @endif">
+                <li class="b-nav-cname  @if($category_id == 'index') b-nav-active @endif">
                 <a href="/" onclick="recordId('/',0)">首页</a>
                 </li>
                 @foreach($category as $v)
-                    <li class="b-nav-cname @if($v->cid == $cid) b-nav-active @endif">
+                    <li class="b-nav-cname @if($v->id == $category_id) b-nav-active @endif">
                         <a href="{{ url('category/'.$v->id) }}" onclick="return recordId('cid', '{{ $v->id }}')">{{ $v->name }}</a>
                     </li>
                 @endforeach
-                <li class="b-nav-cname @if($cid == 'chat') b-nav-active @endif">
+                <li class="b-nav-cname @if($category_id == 'chat') b-nav-active @endif">
                 <a href="{{ url('chat') }}">随言碎语</a>
                 </li>
-                <li class="b-nav-cname hidden-sm  @if($cid == 'git') b-nav-active @endif">
+                <li class="b-nav-cname hidden-sm  @if($category_id == 'git') b-nav-active @endif">
                 <a href="{{ url('git') }}">开源项目</a>
                 </li>
             </ul>

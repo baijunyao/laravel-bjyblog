@@ -42,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
             $friendshipLink = FriendshipLink::select('name', 'url')->orderBy('sort')->get();
 
             $assign = [
-                'cid' => 'index',
                 'category' => $category,
                 'tag' => $tag,
                 'topArticle' => $topArticle,

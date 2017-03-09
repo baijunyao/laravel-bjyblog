@@ -20,6 +20,7 @@ class IndexController extends Controller
 	{
 		$article = $articleModel->getHomeList();
         $assign = [
+            'category_id' => 'index',
             'article' => $article,
             'title_word' => ''
         ];
@@ -58,6 +59,7 @@ class IndexController extends Controller
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
         $assign = [
+            'category_id' => $data->category_id,
             'data' => $data,
             'prev' => $prev,
             'next' => $next,
@@ -80,6 +82,7 @@ class IndexController extends Controller
         ];
         $article = $articleModel->getHomeList($map);
         $assign = [
+            'category_id' => $id,
             'article' => $article,
             'title_word' => ''
         ];
