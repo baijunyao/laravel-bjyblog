@@ -19,6 +19,10 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('article/{id}', 'IndexController@article');
     // 分类
     Route::get('category/{id}', 'IndexController@category');
+    // 评论
+    Route::get('comment', 'IndexController@comment');
+    // 检测是否登录
+    Route::get('checkLogin', 'IndexController@checkLogin');
 });
 
 // auth

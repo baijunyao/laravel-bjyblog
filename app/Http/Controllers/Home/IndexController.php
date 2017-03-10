@@ -89,4 +89,22 @@ class IndexController extends Controller
         return view('home/index/index', $assign);
     }
 
+    public function comment()
+    {
+        $data = request()->all();
+        p($data);die;
+    }
+
+    /**
+     * 检测是否登录
+     */
+    public function checkLogin()
+    {
+        if (empty(session('user.id'))) {
+            echo 0;
+        } else {
+            echo 1;
+        }
+    }
+
 }

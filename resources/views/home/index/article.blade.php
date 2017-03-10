@@ -168,8 +168,8 @@
         $('.js-content a').attr('target', '_blank')
 
         // 定义评论url
-        ajaxCommentUrl="{:U('Home/Index/ajax_comment','','',true)}";
-        check_login="{:U('Home/User/check_login','','',true)}";
+        ajaxCommentUrl="{{ url('comment') }}";
+        checkLogin="{{ url('checkLogin') }}";
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
     <script src="{{ asset('js/home/comment.js') }}"></script>
