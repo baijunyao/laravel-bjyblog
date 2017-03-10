@@ -101,9 +101,9 @@ class IndexController extends Controller
     public function checkLogin()
     {
         if (empty(session('user.id'))) {
-            echo 0;
+            return 0;
         } else {
-            echo 1;
+            return 1;
         }
     }
 

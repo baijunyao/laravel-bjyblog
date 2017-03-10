@@ -8,6 +8,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="author" content="baijunyao,{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/font-awesome-4.7.0/css/font-awesome.min.css') }}">
@@ -190,6 +191,11 @@
 <script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
 <script>
     logoutUrl="{:U('Home/User/logout')}";
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 </script>
 <script src="{{ asset('statics/bootstrap-3.3.5/js/bootstrap.min.js') }}"></script>
 <!--[if lt IE 9]>
