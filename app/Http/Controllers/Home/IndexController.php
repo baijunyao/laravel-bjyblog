@@ -104,22 +104,24 @@ class IndexController extends Controller
         if (empty(session('user.id'))) {
             die('未登录');
         }
-        // 获取用户id
-        $user_id = session('user.id');
-        // 修改邮箱
-        $oauthUserMap = [
-            'id' => $user_id
-        ];
-        $oauthUserData = [
-            'email' => $data['email']
-        ];
-        $oauthUserModel->editData($oauthUserMap, $oauthUserData);
-        session(['user.email' => $data['email']]);
-        unset($data['email']);
+        // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
+        $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
+        if (preg_match($pattern, $data['email'])) {
+            // 获取用户id
+            $user_id = session('user.id');
+
+            // 修改邮箱
+            $oauthUserMap = [
+                'id' => $user_id
+            ];
+            $oauthUserData = [
+                'email' => $data['email']
+            ];
+            $oauthUserModel->editData($oauthUserMap, $oauthUserData);
+            session(['user.email' => $data['email']]);
+            unset($data['email']);
+        }
         // 存储评论
-        $data['oauth_user_id'] = $user_id;
-        $data['type'] = 1;
-        $data['status'] = 1;
         $id = $commentModel->addData($data);
         echo $id;
     }
