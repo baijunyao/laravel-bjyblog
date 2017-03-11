@@ -114,6 +114,7 @@ class IndexController extends Controller
             'email' => $data['email']
         ];
         $oauthUserModel->editData($oauthUserMap, $oauthUserData);
+        session(['user.email' => $data['email']]);
         unset($data['email']);
         // 存储评论
         $data['oauth_user_id'] = $user_id;
