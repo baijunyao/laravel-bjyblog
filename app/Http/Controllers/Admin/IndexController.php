@@ -102,27 +102,27 @@ class IndexController extends Controller
         // }
 
         // 从旧系统中迁移评论
-        $data = DB::connection('old')->table('comment')->get()->toArray();
-        $commentModel->truncate();
-        foreach ($data as $v) {
-            $comment_data = [
-                'id' => $v->cmtid,
-                'oauth_user_id' => $v->ouid,
-                'type' => $v->type,
-                'pid' => $v->pid,
-                'article_id' => $v->aid,
-                'content' => str_replace('/Public/emote', '/statics/emoticon', $v->content),
-                'status' => $v->status,
-            ];
-            $commentModel->create($comment_data);
-            $editCommentMap = [
-                'id' => $v->cmtid,
-            ];
-            $editCommentData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
-            ];
-            $commentModel->editData($editCommentMap, $editCommentData);
-        }
+        // $data = DB::connection('old')->table('comment')->get()->toArray();
+        // $commentModel->truncate();
+        // foreach ($data as $v) {
+        //     $comment_data = [
+        //         'id' => $v->cmtid,
+        //         'oauth_user_id' => $v->ouid,
+        //         'type' => $v->type,
+        //         'pid' => $v->pid,
+        //         'article_id' => $v->aid,
+        //         'content' => str_replace('/Public/emote', '/statics/emoticon', $v->content),
+        //         'status' => $v->status,
+        //     ];
+        //     $commentModel->create($comment_data);
+        //     $editCommentMap = [
+        //         'id' => $v->cmtid,
+        //     ];
+        //     $editCommentData = [
+        //         'created_at' => date('Y-m-d H:i:s', $v->date)
+        //     ];
+        //     $commentModel->editData($editCommentMap, $editCommentData);
+        // }
 
         // 迁移友情链接
         // $data = DB::connection('old')->table('link')->get()->toArray();

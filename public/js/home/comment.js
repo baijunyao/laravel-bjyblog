@@ -81,7 +81,7 @@ function comment(obj){
                     pid=$(obj).attr('pid'),
                     email=$(obj).parents('.b-box-textarea').eq(0).find("input[name='email']").val(),
                     postData={
-                        "aid":aid,
+                        "article_id":aid,
                         "pid":pid,
                         'content':content,
                         'email':email

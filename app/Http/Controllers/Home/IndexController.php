@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\OauthUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -89,10 +90,37 @@ class IndexController extends Controller
         return view('home/index/index', $assign);
     }
 
-    public function comment()
+    /**
+     * 文章评论
+     *
+     * @param Comment $commentModel
+     */
+    public function comment(Comment $commentModel, OauthUser $oauthUserModel)
     {
         $data = request()->all();
-        p($data);die;
+        if (empty($data['content'])) {
+            die('内容不能为空');
+        }
+        if (empty(session('user.id'))) {
+            die('未登录');
+        }
+        // 获取用户id
+        $user_id = session('user.id');
+        // 修改邮箱
+        $oauthUserMap = [
+            'id' => $user_id
+        ];
+        $oauthUserData = [
+            'email' => $data['email']
+        ];
+        $oauthUserModel->editData($oauthUserMap, $oauthUserData);
+        unset($data['email']);
+        // 存储评论
+        $data['oauth_user_id'] = $user_id;
+        $data['type'] = 1;
+        $data['status'] = 1;
+        $id = $commentModel->addData($data);
+        echo $id;
     }
 
     /**
