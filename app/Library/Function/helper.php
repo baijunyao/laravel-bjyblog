@@ -90,11 +90,11 @@ if ( !function_exists('sendEmail') ) {
 	 * @param $email            收件人邮箱  如果群发 则传入数组
 	 * @param $name             收件人名称
 	 * @param $subject          标题
-	 * @param $data             邮件模板中用的变量 示例：['name'=>'帅白','phone'=>'110']
-	 * @param string $template 邮件模板
+	 * @param array  $data      邮件模板中用的变量 示例：['name'=>'帅白','phone'=>'110']
+	 * @param string $template  邮件模板
 	 * @return array            发送状态
 	 */
-	function sendEmail($email, $name, $subject, $data, $template = 'emails.test')
+	function sendEmail($email, $name, $subject, $data = [], $template = 'emails.test')
 	{
 		Mail::send($template, $data, function ($message) use ($email, $name, $subject) {
 			//如果是数组；则群发邮件

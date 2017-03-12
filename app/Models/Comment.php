@@ -49,39 +49,44 @@ class Comment extends Base
             return false;
         }
 
+        $isSendEmail = Config::where('name', 'COMMENT_SEND_EMAIL')->value('value');
         // 给站长发送通知邮件
-        if(C('COMMENT_SEND_EMAIL') && $isAdmin == 0){
-            $address=C('EMAIL_RECEIVE');
-            if(!empty($address)){
-                $title = M('Article')->getFieldByAid($data['aid'],'title');
-                $url = U('Home/Index/article',array('aid'=>$data['aid']),'',true);
-                $date = date('Y-m-d H:i:s');
-                $content=<<<html
-站长你好：<br>
-&emsp; $name $date 评论了您的文章 <a href="$url">$title</a> 内容如下:<br>
-$comment_content
-
-html;
-                send_email($address,$name.'评论了 '.$title,$content);
+        if($isSendEmail && $isAdmin == 0){
+            $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
+            if (!empty($address)) {
+                $title = Article::where('id', $data['article_id'])->value('title');
+                $emailData = [
+                    'name' => '站长',
+                    'user' => $name,
+                    'date' => date('Y-m-d H:i:s'),
+                    'type' => '评论',
+                    'url' => url('article', [$data['article_id']]),
+                    'title' => $title,
+                    'content' => $comment_content
+                ];
+                $subject = $name. '评论了 '. $title;
+                sendEmail($address, '站长', $subject, $emailData, 'emails.commentArticle');
             }
         }
         // 给用户发送邮件通知
-        if (C('COMMENT_SEND_EMAIL') && $data['pid']!=0) {
-            $parent_uid=$this->getFieldByCmtid($data['pid'],'ouid');
-            $parent_data=M('Oauth_user')->field('nickname,email')->find($parent_uid);
-            $parent_address=$parent_data['email'];
-            if (!empty($parent_address)) {
-                $parent_name=$parent_data['nickname'];
-                $title=M('Article')->getFieldByAid($data['aid'],'title');
-                $url=U('Home/Index/article',array('aid'=>$data['aid']),'',true);
-                $date=date('Y-m-d H:i:s');
-                $parent_content=<<<html
-$parent_name 你好：<br>
-&emsp; $name $date 回复了您对 <a href="$url">$title</a> 的评论  内容如下:<br>
-$comment_content
-
-html;
-                send_email($parent_address,$name.'回复了 '.$title,$parent_content);
+        if ($isSendEmail && $data['pid']!=0) {
+            $parent_user_id = Comment::where('id', $data['pid'])->value('oauth_user_id');
+            $parentData = OauthUser::select('name', 'email')
+                ->where('id', $parent_user_id)
+                ->first()
+                ->toArray();
+            if (!empty($parentData['email'])) {
+                $emailData = [
+                    'name' => $parentData['name'],
+                    'user' => $name,
+                    'date' => date('Y-m-d H:i:s'),
+                    'type' => '回复',
+                    'url' => url('article', [$data['article_id']]),
+                    'title' => $title,
+                    'content' => $comment_content
+                ];
+                $subject = $name. '评论了 '. $title;
+                sendEmail($parentData['email'], $parentData['name'], $subject, $emailData, 'emails.commentArticle');
             }
 
         }
