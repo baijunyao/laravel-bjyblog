@@ -105,12 +105,9 @@ class Article extends Base
         // 获取文章分页
         $data = $this
             ->select('articles.id', 'articles.title', 'articles.cover', 'articles.author', 'articles.description', 'articles.category_id', 'articles.created_at', 'c.name as category_name')
-            ->join('categories as c', 'articles.category_id', 'c.id');
-        // 判断是否有where限制
-        if (!empty($map)) {
-            $data = $data->where($map);
-        }
-        $data = $data->orderBy('articles.created_at', 'desc')
+            ->join('categories as c', 'articles.category_id', 'c.id')
+            ->whereMap($map)
+            ->orderBy('articles.created_at', 'desc')
             ->paginate(10);
         // 提取文章id组成一个数组
         $dataArray = $data->toArray();

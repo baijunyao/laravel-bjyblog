@@ -111,4 +111,13 @@ class Base extends Model
         }
     }
 
+    public function whereMap($map)
+    {
+        if (count($map) === 3) {
+            $this->$map[0]($map[1], $map[2]);
+        } else {
+            $this->where($map[0], $map[1]);
+        }
+        return $this;
+    }
 }

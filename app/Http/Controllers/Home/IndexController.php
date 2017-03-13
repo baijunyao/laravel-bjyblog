@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Article;
+use App\Models\ArticleTag;
 use App\Models\Comment;
 use App\Models\OauthUser;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -88,6 +90,19 @@ class IndexController extends Controller
             'title_word' => ''
         ];
         return view('home/index/index', $assign);
+    }
+
+    public function tag($id, Article $articleModel)
+    {
+        $article_id = ArticleTag::where('tag_id', $id)
+            ->pluck('article_id')
+            ->toArray();
+        $map = [
+            'whereIn', 'articles.id', $article_id
+        ];
+        $data = $articleModel->getHomeList($map);
+        p($data);
+
     }
 
     /**

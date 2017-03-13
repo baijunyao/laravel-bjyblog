@@ -19,6 +19,8 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('article/{id}', 'IndexController@article');
     // 分类
     Route::get('category/{id}', 'IndexController@category');
+    // 标签
+    Route::get('tag/{id}', 'IndexController@tag');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 评论
