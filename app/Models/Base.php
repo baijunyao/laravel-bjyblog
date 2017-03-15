@@ -113,10 +113,14 @@ class Base extends Model
 
     public function whereMap($map)
     {
-        if (count($map) === 3) {
-            $this->$map[0]($map[1], $map[2]);
+        $this->where('id', 1);
+        return $this;
+
+        $where = empty($map[2]) ? where : $map[2];
+        if (empty($map[3])) {
+            $this->$where($map[0], $map[1]);
         } else {
-            $this->where($map[0], $map[1]);
+            $this->$where($map[0], $map[3], $map[1]);
         }
         return $this;
     }

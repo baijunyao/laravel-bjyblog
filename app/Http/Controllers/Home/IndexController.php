@@ -92,16 +92,24 @@ class IndexController extends Controller
         return view('home/index/index', $assign);
     }
 
+    /**
+     * 获取标签下的文章
+     *
+     * @param $id
+     * @param Article $articleModel
+     * @return mixed
+     */
     public function tag($id, Article $articleModel)
     {
         $article_id = ArticleTag::where('tag_id', $id)
             ->pluck('article_id')
             ->toArray();
         $map = [
-            'whereIn', 'articles.id', $article_id
+            'articles.id', $article_id, 'whereIn', ''
         ];
         $data = $articleModel->getHomeList($map);
-        p($data);
+        p($data);die;
+        return $data;
 
     }
 
