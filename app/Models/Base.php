@@ -111,17 +111,24 @@ class Base extends Model
         }
     }
 
+    /**
+     * 以方便的形式使用where
+     *
+     * @param $map 第一个元素为字段名 第二个为值  第三个为where类型  第四个为条件符号
+     * @return $this
+     */
     public function whereMap($map)
     {
-        $this->where('id', 1);
-        return $this;
-
+        // 如果是空直接返回
+        if (empty($map)) {
+            return $this;
+        }
+        // 判断where的类型
         $where = empty($map[2]) ? where : $map[2];
         if (empty($map[3])) {
-            $this->$where($map[0], $map[1]);
+            return $this->$where($map[0], $map[1]);
         } else {
-            $this->$where($map[0], $map[3], $map[1]);
+            return $this->$where($map[0], $map[3], $map[1]);
         }
-        return $this;
     }
 }

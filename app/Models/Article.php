@@ -102,14 +102,11 @@ class Article extends Base
      */
     public function getHomeList($map = [])
     {
-        $data = $this->whereMap([])->get()->toSql();
-        p($data);
-        die;
         // 获取文章分页
         $data = $this
+            ->whereMap($map)
             ->select('articles.id', 'articles.title', 'articles.cover', 'articles.author', 'articles.description', 'articles.category_id', 'articles.created_at', 'c.name as category_name')
             ->join('categories as c', 'articles.category_id', 'c.id')
-            ->whereMap($map)
             ->orderBy('articles.created_at', 'desc')
             ->paginate(10);
         // 提取文章id组成一个数组
