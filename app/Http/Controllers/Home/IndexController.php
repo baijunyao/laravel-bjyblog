@@ -25,7 +25,7 @@ class IndexController extends Controller
         $assign = [
             'category_id' => 'index',
             'article' => $article,
-            'title_word' => ''
+            'tagName' => ''
         ];
 		return view('home/index/index', $assign);
 	}
@@ -87,7 +87,7 @@ class IndexController extends Controller
         $assign = [
             'category_id' => $id,
             'article' => $article,
-            'title_word' => ''
+            'tagName' => ''
         ];
         return view('home/index/index', $assign);
     }
@@ -101,15 +101,23 @@ class IndexController extends Controller
      */
     public function tag($id, Article $articleModel)
     {
-        $article_id = ArticleTag::where('tag_id', $id)
+        // 获取标签名
+        $tagName = Tag::where('id', $id)->value('name');
+        // 获取此标签下的文章id
+        $articleIds = ArticleTag::where('tag_id', $id)
             ->pluck('article_id')
             ->toArray();
+        // 获取文章数据
         $map = [
-            'articles.id', $article_id, 'whereIn', ''
+            'articles.id', $articleIds, 'whereIn', ''
         ];
-        $data = $articleModel->getHomeList($map);
-        p($data);die;
-        return $data;
+        $article = $articleModel->getHomeList($map);
+        $assign = [
+            'category_id' => 'index',
+            'article' => $article,
+            'tagName' => $tagName
+        ];
+        return view('home/index/index', $assign);
 
     }
 

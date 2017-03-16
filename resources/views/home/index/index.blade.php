@@ -9,10 +9,10 @@
 @section('content')
     <!-- 左侧列表开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
-        @if(!empty($title_word))
+        @if(!empty($tagName))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">
-                    <h2>{{ $title_word }}</h2>
+                    <h2>拥有<span class="b-highlight">{{ $tagName }}</span>标签的文章</h2>
                 </div>
             </div>
         @endif
