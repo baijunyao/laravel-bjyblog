@@ -113,60 +113,62 @@ class Base extends Model
     }
 
     /**
-     * 以方便的形式使用where
+     * 使用作用域扩展 Builder 链式操作
      *
-     * @param $map 第一个元素为字段名 第二个为值  第三个为where类型  第四个为条件符号
-     * @return $this
+     * 示例:
+     * $map = [
+     *     'id' => ['in', [1,2,3]],
+     *     'category_id' => ['<>', 9],
+     *     'tag_id' => 10
+     * ]
+     *
+     * @param $query
+     * @param $map
+     * @return mixed
      */
-    public function whereMap($map)
+    public function scopeWhereMap($query, $map)
     {
         // 如果是空直接返回
         if (empty($map)) {
-            return $this;
+            return $query;
         }
 
+        // 判断各种方法
         foreach ($map as $k => $v) {
             if (is_array($v)) {
                 $sign = strtolower($v[0]);
                 switch ($sign) {
                     case 'in':
-                        $this->whereIn($k, $v[1]);
+                        $query->whereIn($k, $v[1]);
                         break;
                     case 'notin':
-                        $this->whereNotIn($k, $v[1]);
+                        $query->whereNotIn($k, $v[1]);
                         break;
                     case 'between':
-                        $this->whereBetween($k, $v[1]);
+                        $query->whereBetween($k, $v[1]);
                         break;
                     case 'notbetween':
-                        $this->whereNotBetween($k, $v[1]);
+                        $query->whereNotBetween($k, $v[1]);
                         break;
                     case 'null':
-                        $this->whereNull($k);
+                        $query->whereNull($k);
                         break;
                     case 'notnull':
-                        $this->whereNotNull($k);
+                        $query->whereNotNull($k);
                         break;
                     case '=':
                     case '>':
                     case '<':
                     case '<>':
-                        $this->where($k, $sign, $v[1]);
+                        $query->where($k, $sign, $v[1]);
                         break;
                 }
             } else {
-                $this->query = $this->where($k, $v);
+                $query->where($k, $v);
             }
-            
+
         }
-        return $this->query;
-        
-        // 判断where的类型
-        $where = empty($map[2]) ? where : $map[2];
-        if (empty($map[3])) {
-            return $this->$where($map[0], $map[1]);
-        } else {
-            return $this->$where($map[0], $map[3], $map[1]);
-        }
+        return $query;
     }
+
 }
