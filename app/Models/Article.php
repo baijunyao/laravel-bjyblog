@@ -102,6 +102,12 @@ class Article extends Base
      */
     public function getHomeList($map = [])
     {
+        $map = [
+            'id' => 1
+        ];
+        $sql = $this->whereMap($map)->toSql();
+        echo $sql;die;
+
         // 获取文章分页
         $data = $this
             ->whereMap($map)

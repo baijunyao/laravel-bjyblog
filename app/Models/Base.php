@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Base extends Model
 {
+    protected $query;
 
     /**
      * 添加数据
@@ -123,6 +124,43 @@ class Base extends Model
         if (empty($map)) {
             return $this;
         }
+
+        foreach ($map as $k => $v) {
+            if (is_array($v)) {
+                $sign = strtolower($v[0]);
+                switch ($sign) {
+                    case 'in':
+                        $this->whereIn($k, $v[1]);
+                        break;
+                    case 'notin':
+                        $this->whereNotIn($k, $v[1]);
+                        break;
+                    case 'between':
+                        $this->whereBetween($k, $v[1]);
+                        break;
+                    case 'notbetween':
+                        $this->whereNotBetween($k, $v[1]);
+                        break;
+                    case 'null':
+                        $this->whereNull($k);
+                        break;
+                    case 'notnull':
+                        $this->whereNotNull($k);
+                        break;
+                    case '=':
+                    case '>':
+                    case '<':
+                    case '<>':
+                        $this->where($k, $sign, $v[1]);
+                        break;
+                }
+            } else {
+                $this->query = $this->where($k, $v);
+            }
+            
+        }
+        return $this->query;
+        
         // 判断where的类型
         $where = empty($map[2]) ? where : $map[2];
         if (empty($map[3])) {
