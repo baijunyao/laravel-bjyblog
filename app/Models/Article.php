@@ -121,6 +121,12 @@ class Article extends Base
         return $data;
     }
 
+    /**
+     * 通过文章id获取数据
+     *
+     * @param $id
+     * @return mixed
+     */
     public function getDataById($id)
     {
         $data = $this->select('articles.*', 'c.name as category_name')

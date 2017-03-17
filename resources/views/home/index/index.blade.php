@@ -20,7 +20,7 @@
         @foreach($article as $k => $v)
             <div class="row b-one-article">
                 <h3 class="col-xs-12 col-md-12 col-lg-12">
-                    <a class="b-oa-title" href="{{ url('article', [$v->id]) }}" target="_blank" onclick="return recordId('{$v['extend']['type']}',{$v['extend']['id']})">{{ $v->title }}</a>
+                    <a class="b-oa-title" href="{{ url('article', [$v->id]) }}" target="_blank">{{ $v->title }}</a>
                 </h3>
                 <div class="col-xs-12 col-md-12 col-lg-12 b-date">
                     <ul class="row">
@@ -35,7 +35,7 @@
                         </li>
                         <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
                             @foreach($v->tag as $n)
-                                <a class="b-tag-name" href="{{ url('tag', [$n->id]) }}" target="_blank">{{ $n->name }}</a>
+                                <a class="b-tag-name" href="{{ url('tag', [$n->tag_id]) }}" target="_blank">{{ $n->name }}</a>
                             @endforeach
                         </li>
                     </ul>
