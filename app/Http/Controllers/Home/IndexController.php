@@ -109,7 +109,7 @@ class IndexController extends Controller
             ->toArray();
         // 获取文章数据
         $map = [
-            'articles.id', $articleIds, 'whereIn', ''
+            'articles.id' => ['in', $articleIds]
         ];
         $article = $articleModel->getHomeList($map);
         $assign = [
