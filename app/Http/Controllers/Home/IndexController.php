@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Models\Article;
 use App\Models\ArticleTag;
+use App\Models\Chat;
 use App\Models\Comment;
 use App\Models\OauthUser;
 use App\Models\Tag;
@@ -119,6 +120,21 @@ class IndexController extends Controller
         ];
         return view('home/index/index', $assign);
 
+    }
+
+    /**
+     * 随言碎语
+     *
+     * @return mixed
+     */
+    public function chat()
+    {
+        $chat = Chat::orderBy('created_at', 'desc')->get();
+        $assign =[
+            'category_id' => 'chat',
+            'chat' => $chat
+        ];
+        return view('home/index/chat', $assign);
     }
 
     /**
