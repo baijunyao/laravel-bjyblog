@@ -138,6 +138,19 @@ class IndexController extends Controller
     }
 
     /**
+     * 开源项目
+     *
+     * @return mixed
+     */
+    public function git()
+    {
+        $assign = [
+            'category_id' => 'git'
+        ];
+        return view('home/index/git', $assign);
+    }
+
+    /**
      * 文章评论
      *
      * @param Comment $commentModel

@@ -15,19 +15,18 @@
 Route::group(['namespace' => 'Home'], function () {
     // 首页
     Route::get('/', 'IndexController@index');
-
     // 分类
     Route::get('category/{id}', 'IndexController@category');
     // 标签
     Route::get('tag/{id}', 'IndexController@tag');
     // 随言碎语
     Route::get('chat', 'IndexController@chat');
-
+    // 开源项目
+    Route::get('git', 'IndexController@git');
     // 文章详情
     Route::get('article/{id}', 'IndexController@article');
     // 文章评论
     Route::post('comment', 'IndexController@comment');
-
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
 });
