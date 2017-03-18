@@ -179,7 +179,7 @@
                         <a href="{{ url('auth/oauth/redirectToProvider/weibo') }}"><img src="{{ asset('images/home/sina-login.png') }}" alt="微博登录" title="微博登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/github') }}"><img src="{{ asset('images/home/douban-login.png') }}" alt="豆瓣登录" title="豆瓣登录"></a>
+                        <a href="{{ url('auth/oauth/redirectToProvider/github') }}"><img src="{{ asset('images/home/github-login.jpg') }}" alt="github登录" title="github登录"></a>
                     </li>
                 </ul>
             </div>
