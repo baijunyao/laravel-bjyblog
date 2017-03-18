@@ -70,7 +70,7 @@
         <!-- 列表分页开始 -->
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12 b-page text-center">
-                {{ $article->links() }}
+                {{ $article->links('vendor.pagination.bjypage') }}
             </div>
         </div>
         <!-- 列表分页结束 -->
