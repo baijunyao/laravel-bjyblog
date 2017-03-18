@@ -24,10 +24,10 @@
                 <ul class="row b-metadata">
                     <li class="col-xs-5 col-md-2 col-lg-3"><i class="fa fa-user"></i> {{ $data->author }}</li>
                     <li class="col-xs-7 col-md-3 col-lg-3"><i class="fa fa-calendar"></i> {{ $data->created_at }}</li>
-                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{:U('Home/Index/category',array('cid'=>$v['cid']))}">{{ $data->category_name }}</a>
+                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ url('category', [$data->category_id]) }}">{{ $data->category_name }}</a>
                     <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
                         @foreach($data->tag as $v)
-                            <a class="b-tag-name" href="{:U('Home/Index/tag',array('tid'=>$v['tid']))}">{{ $v->name }}</a>
+                            <a class="b-tag-name" href="{{ url('tag', [$v->tag_id]) }}">{{ $v->name }}</a>
                         @endforeach
                     </li>
                 </ul>
