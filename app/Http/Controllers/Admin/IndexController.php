@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Chat;
 use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\OauthUser;
@@ -28,7 +29,7 @@ class IndexController extends Controller
     }
 
 
-    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel, OauthUser $oauthUserModel)
+    public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel, OauthUser $oauthUserModel, Chat $chatModel)
     {
         // $htmlConverter = new HtmlConverter();
         // // $htmlConverter = new \HTML_To_Markdown();
@@ -178,6 +179,23 @@ class IndexController extends Controller
         //     $oauthUserModel->editData($editOauthUserMap, $editOauthUserData);
         // }
 
+        // 迁移随言碎语表
+        $data = DB::connection('old')->table('chat')->get()->toArray();
+        $chatModel->truncate();
+        foreach ($data as $v) {
+            $chatData = [
+                'id' => $v->chid,
+                'content' => $v->content,
+            ];
+            $chatModel->addData($chatData);
+            $editChatMap = [
+                'id' => $v->chid,
+            ];
+            $editChatData = [
+                'created_at' => date('Y-m-d H:i:s', $v->date)
+            ];
+            $chatModel->editData($editChatMap, $editChatData);
+        }
 
 
     }
