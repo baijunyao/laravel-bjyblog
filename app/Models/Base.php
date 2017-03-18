@@ -6,7 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Base extends Model
 {
-    protected $query;
+    /**
+     * 禁止被批量赋值的字段
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
+     * 不显示的字段
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
     /**
      * 添加数据

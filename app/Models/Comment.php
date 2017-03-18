@@ -4,13 +4,6 @@ namespace App\Models;
 
 class Comment extends Base
 {
-    /**
-     * 不允许被批量赋值的属性
-     *
-     * @var array
-     */
-    protected $guarded = [];
-
     // 用于递归
     private $child = [];
 

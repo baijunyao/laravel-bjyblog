@@ -4,14 +4,6 @@ namespace App\Models;
 
 class Article extends Base
 {
-
-    /**
-     * 不允许被批量赋值的属性
-     *
-     * @var array
-     */
-    protected $guarded = [];
-
     /**
      * 添加文章
      *

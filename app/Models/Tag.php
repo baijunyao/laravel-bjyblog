@@ -6,8 +6,6 @@ use DB;
 
 class Tag extends Base
 {
-    protected $guarded = [];
-
     /**
      * 获取标签下的文章数统计
      *

@@ -4,8 +4,6 @@ namespace App\Models;
 
 class ArticleTag extends Base
 {
-    protected $guarded = [];
-
     /**
      * 为文章批量插入标签
      *
