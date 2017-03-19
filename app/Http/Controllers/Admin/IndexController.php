@@ -13,8 +13,6 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\HTMLToMarkdown\HtmlConverter;
-use Markdownify\Converter;
-use Markdownify\ConverterExtra;
 
 class IndexController extends Controller
 {

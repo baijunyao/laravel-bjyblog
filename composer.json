@@ -7,14 +7,15 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-ide-helper": "^2.3",
+        "erusev/parsedown": "^1.6",
         "intervention/image": "^2.3",
         "laravel/framework": "5.3.*",
+        "laravel/socialite": "~2.0",
         "league/html-to-markdown": "^4.4",
         "mews/purifier": "^2.0",
         "pixel418/markdownify": "^2.2",
-        "laravel/socialite": "~2.0",
-        "socialiteproviders/weibo": "~2.0",
-        "socialiteproviders/qq": "~2.0"
+        "socialiteproviders/qq": "~2.0",
+        "socialiteproviders/weibo": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
