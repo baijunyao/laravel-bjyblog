@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f81bd6260fda61587c56b6b0997259ff",
-    "content-hash": "60d67442588b253eec3f7d8dbf1d492d",
+    "hash": "1739422a30e51cee1c633b2d4936fae3",
+    "content-hash": "8a86e7c9f71effdd7d5c26f92c39df51",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -739,6 +739,42 @@
                 "tokenizer"
             ],
             "time": "2016-12-07 09:37:55"
+        },
+        {
+            "name": "joyqi/hyper-down",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SegmentFault/HyperDown.git",
+                "reference": "969c70631546b3d155e07bc4a4135274b287bc2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/SegmentFault/HyperDown/969c70631546b3d155e07bc4a4135274b287bc2e.zip",
+                "reference": "969c70631546b3d155e07bc4a4135274b287bc2e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HyperDown\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "joyqi",
+                    "email": "joyqi@segmentfault.com"
+                }
+            ],
+            "description": "A light weight markdown parser library",
+            "time": "2017-03-04 06:46:44"
         },
         {
             "name": "laravel/framework",
@@ -4415,7 +4451,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "joyqi/hyper-down": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

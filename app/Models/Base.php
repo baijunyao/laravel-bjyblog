@@ -14,17 +14,6 @@ class Base extends Model
     protected $guarded = [];
 
     /**
-     * 不显示的字段
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'created_at',
-        'updated_at',
-        'deleted_at',
-    ];
-
-    /**
      * 添加数据
      *
      * @param  array $data 需要添加的数据

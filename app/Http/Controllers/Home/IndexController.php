@@ -43,7 +43,7 @@ class IndexController extends Controller
     {
         // 获取文章数据
         $data = $article->getDataById($id);
-
+        echo $data->markdown;die;
         // 获取上一篇
         $prev = $article
             ->select('id', 'title')

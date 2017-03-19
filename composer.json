@@ -9,6 +9,7 @@
         "barryvdh/laravel-ide-helper": "^2.3",
         "erusev/parsedown": "^1.6",
         "intervention/image": "^2.3",
+        "joyqi/hyper-down": "dev-master",
         "laravel/framework": "5.3.*",
         "laravel/socialite": "~2.0",
         "league/html-to-markdown": "^4.4",

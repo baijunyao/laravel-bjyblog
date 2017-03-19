@@ -33,7 +33,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
-                <div class="js-content">{!! $data->content !!}</div>
+                <div class="js-content">{!! $data->html !!}</div>
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
                     <p class="b-copyright">
@@ -143,25 +143,7 @@
 
 @section('js')
     <script src="{{ asset('statics/prism/prism.min.js') }}"></script>
-    <script src="{{ asset('statics/editormd/lib/marked.min.js') }}"></script>
     <script>
-        // 获取文章内容
-        var articleMarkdown = $('.js-content').text();
-        marked.setOptions({
-            sanitize: true,
-            gfm: true,
-            gfmBreaks: true
-        })
-        // markdown 转 html
-        var articleHtml = marked(articleMarkdown);
-        $('.js-content').html(articleHtml);
-
-        // 保留文章的换行
-        $.each($('.js-content p'), function (index, val) {
-            var html = $(val).html();
-            $(val).html(html.replace(/\n/g,"<br>"));
-        })
-
         // 添加行数
         $('pre').addClass('line-numbers');
         // 新页面跳转

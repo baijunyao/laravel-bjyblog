@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use HyperDown\Parser;
+use Parsedown;
 use App\Models\Chat;
 use App\Models\Config;
 use App\Models\FriendshipLink;
@@ -29,65 +31,73 @@ class IndexController extends Controller
 
     public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel, OauthUser $oauthUserModel, Chat $chatModel)
     {
-        // $htmlConverter = new HtmlConverter();
-        // // $htmlConverter = new \HTML_To_Markdown();
-        // $test = DB::connection('old')->table('article')->where('aid', 105)->first();
-        // $content = htmlspecialchars_decode($test->content);
-        // $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
-        // $content = str_replace('/Upload/image/ueditor', 'uploads/article', $content);
-        // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", ' ', "\r\n"], $content);
-        // $content = str_replace('```js', '```javascript', $content);
-        // $content = str_replace("\r\n", '|rn|', $content);
-        // $content = str_replace('<p>', '', $content);
-        // $content = str_replace('</p>', '|rn|', $content);
-        // $markdown = $htmlConverter->convert($content);
-        // $markdown = htmlspecialchars($markdown);
-        // $markdown = str_replace(['|rn|', '\*', '\_', '|s|'], ["\r\n", '*', '_', ' '], $markdown);
-        // $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
-        // $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
-        // echo $markdown;die;
+        $data = DB::connection('old')->table('article')->where('aid', 103)->value('content');
+        $content = htmlspecialchars_decode($data);
+        $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
+        $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
+        $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">',  '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", "\r\n"], $content);
+        $content = str_replace('```js', '```javascript', $content);
+        $content = str_replace("\r\n", '|rn|', $content);
+        $content = str_replace('<p>', '', $content);
+        $content = str_replace('</p>', '|rn|', $content);
+        $htmlConverter = new HtmlConverter();
+        echo $content;die;
+        $markdown = $htmlConverter->convert($content);
+        $markdown = htmlspecialchars($markdown);
+        $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
+        $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
+        $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
+        echo $markdown;die;
+        die;
 
 
         // 从旧系统中迁移文章
-        // $htmlConverter = new HtmlConverter();
-        // $data = DB::connection('old')->table('article')->get()->toArray();
-        // $articleModel->truncate();
-        // foreach ($data as $k => $v) {
-        //     $content = htmlspecialchars_decode($v->content);
-        //     $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
-        //     $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
-        //     $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '&nbsp;', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", ' ', "\r\n"], $content);
-        //     $content = str_replace('```js', '```javascript', $content);
-        //     $content = str_replace("\r\n", '|rn|', $content);
-        //     $content = str_replace('<p>', '', $content);
-        //     $content = str_replace('</p>', '|rn|', $content);
-        //     $markdown = $htmlConverter->convert($content);
-        //     $markdown = htmlspecialchars($markdown);
-        //     $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
-        //     $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
-        //     $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
-        //     $article = [
-        //         'id' => $v->aid,
-        //         'category_id' => $v->cid,
-        //         'title' => $v->title,
-        //         'author' => $v->author,
-        //         'content' => $markdown,
-        //         'description' => $v->description,
-        //         'keywords' => $v->keywords,
-        //         'cover' => $articleModel->getCover($markdown),
-        //         'is_top' => $v->is_top,
-        //         'click' => $v->click,
-        //     ];
-        //     $articleModel->create($article);
-        //     $editArticleMap = [
-        //         'id' => $v->aid
-        //     ];
-        //
-        //     $editArticleData = [
-        //         'created_at' => date('Y-m-d H:i:s', $v->addtime)
-        //     ];
-        //     $articleModel->editData($editArticleMap, $editArticleData);
-        // }
+        $htmlConverter = new HtmlConverter();
+        $parser = new Parser();
+        $data = DB::connection('old')->table('article')->get()->toArray();
+        $articleModel->truncate();
+        foreach ($data as $k => $v) {
+            $content = htmlspecialchars_decode($v->content);
+            $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
+            $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
+            $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">', '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", "\r\n"], $content);
+            $content = str_replace('```js', '```javascript', $content);
+            $content = str_replace("\r\n", '|rn|', $content);
+            $content = str_replace('<p>', '', $content);
+            $content = str_replace('</p>', '|rn|', $content);
+            $markdown = $htmlConverter->convert($content);
+            $markdown = htmlspecialchars($markdown);
+            $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
+            $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
+            $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
+
+            // markdown 转html
+            $html = $parser->makeHtml($markdown);
+            $html = str_replace('<code class="', '<code class="lang-', $html);
+            // $html = htmlspecialchars_decode($html);
+            $article = [
+                'id' => $v->aid,
+                'category_id' => $v->cid,
+                'title' => $v->title,
+                'author' => $v->author,
+                'markdown' => $markdown,
+                'html' => $html,
+                'description' => $v->description,
+                'keywords' => $v->keywords,
+                'cover' => $articleModel->getCover($markdown),
+                'is_top' => $v->is_top,
+                'click' => $v->click,
+            ];
+            $articleModel->create($article);
+            $editArticleMap = [
+                'id' => $v->aid
+            ];
+
+            $editArticleData = [
+                'created_at' => date('Y-m-d H:i:s', $v->addtime)
+            ];
+            $articleModel->editData($editArticleMap, $editArticleData);
+        }
 
         // 从旧系统中迁移文章标签中间表
         // $data = DB::connection('old')->table('article_tag')->get()->toArray();
@@ -178,22 +188,22 @@ class IndexController extends Controller
         // }
 
         // 迁移随言碎语表
-        $data = DB::connection('old')->table('chat')->get()->toArray();
-        $chatModel->truncate();
-        foreach ($data as $v) {
-            $chatData = [
-                'id' => $v->chid,
-                'content' => $v->content,
-            ];
-            $chatModel->addData($chatData);
-            $editChatMap = [
-                'id' => $v->chid,
-            ];
-            $editChatData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
-            ];
-            $chatModel->editData($editChatMap, $editChatData);
-        }
+        // $data = DB::connection('old')->table('chat')->get()->toArray();
+        // $chatModel->truncate();
+        // foreach ($data as $v) {
+        //     $chatData = [
+        //         'id' => $v->chid,
+        //         'content' => $v->content,
+        //     ];
+        //     $chatModel->addData($chatData);
+        //     $editChatMap = [
+        //         'id' => $v->chid,
+        //     ];
+        //     $editChatData = [
+        //         'created_at' => date('Y-m-d H:i:s', $v->date)
+        //     ];
+        //     $chatModel->editData($editChatMap, $editChatData);
+        // }
 
 
     }
