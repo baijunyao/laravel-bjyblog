@@ -113,9 +113,11 @@ class ArticleController extends Controller
     {
         $data = $request->except('_token');
         // 获取封面并添加水印
-        $data['cover'] = $article->getCover($data['content']);
+        $data['cover'] = $article->getCover($data['markdown']);
         // 为文章批量添加标签
         $tag_ids = $data['tag_ids'];
+        // 把markdown转html
+        $data['html'] = markdownToHtml($data['markdown']);
         unset($data['tag_ids']);
         $articleTag->addTagIds($id, $tag_ids);
         // 编辑文章

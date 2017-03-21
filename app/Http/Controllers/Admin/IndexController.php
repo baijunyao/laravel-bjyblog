@@ -31,33 +31,6 @@ class IndexController extends Controller
 
     public function migration(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel, OauthUser $oauthUserModel, Chat $chatModel)
     {
-        // $data = DB::connection('old')->table('article')->where('aid', 103)->value('content');
-        // // echo $data;
-        // $content = htmlspecialchars_decode($data);
-        // $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
-        // $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
-        // $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">',  '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", "\r\n"], $content);
-        // $content = str_replace('```js', '```javascript', $content);
-        // $content = str_replace("\r\n", '|rn|', $content);
-        // $content = str_replace('<p>', '', $content);
-        // $content = str_replace('</p>', '|rn|', $content);
-        // $content = str_replace('&nbsp;', '|nbsp|', $content);
-        // $htmlConverter = new HtmlConverter();
-        // $markdown = $htmlConverter->convert($content);
-        // $markdown = htmlspecialchars($markdown);
-        // $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
-        // $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
-        // $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
-        // $markdown = str_replace('|nbsp|', '&nbsp;', $markdown);
-        // $markdown = html_entity_decode($markdown);
-        //
-        // $parser = new Parser();
-        // $html = $parser->makeHtml($markdown);
-        // $html = html_entity_decode($html);
-        // echo $html;die;
-        // echo $markdown;die;
-
-
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
         $parser = new Parser();
