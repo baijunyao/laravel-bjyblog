@@ -29,7 +29,7 @@ class Store extends FormRequest
             'author'=>'required',
             'keywords'=>'required',
             'tag_ids'=>'required',
-            'content'=>'required'
+            'markdown'=>'required'
         ];
     }
 
@@ -46,7 +46,7 @@ class Store extends FormRequest
             'author'=>'作者',
             'tag_ids'=>'标签',
             'keywords'=>'关键词',
-            'content'=>'内容'
+            'markdown'=>'内容'
         ];
     }
 

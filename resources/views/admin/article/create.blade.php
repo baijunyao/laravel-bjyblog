@@ -51,7 +51,7 @@
             <tr>
                 <th>关键词</th>
                 <td>
-                    <input class="form-control" type="text" name="keywords" value="{{ old('keywords') }}">
+                    <input class="form-control" type="text" placeholder="用英文逗号分隔" name="keywords" value="{{ old('keywords') }}">
                 </td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@
                 <th>内容</th>
                 <td>
                     <div id="bjy-content">
-                        <textarea name="content">{{ old('content') }}</textarea>
+                        <textarea name="markdown">{{ old('markdown') }}</textarea>
                     </div>
                 </td>
             </tr>

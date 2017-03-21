@@ -14,13 +14,14 @@ class Article extends Base
     {
         // 如果没有描述;则截取文章内容的前200字作为描述
         if (empty($data['description'])) {
-            $description = preg_replace(array('/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'), '', $data['content']);
+            $description = preg_replace(array('/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'), '', $data['markdown']);
             $data['description'] = reSubstr($description, 0, 200, true);
         }
 
         // 给文章的插图添加水印;并取第一张图片作为封面图
-        $data['cover'] = $this->getCover($data['content']);
-
+        $data['cover'] = $this->getCover($data['markdown']);
+        // 把markdown转html
+        $data['html'] = markdownToHtml($data['markdown']);
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
 
