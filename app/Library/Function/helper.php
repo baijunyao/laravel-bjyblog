@@ -1,5 +1,6 @@
 <?php
 
+use HyperDown\Parser;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -257,4 +258,23 @@ if ( !function_exists('wordTime') ) {
         }
         return $str;
     }
+}
+
+if ( !function_exists('markdownToHtml') ) {
+
+	/**
+	 * 把markdown转为html
+	 *
+	 * @param $markdown
+	 * @return mixed|string
+	 */
+	function markdownToHtml($markdown)
+	{
+		$parser = new Parser();
+		$html = $parser->makeHtml($markdown);
+		$html = str_replace('<code class="', '<code class="lang-', $html);
+		return $html;
+	}
+
+
 }
