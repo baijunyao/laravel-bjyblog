@@ -42,6 +42,11 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
         // 退出登录
         Route::get('logout', 'OAuthController@logout');
     });
+
+    // 后台登录
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('login', 'AdminController@login');
+    });
 });
 
 // Admin 模块
