@@ -49,6 +49,8 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     });
 });
 
+Route::get('admin/login/index', 'Admin\LoginController@index');
+
 // Admin 模块
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     // 首页控制器
