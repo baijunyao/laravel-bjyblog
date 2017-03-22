@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
 
     // 后台登录
     Route::group(['prefix' => 'admin'], function () {
-        Route::get('login', 'AdminController@login');
+        Route::post('login', 'AdminController@login');
     });
 });
 

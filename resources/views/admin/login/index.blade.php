@@ -24,17 +24,17 @@
     <div class="login_wrapper">
         <div class="animate form login_form">
             <section class="login_content">
-                <form>
-                    <h1>Login Form</h1>
+                <form action="{{ url('auth/admin/login') }}" method="post">
+                    {{ csrf_field() }}
+                    <h1>管理后台</h1>
                     <div>
-                        <input type="text" class="form-control" placeholder="Username" required="" />
+                        <input type="text" class="form-control" placeholder="Email" required="" name="email">
                     </div>
                     <div>
-                        <input type="password" class="form-control" placeholder="Password" required="" />
+                        <input type="password" class="form-control" placeholder="Password" required="" name="password">
                     </div>
                     <div>
-                        <a class="btn btn-default submit" href="index.html">Log in</a>
-                        <a class="reset_pass" href="#">Lost your password?</a>
+                        <button class="btn btn-default submit" type="submit">登录</button>
                     </div>
 
                     <div class="clearfix"></div>
@@ -48,8 +48,8 @@
                         <br />
 
                         <div>
-                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                            <h1><i class="fa fa-paw"></i> 白俊遥博客!</h1>
+                            <p>©2017 All Rights Reserved. 白俊遥博客! is a Bootstrap 3 template. Privacy and Terms</p>
                         </div>
                     </div>
                 </form>
