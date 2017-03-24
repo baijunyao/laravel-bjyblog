@@ -34,19 +34,32 @@
                         <input type="password" class="form-control" placeholder="Password" required="" name="password">
                     </div>
                     <div>
+                        {{--成功或者错误提示--}}
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if(Session::has('alert-message'))
+                            <div class="alert {{session('alert-class')}}">
+                                <ul>
+                                    <li>{{ session('alert-message') }}</li>
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
+                    <div>
                         <button class="btn btn-default submit" type="submit">登录</button>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <div class="separator">
-                        <p class="change_link">New to site?
-                            <a href="#signup" class="to_register"> Create Account </a>
-                        </p>
-
                         <div class="clearfix"></div>
-                        <br />
-
                         <div>
                             <h1><i class="fa fa-paw"></i> 白俊遥博客!</h1>
                             <p>©2017 All Rights Reserved. 白俊遥博客! is a Bootstrap 3 template. Privacy and Terms</p>
