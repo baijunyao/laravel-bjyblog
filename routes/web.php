@@ -49,7 +49,17 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     });
 });
 
-Route::get('admin/login/index', 'Admin\LoginController@index');
+// 后台登录页面
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'login'], function () {
+        // 登录页面
+        Route::get('index', 'LoginController@index');
+        // 退出
+        Route::get('logout', 'LoginController@logout');
+    });
+
+});
+
 
 // Admin 模块
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {

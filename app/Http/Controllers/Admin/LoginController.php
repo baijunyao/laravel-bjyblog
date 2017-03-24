@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use Auth;
 use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
@@ -16,4 +16,17 @@ class LoginController extends Controller
     {
         return view('admin/login/index');
     }
+
+    /**
+     * 退出登录
+     *
+     * @return mixed
+     */
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('admin/login/index');
+    }
+
+
 }
