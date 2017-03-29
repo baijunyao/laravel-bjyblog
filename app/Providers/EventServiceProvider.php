@@ -17,6 +17,9 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
             'SocialiteProviders\QQ\QqExtendSocialite@handle',
         ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LoginStoreSession'
+        ]
     ];
 
     /**
