@@ -2,10 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\Login;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Auth;
 
 class LoginStoreSession
 {
@@ -16,7 +15,18 @@ class LoginStoreSession
      */
     public function __construct()
     {
-        $user = Auth::user();
+
+    }
+
+    /**
+     * Handle the event.
+     *
+     * @param  Login  $event
+     * @return void
+     */
+    public function handle(Login $event)
+    {
+        $user = $event->user;
         // 组合存入session中的值
         $sessionData = [
             'user' => [
@@ -30,16 +40,5 @@ class LoginStoreSession
         ];
         // 将数据存入数据库
         session($sessionData);
-    }
-
-    /**
-     * Handle the event.
-     *
-     * @param  Login  $event
-     * @return void
-     */
-    public function handle(Login $event)
-    {
-        //
     }
 }
