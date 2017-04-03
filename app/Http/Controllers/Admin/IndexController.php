@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use HyperDown\Parser;
-use Parsedown;
 use App\Models\Chat;
 use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\OauthUser;
-use DB;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Comment;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\HTMLToMarkdown\HtmlConverter;
 
