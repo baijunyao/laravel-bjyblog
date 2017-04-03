@@ -81,11 +81,11 @@ return [
 
         'old' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => 'oldblog',
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('OLD_DB_HOST', 'localhost'),
+            'port' => env('OLD_DB_PORT', '3306'),
+            'database' => env('OLD_DB_DATABASE', 'old'),
+            'username' => env('OLD_DB_USERNAME', 'forge'),
+            'password' => env('OLD_DB_PASSWORD', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => 'bjy_',
