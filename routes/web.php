@@ -31,6 +31,16 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('checkLogin', 'IndexController@checkLogin');
 });
 
+// Home模块下 三级模式
+Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
+    // 迁移数据
+    Route::group(['prefix' => 'migration'], function () {
+        // 从旧系统迁移数据
+        Route::get('index', 'MigrationController@index');
+    });
+});
+
+
 // auth
 Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     // 第三方登录
@@ -67,8 +77,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'index'], function () {
         // 后台首页
         Route::get('index', 'IndexController@index');
-        // 从旧系统迁移数据
-        Route::get('migration', 'IndexController@migration');
+
     });
 
     // 文章管理
