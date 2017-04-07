@@ -52,12 +52,12 @@
                                     <li><a href="{{ url('admin/article/index') }}">文章列表</a></li>
                                 </ul>
                             </li>
-                            {{--<li>--}}
-                                {{--<a><i class="fa fa-th"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu">--}}
-                                    {{--<li><a href="/index">文章列表</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
+                            <li>
+                                <a><i class="fa fa-th"></i> 评论管理 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ url('admin/comment/index') }}">评论列表</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>

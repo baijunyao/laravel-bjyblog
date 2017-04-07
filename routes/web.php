@@ -96,4 +96,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 上传图片
         Route::post('upload_image', 'ArticleController@upload_image');
     });
+
+    // 评论制器
+    Route::group(['prefix' => 'comment'], function () {
+        // 后台首页
+        Route::get('index', 'CommentController@index');
+    });
 });
