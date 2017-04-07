@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', '发布文章')
+@section('title', '文章列表')
 
-@section('nav', '发布文章')
+@section('nav', '文章列表')
 
-@section('description', '发布新的文章')
+@section('description', '已发布的文章列表')
 
 @section('content')
 

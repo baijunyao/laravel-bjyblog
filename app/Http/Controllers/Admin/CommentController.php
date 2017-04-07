@@ -9,14 +9,18 @@ use App\Http\Controllers\Controller;
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 评论列表
      *
-     * @return \Illuminate\Http\Response
+     * @param Comment $commentModel
+     * @return mixed
      */
     public function index(Comment $commentModel)
     {
         $data = $commentModel->getAdminList();
-        p($data);
+        $assign = [
+            'data' => $data
+        ];
+        return view('admin/comment/index', $assign);
     }
 
     /**
