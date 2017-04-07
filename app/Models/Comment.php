@@ -2,11 +2,24 @@
 
 namespace App\Models;
 
+/**
+ * 评论
+ *
+ * Class Comment
+ * @package App\Models
+ */
+
 class Comment extends Base
 {
     // 用于递归
     private $child = [];
 
+    /**
+     * 添加数据
+     *
+     * @param array $data
+     * @return bool|mixed
+     */
     public function addData($data)
     {
         $user_id = session('user.id');
@@ -183,6 +196,17 @@ class Comment extends Base
             }
         }
 
+    }
+
+    public function getAdminList()
+    {
+        $data = $this
+            ->select('comments.*', 'a.title', 'ou.name')
+            ->join('articles as a', 'comments.article_id', 'a.id')
+            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
+            ->orderBy('comments.created_at', 'desc')
+            ->paginate(15);
+        return $data;
     }
 
 
