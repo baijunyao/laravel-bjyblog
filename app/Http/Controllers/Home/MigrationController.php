@@ -61,7 +61,7 @@ class MigrationController extends Controller
             // markdown 转html
             $html = $parser->makeHtml($markdown);
             $html = html_entity_decode($html);
-            $html = str_replace('<code class="', '<code class="lang-', $html);
+            $html = str_replace(['<code class="', '\\\\'], ['<code class="lang-', '\\'], $html);
             $article = [
                 'id' => $v->aid,
                 'category_id' => $v->cid,
