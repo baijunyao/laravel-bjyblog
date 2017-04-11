@@ -37,7 +37,7 @@
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
                     <p class="b-copyright">
-                        {{ $config['COPYRIGHT_WORD'] }}
+                        {!! htmlspecialchars_decode($config['COPYRIGHT_WORD']) !!}
                     </p>
                 </eq>
                 <ul class="b-prev-next">
