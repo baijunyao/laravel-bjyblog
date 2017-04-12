@@ -41,7 +41,7 @@ class MigrationController extends Controller
         $parser = new Parser();
         $data = DB::connection('old')
             ->table('article')
-            ->where('aid', '<', 103)
+            ->where('aid', '<', 102)
             ->get()
             ->toArray();
         $articleModel->truncate();
@@ -61,7 +61,6 @@ class MigrationController extends Controller
             $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
             $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
             $markdown = str_replace('|nbsp|', '&nbsp;', $markdown);
-            $markdown = html_entity_decode($markdown);
 
             // markdown 转html
             $html = $parser->makeHtml($markdown);
