@@ -41,7 +41,7 @@ class MigrationController extends Controller
         $parser = new Parser();
         $data = DB::connection('old')
             ->table('article')
-            ->where('id', '<', 103)
+            ->where('aid', '<', 103)
             ->get()
             ->toArray();
         $articleModel->truncate();
