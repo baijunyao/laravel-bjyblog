@@ -35,10 +35,15 @@ class MigrationController extends Controller
         if (file_exists(storage_path('lock/migration.lock'))) {
             die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
         }
+
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
         $parser = new Parser();
-        $data = DB::connection('old')->table('article')->get()->toArray();
+        $data = DB::connection('old')
+            ->table('article')
+            ->where('id', '<', 103)
+            ->get()
+            ->toArray();
         $articleModel->truncate();
         foreach ($data as $k => $v) {
             $content = htmlspecialchars_decode($v->content);
@@ -57,8 +62,6 @@ class MigrationController extends Controller
             $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
             $markdown = str_replace('|nbsp|', '&nbsp;', $markdown);
             $markdown = html_entity_decode($markdown);
-            $markdown = stripHtmlTags(['span'], $markdown);
-            $markdown = str_replace('</span>', '', $markdown);
 
             // markdown 转html
             $html = $parser->makeHtml($markdown);
