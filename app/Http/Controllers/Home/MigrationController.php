@@ -44,7 +44,7 @@ class MigrationController extends Controller
             ->where('aid', '<', 87)
             ->get()
             ->toArray();
-        $articleModel->truncate();
+        $articleModel->where('id', '<', 87)->forceDelete();
         foreach ($data as $k => $v) {
             $content = htmlspecialchars_decode($v->content);
             $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
