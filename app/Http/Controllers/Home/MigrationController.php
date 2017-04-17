@@ -10,7 +10,6 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\OauthUser;
 use App\Models\ArticleTag;
-use Illuminate\Http\Request;
 use App\Models\FriendshipLink;
 use App\Http\Controllers\Controller;
 use League\HTMLToMarkdown\HtmlConverter;
@@ -38,10 +37,10 @@ class MigrationController extends Controller
 
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
+        $articleModel->truncate();
         $parser = new Parser();
         $data = DB::connection('old')
             ->table('article')
-            ->where('aid', '<', 87)
             ->get()
             ->toArray();
         $articleModel->where('id', '<', 87)->forceDelete();
@@ -263,5 +262,28 @@ class MigrationController extends Controller
         }
         echo '第三方用户和评论迁移完成';
     }
+
+    /**
+     * 从md文件中迁移文章
+     *
+     * @param Article $articleModel
+     */
+    public function getDataFromFile(Article $articleModel)
+    {
+        $file = glob(storage_path('article/*.md'));
+        foreach ($file as $v) {
+            $id = basename($v, '.md');
+            $markdown = htmlspecialchars(file_get_contents($v));
+            $map = [
+                'id' => $id
+            ];
+            $data = [
+                'markdown' => $markdown,
+                'html' => markdownToHtml($markdown)
+            ];
+            $articleModel->editData($map, $data);
+        }
+    }
+
 
 }

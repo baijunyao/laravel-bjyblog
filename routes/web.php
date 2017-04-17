@@ -40,6 +40,8 @@ Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
 
         // 只迁移第三方用户和评论数据
         Route::get('oauthUserAndcomment', 'MigrationController@oauthUserAndcomment');
+        // 从文件中迁移文章
+        Route::get('getDataFromFile', 'MigrationController@getDataFromFile');
     });
 });
 
