@@ -283,6 +283,7 @@ class MigrationController extends Controller
             ];
             $articleModel->editData($map, $data);
         }
+        echo 'end';
     }
 
 

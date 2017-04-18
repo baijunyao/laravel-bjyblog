@@ -102,9 +102,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('upload_image', 'ArticleController@upload_image');
     });
 
-    // 评论制器
+    // 评论管理
     Route::group(['prefix' => 'comment'], function () {
         // 后台首页
         Route::get('index', 'CommentController@index');
+    });
+
+    // 用户管理
+    Route::group(['prefix' => 'user'], function () {
+        // 后台首页
+        Route::get('index', 'UserController@index');
     });
 });
