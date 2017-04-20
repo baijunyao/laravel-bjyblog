@@ -134,7 +134,7 @@
             </eq>
             <div class="b-search">
                 <form class="form-inline"  role="form" action="{{ url('search') }}" method="get">
-                    <input class="b-search-text" type="text" name="search_word">
+                    <input class="b-search-text" type="text" name="wd">
                     <input class="b-search-submit" type="submit" value="全站搜索">
                 </form>
             </div>

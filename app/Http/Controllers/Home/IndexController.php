@@ -198,4 +198,17 @@ class IndexController extends Controller
         }
     }
 
+    public function search(Article $articleModel){
+        $wd = request()->input('wd');
+        $map = [
+            'title' => ['like', '%'.$wd.'%']
+        ];
+        $article = $articleModel->getHomeList($map);
+        $assign = [
+            'category_id' => 'index',
+            'article' => $article,
+            'tagName' => '',
+        ];
+        return view('home/index/index', $assign);
+    }
 }

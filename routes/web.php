@@ -29,6 +29,8 @@ Route::group(['namespace' => 'Home'], function () {
     Route::post('comment', 'IndexController@comment');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
+    // 搜索文章
+    Route::get('search', 'IndexController@search');
 });
 
 // Home模块下 三级模式

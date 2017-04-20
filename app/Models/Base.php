@@ -165,6 +165,7 @@ class Base extends Model
                     case '>':
                     case '<':
                     case '<>':
+                    case 'like':
                         $query->where($k, $sign, $v[1]);
                         break;
                 }
