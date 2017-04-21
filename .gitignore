@@ -9,3 +9,4 @@ Homestead.yaml
 .phpstorm.meta.php
 _ide_helper.php
 .user.ini
+/public/Demo/*
