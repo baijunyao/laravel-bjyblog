@@ -282,6 +282,7 @@ class MigrationController extends Controller
                 'html' => markdownToHtml($markdown)
             ];
             $articleModel->editData($map, $data);
+
         }
         echo 'end';
     }
