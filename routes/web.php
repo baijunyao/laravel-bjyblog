@@ -115,4 +115,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 后台首页
         Route::get('index', 'UserController@index');
     });
+
+    // 第三方用户管理
+    Route::group(['prefix' => 'oauthUser'], function () {
+        // 后台首页
+        Route::get('index', 'OauthUserController@index');
+    });
 });
