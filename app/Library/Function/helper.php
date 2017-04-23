@@ -183,18 +183,19 @@ if ( !function_exists('getUid') ) {
 	}
 }
 
-if ( !function_exists('save_to_file') ) {
+if (!function_exists('saveToFile')) {
 	/**
 	 * 将数组已json格式写入文件
-	 * @param  string $file_name 文件名
+	 * @param  string $fileName 文件名
 	 * @param  array $data 数组
 	 */
-	function save_to_file($file_name = 'test', $data = array())
+	function saveToFile($fileName = 'test', $data = array())
 	{
-		is_dir('./Temp/') || mkdir('./Temp/');
-		$file_name = str_replace('.php', '', $file_name);
-		$file_name = './Temp/' . $file_name . '_' . date('Y-m-d_H-i-s', time()) . '.php';
-		file_put_contents($file_name, json_encode($data));
+		$path = storage_path('tmp' . DIRECTORY_SEPARATOR);
+		is_dir($path) || mkdir($path);
+		$fileName = str_replace('.php', '', $fileName);
+		$fileName = $path . $fileName . '_' . date('Y-m-d_H-i-s', time()) . '.php';
+		file_put_contents($fileName, json_encode($data));
 	}
 }
 
