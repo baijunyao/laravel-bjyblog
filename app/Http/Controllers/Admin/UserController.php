@@ -62,7 +62,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = User::find($id);
+        $assgin = [
+            'data' => $data
+        ];
+        return view('admin/user/edit', $assgin);
     }
 
     /**

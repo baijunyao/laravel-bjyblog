@@ -110,15 +110,17 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('index', 'CommentController@index');
     });
 
-    // 用户管理
+    // 管理员
     Route::group(['prefix' => 'user'], function () {
-        // 后台首页
+        // 管理员列表
         Route::get('index', 'UserController@index');
+        // 编辑管理员
+        Route::get('edit/{id}', 'UserController@edit');
     });
 
     // 第三方用户管理
     Route::group(['prefix' => 'oauthUser'], function () {
-        // 后台首页
+        // 用户列表
         Route::get('index', 'OauthUserController@index');
     });
 });
