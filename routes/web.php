@@ -116,6 +116,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('index', 'UserController@index');
         // 编辑管理员
         Route::get('edit/{id}', 'UserController@edit');
+        Route::post('update/{id}', 'UserController@update');
     });
 
     // 第三方用户管理

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -76,9 +76,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, User $userModel)
     {
-        //
+        $data = $request->except('_token');
+        $map = [
+            'id' => $id
+        ];
+        $userModel->editData($map, $data);
+        return redirect()->back();
     }
 
     /**
