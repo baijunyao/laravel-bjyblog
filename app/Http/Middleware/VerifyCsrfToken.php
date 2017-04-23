@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'admin/article/upload_image'
+        'admin/article/upload_image',
+        'hook/*'
     ];
 }
