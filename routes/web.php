@@ -122,3 +122,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('index', 'OauthUserController@index');
     });
 });
+
+/**
+ * 各种钩子
+ */
+Route::group(['prefix' => 'hook', 'namespace' => 'Hook'], function () {
+    // 开源中国
+    Route::group(['prefix' => 'oschina'], function () {
+        Route::post('push', 'OschinaController@push');
+    });
+});
