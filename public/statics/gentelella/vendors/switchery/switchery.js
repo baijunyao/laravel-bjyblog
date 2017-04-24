@@ -1,5 +1,5 @@
 /**
- * Switchery 0.8.1
+ * Switchery 0.8.2
  * http://abpetkov.github.io/switchery/
  *
  * Authored by Alexander Petkov
@@ -362,6 +362,7 @@ Switchery.prototype.destroy = function() {
  */
 
 Switchery.prototype.enable = function() {
+  if (!this.options.disabled) return;
   if (this.options.disabled) this.options.disabled = false;
   if (this.element.disabled) this.element.disabled = false;
   if (this.element.readOnly) this.element.readOnly = false;
@@ -376,6 +377,7 @@ Switchery.prototype.enable = function() {
  */
 
 Switchery.prototype.disable = function() {
+  if (this.options.disabled) return;
   if (!this.options.disabled) this.options.disabled = true;
   if (!this.element.disabled) this.element.disabled = true;
   if (!this.element.readOnly) this.element.readOnly = true;
