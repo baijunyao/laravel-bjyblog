@@ -39,7 +39,7 @@
             <tr>
                 <th>是否是管理员</th>
                 <td>
-                    <input type="checkbox" class="js-switch" name="is_admin" @if($data->is_admin == 1) checked @endif />
+                    <input type="checkbox" class="js-switch" name="is_admin" value="1" @if($data->is_admin == 1) checked @endif />
                 </td>
             </tr>
             <tr>
