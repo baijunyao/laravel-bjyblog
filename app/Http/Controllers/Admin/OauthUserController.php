@@ -16,7 +16,7 @@ class OauthUserController extends Controller
     public function index()
     {
         $data = OauthUser::orderBy('updated_at', 'desc')
-            ->select('name', 'type', 'email', 'login_times', 'created_at', 'updated_at')
+            ->select('id', 'name', 'type', 'email', 'login_times', 'created_at', 'updated_at')
             ->paginate(50);
         $assign = [
             'data' => $data
@@ -64,7 +64,11 @@ class OauthUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = OauthUser::find($id);
+        $assign = [
+            'data' => $data
+        ];
+        return view('admin/oauthUser/edit', $assign);
     }
 
     /**

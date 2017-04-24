@@ -123,6 +123,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'oauthUser'], function () {
         // 用户列表
         Route::get('index', 'OauthUserController@index');
+        // 编辑管理员
+        Route::get('edit/{id}', 'OauthUserController@edit');
+        Route::post('update/{id}', 'OauthUserController@update');
     });
 });
 

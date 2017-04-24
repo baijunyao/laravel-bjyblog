@@ -15,7 +15,7 @@
             <th>登录次数</th>
             <th>最近登录</th>
             <th>第一次登录</th>
-
+            <th>操作</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
@@ -29,6 +29,7 @@
                 <td>{{ $v->login_times }}</td>
                 <td>{{ $v->updated_at }}</td>
                 <td>{{ $v->created_at }}</td>
+                <td><a href="{{ url('admin/oauthUser/edit', [$v->id]) }}">编辑</a></td>
             </tr>
         @endforeach
     </table>
