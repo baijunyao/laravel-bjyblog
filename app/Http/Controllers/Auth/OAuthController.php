@@ -19,6 +19,11 @@ class OAuthController extends Controller
      */
     public function redirectToProvider(Request $request, $service)
     {
+        // 记录登录前的url
+        $data = [
+            'targetUrl' => $_SERVER['HTTP_REFERER']
+        ];
+        session($data);
         return Socialite::driver($service)->redirect();
     }
 
@@ -87,7 +92,7 @@ class OAuthController extends Controller
         // 将数据存入数据库
         session($sessionData);
         // 如果session没有存储登录前的页面;则直接返回到首页
-        return redirect(session('last_url', url('/')));
+        return redirect(session('targetUrl', url('/')));
     }
 
     /**
