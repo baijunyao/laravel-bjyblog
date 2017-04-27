@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Base extends Model
 {
+    // 软删除
+    use SoftDeletes;
     /**
      * 禁止被批量赋值的字段
      *
