@@ -127,6 +127,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('edit/{id}', 'OauthUserController@edit');
         Route::post('update/{id}', 'OauthUserController@update');
     });
+
+    // 友情链接管理
+    Route::group(['prefix' => 'friendshipLink'], function () {
+        // 用户列表
+        Route::get('index', 'FriendshipLinkController@index');
+        // 编辑管理员
+        Route::get('edit/{id}', 'FriendshipLinkController@edit');
+        Route::post('update/{id}', 'FriendshipLinkController@update');
+    });
 });
 
 /**
