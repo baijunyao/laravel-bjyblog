@@ -54,7 +54,8 @@ class Comment extends Base
         }else{
             return false;
         }
-
+        // 获取文章标题
+        $title = Article::where('id', $data['article_id'])->value('title');
         $isSendEmail = Config::where('name', 'COMMENT_SEND_EMAIL')->value('value');
         // 给站长发送通知邮件
         if($isSendEmail && $isAdmin == 0){
