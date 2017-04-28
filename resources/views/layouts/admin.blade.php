@@ -65,6 +65,12 @@
                                     <li><a href="{{ url('admin/oauthUser/index') }}">第三方用户列表</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a><i class="fa fa-th"></i> 友情链接 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
