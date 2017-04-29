@@ -39,9 +39,18 @@ class FriendshipLinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request)
+    public function store(Store $request, FriendshipLink $friendshipLinkModel)
     {
         $data = $request->except('_token');
+        // 如果没有http 则补上http
+        if (strpos($data['url'], 'http') === false) {
+            $data['url'] = 'http://'.$data['url'];
+        }
+        // 删除右侧的/
+        $data['url'] = rtrim($data['url'], '/');
+        $friendshipLinkModel->addData($data);
+        return redirect('admin/friendshipLink/index');
+
     }
 
     /**

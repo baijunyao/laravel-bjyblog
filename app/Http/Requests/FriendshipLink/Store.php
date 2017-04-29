@@ -24,8 +24,8 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'url'=>'required',
+            'name'=>'required|unique:friendship_links',
+            'url'=>'required|unique:friendship_links',
         ];
     }
 
