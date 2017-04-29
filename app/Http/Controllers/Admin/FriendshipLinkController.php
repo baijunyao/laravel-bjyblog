@@ -15,7 +15,7 @@ class FriendshipLinkController extends Controller
      */
     public function index()
     {
-        $data = FriendshipLink::all();
+        $data = FriendshipLink::orderBy('sort')->get();
         $assign = [
             'data' => $data
         ];
