@@ -29,7 +29,7 @@ class FriendshipLinkController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/friendshipLink/create');
     }
 
     /**
@@ -40,7 +40,7 @@ class FriendshipLinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
     }
 
     /**

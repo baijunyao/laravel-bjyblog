@@ -7,6 +7,16 @@
 @section('description', '博客第三方用户')
 
 @section('content')
+
+    <!-- 导航栏结束 -->
+    <ul id="myTab" class="nav nav-tabs bar_tabs">
+        <li class="active">
+            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
+        </li>
+        <li>
+            <a href="{{ url('admin/friendshipLink/create') }}">添加友情链接</a>
+        </li>
+    </ul>
     <form action="{{ url('admin/friendshipLink/sort') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">

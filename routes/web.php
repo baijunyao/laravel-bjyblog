@@ -132,6 +132,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'friendshipLink'], function () {
         // 友情链接列表
         Route::get('index', 'FriendshipLinkController@index');
+        // 添加友情链接
+        Route::get('create', 'FriendshipLinkController@create');
+        Route::post('store', 'FriendshipLinkController@store');
         // 编辑友情链接
         Route::get('edit/{id}', 'FriendshipLinkController@edit');
         Route::post('update/{id}', 'FriendshipLinkController@update');
