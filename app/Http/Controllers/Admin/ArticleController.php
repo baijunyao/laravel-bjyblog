@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Requests\Article\Store;
+use App\Http\Requests\Article\Store;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
@@ -72,6 +72,7 @@ class ArticleController extends Controller
      *
      * @param Store $request
      * @param Article $article
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Store $request, Article $article)
     {
@@ -103,13 +104,15 @@ class ArticleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * 编辑文章
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Store $request
+     * @param Article $article
+     * @param ArticleTag $articleTag
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Article $article, ArticleTag $articleTag, $id)
+    public function update(Store $request, Article $article, ArticleTag $articleTag, $id)
     {
         $data = $request->except('_token');
         // 获取封面并添加水印

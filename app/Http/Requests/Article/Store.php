@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Requests\Article;
+namespace App\Http\Requests\Article;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -61,5 +61,4 @@ class Store extends FormRequest
             'tag_ids.required'=>'必须选择标签',
         ];
     }
-
 }
