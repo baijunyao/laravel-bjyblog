@@ -25,6 +25,7 @@
         <div class="animate form login_form">
             <section class="login_content">
                 <form action="{{ url('auth/admin/login') }}" method="post">
+                    <input class="hidden" type="checkbox" name="remember" checked>
                     {{ csrf_field() }}
                     <h1>管理后台</h1>
                     <div>
