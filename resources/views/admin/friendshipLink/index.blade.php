@@ -7,7 +7,8 @@
 @section('description', '博客第三方用户')
 
 @section('content')
-    <form action="{:U('Admin/Link/sort')}" method="post">
+    <form action="{{ url('admin/friendshipLink/sort') }}" method="post">
+        {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th width="5%">id</th>

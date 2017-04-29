@@ -130,11 +130,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
     // 友情链接管理
     Route::group(['prefix' => 'friendshipLink'], function () {
-        // 用户列表
+        // 友情链接列表
         Route::get('index', 'FriendshipLinkController@index');
-        // 编辑管理员
+        // 编辑友情链接
         Route::get('edit/{id}', 'FriendshipLinkController@edit');
         Route::post('update/{id}', 'FriendshipLinkController@update');
+        // 排序
+        Route::post('sort', 'FriendshipLinkController@sort');
     });
 });
 

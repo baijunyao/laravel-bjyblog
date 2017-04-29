@@ -77,6 +77,20 @@ class FriendshipLinkController extends Controller
         //
     }
 
+    public function sort(Request $request, FriendshipLink $friendshipLinkModel)
+    {
+        $data = $request->except('_token');
+        $editData = [];
+        foreach ($data as $k => $v) {
+            $editData[] = [
+                'id' => $k,
+                'sort' => $v
+            ];
+        }
+        $friendshipLinkModel->updateBatch($editData);
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *
