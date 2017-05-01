@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use App\Http\Requests\FriendshipLink\Store;
 use App\Models\FriendshipLink;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class FriendshipLinkController extends Controller
      */
     public function index()
     {
-        $data = FriendshipLink::orderBy('sort')->get();
+        $data = FriendshipLink::orderBy(DB::raw('sort is null,sort'))->get();
         $assign = [
             'data' => $data
         ];
