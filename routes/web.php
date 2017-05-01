@@ -141,6 +141,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 排序
         Route::post('sort', 'FriendshipLinkController@sort');
     });
+
+    // 随言碎语管理
+    Route::group(['prefix' => 'chat'], function () {
+        // 随言碎语列表
+        Route::get('index', 'ChatController@index');
+        // 添加随言碎语
+        Route::get('create', 'ChatController@create');
+        Route::post('store', 'ChatController@store');
+        // 编辑随言碎语
+        Route::get('edit/{id}', 'ChatController@edit');
+        Route::post('update/{id}', 'ChatController@update');
+    });
 });
 
 /**

@@ -71,6 +71,12 @@
                                     <li><a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a><i class="fa fa-th"></i> 随言碎语 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ url('admin/chat/index') }}">随言碎语列表</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
