@@ -16,7 +16,7 @@ class OauthUserController extends Controller
     public function index()
     {
         $data = OauthUser::orderBy('updated_at', 'desc')
-            ->select('id', 'name', 'type', 'email', 'login_times', 'created_at', 'updated_at')
+            ->select('id', 'name', 'type', 'email', 'login_times', 'is_admin', 'created_at', 'updated_at')
             ->paginate(50);
         $assign = [
             'data' => $data
