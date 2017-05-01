@@ -4,6 +4,36 @@ namespace App\Models;
 
 class FriendshipLink extends Base
 {
+
+    /**
+     * 添加数据
+     *
+     * @param array $data
+     * @return bool
+     */
+    public function addData($data)
+    {
+        // 如果排序是空；则设置为null
+        $data['sort'] = empty($data['sort']) ? null : $data['sort'];
+        return parent::addData($data);
+    }
+
+    /**
+     * 修改数据
+     *
+     * @param array $map
+     * @param array $data
+     * @return bool
+     */
+    public function editData($map, $data)
+    {
+        // 如果要修改sort；且sort是空；则设置为null
+        if (isset($data['sort']) && empty($data['sort'])) {
+            $data['sort'] = null;
+        }
+        return parent::editData($map, $data);
+    }
+
     /**
      * 给url添加http 或者删除/
      *
