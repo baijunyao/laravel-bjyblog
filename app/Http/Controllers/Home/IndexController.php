@@ -163,6 +163,15 @@ class IndexController extends Controller
         if (empty(session('user.id'))) {
             die('未登录');
         }
+        // 限制用户每天最多评论10条
+        $date = date('Y-m-d', time());
+        $count = $commentModel
+            ->where('oauth_user_id', session('user.id'))
+            ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
+            ->count();
+        if (session('user.is_admin') !=1 && $count > 10) {
+            die('每天做多评论10条');
+        }
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
         if (preg_match($pattern, $data['email'])) {
