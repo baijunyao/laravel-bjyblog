@@ -17,9 +17,8 @@
             <a href="">编辑友情链接</a>
         </li>
     </ul>
-    <form class="form-horizontal " action="{{ url('admin/friendshipLink/update') }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/friendshipLink/update', [$data->id]) }}" method="post">
         {{ csrf_field() }}
-        <input type="hidden" name="id" value="{{ $data->id }}">
         <table class="table table-striped table-bordered table-hover">
             <tr>
                 <th>名称</th>

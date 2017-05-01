@@ -42,26 +42,9 @@ class FriendshipLinkController extends Controller
     public function store(Store $request, FriendshipLink $friendshipLinkModel)
     {
         $data = $request->except('_token');
-        // 如果没有http 则补上http
-        if (strpos($data['url'], 'http') === false) {
-            $data['url'] = 'http://'.$data['url'];
-        }
-        // 删除右侧的/
-        $data['url'] = rtrim($data['url'], '/');
         $friendshipLinkModel->addData($data);
         return redirect('admin/friendshipLink/index');
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -72,7 +55,11 @@ class FriendshipLinkController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = FriendshipLink::find($id);
+        $assign = [
+            'data' => $data
+        ];
+        return view('admin/friendshipLink/edit', $assign);
     }
 
     /**
@@ -82,11 +69,23 @@ class FriendshipLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Store $request, $id, FriendshipLink $friendshipLinkModel)
     {
-        //
+        $map = [
+            'id' => $id
+        ];
+        $data = $request->except('_token');
+        $friendshipLinkModel->editData($map, $data);
+        return redirect()->back();
     }
 
+    /**
+     * 排序
+     *
+     * @param Request $request
+     * @param FriendshipLink $friendshipLinkModel
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sort(Request $request, FriendshipLink $friendshipLinkModel)
     {
         $data = $request->except('_token');
