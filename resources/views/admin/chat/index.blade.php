@@ -7,6 +7,15 @@
 @section('description', '博客随言碎语')
 
 @section('content')
+    <ul id="myTab" class="nav nav-tabs bar_tabs">
+        <li class="active">
+            <a href="{{ url('admin/chat/index') }}">随言碎语列表</a>
+        </li>
+        <li>
+            <a href="{{ url('admin/chat/create') }}">添加随言碎语</a>
+        </li>
+    </ul>
+
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>id</th>

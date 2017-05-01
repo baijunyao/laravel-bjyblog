@@ -31,7 +31,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/chat/create');
     }
 
     /**
