@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', '第三方用户列表')
+@section('title', '友情链接列表')
 
-@section('nav', '第三方用户列表')
+@section('nav', '友情链接列表')
 
-@section('description', '博客第三方用户')
+@section('description', '博客友情链接')
 
 @section('content')
 
