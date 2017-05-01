@@ -95,7 +95,6 @@ class Comment extends Base
                 $subject = $name. '评论了 '. $title;
                 sendEmail($parentData['email'], $parentData['name'], $subject, $emailData, 'emails.commentArticle');
             }
-
         }
         return $id;
     }

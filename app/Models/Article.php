@@ -125,6 +125,7 @@ class Article extends Base
         $data = $this->select('articles.*', 'c.name as category_name')
             ->join('categories as c', 'articles.category_id', 'c.id')
             ->where('articles.id', $id)
+            ->withTrashed()
             ->first();
         $articleTag = new ArticleTag();
         $tag = $articleTag->getTagNameByArticleIds([$id]);

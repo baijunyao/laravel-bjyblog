@@ -61,7 +61,6 @@ class IndexController extends Controller
 
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
-
         $assign = [
             'category_id' => $data->category_id,
             'data' => $data,
