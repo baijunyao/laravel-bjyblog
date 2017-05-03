@@ -45,12 +45,22 @@ class OAuthController extends Controller
         ];
         // 获取用户资料
         $user = Socialite::driver($service)->user();
+        // 组合存入session中的值
+        $sessionData = [
+            'user' => [
+                'name' => $user->nickname,
+                'avatar' => $user->avatar,
+                'type' => $type[$service],
+            ]
+        ];
         // 查找此用户是否已经登录过
         $countMap = [
             'type' => $type[$service],
             'openid' => $user->id
         ];
-        $oldUserData = $oauthUserModel->select('id', 'login_times', 'is_admin', 'email')->where($countMap)->first();
+        $oldUserData = $oauthUserModel->select('id', 'login_times', 'is_admin', 'email')
+            ->where($countMap)
+            ->first();
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         if ($oldUserData) {
             $editMap = [
@@ -64,7 +74,9 @@ class OAuthController extends Controller
                 'login_times' => $oldUserData->login_times+1,
             ];
             $oauthUserModel->editData($editMap, $editData);
-            $user_id = $oldUserData->id;
+            $sessionData['user']['id'] = $oldUserData->id;
+            $sessionData['user']['email'] = $oldUserData->email;
+            $sessionData['user']['is_admin'] = $oldUserData->is_admin;
         } else {
             $data = [
                 'type' => $type[$service],
@@ -75,20 +87,14 @@ class OAuthController extends Controller
                 'last_login_ip' => $request->getClientIp(),
                 'login_times' => 1,
                 'is_admin' => 0,
+                'email' => ''
             ];
-            $user_id = $oauthUserModel->addData($data);
+            $userId = $oauthUserModel->addData($data);
+            $sessionData['user']['id'] = $userId;
+            $sessionData['user']['email'] = '';
+            $sessionData['user']['is_admin'] = 0;
+
         }
-        // 组合存入session中的值
-        $sessionData = [
-            'user' => [
-                'id' => $user_id,
-                'name' => $user->nickname,
-                'avatar' => $user->avatar,
-                'type' => $type[$service],
-                'is_admin' => 0,
-                'email' => $oldUserData->email
-            ]
-        ];
         // 将数据存入数据库
         session($sessionData);
         // 如果session没有存储登录前的页面;则直接返回到首页
