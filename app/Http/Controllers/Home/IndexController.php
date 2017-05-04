@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use DB;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Chat;
@@ -43,6 +44,23 @@ class IndexController extends Controller
     {
         // 获取文章数据
         $data = $article->getDataById($id);
+
+        // 设置同一个用户访问同一篇文章只增加1个访问量
+        $read = request()->cookie('read', []);
+        // 判断是否已经记录过id
+        if (array_key_exists($id, $read)) {
+            // 判断点击本篇文章的时间是否已经超过一天
+            if ($read[$id]-time() >= 86400) {
+                $read[$id] = time();
+                // 文章点击量+1
+                $data->increment('click');
+            }
+        }else{
+            $read[$id] = time();
+            // 文章点击量+1
+            $data->increment('click');
+        }
+        
         // 获取上一篇
         $prev = $article
             ->select('id', 'title')
@@ -68,7 +86,7 @@ class IndexController extends Controller
             'next' => $next,
             'comment' => $comment
         ];
-        return view('home/index/article', $assign);
+        return response()->view('home/index/article', $assign)->cookie('read', $read, 1440);
     }
 
     /**
