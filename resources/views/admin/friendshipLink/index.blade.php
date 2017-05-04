@@ -10,13 +10,13 @@
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/chat/index') }}">友情链接列表</a>
+            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
         </li>
         <li>
-            <a href="{{ url('admin/chat/create') }}">添加友情链接</a>
+            <a href="{{ url('admin/friendshipLink/create') }}">添加友情链接</a>
         </li>
     </ul>
-    <form action="{{ url('admin/chat/sort') }}" method="post">
+    <form action="{{ url('admin/friendshipLink/sort') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
@@ -35,8 +35,8 @@
                     <td>{{ $v->name }}</td>
                     <td><a href="{{ $v->url }}" target="_blank">{{ $v->url }}</a></td>
                     <td>
-                        <a href="{{ url('admin/chat/edit', [$v->id]) }}">编辑</a> |
-                        <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/chat/destroy', [$v->id]) }}'">删除</a>
+                        <a href="{{ url('admin/friendshipLink/edit', [$v->id]) }}">编辑</a> |
+                        <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/friendshipLink/destroy', [$v->id]) }}'">删除</a>
                     </td>
                 </tr>
             @endforeach

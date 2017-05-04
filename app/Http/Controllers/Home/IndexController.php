@@ -60,7 +60,7 @@ class IndexController extends Controller
             // 文章点击量+1
             $data->increment('click');
         }
-        
+
         // 获取上一篇
         $prev = $article
             ->select('id', 'title')
