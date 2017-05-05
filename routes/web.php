@@ -106,8 +106,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
     // 评论管理
     Route::group(['prefix' => 'comment'], function () {
-        // 后台首页
+        // 评论列表
         Route::get('index', 'CommentController@index');
+        // 删除评论
+        Route::get('destroy/{id}', 'CommentController@destroy');
     });
 
     // 管理员
