@@ -9,11 +9,11 @@
 @section('content')
     <table class="table table-striped table-bordered table-hover">
         <tr>
-            <th>id</th>
+            <th width="5%">id</th>
             <th>用户名</th>
             <th>邮箱</th>
-            <th>创建日期</th>
-            <th>操作</th>
+            <th width="15%">创建日期</th>
+            <th width="10%">操作</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
