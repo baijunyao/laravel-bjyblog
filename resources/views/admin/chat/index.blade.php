@@ -18,8 +18,8 @@
 
     <table class="table table-striped table-bordered table-hover">
         <tr>
-            <th width="10%">id</th>
-            <th width="65%">内容</th>
+            <th width="5%">id</th>
+            <th width="70%">内容</th>
             <th width="15%">添加日期</th>
             <th width="10%">操作</th>
         </tr>
