@@ -97,6 +97,7 @@ class ChatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Chat::destroy($id);
+        return redirect('admin/chat/index');
     }
 }

@@ -152,6 +152,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 编辑随言碎语
         Route::get('edit/{id}', 'ChatController@edit');
         Route::post('update/{id}', 'ChatController@update');
+        // 删除随言碎语
+        Route::get('destroy/{id}', 'ChatController@destroy');
     });
 });
 

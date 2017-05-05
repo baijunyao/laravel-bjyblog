@@ -31,7 +31,7 @@
                 <td>
                     <a href="{{ url('admin/chat/edit', [$v->id]) }}">编辑</a>
                     |
-                    <a href="{{ url('admin/chat/destroy', [$v->id]) }}">删除</a>
+                    <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/chat/destroy', [$v->id]) }}'">删除</a>
                 </td>
             </tr>
         @endforeach
