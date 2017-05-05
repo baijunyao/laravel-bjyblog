@@ -9,6 +9,7 @@
 @section('content')
     <table class="table table-striped table-bordered table-hover">
         <tr>
+            <th>id</th>
             <th>用户名</th>
             <th>邮箱</th>
             <th>创建日期</th>
@@ -16,6 +17,7 @@
         </tr>
         @foreach($data as $k => $v)
             <tr>
+                <td>{{ $v->id }}</td>
                 <td>{{ $v->name }}</td>
                 <td>{{ $v->email }}</td>
                 <td>{{ $v->created_at }}</td>
