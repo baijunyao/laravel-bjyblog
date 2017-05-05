@@ -95,9 +95,12 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Chat $chatModel)
     {
-        Chat::destroy($id);
+        $map = [
+            'id' => $id
+        ];
+        $chatModel->deleteData($map);
         return redirect('admin/chat/index');
     }
 }
