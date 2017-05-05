@@ -22,7 +22,7 @@
             <tr>
                 <th>内容</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="content" cols="40" rows="10" placeholder="随言碎语内容">{{ old('description') }}</textarea>
+                    <textarea class="form-control modal-sm" name="content" cols="40" rows="10" placeholder="随言碎语内容">{{ old('content') }}</textarea>
                 </td>
             </tr>
             <tr>

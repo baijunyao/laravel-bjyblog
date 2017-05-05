@@ -64,7 +64,11 @@ class ChatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Chat::find($id);
+        $assign = [
+            'data' => $data
+        ];
+        return view('admin/chat/edit', $assign);
     }
 
     /**
@@ -74,9 +78,15 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Chat $chatModel)
     {
-        //
+        $data = $request->except('_token');
+        $map = [
+            'id' => $id
+        ];
+        $chatModel->editData($map, $data);
+        return redirect()->back();
+
     }
 
     /**
