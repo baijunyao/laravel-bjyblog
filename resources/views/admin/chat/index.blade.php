@@ -18,17 +18,21 @@
 
     <table class="table table-striped table-bordered table-hover">
         <tr>
-            <th>id</th>
-            <th>内容</th>
-            <th>最近登录</th>
-            <th>操作</th>
+            <th width="10%">id</th>
+            <th width="65%">内容</th>
+            <th width="15%">添加日期</th>
+            <th width="10%">操作</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->content }}</td>
                 <td>{{ $v->created_at }}</td>
-                <td><a href="{{ url('admin/chat/edit', [$v->id]) }}">编辑</a></td>
+                <td>
+                    <a href="{{ url('admin/chat/edit', [$v->id]) }}">编辑</a>
+                    |
+                    <a href="{{ url('admin/chat/destroy', [$v->id]) }}">删除</a>
+                </td>
             </tr>
         @endforeach
     </table>
