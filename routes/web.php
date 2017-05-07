@@ -103,6 +103,22 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'ArticleController@destroy');
     });
 
+    // 分类管理
+    Route::group(['prefix' => 'category'], function () {
+        // 分类列表
+        Route::get('index', 'CategoryController@index');
+        // 添加分类
+        Route::get('create', 'CategoryController@create');
+        Route::post('store', 'CategoryController@store');
+        // 编辑分类
+        Route::get('edit/{id}', 'CategoryController@edit');
+        Route::post('update/{id}', 'CategoryController@update');
+        // 排序
+        Route::post('sort', 'CategoryController@sort');
+        // 删除分类
+        Route::get('destroy/{id}', 'CategoryController@destroy');
+    });
+
     // 评论管理
     Route::group(['prefix' => 'comment'], function () {
         // 评论列表
