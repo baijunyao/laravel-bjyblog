@@ -118,8 +118,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 编辑管理员
         Route::get('edit/{id}', 'UserController@edit');
         Route::post('update/{id}', 'UserController@update');
-        // 删除管理员
-        Route::get('destroy/{id}', 'UserController@destroy');
     });
 
     // 第三方用户管理
