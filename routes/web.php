@@ -91,17 +91,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'article'], function () {
         // 文章列表
         Route::get('index', 'ArticleController@index');
-
         // 发布文章
         Route::get('create', 'ArticleController@create');
         Route::post('store', 'ArticleController@store');
-
         // 编辑文章
         Route::get('edit/{id}', 'ArticleController@edit');
         Route::post('update/{id}', 'ArticleController@update');
-
         // 上传图片
         Route::post('upload_image', 'ArticleController@upload_image');
+        // 删除文章
+        Route::get('destroy/{id}', 'ArticleController@destroy');
     });
 
     // 评论管理
@@ -119,6 +118,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 编辑管理员
         Route::get('edit/{id}', 'UserController@edit');
         Route::post('update/{id}', 'UserController@update');
+        // 删除管理员
+        Route::get('destroy/{id}', 'UserController@destroy');
     });
 
     // 第三方用户管理
@@ -142,6 +143,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('update/{id}', 'FriendshipLinkController@update');
         // 排序
         Route::post('sort', 'FriendshipLinkController@sort');
+        // 删除友情链接
+        Route::get('destroy/{id}', 'FriendshipLinkController@destroy');
     });
 
     // 随言碎语管理
