@@ -137,8 +137,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Article $articleModel)
     {
-        //
+        $map = [
+            'id' => $id
+        ];
+        $articleModel->deleteData($map);
+        return redirect('admin/comment/index');
     }
 }
