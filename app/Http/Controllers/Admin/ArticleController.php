@@ -143,6 +143,6 @@ class ArticleController extends Controller
             'id' => $id
         ];
         $articleModel->deleteData($map);
-        return redirect('admin/comment/index');
+        return redirect('admin/article/index');
     }
 }

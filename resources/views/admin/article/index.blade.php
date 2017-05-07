@@ -36,7 +36,7 @@
                 <td>
                     <a href="{{ url('admin/article/edit', [$v->id]) }}">编辑/详情</a>
                     |
-                    <a href="{{ url('admin/article/destroy', [$v->id]) }}">删除</a>
+                    <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">删除</a>
                 </td>
             </tr>
         @endforeach
