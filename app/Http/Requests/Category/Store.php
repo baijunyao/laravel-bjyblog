@@ -24,7 +24,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
+            'name'=>'required|unique:categories,name,',
             'keywords'=>'required',
             'description'=>'required',
         ];

@@ -39,9 +39,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request)
+    public function store(Store $request, Category $categoryModel)
     {
-        //
+        $data = $request->except('_token');
+        $categoryModel->addData($data);
+        return redirect('admin/category/index');
     }
 
     /**
