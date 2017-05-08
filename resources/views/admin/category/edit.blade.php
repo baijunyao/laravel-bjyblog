@@ -1,50 +1,45 @@
 @extends('layouts.admin')
 
-@section('title', '编辑友情链接')
+@section('title', '编辑分类')
 
-@section('nav', '编辑友情链接')
+@section('nav', '编辑分类')
 
-@section('description', '编辑新的友情链接')
+@section('description', '编辑分类')
 
 @section('content')
-
-    <!-- 导航栏结束 -->
-    <ul id="myTab" class="nav nav-tabs bar_tabs">
-        <li>
-            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
-        </li>
-        <li class="active">
-            <a href="">编辑友情链接</a>
-        </li>
-    </ul>
-    <form class="form-horizontal " action="{{ url('admin/friendshipLink/update', [$data->id]) }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/category/update', [$data->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>名称</th>
+                <th>分类名</th>
                 <td>
-                    <input class="form-control" type="text" name="name" value="{{ $data->name }}">
+                    <input class="form-control" type="text" name="name" value="{{ $data['name'] }}">
                 </td>
             </tr>
             <tr>
-                <th>链接</th>
+                <th>关键字</th>
                 <td>
-                    <input class="form-control" type="text" name="url" value="{{ $data->url }}">
+                    <input class="form-control" type="text" name="keywords" value="{{ $data['keywords'] }}">
+                </td>
+            </tr>
+            <tr>
+                <th>描述</th>
+                <td>
+                    <input class="form-control" type="text" name="description" value="{{ $data['description'] }}">
                 </td>
             </tr>
             <tr>
                 <th>排序</th>
                 <td>
-                    <input class="form-control" type="text" name="sort" value="{{ $data->sort }}">
+                    <input class="form-control" type="text" name="sort" value="{{ $data['sort'] }}">
                 </td>
             </tr>
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="确认发布">
+                    <input class="btn btn-success" type="submit" value="确认">
                 </td>
             </tr>
         </table>
     </form>
-
 @endsection
