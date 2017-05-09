@@ -65,7 +65,8 @@
 @endsection
 
 @section('js')
-    
+    {{--githuh widget--}}
+    <script src="{{ asset('statics/js/jquery.githubRepoWidget.min.js') }}"></script>
     <script type="text/javascript">
         $(function(){
             $('.osc_git_box a,.github-widget a').attr('target','_blank');
