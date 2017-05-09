@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Chat\Store;
 use App\Models\Chat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,9 +41,11 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Store $request, Chat $chatModel)
     {
-        $data = $request->input('content');
+        $data = $request->only('content');
+        $chatModel->addData($data);
+        return redirect('admin/chat/index');
     }
 
     /**
