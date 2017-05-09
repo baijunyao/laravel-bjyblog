@@ -67,9 +67,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Update $request, $id)
+    public function update(Update $request, $id, Category $categoryModel)
     {
-        
+        $map = [
+            'id' => $id
+        ];
+        $data = $request->except('_token');
+        $categoryModel->editData($map, $data);
+        return redirect()->back();
     }
 
     /**
