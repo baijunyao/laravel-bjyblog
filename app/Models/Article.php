@@ -46,10 +46,11 @@ class Article extends Base
     /**
      * 给文章的插图添加水印;并取第一张图片作为封面图
      *
-     * @param $content
+     * @param $content        markdown格式的文章内容
+     * @param array $except   忽略加水印的图片
      * @return string
      */
-    public function getCover($content)
+    public function getCover($content, $except = [])
     {
         // 获取文章中的全部图片
         preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $content, $images);
@@ -60,7 +61,7 @@ class Article extends Base
             foreach ($images[1] as $k => $v) {
                 $image = explode(' ', $v);
                 $file = public_path().$image[0];
-                if (file_exists($file)) {
+                if (file_exists($file) && !in_array($v, $except)) {
                     AddTextWater($file, 'baijunyao.com');
                 }
 

@@ -107,35 +107,38 @@ class ArticleController extends Controller
      * 编辑文章
      *
      * @param Store $request
-     * @param Article $article
-     * @param ArticleTag $articleTag
+     * @param Article $articleModel
+     * @param ArticleTag $articleTagModel
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Store $request, Article $article, ArticleTag $articleTag, $id)
+    public function update(Store $request, Article $articleModel, ArticleTag $articleTagModel, $id)
     {
         $data = $request->except('_token');
+        $markdown = $articleModel->where('id', $id)->value('markdown');
+        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $markdown, $images);
         // 获取封面并添加水印
-        $data['cover'] = $article->getCover($data['markdown']);
+        $data['cover'] = $articleModel->getCover($data['markdown'], $images[1]);
         // 为文章批量添加标签
         $tag_ids = $data['tag_ids'];
         // 把markdown转html
         $data['html'] = markdownToHtml($data['markdown']);
         unset($data['tag_ids']);
-        $articleTag->addTagIds($id, $tag_ids);
+        $articleTagModel->addTagIds($id, $tag_ids);
         // 编辑文章
         $map = [
             'id' => $id
         ];
-        $article->editData($map, $data);
+        $articleModel->editData($map, $data);
         return redirect()->back();
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除文章
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @param Article $articleModel
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id, Article $articleModel)
     {
