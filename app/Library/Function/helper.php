@@ -271,7 +271,6 @@ if ( !function_exists('wordTime') ) {
 }
 
 if ( !function_exists('markdownToHtml') ) {
-
 	/**
 	 * 把markdown转为html
 	 *
@@ -309,7 +308,6 @@ if ( !function_exists('markdownToHtml') ) {
 }
 
 if ( !function_exists('stripHtmlTags') ) {
-
 	/**
 	 * 删除指定标签
 	 *
@@ -334,6 +332,19 @@ if ( !function_exists('stripHtmlTags') ) {
 		$data = preg_replace($html, '', $str);
 		return $data;
 	}
+}
 
-
+if (!function_exists('flashMessage')){
+    /**
+     * 添加成功或者失败的提示
+     *
+     * @param string $message
+     * @param bool $success
+     */
+    function flashMessage($message = '成功', $success = true)
+    {
+        $className = $success ? 'alert-success' : 'alert-danger';
+        session()->flash('alert-message', $message);
+        session()->flash('alert-class', $className);
+    }
 }
