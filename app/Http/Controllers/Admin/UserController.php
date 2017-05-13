@@ -79,6 +79,8 @@ class UserController extends Controller
     public function update(Request $request, $id, User $userModel)
     {
         $data = $request->except('_token');
+        // 如果不修改密码 则去掉password字段
+        $data = array_filter($data);
         $map = [
             'id' => $id
         ];
