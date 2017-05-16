@@ -119,6 +119,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'CategoryController@destroy');
     });
 
+    // 分类管理
+    Route::group(['prefix' => 'tag'], function () {
+        // 分类列表
+        Route::get('index', 'TagController@index');
+        // 添加分类
+        Route::get('create', 'TagController@create');
+        Route::post('store', 'TagController@store');
+        // 编辑分类
+        Route::get('edit/{id}', 'TagController@edit');
+        Route::post('update/{id}', 'TagController@update');
+        // 删除分类
+        Route::get('destroy/{id}', 'TagController@destroy');
+    });
+
     // 评论管理
     Route::group(['prefix' => 'comment'], function () {
         // 评论列表
