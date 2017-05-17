@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,9 +13,11 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tag $tagModel)
     {
-        //
+        $data = $tagModel->all();
+        $assign = compact('data');
+        return view('admin/tag/index', $assign);
     }
 
     /**
