@@ -47,25 +47,16 @@ class TagController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, Tag $tagModel)
     {
-        //
+        $data = $tagModel->find($id);
+        $assign = compact('data');
+        return view('admin/tag/edit', $assign);
     }
 
     /**
