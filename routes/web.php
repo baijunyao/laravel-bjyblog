@@ -119,17 +119,17 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'CategoryController@destroy');
     });
 
-    // 分类管理
+    // 标签管理
     Route::group(['prefix' => 'tag'], function () {
-        // 分类列表
+        // 标签列表
         Route::get('index', 'TagController@index');
-        // 添加分类
+        // 添加标签
         Route::get('create', 'TagController@create');
         Route::post('store', 'TagController@store');
-        // 编辑分类
+        // 编辑标签
         Route::get('edit/{id}', 'TagController@edit');
         Route::post('update/{id}', 'TagController@update');
-        // 删除分类
+        // 删除标签
         Route::get('destroy/{id}', 'TagController@destroy');
     });
 
