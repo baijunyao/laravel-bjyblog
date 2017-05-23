@@ -146,7 +146,7 @@
         <footer id="b-foot" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul>
                 <li class="text-center">
-                    本站使用自主开发的<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a>开源博客程序搭建  © 2014-2016 baijunyao.com 版权所有 ICP证：豫ICP备14009546号-3
+                    本站使用自主开发的<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a>开源博客程序搭建  © 2014-2017 baijunyao.com 版权所有 ICP证：豫ICP备14009546号-3
                 </li>
                 <li class="text-center">
                     联系邮箱：{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}
