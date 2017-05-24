@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title', '白俊遥博客,技术博客,个人博客模板, php博客系统')
+@section('title', $title)
 
 @section('keywords', '个人博客系统,个人博客模板,thinkphp博客,php博客,技术博客,白俊遥')
 

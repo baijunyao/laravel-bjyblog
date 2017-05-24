@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Category;
 use DB;
 use App\Models\Article;
 use App\Models\ArticleTag;
@@ -27,7 +28,8 @@ class IndexController extends Controller
         $assign = [
             'category_id' => 'index',
             'article' => $article,
-            'tagName' => ''
+            'tagName' => '',
+            'title' => '白俊遥博客,技术博客,个人博客模板, php博客系统'
         ];
 		return view('home/index/index', $assign);
 	}
@@ -102,10 +104,12 @@ class IndexController extends Controller
             'articles.category_id' => $id
         ];
         $article = $articleModel->getHomeList($map);
+        $categoryName = Category::where('id', $id)->value('name');
         $assign = [
             'category_id' => $id,
             'article' => $article,
-            'tagName' => ''
+            'tagName' => '',
+            'title' => $categoryName
         ];
         return view('home/index/index', $assign);
     }
@@ -133,7 +137,8 @@ class IndexController extends Controller
         $assign = [
             'category_id' => 'index',
             'article' => $article,
-            'tagName' => $tagName
+            'tagName' => $tagName,
+            'title' => $tagName
         ];
         return view('home/index/index', $assign);
 
