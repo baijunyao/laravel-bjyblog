@@ -15,7 +15,7 @@ class OschinaController extends Controller
         $data = request()->all();
         if ($data['password'] === env('OSCHINA_HOOK_PASSWORD')) {
             // 拉取并 composer update
-            shell_exec('cd '.base_path().' && git pull && composer update');
+            shell_exec('cd '.base_path().' && git pull && composer install');
         }
     }
 }
