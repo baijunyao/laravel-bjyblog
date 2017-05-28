@@ -229,6 +229,12 @@ class IndexController extends Controller
         }
     }
 
+    /**
+     * 搜索文章
+     *
+     * @param Article $articleModel
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Article $articleModel){
         $wd = request()->input('wd');
         $map = [
@@ -239,6 +245,7 @@ class IndexController extends Controller
             'category_id' => 'index',
             'article' => $article,
             'tagName' => '',
+            'title' => $wd
         ];
         return view('home/index/index', $assign);
     }
