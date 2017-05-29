@@ -66,9 +66,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Tag $tagModel)
     {
-        //
+        $map = [
+            'id' => $id
+        ];
+        $data = $request->except('_token');
+        $tagModel->editData($map, $data);
+        return redirect()->back();
     }
 
     /**
