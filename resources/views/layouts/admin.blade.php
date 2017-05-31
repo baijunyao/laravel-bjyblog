@@ -89,6 +89,12 @@
                                     <li><a href="{{ url('admin/chat/index') }}">随言碎语列表</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a><i class="fa fa-th"></i> 系统设置 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ url('admin/config/index') }}">设置列表</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
