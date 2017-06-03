@@ -188,6 +188,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 删除随言碎语
         Route::get('destroy/{id}', 'ChatController@destroy');
     });
+
+    // 配置项管理
+    Route::group(['prefix' => 'config'], function () {
+        // 编辑配置项
+        Route::get('edit', 'ConfigController@edit');
+        Route::post('update', 'ConfigController@update');
+
+    });
 });
 
 /**
