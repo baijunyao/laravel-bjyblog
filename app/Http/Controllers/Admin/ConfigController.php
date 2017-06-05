@@ -17,7 +17,6 @@ class ConfigController extends Controller
     public function edit()
     {
         $data = Config::all();
-        p($data);die;
         $assign = compact('data');
         return view('admin/config/edit', $assign);
     }
