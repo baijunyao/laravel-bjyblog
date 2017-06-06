@@ -56,9 +56,8 @@ class Comment extends Base
         }
         // 获取文章标题
         $title = Article::where('id', $data['article_id'])->value('title');
-        $isSendEmail = Config::where('name', 'COMMENT_SEND_EMAIL')->value('value');
         // 给站长发送通知邮件
-        if($isSendEmail && $isAdmin == 0){
+        if($isAdmin == 0){
             $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
             if (!empty($address)) {
                 $title = Article::where('id', $data['article_id'])->value('title');
@@ -76,7 +75,7 @@ class Comment extends Base
             }
         }
         // 给用户发送邮件通知
-        if ($isSendEmail && $data['pid']!=0) {
+        if ($data['pid']!=0) {
             $parent_user_id = Comment::where('id', $data['pid'])->value('oauth_user_id');
             $parentData = OauthUser::select('name', 'email')
                 ->where('id', $parent_user_id)
