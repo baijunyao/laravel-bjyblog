@@ -7,10 +7,10 @@
 @section('description', '配置项')
 
 @section('content')
-    <form action="">
+    <form class="form-inline" action="{{ url('admin/config/update') }}" method="post">
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>网站状态：</th>
+                <th width="20%">网站状态：</th>
                 <td>
                     <span class="inputword">开启</span>
                     <input class="icheck" type="radio" name="WEB_STATUS" value="1">
@@ -160,6 +160,12 @@
                 <th>接收评论通知邮箱：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="EMAIL_RECEIVE" value="{{  $data['EMAIL_RECEIVE'] }}" >
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input class="btn btn-success" type="submit" value="提交">
                 </td>
             </tr>
         </table>
