@@ -32,8 +32,18 @@ class ConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Config $configModel)
     {
-
+        $data = $request->except('_token');
+        foreach ($data as $k => $v) {
+            $editMap = [
+                'name' => $k
+            ];
+            $editData = [
+                'value' => $v
+            ];
+            $configModel->editData($editMap, $editData);
+        }
+        return redirect('admin/config/edit');
     }
 }

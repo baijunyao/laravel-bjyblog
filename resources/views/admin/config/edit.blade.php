@@ -2,6 +2,10 @@
 
 @section('title', '配置项')
 
+@section('css')
+    <link href="{{ asset('statics/gentelella/vendors/iCheck/skins/square/blue.css') }}" rel="stylesheet">
+@endsection
+
 @section('nav', '配置项')
 
 @section('description', '配置项')
@@ -9,13 +13,14 @@
 @section('content')
     <form class="form-inline" action="{{ url('admin/config/update') }}" method="post">
         <table class="table table-striped table-bordered table-hover">
+            {{ csrf_field() }}
             <tr>
                 <th width="20%">网站状态：</th>
                 <td>
                     <span class="inputword">开启</span>
-                    <input class="icheck" type="radio" name="WEB_STATUS" value="1">
+                    <input class="bjy-icheck" type="radio" name="WEB_STATUS" value="1" @if($data['WEB_STATUS'] ==1) checked @endif>
                     <span class="inputword">关闭</span>
-                    <input class="icheck" type="radio" name="WEB_STATUS" value="0">
+                    <input class="bjy-icheck" type="radio" name="WEB_STATUS" value="0" @if($data['WEB_STATUS'] ==0) checked @endif>
                 </td>
             </tr>
             <tr>
@@ -170,4 +175,17 @@
             </tr>
         </table>
     </form>
+@endsection
+
+@section('js')
+    <script src="{{ asset('statics/gentelella/vendors/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.bjy-icheck').iCheck({
+                checkboxClass: 'icheckbox_square-red',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
 @endsection
