@@ -30,7 +30,7 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="{{ asset('statics/gentelella/production/images/img.jpg') }}" alt="..." class="img-circle profile_img">
+                        <img src="{{ session('user.avatar') }}" class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
