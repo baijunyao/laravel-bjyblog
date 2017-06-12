@@ -6,6 +6,7 @@ use App\Http\Requests\Article\Store;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
+use App\Models\Config;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,9 +37,11 @@ class ArticleController extends Controller
     {
         $category = Category::all();
         $tag = Tag::all();
+        $author = Config::where('name', 'AUTHOR')->value('value');
         $assign = [
             'category' => $category,
-            'tag' => $tag
+            'tag' => $tag,
+            'author' => $author
         ];
         return view('admin/article/create', $assign);
     }
