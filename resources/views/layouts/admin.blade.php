@@ -47,7 +47,7 @@
                         <h3>General</h3>
                         <ul class="nav side-menu">
                             <li>
-                                <a><i class="fa fa-th"></i> 文章管理 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-book"></i> 文章管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/article/index') }}">文章列表</a></li>
                                 </ul>
@@ -59,38 +59,38 @@
                                 </ul>
                             </li>
                             <li>
-                                <a><i class="fa fa-th"></i> 标签管理 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-tags"></i> 标签管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/tag/index') }}">标签列表</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a><i class="fa fa-th"></i> 评论管理 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-comments"></i> 评论管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/comment/index') }}">评论列表</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a><i class="fa fa-th"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-users"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/user/index') }}">管理员列表</a></li>
                                     <li><a href="{{ url('admin/oauthUser/index') }}">第三方用户列表</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a><i class="fa fa-th"></i> 友情链接 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-link"></i> 友情链接 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a><i class="fa fa-th"></i> 随言碎语 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-commenting"></i> 随言碎语 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/chat/index') }}">随言碎语列表</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a><i class="fa fa-th"></i> 系统设置 <span class="fa fa-chevron-down"></span></a>
+                                <a><i class="fa fa-cogs"></i> 系统设置 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/config/edit') }}">设置列表</a></li>
                                 </ul>
