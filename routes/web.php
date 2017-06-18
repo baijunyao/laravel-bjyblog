@@ -39,11 +39,8 @@ Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
     Route::group(['prefix' => 'migration'], function () {
         // 从旧系统迁移数据
         Route::get('index', 'MigrationController@index');
-
         // 只迁移第三方用户和评论数据
-        Route::get('oauthUserAndcomment', 'MigrationController@oauthUserAndcomment');
-        // 从文件中迁移文章
-        Route::get('getDataFromFile', 'MigrationController@getDataFromFile');
+        Route::get('comment', 'MigrationController@comment');
     });
 });
 

@@ -204,88 +204,8 @@ class MigrationController extends Controller
         file_put_contents(storage_path('lock/migration.lock'), '');
     }
 
-    /**
-     * 单独迁移第三方用户和评论表
-     *
-     * @param OauthUser $oauthUserModel
-     * @param Comment $commentModel
-     */
-    public function oauthUserAndcomment(OauthUser $oauthUserModel, Comment $commentModel)
-    {
-        // 迁移第三方登录用户表
-        $data = DB::connection('old')->table('oauth_user')->get()->toArray();
-        $oauthUserModel->truncate();
-        foreach ($data as $v) {
-            $oauthUserData = [
-                'id' => $v->id,
-                'type' => $v->type,
-                'name' => $v->nickname,
-                'avatar' => $v->head_img,
-                'openid' => $v->openid,
-                'access_token' => $v->access_token,
-                'last_login_ip' => $v->last_login_ip,
-                'login_times' => $v->login_times,
-                'email' => $v->email,
-                'is_admin' => $v->is_admin
-            ];
-            $oauthUserModel->addData($oauthUserData);
-            $editOauthUserMap = [
-                'id' => $v->id,
-            ];
-            $editOauthUserData = [
-                'created_at' => date('Y-m-d H:i:s', $v->create_time)
-            ];
-            $oauthUserModel->editData($editOauthUserMap, $editOauthUserData);
-        }
 
-        // 从旧系统中迁移评论
-        $data = DB::connection('old')->table('comment')->get()->toArray();
-        $commentModel->truncate();
-        foreach ($data as $v) {
-            $comment_data = [
-                'id' => $v->cmtid,
-                'oauth_user_id' => $v->ouid,
-                'type' => $v->type,
-                'pid' => $v->pid,
-                'article_id' => $v->aid,
-                'content' => str_replace('/Public/emote', '/statics/emoticon', $v->content),
-                'status' => $v->status,
-            ];
-            $commentModel->create($comment_data);
-            $editCommentMap = [
-                'id' => $v->cmtid,
-            ];
-            $editCommentData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
-            ];
-            $commentModel->editData($editCommentMap, $editCommentData);
-        }
-        echo '第三方用户和评论迁移完成';
-    }
 
-    /**
-     * 从md文件中迁移文章
-     *
-     * @param Article $articleModel
-     */
-    public function getDataFromFile(Article $articleModel)
-    {
-        $file = glob(storage_path('article/*.md'));
-        foreach ($file as $v) {
-            $id = basename($v, '.md');
-            $markdown = htmlspecialchars(file_get_contents($v));
-            $map = [
-                'id' => $id
-            ];
-            $data = [
-                'markdown' => $markdown,
-                'html' => markdownToHtml($markdown)
-            ];
-            $articleModel->editData($map, $data);
-
-        }
-        echo 'end';
-    }
 
 
 
