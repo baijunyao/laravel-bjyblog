@@ -205,7 +205,45 @@ class MigrationController extends Controller
     }
 
 
-
+    public function comment(Comment $commentModel)
+    {
+        // 从旧系统中迁移评论
+        $data = DB::connection('old')
+            ->table('comment')
+            ->orderBy('cmtid', 'desc')
+            ->get()
+            ->toArray();
+        $commentModel->truncate();
+        foreach ($data as $v) {
+            // 把img标签反转义
+            $content = htmlspecialchars_decode($v->content);
+            // 匹配图片
+            preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
+            $search = $img[0];
+            $replace = array_map(function ($v) {
+                return '['.$v.']';
+            }, $img[1]);
+            $content = str_replace($search, $replace, $content);
+            $content = strip_tags($content);
+            $comment_data = [
+                'id' => $v->cmtid,
+                'oauth_user_id' => $v->ouid,
+                'type' => $v->type,
+                'pid' => $v->pid,
+                'article_id' => $v->aid,
+                'content' => $content,
+                'status' => $v->status,
+            ];
+            $commentModel->create($comment_data);
+            $editCommentMap = [
+                'id' => $v->cmtid,
+            ];
+            $editCommentData = [
+                'created_at' => date('Y-m-d H:i:s', $v->date)
+            ];
+            $commentModel->editData($editCommentMap, $editCommentData);
+        }
+    }
 
 
 
