@@ -210,13 +210,14 @@ class MigrationController extends Controller
         // 从旧系统中迁移评论
         $data = DB::connection('old')
             ->table('comment')
+            // ->where('cmtid', 1614)
             ->orderBy('cmtid', 'desc')
             ->get()
             ->toArray();
         $commentModel->truncate();
         foreach ($data as $v) {
             // 把img标签反转义
-            $content = htmlspecialchars_decode($v->content);
+            $content = html_entity_decode(htmlspecialchars_decode($v->content));
             // 匹配图片
             preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
             $search = $img[0];
