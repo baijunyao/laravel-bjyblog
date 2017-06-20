@@ -11,8 +11,26 @@ namespace App\Models;
 
 class Comment extends Base
 {
+
+    public function getContentAttribute($value)
+    {
+
+    }
+
     // 用于递归
     private $child = [];
+
+    public function ubbToImage()
+    {
+        $ubb = ['Kiss', 'Love', 'Yeah', '啊！', '背扭', '顶', '抖胸', '88', '汗', '瞌睡', '鲁拉', '拍砖', '揉脸', '生日快乐', '摊手', '睡觉', '瘫坐', '无聊', '星星闪', '旋转', '也不行', '郁闷', '正Music', '抓墙', '撞墙至死', '歪头', '戳眼', '飘过', '互相拍砖', '砍死你', '扔桌子', '少林寺', '什么？', '转头', '我爱牛奶', '我踢', '摇晃', '晕厥', '在笼子里', '震荡'];
+        $count = count($ubb);
+        $image = [];
+
+        for ($i = 0; $i <= $count; $i++) {
+            $image[] = asset('static/emote/tuzki/t_');'<img src="http://'..'/Public/emote/tuzki/t_'+number+'.gif" title="'+alt[i-1]+'" alt="白俊遥博客">';
+        }
+
+    }
 
     /**
      * 添加数据
