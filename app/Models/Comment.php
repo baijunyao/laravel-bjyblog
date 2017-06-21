@@ -12,24 +12,36 @@ namespace App\Models;
 class Comment extends Base
 {
 
+    /**
+     * content 访问器 把 ubb格式的表情转为html标签
+     *
+     * @param $value
+     * @return mixed
+     */
     public function getContentAttribute($value)
     {
-
+        return $this->ubbToImage($value);
     }
 
     // 用于递归
     private $child = [];
 
-    public function ubbToImage()
+    /**
+     * ubb格式的表情转为html标签
+     *
+     * @param $content
+     * @return mixed
+     */
+    public function ubbToImage($content)
     {
-        $ubb = ['Kiss', 'Love', 'Yeah', '啊！', '背扭', '顶', '抖胸', '88', '汗', '瞌睡', '鲁拉', '拍砖', '揉脸', '生日快乐', '摊手', '睡觉', '瘫坐', '无聊', '星星闪', '旋转', '也不行', '郁闷', '正Music', '抓墙', '撞墙至死', '歪头', '戳眼', '飘过', '互相拍砖', '砍死你', '扔桌子', '少林寺', '什么？', '转头', '我爱牛奶', '我踢', '摇晃', '晕厥', '在笼子里', '震荡'];
+        $ubb = ['[Kiss]', '[Love]', '[Yeah]', '[啊！]', '[背扭]', '[顶]', '[抖胸]', '[88]', '[汗]', '[瞌睡]', '[鲁拉]', '[拍砖]', '[揉脸]', '[生日快乐]', '[摊手]', '[睡觉]', '[瘫坐]', '[无聊]', '[星星闪]', '[旋转]', '[也不行]', '[郁闷]', '[正Music]', '[抓墙]', '[撞墙至死]', '[歪头]', '[戳眼]', '[飘过]', '[互相拍砖]', '[砍死你]', '[扔桌子]', '[少林寺]', '[什么？]', '[转头]', '[我爱牛奶]', '[我踢]', '[摇晃]', '[晕厥]', '[在笼子里]', '[震荡]'];
         $count = count($ubb);
         $image = [];
-
-        for ($i = 0; $i <= $count; $i++) {
-            $image[] = asset('static/emote/tuzki/t_');'<img src="http://'..'/Public/emote/tuzki/t_'+number+'.gif" title="'+alt[i-1]+'" alt="白俊遥博客">';
+        // 循环生成img标签
+        for ($i = 1; $i <= $count; $i++) {
+            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="白俊遥博客">';
         }
-
+        return str_replace($ubb, $image, $content);
     }
 
     /**
@@ -134,13 +146,14 @@ class Comment extends Base
             // 截取文章标题
             $data[$k]->title = reSubstr($v->title, 0, 20);
             // 处理有表情时直接截取会把img表情截断的问题
-            $content = strip_tags(htmlspecialchars_decode($v->content));
+            $content = strip_tags($v->content);
             if (mb_strlen($content) > 10) {
                 $data[$k]->content = reSubstr($content,0,40);
             }else{
-                $data[$k]->content = htmlspecialchars_decode($v->content);
+                $data[$k]->content = $v->content;
             }
         }
+        // p($data);die;
         return $data;
     }
 
