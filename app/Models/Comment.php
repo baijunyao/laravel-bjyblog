@@ -45,6 +45,27 @@ class Comment extends Base
     }
 
     /**
+     * img格式的表情转为ubb格式
+     *
+     * @param $content
+     * @return mixed|string
+     */
+    public function imageToUbb($content)
+    {
+        $content = html_entity_decode(htmlspecialchars_decode($content));
+        // 删标签 去空格 转义
+        $content = strip_tags(trim($content));
+        preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
+        $search = $img[0];
+        $replace = array_map(function ($v) {
+            return '['.$v.']';
+        }, $img[1]);
+        $content = str_replace($search, $replace, $content);
+        $content = strip_tags($content);
+        return $content;
+    }
+
+    /**
      * 添加数据
      *
      * @param array $data
@@ -56,12 +77,7 @@ class Comment extends Base
         $name = session('user.name');
 
         $isAdmin = OauthUser::where('id', $user_id)->value('is_admin');
-
-        $data['content'] = htmlspecialchars_decode($data['content']);
-        $data['content'] = preg_replace('/on.+=/i', '', $data['content']);
-        // 删除除img外的其他标签
-        $comment_content = trim(strip_tags($data['content'],'<img>'));
-        $content = htmlspecialchars($comment_content);
+        $content = $this->imageToUbb($data['content']);
         if (empty($content)) {
             return false;
         }
@@ -98,7 +114,7 @@ class Comment extends Base
                     'type' => '评论',
                     'url' => url('article', [$data['article_id']]),
                     'title' => $title,
-                    'content' => $comment_content
+                    'content' => $this->ubbToImage($content)
                 ];
                 $subject = $name. '评论了 '. $title;
                 sendEmail($address, '站长', $subject, $emailData, 'emails.commentArticle');
@@ -153,7 +169,6 @@ class Comment extends Base
                 $data[$k]->content = $v->content;
             }
         }
-        // p($data);die;
         return $data;
     }
 

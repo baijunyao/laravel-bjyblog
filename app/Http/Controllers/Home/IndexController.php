@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Http\Requests\Comment\Store;
 use App\Models\Category;
 use DB;
 use App\Models\Article;
@@ -177,9 +178,10 @@ class IndexController extends Controller
      *
      * @param Comment $commentModel
      */
-    public function comment(Comment $commentModel, OauthUser $oauthUserModel)
+    public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
-        $data = request()->all();
+        $data = $request->all();
+        p($data);die;
         if (empty($data['content'])) {
             die('内容不能为空');
         }
