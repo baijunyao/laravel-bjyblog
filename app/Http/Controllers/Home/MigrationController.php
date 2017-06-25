@@ -106,16 +106,31 @@ class MigrationController extends Controller
         }
 
         // 从旧系统中迁移评论
-        $data = DB::connection('old')->table('comment')->get()->toArray();
+        $data = DB::connection('old')
+            ->table('comment')
+            // ->where('cmtid', 1614)
+            ->orderBy('cmtid', 'desc')
+            ->get()
+            ->toArray();
         $commentModel->truncate();
         foreach ($data as $v) {
+            // 把img标签反转义
+            $content = html_entity_decode(htmlspecialchars_decode($v->content));
+            // 匹配图片
+            preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
+            $search = $img[0];
+            $replace = array_map(function ($v) {
+                return '['.$v.']';
+            }, $img[1]);
+            $content = str_replace($search, $replace, $content);
+            $content = strip_tags($content);
             $comment_data = [
                 'id' => $v->cmtid,
                 'oauth_user_id' => $v->ouid,
                 'type' => $v->type,
                 'pid' => $v->pid,
                 'article_id' => $v->aid,
-                'content' => str_replace('/Public/emote', '/statics/emoticon', $v->content),
+                'content' => $content,
                 'status' => $v->status,
             ];
             $commentModel->create($comment_data);
@@ -203,73 +218,4 @@ class MigrationController extends Controller
         // 迁移完成创建锁文件
         file_put_contents(storage_path('lock/migration.lock'), '');
     }
-
-    public function comment(Comment $commentModel)
-    {
-        $data = $commentModel->orderBy('id', 'desc')->get();
-        foreach ($data as $v) {
-            // 把img标签反转义
-            $content = html_entity_decode(htmlspecialchars_decode($v->content));
-            // 匹配图片
-            preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
-            $search = $img[0];
-            $replace = array_map(function ($v) {
-                return '['.$v.']';
-            }, $img[1]);
-            $content = str_replace($search, $replace, $content);
-            $content = strip_tags($content);
-            $editCommentMap = [
-                'id' => $v->id,
-            ];
-            $editCommentData = [
-                'content' => $content
-            ];
-            $commentModel->editData($editCommentMap, $editCommentData);
-        }
-    }
-
-
-    public function commentBak(Comment $commentModel)
-    {
-        // 从旧系统中迁移评论
-        $data = DB::connection('old')
-            ->table('comment')
-            // ->where('cmtid', 1614)
-            ->orderBy('cmtid', 'desc')
-            ->get()
-            ->toArray();
-        $commentModel->truncate();
-        foreach ($data as $v) {
-            // 把img标签反转义
-            $content = html_entity_decode(htmlspecialchars_decode($v->content));
-            // 匹配图片
-            preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
-            $search = $img[0];
-            $replace = array_map(function ($v) {
-                return '['.$v.']';
-            }, $img[1]);
-            $content = str_replace($search, $replace, $content);
-            $content = strip_tags($content);
-            $comment_data = [
-                'id' => $v->cmtid,
-                'oauth_user_id' => $v->ouid,
-                'type' => $v->type,
-                'pid' => $v->pid,
-                'article_id' => $v->aid,
-                'content' => $content,
-                'status' => $v->status,
-            ];
-            $commentModel->create($comment_data);
-            $editCommentMap = [
-                'id' => $v->cmtid,
-            ];
-            $editCommentData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
-            ];
-            $commentModel->editData($editCommentMap, $editCommentData);
-        }
-    }
-
-
-
 }
