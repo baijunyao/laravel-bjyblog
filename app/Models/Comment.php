@@ -135,7 +135,7 @@ class Comment extends Base
                     'type' => '回复',
                     'url' => url('article', [$data['article_id']]),
                     'title' => $title,
-                    'content' => $comment_content
+                    'content' => $this->ubbToImage($content)
                 ];
                 $subject = $name. '评论了 '. $title;
                 sendEmail($parentData['email'], $parentData['name'], $subject, $emailData, 'emails.commentArticle');
