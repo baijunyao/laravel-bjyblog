@@ -204,8 +204,32 @@ class MigrationController extends Controller
         file_put_contents(storage_path('lock/migration.lock'), '');
     }
 
-
     public function comment(Comment $commentModel)
+    {
+        $data = $commentModel->orderBy('id', 'desc')->get();
+        foreach ($data as $v) {
+            // 把img标签反转义
+            $content = html_entity_decode(htmlspecialchars_decode($v->content));
+            // 匹配图片
+            preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
+            $search = $img[0];
+            $replace = array_map(function ($v) {
+                return '['.$v.']';
+            }, $img[1]);
+            $content = str_replace($search, $replace, $content);
+            $content = strip_tags($content);
+            $editCommentMap = [
+                'id' => $v->id,
+            ];
+            $editCommentData = [
+                'content' => $content
+            ];
+            $commentModel->editData($editCommentMap, $editCommentData);
+        }
+    }
+
+
+    public function commentBak(Comment $commentModel)
     {
         // 从旧系统中迁移评论
         $data = DB::connection('old')
