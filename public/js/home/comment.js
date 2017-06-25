@@ -90,7 +90,7 @@ function comment(obj){
                 layer.load(1);
                 // ajax评论
                 $.post(ajaxCommentUrl, postData, function(data) {
-                    var newPid=data;
+                    var newPid=data.id;
                     var replyName=$(obj).attr('username');
                     var now = new Date();
                     // 获取当前时间
