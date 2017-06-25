@@ -2,9 +2,9 @@
 
 @section('title', $title)
 
-@section('keywords', '个人博客系统,个人博客模板,thinkphp博客,php博客,技术博客,白俊遥')
+@section('keywords', $config['WEB_KEYWORDS'])
 
-@section('description', '白俊遥的php博客,个人技术博客,bjyblog,bjyadmin官方网站')
+@section('description', $config['WEB_DESCRIPTION'])
 
 @section('content')
     <!-- 左侧列表开始 -->
