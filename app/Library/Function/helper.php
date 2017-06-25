@@ -65,7 +65,7 @@ if ( !function_exists('ajaxReturn') ) {
 		function toString($arr)
 		{
 			// app 禁止使用和为了统一字段做的判断
-			$reserved_words = array('id', 'title', 'description');
+			$reserved_words = [];
 			foreach ($arr as $k => $v) {
 				//如果是对象先转数组
 				if (is_object($v)) {
@@ -76,7 +76,7 @@ if ( !function_exists('ajaxReturn') ) {
 					$arr[$k] = toString($v);
 				} else {
 					//判断是否有移动端禁止使用的字段
-					in_array($k, $reserved_words, true) && die('app不允许使用【' . $k . '】这个键名 —— 此提示是helper.php 中的ajaxReturn函数返回的');
+					in_array($k, $reserved_words, true) && die('不允许使用【' . $k . '】这个键名 —— 此提示是helper.php 中的ajaxReturn函数返回的');
 					//转成字符串类型
 					$arr[$k] = strval($v);
 				}
