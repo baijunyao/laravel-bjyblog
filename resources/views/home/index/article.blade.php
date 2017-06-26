@@ -97,7 +97,7 @@
             @foreach($comment as $k => $v)
                 <div class="row b-user b-parent">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                        <img class="b-user-pic js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v['avatar'] }}" alt="白俊遥博客" title="白俊遥博客">
+                        <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v['avatar']) }}" alt="白俊遥博客" title="白俊遥博客">
                     </div>
                     <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                         <p class="b-content">
@@ -110,7 +110,7 @@
                         @foreach($v['child'] as $m => $n)
                             <div class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                    <img class="b-user-pic js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $n['avatar'] }}" alt="白俊遥博客" title="白俊遥博客">
+                                    <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($n['avatar']) }}" alt="白俊遥博客" title="白俊遥博客">
                                 </div>
                                 <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                     <li class="b-content">
