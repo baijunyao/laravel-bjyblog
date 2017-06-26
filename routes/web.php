@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
         // 从旧系统迁移数据
         Route::get('index', 'MigrationController@index');
         // 只迁移第三方用户和评论数据
-        Route::get('comment', 'MigrationController@comment');
+        Route::get('avatar', 'MigrationController@avatar');
     });
 });
 

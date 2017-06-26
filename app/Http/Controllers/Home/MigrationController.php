@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\User;
 use DB;
 use App\Models\Chat;
 use HyperDown\Parser;
@@ -217,5 +218,35 @@ class MigrationController extends Controller
         echo '数据迁移完成';
         // 迁移完成创建锁文件
         file_put_contents(storage_path('lock/migration.lock'), '');
+    }
+
+    public function avatar(OauthUser $oauthUserModel)
+    {
+        set_time_limit(0);
+        $data = $oauthUserModel->select('id', 'avatar')->get();
+        foreach ($data as $k => $v) {
+            $editMap = [
+                'id' => $v->id
+            ];
+            if (strpos($v->avatar, 'http') !== false) {
+                $avatarPath = 'uploads/avatar/'.$v->id.'.jpg';
+                file_put_contents(public_path($avatarPath), $this->curl_file_get_contents($v->avatar));
+                $editData = [
+                    'avatar' => '/'.$avatarPath
+                ];
+                $oauthUserModel->editData($editMap, $editData);
+            }
+        }
+    }
+
+    public function curl_file_get_contents($durl){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $durl);
+        curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        $r = curl_exec($ch);
+        curl_close($ch);
+        return $r;
     }
 }
