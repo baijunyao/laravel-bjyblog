@@ -222,7 +222,7 @@ class MigrationController extends Controller
 
     public function avatar(OauthUser $oauthUserModel)
     {
-        set_time_limit(0);
+
         $data = $oauthUserModel->select('id', 'avatar')->get();
         foreach ($data as $k => $v) {
             $editMap = [
@@ -230,23 +230,12 @@ class MigrationController extends Controller
             ];
             if (strpos($v->avatar, 'http') !== false) {
                 $avatarPath = 'uploads/avatar/'.$v->id.'.jpg';
-                file_put_contents(public_path($avatarPath), $this->curl_file_get_contents($v->avatar));
+                file_put_contents(public_path($avatarPath), curlGetContents($v->avatar));
                 $editData = [
                     'avatar' => '/'.$avatarPath
                 ];
                 $oauthUserModel->editData($editMap, $editData);
             }
         }
-    }
-
-    public function curl_file_get_contents($durl){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $durl);
-        curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        $r = curl_exec($ch);
-        curl_close($ch);
-        return $r;
     }
 }
