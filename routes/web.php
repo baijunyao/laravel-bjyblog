@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Home'], function () {
     // 文章详情
     Route::get('article/{id}', 'IndexController@article');
     // 文章评论
-    Route::post('comment', 'IndexController@comment')->middleware('auth');
+    Route::post('comment', 'IndexController@comment');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
