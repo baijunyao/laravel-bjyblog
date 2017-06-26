@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\Comment\Store;
 use App\Models\Category;
-use DB;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Chat;
@@ -47,7 +46,6 @@ class IndexController extends Controller
     {
         // 获取文章数据
         $data = $article->getDataById($id);
-
         // 设置同一个用户访问同一篇文章只增加1个访问量
         $read = request()->cookie('read', []);
         // 判断是否已经记录过id

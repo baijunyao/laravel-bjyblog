@@ -16,7 +16,7 @@ class ArticleTag extends Base
         $map = [
             'article_id' => $article_id
         ];
-        $this->deleteData($map);
+        $this->whereMap($map)->forceDelete();
         // 循环插入
         foreach ($tag_ids as $v) {
             $data = [
