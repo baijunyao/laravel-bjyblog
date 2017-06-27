@@ -220,9 +220,13 @@ class MigrationController extends Controller
         file_put_contents(storage_path('lock/migration.lock'), '');
     }
 
+    /**
+     * 把用户的头像保存到本地
+     *
+     * @param OauthUser $oauthUserModel
+     */
     public function avatar(OauthUser $oauthUserModel)
     {
-
         $data = $oauthUserModel->select('id', 'avatar')->get();
         foreach ($data as $k => $v) {
             $editMap = [

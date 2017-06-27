@@ -45,11 +45,11 @@ class OAuthController extends Controller
         ];
         // 获取用户资料
         $user = Socialite::driver($service)->user();
+
         // 组合存入session中的值
         $sessionData = [
             'user' => [
                 'name' => $user->nickname,
-                'avatar' => $user->avatar,
                 'type' => $type[$service],
             ]
         ];
@@ -63,25 +63,26 @@ class OAuthController extends Controller
             ->first();
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         if ($oldUserData) {
+            $userId = $oldUserData->id;
             $editMap = [
-                'id' => $oldUserData->id
+                'id' => $userId
             ];
             $editData = [
                 'name' => $user->nickname,
-                'avatar' => $user->avatar,
                 'access_token' => $user->token,
                 'last_login_ip' => $request->getClientIp(),
                 'login_times' => $oldUserData->login_times+1,
             ];
+            // 更新数据
             $oauthUserModel->editData($editMap, $editData);
-            $sessionData['user']['id'] = $oldUserData->id;
+            // 组合session中要用到的数据
+            $sessionData['user']['id'] = $userId;
             $sessionData['user']['email'] = $oldUserData->email;
             $sessionData['user']['is_admin'] = $oldUserData->is_admin;
         } else {
             $data = [
                 'type' => $type[$service],
                 'name' => $user->nickname,
-                'avatar' => $user->avatar,
                 'openid' => $user->id,
                 'access_token' => $user->token,
                 'last_login_ip' => $request->getClientIp(),
@@ -89,13 +90,26 @@ class OAuthController extends Controller
                 'is_admin' => 0,
                 'email' => ''
             ];
+            // 新增数据
             $userId = $oauthUserModel->addData($data);
+            // 组合头像地址
+            $avatarPath = '/uploads/avatar/'.$userId.'.jpg';
+            // 更新头像
+            $editMap = [
+                'id' => $userId
+            ];
+            $editData = [
+                'avatar' => $avatarPath
+            ];
+            $oauthUserModel->editData($editMap, $editData);
+            // 组合session中要用到的数据
             $sessionData['user']['id'] = $userId;
             $sessionData['user']['email'] = '';
             $sessionData['user']['is_admin'] = 0;
-
         }
-        // 将数据存入数据库
+        // 下载最新的头像到本地
+        file_put_contents(public_path('uploads/avatar/'.$userId.'.jpg'), curlGetContents($user->avatar));
+        // 将数据存入session
         session($sessionData);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(session('targetUrl', url('/')));
