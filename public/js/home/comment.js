@@ -6,8 +6,7 @@ function getTuzki(obj){
         var alt=['Kiss', 'Love', 'Yeah', '啊！', '背扭', '顶', '抖胸', '88', '汗', '瞌睡', '鲁拉', '拍砖', '揉脸', '生日快乐', '摊手', '睡觉', '瘫坐', '无聊', '星星闪', '旋转', '也不行', '郁闷', '正Music', '抓墙', '撞墙至死', '歪头', '戳眼', '飘过', '互相拍砖', '砍死你', '扔桌子', '少林寺', '什么？', '转头', '我爱牛奶', '我踢', '摇晃', '晕厥', '在笼子里', '震荡'];
         var str='';
         for (var i = 1; i < 41; i++) {
-            var number=formatNum(i,4);
-            str+='<img src="http://'+window.location.host+'/statics/emote/tuzki/t_'+number+'.gif" title="'+alt[i-1]+'" alt="白俊遥博客">';
+            str+='<img src="http://'+window.location.host+'/statics/emote/tuzki/'+i+'.gif" title="'+alt[i-1]+'" alt="白俊遥博客">';
         };
         tuzkiObj.html(str);
         tuzkiNumber=0;
@@ -15,20 +14,6 @@ function getTuzki(obj){
         tuzkiObj.hide();
         tuzkiNumber=1;
     }
-}
-
-/**
- * 格式化数字为一个定长的字符串，前面补0
- * @param  int Source 待格式化的字符串
- * @param  int Length 需要得到的字符串的长度
- * @return int        处理后得到的数据
- */
-function formatNum(Source,Length){
-    var strTemp="";
-    for(var i=1;i<=Length-Source.toString().length;i++){
-        strTemp+="0";
-    }
-    return strTemp+Source;
 }
 
 // 点击添加表情
