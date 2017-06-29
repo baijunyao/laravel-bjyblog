@@ -109,6 +109,7 @@ class OAuthController extends Controller
         }
         // 下载最新的头像到本地
         file_put_contents(public_path('uploads/avatar/'.$userId.'.jpg'), curlGetContents($user->avatar));
+        $sessionData['user']['avatar'] = url('uploads/avatar/'.$userId.'.jpg');
         // 将数据存入session
         session($sessionData);
         // 如果session没有存储登录前的页面;则直接返回到首页
