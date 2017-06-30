@@ -18,11 +18,23 @@ class IndexController extends Controller
      */
     public function index()
     {
+        // 文章总数
         $articleCount = Article::count();
+        // 评论总数
         $commentCount = Comment::count();
+        // 随言碎语总数
         $chatCount = Chat::count();
+        // 用户总数
         $oauthUserCount = OauthUser::count();
-        $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount');
+        // 最新登录的5个用户
+        $oauthUserData = OauthUser::select('name', 'avatar', 'login_times', 'updated_at')
+            ->orderBy('updated_at', 'desc')
+            ->limit(5)
+            ->get();
+        // 最新的5条评论
+        $commentData = Comment::orderBy('updated_at', 'desc')->limit(5)->get();
+
+        $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount', 'oauthUserData', 'commentData');
         return view('admin/index/index', $assign);
     }
 
