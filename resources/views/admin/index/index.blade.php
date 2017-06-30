@@ -65,7 +65,7 @@
                                 <img class="bjy-img" src="{{ url($v->avatar) }}" alt="">
                             </a>
                             <div class="media-body">
-                                <a class="title" href="#">{{ $v->name }}</a>
+                                {{ $v->name }}
                                 <p>
                                     登录次数：{{ $v->login_times }} <br>
                                     登录时间：{{ $v->updated_at }}
@@ -84,56 +84,21 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <article class="media event">
-                        <a class="pull-left date">
-                            <p class="month">April</p>
-                            <p class="day">23</p>
-                        </a>
-                        <div class="media-body">
-                            <a class="title" href="#">Item One Title</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </article>
-                    <article class="media event">
-                        <a class="pull-left date">
-                            <p class="month">April</p>
-                            <p class="day">23</p>
-                        </a>
-                        <div class="media-body">
-                            <a class="title" href="#">Item Two Title</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </article>
-                    <article class="media event">
-                        <a class="pull-left date">
-                            <p class="month">April</p>
-                            <p class="day">23</p>
-                        </a>
-                        <div class="media-body">
-                            <a class="title" href="#">Item Two Title</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </article>
-                    <article class="media event">
-                        <a class="pull-left date">
-                            <p class="month">April</p>
-                            <p class="day">23</p>
-                        </a>
-                        <div class="media-body">
-                            <a class="title" href="#">Item Two Title</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </article>
-                    <article class="media event">
-                        <a class="pull-left date">
-                            <p class="month">April</p>
-                            <p class="day">23</p>
-                        </a>
-                        <div class="media-body">
-                            <a class="title" href="#">Item Three Title</a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </article>
+                    @foreach($commentData as $k => $v)
+                        <article class="media event">
+                            <a class="pull-left">
+                                <img class="bjy-img" src="{{ url($v->avatar) }}" alt="">
+                            </a>
+                            <div class="media-body">
+                                {{ $v->name }}
+                                <p>
+                                    <a href="{{ url('article', [$v->article_id]) }}">{{ $v->title }}</a>
+                                    <br>
+                                    {{ reSubstr($v->content, 0, 14, '...') }}
+                                </p>
+                            </div>
+                        </article>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ class IndexController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(Comment $commentModel)
     {
         // 文章总数
         $articleCount = Article::count();
@@ -32,7 +32,7 @@ class IndexController extends Controller
             ->limit(5)
             ->get();
         // 最新的5条评论
-        $commentData = Comment::orderBy('updated_at', 'desc')->limit(5)->get();
+        $commentData = $commentModel->getNewData(5);
 
         $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount', 'oauthUserData', 'commentData');
         return view('admin/index/index', $assign);
