@@ -30,7 +30,9 @@
             <tr>
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->category_name }}</td>
-                <td>{{ $v->title }}</td>
+                <td>
+                    <a href="{{ url('article', [$v->id]) }}">{{ $v->title }}</a>
+                </td>
                 <td>{{ $v->click }}</td>
                 <td>{{ $v->created_at }}</td>
                 <td>
