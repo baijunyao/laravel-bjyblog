@@ -21,7 +21,7 @@
                 <td>{{ $v->id }}</td>
                 <td>{!! htmlspecialchars_decode($v->content) !!}</td>
                 <td>
-                    <a href="{{ url('article', ['article' => $v->article_id]) }}" target="_blank">{{ $v->title }}</a>
+                    <a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
                 </td>
                 <td>{{ $v->name }}</td>
                 <td>{{ $v->created_at }}</td>
