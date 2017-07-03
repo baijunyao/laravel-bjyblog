@@ -95,7 +95,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">
             @foreach($comment as $k => $v)
-                <div class="row b-user b-parent">
+                <div id="comment-{{ $v['id'] }}" class="row b-user b-parent">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
                         <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v['avatar']) }}" alt="白俊遥博客" title="白俊遥博客">
                     </div>
@@ -108,7 +108,7 @@
                         </p>
                         <foreach name="v['child']" item="n">
                         @foreach($v['child'] as $m => $n)
-                            <div class="row b-user b-child">
+                            <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
                                     <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($n['avatar']) }}" alt="白俊遥博客" title="白俊遥博客">
                                 </div>
