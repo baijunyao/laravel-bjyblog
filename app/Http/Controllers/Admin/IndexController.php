@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use App\Models\Article;
 use App\Models\Chat;
 use App\Models\Comment;
@@ -33,8 +34,18 @@ class IndexController extends Controller
             ->get();
         // 最新的5条评论
         $commentData = $commentModel->getNewData(5);
-
-        $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount', 'oauthUserData', 'commentData');
+        // 获取博客版本
+        $composerJson = file_get_contents(base_path('composer.json'));
+        $composerArray = json_decode($composerJson, true);
+        $blogVersion = $composerArray['version'];
+        $version = [
+            'blog' => $blogVersion,
+            'system' => PHP_OS,
+            'webServer' => $_SERVER['SERVER_SOFTWARE'],
+            'php' => PHP_VERSION,
+            'mysql' => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value
+        ];
+        $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount', 'oauthUserData', 'commentData', 'version');
         return view('admin/index/index', $assign);
     }
 
