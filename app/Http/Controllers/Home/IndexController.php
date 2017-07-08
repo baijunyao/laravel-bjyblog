@@ -242,4 +242,14 @@ class IndexController extends Controller
         ];
         return view('home/index/index', $assign);
     }
+
+    /**
+     * 用于做测试的方法
+     */
+    public function test()
+    {
+
+    }
+
+
 }
