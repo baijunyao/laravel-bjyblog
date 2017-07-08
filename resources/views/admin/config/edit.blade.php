@@ -48,6 +48,12 @@
                 </td>
             </tr>
             <tr>
+                <th>网站标题：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="WEB_TITLE" value="{{  $data['WEB_TITLE'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th>网站关键字：</th>
                 <td>
                     <textarea class="form-control modal-sm" name="WEB_KEYWORDS" rows="5" placeholder="">{{  $data['WEB_KEYWORDS'] }}</textarea>
