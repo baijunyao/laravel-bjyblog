@@ -45,7 +45,7 @@ class Comment extends Base
         $image = [];
         // 循环生成img标签
         for ($i = 1; $i <= $count; $i++) {
-            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="白俊遥博客">';
+            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="'.$this->webName.'">';
         }
         return str_replace($ubb, $image, $content);
     }
@@ -108,7 +108,8 @@ class Comment extends Base
         }
         // 获取文章标题
         $title = Article::where('id', $data['article_id'])->value('title');
-
+        // 获取网站名
+        $this->webName = Config::where('name', 'WEB_NAME')->value('value');
         // 给站长发送通知邮件
         if($isAdmin == 0){
             $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');

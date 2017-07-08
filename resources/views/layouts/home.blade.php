@@ -34,7 +34,7 @@
                     <li class="b-lc-start">&lt;?php</li>
                     <li class="b-lc-echo">echo</li>
                 </ul>
-                <p class="b-logo-word">'白俊遥博客'</p>
+                <p class="b-logo-word">'{{ $config['WEB_NAME'] }}'</p>
                 <p class="b-logo-end">;</p>
             </a>
         </div>

@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Chat;
 use App\Models\Comment;
+use App\Models\Config;
 use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class IndexController extends Controller
             'category_id' => 'index',
             'article' => $article,
             'tagName' => '',
-            'title' => '白俊遥博客,技术博客,个人博客模板, php博客系统'
+            'title' => Config::where('name', 'WEB_TITLE')->value('value')
         ];
 		return view('home/index/index', $assign);
 	}
@@ -248,7 +249,8 @@ class IndexController extends Controller
      */
     public function test()
     {
-
+        $test = \App\Models\Config::where('name', 'WEB_NAME')->value('value');
+        p($test);
     }
 
 
