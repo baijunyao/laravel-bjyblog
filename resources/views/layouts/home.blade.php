@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title') - {{ $config['WEB_NAME'] }}</title>
+    <title>@yield('title')@if(request()->path() !== '/') - {{ $config['WEB_NAME'] }} @endif</title>
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="description" content="@yield('description')" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
