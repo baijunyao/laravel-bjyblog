@@ -11,6 +11,12 @@ namespace App\Models;
 
 class Comment extends Base
 {
+    /**
+     * 从配置项表中取出的网站名
+     *
+     * @var
+     */
+    private $webName;
 
     /**
      * content 访问器 把 ubb格式的表情转为html标签
@@ -102,6 +108,7 @@ class Comment extends Base
         }
         // 获取文章标题
         $title = Article::where('id', $data['article_id'])->value('title');
+
         // 给站长发送通知邮件
         if($isAdmin == 0){
             $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
