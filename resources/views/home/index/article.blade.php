@@ -150,8 +150,9 @@
         $('.js-content a').attr('target', '_blank')
 
         // 定义评论url
-        ajaxCommentUrl="{{ url('comment') }}";
-        checkLogin="{{ url('checkLogin') }}";
+        ajaxCommentUrl = "{{ url('comment') }}";
+        checkLogin = "{{ url('checkLogin') }}";
+        titleName = '{{ $config['WEB_NAME'] }}';
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
     <script src="{{ asset('js/home/comment.js') }}"></script>

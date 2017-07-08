@@ -6,7 +6,7 @@ function getTuzki(obj){
         var alt=['Kiss', 'Love', 'Yeah', '啊！', '背扭', '顶', '抖胸', '88', '汗', '瞌睡', '鲁拉', '拍砖', '揉脸', '生日快乐', '摊手', '睡觉', '瘫坐', '无聊', '星星闪', '旋转', '也不行', '郁闷', '正Music', '抓墙', '撞墙至死', '歪头', '戳眼', '飘过', '互相拍砖', '砍死你', '扔桌子', '少林寺', '什么？', '转头', '我爱牛奶', '我踢', '摇晃', '晕厥', '在笼子里', '震荡'];
         var str='';
         for (var i = 1; i < 41; i++) {
-            str+='<img src="http://'+window.location.host+'/statics/emote/tuzki/'+i+'.gif" title="'+alt[i-1]+'" alt="白俊遥博客">';
+            str+='<img src="http://'+window.location.host+'/statics/emote/tuzki/'+i+'.gif" title="'+alt[i-1]+'" alt="'+titleName+'">';
         };
         tuzkiObj.html(str);
         tuzkiNumber=0;
@@ -84,11 +84,11 @@ function comment(obj){
                     var nickName=$('#b-login-word .b-nickname').text();
                     if(pid==0){
                         // pid为0表示新增评论
-                        var str='<div class="row b-user b-parent"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="白俊遥博客" alt="白俊遥博客" src="'+headImg+'" class="b-user-pic"></div><div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><p class="b-content"><span class="b-user-name">'+nickName+'</span>：'+content+'</p><p class="b-date">'+date+' <a onclick="reply(this)" username="'+nickName+'" pid="'+newPid+'" aid="'+aid+'" href="javascript:;">回复</a></p><div class="b-clear-float"></div></div></div>';
+                        var str='<div class="row b-user b-parent"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="'+titleName+'" alt="'+titleName+'" src="'+headImg+'" class="b-user-pic"></div><div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><p class="b-content"><span class="b-user-name">'+nickName+'</span>：'+content+'</p><p class="b-date">'+date+' <a onclick="reply(this)" username="'+nickName+'" pid="'+newPid+'" aid="'+aid+'" href="javascript:;">回复</a></p><div class="b-clear-float"></div></div></div>';
                         $('.b-user-comment').prepend(str);
                     }else{
                         // pid不为0表示是回复评论
-                        var str='<div class="row b-user b-child"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="白俊遥博客" alt="白俊遥博客" src="'+headImg+'" class="b-user-pic"></div><ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><li class="b-content"><span class="b-reply-name">'+nickName+'</span><span class="b-reply">回复</span><span class="b-user-name">'+replyName+'</span>：'+content+'</li><li class="b-date">'+date+' <a onclick="reply(this)" pid="'+newPid+'" aid="'+aid+'" username="'+replyName+'" href="javascript:;">回复</a></li><li class="b-clear-float"></li></ul></div>';
+                        var str='<div class="row b-user b-child"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="'+titleName+'" alt="'+titleName+'" src="'+headImg+'" class="b-user-pic"></div><ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><li class="b-content"><span class="b-reply-name">'+nickName+'</span><span class="b-reply">回复</span><span class="b-user-name">'+replyName+'</span>：'+content+'</li><li class="b-date">'+date+' <a onclick="reply(this)" pid="'+newPid+'" aid="'+aid+'" username="'+replyName+'" href="javascript:;">回复</a></li><li class="b-clear-float"></li></ul></div>';
                         $(obj).parents('.b-content-col').eq(0).append(str);
                         $(obj).parents('.b-box-textarea').eq(0).remove();
                     }
