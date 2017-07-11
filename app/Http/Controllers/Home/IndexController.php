@@ -249,8 +249,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-        $test = \App\Models\Config::where('name', 'WEB_NAME')->value('value');
-        p($test);
+
     }
 
 
