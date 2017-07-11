@@ -25,7 +25,8 @@
         "mews/purifier": "^2.0",
         "pixel418/markdownify": "^2.2",
         "socialiteproviders/qq": "~2.0",
-        "socialiteproviders/weibo": "~2.0"
+        "socialiteproviders/weibo": "~2.0",
+        "orangehill/iseed": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
