@@ -198,6 +198,11 @@ return [
          */
         SocialiteProviders\Manager\ServiceProvider::class,
 
+        /**
+         * 逆向填充
+         */
+        Orangehill\Iseed\IseedServiceProvider::class,
+
     ],
 
     /*
