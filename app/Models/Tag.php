@@ -38,7 +38,7 @@ class Tag extends Base
         $articleCount = ArticleTag::whereIn('tag_id', $tagIdArray)->count();
         // 如果分类下存在文章；则需要下删除文章
         if ($articleCount !== 0) {
-            flashMessage('请先删除此标签下的文章', false);
+            flash_message('请先删除此标签下的文章', false);
             return false;
         }
         return parent::deleteData($map);

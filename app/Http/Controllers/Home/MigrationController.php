@@ -234,7 +234,7 @@ class MigrationController extends Controller
             ];
             if (strpos($v->avatar, 'http') !== false) {
                 $avatarPath = 'uploads/avatar/'.$v->id.'.jpg';
-                file_put_contents(public_path($avatarPath), curlGetContents($v->avatar));
+                file_put_contents(public_path($avatarPath), curl_get_contents($v->avatar));
                 $editData = [
                     'avatar' => '/'.$avatarPath
                 ];

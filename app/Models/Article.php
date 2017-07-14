@@ -15,13 +15,13 @@ class Article extends Base
         // 如果没有描述;则截取文章内容的前200字作为描述
         if (empty($data['description'])) {
             $description = preg_replace(array('/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'), '', $data['markdown']);
-            $data['description'] = reSubstr($description, 0, 200, true);
+            $data['description'] = re_substr($description, 0, 200, true);
         }
 
         // 给文章的插图添加水印;并取第一张图片作为封面图
         $data['cover'] = $this->getCover($data['markdown']);
         // 把markdown转html
-        $data['html'] = markdownToHtml($data['markdown']);
+        $data['html'] = markdown_to_html($data['markdown']);
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
 
@@ -62,7 +62,7 @@ class Article extends Base
                 $image = explode(' ', $v);
                 $file = public_path().$image[0];
                 if (file_exists($file) && !in_array($v, $except)) {
-                    AddTextWater($file, 'baijunyao.com');
+                    Add_text_water($file, 'baijunyao.com');
                 }
 
                 // 取第一张图片作为封面图

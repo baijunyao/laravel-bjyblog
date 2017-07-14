@@ -125,7 +125,7 @@ class Comment extends Base
                     'content' => $this->ubbToImage($content)
                 ];
                 $subject = $name. '评论了 '. $title;
-                sendEmail($address, '站长', $subject, $emailData, 'emails.commentArticle');
+                send_email($address, '站长', $subject, $emailData, 'emails.commentArticle');
             }
         }
         // 给用户发送邮件通知
@@ -146,7 +146,7 @@ class Comment extends Base
                     'content' => $this->ubbToImage($content)
                 ];
                 $subject = $name. '评论了 '. $title;
-                sendEmail($parentData['email'], $parentData['name'], $subject, $emailData, 'emails.commentArticle');
+                send_email($parentData['email'], $parentData['name'], $subject, $emailData, 'emails.commentArticle');
             }
         }
         return $id;
@@ -169,11 +169,11 @@ class Comment extends Base
             ->get();
         foreach ($data as $k => $v) {
             // 截取文章标题
-            $data[$k]->title = reSubstr($v->title, 0, 20);
+            $data[$k]->title = re_substr($v->title, 0, 20);
             // 处理有表情时直接截取会把img表情截断的问题
             $content = strip_tags($v->content);
             if (mb_strlen($content) > 10) {
-                $data[$k]->content = reSubstr($content,0,40);
+                $data[$k]->content = re_substr($content,0,40);
             }else{
                 $data[$k]->content = $v->content;
             }

@@ -187,7 +187,7 @@ class IndexController extends Controller
             ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
             ->count();
         if (session('user.is_admin') !=1 && $count > 10) {
-            return ajaxReturn(400, '每天做多评论10条');
+            return ajax_return(400, '每天做多评论10条');
         }
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
@@ -208,7 +208,7 @@ class IndexController extends Controller
         }
         // 存储评论
         $id = $commentModel->addData($data);
-        return ajaxReturn('200', ['id' => $id]);
+        return ajax_return('200', ['id' => $id]);
     }
 
     /**

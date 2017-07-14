@@ -125,7 +125,7 @@ class ArticleController extends Controller
         // 为文章批量添加标签
         $tag_ids = $data['tag_ids'];
         // 把markdown转html
-        $data['html'] = markdownToHtml($data['markdown']);
+        $data['html'] = markdown_to_html($data['markdown']);
         unset($data['tag_ids']);
         $articleTagModel->addTagIds($id, $tag_ids);
         // 编辑文章

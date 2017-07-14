@@ -97,7 +97,7 @@
                                 <p>
                                     <a href="{{ url('article', [$v->article_id]) }}">{{ $v->title }}</a>
                                     <br>
-                                    {{ reSubstr($v->content, 0, 14, '...') }}
+                                    {{ re_substr($v->content, 0, 14, '...') }}
                                 </p>
                             </div>
                         </article>

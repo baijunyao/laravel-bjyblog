@@ -37,7 +37,7 @@ if (!function_exists('p')) {
 	}
 }
 
-if ( !function_exists('ajaxReturn') ) {
+if ( !function_exists('ajax_return') ) {
 	/**
 	 * ajax返回数据
 	 *
@@ -45,7 +45,7 @@ if ( !function_exists('ajaxReturn') ) {
 	 * @param int $status_code
 	 * @return \Illuminate\Http\JsonResponse
 	 */
-	function ajaxReturn($status_code = 200, $data = '')
+	function ajax_return($status_code = 200, $data = '')
 	{
 		//如果如果是错误 返回错误信息
 		if ($status_code != 200) {
@@ -62,7 +62,7 @@ if ( !function_exists('ajaxReturn') ) {
 		 * @param  array $arr 需要转的数组
 		 * @return array       转换后的数组
 		 */
-		function toString($arr)
+		function to_string($arr)
 		{
 			// app 禁止使用和为了统一字段做的判断
 			$reserved_words = [];
@@ -73,7 +73,7 @@ if ( !function_exists('ajaxReturn') ) {
 				}
 				//如果是数组；则递归转字符串
 				if (is_array($v)) {
-					$arr[$k] = toString($v);
+					$arr[$k] = to_string($v);
 				} else {
 					//判断是否有移动端禁止使用的字段
 					in_array($k, $reserved_words, true) && die('不允许使用【' . $k . '】这个键名 —— 此提示是helper.php 中的ajaxReturn函数返回的');
@@ -87,13 +87,13 @@ if ( !function_exists('ajaxReturn') ) {
 		//判断是否有返回的数据
 		if (is_array($data)) {
 			//先把所有字段都转成字符串类型
-			$data = toString($data);
+			$data = to_string($data);
 		}
 		return response()->json($data, $status_code);
 	}
 }
 
-if ( !function_exists('sendEmail') ) {
+if ( !function_exists('send_email') ) {
 	/**
 	 * 发送邮件函数
 	 *
@@ -104,7 +104,7 @@ if ( !function_exists('sendEmail') ) {
 	 * @param string $template  邮件模板
 	 * @return array            发送状态
 	 */
-	function sendEmail($email, $name, $subject, $data = [], $template = 'emails.test')
+	function send_email($email, $name, $subject, $data = [], $template = 'emails.test')
 	{
 		Mail::send($template, $data, function ($message) use ($email, $name, $subject) {
 			//如果是数组；则群发邮件
@@ -171,25 +171,25 @@ if ( !function_exists('upload') ) {
 	}
 }
 
-if ( !function_exists('getUid') ) {
+if ( !function_exists('get_uid') ) {
 	/**
 	 * 返回登录的用户id
 	 *
 	 * @return mixed 用户id
 	 */
-	function getUid()
+	function get_uid()
 	{
 		return Auth::id();
 	}
 }
 
-if (!function_exists('saveToFile')) {
+if (!function_exists('save_to_file')) {
 	/**
 	 * 将数组已json格式写入文件
 	 * @param  string $fileName 文件名
 	 * @param  array $data 数组
 	 */
-	function saveToFile($fileName = 'test', $data = array())
+	function save_to_file($fileName = 'test', $data = array())
 	{
 		$path = storage_path('tmp' . DIRECTORY_SEPARATOR);
 		is_dir($path) || mkdir($path);
@@ -199,7 +199,7 @@ if (!function_exists('saveToFile')) {
 	}
 }
 
-if ( !function_exists('reSubstr') ) {
+if ( !function_exists('re_substr') ) {
 	/**
 	 * 字符串截取，支持中文和其他编码
 	 *
@@ -210,14 +210,14 @@ if ( !function_exists('reSubstr') ) {
 	 * @param string  $charset 编码格式
 	 * @return string
 	 */
-	function reSubstr($str, $start = 0, $length, $suffix = true, $charset = "utf-8") {
+	function re_substr($str, $start = 0, $length, $suffix = true, $charset = "utf-8") {
 		$slice = mb_substr($str, $start, $length, $charset);
 		$omit = mb_strlen($str) >= $length ? '...' : '';
 		return $suffix ? $slice.$omit : $slice;
 	}
 }
 
-if ( !function_exists('AddTextWater') ) {
+if ( !function_exists('Add_text_water') ) {
     /**
      * 给图片添加文字水印
      *
@@ -226,7 +226,7 @@ if ( !function_exists('AddTextWater') ) {
      * @param string $color
      * @return mixed
      */
-    function AddTextWater($file, $text, $color = '#0B94C1') {
+    function Add_text_water($file, $text, $color = '#0B94C1') {
         $image = Image::make($file);
         $image->text($text, $image->width()-20, $image->height()-30, function($font) use($color) {
             $font->file(public_path('fonts/msyh.ttf'));
@@ -240,14 +240,14 @@ if ( !function_exists('AddTextWater') ) {
     }
 }
 
-if ( !function_exists('wordTime') ) {
+if ( !function_exists('word_time') ) {
     /**
      * 把日期或者时间戳转为距离现在的时间
      *
      * @param $time
      * @return bool|string
      */
-    function wordTime($time) {
+    function word_time($time) {
         // 如果是日期格式的时间;则先转为时间戳
         if (!is_integer($time)) {
             $time = strtotime($time);
@@ -270,14 +270,14 @@ if ( !function_exists('wordTime') ) {
     }
 }
 
-if ( !function_exists('markdownToHtml') ) {
+if ( !function_exists('markdown_to_html') ) {
 	/**
 	 * 把markdown转为html
 	 *
 	 * @param $markdown
 	 * @return mixed|string
 	 */
-	function markdownToHtml($markdown)
+	function markdown_to_html($markdown)
 	{
 		// 正则匹配到全部的iframe
 		preg_match_all('/&lt;iframe.*iframe&gt;/', $markdown, $iframe);
@@ -307,7 +307,7 @@ if ( !function_exists('markdownToHtml') ) {
 	}
 }
 
-if ( !function_exists('stripHtmlTags') ) {
+if ( !function_exists('strip_html_tags') ) {
 	/**
 	 * 删除指定标签
 	 *
@@ -316,7 +316,7 @@ if ( !function_exists('stripHtmlTags') ) {
 	 * @param bool $content   true保留标签的内容text
 	 * @return mixed
 	 */
-	function stripHtmlTags($tags, $str, $content = true)
+	function strip_html_tags($tags, $str, $content = true)
 	{
 		$html = [];
 		// 是否保留标签内的text字符
@@ -334,14 +334,14 @@ if ( !function_exists('stripHtmlTags') ) {
 	}
 }
 
-if (!function_exists('flashMessage')){
+if (!function_exists('flash_message')){
     /**
      * 添加成功或者失败的提示
      *
      * @param string $message
      * @param bool $success
      */
-    function flashMessage($message = '成功', $success = true)
+    function flash_message($message = '成功', $success = true)
     {
         $className = $success ? 'alert-success' : 'alert-danger';
         session()->flash('alert-message', $message);
@@ -349,13 +349,13 @@ if (!function_exists('flashMessage')){
     }
 }
 
-if (!function_exists('curlGetContents')) {
+if (!function_exists('curl_get_contents')) {
     /**
      * 使用curl获取远程数据
      * @param  string $url url连接
      * @return string      获取到的数据
      */
-    function curlGetContents($url){
+    function curl_get_contents($url){
         set_time_limit(0);
         $ch=curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);                //设置访问的url地址
