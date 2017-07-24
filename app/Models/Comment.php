@@ -60,7 +60,7 @@ class Comment extends Base
     {
         $content = html_entity_decode(htmlspecialchars_decode($content));
         // 删标签 去空格 转义
-        $content = strip_tags(trim($content));
+        $content = strip_tags(trim($content), '<img>');
         preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
         $search = $img[0];
         $replace = array_map(function ($v) {
@@ -189,7 +189,7 @@ class Comment extends Base
      */
     public function getDataByArticleId($article_id){
         $map = [
-            'article_id' => $article_id,
+            'comments.article_id' => $article_id,
             'comments.pid' => 0
         ];
         // 关联第三方用户表获取一级评论
