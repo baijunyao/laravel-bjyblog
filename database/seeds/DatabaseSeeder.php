@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ChatsTableSeeder::class);
         $this->call(FriendshipLinksTableSeeder::class);
         $this->call(OauthUsersTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
     }
 }
