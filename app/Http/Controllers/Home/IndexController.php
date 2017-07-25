@@ -47,6 +47,8 @@ class IndexController extends Controller
     {
         // 获取文章数据
         $data = $article->getDataById($id);
+        // 去掉描述中的换行
+        $data->description = str_replace(["\r", "\n", "\r\n"], '', $data->description);
         // 设置同一个用户访问同一篇文章只增加1个访问量
         $read = request()->cookie('read', []);
         // 判断是否已经记录过id
