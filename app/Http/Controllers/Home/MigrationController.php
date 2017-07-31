@@ -14,7 +14,7 @@ use App\Models\ArticleTag;
 use App\Models\FriendshipLink;
 use App\Http\Controllers\Controller;
 use League\HTMLToMarkdown\HtmlConverter;
-
+use Artisan;
 
 class MigrationController extends Controller
 {
@@ -35,10 +35,9 @@ class MigrationController extends Controller
         if (file_exists(storage_path('lock/migration.lock'))) {
             die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
         }
-
+        Artisan::command('seeder:clear');
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
-        $articleModel->truncate();
         $parser = new Parser();
         $data = DB::connection('old')
             ->table('article')
@@ -97,7 +96,6 @@ class MigrationController extends Controller
 
         // 从旧系统中迁移文章标签中间表
         $data = DB::connection('old')->table('article_tag')->get()->toArray();
-        $articleTag->truncate();
         foreach ($data as $v) {
             $article_tag = [
                 'article_id' => $v->aid,
@@ -113,7 +111,6 @@ class MigrationController extends Controller
             ->orderBy('cmtid', 'desc')
             ->get()
             ->toArray();
-        $commentModel->truncate();
         foreach ($data as $v) {
             // 把img标签反转义
             $content = html_entity_decode(htmlspecialchars_decode($v->content));
@@ -146,7 +143,6 @@ class MigrationController extends Controller
 
         // 迁移友情链接
         $data = DB::connection('old')->table('link')->get()->toArray();
-        $friendshipLinkModel->truncate();
         foreach ($data as $v) {
             $link_data = [
                 'id' => $v->lid,
@@ -162,7 +158,6 @@ class MigrationController extends Controller
 
         // 迁移配置项
         $data = DB::connection('old')->table('config')->get()->toArray();
-        $configModel->truncate();
         foreach ($data as $v) {
             $config_data = [
                 'id' => $v->id,
@@ -174,7 +169,6 @@ class MigrationController extends Controller
 
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
-        $oauthUserModel->truncate();
         foreach ($data as $v) {
             $oauthUserData = [
                 'id' => $v->id,
@@ -200,7 +194,6 @@ class MigrationController extends Controller
 
         // 迁移随言碎语表
         $data = DB::connection('old')->table('chat')->get()->toArray();
-        $chatModel->truncate();
         foreach ($data as $v) {
             $chatData = [
                 'id' => $v->chid,
