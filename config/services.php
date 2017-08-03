@@ -38,7 +38,7 @@ return [
     'weibo' => [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_SECRET'),
-        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/qq'
+        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/weibo'
     ],
 
     'qq' => [
@@ -50,7 +50,7 @@ return [
     'github' => [
         'client_id' => env('GITHUB_KEY'),
         'client_secret' => env('GITHUB_SECRET'),
-        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/qq'
+        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/github'
     ],
 
 
