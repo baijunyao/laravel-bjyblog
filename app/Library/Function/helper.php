@@ -369,3 +369,33 @@ if (!function_exists('curl_get_contents')) {
         return $r;
     }
 }
+
+if (! function_exists('redis')) {
+    /**
+     * redis的便捷操作方法
+     *
+     * @param $key
+     * @param null $value
+     * @param null $expire
+     * @return bool|string
+     */
+    function redis($key = null, $value = null, $expire = null)
+    {
+        if (is_null($key)) {
+            return app('redis');
+        }
+
+        if (is_null($value)) {
+            $content = Redis::get($key);
+            if (is_null($content)) {
+                return null;
+            }
+            return is_null($content) ? null : unserialize($content);
+        }
+
+        Redis::set($key, serialize($value));
+        if (! is_null($expire)) {
+            Redis::expire($key, $expire);
+        }
+    }
+}
