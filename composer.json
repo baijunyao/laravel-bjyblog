@@ -23,10 +23,11 @@
         "laravel/socialite": "~2.0",
         "league/html-to-markdown": "^4.4",
         "mews/purifier": "^2.0",
+        "orangehill/iseed": "dev-master",
         "pixel418/markdownify": "^2.2",
+        "predis/predis": "^1.1",
         "socialiteproviders/qq": "~2.0",
-        "socialiteproviders/weibo": "~2.0",
-        "orangehill/iseed": "dev-master"
+        "socialiteproviders/weibo": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
