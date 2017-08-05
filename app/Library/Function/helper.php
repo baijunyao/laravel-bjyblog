@@ -399,3 +399,19 @@ if (! function_exists('redis')) {
         }
     }
 }
+
+if (! function_exists('show_message')){
+    /**
+     * 添加成功或者失败的提示
+     *
+     * @param string $message
+     * @param bool $success
+     */
+    function show_message($message = '成功', $success = true)
+    {
+        $alter_class = $success ? 'alert-class' : 'alert-error';
+        session()->flash('alert-message', $message);
+        session()->flash($alter_class, 'alert-success');
+
+    }
+}
