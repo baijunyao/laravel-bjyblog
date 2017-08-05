@@ -30,8 +30,7 @@ class Base extends Model
             ->create($data)
             ->id;
         if ($result) {
-            session()->flash('alert-message','添加成功');
-            session()->flash('alert-class','alert-success');
+            show_message('添加成功');
             return $result;
         }else{
             return false;
@@ -50,16 +49,14 @@ class Base extends Model
         $model = $this->whereMap($map)->get();
         // 可能有查不到数据的情况
         if ($model->isEmpty()) {
-            session()->flash('alert-message','无可被修改的数据');
-            session()->flash('alert-class','alert-error');
+            show_message('无需要添加的数据', false);
             return false;
         }
         foreach ($model as $k => $v) {
             $result = $v->forceFill($data)->save();
         }
         if ($result) {
-            session()->flash('alert-message','操作成功');
-            session()->flash('alert-class','alert-success');
+            show_message('修改成功');
             return $result;
         }else{
             return false;
@@ -79,8 +76,7 @@ class Base extends Model
             ->where($map)
             ->delete();
         if ($result) {
-            session()->flash('alert-message','操作成功');
-            session()->flash('alert-class','alert-success');
+            show_message('操作成功');
             return $result;
         }else{
             return false;
