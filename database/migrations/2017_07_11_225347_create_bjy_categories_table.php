@@ -14,7 +14,7 @@ class CreateBjyCategoriesTable extends Migration {
 	{
 		Schema::create('categories', function(Blueprint $table)
 		{
-			$table->boolean('id')->primary()->comment('分类主键id');
+            $table->increments('id')->comment('分类主键id');
 			$table->string('name', 15)->default('')->comment('分类名称');
 			$table->string('keywords')->default('')->comment('关键词');
 			$table->string('description')->default('')->comment('描述');
