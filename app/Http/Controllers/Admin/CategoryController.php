@@ -91,4 +91,25 @@ class CategoryController extends Controller
         $categoryModel->deleteData($map);
         return redirect('admin/category/index');
     }
+
+    /**
+     * 分类排序
+     *
+     * @param Request $request
+     * @param Category $categoryModel
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sort(Request  $request, Category $categoryModel)
+    {
+        $data = $request->except('_token');
+        $sortData = [];
+        foreach ($data as $k => $v) {
+            $sortData[] = [
+                'id' => $k,
+                'sort' => $v
+            ];
+        }
+        $categoryModel->updateBatch($sortData);
+        return redirect()->back();
+    }
 }

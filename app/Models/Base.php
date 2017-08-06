@@ -145,7 +145,7 @@ class Base extends Model
 
     /**
      * 批量更新的方法
-     *
+     * 示例参数
      * $multipleData = [
      *    [
      *        'title' => 'My title' ,
