@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use Cache;
 use App\Http\Requests\Comment\Store;
 use App\Models\Category;
 use App\Models\Article;
@@ -16,7 +17,6 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
-
     /**
      * 首页
      *
@@ -25,7 +25,10 @@ class IndexController extends Controller
      */
     public function index(Article $articleModel)
 	{
-		$article = $articleModel->getHomeList();
+	    // 获取文章列表数据
+        $article = Cache::remember('article', 10080, function () use($articleModel) {
+            return $articleModel->getHomeList();
+        });
         $assign = [
             'category_id' => 'index',
             'article' => $article,
