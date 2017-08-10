@@ -31,7 +31,7 @@ class CreateBjyFriendshipLinksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bjy_friendship_links');
+		Schema::drop('friendship_links');
 	}
 
 }

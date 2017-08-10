@@ -37,7 +37,7 @@ class CreateBjyOauthUsersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bjy_oauth_users');
+		Schema::drop('oauth_users');
 	}
 
 }

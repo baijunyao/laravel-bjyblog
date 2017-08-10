@@ -29,7 +29,7 @@ class CreateBjyArticleTagsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bjy_article_tags');
+		Schema::drop('article_tags');
 	}
 
 }
