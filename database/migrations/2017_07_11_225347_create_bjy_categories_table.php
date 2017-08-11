@@ -33,7 +33,7 @@ class CreateBjyCategoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bjy_categories');
+		Schema::drop('categories');
 	}
 
 }

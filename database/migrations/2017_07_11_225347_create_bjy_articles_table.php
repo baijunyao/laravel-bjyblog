@@ -38,7 +38,7 @@ class CreateBjyArticlesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('bjy_articles');
+		Schema::drop('articles');
 	}
 
 }
