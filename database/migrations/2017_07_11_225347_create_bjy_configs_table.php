@@ -30,7 +30,7 @@ class CreateBjyConfigsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('configs');
+		Schema::dropIfExists('configs');
 	}
 
 }

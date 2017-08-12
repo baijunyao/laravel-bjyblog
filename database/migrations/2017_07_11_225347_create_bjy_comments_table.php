@@ -34,7 +34,7 @@ class CreateBjyCommentsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('comments');
+		Schema::dropIfExists('comments');
 	}
 
 }

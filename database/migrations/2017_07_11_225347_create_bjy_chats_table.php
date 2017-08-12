@@ -29,7 +29,7 @@ class CreateBjyChatsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('chats');
+		Schema::dropIfExists('chats');
 	}
 
 }
