@@ -10,6 +10,7 @@ use App\Models\Config;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Artisan;
 
 class ArticleController extends Controller
 {
@@ -82,6 +83,7 @@ class ArticleController extends Controller
         $data = $request->except('_token');
 
         $article->addData($data);
+        Artisan::call('cache:clear');
         return redirect('admin/article/index');
     }
 

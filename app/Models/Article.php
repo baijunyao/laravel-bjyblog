@@ -54,7 +54,6 @@ class Article extends Base
     {
         // 获取文章中的全部图片
         preg_match_all('/!\[.*\]\((\S*).*\)/i', $content, $images);
-        p($images);die;
         if (empty($images[1])) {
             $cover = 'uploads/article/default.jpg';
         } else {
