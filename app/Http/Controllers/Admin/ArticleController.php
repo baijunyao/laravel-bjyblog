@@ -135,6 +135,7 @@ class ArticleController extends Controller
             'id' => $id
         ];
         $articleModel->editData($map, $data);
+        Artisan::call('cache:clear');
         return redirect()->back();
     }
 
