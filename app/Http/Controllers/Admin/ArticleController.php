@@ -152,6 +152,7 @@ class ArticleController extends Controller
             'id' => $id
         ];
         $articleModel->deleteData($map);
+        Artisan::call('cache:clear');
         return redirect('admin/article/index');
     }
 }
