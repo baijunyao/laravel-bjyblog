@@ -120,7 +120,7 @@ class Comment extends Base
                     'user' => $name,
                     'date' => date('Y-m-d H:i:s'),
                     'type' => '评论',
-                    'url' => url('article', [$data['article_id']]),
+                    'url' => url('article', [$data['article_id']]).'#comment-'.$id,
                     'title' => $title,
                     'content' => $this->ubbToImage($content)
                 ];
@@ -141,7 +141,7 @@ class Comment extends Base
                     'user' => $name,
                     'date' => date('Y-m-d H:i:s'),
                     'type' => '回复',
-                    'url' => url('article', [$data['article_id']]),
+                    'url' => url('article', [$data['article_id']]).'#comment-'.$id,
                     'title' => $title,
                     'content' => $this->ubbToImage($content)
                 ];
