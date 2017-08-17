@@ -18,159 +18,159 @@
                 <th width="20%">网站状态：</th>
                 <td>
                     <span class="inputword">开启</span>
-                    <input class="bjy-icheck" type="radio" name="WEB_STATUS" value="1" @if($data['WEB_STATUS'] ==1) checked @endif>
+                    <input class="bjy-icheck" type="radio" name="WEB_STATUS" value="1" @if($config['WEB_STATUS'] ==1) checked @endif>
                     <span class="inputword">关闭</span>
-                    <input class="bjy-icheck" type="radio" name="WEB_STATUS" value="0" @if($data['WEB_STATUS'] ==0) checked @endif>
+                    <input class="bjy-icheck" type="radio" name="WEB_STATUS" value="0" @if($config['WEB_STATUS'] ==0) checked @endif>
                 </td>
             </tr>
             <tr>
                 <th>网站关闭时提示文字：</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="WEB_CLOSE_WORD" rows="5" placeholder="">{{ $data['WEB_CLOSE_WORD'] }}</textarea>
+                    <textarea class="form-control modal-sm" name="WEB_CLOSE_WORD" rows="5" placeholder="">{{ $config['WEB_CLOSE_WORD'] }}</textarea>
                 </td>
             </tr>
             <tr>
                 <th>备案号：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="WEB_ICP_NUMBER" value="{{  $data['WEB_ICP_NUMBER'] }}" >
+                    <input class="form-control modal-sm" type="text" name="WEB_ICP_NUMBER" value="{{  $config['WEB_ICP_NUMBER'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>站长邮箱：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="ADMIN_EMAIL" value="{{  $data['ADMIN_EMAIL'] }}" >
+                    <input class="form-control modal-sm" type="text" name="ADMIN_EMAIL" value="{{  $config['ADMIN_EMAIL'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>网站名：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="WEB_NAME" value="{{  $data['WEB_NAME'] }}" >
+                    <input class="form-control modal-sm" type="text" name="WEB_NAME" value="{{  $config['WEB_NAME'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>网站标题：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="WEB_TITLE" value="{{  $data['WEB_TITLE'] }}" >
+                    <input class="form-control modal-sm" type="text" name="WEB_TITLE" value="{{  $config['WEB_TITLE'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>网站关键字：</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="WEB_KEYWORDS" rows="5" placeholder="">{{  $data['WEB_KEYWORDS'] }}</textarea>
+                    <textarea class="form-control modal-sm" name="WEB_KEYWORDS" rows="5" placeholder="">{{  $config['WEB_KEYWORDS'] }}</textarea>
                 </td>
             </tr>
             <tr>
                 <th>网站描述：</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="WEB_DESCRIPTION" rows="5" placeholder="">{{  $data['WEB_DESCRIPTION'] }}</textarea>
+                    <textarea class="form-control modal-sm" name="WEB_DESCRIPTION" rows="5" placeholder="">{{  $config['WEB_DESCRIPTION'] }}</textarea>
                 </td>
             </tr>
             <tr>
                 <th>默认作者：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="AUTHOR" value="{{  $data['AUTHOR'] }}" >
+                    <input class="form-control modal-sm" type="text" name="AUTHOR" value="{{  $config['AUTHOR'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>文章保留版权提示：</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="COPYRIGHT_WORD" rows="5" placeholder="">{{  $data['COPYRIGHT_WORD'] }}</textarea>
+                    <textarea class="form-control modal-sm" name="COPYRIGHT_WORD" rows="5" placeholder="">{{  $config['COPYRIGHT_WORD'] }}</textarea>
                 </td>
             </tr>
             <tr>
                 <th>文章图片title和alt内容：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="IMAGE_TITLE_ALT_WORD" value="{{  $data['IMAGE_TITLE_ALT_WORD'] }}" >
+                    <input class="form-control modal-sm" type="text" name="IMAGE_TITLE_ALT_WORD" value="{{  $config['IMAGE_TITLE_ALT_WORD'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>文字水印内容：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="TEXT_WATER_WORD" value="{{  $data['TEXT_WATER_WORD'] }}" >
+                    <input class="form-control modal-sm" type="text" name="TEXT_WATER_WORD" value="{{  $config['TEXT_WATER_WORD'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>文字水印文字颜色：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="TEXT_WATER_COLOR" value="{{  $data['TEXT_WATER_COLOR'] }}" >
+                    <input class="form-control modal-sm" type="text" name="TEXT_WATER_COLOR" value="{{  $config['TEXT_WATER_COLOR'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>QQ登录APP ID：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="QQ_APP_ID" value="{{  $data['QQ_APP_ID'] }}" >
+                    <input class="form-control modal-sm" type="text" name="QQ_APP_ID" value="{{  $config['QQ_APP_ID'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>QQ登录APP KEY：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="QQ_APP_KEY" value="{{  $data['QQ_APP_KEY'] }}" >
+                    <input class="form-control modal-sm" type="text" name="QQ_APP_KEY" value="{{  $config['QQ_APP_KEY'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>新浪微博登录API KEY：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="SINA_API_KEY" value="{{  $data['SINA_API_KEY'] }}" >
+                    <input class="form-control modal-sm" type="text" name="SINA_API_KEY" value="{{  $config['SINA_API_KEY'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>新浪微博登录SECRET：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="SINA_SECRET" value="{{  $data['SINA_SECRET'] }}" >
+                    <input class="form-control modal-sm" type="text" name="SINA_SECRET" value="{{  $config['SINA_SECRET'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>github Client ID：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="GITHUB_CLIENT_ID" value="{{  $data['GITHUB_CLIENT_ID'] }}" >
+                    <input class="form-control modal-sm" type="text" name="GITHUB_CLIENT_ID" value="{{  $config['GITHUB_CLIENT_ID'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>github Client Secret：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="GITHUB_CLIENT_SECRET" value="{{  $data['GITHUB_CLIENT_SECRET'] }}" >
+                    <input class="form-control modal-sm" type="text" name="GITHUB_CLIENT_SECRET" value="{{  $config['GITHUB_CLIENT_SECRET'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>百度推送site提交链接：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="BAIDU_SITE_URL" value="{{  $data['BAIDU_SITE_URL'] }}" >
+                    <input class="form-control modal-sm" type="text" name="BAIDU_SITE_URL" value="{{  $config['BAIDU_SITE_URL'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>第三方统计代码：</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="WEB_STATISTICS" rows="5" placeholder="">{{  $data['WEB_STATISTICS'] }}</textarea>
+                    <textarea class="form-control modal-sm" name="WEB_STATISTICS" rows="5" placeholder="">{{  $config['WEB_STATISTICS'] }}</textarea>
                 </td>
             </tr>
             <tr>
                 <th>SMTP服务器：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="EMAIL_SMTP" value="{{  $data['EMAIL_SMTP'] }}" >
+                    <input class="form-control modal-sm" type="text" name="EMAIL_SMTP" value="{{  $config['EMAIL_SMTP'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>邮箱账号：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="EMAIL_USERNAME" value="{{  $data['EMAIL_USERNAME'] }}" >
+                    <input class="form-control modal-sm" type="text" name="EMAIL_USERNAME" value="{{  $config['EMAIL_USERNAME'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>邮箱密码：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="EMAIL_PASSWORD" value="{{  $data['EMAIL_PASSWORD'] }}" >
+                    <input class="form-control modal-sm" type="text" name="EMAIL_PASSWORD" value="{{  $config['EMAIL_PASSWORD'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>发件人名称：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="EMAIL_FROM_NAME" value="{{  $data['EMAIL_FROM_NAME'] }}" >
+                    <input class="form-control modal-sm" type="text" name="EMAIL_FROM_NAME" value="{{  $config['EMAIL_FROM_NAME'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>接收评论通知邮箱：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="EMAIL_RECEIVE" value="{{  $data['EMAIL_RECEIVE'] }}" >
+                    <input class="form-control modal-sm" type="text" name="EMAIL_RECEIVE" value="{{  $config['EMAIL_RECEIVE'] }}" >
                 </td>
             </tr>
             <tr>

@@ -16,13 +16,7 @@ class ConfigController extends Controller
      */
     public function edit()
     {
-        $config = Config::all()->toArray();
-        $data = [];
-        foreach ($config as $k => $v) {
-            $data[$v['name']] = $v['value'];
-        }
-        $assign = compact('data');
-        return view('admin/config/edit', $assign);
+        return view('admin/config/edit');
     }
 
     /**

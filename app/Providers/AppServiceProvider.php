@@ -56,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
         // 分配全站通用的数据
         view()->composer('*', function ($view) {
             // 获取配置项
-            $config = Cache::remember('article', 10080, function () {
+            $config = Cache::remember('config', 10080, function () {
                 return Config::pluck('value','name');
             });
             $assign = [
