@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Cache;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Config;
@@ -54,7 +55,10 @@ class AppServiceProvider extends ServiceProvider
 
         // 分配全站通用的数据
         view()->composer('*', function ($view) {
-            $config = Config::pluck('value','name');
+            // 获取配置项
+            $config = Cache::remember('article', 10080, function () {
+                return Config::pluck('value','name');
+            });
             $assign = [
                 'config' => $config
             ];
