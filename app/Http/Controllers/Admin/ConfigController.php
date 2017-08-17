@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Artisan;
 use App\Models\Config;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,6 +39,7 @@ class ConfigController extends Controller
             ];
             $configModel->editData($editMap, $editData);
         }
+        Artisan::call('cache:clear');
         return redirect('admin/config/edit');
     }
 }
