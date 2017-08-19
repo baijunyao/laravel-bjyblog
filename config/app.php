@@ -164,12 +164,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-
-        //
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -179,9 +173,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /**
-         * laravel-ide-helper ide支持
+         * Package Service Providers...
          */
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /**
          * mewebstudio/Purifier 过滤xss攻击

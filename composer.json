@@ -15,7 +15,6 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "barryvdh/laravel-ide-helper": "^2.3",
         "erusev/parsedown": "^1.6",
         "intervention/image": "^2.3",
         "joyqi/hyper-down": "dev-master",
@@ -35,7 +34,8 @@
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
-        "xethron/migrations-generator": "^2.0"
+        "xethron/migrations-generator": "^2.0",
+        "barryvdh/laravel-ide-helper": "^2.3"
     },
     "autoload": {
         "classmap": [
