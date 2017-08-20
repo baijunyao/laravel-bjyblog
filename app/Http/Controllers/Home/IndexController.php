@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use Cache;
+use Artisan;
 use App\Http\Requests\Comment\Store;
 use App\Models\Category;
 use App\Models\Article;
@@ -212,6 +213,7 @@ class IndexController extends Controller
         }
         // 存储评论
         $id = $commentModel->addData($data);
+        Artisan::call('cache:clear');
         return ajax_return('200', ['id' => $id]);
     }
 
