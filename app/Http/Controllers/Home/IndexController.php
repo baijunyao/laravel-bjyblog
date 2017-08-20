@@ -32,8 +32,7 @@ class IndexController extends Controller
         $assign = [
             'category_id' => 'index',
             'article' => $article,
-            'tagName' => '',
-            'title' => Config::where('name', 'WEB_TITLE')->value('value')
+            'tagName' => ''
         ];
 		return view('home/index/index', $assign);
 	}
