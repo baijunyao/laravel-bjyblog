@@ -27,9 +27,7 @@ class IndexController extends Controller
     public function index(Article $articleModel)
 	{
 	    // 获取文章列表数据
-        $article = Cache::remember('article', 10080, function () use($articleModel) {
-            return $articleModel->getHomeList();
-        });
+        $article = $articleModel->getHomeList();
         $assign = [
             'category_id' => 'index',
             'article' => $article,
