@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\ArticleTag;
 use App\Observers\ArticleObserver;
+use App\Observers\ArticleTagObserver;
 use App\Observers\CategoryObserver;
 use Cache;
 use App\Models\Article;
@@ -74,6 +76,7 @@ class AppServiceProvider extends ServiceProvider
         // 注册观察者
         Article::observe(ArticleObserver::class);
         Category::observe(CategoryObserver::class);
+        ArticleTag::observe(ArticleTagObserver::class);
     }
 
     /**
