@@ -8,6 +8,7 @@ use App\Observers\ArticleObserver;
 use App\Observers\ArticleTagObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ChatObserver;
+use App\Observers\CommentObserver;
 use Cache;
 use App\Models\Article;
 use App\Models\Comment;
@@ -80,6 +81,7 @@ class AppServiceProvider extends ServiceProvider
         ArticleTag::observe(ArticleTagObserver::class);
         Category::observe(CategoryObserver::class);
         Chat::observe(ChatObserver::class);
+        Comment::observe(CommentObserver::class);
 
     }
 
