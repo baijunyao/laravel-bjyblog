@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Models\ArticleTag;
+use App\Models\Chat;
 use App\Observers\ArticleObserver;
 use App\Observers\ArticleTagObserver;
 use App\Observers\CategoryObserver;
+use App\Observers\ChatObserver;
 use Cache;
 use App\Models\Article;
 use App\Models\Comment;
@@ -75,8 +77,10 @@ class AppServiceProvider extends ServiceProvider
 
         // 注册观察者
         Article::observe(ArticleObserver::class);
-        Category::observe(CategoryObserver::class);
         ArticleTag::observe(ArticleTagObserver::class);
+        Category::observe(CategoryObserver::class);
+        Chat::observe(ChatObserver::class);
+
     }
 
     /**
