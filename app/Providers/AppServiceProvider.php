@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Observers\ArticleObserver;
 use Cache;
 use App\Models\Article;
 use App\Models\Comment;
@@ -69,6 +70,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
+        // 注册观察者
+        Article::observe(ArticleObserver::class);
     }
 
     /**

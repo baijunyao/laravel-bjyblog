@@ -83,7 +83,6 @@ class ArticleController extends Controller
         $data = $request->except('_token');
 
         $article->addData($data);
-        Artisan::call('cache:clear');
         return redirect('admin/article/index');
     }
 
@@ -135,7 +134,6 @@ class ArticleController extends Controller
             'id' => $id
         ];
         $articleModel->editData($map, $data);
-        Artisan::call('cache:clear');
         return redirect()->back();
     }
 
@@ -152,7 +150,6 @@ class ArticleController extends Controller
             'id' => $id
         ];
         $articleModel->deleteData($map);
-        Artisan::call('cache:clear');
         return redirect('admin/article/index');
     }
 }
