@@ -11,6 +11,7 @@ use App\Observers\ChatObserver;
 use App\Observers\CommentObserver;
 use App\Observers\ConfigObserver;
 use App\Observers\FriendshipLinkObserver;
+use App\Observers\TagObserver;
 use Cache;
 use App\Models\Article;
 use App\Models\Comment;
@@ -86,7 +87,7 @@ class AppServiceProvider extends ServiceProvider
         Comment::observe(CommentObserver::class);
         Config::observe(ConfigObserver::class);
         FriendshipLink::observe(FriendshipLinkObserver::class);
-
+        Tag::observe(TagObserver::class);
     }
 
     /**
