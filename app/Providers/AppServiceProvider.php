@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Observers\ArticleObserver;
+use App\Observers\CategoryObserver;
 use Cache;
 use App\Models\Article;
 use App\Models\Comment;
@@ -72,6 +73,7 @@ class AppServiceProvider extends ServiceProvider
 
         // 注册观察者
         Article::observe(ArticleObserver::class);
+        Category::observe(CategoryObserver::class);
     }
 
     /**
