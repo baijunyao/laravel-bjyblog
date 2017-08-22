@@ -10,6 +10,7 @@ use App\Observers\CategoryObserver;
 use App\Observers\ChatObserver;
 use App\Observers\CommentObserver;
 use App\Observers\ConfigObserver;
+use App\Observers\FriendshipLinkObserver;
 use Cache;
 use App\Models\Article;
 use App\Models\Comment;
@@ -84,6 +85,7 @@ class AppServiceProvider extends ServiceProvider
         Chat::observe(ChatObserver::class);
         Comment::observe(CommentObserver::class);
         Config::observe(ConfigObserver::class);
+        FriendshipLink::observe(FriendshipLinkObserver::class);
 
     }
 
