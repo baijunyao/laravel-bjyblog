@@ -39,7 +39,6 @@ class ConfigController extends Controller
             ];
             $configModel->editData($editMap, $editData);
         }
-        Artisan::call('cache:clear');
         return redirect('admin/config/edit');
     }
 }
