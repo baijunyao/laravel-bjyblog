@@ -2,22 +2,13 @@
 
 namespace App\Models;
 
+use Cache;
+
 /**
  * 评论
- *
- * Class Comment
- * @package App\Models
  */
-
 class Comment extends Base
 {
-    /**
-     * 从配置项表中取出的网站名
-     *
-     * @var
-     */
-    private $webName;
-
     /**
      * content 访问器 把 ubb格式的表情转为html标签
      *
@@ -45,7 +36,7 @@ class Comment extends Base
         $image = [];
         // 循环生成img标签
         for ($i = 1; $i <= $count; $i++) {
-            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="'.$this->webName.'">';
+            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="'.Cache::get('config')->get('WEB_NAME').'">';
         }
         return str_replace($ubb, $image, $content);
     }
@@ -108,8 +99,6 @@ class Comment extends Base
         }
         // 获取文章标题
         $title = Article::where('id', $data['article_id'])->value('title');
-        // 获取网站名
-        $this->webName = Config::where('name', 'WEB_NAME')->value('value');
         // 给站长发送通知邮件
         if($isAdmin == 0){
             $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
