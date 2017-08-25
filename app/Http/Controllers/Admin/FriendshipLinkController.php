@@ -18,9 +18,7 @@ class FriendshipLinkController extends Controller
     public function index()
     {
         $data = FriendshipLink::orderBy(DB::raw('sort is null,sort'))->get();
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/friendshipLink/index', $assign);
     }
 
@@ -57,9 +55,7 @@ class FriendshipLinkController extends Controller
     public function edit($id)
     {
         $data = FriendshipLink::find($id);
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/friendshipLink/edit', $assign);
     }
 

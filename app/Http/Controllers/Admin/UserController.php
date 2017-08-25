@@ -16,9 +16,7 @@ class UserController extends Controller
     public function index(User $userModel)
     {
         $data = $userModel->get();
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/user/index', $assign);
     }
 
@@ -63,10 +61,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-        $assgin = [
-            'data' => $data
-        ];
-        return view('admin/user/edit', $assgin);
+        $assign = compact('data');
+        return view('admin/user/edit', $assign);
     }
 
     /**

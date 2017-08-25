@@ -22,10 +22,8 @@ class ArticleController extends Controller
      */
     public function index(Article $article)
     {
-        $data = $article->getAdminList();
-        $assign = [
-            'article' => $data
-        ];
+        $article = $article->getAdminList();
+        $assign = compact('article');
         return view('admin/article/index', $assign);
     }
 
@@ -39,11 +37,7 @@ class ArticleController extends Controller
         $category = Category::all();
         $tag = Tag::all();
         $author = Config::where('name', 'AUTHOR')->value('value');
-        $assign = [
-            'category' => $category,
-            'tag' => $tag,
-            'author' => $author
-        ];
+        $assign = compact('category', 'tag', 'author');
         return view('admin/article/create', $assign);
     }
 
@@ -81,7 +75,6 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
-
         $article->addData($data);
         return redirect('admin/article/index');
     }
@@ -98,11 +91,7 @@ class ArticleController extends Controller
         $article->tag_ids = ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray();
         $category = Category::all();
         $tag = Tag::all();
-        $assign = [
-            'article' => $article,
-            'category' => $category,
-            'tag' => $tag
-        ];
+        $assign = compact('article', 'category', 'tag');
         return view('admin/article/edit', $assign);
 
     }

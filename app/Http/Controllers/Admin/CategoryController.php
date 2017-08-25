@@ -18,9 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::all();
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/category/index', $assign);
     }
 

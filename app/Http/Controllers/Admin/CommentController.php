@@ -17,9 +17,7 @@ class CommentController extends Controller
     public function index(Comment $commentModel)
     {
         $data = $commentModel->getAdminList();
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/comment/index', $assign);
     }
 

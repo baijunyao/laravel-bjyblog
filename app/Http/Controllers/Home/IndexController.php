@@ -84,13 +84,8 @@ class IndexController extends Controller
 
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
-        $assign = [
-            'category_id' => $data->category_id,
-            'data' => $data,
-            'prev' => $prev,
-            'next' => $next,
-            'comment' => $comment
-        ];
+        $category_id = $data->category_id;
+        $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
         return response()->view('home/index/article', $assign)->cookie('read', $read, 1440);
     }
 

@@ -19,9 +19,7 @@ class ChatController extends Controller
         $data = $chatModel
             ->orderBy('created_at', 'desc')
             ->paginate(50);
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/chat/index', $assign);
     }
 
@@ -57,9 +55,7 @@ class ChatController extends Controller
     public function edit($id)
     {
         $data = Chat::find($id);
-        $assign = [
-            'data' => $data
-        ];
+        $assign = compact('data');
         return view('admin/chat/edit', $assign);
     }
 
