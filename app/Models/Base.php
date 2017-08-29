@@ -175,7 +175,7 @@ class Base extends Model
             foreach ( $updateColumn as $uColumn ) {
                 $sql .=  $uColumn." = CASE ";
                 foreach( $multipleData as $data ) {
-                    $sql .= "WHEN ".$referenceColumn." = ".$data[$referenceColumn]." THEN '".$data[$uColumn]."' ";
+                    $sql .= "WHEN ".$referenceColumn." = '".$data[$referenceColumn]."' THEN '".$data[$uColumn]."' ";
                 }
                 $sql .= "ELSE ".$uColumn." END, ";
             }
@@ -184,7 +184,7 @@ class Base extends Model
             }
             $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
             // 更新
-            return DB::update(DB::raw($sql));
+            return DB::update($sql);
         } else {
             return false;
         }
