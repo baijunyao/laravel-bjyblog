@@ -30,15 +30,14 @@ class ConfigController extends Controller
     public function update(Request $request, Config $configModel)
     {
         $data = $request->except('_token');
+        $editData = [];
         foreach ($data as $k => $v) {
-            $editMap = [
-                'name' => $k
-            ];
-            $editData = [
+            $editData[] = [
+                'name' => $k,
                 'value' => $v
             ];
-            $configModel->editData($editMap, $editData);
         }
+        $configModel->updateBatch($editData);
         return redirect('admin/config/edit');
     }
 }

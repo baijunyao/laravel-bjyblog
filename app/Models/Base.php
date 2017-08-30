@@ -184,7 +184,7 @@ class Base extends Model
             }
             $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
             // 更新
-            return DB::update($sql);
+            return DB::update(DB::raw($sql));
         } else {
             return false;
         }
