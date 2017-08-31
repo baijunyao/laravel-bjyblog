@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use DB;
+use Artisan;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -148,14 +149,12 @@ class Base extends Model
      * 示例参数
      * $multipleData = [
      *    [
-     *        'title' => 'My title' ,
-     *        'name' => 'My Name 2' ,
-     *        'date' => 'My date 2'
+     *        'name' => 'name 1' ,
+     *        'date' => 'date 1'
      *     ],
      *     [
-     *        'title' => 'Another title' ,
-     *        'name' => 'Another Name 2' ,
-     *        'date' => 'Another date 2'
+     *        'name' => 'name 2' ,
+     *        'date' => 'date 2'
      *      ]
      *   ]
      *
@@ -163,30 +162,35 @@ class Base extends Model
      * @return bool|int
      */
     function updateBatch($multipleData = []){
-        // 获取表名
-        $tableName = config('database.connections.mysql.prefix').$this->getTable();
-        if( $tableName && !empty($multipleData) ) {
-            $updateColumn = array_keys($multipleData[0]);
-            $referenceColumn = $updateColumn[0];
-            unset($updateColumn[0]);
-            $whereIn = "";
-            // 组合sql语句
-            $sql = "UPDATE ".$tableName." SET ";
-            foreach ( $updateColumn as $uColumn ) {
-                $sql .=  $uColumn." = CASE ";
-                foreach( $multipleData as $data ) {
-                    $sql .= "WHEN ".$referenceColumn." = '".$data[$referenceColumn]."' THEN '".$data[$uColumn]."' ";
-                }
-                $sql .= "ELSE ".$uColumn." END, ";
-            }
-            foreach( $multipleData as $data ) {
-                $whereIn .= "'".$data[$referenceColumn]."', ";
-            }
-            $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
-            // 更新
-            return DB::update(DB::raw($sql));
-        } else {
+        if (empty($multipleData)) {
             return false;
         }
+        // 获取表名
+        $tableName = config('database.connections.mysql.prefix').$this->getTable();
+        $updateColumn = array_keys($multipleData[0]);
+        $referenceColumn = $updateColumn[0];
+        unset($updateColumn[0]);
+        $whereIn = "";
+        // 组合sql语句
+        $sql = "UPDATE ".$tableName." SET ";
+        foreach ( $updateColumn as $uColumn ) {
+            $sql .=  $uColumn." = CASE ";
+            foreach( $multipleData as $data ) {
+                $sql .= "WHEN ".$referenceColumn." = '".$data[$referenceColumn]."' THEN '".$data[$uColumn]."' ";
+            }
+            $sql .= "ELSE ".$uColumn." END, ";
+        }
+        foreach( $multipleData as $data ) {
+            $whereIn .= "'".$data[$referenceColumn]."', ";
+        }
+        $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
+        // 更新
+        $result = DB::update(DB::raw($sql));
+        // 如果有数据变动；则清空缓存
+        if ($result) {
+            Artisan::call('cache:clear');
+        }
+        return $result;
+
     }
 }
