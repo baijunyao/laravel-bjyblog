@@ -29,7 +29,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="确认">
+                    <input class="btn btn-success" type="submit" value="提交">
                 </td>
             </tr>
         </table>
