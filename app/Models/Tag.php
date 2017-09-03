@@ -16,6 +16,8 @@ class Tag extends Base
         $prefix = config('database.connections.mysql.prefix');
         $data = $this->select(DB::raw($prefix.'tags.*, count('.$prefix.'at.article_id) as article_count'))
             ->join('article_tags as at', 'at.tag_id', 'tags.id')
+            ->rightJoin('articles as a', 'a.id', 'at.article_id')
+            ->where('a.deleted_at', null)
             ->groupBy('tags.id')
             ->get();
         return $data;
