@@ -200,6 +200,11 @@ return [
          * barryvdh/laravel-debugbar  debug工具条
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+
+        /**
+         * appstract/laravel-opcache 命令行操作opcache缓存
+         */
+        Appstract\Opcache\OpcacheServiceProvider::class,
     ],
 
     /*
