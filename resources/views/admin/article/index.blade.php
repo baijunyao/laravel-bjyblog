@@ -23,6 +23,7 @@
             <th>分类</th>
             <th>标题</th>
             <th>点击数</th>
+            <th>状态</th>
             <th>发布时间</th>
             <th>操作</th>
         </tr>
@@ -34,11 +35,23 @@
                     <a href="{{ url('article', [$v->id]) }}" target="_blank">{{ $v->title }}</a>
                 </td>
                 <td>{{ $v->click }}</td>
+                <td>
+                    @if(is_null($v->deleted_at))
+                        √
+                    @else
+                        ×
+                    @endif
+                </td>
                 <td>{{ $v->created_at }}</td>
                 <td>
                     <a href="{{ url('admin/article/edit', [$v->id]) }}">编辑/详情</a>
                     |
-                    <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">删除</a>
+                    @if(is_null($v->deleted_at))
+                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">删除</a>
+                    @else
+                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/article/restore', [$v->id]) }}'">恢复</a>
+                    @endif
+
                 </td>
             </tr>
         @endforeach

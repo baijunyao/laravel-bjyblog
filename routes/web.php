@@ -100,6 +100,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('upload_image', 'ArticleController@upload_image');
         // 删除文章
         Route::get('destroy/{id}', 'ArticleController@destroy');
+        // 删除文章
+        Route::get('restore/{id}', 'ArticleController@restore');
     });
 
     // 分类管理

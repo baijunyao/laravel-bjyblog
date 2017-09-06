@@ -141,4 +141,21 @@ class ArticleController extends Controller
         $articleModel->deleteData($map);
         return redirect('admin/article/index');
     }
+
+    /**
+     * 恢复删除的文章
+     *
+     * @param         $id
+     * @param Article $articleModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Article $articleModel)
+    {
+        $articleModel->where('id', $id)->restore();
+        return redirect('admin/article/index');
+    }
+
+
+
 }
