@@ -20,22 +20,30 @@
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
-                <th width="5%">id</th>
-                <th width="5%">排序</th>
-                <th width="10%">分类名</th>
-                <th width="30%">关键字</th>
-                <th width="35%">描述</th>
-                <th width="15%">操作</th>
+                <th>id</th>
+                <th>排序</th>
+                <th>分类名</th>
+                <th>关键字</th>
+                <th>描述</th>
+                <th>状态</th>
+                <th>操作</th>
             </tr>
             @foreach($data as $v)
                 <tr>
                     <td>{{ $v->id }}</td>
-                    <td>
+                    <td width="5%">
                         <input class="form-control" type="text" name="{{ $v->id }}" value="{{ $v->sort }}">
                     </td>
                     <td>{{ $v->name }}</td>
                     <td>{{ $v->keywords }}</td>
                     <td>{{ $v->description }}</td>
+                    <td>
+                        @if(is_null($v->deleted_at))
+                            √
+                        @else
+                            ×
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ url('admin/category/edit', [$v->id]) }}">编辑</a> |
                         <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/category/destroy', [$v->id]) }}'">删除</a>
