@@ -17,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::all();
+        $data = Category::withTrashed()->get();
         $assign = compact('data');
         return view('admin/category/index', $assign);
     }
