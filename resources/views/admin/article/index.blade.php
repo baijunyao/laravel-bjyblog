@@ -51,7 +51,6 @@
                     @else
                         <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/article/restore', [$v->id]) }}'">恢复</a>
                     @endif
-
                 </td>
             </tr>
         @endforeach

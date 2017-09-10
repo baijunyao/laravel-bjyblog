@@ -16,7 +16,7 @@ class TagController extends Controller
      */
     public function index(Tag $tagModel)
     {
-        $data = $tagModel->all();
+        $data = $tagModel::withTrashed()->get();
         $assign = compact('data');
         return view('admin/tag/index', $assign);
     }

@@ -20,17 +20,29 @@
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
-                <th width="5%">id</th>
-                <th width="55%">标签名</th>
-                <th width="40%">操作</th>
+                <th>id</th>
+                <th>标签名</th>
+                <td>状态</td>
+                <th>操作</th>
             </tr>
             @foreach($data as $v)
                 <tr>
                     <td>{{ $v->id }}</td>
                     <td>{{ $v->name }}</td>
                     <td>
+                        @if(is_null($v->deleted_at))
+                            √
+                        @else
+                            ×
+                        @endif
+                    </td>
+                    <td>
                         <a href="{{ url('admin/tag/edit', [$v->id]) }}">编辑</a> |
-                        <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">删除</a>
+                        @if(is_null($v->deleted_at))
+                            <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">删除</a>
+                        @else
+                            <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/tag/restore', [$v->id]) }}'">恢复</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
