@@ -90,4 +90,18 @@ class TagController extends Controller
         $tagModel->deleteData($map);
         return redirect('admin/tag/index');
     }
+
+    /**
+     * 恢复删除的标签
+     *
+     * @param         $id
+     * @param Tag     $tagModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Tag $tagModel)
+    {
+        $tagModel->where('id', $id)->restore();
+        return redirect('admin/tag/index');
+    }
 }

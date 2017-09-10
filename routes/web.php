@@ -83,7 +83,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'index'], function () {
         // 后台首页
         Route::get('index', 'IndexController@index');
-
     });
 
     // 文章管理
@@ -100,7 +99,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('upload_image', 'ArticleController@upload_image');
         // 删除文章
         Route::get('destroy/{id}', 'ArticleController@destroy');
-        // 删除文章
+        // 恢复删除的文章
         Route::get('restore/{id}', 'ArticleController@restore');
     });
 
@@ -118,6 +117,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('sort', 'CategoryController@sort');
         // 删除分类
         Route::get('destroy/{id}', 'CategoryController@destroy');
+        // 恢复删除的分类
+        Route::get('restore/{id}', 'CategoryController@restore');
     });
 
     // 标签管理
@@ -132,6 +133,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('update/{id}', 'TagController@update');
         // 删除标签
         Route::get('destroy/{id}', 'TagController@destroy');
+        // 恢复删除的标签
+        Route::get('restore/{id}', 'TagController@restore');
     });
 
     // 评论管理
@@ -195,7 +198,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         // 编辑配置项
         Route::get('edit', 'ConfigController@edit');
         Route::post('update', 'ConfigController@update');
-
     });
 });
 

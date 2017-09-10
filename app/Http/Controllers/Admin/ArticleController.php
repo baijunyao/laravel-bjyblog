@@ -154,7 +154,4 @@ class ArticleController extends Controller
         $articleModel->where('id', $id)->restore();
         return redirect('admin/article/index');
     }
-
-
-
 }

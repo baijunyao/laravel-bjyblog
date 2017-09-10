@@ -110,4 +110,18 @@ class CategoryController extends Controller
         $categoryModel->updateBatch($sortData);
         return redirect()->back();
     }
+
+    /**
+     * 恢复删除的分类
+     *
+     * @param          $id
+     * @param Category $categoryModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Category $categoryModel)
+    {
+        $categoryModel->where('id', $id)->restore();
+        return redirect('admin/category/index');
+    }
 }
