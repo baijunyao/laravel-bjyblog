@@ -409,9 +409,9 @@ if (! function_exists('show_message')){
      */
     function show_message($message = '成功', $success = true)
     {
-        $alter_class = $success ? 'alert-class' : 'alert-error';
+        $alterClass = $success ? 'alert-success' : 'alert-error';
         session()->flash('alert-message', $message);
-        session()->flash($alter_class, 'alert-success');
+        session()->flash('alert-class', $alterClass);
 
     }
 }
