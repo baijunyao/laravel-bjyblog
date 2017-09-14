@@ -47,7 +47,10 @@ class Base extends Model
      */
     public function editData($map, $data)
     {
-        $model = $this->whereMap($map)->get();
+        $model = $this
+            ->whereMap($map)
+            ->withTrashed()
+            ->get();
         // 可能有查不到数据的情况
         if ($model->isEmpty()) {
             show_message('无需要添加的数据', false);
