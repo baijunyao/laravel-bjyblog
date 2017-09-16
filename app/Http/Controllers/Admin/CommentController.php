@@ -90,4 +90,18 @@ class CommentController extends Controller
         $commentModel->deleteData($map);
         return redirect('admin/comment/index');
     }
+
+    /**
+     * 恢复删除的评论
+     *
+     * @param         $id
+     * @param Comment $commentModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Comment $commentModel)
+    {
+        $commentModel->where('id', $id)->restore();
+        return redirect('admin/comment/index');
+    }
 }

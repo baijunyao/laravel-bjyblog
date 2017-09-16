@@ -143,6 +143,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('index', 'CommentController@index');
         // 删除评论
         Route::get('destroy/{id}', 'CommentController@destroy');
+        // 恢复删除的评论
+        Route::get('restore/{id}', 'CommentController@restore');
     });
 
     // 管理员
