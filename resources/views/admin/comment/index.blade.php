@@ -10,10 +10,11 @@
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="40%">评论内容</th>
+            <th width="35%">评论内容</th>
             <th width="25%">文章</th>
             <th width="10%">用户</th>
             <th width="15%">评论日期</th>
+            <th width="5%">状态</th>
             <th width="5%">操作</th>
         </tr>
         @foreach($data as $k => $v)
@@ -26,7 +27,19 @@
                 <td>{{ $v->name }}</td>
                 <td>{{ $v->created_at }}</td>
                 <td>
-                    <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">删除</a>
+                    @if(is_null($v->deleted_at))
+                        √
+                    @else
+                        ×
+                    @endif
+                </td>
+                <td>
+                    @if(is_null($v->deleted_at))
+                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">删除</a>
+                    @else
+                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">恢复</a>
+                    @endif
+
                 </td>
             </tr>
         @endforeach

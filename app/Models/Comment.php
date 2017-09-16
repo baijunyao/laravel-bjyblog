@@ -253,6 +253,7 @@ class Comment extends Base
             ->join('articles as a', 'comments.article_id', 'a.id')
             ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
             ->orderBy('comments.created_at', 'desc')
+            ->withTrashed()
             ->paginate(15);
         return $data;
     }
