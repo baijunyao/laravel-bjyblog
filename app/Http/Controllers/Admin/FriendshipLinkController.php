@@ -112,6 +112,19 @@ class FriendshipLinkController extends Controller
         ];
         $friendshipLinkModel->deleteData($map);
         return redirect()->back();
+    }
 
+    /**
+     * 恢复删除的友情链接
+     *
+     * @param                $id
+     * @param FriendshipLink $friendshipLinkModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, FriendshipLink $friendshipLinkModel)
+    {
+        $friendshipLinkModel->where('id', $id)->restore();
+        return redirect('admin/comment/index');
     }
 }
