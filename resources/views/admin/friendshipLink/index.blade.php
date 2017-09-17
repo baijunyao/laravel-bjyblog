@@ -23,7 +23,8 @@
                 <th width="5%">id</th>
                 <th width="5%">排序</th>
                 <th width="20%">链接名</th>
-                <th width="45%">链接地址</th>
+                <th width="40%">链接地址</th>
+                <th width="5%">状态</th>
                 <th width="15%">操作</th>
             </tr>
             @foreach($data as $v)
@@ -35,8 +36,19 @@
                     <td>{{ $v->name }}</td>
                     <td><a href="{{ $v->url }}" target="_blank">{{ $v->url }}</a></td>
                     <td>
+                        @if(is_null($v->deleted_at))
+                            √
+                        @else
+                            ×
+                        @endif
+                    </td>
+                    <td>
                         <a href="{{ url('admin/friendshipLink/edit', [$v->id]) }}">编辑</a> |
-                        <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/friendshipLink/destroy', [$v->id]) }}'">删除</a>
+                        @if(is_null($v->deleted_at))
+                            <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/friendshipLink/destroy', [$v->id]) }}'">删除</a>
+                        @else
+                            <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/friendshipLink/restore', [$v->id]) }}'">恢复</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

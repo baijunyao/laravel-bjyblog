@@ -17,7 +17,9 @@ class FriendshipLinkController extends Controller
      */
     public function index()
     {
-        $data = FriendshipLink::orderBy(DB::raw('sort is null,sort'))->get();
+        $data = FriendshipLink::orderBy(DB::raw('sort is null,sort'))
+            ->withTrashed()
+            ->get();
         $assign = compact('data');
         return view('admin/friendshipLink/index', $assign);
     }
