@@ -18,6 +18,7 @@ class ChatController extends Controller
     {
         $data = $chatModel
             ->orderBy('created_at', 'desc')
+            ->withTrashed()
             ->paginate(50);
         $assign = compact('data');
         return view('admin/chat/index', $assign);

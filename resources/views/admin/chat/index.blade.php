@@ -19,8 +19,9 @@
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="70%">内容</th>
+            <th width="65%">内容</th>
             <th width="15%">添加日期</th>
+            <th width="5%">状态</th>
             <th width="10%">操作</th>
         </tr>
         @foreach($data as $k => $v)
@@ -29,9 +30,20 @@
                 <td>{{ $v->content }}</td>
                 <td>{{ $v->created_at }}</td>
                 <td>
+                    @if(is_null($v->deleted_at))
+                        √
+                    @else
+                        ×
+                    @endif
+                </td>
+                <td>
                     <a href="{{ url('admin/chat/edit', [$v->id]) }}">编辑</a>
                     |
-                    <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/chat/destroy', [$v->id]) }}'">删除</a>
+                    @if(is_null($v->deleted_at))
+                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/chat/destroy', [$v->id]) }}'">删除</a>
+                    @else
+                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/chat/restore', [$v->id]) }}'">恢复</a>
+                    @endif
                 </td>
             </tr>
         @endforeach
