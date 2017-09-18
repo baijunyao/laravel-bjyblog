@@ -195,6 +195,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::post('update/{id}', 'ChatController@update');
         // 删除随言碎语
         Route::get('destroy/{id}', 'ChatController@destroy');
+        // 恢复删除的随言碎语
+        Route::get('restore/{id}', 'ChatController@restore');
     });
 
     // 配置项管理

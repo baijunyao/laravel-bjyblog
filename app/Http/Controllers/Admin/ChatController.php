@@ -92,4 +92,18 @@ class ChatController extends Controller
         $chatModel->deleteData($map);
         return redirect('admin/chat/index');
     }
+
+    /**
+     * 恢复删除的随言碎语
+     *
+     * @param      $id
+     * @param Chat $chatModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Chat $chatModel)
+    {
+        $chatModel->where('id', $id)->restore();
+        return redirect('admin/chat/index');
+    }
 }
