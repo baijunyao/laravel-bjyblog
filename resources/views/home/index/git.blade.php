@@ -12,7 +12,7 @@
 
         {{--bjyadmin开始--}}
         <div class="github-widget" data-repo="baijunyao/thinkphp-bjyadmin"></div>
-        <script src='http://git.oschina.net/shuaibai123/thinkphp-bjyadmin/widget_preview'></script>
+        <script src='//git.oschina.net/shuaibai123/thinkphp-bjyadmin/widget_preview'></script>
         <style>
             .pro_name a{color: #4183c4;}
             .osc_git_title{background-color: #d8e5f1;}
@@ -25,7 +25,7 @@
 
         {{--bjyblog开始--}}
         <div class="github-widget" data-repo="baijunyao/thinkphp-bjyblog"></div>
-        <script src='http://git.oschina.net/shuaibai123/thinkbjy/widget_preview'></script>
+        <script src='//git.oschina.net/shuaibai123/thinkbjy/widget_preview'></script>
         <style>
             .pro_name a{color: #4183c4;}
             .osc_git_title{background-color: #d8e5f1;}
@@ -38,7 +38,7 @@
 
         <div class="github-widget" data-repo="baijunyao/laravel-bjyadmin"></div>
         <div class="github-widget" data-repo="baijunyao/laravel-bjyblog"></div>
-        <script src='http://git.oschina.net/shuaibai123/laravel-bjyadmin/widget_preview'></script>
+        <script src='//git.oschina.net/shuaibai123/laravel-bjyadmin/widget_preview'></script>
         <style>
             .pro_name a{color: #4183c4;}
             .osc_git_title{background-color: #d8e5f1;}
@@ -47,7 +47,7 @@
             .osc_git_info{color: #666;}
             .osc_git_main a{color: #4183c4;}
         </style>
-        <script src='http://git.oschina.net/shuaibai123/laravel-bjyblog/widget_preview'></script>
+        <script src='//git.oschina.net/shuaibai123/laravel-bjyblog/widget_preview'></script>
         <style>
             .pro_name a{color: #4183c4;}
             .osc_git_title{background-color: #d8e5f1;}
