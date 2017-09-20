@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\OauthUser;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -12,13 +13,28 @@ class SendCommentEmail implements ShouldQueue
     use InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * Create a new job instance.
+     * 收件人信息
      *
-     * @return void
+     * @var OauthUser
      */
-    public function __construct()
+    protected $oauthUser;
+
+    /**
+     * 评论内容
+     *
+     * @var $content
+     */
+    protected $content;
+
+    /**
+     * SendCommentEmail constructor.
+     *
+     * @param OauthUser $oauthUser
+     * @param array     $content
+     */
+    public function __construct(OauthUser $oauthUser, array $content)
     {
-        //
+        $this->oauthUser = $oauthUser;
     }
 
     /**
@@ -28,6 +44,8 @@ class SendCommentEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $oauthUser = $this->oauthUser;
+        $content = $this->content;
+        send_email($oauthUser->email, $oauthUser->name, $content['subject'], $content, 'emails.commentArticle');
     }
 }
