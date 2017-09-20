@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Cache;
+use App\Jobs\SendCommentEmail;
 
 /**
  * 评论
@@ -119,7 +120,7 @@ class Comment extends Base
                     'content' => $this->ubbToImage($content)
                 ];
                 $subject = $name. '评论了 '. $title;
-                send_email($address, '站长', $subject, $emailData, 'emails.commentArticle');
+                dispatch(new SendCommentEmail($address, '站长', $subject, $emailData));
             }
         }
         // 给用户发送邮件通知
@@ -140,7 +141,7 @@ class Comment extends Base
                     'content' => $this->ubbToImage($content)
                 ];
                 $subject = $name. '评论了 '. $title;
-                send_email($parentData['email'], $parentData['name'], $subject, $emailData, 'emails.commentArticle');
+                dispatch(new SendCommentEmail($parentData['email'], $parentData['name'], $subject, $emailData));
             }
         }
         return $id;

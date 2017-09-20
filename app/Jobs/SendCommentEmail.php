@@ -13,11 +13,25 @@ class SendCommentEmail implements ShouldQueue
     use InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * 收件人信息
+     * 收件人邮箱地址
      *
-     * @var OauthUser
+     * @var
      */
-    protected $oauthUser;
+    protected $email;
+
+    /**
+     * 收件人名称
+     *
+     * @var
+     */
+    protected $name;
+
+    /**
+     * 邮件标题
+     *
+     * @var
+     */
+    protected $subject;
 
     /**
      * 评论内容
@@ -29,12 +43,17 @@ class SendCommentEmail implements ShouldQueue
     /**
      * SendCommentEmail constructor.
      *
-     * @param OauthUser $oauthUser
-     * @param array     $content
+     * @param       $email
+     * @param       $name
+     * @param       $subject
+     * @param array $content
      */
-    public function __construct(OauthUser $oauthUser, array $content)
+    public function __construct($email, $name, $subject, array $content)
     {
-        $this->oauthUser = $oauthUser;
+        $this->email = $email;
+        $this->name = $name;
+        $this->subject = $subject;
+        $this->content;
     }
 
     /**
@@ -44,8 +63,6 @@ class SendCommentEmail implements ShouldQueue
      */
     public function handle()
     {
-        $oauthUser = $this->oauthUser;
-        $content = $this->content;
-        send_email($oauthUser->email, $oauthUser->name, $content['subject'], $content, 'emails.commentArticle');
+        send_email($this->email, $this->name, $this->subject, $this->content, 'emails.commentArticle');
     }
 }
