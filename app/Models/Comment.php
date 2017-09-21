@@ -104,7 +104,9 @@ class Comment extends Base
             return false;
         }
         // 获取文章标题
-        $title = Article::where('id', $data['article_id'])->value('title');
+        $title = Article::where('id', $data['article_id'])
+            ->withTrashed()
+            ->value('title');
         // 给站长发送通知邮件
         if($isAdmin == 0){
             $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
