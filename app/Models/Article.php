@@ -131,7 +131,7 @@ class Article extends Base
             ->first();
         $articleTag = new ArticleTag();
         $tag = $articleTag->getTagNameByArticleIds([$id]);
-        $data['tag'] = current($tag);
+        $data['tag'] = empty($tag) ? [] : current($tag);
         return $data;
     }
 

@@ -53,7 +53,7 @@ class SendCommentEmail implements ShouldQueue
         $this->email = $email;
         $this->name = $name;
         $this->subject = $subject;
-        $this->content;
+        $this->content = $content;
     }
 
     /**
