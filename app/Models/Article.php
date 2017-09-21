@@ -131,6 +131,7 @@ class Article extends Base
             ->first();
         $articleTag = new ArticleTag();
         $tag = $articleTag->getTagNameByArticleIds([$id]);
+        // 处理标签可能为空的情况
         $data['tag'] = empty($tag) ? [] : current($tag);
         return $data;
     }
