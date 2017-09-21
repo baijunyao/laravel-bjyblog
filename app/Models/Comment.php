@@ -109,7 +109,6 @@ class Comment extends Base
         if($isAdmin == 0){
             $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
             if (!empty($address)) {
-                $title = Article::where('id', $data['article_id'])->value('title');
                 $emailData = [
                     'name' => '站长',
                     'user' => $name,
