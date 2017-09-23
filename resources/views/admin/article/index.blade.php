@@ -44,7 +44,7 @@
                 </td>
                 <td>{{ $v->created_at }}</td>
                 <td>
-                    <a href="{{ url('admin/article/edit', [$v->id]) }}">编辑/详情</a>
+                    <a href="{{ url('admin/article/edit', [$v->id]) }}">编辑</a>
                     |
                     @if(is_null($v->deleted_at))
                         <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">删除</a>
