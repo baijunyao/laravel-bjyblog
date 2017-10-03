@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBjyConfigsTable extends Migration {
+class CreateConfigsTable extends Migration {
 
 	/**
 	 * Run the migrations.

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBjyOauthUsersTable extends Migration {
+class CreateOauthUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
