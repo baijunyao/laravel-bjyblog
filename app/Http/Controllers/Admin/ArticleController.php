@@ -154,4 +154,19 @@ class ArticleController extends Controller
         $articleModel->where('id', $id)->restore();
         return redirect('admin/article/index');
     }
+
+    /**
+     * 彻底删除文章
+     *
+     * @param         $id
+     * @param Article $articleModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Article $articleModel)
+    {
+        $articleModel->where('id', $id)->forceDelete();
+        return redirect('admin/article/index');
+    }
+
 }
