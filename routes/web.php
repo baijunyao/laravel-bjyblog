@@ -121,6 +121,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'CategoryController@destroy');
         // 恢复删除的分类
         Route::get('restore/{id}', 'CategoryController@restore');
+        // 彻底删除分类
+        Route::get('forceDelete/{id}', 'CategoryController@forceDelete');
     });
 
     // 标签管理
