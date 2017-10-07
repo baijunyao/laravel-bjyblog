@@ -126,7 +126,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * 彻底删除文章
+     * 彻底删除分类
      *
      * @param          $id
      * @param Category $categoryModel

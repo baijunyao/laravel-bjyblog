@@ -139,6 +139,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'TagController@destroy');
         // 恢复删除的标签
         Route::get('restore/{id}', 'TagController@restore');
+        // 彻底删除标签
+        Route::get('forceDelete/{id}', 'TagController@forceDelete');
     });
 
     // 评论管理
