@@ -151,6 +151,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'CommentController@destroy');
         // 恢复删除的评论
         Route::get('restore/{id}', 'CommentController@restore');
+        // 彻底删除评论
+        Route::get('forceDelete/{id}', 'CommentController@forceDelete');
     });
 
     // 管理员

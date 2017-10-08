@@ -38,6 +38,8 @@
                         <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">删除</a>
                     @else
                         <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">恢复</a>
+                        |
+                        <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">彻底删除</a>
                     @endif
 
                 </td>
