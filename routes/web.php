@@ -189,6 +189,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'FriendshipLinkController@destroy');
         // 恢复删除的友情链接
         Route::get('restore/{id}', 'FriendshipLinkController@restore');
+        // 彻底删除友情链接
+        Route::get('forceDelete/{id}', 'FriendshipLinkController@forceDelete');
     });
 
     // 随言碎语管理

@@ -125,6 +125,20 @@ class FriendshipLinkController extends Controller
     public function restore($id, FriendshipLink $friendshipLinkModel)
     {
         $friendshipLinkModel->where('id', $id)->restore();
-        return redirect('admin/comment/index');
+        return redirect('admin/friendshipLink/index');
+    }
+
+    /**
+     * 彻底删除评论
+     *
+     * @param                $id
+     * @param FriendshipLink $friendshipLinkModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, FriendshipLink $friendshipLinkModel)
+    {
+        $friendshipLinkModel->where('id', $id)->forceDelete();
+        return redirect('admin/friendshipLink/index');
     }
 }
