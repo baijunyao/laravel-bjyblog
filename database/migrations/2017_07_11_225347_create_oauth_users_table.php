@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBjyOauthUsersCopyTable extends Migration {
+class CreateOauthUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateBjyOauthUsersCopyTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('oauth_users_copy', function(Blueprint $table)
+		Schema::create('oauth_users', function(Blueprint $table)
 		{
 			$table->increments('id')->comment('主键id');
 			$table->boolean('type')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');
@@ -37,7 +37,7 @@ class CreateBjyOauthUsersCopyTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('oauth_users_copy');
+		Schema::dropIfExists('oauth_users');
 	}
 
 }

@@ -104,4 +104,18 @@ class TagController extends Controller
         $tagModel->where('id', $id)->restore();
         return redirect('admin/tag/index');
     }
+
+    /**
+     * 彻底删除标签
+     *
+     * @param         $id
+     * @param Tag     $tagModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Tag $tagModel)
+    {
+        $tagModel->where('id', $id)->forceDelete();
+        return redirect('admin/tag/index');
+    }
 }

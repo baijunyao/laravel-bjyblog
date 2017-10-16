@@ -124,4 +124,18 @@ class CategoryController extends Controller
         $categoryModel->where('id', $id)->restore();
         return redirect('admin/category/index');
     }
+
+    /**
+     * 彻底删除分类
+     *
+     * @param          $id
+     * @param Category $categoryModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Category $categoryModel)
+    {
+        $categoryModel->where('id', $id)->forceDelete();
+        return redirect('admin/category/index');
+    }
 }

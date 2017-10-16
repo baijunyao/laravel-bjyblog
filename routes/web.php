@@ -101,6 +101,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'ArticleController@destroy');
         // 恢复删除的文章
         Route::get('restore/{id}', 'ArticleController@restore');
+        // 彻底删除文章
+        Route::get('forceDelete/{id}', 'ArticleController@forceDelete');
     });
 
     // 分类管理
@@ -119,6 +121,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'CategoryController@destroy');
         // 恢复删除的分类
         Route::get('restore/{id}', 'CategoryController@restore');
+        // 彻底删除分类
+        Route::get('forceDelete/{id}', 'CategoryController@forceDelete');
     });
 
     // 标签管理
@@ -135,6 +139,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'TagController@destroy');
         // 恢复删除的标签
         Route::get('restore/{id}', 'TagController@restore');
+        // 彻底删除标签
+        Route::get('forceDelete/{id}', 'TagController@forceDelete');
     });
 
     // 评论管理
@@ -145,6 +151,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'CommentController@destroy');
         // 恢复删除的评论
         Route::get('restore/{id}', 'CommentController@restore');
+        // 彻底删除评论
+        Route::get('forceDelete/{id}', 'CommentController@forceDelete');
     });
 
     // 管理员
@@ -181,6 +189,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'FriendshipLinkController@destroy');
         // 恢复删除的友情链接
         Route::get('restore/{id}', 'FriendshipLinkController@restore');
+        // 彻底删除友情链接
+        Route::get('forceDelete/{id}', 'FriendshipLinkController@forceDelete');
     });
 
     // 随言碎语管理

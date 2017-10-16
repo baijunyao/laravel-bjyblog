@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBjyChatsTable extends Migration {
+class CreateFriendshipLinksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class CreateBjyChatsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('chats', function(Blueprint $table)
+		Schema::create('friendship_links', function(Blueprint $table)
 		{
 			$table->increments('id')->comment('主键id');
-			$table->text('content', 65535)->comment('内容');
+			$table->string('name', 50)->default('')->comment('链接名');
+			$table->string('url')->default('')->comment('链接地址');
+			$table->boolean('sort')->nullable()->default(1)->comment('排序');
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -29,7 +31,7 @@ class CreateBjyChatsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('chats');
+		Schema::dropIfExists('friendship_links');
 	}
 
 }

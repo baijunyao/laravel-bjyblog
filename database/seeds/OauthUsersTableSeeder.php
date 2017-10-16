@@ -23,7 +23,7 @@ class OauthUsersTableSeeder extends Seeder
                 'last_login_ip' => '127.0.0.1',
                 'login_times' => 1,
                 'email' => 'baijunyao@baijunyao.com',
-                'is_admin' => 1,
+                'is_admin' => 0,
                 'created_at' => '2017-7-24 07:35:12',
                 'updated_at' => '2017-7-24 07:35:12',
                 'deleted_at' => NULL,

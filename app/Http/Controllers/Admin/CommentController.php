@@ -104,4 +104,18 @@ class CommentController extends Controller
         $commentModel->where('id', $id)->restore();
         return redirect('admin/comment/index');
     }
+
+    /**
+     * 彻底删除评论
+     *
+     * @param         $id
+     * @param Comment $commentModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Comment $commentModel)
+    {
+        $commentModel->where('id', $id)->forceDelete();
+        return redirect('admin/tag/index');
+    }
 }
