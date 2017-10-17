@@ -24,7 +24,7 @@ class ArticleController extends Controller
     {
         $article = $article->getAdminList();
         $assign = compact('article');
-        return view('admin/article/index', $assign);
+        return view('admin.article.index', $assign);
     }
 
     /**
@@ -38,7 +38,7 @@ class ArticleController extends Controller
         $tag = Tag::all();
         $author = Config::where('name', 'AUTHOR')->value('value');
         $assign = compact('category', 'tag', 'author');
-        return view('admin/article/create', $assign);
+        return view('admin.article.create', $assign);
     }
 
     /**
@@ -92,7 +92,7 @@ class ArticleController extends Controller
         $category = Category::all();
         $tag = Tag::all();
         $assign = compact('article', 'category', 'tag');
-        return view('admin/article/edit', $assign);
+        return view('admin.article.edit', $assign);
     }
 
     /**

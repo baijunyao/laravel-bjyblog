@@ -35,6 +35,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('login/public/index');
+        return view('login.public.index');
     }
 }

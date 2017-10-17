@@ -21,7 +21,7 @@ class FriendshipLinkController extends Controller
             ->withTrashed()
             ->get();
         $assign = compact('data');
-        return view('admin/friendshipLink/index', $assign);
+        return view('admin.friendshipLink.index', $assign);
     }
 
     /**
@@ -31,7 +31,7 @@ class FriendshipLinkController extends Controller
      */
     public function create()
     {
-        return view('admin/friendshipLink/create');
+        return view('admin.friendshipLink.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class FriendshipLinkController extends Controller
     {
         $data = FriendshipLink::find($id);
         $assign = compact('data');
-        return view('admin/friendshipLink/edit', $assign);
+        return view('admin.friendshipLink.edit', $assign);
     }
 
     /**

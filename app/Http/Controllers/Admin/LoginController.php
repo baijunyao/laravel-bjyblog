@@ -21,7 +21,7 @@ class LoginController extends Controller
         if ($count) {
             die('请通过第三方账号登录');
         } else {
-            return view('admin/login/index');
+            return view('admin.login.index');
         }
     }
 

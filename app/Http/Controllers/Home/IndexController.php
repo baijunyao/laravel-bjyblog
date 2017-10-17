@@ -33,7 +33,7 @@ class IndexController extends Controller
             'article' => $article,
             'tagName' => ''
         ];
-		return view('home/index/index', $assign);
+		return view('home.index.index', $assign);
 	}
 
     /**
@@ -86,7 +86,7 @@ class IndexController extends Controller
         $comment = $commentModel->getDataByArticleId($id);
         $category_id = $data->category_id;
         $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
-        return response()->view('home/index/article', $assign)->cookie('read', $read, 1440);
+        return response()->view('home.index.article', $assign)->cookie('read', $read, 1440);
     }
 
     /**
@@ -109,7 +109,7 @@ class IndexController extends Controller
             'tagName' => '',
             'title' => $categoryName
         ];
-        return view('home/index/index', $assign);
+        return view('home.index.index', $assign);
     }
 
     /**
@@ -138,7 +138,7 @@ class IndexController extends Controller
             'tagName' => $tagName,
             'title' => $tagName
         ];
-        return view('home/index/index', $assign);
+        return view('home.index.index', $assign);
 
     }
 
@@ -154,7 +154,7 @@ class IndexController extends Controller
             'category_id' => 'chat',
             'chat' => $chat
         ];
-        return view('home/index/chat', $assign);
+        return view('home.index.chat', $assign);
     }
 
     /**
@@ -167,7 +167,7 @@ class IndexController extends Controller
         $assign = [
             'category_id' => 'git'
         ];
-        return view('home/index/git', $assign);
+        return view('home.index.git', $assign);
     }
 
     /**
@@ -239,7 +239,7 @@ class IndexController extends Controller
             'tagName' => '',
             'title' => $wd
         ];
-        return view('home/index/index', $assign);
+        return view('home.index.index', $assign);
     }
 
     /**

@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $data = Category::withTrashed()->get();
         $assign = compact('data');
-        return view('admin/category/index', $assign);
+        return view('admin.category.index', $assign);
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin/category/create');
+        return view('admin.category.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class CategoryController extends Controller
     {
         $data = Category::find($id);
         $assign = compact('data');
-        return view('admin/category/edit', $assign);
+        return view('admin.category.edit', $assign);
     }
 
     /**

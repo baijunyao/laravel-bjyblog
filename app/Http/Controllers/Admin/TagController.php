@@ -18,7 +18,7 @@ class TagController extends Controller
     {
         $data = $tagModel::withTrashed()->get();
         $assign = compact('data');
-        return view('admin/tag/index', $assign);
+        return view('admin.tag.index', $assign);
     }
 
     /**
@@ -28,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('admin/tag/create');
+        return view('admin.tag.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class TagController extends Controller
     {
         $data = $tagModel->find($id);
         $assign = compact('data');
-        return view('admin/tag/edit', $assign);
+        return view('admin.tag.edit', $assign);
     }
 
     /**

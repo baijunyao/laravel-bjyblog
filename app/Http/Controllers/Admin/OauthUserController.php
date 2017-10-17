@@ -19,7 +19,7 @@ class OauthUserController extends Controller
             ->select('id', 'name', 'type', 'email', 'login_times', 'is_admin', 'created_at', 'updated_at')
             ->paginate(50);
         $assign = compact('data');
-        return view('admin/oauthUser/index', $assign);
+        return view('admin.oauthUser.index', $assign);
     }
 
     /**
@@ -64,7 +64,7 @@ class OauthUserController extends Controller
     {
         $data = OauthUser::find($id);
         $assign = compact('data');
-        return view('admin/oauthUser/edit', $assign);
+        return view('admin.oauthUser.edit', $assign);
     }
 
     /**

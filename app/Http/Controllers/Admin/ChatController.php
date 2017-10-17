@@ -21,7 +21,7 @@ class ChatController extends Controller
             ->withTrashed()
             ->paginate(50);
         $assign = compact('data');
-        return view('admin/chat/index', $assign);
+        return view('admin.chat.index', $assign);
     }
 
     /**
@@ -31,7 +31,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-        return view('admin/chat/create');
+        return view('admin.chat.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class ChatController extends Controller
     {
         $data = Chat::find($id);
         $assign = compact('data');
-        return view('admin/chat/edit', $assign);
+        return view('admin.chat.edit', $assign);
     }
 
     /**
