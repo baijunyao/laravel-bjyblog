@@ -93,6 +93,7 @@
                                 <a><i class="fa fa-cogs"></i> 系统设置 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/config/edit') }}">设置列表</a></li>
+                                    <li><a href="{{ url('admin/gitProject/edit') }}">开源项目</a></li>
                                 </ul>
                             </li>
                         </ul>
