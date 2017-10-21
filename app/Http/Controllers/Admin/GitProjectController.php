@@ -27,7 +27,7 @@ class GitProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.gitProject.create');
     }
 
     /**
