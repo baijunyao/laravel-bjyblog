@@ -215,6 +215,26 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('edit', 'ConfigController@edit');
         Route::post('update', 'ConfigController@update');
     });
+
+    // 开源项目管理
+    Route::group(['prefix' => 'gitProject'], function () {
+        // 开源项目列表
+        Route::get('index', 'GitProjectController@index');
+        // 添加开源项目
+        Route::get('create', 'GitProjectController@create');
+        Route::post('store', 'GitProjectController@store');
+        // 编辑开源项目
+        Route::get('edit/{id}', 'GitProjectController@edit');
+        Route::post('update/{id}', 'GitProjectController@update');
+        // 排序
+        Route::post('sort', 'GitProjectController@sort');
+        // 删除开源项目
+        Route::get('destroy/{id}', 'GitProjectController@destroy');
+        // 恢复删除的开源项目
+        Route::get('restore/{id}', 'GitProjectController@restore');
+        // 彻底删除开源项目
+        Route::get('forceDelete/{id}', 'GitProjectController@forceDelete');
+    });
 });
 
 /**
