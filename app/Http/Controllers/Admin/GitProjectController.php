@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\GitProject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,9 @@ class GitProjectController extends Controller
      */
     public function index()
     {
-        //
+        $data = GitProject::withTrashed()->get();
+        $assign = compact('data');
+        return view('admin.gitProject.index', $assign);
     }
 
     /**
