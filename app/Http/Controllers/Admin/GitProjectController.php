@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\GitProject\Store;
 use App\Models\GitProject;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,9 +37,11 @@ class GitProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Store $request, GitProject $gitProjectModel)
     {
-        //
+        $data = $request->except('_token');
+        $gitProjectModel->addData($data);
+        return redirect('admin/gitProject/index');
     }
 
     /**
