@@ -17,7 +17,11 @@ class GitProjectController extends Controller
     public function index()
     {
         $data = GitProject::withTrashed()->get();
-        $assign = compact('data');
+        $gitProjectType = [
+            1 => 'github',
+            2 => 'gitee'
+        ];
+        $assign = compact('data', 'gitProjectType');
         return view('admin.gitProject.index', $assign);
     }
 
@@ -42,17 +46,6 @@ class GitProjectController extends Controller
         $data = $request->except('_token');
         $gitProjectModel->addData($data);
         return redirect('admin/gitProject/index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

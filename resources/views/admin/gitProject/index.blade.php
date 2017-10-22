@@ -13,7 +13,7 @@
             <a href="{{ url('admin/gitProject/index') }}">开源项目列表</a>
         </li>
         <li>
-            <a href="{{ url('admin/gitProject/create') }}">添加友情链接</a>
+            <a href="{{ url('admin/gitProject/create') }}">新增开源</a>
         </li>
     </ul>
     <form action="{{ url('admin/gitProject/sort') }}" method="post">
@@ -34,7 +34,7 @@
                         <input class="form-control" type="text" name="{{ $v->id }}" value="{{ $v->sort }}">
                     </td>
                     <td>{{ $v->name }}</td>
-                    <td><a href="{{ $v->url }}" target="_blank">{{ $v->url }}</a></td>
+                    <td>{{ $gitProjectType[$v->type] }}</td>
                     <td>
                         @if(is_null($v->deleted_at))
                             √
