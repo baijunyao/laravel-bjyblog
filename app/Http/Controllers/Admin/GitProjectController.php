@@ -56,7 +56,9 @@ class GitProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = GitProject::find($id);
+        $assign = compact('data');
+        return view('admin.gitProject.edit', $assign);
     }
 
     /**
@@ -66,9 +68,14 @@ class GitProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, GitProject $gitProjectModel)
     {
-        //
+        $data = $request->except('_token');
+        $map = [
+            'id' => $id
+        ];
+        $gitProjectModel->editData($map, $data);
+        return redirect()->back();
     }
 
     /**
