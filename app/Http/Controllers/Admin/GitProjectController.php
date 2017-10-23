@@ -16,7 +16,9 @@ class GitProjectController extends Controller
      */
     public function index()
     {
-        $data = GitProject::withTrashed()->get();
+        $data = GitProject::orderBy('sort')
+            ->withTrashed()
+            ->get();
         $gitProjectType = [
             1 => 'github',
             2 => 'gitee'
@@ -75,6 +77,28 @@ class GitProjectController extends Controller
             'id' => $id
         ];
         $gitProjectModel->editData($map, $data);
+        return redirect()->back();
+    }
+
+    /**
+     * 排序
+     *
+     * @param Request    $request
+     * @param GitProject $gitProjectModel
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sort(Request $request, GitProject $gitProjectModel)
+    {
+        $data = $request->except('_token');
+        $editData = [];
+        foreach ($data as $k => $v) {
+            $editData[] = [
+                'id' => $k,
+                'sort' => $v
+            ];
+        }
+        $gitProjectModel->updateBatch($editData);
         return redirect()->back();
     }
 
