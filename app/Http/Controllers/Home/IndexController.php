@@ -178,8 +178,21 @@ class IndexController extends Controller
     public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
         $data = $request->all();
+        // 获取用户id
+        $userId = session('user.id');
+        // 获取当前时间戳
+        $time = time();
+        // 获取最近一次评论时间
+        $lastCommentDate = $commentModel->where('oauth_user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->value('created_at');
+        $lastCommentTime = strtotime($lastCommentDate);
+        // 限制1分钟内只许评论1次
+        if ($time-$lastCommentTime < 60) {
+            return ajax_return(400, '评论太过频繁,请稍后再试.');
+        }
         // 限制用户每天最多评论10条
-        $date = date('Y-m-d', time());
+        $date = date('Y-m-d', $time);
         $count = $commentModel
             ->where('oauth_user_id', session('user.id'))
             ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
@@ -190,12 +203,9 @@ class IndexController extends Controller
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
         if (preg_match($pattern, $data['email'])) {
-            // 获取用户id
-            $user_id = session('user.id');
-
             // 修改邮箱
             $oauthUserMap = [
-                'id' => $user_id
+                'id' => $userId
             ];
             $oauthUserData = [
                 'email' => $data['email']
