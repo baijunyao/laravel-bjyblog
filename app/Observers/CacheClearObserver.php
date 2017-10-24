@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use Artisan;
 
-class TagObserver
+class CacheClearObserver
 {
     /**
      * 监听创建事件。

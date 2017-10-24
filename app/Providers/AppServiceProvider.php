@@ -2,23 +2,15 @@
 
 namespace App\Providers;
 
-use App\Models\ArticleTag;
-use App\Models\Chat;
-use App\Observers\ArticleObserver;
-use App\Observers\ArticleTagObserver;
-use App\Observers\CategoryObserver;
-use App\Observers\ChatObserver;
-use App\Observers\CommentObserver;
-use App\Observers\ConfigObserver;
-use App\Observers\FriendshipLinkObserver;
-use App\Observers\TagObserver;
-use Cache;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\Tag;
-use App\Models\Category;
+use File;
+use Cache;
+use App\Observers\CacheClearObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -79,15 +71,20 @@ class AppServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
-        // 注册观察者
-        Article::observe(ArticleObserver::class);
-        ArticleTag::observe(ArticleTagObserver::class);
-        Category::observe(CategoryObserver::class);
-        Chat::observe(ChatObserver::class);
-        Comment::observe(CommentObserver::class);
-        Config::observe(ConfigObserver::class);
-        FriendshipLink::observe(FriendshipLinkObserver::class);
-        Tag::observe(TagObserver::class);
+        // 获取所有的模型文件
+        $modelPath = File::allFiles(app_path('Models'));
+        foreach ($modelPath as $v) {
+            // 获取模型文件的BaseName
+            $baseName = $v->getBaseName('.php');
+            // 如果是 Base Model 则跳过
+            if ($baseName === 'Base') {
+                continue;
+            }
+            // 补全模型的命名空间
+            $model = '\App\Models\\'.$baseName;
+            // 注册观察者
+            $model::observe(CacheClearObserver::class);
+        }
     }
 
     /**
