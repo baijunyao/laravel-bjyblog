@@ -118,7 +118,7 @@ class GitProjectController extends Controller
     }
 
     /**
-     * 恢复删除的友情链接
+     * 恢复删除的开源项目
      *
      * @param            $id
      * @param GitProject $gitProjectModel
@@ -131,4 +131,17 @@ class GitProjectController extends Controller
         return redirect('admin/gitProject/index');
     }
 
+    /**
+     * 彻底删除开源项目
+     *
+     * @param            $id
+     * @param GitProject $gitProjectModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, GitProject $gitProjectModel)
+    {
+        $gitProjectModel->where('id', $id)->forceDelete();
+        return redirect('admin/friendshipLink/index');
+    }
 }

@@ -129,7 +129,7 @@ class FriendshipLinkController extends Controller
     }
 
     /**
-     * 彻底删除评论
+     * 彻底删除友情链接
      *
      * @param                $id
      * @param FriendshipLink $friendshipLinkModel
