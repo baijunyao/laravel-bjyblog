@@ -180,6 +180,8 @@ class IndexController extends Controller
         $data = $request->all();
         // 获取用户id
         $userId = session('user.id');
+        // 是否是管理员
+        $isAdmin = session('user.is_admin');
         // 获取当前时间戳
         $time = time();
         // 获取最近一次评论时间
@@ -188,7 +190,7 @@ class IndexController extends Controller
             ->value('created_at');
         $lastCommentTime = strtotime($lastCommentDate);
         // 限制1分钟内只许评论1次
-        if ($time-$lastCommentTime < 60) {
+        if ($isAdmin !=1 && $time-$lastCommentTime < 60) {
             return ajax_return(400, '评论太过频繁,请稍后再试.');
         }
         // 限制用户每天最多评论10条
@@ -197,7 +199,7 @@ class IndexController extends Controller
             ->where('oauth_user_id', session('user.id'))
             ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
             ->count();
-        if (session('user.is_admin') !=1 && $count > 10) {
+        if ($isAdmin !=1 && $count > 10) {
             return ajax_return(400, '每天做多评论10条');
         }
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
