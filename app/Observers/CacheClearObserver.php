@@ -7,7 +7,7 @@ use Artisan;
 class CacheClearObserver
 {
     /**
-     * 监听创建事件。
+     * 监听创建事件
      */
     public function created()
     {
@@ -15,7 +15,7 @@ class CacheClearObserver
     }
 
     /**
-     * 监听更新事件。
+     * 监听更新事件
      */
     public function updated()
     {
@@ -23,10 +23,16 @@ class CacheClearObserver
     }
 
     /**
-     * 监听删除事件
+     * 监听恢复事件
      */
     public function deleted()
     {
         Artisan::call('cache:clear');
     }
+
+    public function restored()
+    {
+        Artisan::call('cache:clear');
+    }
+
 }
