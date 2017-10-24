@@ -116,4 +116,19 @@ class GitProjectController extends Controller
         $gitProjectModel->deleteData($map);
         return redirect()->back();
     }
+
+    /**
+     * 恢复删除的友情链接
+     *
+     * @param            $id
+     * @param GitProject $gitProjectModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, GitProject $gitProjectModel)
+    {
+        $gitProjectModel->where('id', $id)->restore();
+        return redirect('admin/gitProject/index');
+    }
+
 }
