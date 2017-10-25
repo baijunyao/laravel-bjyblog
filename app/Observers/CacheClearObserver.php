@@ -23,13 +23,16 @@ class CacheClearObserver
     }
 
     /**
-     * 监听恢复事件
+     * 监听删除事件
      */
     public function deleted()
     {
         Artisan::call('cache:clear');
     }
 
+    /**
+     * 监听恢复事件
+     */
     public function restored()
     {
         Artisan::call('cache:clear');
