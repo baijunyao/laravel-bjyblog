@@ -20,18 +20,13 @@
 @section('content')
     {{--左侧开源项目开始--}}
     <div class="col-xs-12 col-md-12 col-lg-8 b-chat">
-
-        <div class="github-widget" data-repo="baijunyao/thinkphp-bjyadmin"></div>
-        <script src='//git.oschina.net/shuaibai123/thinkphp-bjyadmin/widget_preview'></script>
-
-        <div class="github-widget" data-repo="baijunyao/thinkphp-bjyblog"></div>
-        <script src='//git.oschina.net/shuaibai123/thinkbjy/widget_preview'></script>
-
-        <div class="github-widget" data-repo="baijunyao/laravel-bjyadmin"></div>
-        <div class="github-widget" data-repo="baijunyao/laravel-bjyblog"></div>
-
-        <script src='//git.oschina.net/shuaibai123/laravel-bjyadmin/widget_preview'></script>
-        <script src='//git.oschina.net/shuaibai123/laravel-bjyblog/widget_preview'></script>
+        @foreach($gitProject as $v)
+            @if($v->type == 1)
+                <div class="github-widget" data-repo="{{ $v->name }}"></div>
+            @elseif($v->type == 2)
+                <script src='//git.oschina.net/{{ $v->name }}/widget_preview'></script>
+            @endif
+        @endforeach
     </div>
     {{--左侧开源项目结束--}}
 @endsection

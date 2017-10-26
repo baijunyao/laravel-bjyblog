@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
+use App\Models\GitProject;
 use App\Models\Tag;
 use File;
 use Cache;
@@ -25,7 +26,6 @@ class AppServiceProvider extends ServiceProvider
         //分配前台通用的数据
         view()->composer('home/*', function($view){
             $assign = Cache::remember('common', 10080, function () {
-
                 // 获取分类导航
                 $category = Category::select('id', 'name')->get();
 
@@ -46,12 +46,15 @@ class AppServiceProvider extends ServiceProvider
                 // 获取友情链接
                 $friendshipLink = FriendshipLink::select('name', 'url')->orderBy('sort')->get();
 
+                // 获取开源项目
+                $gitProject = GitProject::select('name', 'type')->orderBy('sort')->get();
                 $data = [
                     'category' => $category,
                     'tag' => $tag,
                     'topArticle' => $topArticle,
                     'newComment' => $newComment,
-                    'friendshipLink' => $friendshipLink
+                    'friendshipLink' => $friendshipLink,
+                    'gitProject' => $gitProject
                 ];
                 return $data;
             });
