@@ -48,14 +48,7 @@ class AppServiceProvider extends ServiceProvider
 
                 // 获取开源项目
                 $gitProject = GitProject::select('name', 'type')->orderBy('sort')->get();
-                $data = [
-                    'category' => $category,
-                    'tag' => $tag,
-                    'topArticle' => $topArticle,
-                    'newComment' => $newComment,
-                    'friendshipLink' => $friendshipLink,
-                    'gitProject' => $gitProject
-                ];
+                $data = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'gitProject');
                 return $data;
             });
 
