@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FriendshipLinksTableSeeder::class);
         $this->call(OauthUsersTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
+        $this->call(GitProjectsTableSeeder::class);
     }
 }
