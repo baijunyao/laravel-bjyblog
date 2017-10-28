@@ -52,9 +52,11 @@
                 <li class="b-nav-cname @if($category_id == 'chat') b-nav-active @endif">
                 <a href="{{ url('chat') }}">随言碎语</a>
                 </li>
-                <li class="b-nav-cname hidden-sm  @if($category_id == 'git') b-nav-active @endif">
-                <a href="{{ url('git') }}">开源项目</a>
-                </li>
+                @if(!$gitProject->isEmpty()))
+                    <li class="b-nav-cname hidden-sm  @if($category_id == 'git') b-nav-active @endif">
+                    <a href="{{ url('git') }}">开源项目</a>
+                    </li>
+                @endif
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
                 @if(empty(session('user.name')))
