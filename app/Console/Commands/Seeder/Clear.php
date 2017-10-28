@@ -7,6 +7,7 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Chat;
 use App\Models\Comment;
+use App\Models\GitProject;
 use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Console\Command;
@@ -51,6 +52,7 @@ class Clear extends Command
         Comment::truncate();
         OauthUser::truncate();
         Tag::truncate();
+        GitProject::truncate();
         $this->info('successfully');
     }
 }
