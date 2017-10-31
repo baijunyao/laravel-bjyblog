@@ -7,6 +7,7 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Chat;
 use App\Models\Comment;
+use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\OauthUser;
@@ -55,6 +56,7 @@ class Clear extends Command
         Tag::truncate();
         GitProject::truncate();
         FriendshipLink::truncate();
+        Config::truncate();
         $this->info('successfully');
     }
 }
