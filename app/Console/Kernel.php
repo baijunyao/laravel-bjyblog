@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Seeder\Clear::class
+        Commands\Seeder\Clear::class,
+        Commands\Migration\FromThinkPHPBjyBlog::class,
     ];
 
     /**

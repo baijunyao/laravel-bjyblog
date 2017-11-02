@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Console\Commands\Migration;
 
-use App\Models\User;
+use Illuminate\Console\Command;
 use DB;
 use App\Models\Chat;
 use HyperDown\Parser;
@@ -12,30 +12,52 @@ use App\Models\Comment;
 use App\Models\OauthUser;
 use App\Models\ArticleTag;
 use App\Models\FriendshipLink;
-use App\Http\Controllers\Controller;
 use League\HTMLToMarkdown\HtmlConverter;
 use Artisan;
 
-class MigrationController extends Controller
+class FromThinkPHPBjyBlog extends Command
 {
     /**
-     * 从thinkphp-bjyblog中迁移数据
+     * The name and signature of the console command.
      *
-     * @param Article $articleModel
-     * @param ArticleTag $articleTag
-     * @param Comment $commentModel
-     * @param FriendshipLink $friendshipLinkModel
-     * @param Config $configModel
-     * @param OauthUser $oauthUserModel
-     * @param Chat $chatModel
+     * @var string
      */
-    public function index(Article $articleModel, ArticleTag $articleTag, Comment $commentModel, FriendshipLink $friendshipLinkModel, Config $configModel, OauthUser $oauthUserModel, Chat $chatModel)
+    protected $signature = 'migration:fromThinkPHPBjyBlog';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Command description';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
+        parent::__construct();
+    }
+
+    /**
+     * 从 thinkphp-bjyblog 迁移数据
+     */
+    public function handle()
+    {
+        $articleModel = new Article();
+        $articleTagModel = new ArticleTag();
+        $commentModel = new Comment();
+        $friendshipLinkModel = new FriendshipLink();
+        $configModel = new Config();
+        $oauthUserModel = new OauthUser();
+        $chatModel = new Chat();
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
             die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
         }
-        Artisan::command('seeder:clear');
+        Artisan::call('seeder:clear');
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
         $parser = new Parser();
@@ -101,7 +123,7 @@ class MigrationController extends Controller
                 'article_id' => $v->aid,
                 'tag_id' => $v->tid
             ];
-            $articleTag->addData($article_tag);
+            $articleTagModel->addData($article_tag);
         }
 
         // 从旧系统中迁移评论
@@ -159,6 +181,13 @@ class MigrationController extends Controller
         // 迁移配置项
         $data = DB::connection('old')->table('config')->get()->toArray();
         foreach ($data as $v) {
+            // 新系统需要增加 WEB_TITLE 配置
+            if ($v->name === 'WEB_NAME') {
+                $configTitleData = [
+                    'name' => 'WEB_TITLE',
+                    'value' => $v->value
+                ];
+            }
             $config_data = [
                 'id' => $v->id,
                 'name' => $v->name,
@@ -166,6 +195,7 @@ class MigrationController extends Controller
             ];
             $configModel->addData($config_data);
         }
+        $configModel->addData($configTitleData);
 
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();

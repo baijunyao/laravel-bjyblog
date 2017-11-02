@@ -259,7 +259,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-
+        Artisan::call('migration:fromThinkPHPBjyBlog');
     }
 
 
