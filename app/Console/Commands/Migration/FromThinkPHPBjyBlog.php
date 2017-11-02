@@ -238,7 +238,7 @@ class FromThinkPHPBjyBlog extends Command
             ];
             $chatModel->editData($editChatMap, $editChatData);
         }
-        echo '数据迁移完成';
+        $this->info('从旧系统迁移数据完成');
         // 迁移完成创建锁文件
         file_put_contents(storage_path('lock/migration.lock'), '');
     }
