@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Migration;
 
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Console\Command;
 use DB;
 use App\Models\Chat;
@@ -55,13 +56,14 @@ class FromThinkPHPBjyBlog extends Command
         $oauthUserModel = new OauthUser();
         $chatModel = new Chat();
         $categoryModel = new Category();
+        $tagModel = new Tag();
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
             die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
         }
         Artisan::call('seeder:clear');
 
-        // 从旧系统中迁移文章标签中间表
+        // 从旧系统中迁移分类表
         $data = DB::connection('old')->table('category')->get()->toArray();
         foreach ($data as $v) {
             $category = [
@@ -73,6 +75,16 @@ class FromThinkPHPBjyBlog extends Command
                 'pid' => $v->pid,
             ];
             $categoryModel->addData($category);
+        }
+
+        // 从旧系统中迁移标签表
+        $data = DB::connection('old')->table('tag')->get()->toArray();
+        foreach ($data as $v) {
+            $category = [
+                'id' => $v->tid,
+                'name' => $v->tname,
+            ];
+            $tagModel->addData($category);
         }
 
         // 从旧系统中迁移文章
