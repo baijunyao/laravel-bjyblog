@@ -88,7 +88,7 @@ class CommentController extends Controller
             'id' => $id
         ];
         $commentModel->deleteData($map);
-        return redirect('admin/comment/index');
+        return redirect()->back();
     }
 
     /**
