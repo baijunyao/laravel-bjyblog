@@ -151,7 +151,10 @@ class ArticleController extends Controller
      */
     public function restore($id, Article $articleModel)
     {
-        $articleModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $articleModel->restoreData($map);
         return redirect('admin/article/index');
     }
 
