@@ -103,7 +103,10 @@ class ChatController extends Controller
      */
     public function restore($id, Chat $chatModel)
     {
-        $chatModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $chatModel->restoreData($map);
         return redirect('admin/chat/index');
     }
 }
