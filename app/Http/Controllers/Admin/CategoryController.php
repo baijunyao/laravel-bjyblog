@@ -121,7 +121,10 @@ class CategoryController extends Controller
      */
     public function restore($id, Category $categoryModel)
     {
-        $categoryModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $categoryModel->restoreData($map);
         return redirect('admin/category/index');
     }
 
