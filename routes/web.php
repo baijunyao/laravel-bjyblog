@@ -207,6 +207,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('destroy/{id}', 'ChatController@destroy');
         // 恢复删除的随言碎语
         Route::get('restore/{id}', 'ChatController@restore');
+        // 彻底删除随言碎语
+        Route::get('forceDelete/{id}', 'ChatController@forceDelete');
     });
 
     // 配置项管理

@@ -109,4 +109,18 @@ class ChatController extends Controller
         $chatModel->restoreData($map);
         return redirect('admin/chat/index');
     }
+
+    /**
+     * 彻底删除随言碎语
+     *
+     * @param      $id
+     * @param Chat $chatModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Chat $chatModel)
+    {
+        $chatModel->where('id', $id)->forceDelete();
+        return redirect('admin/chat/index');
+    }
 }
