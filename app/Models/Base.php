@@ -88,6 +88,28 @@ class Base extends Model
     }
 
     /**
+     * 恢复数据
+     *
+     * @param $map
+     *
+     * @return bool
+     */
+    public function restoreData($map)
+    {
+        // 恢复
+        $result=$this
+            ->where($map)
+            ->restore();
+        if ($result) {
+            show_message('操作成功');
+            return $result;
+        }else{
+            return false;
+        }
+    }
+
+
+    /**
      * 使用作用域扩展 Builder 链式操作
      *
      * 示例:
