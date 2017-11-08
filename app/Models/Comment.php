@@ -160,6 +160,7 @@ class Comment extends Base
             ->join('articles as a', 'comments.article_id', 'a.id')
             ->join('oauth_users as ou', 'ou.id', 'comments.oauth_user_id')
             ->orderBy('comments.created_at', 'desc')
+            ->where('a.deleted_at', null)
             ->where('ou.is_admin', '<>', 1)
             ->limit($limit)
             ->get();
