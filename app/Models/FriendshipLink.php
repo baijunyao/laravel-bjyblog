@@ -25,13 +25,13 @@ class FriendshipLink extends Base
      * @param array $data
      * @return bool
      */
-    public function editData($map, $data)
+    public function updateData($map, $data)
     {
         // 如果要修改sort；且sort是空；则设置为null
         if (isset($data['sort']) && empty($data['sort'])) {
             $data['sort'] = null;
         }
-        return parent::editData($map, $data);
+        return parent::updateData($map, $data);
     }
 
     /**

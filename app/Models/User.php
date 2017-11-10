@@ -20,13 +20,13 @@ class User extends Base
      * @param $data 需要修改的数据
      * @return bool 是否成功
      */
-    public function editData($map, $data)
+    public function updateData($map, $data)
     {
         //如果传password 则加密
         if (!empty($data['password'])) {
             $data['password']=bcrypt($data['password']);
         }
-        return parent::editData($map, $data);
+        return parent::updateData($map, $data);
     }
 
 

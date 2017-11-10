@@ -74,7 +74,7 @@ class FriendshipLinkController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
-        $friendshipLinkModel->editData($map, $data);
+        $friendshipLinkModel->updateData($map, $data);
         return redirect()->back();
     }
 

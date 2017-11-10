@@ -81,7 +81,7 @@ class OauthUserController extends Controller
         $map = [
             'id' => $id
         ];
-        $oauthUserModel->editData($map, $data);
+        $oauthUserModel->updateData($map, $data);
         return redirect()->back();
     }
 

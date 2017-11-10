@@ -76,7 +76,7 @@ class GitProjectController extends Controller
         $map = [
             'id' => $id
         ];
-        $gitProjectModel->editData($map, $data);
+        $gitProjectModel->updateData($map, $data);
         return redirect()->back();
     }
 

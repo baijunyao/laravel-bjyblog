@@ -121,7 +121,7 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $articleModel->editData($map, $data);
+        $articleModel->updateData($map, $data);
         return redirect()->back();
     }
 

@@ -142,7 +142,7 @@ class FromThinkPHPBjyBlog extends Command
             $editArticleData = [
                 'created_at' => date('Y-m-d H:i:s', $v->addtime)
             ];
-            $articleModel->editData($editArticleMap, $editArticleData);
+            $articleModel->updateData($editArticleMap, $editArticleData);
         }
 
         // 从旧系统中迁移文章标签中间表
@@ -189,7 +189,7 @@ class FromThinkPHPBjyBlog extends Command
             $editCommentData = [
                 'created_at' => date('Y-m-d H:i:s', $v->date)
             ];
-            $commentModel->editData($editCommentMap, $editCommentData);
+            $commentModel->updateData($editCommentMap, $editCommentData);
         }
 
         // 迁移友情链接
@@ -248,7 +248,7 @@ class FromThinkPHPBjyBlog extends Command
             $editOauthUserData = [
                 'created_at' => date('Y-m-d H:i:s', $v->create_time)
             ];
-            $oauthUserModel->editData($editOauthUserMap, $editOauthUserData);
+            $oauthUserModel->updateData($editOauthUserMap, $editOauthUserData);
         }
 
         // 迁移随言碎语表
@@ -265,7 +265,7 @@ class FromThinkPHPBjyBlog extends Command
             $editChatData = [
                 'created_at' => date('Y-m-d H:i:s', $v->date)
             ];
-            $chatModel->editData($editChatMap, $editChatData);
+            $chatModel->updateData($editChatMap, $editChatData);
         }
         $this->info('从旧系统迁移数据完成');
         // 迁移完成创建锁文件
@@ -290,7 +290,7 @@ class FromThinkPHPBjyBlog extends Command
                 $editData = [
                     'avatar' => '/'.$avatarPath
                 ];
-                $oauthUserModel->editData($editMap, $editData);
+                $oauthUserModel->updateData($editMap, $editData);
             }
         }
     }

@@ -216,7 +216,7 @@ class IndexController extends Controller
             $oauthUserData = [
                 'email' => $data['email']
             ];
-            $oauthUserModel->editData($oauthUserMap, $oauthUserData);
+            $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
             session(['user.email' => $data['email']]);
             unset($data['email']);
         }

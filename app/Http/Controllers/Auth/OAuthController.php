@@ -74,7 +74,7 @@ class OAuthController extends Controller
                 'login_times' => $oldUserData->login_times+1,
             ];
             // 更新数据
-            $oauthUserModel->editData($editMap, $editData);
+            $oauthUserModel->updateData($editMap, $editData);
             // 组合session中要用到的数据
             $sessionData['user']['id'] = $userId;
             $sessionData['user']['email'] = $oldUserData->email;
@@ -101,7 +101,7 @@ class OAuthController extends Controller
             $editData = [
                 'avatar' => $avatarPath
             ];
-            $oauthUserModel->editData($editMap, $editData);
+            $oauthUserModel->updateData($editMap, $editData);
             // 组合session中要用到的数据
             $sessionData['user']['id'] = $userId;
             $sessionData['user']['email'] = '';

@@ -73,7 +73,7 @@ class ChatController extends Controller
         $map = [
             'id' => $id
         ];
-        $chatModel->editData($map, $data);
+        $chatModel->updateData($map, $data);
         return redirect()->back();
 
     }

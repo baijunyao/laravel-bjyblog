@@ -80,7 +80,7 @@ class UserController extends Controller
         $map = [
             'id' => $id
         ];
-        $userModel->editData($map, $data);
+        $userModel->updateData($map, $data);
         return redirect()->back();
     }
 

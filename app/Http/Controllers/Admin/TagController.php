@@ -72,7 +72,7 @@ class TagController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
-        $tagModel->editData($map, $data);
+        $tagModel->updateData($map, $data);
         return redirect()->back();
     }
 

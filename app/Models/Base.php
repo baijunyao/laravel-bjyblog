@@ -45,7 +45,7 @@ class Base extends Model
      * @param  array $data 需要修改的数据
      * @return bool        是否成功
      */
-    public function editData($map, $data)
+    public function updateData($map, $data)
     {
         $model = $this
             ->whereMap($map)

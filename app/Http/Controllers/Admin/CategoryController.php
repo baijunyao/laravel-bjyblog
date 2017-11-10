@@ -71,7 +71,7 @@ class CategoryController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
-        $categoryModel->editData($map, $data);
+        $categoryModel->updateData($map, $data);
         return redirect()->back();
     }
 
