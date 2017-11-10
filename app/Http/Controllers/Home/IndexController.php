@@ -221,7 +221,7 @@ class IndexController extends Controller
             unset($data['email']);
         }
         // 存储评论
-        $id = $commentModel->addData($data);
+        $id = $commentModel->storeData($data);
         return ajax_return(200, ['id' => $id]);
     }
 

@@ -23,7 +23,7 @@ class ArticleTag extends Base
                 'article_id' => $article_id,
                 'tag_id' => $v
             ];
-            $this->addData($data);
+            $this->storeData($data);
         }
     }
 

@@ -41,7 +41,7 @@ class CategoryController extends Controller
     public function store(Store $request, Category $categoryModel)
     {
         $data = $request->except('_token');
-        $categoryModel->addData($data);
+        $categoryModel->storeData($data);
         return redirect('admin/category/index');
     }
 

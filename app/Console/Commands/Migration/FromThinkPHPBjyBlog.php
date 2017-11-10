@@ -74,7 +74,7 @@ class FromThinkPHPBjyBlog extends Command
                 'sort' => $v->sort,
                 'pid' => $v->pid,
             ];
-            $categoryModel->addData($category);
+            $categoryModel->storeData($category);
         }
 
         // 从旧系统中迁移标签表
@@ -84,7 +84,7 @@ class FromThinkPHPBjyBlog extends Command
                 'id' => $v->tid,
                 'name' => $v->tname,
             ];
-            $tagModel->addData($category);
+            $tagModel->storeData($category);
         }
 
         // 从旧系统中迁移文章
@@ -152,7 +152,7 @@ class FromThinkPHPBjyBlog extends Command
                 'article_id' => $v->aid,
                 'tag_id' => $v->tid
             ];
-            $articleTagModel->addData($article_tag);
+            $articleTagModel->storeData($article_tag);
         }
 
         // 从旧系统中迁移评论
@@ -204,7 +204,7 @@ class FromThinkPHPBjyBlog extends Command
             if ($v->is_show === 0) {
                 $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
             }
-            $friendshipLinkModel->addData($link_data);
+            $friendshipLinkModel->storeData($link_data);
         }
 
         // 迁移配置项
@@ -222,9 +222,9 @@ class FromThinkPHPBjyBlog extends Command
                 'name' => $v->name,
                 'value' => $v->value
             ];
-            $configModel->addData($config_data);
+            $configModel->storeData($config_data);
         }
-        $configModel->addData($configTitleData);
+        $configModel->storeData($configTitleData);
 
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
@@ -241,7 +241,7 @@ class FromThinkPHPBjyBlog extends Command
                 'email' => $v->email,
                 'is_admin' => $v->is_admin
             ];
-            $oauthUserModel->addData($oauthUserData);
+            $oauthUserModel->storeData($oauthUserData);
             $editOauthUserMap = [
                 'id' => $v->id,
             ];
@@ -258,7 +258,7 @@ class FromThinkPHPBjyBlog extends Command
                 'id' => $v->chid,
                 'content' => $v->content,
             ];
-            $chatModel->addData($chatData);
+            $chatModel->storeData($chatData);
             $editChatMap = [
                 'id' => $v->chid,
             ];

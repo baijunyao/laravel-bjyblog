@@ -43,7 +43,7 @@ class FriendshipLinkController extends Controller
     public function store(Store $request, FriendshipLink $friendshipLinkModel)
     {
         $data = $request->except('_token');
-        $friendshipLinkModel->addData($data);
+        $friendshipLinkModel->storeData($data);
         return redirect('admin/friendshipLink/index');
 
     }

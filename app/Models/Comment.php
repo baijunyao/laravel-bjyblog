@@ -74,7 +74,7 @@ class Comment extends Base
      * @param array $data
      * @return bool|mixed
      */
-    public function addData($data)
+    public function storeData($data)
     {
         $user_id = session('user.id');
         $name = session('user.name');

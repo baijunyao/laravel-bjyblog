@@ -10,7 +10,7 @@ class Article extends Base
      * @param array $data
      * @return bool|mixed
      */
-    public function addData($data)
+    public function storeData($data)
     {
         // 如果没有描述;则截取文章内容的前200字作为描述
         if (empty($data['description'])) {

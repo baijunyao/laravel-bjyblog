@@ -11,11 +11,11 @@ class FriendshipLink extends Base
      * @param array $data
      * @return bool
      */
-    public function addData($data)
+    public function storeData($data)
     {
         // 如果排序是空；则设置为null
         $data['sort'] = empty($data['sort']) ? null : $data['sort'];
-        return parent::addData($data);
+        return parent::storeData($data);
     }
 
     /**

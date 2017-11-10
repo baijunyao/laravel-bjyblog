@@ -42,7 +42,7 @@ class TagController extends Controller
         $data = [
             'name' => $request->input('name')
         ];
-        $tagModel->addData($data);
+        $tagModel->storeData($data);
         return redirect('admin/tag/index');
     }
 

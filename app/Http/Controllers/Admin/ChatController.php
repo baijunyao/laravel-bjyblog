@@ -43,7 +43,7 @@ class ChatController extends Controller
     public function store(Store $request, Chat $chatModel)
     {
         $data = $request->only('content');
-        $chatModel->addData($data);
+        $chatModel->storeData($data);
         return redirect('admin/chat/index');
     }
 

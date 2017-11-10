@@ -24,7 +24,7 @@ class Base extends Model
      * @param  array $data 需要添加的数据
      * @return bool        是否成功
      */
-    public function addData($data)
+    public function storeData($data)
     {
         //添加数据
         $result=$this

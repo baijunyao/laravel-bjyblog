@@ -46,7 +46,7 @@ class GitProjectController extends Controller
     public function store(Store $request, GitProject $gitProjectModel)
     {
         $data = $request->except('_token');
-        $gitProjectModel->addData($data);
+        $gitProjectModel->storeData($data);
         return redirect('admin/gitProject/index');
     }
 

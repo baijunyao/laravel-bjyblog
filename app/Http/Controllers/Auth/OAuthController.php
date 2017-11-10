@@ -91,7 +91,7 @@ class OAuthController extends Controller
                 'email' => ''
             ];
             // 新增数据
-            $userId = $oauthUserModel->addData($data);
+            $userId = $oauthUserModel->storeData($data);
             // 组合头像地址
             $avatarPath = '/uploads/avatar/'.$userId.'.jpg';
             // 更新头像
