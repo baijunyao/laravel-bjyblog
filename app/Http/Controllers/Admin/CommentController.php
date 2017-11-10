@@ -87,7 +87,7 @@ class CommentController extends Controller
         $map = [
             'id' => $id
         ];
-        $commentModel->deleteData($map);
+        $commentModel->destroyData($map);
         return redirect()->back();
     }
 

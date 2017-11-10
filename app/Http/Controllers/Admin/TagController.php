@@ -87,7 +87,7 @@ class TagController extends Controller
         $map = [
             'id' => $id
         ];
-        $tagModel->deleteData($map);
+        $tagModel->destroyData($map);
         return redirect('admin/tag/index');
     }
 

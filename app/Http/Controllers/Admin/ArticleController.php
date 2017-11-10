@@ -137,7 +137,7 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $articleModel->deleteData($map);
+        $articleModel->destroyData($map);
         return redirect('admin/article/index');
     }
 

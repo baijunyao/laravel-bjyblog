@@ -29,7 +29,7 @@ class Tag extends Base
      * @param array $map
      * @return bool
      */
-    public function deleteData($map)
+    public function destroyData($map)
     {
         // 先获取分类id
         $tagIdArray = $this
@@ -43,7 +43,7 @@ class Tag extends Base
             flash_message('请先删除此标签下的文章', false);
             return false;
         }
-        return parent::deleteData($map);
+        return parent::destroyData($map);
     }
 
 

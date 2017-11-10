@@ -73,7 +73,7 @@ class Base extends Model
      * @param  array $map   where 条件数组形式
      * @return bool         是否成功
      */
-    public function deleteData($map)
+    public function destroyData($map)
     {
         //软删除
         $result=$this

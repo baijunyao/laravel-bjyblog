@@ -10,7 +10,7 @@ class Category extends Base
      * @param array $map
      * @return bool
      */
-    public function deleteData($map)
+    public function destroyData($map)
     {
         // 先获取分类id
         $categoryIdArray = $this
@@ -25,6 +25,6 @@ class Category extends Base
             return false;
         }
         // 删除分类
-        return parent::deleteData($map);
+        return parent::destroyData($map);
     }
 }

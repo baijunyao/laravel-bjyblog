@@ -113,7 +113,7 @@ class GitProjectController extends Controller
         $map = [
             'id' => $id
         ];
-        $gitProjectModel->deleteData($map);
+        $gitProjectModel->destroyData($map);
         return redirect()->back();
     }
 

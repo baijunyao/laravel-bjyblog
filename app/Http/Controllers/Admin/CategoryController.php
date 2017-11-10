@@ -86,7 +86,7 @@ class CategoryController extends Controller
         $map = [
             'id' => $id
         ];
-        $categoryModel->deleteData($map);
+        $categoryModel->destroyData($map);
         return redirect('admin/category/index');
     }
 

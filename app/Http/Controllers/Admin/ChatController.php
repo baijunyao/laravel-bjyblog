@@ -89,7 +89,7 @@ class ChatController extends Controller
         $map = [
             'id' => $id
         ];
-        $chatModel->deleteData($map);
+        $chatModel->destroyData($map);
         return redirect('admin/chat/index');
     }
 

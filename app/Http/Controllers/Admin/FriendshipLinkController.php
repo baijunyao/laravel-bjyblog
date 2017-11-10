@@ -110,7 +110,7 @@ class FriendshipLinkController extends Controller
         $map = [
             'id' => $id
         ];
-        $friendshipLinkModel->deleteData($map);
+        $friendshipLinkModel->destroyData($map);
         return redirect()->back();
     }
 
