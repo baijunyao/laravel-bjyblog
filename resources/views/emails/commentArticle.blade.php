@@ -121,12 +121,12 @@
                         <tr>
                             <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
                                 <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">此邮件用为系统自动发送，请勿直接回复</span>
-                                <br> 如需帮助请前往 <a href="{{ env('APP_URL') }}" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">白俊遥博客</a>.
+                                <br> 如需帮助请前往 <a href="{{ config('app.url') }}" style="text-decoration: underline; color: #999999; font-size: 12px; text-align: center;">白俊遥博客</a>.
                             </td>
                         </tr>
                         <tr>
                             <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                Powered by <a href="{{ env('APP_URL') }}" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">{{ env('APP_URL') }}</a>.
+                                Powered by <a href="{{ config('app.url') }}" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">{{ config('app.url') }}</a>.
                             </td>
                         </tr>
                     </table>
