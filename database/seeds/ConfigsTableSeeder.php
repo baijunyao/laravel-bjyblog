@@ -449,6 +449,42 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'deleted_at' => NULL,
             ),
+            49 =>
+                array (
+                    'id' => 50,
+                    'name' => 'QQ_QUN_ARTICLE_ID',
+                    'value' => '',
+                    'created_at' => NULL,
+                    'updated_at' => NULL,
+                    'deleted_at' => NULL,
+                ),
+            50 =>
+                array (
+                    'id' => 51,
+                    'name' => 'QQ_QUN_NUMBER',
+                    'value' => '',
+                    'created_at' => NULL,
+                    'updated_at' => NULL,
+                    'deleted_at' => NULL,
+                ),
+            51 =>
+                array (
+                    'id' => 52,
+                    'name' => 'QQ_QUN_CODE',
+                    'value' => '',
+                    'created_at' => NULL,
+                    'updated_at' => NULL,
+                    'deleted_at' => NULL,
+                ),
+            52 =>
+                array (
+                    'id' => 53,
+                    'name' => 'QQ_QUN_OR_CODE',
+                    'value' => '',
+                    'created_at' => NULL,
+                    'updated_at' => NULL,
+                    'deleted_at' => NULL,
+                ),
         ));
         
         

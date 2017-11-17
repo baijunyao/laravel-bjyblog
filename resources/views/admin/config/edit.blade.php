@@ -174,6 +174,30 @@
                 </td>
             </tr>
             <tr>
+                <th>QQ群说明文章id：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="QQ_QUN_ARTICLE_ID" value="{{  $config['QQ_QUN_ARTICLE_ID'] }}" >
+                </td>
+            </tr>
+            <tr>
+                <th>QQ群账号：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="QQ_QUN_NUMBER" value="{{  $config['QQ_QUN_NUMBER'] }}" >
+                </td>
+            </tr>
+            <tr>
+                <th>QQ群代码：</th>
+                <td>
+                    <textarea class="form-control modal-sm" name="QQ_QUN_CODE" rows="5" placeholder="">{{  $config['QQ_QUN_CODE'] }}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>QQ群二维码：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="QQ_QUN_OR_CODE" value="{{  $config['QQ_QUN_OR_CODE'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="提交">
