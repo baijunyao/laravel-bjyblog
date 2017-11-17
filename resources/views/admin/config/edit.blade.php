@@ -4,6 +4,7 @@
 
 @section('css')
     <link href="{{ asset('statics/gentelella/vendors/iCheck/skins/square/blue.css') }}" rel="stylesheet">
+    <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
 @endsection
 
 @section('nav', '配置项')
@@ -194,7 +195,23 @@
             <tr>
                 <th>QQ群二维码：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="QQ_QUN_OR_CODE" value="{{  $config['QQ_QUN_OR_CODE'] }}" >
+                    {{  $config['QQ_QUN_OR_CODE'] }}
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        @if(!empty($config['QQ_QUN_OR_CODE']))
+                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                <img data-src="{{ $config['QQ_QUN_OR_CODE'] }}" alt="群二维码">
+                            </div>
+                        @endif
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                        <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">选择图片</span>
+                                <span class="fileinput-exists">更改</span>
+                                <input type="file" name="QQ_QUN_OR_CODE">
+                            </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -209,6 +226,7 @@
 
 @section('js')
     <script src="{{ asset('statics/gentelella/vendors/iCheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         $(document).ready(function(){
             $('.bjy-icheck').iCheck({
