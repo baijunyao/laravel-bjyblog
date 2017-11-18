@@ -162,7 +162,7 @@ if ( !function_exists('upload') ) {
 		} else {
 			$path = './' . trim($path, './') . '/';
 		}
-		if (!file_exists($path)) {
+		if (!is_dir($path)) {
 			mkdir($path, 0755, true);
 		}
 		//获取上传的文件名
