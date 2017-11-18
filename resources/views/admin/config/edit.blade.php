@@ -12,9 +12,9 @@
 @section('description', '配置项')
 
 @section('content')
-    <form class="form-inline" action="{{ url('admin/config/update') }}" method="post">
+    <form class="form-inline" enctype="multipart/form-data" action="{{ url('admin/config/update') }}" method="post">
+        {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
-            {{ csrf_field() }}
             <tr>
                 <th width="20%">网站状态：</th>
                 <td>
@@ -195,14 +195,10 @@
             <tr>
                 <th>QQ群二维码：</th>
                 <td>
-                    {{  $config['QQ_QUN_OR_CODE'] }}
                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                        @if(!empty($config['QQ_QUN_OR_CODE']))
-                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                <img data-src="{{ $config['QQ_QUN_OR_CODE'] }}" alt="群二维码">
-                            </div>
-                        @endif
-                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                            <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="群二维码">
+                        </div>
                         <div>
                             <span class="btn btn-default btn-file">
                                 <span class="fileinput-new">选择图片</span>
