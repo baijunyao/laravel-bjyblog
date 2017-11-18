@@ -30,6 +30,11 @@ class ConfigController extends Controller
     public function update(Request $request, Config $configModel)
     {
         $data = $request->except('_token');
+        if ($request->hasFile('QQ_QUN_OR_CODE')) {
+            $file = upload('QQ_QUN_OR_CODE', 'uploads/images', false);
+            $result = $file['status_code'] === 200 ? '/uploads/images/'.$file['data']['new_name']: '';
+            $data['QQ_QUN_OR_CODE'] = $result;
+        }
         $editData = [];
         foreach ($data as $k => $v) {
             $editData[] = [
