@@ -196,7 +196,7 @@
                 <th>QQ群二维码：</th>
                 <td>
                     <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 180px; height: 180px;">
                             <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="群二维码">
                         </div>
                         <div>

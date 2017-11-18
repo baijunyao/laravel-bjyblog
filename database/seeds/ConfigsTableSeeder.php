@@ -453,7 +453,7 @@ class ConfigsTableSeeder extends Seeder
                 array (
                     'id' => 50,
                     'name' => 'QQ_QUN_ARTICLE_ID',
-                    'value' => '',
+                    'value' => '1',
                     'created_at' => NULL,
                     'updated_at' => NULL,
                     'deleted_at' => NULL,
@@ -462,7 +462,7 @@ class ConfigsTableSeeder extends Seeder
                 array (
                     'id' => 51,
                     'name' => 'QQ_QUN_NUMBER',
-                    'value' => '',
+                    'value' => '88199093',
                     'created_at' => NULL,
                     'updated_at' => NULL,
                     'deleted_at' => NULL,
@@ -471,7 +471,7 @@ class ConfigsTableSeeder extends Seeder
                 array (
                     'id' => 52,
                     'name' => 'QQ_QUN_CODE',
-                    'value' => '',
+                    'value' => '<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bba3fea90444ee6caf1fb1366027873fe14e86bada254d41ce67768fadd729ee"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="白俊遥博客群" title="白俊遥博客群"></a>',
                     'created_at' => NULL,
                     'updated_at' => NULL,
                     'deleted_at' => NULL,
@@ -480,7 +480,7 @@ class ConfigsTableSeeder extends Seeder
                 array (
                     'id' => 53,
                     'name' => 'QQ_QUN_OR_CODE',
-                    'value' => '',
+                    'value' => '/uploads/images/default.png',
                     'created_at' => NULL,
                     'updated_at' => NULL,
                     'deleted_at' => NULL,
