@@ -64,6 +64,13 @@ class AppServiceProvider extends ServiceProvider
             $assign = [
                 'config' => $config
             ];
+            // 获取赞赏捐款文章
+            if (!empty($config['QQ_QUN_ARTICLE_ID'])) {
+                $qqQunArticle = Cache::remember('qqQunArticle', 10080, function () {
+                    return Article::select('id', 'title')->first();
+                });
+                $assign['qqQunArticle'] = $qqQunArticle;
+            }
             $view->with($assign);
             // 用 config 表中的配置项替换 /config/ 目录下文件中的配置项
             $serviceConfig = [

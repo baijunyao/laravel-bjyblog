@@ -85,6 +85,25 @@
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
             <div class="b-tags">
+                <h4 class="b-title">赞赏捐赠</h4>
+                <ul class="b-all-tname">
+                    <li class="b-qun-or-code">
+                        <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
+                    </li>
+                    <li>
+                        <p>
+                            QQ群号：{{ $config['QQ_QUN_NUMBER'] }}
+                        </p>
+                        <p>
+                            {!! $config['QQ_QUN_CODE'] !!}
+                        </p>
+                        <p>
+                            <a href="{{ $qqQunArticle['id'] }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
                 <ul class="b-all-tname">
                     <?php $tag_i = 0; ?>
