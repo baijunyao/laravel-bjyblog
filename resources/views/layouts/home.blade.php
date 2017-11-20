@@ -16,6 +16,24 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/index.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/animate/animate.min.css') }}">
     @yield('css')
+    <style>
+        .b-qun-or-code{
+            width: 150px;
+            height: 150px;
+            float: left;
+        }
+        .b-qun-word{
+            width: 170px;
+            height: 150px;
+            float: left;
+            overflow: hidden;
+        }
+        .b-qun-word p{
+            width: 170px;
+            height: 35px;
+            line-height: 35px;
+        }
+    </style>
 </head>
 <body>
 <!-- 顶部导航开始 -->
@@ -90,14 +108,17 @@
                     <li class="b-qun-or-code">
                         <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
                     </li>
-                    <li>
-                        <p>
-                            QQ群号：{{ $config['QQ_QUN_NUMBER'] }}
+                    <li class="b-qun-word">
+                        <p class="b-qun-nuber">
+                            1. 手Q扫左侧二维码
                         </p>
-                        <p>
-                            {!! $config['QQ_QUN_CODE'] !!}
+                        <p class="b-qun-nuber">
+                            2. 搜群：{{ $config['QQ_QUN_NUMBER'] }}
                         </p>
-                        <p>
+                        <p class="b-qun-code">
+                            3. 点击{!! $config['QQ_QUN_CODE'] !!}
+                        </p>
+                        <p class="b-qun-article">
                             <a href="{{ $qqQunArticle['id'] }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
                         </p>
                     </li>
