@@ -103,7 +103,7 @@
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
             <div class="b-tags">
-                <h4 class="b-title">赞赏捐赠</h4>
+                <h4 class="b-title">加入组织</h4>
                 <ul class="b-all-tname">
                     <li class="b-qun-or-code">
                         <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
