@@ -16,24 +16,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/index.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/animate/animate.min.css') }}">
     @yield('css')
-    <style>
-        .b-qun-or-code{
-            width: 150px;
-            height: 150px;
-            float: left;
-        }
-        .b-qun-word{
-            width: 170px;
-            height: 150px;
-            float: left;
-            overflow: hidden;
-        }
-        .b-qun-word p{
-            width: 170px;
-            height: 35px;
-            line-height: 35px;
-        }
-    </style>
 </head>
 <body>
 <!-- 顶部导航开始 -->
