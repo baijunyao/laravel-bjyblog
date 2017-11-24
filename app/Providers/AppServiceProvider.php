@@ -55,12 +55,27 @@ class AppServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
+        // 获取配置项
+        $config = Cache::remember('config', 10080, function () {
+            return Config::pluck('value','name');
+        });
+
+        // 用 config 表中的配置项替换 /config/ 目录下文件中的配置项
+        $serviceConfig = [
+            'services.github.client_id' => $config['GITHUB_CLIENT_ID'],
+            'services.github.client_secret' => $config['GITHUB_CLIENT_SECRET'],
+
+            'services.qq.client_id' => $config['QQ_APP_ID'],
+            'services.qq.client_secret' => $config['QQ_APP_KEY'],
+
+            'services.weibo.client_id' => $config['SINA_API_KEY'],
+            'services.weibo.client_secret' => $config['SINA_SECRET'],
+        ];
+        config($serviceConfig);
+        // p($serviceConfig);
+
         // 分配全站通用的数据
-        view()->composer('*', function ($view) {
-            // 获取配置项
-            $config = Cache::remember('config', 10080, function () {
-                return Config::pluck('value','name');
-            });
+        view()->composer('*', function ($view) use($config) {
             $assign = [
                 'config' => $config
             ];
@@ -72,18 +87,7 @@ class AppServiceProvider extends ServiceProvider
                 $assign['qqQunArticle'] = $qqQunArticle;
             }
             $view->with($assign);
-            // 用 config 表中的配置项替换 /config/ 目录下文件中的配置项
-            $serviceConfig = [
-                'services.github.client_id' => $config['GITHUB_CLIENT_ID'],
-                'services.github.client_secret' => $config['GITHUB_CLIENT_SECRET'],
 
-                'services.qq.client_id' => $config['QQ_APP_ID'],
-                'services.qq.client_secret' => $config['QQ_APP_KEY'],
-
-                'services.weibo.client_id' => $config['SINA_API_KEY'],
-                'services.weibo.client_secret' => $config['SINA_SECRET'],
-            ];
-            config($serviceConfig);
         });
 
         // 获取所有的模型文件
