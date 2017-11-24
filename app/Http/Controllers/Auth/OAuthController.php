@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
+use Cache;
+use App\Models\Config;
 use App\Models\OauthUser;
 use Socialite;
 use Illuminate\Http\Request;
@@ -19,6 +21,31 @@ class OAuthController extends Controller
      */
     public function redirectToProvider(Request $request, $service)
     {
+        $config = Cache::remember('config', 10080, function () {
+            return Config::pluck('value','name');
+        });
+        switch ($service)
+        {
+            case 'qq':
+                $serviceConfig = [
+                    'services.qq.client_id' => $config['QQ_APP_ID'],
+                    'services.qq.client_secret' => $config['QQ_APP_KEY']
+                ];
+                break;
+            case 'weibo':
+                $serviceConfig = [
+                    'services.weibo.client_id' => $config['SINA_API_KEY'],
+                    'services.weibo.client_secret' => $config['SINA_SECRET']
+                ];
+                break;
+            case 'github':
+                $serviceConfig = [
+                    'services.github.client_id' => $config['GITHUB_CLIENT_ID'],
+                    'services.github.client_secret' => $config['GITHUB_CLIENT_SECRET']
+                ];
+                break;
+        }
+        config($serviceConfig);
         // 记录登录前的url
         $data = [
             'targetUrl' => $_SERVER['HTTP_REFERER']
@@ -43,6 +70,33 @@ class OAuthController extends Controller
             'weibo' => 2,
             'github' => 3
         ];
+
+        $config = Cache::remember('config', 10080, function () {
+            return Config::pluck('value','name');
+        });
+        switch ($service)
+        {
+            case 'qq':
+                $serviceConfig = [
+                    'services.qq.client_id' => $config['QQ_APP_ID'],
+                    'services.qq.client_secret' => $config['QQ_APP_KEY']
+                ];
+                break;
+            case 'weibo':
+                $serviceConfig = [
+                    'services.weibo.client_id' => $config['SINA_API_KEY'],
+                    'services.weibo.client_secret' => $config['SINA_SECRET']
+                ];
+                break;
+            case 'github':
+                $serviceConfig = [
+                    'services.github.client_id' => $config['GITHUB_CLIENT_ID'],
+                    'services.github.client_secret' => $config['GITHUB_CLIENT_SECRET']
+                ];
+                break;
+        }
+        config($serviceConfig);
+
         // 获取用户资料
         $user = Socialite::driver($service)->user();
 
