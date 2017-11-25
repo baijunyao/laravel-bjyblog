@@ -56,7 +56,6 @@ class Clear extends Command
         Tag::truncate();
         GitProject::truncate();
         FriendshipLink::truncate();
-        Config::truncate();
         $this->info('successfully');
     }
 }
