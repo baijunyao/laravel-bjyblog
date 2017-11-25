@@ -210,21 +210,21 @@ class FromThinkPHPBjyBlog extends Command
         // 迁移配置项
         $data = DB::connection('old')->table('config')->get()->toArray();
         foreach ($data as $v) {
-            // 新系统需要增加 WEB_TITLE 配置
-            if ($v->name === 'WEB_NAME') {
-                $configTitleData = [
-                    'name' => 'WEB_TITLE',
-                    'value' => $v->value
-                ];
-            }
-            $config_data = [
-                'id' => $v->id,
+            $updateMap = [
+                'name' => $v->name
+            ];
+            $updateData = [
                 'name' => $v->name,
                 'value' => $v->value
             ];
-            $configModel->storeData($config_data);
+            // 判断是否有此配置项；如果有；则修改；如果没有则新增
+            $count = $configModel->whereMap($updateMap)->count();
+            if ($count) {
+                $configModel->updateData($updateMap, $updateData);
+            } else {
+                $configModel->storeData($updateData);
+            }
         }
-        $configModel->storeData($configTitleData);
 
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
