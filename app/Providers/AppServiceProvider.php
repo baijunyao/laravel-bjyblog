@@ -80,7 +80,7 @@ class AppServiceProvider extends ServiceProvider
             }
         } catch (QueryException $e) {
             // 此处清除缓存是为了解决上面无数据库时缓存时 config 缓存了空数据 db:seed 后 config 走了缓存为空的问题
-            Artisan::call('seeder:clear');
+            Artisan::call('cache:clear');
             $config = [];
         }
         // 分配全站通用的数据
