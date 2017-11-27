@@ -81,8 +81,8 @@ class AppServiceProvider extends ServiceProvider
             ];
             // 获取赞赏捐款文章
             if (!empty($config['QQ_QUN_ARTICLE_ID'])) {
-                $qqQunArticle = Cache::remember('qqQunArticle', 10080, function () {
-                    return Article::select('id', 'title')->first();
+                $qqQunArticle = Cache::remember('qqQunArticle', 10080, function () use($config) {
+                    return Article::select('id', 'title')->where('id', $config['QQ_QUN_ARTICLE_ID'])->first();
                 });
                 $assign['qqQunArticle'] = $qqQunArticle;
             }
