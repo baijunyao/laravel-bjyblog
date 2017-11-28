@@ -41,4 +41,11 @@ php artisan migrate
 php artisan db:seed
 ```
 ok；人品好的话；  
-一个跟我博客一样的项目就完成了；
+一个跟我博客一样的项目就完成了；  
+
+另外使用 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog)  的童鞋我并没有抛弃你们；  
+我还准备好了命令行；  
+可以把数据一键从 thinkphp-bjyblog 迁移到 laravel-bjyblog；  
+配置OLD_DB_HOST、OLD_DB_PORT、OLD_DB_DATABASE、OLD_DB_USERNAME、OLD_DB_PASSWORD 为thinkphp-bjyblog的数据库；  
+然后运行 `php artisan migration:fromThinkPHPBjyBlog`
+
