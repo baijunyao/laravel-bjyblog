@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Home;
 
-use Cache;
-use Artisan;
 use App\Http\Requests\Comment\Store;
 use App\Models\Category;
 use App\Models\Article;
@@ -15,7 +13,6 @@ use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Psy\Util\Str;
 
 class IndexController extends Controller
 {
@@ -40,15 +37,17 @@ class IndexController extends Controller
     /**
      * 文章详情
      *
-     * @param $id
-     * @param Article $article
+     * @param         $id
+     * @param Article $articleModel
      * @param Comment $commentModel
-     * @return mixed
+     *
+     * @return $this
      */
-    public function article($id, Article $article, Comment $commentModel)
+    public function article($id, Article $articleModel, Comment $commentModel)
     {
+
         // 获取文章数据
-        $data = $article->getDataById($id);
+        $data = $articleModel->getDataById($id);
         // 去掉描述中的换行
         $data->description = str_replace(["\r", "\n", "\r\n"], '', $data->description);
         // 设置同一个用户访问同一篇文章只增加1个访问量
@@ -68,7 +67,7 @@ class IndexController extends Controller
         }
 
         // 获取上一篇
-        $prev = $article
+        $prev = $articleModel
             ->select('id', 'title')
             ->orderBy('created_at', 'asc')
             ->where('id', '>', $id)
@@ -76,7 +75,7 @@ class IndexController extends Controller
             ->first();
 
         // 获取下一篇
-        $next = $article
+        $next = $articleModel
             ->select('id', 'title')
             ->orderBy('created_at', 'desc')
             ->where('id', '<', $id)
