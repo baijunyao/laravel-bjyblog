@@ -13,6 +13,7 @@ use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class IndexController extends Controller
 {
@@ -43,25 +44,16 @@ class IndexController extends Controller
      *
      * @return $this
      */
-    public function article($id, Article $articleModel, Comment $commentModel)
+    public function article($id, Request $request, Article $articleModel, Comment $commentModel)
     {
-
         // 获取文章数据
         $data = $articleModel->getDataById($id);
         // 去掉描述中的换行
         $data->description = str_replace(["\r", "\n", "\r\n"], '', $data->description);
-        // 设置同一个用户访问同一篇文章只增加1个访问量
-        $read = request()->cookie('read', []);
-        // 判断是否已经记录过id
-        if (array_key_exists($id, $read)) {
-            // 判断点击本篇文章的时间是否已经超过一天
-            if ($read[$id]-time() >= 86400) {
-                $read[$id] = time();
-                // 文章点击量+1
-                $data->increment('click');
-            }
-        }else{
-            $read[$id] = time();
+        // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
+        $ipAndId = 'articleRequestList'.$request->ip().':'.$id;
+        if (!Cache::has($ipAndId)) {
+            cache([$ipAndId => ''], 1440);
             // 文章点击量+1
             $data->increment('click');
         }
@@ -86,7 +78,7 @@ class IndexController extends Controller
         $comment = $commentModel->getDataByArticleId($id);
         $category_id = $data->category_id;
         $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
-        return response()->view('home.index.article', $assign)->cookie('read', $read, 1440);
+        return view('home.index.article', $assign);
     }
 
     /**
