@@ -64,7 +64,10 @@ class AppServiceProvider extends ServiceProvider
             $config = Cache::remember('config', 10080, function () {
                 return Config::pluck('value','name');
             });
-            if (!empty($config)) {
+            // 解决初次安装时候没有数据引起报错
+            if ($config->isEmpty()) {
+                Artisan::call('cache:clear');
+            } else {
                 // 用 config 表中的配置项替换 /config/ 目录下文件中的配置项
                 $serviceConfig = [
                     'services.github.client_id' => $config['GITHUB_CLIENT_ID'],
