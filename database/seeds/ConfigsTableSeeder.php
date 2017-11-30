@@ -485,15 +485,6 @@ class ConfigsTableSeeder extends Seeder
                     'updated_at' => NULL,
                     'deleted_at' => NULL,
                 ),
-            53 =>
-                array (
-                    'id' => 54,
-                    'name' => 'ICP_NUMBER',
-                    'value' => '豫ICP备14009546号-3',
-                    'created_at' => NULL,
-                    'updated_at' => NULL,
-                    'deleted_at' => NULL,
-                ),
         ));
         
         
