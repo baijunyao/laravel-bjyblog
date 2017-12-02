@@ -101,7 +101,9 @@
                             3. 点击{!! $config['QQ_QUN_CODE'] !!}
                         </p>
                         <p class="b-qun-article">
-                            <a href="{{ $qqQunArticle['id'] }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                            @if(!empty($qqQunArticle['id']))
+                                <a href="{{ $qqQunArticle['id'] }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                            @endif
                         </p>
                     </li>
                 </ul>
