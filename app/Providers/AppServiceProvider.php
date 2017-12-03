@@ -113,21 +113,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with($assign);
 
         });
-
-        // 获取所有的模型文件
-        $modelPath = File::allFiles(app_path('Models'));
-        foreach ($modelPath as $v) {
-            // 获取模型文件的BaseName
-            $baseName = $v->getBaseName('.php');
-            // 如果是 Base Model 则跳过
-            if ($baseName === 'Base') {
-                continue;
-            }
-            // 补全模型的命名空间
-            $model = '\App\Models\\'.$baseName;
-            // 注册观察者
-            $model::observe(CacheClearObserver::class);
-        }
     }
 
     /**
