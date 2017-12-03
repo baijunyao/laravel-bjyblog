@@ -10,7 +10,6 @@ use App\Models\Config;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Artisan;
 use Cache;
 
 class ArticleController extends Controller

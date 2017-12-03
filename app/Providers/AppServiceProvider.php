@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
                 // 获取标签下的文章数统计
                 $tagModel = new Tag();
                 return $tagModel->getArticleCount();
-
             });
 
             $topArticle = Cache::remember('common:topArticle', 10080, function () {

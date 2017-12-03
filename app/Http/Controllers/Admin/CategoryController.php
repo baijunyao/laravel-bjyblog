@@ -7,6 +7,7 @@ use App\Http\Requests\Category\Update;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class CategoryController extends Controller
 {
@@ -41,7 +42,11 @@ class CategoryController extends Controller
     public function store(Store $request, Category $categoryModel)
     {
         $data = $request->except('_token');
-        $categoryModel->storeData($data);
+        $result = $categoryModel->storeData($data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:category');
+        }
         return redirect('admin/category/index');
     }
 
@@ -71,7 +76,11 @@ class CategoryController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
-        $categoryModel->updateData($map, $data);
+        $result = $categoryModel->updateData($map, $data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:category');
+        }
         return redirect()->back();
     }
 
@@ -86,7 +95,11 @@ class CategoryController extends Controller
         $map = [
             'id' => $id
         ];
-        $categoryModel->destroyData($map);
+        $result = $categoryModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:category');
+        }
         return redirect('admin/category/index');
     }
 
@@ -107,7 +120,11 @@ class CategoryController extends Controller
                 'sort' => $v
             ];
         }
-        $categoryModel->updateBatch($sortData);
+        $result = $categoryModel->updateBatch($sortData);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:category');
+        }
         return redirect()->back();
     }
 
@@ -124,7 +141,11 @@ class CategoryController extends Controller
         $map = [
             'id' => $id
         ];
-        $categoryModel->restoreData($map);
+        $result = $categoryModel->restoreData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:category');
+        }
         return redirect('admin/category/index');
     }
 

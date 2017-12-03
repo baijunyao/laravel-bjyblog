@@ -211,10 +211,6 @@ class Base extends Model
         $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
         // 更新
         $result = DB::update(DB::raw($sql));
-        // 如果有数据变动；则清空缓存
-        if ($result) {
-            Artisan::call('cache:clear');
-        }
         return $result;
 
     }
