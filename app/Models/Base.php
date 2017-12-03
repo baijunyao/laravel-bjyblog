@@ -211,6 +211,9 @@ class Base extends Model
         $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
         // 更新
         $result = DB::update(DB::raw($sql));
+        if ($result) {
+            show_message('添加成功');
+        }
         return $result;
 
     }
