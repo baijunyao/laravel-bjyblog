@@ -46,7 +46,11 @@ class GitProjectController extends Controller
     public function store(Store $request, GitProject $gitProjectModel)
     {
         $data = $request->except('_token');
-        $gitProjectModel->storeData($data);
+        $result = $gitProjectModel->storeData($data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:gitProject');
+        }
         return redirect('admin/gitProject/index');
     }
 
@@ -76,7 +80,11 @@ class GitProjectController extends Controller
         $map = [
             'id' => $id
         ];
-        $gitProjectModel->updateData($map, $data);
+        $result = $gitProjectModel->updateData($map, $data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:gitProject');
+        }
         return redirect()->back();
     }
 
@@ -98,7 +106,11 @@ class GitProjectController extends Controller
                 'sort' => $v
             ];
         }
-        $gitProjectModel->updateBatch($editData);
+        $result = $gitProjectModel->updateBatch($editData);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:gitProject');
+        }
         return redirect()->back();
     }
 
@@ -113,7 +125,11 @@ class GitProjectController extends Controller
         $map = [
             'id' => $id
         ];
-        $gitProjectModel->destroyData($map);
+        $result = $gitProjectModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:gitProject');
+        }
         return redirect()->back();
     }
 
@@ -127,7 +143,11 @@ class GitProjectController extends Controller
      */
     public function restore($id, GitProject $gitProjectModel)
     {
-        $gitProjectModel->where('id', $id)->restore();
+        $result = $gitProjectModel->where('id', $id)->restore();
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:gitProject');
+        }
         return redirect('admin/gitProject/index');
     }
 
@@ -142,6 +162,6 @@ class GitProjectController extends Controller
     public function forceDelete($id, GitProject $gitProjectModel)
     {
         $gitProjectModel->where('id', $id)->forceDelete();
-        return redirect('admin/friendshipLink/index');
+        return redirect('admin/gitProject/index');
     }
 }
