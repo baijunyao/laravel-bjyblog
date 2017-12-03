@@ -42,7 +42,11 @@ class ConfigController extends Controller
                 'value' => $v
             ];
         }
-        $configModel->updateBatch($editData);
+        $result = $configModel->updateBatch($editData);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:config');
+        }
         return redirect('admin/config/edit');
     }
 }
