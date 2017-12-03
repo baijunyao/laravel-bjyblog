@@ -20,7 +20,7 @@ class CommentController extends Controller
         $assign = compact('data');
         return view('admin.comment.index', $assign);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -32,7 +32,11 @@ class CommentController extends Controller
         $map = [
             'id' => $id
         ];
-        $commentModel->destroyData($map);
+        $result = $commentModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:newComment');
+        }
         return redirect()->back();
     }
 
@@ -46,7 +50,11 @@ class CommentController extends Controller
      */
     public function restore($id, Comment $commentModel)
     {
-        $commentModel->where('id', $id)->restore();
+        $result = $commentModel->where('id', $id)->restore();
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:newComment');
+        }
         return redirect('admin/comment/index');
     }
 
