@@ -43,7 +43,11 @@ class FriendshipLinkController extends Controller
     public function store(Store $request, FriendshipLink $friendshipLinkModel)
     {
         $data = $request->except('_token');
-        $friendshipLinkModel->storeData($data);
+        $result = $friendshipLinkModel->storeData($data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:friendshipLink');
+        }
         return redirect('admin/friendshipLink/index');
 
     }
@@ -74,7 +78,11 @@ class FriendshipLinkController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
-        $friendshipLinkModel->updateData($map, $data);
+        $result = $friendshipLinkModel->updateData($map, $data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:friendshipLink');
+        }
         return redirect()->back();
     }
 
@@ -95,7 +103,11 @@ class FriendshipLinkController extends Controller
                 'sort' => $v
             ];
         }
-        $friendshipLinkModel->updateBatch($editData);
+        $result = $friendshipLinkModel->updateBatch($editData);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:friendshipLink');
+        }
         return redirect()->back();
     }
 
@@ -110,7 +122,11 @@ class FriendshipLinkController extends Controller
         $map = [
             'id' => $id
         ];
-        $friendshipLinkModel->destroyData($map);
+        $result = $friendshipLinkModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:friendshipLink');
+        }
         return redirect()->back();
     }
 
@@ -124,7 +140,11 @@ class FriendshipLinkController extends Controller
      */
     public function restore($id, FriendshipLink $friendshipLinkModel)
     {
-        $friendshipLinkModel->where('id', $id)->restore();
+        $result = $friendshipLinkModel->where('id', $id)->restore();
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:friendshipLink');
+        }
         return redirect('admin/friendshipLink/index');
     }
 
