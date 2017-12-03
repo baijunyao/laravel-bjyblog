@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
                 // 获取开源项目
                 return GitProject::select('name', 'type')->orderBy('sort')->get();
             });
-            
+
             // 分配数据
             $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'gitProject');
             $view->with($assign);
