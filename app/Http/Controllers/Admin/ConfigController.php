@@ -45,7 +45,7 @@ class ConfigController extends Controller
         $result = $configModel->updateBatch($editData);
         if ($result) {
             // 更新缓存
-            Cache::forget('common:config');
+            Cache::forget('config');
         }
         return redirect('admin/config/edit');
     }
