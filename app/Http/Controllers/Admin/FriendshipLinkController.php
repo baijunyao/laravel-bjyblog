@@ -7,6 +7,7 @@ use App\Http\Requests\FriendshipLink\Store;
 use App\Models\FriendshipLink;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class FriendshipLinkController extends Controller
 {
