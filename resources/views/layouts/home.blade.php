@@ -84,7 +84,8 @@
         @yield('content')
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
-            <div class="b-tags">
+            @if(!empty($config['QQ_QUN_NUMBER']))
+                <div class="b-tags">
                 <h4 class="b-title">加入组织</h4>
                 <ul class="b-all-tname">
                     <li class="b-qun-or-code">
@@ -108,6 +109,7 @@
                     </li>
                 </ul>
             </div>
+            @endif
             <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
                 <ul class="b-all-tname">
