@@ -183,7 +183,7 @@
             <tr>
                 <th>QQ群账号：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="QQ_QUN_NUMBER" value="{{  $config['QQ_QUN_NUMBER'] }}" >
+                    <input class="form-control modal-sm" type="text" name="QQ_QUN_NUMBER" value="{{  $config['QQ_QUN_NUMBER'] }}" >如果群账号为空则前台不展示赞赏捐赠模块
                 </td>
             </tr>
             <tr>
