@@ -189,7 +189,7 @@
             <tr>
                 <th>QQ群代码：</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="QQ_QUN_CODE" rows="5" placeholder="">{{  $config['QQ_QUN_CODE'] }}</textarea>
+                    <textarea class="form-control modal-sm" name="QQ_QUN_CODE" rows="5" placeholder="">{{  $config['QQ_QUN_CODE'] }}</textarea><a href="http://qun.qq.com/join.html" target="_blank">http://qun.qq.com/join.html</a>
                 </td>
             </tr>
             <tr>
@@ -208,6 +208,7 @@
                             <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
                         </div>
                     </div>
+                    <a href="http://qun.qq.com/join.html" target="_blank">http://qun.qq.com/join.html</a>
                 </td>
             </tr>
             <tr>
