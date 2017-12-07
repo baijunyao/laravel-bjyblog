@@ -213,6 +213,8 @@ class IndexController extends Controller
         }
         // 存储评论
         $id = $commentModel->storeData($data);
+        // 更新缓存
+        Cache::forget('common:newComment');
         return ajax_return(200, ['id' => $id]);
     }
 
