@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "58a922f7ec7e2505d65665284fa95016",
+    "content-hash": "2b025d63cb7cc29e07adf730f38cf8df",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -1457,7 +1457,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/mtdowling/cron-expression/9504fa9ea681b586028adaaa0877db4aecf32bad.zip",
+                "url": "https://files.phpcomposer.com/files/mtdowling/cron-expression/9504fa9ea681b586028adaaa0877db4aecf32bad.zip",
                 "reference": "9504fa9ea681b586028adaaa0877db4aecf32bad",
                 "shasum": ""
             },
@@ -3007,6 +3007,65 @@
             "time": "2017-01-24T13:02:38+00:00"
         },
         {
+            "name": "tom-lingham/searchy",
+            "version": "2.0.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TomLingham/Laravel-Searchy.git",
+                "reference": "d2f6fbce970f4c4034d6c1829e74eb70ed2843e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/TomLingham/Laravel-Searchy/d2f6fbce970f4c4034d6c1829e74eb70ed2843e1.zip",
+                "reference": "d2f6fbce970f4c4034d6c1829e74eb70ed2843e1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
+                "php": "^5.5.9 || ^7.0"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^3.4 || ^4.0",
+                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "TomLingham\\Searchy\\SearchyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Searchy": "TomLingham\\Searchy\\Facades\\Searchy"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TomLingham\\Searchy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Lingham",
+                    "email": "tjlingham@gmail.com"
+                }
+            ],
+            "description": "Laravel Searchy makes user driven searching easy with fuzzy search, basic string matching, Levenshtein Distance and more.",
+            "keywords": [
+                "fuzzy",
+                "laravel",
+                "search"
+            ],
+            "time": "2017-08-30T12:31:50+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -3647,7 +3706,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/44f9a286a04b80c76a4e5fb7aad8bb539b920123",
+                "url": "https://files.phpcomposer.com/files/fzaninotto/Faker/44f9a286a04b80c76a4e5fb7aad8bb539b920123.zip",
                 "reference": "44f9a286a04b80c76a4e5fb7aad8bb539b920123",
                 "shasum": ""
             },
@@ -3847,7 +3906,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
+                "url": "https://files.phpcomposer.com/files/phpDocumentor/ReflectionCommon/144c307535e82c8fdcaacbcfc1d6d8eeb896687c.zip",
                 "reference": "144c307535e82c8fdcaacbcfc1d6d8eeb896687c",
                 "shasum": ""
             },

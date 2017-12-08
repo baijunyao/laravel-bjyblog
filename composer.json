@@ -28,7 +28,8 @@
         "pixel418/markdownify": "^2.2",
         "predis/predis": "^1.1",
         "socialiteproviders/qq": "~2.0",
-        "socialiteproviders/weibo": "~2.0"
+        "socialiteproviders/weibo": "~2.0",
+        "tom-lingham/searchy": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
