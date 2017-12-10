@@ -6,7 +6,7 @@
 - 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/shuaibai123/laravel-bjyblog)    
 
 ## 简介
-这个项目是把 [thinkphp-bjyblog] 用 laravel 框架重构后的产物；  
+这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
 
 下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
 ![Thinkbjy](http://statics.baijunyao.com/images/other/thinkbjy.jpg)  
@@ -38,8 +38,10 @@ php artisan migrate
 php artisan db:seed
 ```
 ok；人品好的话；  
-一个跟我博客一样的项目就完成了；  
-
+一个跟我博客一样的项目就完成了； 
+后台 /admin/index/index  
+默认账号：test@test.com   
+初始密码：123456   
 
 ## 从thinkphp-bjyblog迁移数据
 使用 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog)  的童鞋我并没有抛弃你们；  
