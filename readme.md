@@ -9,15 +9,29 @@
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
 
 下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
-![Thinkbjy](http://statics.baijunyao.com/images/other/thinkbjy.jpg)  
+![laravel-bjyblog](http://statics.baijunyao.com/images/other/thinkbjy.jpg)  
 
 ## 使用说明
-首先要安装composer；
+首先要安装composer；  
 如果不会安装的参考 [composer的初级使用](https://baijunyao.com/article/113);  
+然后点击下面的链接下载项目；  
+github:  https://github.com/baijunyao/laravel-bjyblog  
+giee(国内速度快): https://gitee.com/shuaibai123/laravel-bjyblog   
+
+或者使用git clone；  
+github:
+```bash
+git clone git@github.com:baijunyao/laravel-bjyblog.git
+```
+gitee(国内速度快):   
+```bash
+git clone git@gitee.com:shuaibai123/laravel-bjyblog.git
+```
+
 配置好本地环境主要是指向public目录；  
 参考 [phpstudy 配置虚拟主机](https://baijunyao.com/article/114);  
-然后把项目下载到本地；  
-在项目跟目录执行安装命令；  
+
+进入项目跟目录执行安装命令； 
 ```bash
 composer install -vvv
 ```
