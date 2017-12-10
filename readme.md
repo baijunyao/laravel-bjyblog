@@ -9,7 +9,7 @@
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
 
 下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
-![laravel-bjyblog](http://statics.baijunyao.com/images/other/thinkbjy.jpg)  
+![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
 
 ## 使用说明
 首先要安装composer；  
@@ -42,7 +42,7 @@ php artisan key:generate
 ```
 把 `.env` 文件中的 `APP_URL` 改为自己的域名；  
 把 `.env` 文件中的 DB_HOST、DB_PORT、DB_DATABASE、DB_USERNAME、DB_PASSWORD；  
-改为 thinkphp-bjyblog 的数据库链接；
+改为自己实际的数据库链接；
 运行迁移命令；
 ```bash
 php artisan migrate
