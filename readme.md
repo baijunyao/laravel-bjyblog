@@ -28,7 +28,7 @@ php artisan key:generate
 ```
 把 `.env` 文件中的 `APP_URL` 改为自己的域名；  
 把 `.env` 文件中的 DB_HOST、DB_PORT、DB_DATABASE、DB_USERNAME、DB_PASSWORD；  
-改为自己的数据库链接；
+改为 thinkphp-bjyblog 的数据库链接；
 运行迁移命令；
 ```bash
 php artisan migrate
@@ -38,7 +38,7 @@ php artisan migrate
 php artisan db:seed
 ```
 ok；人品好的话；  
-一个跟我博客一样的项目就完成了； 
+一个跟我博客一样的项目就完成了；  
 后台 /admin/index/index  
 默认账号：test@test.com   
 初始密码：123456   
@@ -59,5 +59,3 @@ ok；人品好的话；
 
 ## 版权
 项目使用 MIT 协议；免费开源可随意使用；
-
-
