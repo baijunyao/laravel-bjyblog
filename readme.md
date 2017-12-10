@@ -1,20 +1,17 @@
-## 简略说明
-一些筒子们着急着想先体验下laravel版的博客；  
-经不住童鞋们的一再催促；  
-以及我这段时间的测试；  
-感觉博客可以初步使用了； 
-于是；我加班加点的把数据库迁移文件和填充文件搞出来；  
-想先体验折腾的拿去玩吧；   
-项目还在完善中；  
-待更成熟点后；我会写详细的文章讲解；  
-后台 /admin/index/index  
-默认账号：test@test.com   
-初始密码：123456  
-网站配置以及第三方登录的key可以在后台配置项中填写  
+[创建 QQ 群及捐赠渠道](https://baijunyao.com/article/124)  
 
-补充；  
-最近看到不少童鞋在博客上留言安装的有问题；  
-写个简单的安装流程吧；  
+## 链接
+- 博客：[http://baijunyao.com](http://baijunyao.com)   
+- github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
+- 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/shuaibai123/laravel-bjyblog)    
+
+## 简介
+这个项目是把 [thinkphp-bjyblog] 用 laravel 框架重构后的产物；  
+
+下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
+![Thinkbjy](http://statics.baijunyao.com/images/other/thinkbjy.jpg)  
+
+## 使用说明
 首先要安装composer；
 如果不会安装的参考 [composer的初级使用](https://baijunyao.com/article/113);  
 配置好本地环境主要是指向public目录；  
@@ -43,9 +40,22 @@ php artisan db:seed
 ok；人品好的话；  
 一个跟我博客一样的项目就完成了；  
 
-另外使用 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog)  的童鞋我并没有抛弃你们；  
+
+## 从thinkphp-bjyblog迁移数据
+使用 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog)  的童鞋我并没有抛弃你们；  
 我还准备好了命令行；  
 可以把数据一键从 thinkphp-bjyblog 迁移到 laravel-bjyblog；  
 配置OLD_DB_HOST、OLD_DB_PORT、OLD_DB_DATABASE、OLD_DB_USERNAME、OLD_DB_PASSWORD 为thinkphp-bjyblog的数据库；  
 然后运行 `php artisan migration:fromThinkPHPBjyBlog`
+
+## 项目介绍
+1. 前台响应式页面布局适配PC、手机、平板；
+2. 带表情的ajax无限级评论系统；
+3. 队列邮件通知；
+4. QQ、微博、github第三方登录；
+5. markdown 编辑器；
+
+## 版权
+项目使用 MIT 协议；免费开源可随意使用；
+
 
