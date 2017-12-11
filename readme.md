@@ -4,7 +4,8 @@
 - 博客：[http://baijunyao.com](http://baijunyao.com)   
 - github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
 - 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/shuaibai123/laravel-bjyblog)    
-
+## 文档
+[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
 ## 简介
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
 
