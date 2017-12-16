@@ -1,7 +1,6 @@
 {
     "name": "baijunyao/laravel-bjyblog",
     "description": "Laravel blog.",
-    "version": "1.5.3",
     "keywords": ["framework", "laravel", "bjyblog"],
     "authors": [
         {

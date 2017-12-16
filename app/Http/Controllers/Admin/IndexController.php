@@ -34,12 +34,7 @@ class IndexController extends Controller
             ->get();
         // 最新的5条评论
         $commentData = $commentModel->getNewData(5);
-        // 获取博客版本
-        $composerJson = file_get_contents(base_path('composer.json'));
-        $composerArray = json_decode($composerJson, true);
-        $blogVersion = $composerArray['version'];
         $version = [
-            'blog' => $blogVersion,
             'system' => PHP_OS,
             'webServer' => $_SERVER['SERVER_SOFTWARE'],
             'php' => PHP_VERSION,
