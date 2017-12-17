@@ -96,7 +96,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('edit/{id}', 'ArticleController@edit');
         Route::post('update/{id}', 'ArticleController@update');
         // 上传图片
-        Route::post('upload_image', 'ArticleController@upload_image');
+        Route::post('uploadImage', 'ArticleController@uploadImage');
         // 删除文章
         Route::get('destroy/{id}', 'ArticleController@destroy');
         // 恢复删除的文章
