@@ -46,7 +46,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function upload_image()
+    public function uploadImage()
     {
         $result = upload('editormd-image-file', 'uploads/article');
         if ($result['status_code'] === 200) {
