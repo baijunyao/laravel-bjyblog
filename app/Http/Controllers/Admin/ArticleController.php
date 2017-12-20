@@ -77,8 +77,10 @@ class ArticleController extends Controller
         $data = $request->except('_token');
         $result = $article->storeData($data);
         if ($result) {
-            // 更新缓存
+            // 更新热门推荐文章缓存
             Cache::forget('common:topArticle');
+            // 更新标签统计缓存
+            Cache::forget('common:tag');
         }
         return redirect('admin/article/index');
     }
@@ -127,8 +129,10 @@ class ArticleController extends Controller
         ];
         $result = $articleModel->updateData($map, $data);
         if ($result) {
-            // 更新缓存
+            // 更新热门推荐文章缓存
             Cache::forget('common:topArticle');
+            // 更新标签统计缓存
+            Cache::forget('common:tag');
         }
         return redirect()->back();
     }

@@ -409,18 +409,3 @@ if (! function_exists('redis')) {
     }
 }
 
-if (! function_exists('show_message')){
-    /**
-     * 添加成功或者失败的提示
-     *
-     * @param string $message
-     * @param bool $success
-     */
-    function show_message($message = '成功', $success = true)
-    {
-        $alterClass = $success ? 'alert-success' : 'alert-error';
-        session()->flash('alert-message', $message);
-        session()->flash('alert-class', $alterClass);
-
-    }
-}
