@@ -103,7 +103,7 @@
                         </p>
                         <p class="b-qun-article">
                             @if(!empty($qqQunArticle['id']))
-                                <a href="{{ $qqQunArticle['id'] }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                                <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
                             @endif
                         </p>
                     </li>
