@@ -31,7 +31,7 @@ class Base extends Model
             ->create($data)
             ->id;
         if ($result) {
-            show_message('添加成功');
+            flash_message('添加成功');
             return $result;
         }else{
             return false;
@@ -53,14 +53,14 @@ class Base extends Model
             ->get();
         // 可能有查不到数据的情况
         if ($model->isEmpty()) {
-            show_message('无需要添加的数据', false);
+            flash_message('无需要添加的数据', false);
             return false;
         }
         foreach ($model as $k => $v) {
             $result = $v->forceFill($data)->save();
         }
         if ($result) {
-            show_message('修改成功');
+            flash_message('修改成功');
             return $result;
         }else{
             return false;
@@ -80,7 +80,7 @@ class Base extends Model
             ->where($map)
             ->delete();
         if ($result) {
-            show_message('操作成功');
+            flash_message('操作成功');
             return $result;
         }else{
             return false;
@@ -101,7 +101,7 @@ class Base extends Model
             ->where($map)
             ->restore();
         if ($result) {
-            show_message('操作成功');
+            flash_message('操作成功');
             return $result;
         }else{
             return false;
@@ -211,9 +211,8 @@ class Base extends Model
         $sql = rtrim($sql, ", ")." WHERE ".$referenceColumn." IN (".  rtrim($whereIn, ', ').")";
         // 更新
         $result = DB::update(DB::raw($sql));
-        // 如果有数据变动；则清空缓存
         if ($result) {
-            Artisan::call('cache:clear');
+            flash_message('添加成功');
         }
         return $result;
 

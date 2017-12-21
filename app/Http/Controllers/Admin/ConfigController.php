@@ -6,6 +6,7 @@ use Artisan;
 use App\Models\Config;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class ConfigController extends Controller
 {
@@ -42,7 +43,11 @@ class ConfigController extends Controller
                 'value' => $v
             ];
         }
-        $configModel->updateBatch($editData);
+        $result = $configModel->updateBatch($editData);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('config');
+        }
         return redirect('admin/config/edit');
     }
 }

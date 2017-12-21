@@ -10,7 +10,7 @@ use App\Models\Config;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Artisan;
+use Cache;
 
 class ArticleController extends Controller
 {
@@ -46,7 +46,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function upload_image()
+    public function uploadImage()
     {
         $result = upload('editormd-image-file', 'uploads/article');
         if ($result['status_code'] === 200) {
@@ -75,7 +75,13 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
-        $article->storeData($data);
+        $result = $article->storeData($data);
+        if ($result) {
+            // 更新热门推荐文章缓存
+            Cache::forget('common:topArticle');
+            // 更新标签统计缓存
+            Cache::forget('common:tag');
+        }
         return redirect('admin/article/index');
     }
 
@@ -121,7 +127,13 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $articleModel->updateData($map, $data);
+        $result = $articleModel->updateData($map, $data);
+        if ($result) {
+            // 更新热门推荐文章缓存
+            Cache::forget('common:topArticle');
+            // 更新标签统计缓存
+            Cache::forget('common:tag');
+        }
         return redirect()->back();
     }
 
@@ -137,7 +149,11 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $articleModel->destroyData($map);
+        $result = $articleModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:topArticle');
+        }
         return redirect('admin/article/index');
     }
 
@@ -154,7 +170,11 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $articleModel->restoreData($map);
+        $result = $articleModel->restoreData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:topArticle');
+        }
         return redirect('admin/article/index');
     }
 
@@ -171,5 +191,4 @@ class ArticleController extends Controller
         $articleModel->where('id', $id)->forceDelete();
         return redirect('admin/article/index');
     }
-
 }

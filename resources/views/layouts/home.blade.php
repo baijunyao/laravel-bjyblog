@@ -84,7 +84,8 @@
         @yield('content')
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
-            <div class="b-tags">
+            @if(!empty($config['QQ_QUN_NUMBER']))
+                <div class="b-tags">
                 <h4 class="b-title">加入组织</h4>
                 <ul class="b-all-tname">
                     <li class="b-qun-or-code">
@@ -101,11 +102,14 @@
                             3. 点击{!! $config['QQ_QUN_CODE'] !!}
                         </p>
                         <p class="b-qun-article">
-                            <a href="{{ $qqQunArticle['id'] }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                            @if(!empty($qqQunArticle['id']))
+                                <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                            @endif
                         </p>
                     </li>
                 </ul>
             </div>
+            @endif
             <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
                 <ul class="b-all-tname">
@@ -170,10 +174,12 @@
         <footer id="b-foot" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul>
                 <li class="text-center">
-                    Powered by <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> © 2014-2017 baijunyao.com 版权所有 ICP证：豫ICP备14009546号-3
+                    Powered by <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> © 2014-2017 {{ parse_url(config('app.url'))['host'] }} 版权所有 @if(!empty($config['WEB_ICP_NUMBER'])) ICP证：{{ $config['WEB_ICP_NUMBER'] }} @endif
                 </li>
                 <li class="text-center">
-                    联系邮箱：{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}
+                    @if(!empty($config['ADMIN_EMAIL']))
+                        联系邮箱：{!! $config['ADMIN_EMAIL'] !!}
+                    @endif
                 </li>
             </ul>
             <div class="b-h-20"></div>

@@ -1,44 +1,40 @@
-## 简略说明
-一些筒子们着急着想先体验下laravel版的博客；  
-经不住童鞋们的一再催促；  
-以及我这段时间的测试；  
-感觉博客可以初步使用了； 
-于是；我加班加点的把数据库迁移文件和填充文件搞出来；  
-想先体验折腾的拿去玩吧；   
-项目还在完善中；  
-待更成熟点后；我会写详细的文章讲解；  
-后台 /admin/index/index  
-默认账号：test@test.com   
-初始密码：123456  
-网站配置以及第三方登录的key可以在后台配置项中填写  
+[创建 QQ 群及捐赠渠道](https://baijunyao.com/article/124)  
 
-补充；  
-最近看到不少童鞋在博客上留言安装的有问题；  
-写个简单的安装流程吧；  
-首先要安装composer；
-如果不会安装的参考 [composer的初级使用](https://baijunyao.com/article/113);  
-配置好本地环境主要是指向public目录；  
-参考 [phpstudy 配置虚拟主机](https://baijunyao.com/article/114);  
-然后把项目下载到本地；  
-在项目跟目录执行安装命令；  
-```bash
-composer install -vvv
-```
-然后把 `.env.example改名为.env`;  
-生成APP_KEY；
-```bash
-php artisan key:generate
-```
-把 `.env` 文件中的 `APP_URL` 改为自己的域名；  
-把 `.env` 文件中的 DB_HOST、DB_PORT、DB_DATABASE、DB_USERNAME、DB_PASSWORD；  
-改为自己的数据库链接；
-运行迁移命令；
-```bash
-php artisan migrate
-```
-运行数据填充命令;
-```bash
-php artisan db:seed
-```
-ok；人品好的话；  
-一个跟我博客一样的项目就完成了；
+## 链接
+- 博客：[http://baijunyao.com](http://baijunyao.com)   
+- github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
+- 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/shuaibai123/laravel-bjyblog)    
+
+## 简介
+这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
+
+下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
+![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
+
+## 使用说明
+[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
+
+## 项目介绍
+1. 纯手工前台响应式页面布局适配PC、平板、手机；
+2. 带表情的ajax无限级评论系统；
+3. 队列邮件通知；
+4. QQ、微博、github第三方登录；
+5. markdown 编辑器；
+
+## 版权
+项目使用 MIT 协议；免费开源可随意使用；
+
+## 更新记录
+#### v5.3.0.5
+1. 新增或者编辑文章后更新标签统计缓存
+#### v5.3.0.4
+1. 博客版本号从配置项中获取
+2. 规范统一使用驼峰命名
+#### v5.3.0.3
+1. 全局路由约束；限制id必须为数字
+#### v5.3.0.2
+1. 完善使用说明
+2. 自动过滤一些无意义评论
+#### v5.3.0.1
+1. 第一个稳定版本
+

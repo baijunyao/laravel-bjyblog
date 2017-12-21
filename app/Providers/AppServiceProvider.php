@@ -28,33 +28,45 @@ class AppServiceProvider extends ServiceProvider
     {
         //分配前台通用的数据
         view()->composer('home/*', function($view){
-            $assign = Cache::remember('common', 10080, function () {
+            $category = Cache::remember('common:category', 10080, function () {
                 // 获取分类导航
-                $category = Category::select('id', 'name')->get();
+                return Category::select('id', 'name')->get();
+            });
 
+            $tag = Cache::remember('common:tag', 10080, function () {
                 // 获取标签下的文章数统计
                 $tagModel = new Tag();
-                $tag = $tagModel->getArticleCount();
+                return $tagModel->getArticleCount();
+            });
 
+            $topArticle = Cache::remember('common:topArticle', 10080, function () {
                 // 获取置顶推荐文章
-                $topArticle = Article::select('id', 'title')
+                return Article::select('id', 'title')
                     ->where('is_top', 1)
                     ->orderBy('created_at', 'desc')
                     ->get();
-
-                // 获取最新评论
-                $commentModel = new Comment();
-                $newComment = $commentModel->getNewData();
-
-                // 获取友情链接
-                $friendshipLink = FriendshipLink::select('name', 'url')->orderBy('sort')->get();
-
-                // 获取开源项目
-                $gitProject = GitProject::select('name', 'type')->orderBy('sort')->get();
-                $data = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'gitProject');
-                return $data;
             });
 
+            $newComment = Cache::remember('common:newComment', 10080, function () {
+                // 获取最新评论
+                $commentModel = new Comment();
+                return $commentModel->getNewData();
+            });
+
+            $friendshipLink = Cache::remember('common:friendshipLink', 10080, function () {
+                // 获取友情链接
+                return FriendshipLink::select('name', 'url')
+                    ->orderBy('sort')
+                    ->get();
+            });
+
+            $gitProject = Cache::remember('common:gitProject', 10080, function () {
+                // 获取开源项目
+                return GitProject::select('name', 'type')->orderBy('sort')->get();
+            });
+
+            // 分配数据
+            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'gitProject');
             $view->with($assign);
         });
 
@@ -64,7 +76,10 @@ class AppServiceProvider extends ServiceProvider
             $config = Cache::remember('config', 10080, function () {
                 return Config::pluck('value','name');
             });
-            if (!empty($config)) {
+            // 解决初次安装时候没有数据引起报错
+            if ($config->isEmpty()) {
+                Artisan::call('cache:clear');
+            } else {
                 // 用 config 表中的配置项替换 /config/ 目录下文件中的配置项
                 $serviceConfig = [
                     'services.github.client_id' => $config['GITHUB_CLIENT_ID'],
@@ -98,21 +113,6 @@ class AppServiceProvider extends ServiceProvider
             $view->with($assign);
 
         });
-
-        // 获取所有的模型文件
-        $modelPath = File::allFiles(app_path('Models'));
-        foreach ($modelPath as $v) {
-            // 获取模型文件的BaseName
-            $baseName = $v->getBaseName('.php');
-            // 如果是 Base Model 则跳过
-            if ($baseName === 'Base') {
-                continue;
-            }
-            // 补全模型的命名空间
-            $model = '\App\Models\\'.$baseName;
-            // 注册观察者
-            $model::observe(CacheClearObserver::class);
-        }
     }
 
     /**

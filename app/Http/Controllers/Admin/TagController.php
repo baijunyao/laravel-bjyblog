@@ -6,6 +6,7 @@ use App\Http\Requests\Tag\Store;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class TagController extends Controller
 {
@@ -42,7 +43,11 @@ class TagController extends Controller
         $data = [
             'name' => $request->input('name')
         ];
-        $tagModel->storeData($data);
+        $result = $tagModel->storeData($data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:tag');
+        }
         return redirect('admin/tag/index');
     }
 
@@ -72,7 +77,11 @@ class TagController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
-        $tagModel->updateData($map, $data);
+        $result = $tagModel->updateData($map, $data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:tag');
+        }
         return redirect()->back();
     }
 
@@ -87,7 +96,11 @@ class TagController extends Controller
         $map = [
             'id' => $id
         ];
-        $tagModel->destroyData($map);
+        $result = $tagModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:tag');
+        }
         return redirect('admin/tag/index');
     }
 
@@ -101,7 +114,11 @@ class TagController extends Controller
      */
     public function restore($id, Tag $tagModel)
     {
-        $tagModel->where('id', $id)->restore();
+        $result = $tagModel->where('id', $id)->restore();
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:tag');
+        }
         return redirect('admin/tag/index');
     }
 

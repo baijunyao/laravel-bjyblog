@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Home;
 
-use Cache;
-use Artisan;
 use App\Http\Requests\Comment\Store;
 use App\Models\Category;
 use App\Models\Article;
@@ -15,7 +13,7 @@ use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Psy\Util\Str;
+use Cache;
 
 class IndexController extends Controller
 {
@@ -40,35 +38,28 @@ class IndexController extends Controller
     /**
      * 文章详情
      *
-     * @param $id
-     * @param Article $article
+     * @param         $id
+     * @param Article $articleModel
      * @param Comment $commentModel
-     * @return mixed
+     *
+     * @return $this
      */
-    public function article($id, Article $article, Comment $commentModel)
+    public function article($id, Request $request, Article $articleModel, Comment $commentModel)
     {
         // 获取文章数据
-        $data = $article->getDataById($id);
+        $data = $articleModel->getDataById($id);
         // 去掉描述中的换行
         $data->description = str_replace(["\r", "\n", "\r\n"], '', $data->description);
-        // 设置同一个用户访问同一篇文章只增加1个访问量
-        $read = request()->cookie('read', []);
-        // 判断是否已经记录过id
-        if (array_key_exists($id, $read)) {
-            // 判断点击本篇文章的时间是否已经超过一天
-            if ($read[$id]-time() >= 86400) {
-                $read[$id] = time();
-                // 文章点击量+1
-                $data->increment('click');
-            }
-        }else{
-            $read[$id] = time();
+        // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
+        $ipAndId = 'articleRequestList'.$request->ip().':'.$id;
+        if (!Cache::has($ipAndId)) {
+            cache([$ipAndId => ''], 1440);
             // 文章点击量+1
             $data->increment('click');
         }
 
         // 获取上一篇
-        $prev = $article
+        $prev = $articleModel
             ->select('id', 'title')
             ->orderBy('created_at', 'asc')
             ->where('id', '>', $id)
@@ -76,7 +67,7 @@ class IndexController extends Controller
             ->first();
 
         // 获取下一篇
-        $next = $article
+        $next = $articleModel
             ->select('id', 'title')
             ->orderBy('created_at', 'desc')
             ->where('id', '<', $id)
@@ -87,7 +78,7 @@ class IndexController extends Controller
         $comment = $commentModel->getDataByArticleId($id);
         $category_id = $data->category_id;
         $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
-        return response()->view('home.index.article', $assign)->cookie('read', $read, 1440);
+        return view('home.index.article', $assign);
     }
 
     /**
@@ -179,7 +170,7 @@ class IndexController extends Controller
     public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
         $data = $request->all();
-        if (ctype_alnum($data['content'])) {
+        if (ctype_alnum($data['content']) || in_array($data['content'], ['test', '测试'])) {
             return ajax_return(200, '禁止无意义评论');
         }
         // 获取用户id
@@ -222,6 +213,8 @@ class IndexController extends Controller
         }
         // 存储评论
         $id = $commentModel->storeData($data);
+        // 更新缓存
+        Cache::forget('common:newComment');
         return ajax_return(200, ['id' => $id]);
     }
 
@@ -263,7 +256,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-
+        
     }
 
 
