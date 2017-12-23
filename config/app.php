@@ -10,9 +10,10 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
+    |
     */
 
-    'name' => 'Laravel',
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'PRC',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'zh-CN',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -120,11 +121,9 @@ return [
     |
     */
 
-    'log' => env('APP_LOG', 'daily'),
+    'log' => env('APP_LOG', 'single'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
-
-    'log_max_files' => 365,
 
     /*
     |--------------------------------------------------------------------------
@@ -166,6 +165,10 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Package Service Providers...
+         */
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -174,39 +177,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        /**
-         * Package Service Providers...
-         */
-
-        /**
-         * mewebstudio/Purifier 过滤xss攻击
-         */
-        Mews\Purifier\PurifierServiceProvider::class,
-
-        /**
-         * Intervention/image 处理图片
-         */
-        Intervention\Image\ImageServiceProvider::class,
-
-        /**
-         * socialiteproviders/weibo 微博登录
-         */
-        SocialiteProviders\Manager\ServiceProvider::class,
-
-        /**
-         * 逆向填充
-         */
-        Orangehill\Iseed\IseedServiceProvider::class,
-
-        /**
-         * barryvdh/laravel-debugbar  debug工具条
-         */
-        Barryvdh\Debugbar\ServiceProvider::class,
-
-        /**
-         * appstract/laravel-opcache 命令行操作opcache缓存
-         */
-        Appstract\Opcache\OpcacheServiceProvider::class,
     ],
 
     /*
@@ -221,10 +191,12 @@ return [
     */
 
     'aliases' => [
+
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
+        'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
         'Cache' => Illuminate\Support\Facades\Cache::class,
         'Config' => Illuminate\Support\Facades\Config::class,
@@ -253,10 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Purifier' => Mews\Purifier\Facades\Purifier::class,
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
     ],
 
 ];

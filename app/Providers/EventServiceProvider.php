@@ -13,13 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'SocialiteProviders\Manager\SocialiteWasCalled' => [
-            'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
-            'SocialiteProviders\QQ\QqExtendSocialite@handle',
+        'App\Events\Event' => [
+            'App\Listeners\EventListener',
         ],
-        'Illuminate\Auth\Events\Login' => [
-            'App\Listeners\LoginStoreSession'
-        ]
     ];
 
     /**
