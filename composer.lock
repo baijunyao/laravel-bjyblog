@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ba07901de69ca8caf0bfbc8c51ea753c",
+    "content-hash": "88a44c5bd94477ccba83a4f5ef534da6",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -1953,6 +1953,92 @@
                 "uuid"
             ],
             "time": "2017-09-22T20:46:04+00:00"
+        },
+        {
+            "name": "socialiteproviders/manager",
+            "version": "v3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Manager.git",
+                "reference": "1de3f3d874392da6f1a4c0bf30d843e9cd903ea7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/SocialiteProviders/Manager/1de3f3d874392da6f1a4c0bf30d843e9cd903ea7.zip",
+                "reference": "1de3f3d874392da6f1a4c0bf30d843e9cd903ea7",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/socialite": "~3.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SocialiteProviders\\Manager\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Manager\\": "src/",
+                    "SocialiteProviders\\Manager\\Test\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andy Wendt",
+                    "email": "andy@awendt.com"
+                }
+            ],
+            "description": "Easily add new or override built-in providers in Laravel Socialite.",
+            "time": "2017-11-20T08:42:57+00:00"
+        },
+        {
+            "name": "socialiteproviders/qq",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/QQ.git",
+                "reference": "e9ffd3cfaa27d485fdde55caf59a2b40637242e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/SocialiteProviders/QQ/e9ffd3cfaa27d485fdde55caf59a2b40637242e5.zip",
+                "reference": "e9ffd3cfaa27d485fdde55caf59a2b40637242e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\QQ\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "heui",
+                    "email": "runphp@qq.com"
+                }
+            ],
+            "description": "Qq.com OAuth2 Provider for Laravel Socialite",
+            "time": "2017-01-25T09:48:29+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
