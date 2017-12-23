@@ -4,8 +4,7 @@
 - 博客：[http://baijunyao.com](http://baijunyao.com)   
 - github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
 - 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/shuaibai123/laravel-bjyblog)    
-## 文档
-[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
+
 ## 简介
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
 
@@ -13,60 +12,10 @@
 ![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
 
 ## 使用说明
-首先要安装composer；  
-如果不会安装的参考 [composer的初级使用](https://baijunyao.com/article/113);  
-然后点击下面的链接下载项目；  
-github:  https://github.com/baijunyao/laravel-bjyblog  
-giee(国内速度快): https://gitee.com/shuaibai123/laravel-bjyblog   
-
-或者使用git clone；  
-github:
-```bash
-git clone git@github.com:baijunyao/laravel-bjyblog.git
-```
-gitee(国内速度快):   
-```bash
-git clone git@gitee.com:shuaibai123/laravel-bjyblog.git
-```
-
-配置好本地环境主要是指向public目录；  
-参考 [phpstudy 配置虚拟主机](https://baijunyao.com/article/114);  
-
-进入项目跟目录执行安装命令； 
-```bash
-composer install -vvv
-```
-然后把 `.env.example改名为.env`;  
-生成APP_KEY；
-```bash
-php artisan key:generate
-```
-把 `.env` 文件中的 `APP_URL` 改为自己的域名；  
-把 `.env` 文件中的 DB_HOST、DB_PORT、DB_DATABASE、DB_USERNAME、DB_PASSWORD；  
-改为自己实际的数据库链接；
-运行迁移命令；
-```bash
-php artisan migrate
-```
-运行数据填充命令;
-```bash
-php artisan db:seed
-```
-ok；人品好的话；  
-一个跟我博客一样的项目就完成了；  
-后台 /admin/index/index  
-默认账号：test@test.com   
-初始密码：123456   
-
-## 从thinkphp-bjyblog迁移数据
-使用 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog)  的童鞋我并没有抛弃你们；  
-我还准备好了命令行；  
-可以把数据一键从 thinkphp-bjyblog 迁移到 laravel-bjyblog；  
-配置OLD_DB_HOST、OLD_DB_PORT、OLD_DB_DATABASE、OLD_DB_USERNAME、OLD_DB_PASSWORD 为thinkphp-bjyblog的数据库；  
-然后运行 `php artisan migration:fromThinkPHPBjyBlog`
+[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
 
 ## 项目介绍
-1. 前台响应式页面布局适配PC、手机、平板；
+1. 纯手工前台响应式页面布局适配PC、平板、手机；
 2. 带表情的ajax无限级评论系统；
 3. 队列邮件通知；
 4. QQ、微博、github第三方登录；
@@ -74,3 +23,22 @@ ok；人品好的话；
 
 ## 版权
 项目使用 MIT 协议；免费开源可随意使用；
+
+## 更新记录
+#### v5.3.0.6
+1. 修复show_message函数改名造成的错误
+2. 修复右侧捐款链接错误的问题
+3. 切分日志保留1年的记录
+#### v5.3.0.5
+1. 新增或者编辑文章后更新标签统计缓存
+#### v5.3.0.4
+1. 博客版本号从配置项中获取
+2. 规范统一使用驼峰命名
+#### v5.3.0.3
+1. 全局路由约束；限制id必须为数字
+#### v5.3.0.2
+1. 完善使用说明
+2. 自动过滤一些无意义评论
+#### v5.3.0.1
+1. 第一个稳定版本
+
