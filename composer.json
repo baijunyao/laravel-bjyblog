@@ -1,7 +1,15 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "baijunyao/laravel-bjyblog",
+    "description": "Laravel blog.",
+    "keywords": ["framework", "laravel", "bjyblog"],
+    "authors": [
+        {
+            "name": "baijunyao",
+            "email": "baijunyao@baijunyao.com",
+            "homepage": "http://baijunyao.com",
+            "role": "Developer"
+        }
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
