@@ -15,11 +15,12 @@
     "require": {
         "php": ">=7.0.0",
         "appstract/laravel-opcache": "^1.4",
-        "joyqi/hyper-down": "dev-master",
         "fideloper/proxy": "~3.3",
         "intervention/image": "^2.4",
+        "joyqi/hyper-down": "dev-master",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "league/html-to-markdown": "^4.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
