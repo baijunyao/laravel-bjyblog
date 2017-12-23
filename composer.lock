@@ -4,8 +4,128 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5eba86da256ddeb8084c32d3d10e18d3",
+    "content-hash": "04d249812f5f9f20d9f18b177d6e6da6",
     "packages": [
+        {
+            "name": "appstract/laravel-opcache",
+            "version": "1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appstract/laravel-opcache.git",
+                "reference": "fe5206c5da437410262f1eb49ec5c418e4b617c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/appstract/laravel-opcache/fe5206c5da437410262f1eb49ec5c418e4b617c9.zip",
+                "reference": "fe5206c5da437410262f1eb49ec5c418e4b617c9",
+                "shasum": ""
+            },
+            "require": {
+                "appstract/lush-http": "^0.5",
+                "illuminate/console": ">=5.4",
+                "illuminate/filesystem": ">=5.4",
+                "illuminate/routing": ">=5.4",
+                "illuminate/support": ">=5.4",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.3",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Appstract\\Opcache\\OpcacheServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Appstract\\Opcache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olav van Schie",
+                    "email": "hello@appstract.team",
+                    "homepage": "https://appstract.team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OPcache helper for Laravel.",
+            "homepage": "https://github.com/appstract/laravel-opcache",
+            "keywords": [
+                "Opcache",
+                "appstract",
+                "laravel",
+                "php"
+            ],
+            "time": "2017-12-19T12:51:15+00:00"
+        },
+        {
+            "name": "appstract/lush-http",
+            "version": "0.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appstract/lush-http.git",
+                "reference": "4c063b62eb6a2a6b5e06b4a217d76fcfa5492d90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/appstract/lush-http/4c063b62eb6a2a6b5e06b4a217d76fcfa5492d90.zip",
+                "reference": "4c063b62eb6a2a6b5e06b4a217d76fcfa5492d90",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.4",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Lush": "Appstract\\LushHttp\\LushFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Appstract\\LushHttp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olav van Schie",
+                    "email": "hello@appstract.team",
+                    "homepage": "https://appstract.team",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Smart Http Client for PHP.",
+            "homepage": "https://github.com/appstract/lush-http",
+            "keywords": [
+                "appstract",
+                "client",
+                "curl",
+                "http",
+                "lush",
+                "lush-http",
+                "php"
+            ],
+            "time": "2017-12-19T12:37:15+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
