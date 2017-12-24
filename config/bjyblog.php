@@ -2,5 +2,5 @@
 
 return [
     // 博客版本
-    'version' => 'v5.3.0.5'
+    'version' => 'v5.5.0.0'
 ];

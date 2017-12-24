@@ -122,11 +122,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // 逆向迁移
         if ($this->app->environment() !== 'production') {
-            $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
-            $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
-            // laravel-ide-helper ide支持
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
     }
