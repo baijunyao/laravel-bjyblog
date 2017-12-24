@@ -78,6 +78,19 @@ return [
             'prefix' => '',
         ],
 
+        'old' => [
+            'driver' => 'mysql',
+            'host' => env('OLD_DB_HOST', 'localhost'),
+            'port' => env('OLD_DB_PORT', '3306'),
+            'database' => env('OLD_DB_DATABASE', 'old'),
+            'username' => env('OLD_DB_USERNAME', 'forge'),
+            'password' => env('OLD_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => 'bjy_',
+            'strict' => false,
+            'engine' => null,
+        ]
     ],
 
     /*
