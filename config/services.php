@@ -34,7 +34,6 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
     'weibo' => [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_SECRET'),
@@ -52,6 +51,4 @@ return [
         'client_secret' => env('GITHUB_SECRET'),
         'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/github'
     ],
-
-
 ];
