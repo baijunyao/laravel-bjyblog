@@ -179,6 +179,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * 社会化登录
+         */
+        SocialiteProviders\Manager\ServiceProvider::class,
+
     ],
 
     /*
