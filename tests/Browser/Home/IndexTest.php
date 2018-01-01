@@ -17,7 +17,11 @@ class IndexTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('阅读全文');
+                ->assertSee('阅读全文')
+                ->clickLink('写给 thinkphp 开发者的 laravel 系列教程 (一) 序言');
+            $window = collect($browser->driver->getWindowHandles())->last();
+            $browser->driver->switchTo()->window($window);
+            $browser->assertPathIs('/article/1');
         });
     }
 }
