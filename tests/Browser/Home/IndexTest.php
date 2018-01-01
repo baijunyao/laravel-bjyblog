@@ -21,7 +21,8 @@ class IndexTest extends DuskTestCase
                 ->clickLink('写给 thinkphp 开发者的 laravel 系列教程 (一) 序言');
             $window = collect($browser->driver->getWindowHandles())->last();
             $browser->driver->switchTo()->window($window);
-            $browser->assertPathIs('/article/1');
+            $browser->assertPathIs('/article/1')
+                ->click('登录');
         });
     }
 }
