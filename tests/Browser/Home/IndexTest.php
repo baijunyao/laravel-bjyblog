@@ -22,7 +22,9 @@ class IndexTest extends DuskTestCase
             $window = collect($browser->driver->getWindowHandles())->last();
             $browser->driver->switchTo()->window($window);
             $browser->assertPathIs('/article/1')
-                ->click('登录');
+                ->click('.b-nav-login')
+                ->script("$('.b-login-img').eq(2).find('a').find('img').click();");
+            // $browser->pause(5000);
         });
     }
 }
