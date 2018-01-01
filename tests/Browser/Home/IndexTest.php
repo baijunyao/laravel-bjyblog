@@ -24,7 +24,10 @@ class IndexTest extends DuskTestCase
             $browser->assertPathIs('/article/1')
                 ->click('.b-nav-login')
                 ->script("$('.b-login-img').eq(2).find('a').find('img').click();");
-            // $browser->pause(5000);
+            $browser->type('login', env('DUSK_GITHUB_EMAIL'))
+                ->type('password', env('DUSK_GITHUB_PASSWORD'))
+                ->press('Sign in')
+                ->waitForLocation('/article/1');
         });
     }
 }
