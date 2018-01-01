@@ -24,10 +24,15 @@ class IndexTest extends DuskTestCase
             $browser->assertPathIs('/article/1')
                 ->click('.b-nav-login')
                 ->script("$('.b-login-img').eq(2).find('a').find('img').click();");
+
             $browser->type('login', env('DUSK_GITHUB_EMAIL'))
                 ->type('password', env('DUSK_GITHUB_PASSWORD'))
                 ->press('Sign in')
-                ->waitForLocation('/article/1');
+                ->waitForLocation('/article/1')
+                ->script("$('.b-box-content').text('dusk评论".date('Y-m-d H:i:s', time())."')");
+
+            $browser->script("$('.b-comment-box .b-submit-button input').click();");
+            $browser->pause(1000*100);
         });
     }
 }
