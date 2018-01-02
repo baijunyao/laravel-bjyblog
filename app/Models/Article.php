@@ -129,6 +129,9 @@ class Article extends Base
             ->where('articles.id', $id)
             ->withTrashed()
             ->first();
+        if (is_null($data)) {
+            return $data;
+        }
         $articleTag = new ArticleTag();
         $tag = $articleTag->getTagNameByArticleIds([$id]);
         // 处理标签可能为空的情况
