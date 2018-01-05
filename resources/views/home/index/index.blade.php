@@ -1,10 +1,10 @@
 @extends('layouts.home')
 
-@section('title', $config['WEB_TITLE'])
+@section('title', $head['title'])
 
-@section('keywords', $config['WEB_KEYWORDS'])
+@section('keywords', $head['keywords'])
 
-@section('description', $config['WEB_DESCRIPTION'])
+@section('description', $head['description'])
 
 @section('content')
     <!-- 左侧列表开始 -->

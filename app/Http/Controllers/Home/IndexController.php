@@ -27,9 +27,16 @@ class IndexController extends Controller
 	{
 	    // 获取文章列表数据
         $article = $articleModel->getHomeList();
+        $config = cache('config');
+        $head = [
+            'title' => $config->get('WEB_TITLE'),
+            'keywords' => $config->get('WEB_KEYWORDS'),
+            'description' => $config->get('WEB_DESCRIPTION'),
+        ];
         $assign = [
             'category_id' => 'index',
             'article' => $article,
+            'head' => $head,
             'tagName' => ''
         ];
 		return view('home.index.index', $assign);
@@ -97,12 +104,18 @@ class IndexController extends Controller
             'articles.category_id' => $id
         ];
         $article = $articleModel->getHomeList($map);
-        $categoryName = Category::where('id', $id)->value('name');
+        $category = Category::find($id);
+        $head = [
+            'title' => $category->name,
+            'keywords' => $category->keywords,
+            'description' => $category->description,
+        ];
         $assign = [
             'category_id' => $id,
             'article' => $article,
             'tagName' => '',
-            'title' => $categoryName
+            'title' => $category->name,
+            'head' => $head
         ];
         return view('home.index.index', $assign);
     }
@@ -127,11 +140,17 @@ class IndexController extends Controller
             'articles.id' => ['in', $articleIds]
         ];
         $article = $articleModel->getHomeList($map);
+        $head = [
+            'title' => $tagName,
+            'keywords' => '',
+            'description' => '',
+        ];
         $assign = [
             'category_id' => 'index',
             'article' => $article,
             'tagName' => $tagName,
-            'title' => $tagName
+            'title' => $tagName,
+            'head' => $head
         ];
         return view('home.index.index', $assign);
 
@@ -245,11 +264,17 @@ class IndexController extends Controller
             'title' => ['like', '%'.$wd.'%']
         ];
         $article = $articleModel->getHomeList($map);
+        $head = [
+            'title' => $wd,
+            'keywords' => '',
+            'description' => '',
+        ];
         $assign = [
             'category_id' => 'index',
             'article' => $article,
             'tagName' => '',
-            'title' => $wd
+            'title' => $wd,
+            'head' => $head
         ];
         return view('home.index.index', $assign);
     }
