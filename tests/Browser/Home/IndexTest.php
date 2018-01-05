@@ -32,7 +32,6 @@ class IndexTest extends DuskTestCase
                 ->script("$('.b-box-content').text('dusk评论".date('Y-m-d H:i:s', time())."')");
 
             $browser->script("$('.b-comment-box .b-submit-button input').click();");
-            $browser->pause(1000*100);
         });
     }
 }

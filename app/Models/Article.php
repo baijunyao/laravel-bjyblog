@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Cache;
-
 class Article extends Base
 {
     /**
@@ -64,7 +62,7 @@ class Article extends Base
                 $image = explode(' ', $v);
                 $file = public_path().$image[0];
                 if (file_exists($file) && !in_array($v, $except)) {
-                    Add_text_water($file, Cache::get('config')['TEXT_WATER_WORD']);
+                    Add_text_water($file, cache('config')->get('TEXT_WATER_WORD'));
                 }
 
                 // 取第一张图片作为封面图

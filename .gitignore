@@ -14,3 +14,5 @@ yarn-error.log
 _ide_helper.php
 .user.ini
 /public/Demo/*
+phpunit.dusk.xml
+public/favicon.ico
