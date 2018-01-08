@@ -25,6 +25,16 @@
 项目使用 MIT 协议；免费开源可随意使用；
 
 ## 更新记录
+
+#### v5.5.0.4
+1. require laravel-print 用于调试打印
+2. 开启自动发现dusk
+3. require dbal用于修改字段
+4. 修改文章内容字段类型为mediumText
+5. 把char改为string
+6. 删除text字段类型的长度  
+
+注: 因表迁移不支持修改 text 类型 ；所以建议安装 5.5.0.4 之前版本的童鞋手动把 articles 表的 markdown 和 html 字段从 text 类型改为 mediumtext ；以防止生成的 html 过长无法完整储存；
 #### v5.5.0.3
 1. 不追踪favicon.ico文件
 2. 水印文字从数据库配置中获取
@@ -52,4 +62,3 @@
 2. 自动过滤一些无意义评论
 #### v5.3.0.1
 1. 第一个稳定版本
-
