@@ -15,7 +15,7 @@ class CreateChatsTable extends Migration {
 		Schema::create('chats', function(Blueprint $table)
 		{
 			$table->increments('id')->comment('主键id');
-			$table->text('content', 65535)->comment('内容');
+			$table->text('content')->comment('内容');
 			$table->timestamps();
 			$table->softDeletes();
 		});

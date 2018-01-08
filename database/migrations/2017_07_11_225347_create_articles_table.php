@@ -18,8 +18,8 @@ class CreateArticlesTable extends Migration {
 			$table->boolean('category_id')->default(0)->comment('分类id');
 			$table->char('title', 100)->default('')->comment('标题');
 			$table->string('author', 15)->default('')->comment('作者');
-			$table->text('markdown', 16777215)->comment('markdown文章内容');
-			$table->text('html', 16777215)->comment('markdown转的html页面');
+			$table->text('markdown')->comment('markdown文章内容');
+			$table->text('html')->comment('markdown转的html页面');
 			$table->char('description')->default('')->comment('描述');
 			$table->string('keywords')->default('')->comment('关键词');
 			$table->string('cover')->default('')->comment('封面图');
