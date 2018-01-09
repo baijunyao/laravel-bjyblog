@@ -211,11 +211,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('forceDelete/{id}', 'ChatController@forceDelete');
     });
 
-    // 配置项管理
+    // 系统设置
     Route::group(['prefix' => 'config'], function () {
         // 编辑配置项
         Route::get('edit', 'ConfigController@edit');
         Route::post('update', 'ConfigController@update');
+        // 清空各种缓存
+        Route::get('clear', 'ConfigController@clear');
     });
 
     // 开源项目管理

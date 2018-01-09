@@ -94,6 +94,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="{{ url('admin/config/edit') }}">设置列表</a></li>
                                     <li><a href="{{ url('admin/gitProject/index') }}">开源项目</a></li>
+                                    <li><a href="{{ url('admin/config/clear') }}">清空缓存</a></li>
                                 </ul>
                             </li>
                         </ul>

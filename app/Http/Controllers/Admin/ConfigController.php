@@ -50,4 +50,20 @@ class ConfigController extends Controller
         }
         return redirect('admin/config/edit');
     }
+
+    /**
+     * 清空各种缓存
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function clear()
+    {
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+        Artisan::call('clear-compiled');
+        flash_message('操作成功');
+        return redirect()->back();
+    }
 }
