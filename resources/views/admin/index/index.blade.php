@@ -26,7 +26,6 @@
                 <div class="icon"><i class="fa fa-comments-o"></i></div>
                 <div class="count">{{ $commentCount }}</div>
                 <h3>总评论数</h3>
-                {{--<p>Lorem ipsum psdea itgum rixt.</p>--}}
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -34,7 +33,6 @@
                 <div class="icon"><i class="fa fa-users"></i></div>
                 <div class="count">{{ $oauthUserCount }}</div>
                 <h3>第三方用户</h3>
-                {{--<p>Lorem ipsum psdea itgum rixt.</p>--}}
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -42,7 +40,6 @@
                 <div class="icon"><i class="fa fa-book"></i></div>
                 <div class="count">{{ $articleCount }}</div>
                 <h3>原创文章</h3>
-                {{--<p>Lorem ipsum psdea itgum rixt.</p>--}}
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -50,7 +47,6 @@
                 <div class="icon"><i class="fa fa-wechat"></i></div>
                 <div class="count">{{ $chatCount }}</div>
                 <h3>随言碎语</h3>
-                {{--<p>Lorem ipsum psdea itgum rixt.</p>--}}
             </div>
         </div>
     </div>
