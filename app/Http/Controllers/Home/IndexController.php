@@ -166,7 +166,8 @@ class IndexController extends Controller
         $chat = Chat::orderBy('created_at', 'desc')->get();
         $assign =[
             'category_id' => 'chat',
-            'chat' => $chat
+            'chat' => $chat,
+            'title' => '随言碎语',
         ];
         return view('home.index.chat', $assign);
     }
@@ -179,7 +180,8 @@ class IndexController extends Controller
     public function git()
     {
         $assign = [
-            'category_id' => 'git'
+            'category_id' => 'git',
+            'title' => '开源项目',
         ];
         return view('home.index.git', $assign);
     }

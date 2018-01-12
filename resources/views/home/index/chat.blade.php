@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title', $config['WEB_TITLE'])
+@section('title', $title)
 
 @section('keywords', $config['WEB_KEYWORDS'])
 
