@@ -70,6 +70,6 @@ class CommentController extends Controller
     public function forceDelete($id, Comment $commentModel)
     {
         $commentModel->where('id', $id)->forceDelete();
-        return redirect('admin/tag/index');
+        return redirect()->back();
     }
 }
