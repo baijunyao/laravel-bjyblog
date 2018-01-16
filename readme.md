@@ -24,6 +24,12 @@
 ## 版权
 项目使用 MIT 协议；免费开源可随意使用；
 
+## 使用本项目搭建的博客
+- [白俊遥博客](https://baijunyao.com)  
+- [韩佳鑫博客](https://www.hanjiaxin.com)  
+- [Sails博客](https://smile.sails.site)  
+欢迎提交PR或者告诉我来收录你的网站；  
+
 ## 更新记录
 
 #### v5.5.0.5
