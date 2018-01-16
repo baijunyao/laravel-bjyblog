@@ -70,7 +70,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
                 <img class="b-head-img" src="@if(empty(session('user.avatar'))){{ asset('images/home/default_head_img.gif') }}@else{{ session('user.avatar') }}@endif" alt="{{ $config['WEB_NAME'] }}" title="{{ $config['WEB_NAME'] }}">
                 <div class="b-box-textarea">
-                    <div class="b-box-content" contenteditable="true" onfocus="delete_hint(this)">请先登录后发表评论</div>
+                    <div class="b-box-content" @if(session()->has('user'))contenteditable="true" @endif onfocus="delete_hint(this)">请先登录后发表评论</div>
                     <ul class="b-emote-submit">
                         <li class="b-emote">
                             <i class="fa fa-smile-o" onclick="getTuzki(this)"></i>
