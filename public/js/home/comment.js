@@ -74,7 +74,8 @@ function comment(obj){
                 // 显示loading
                 layer.load(1);
                 // ajax评论
-                $.post(ajaxCommentUrl, postData, function(data) {
+                $.post(ajaxCommentUrl, postData, function(data, status) {
+                    localStorage.removeItem(comment);
                     var newPid=data.id;
                     var replyName=$(obj).attr('username');
                     var now = new Date();
@@ -123,4 +124,28 @@ function delete_hint(obj){
         $(obj).text('');
         $(obj).css('color', '#333');
     }
+}
+
+// 给拥有 contenteditable 属性的元素绑定事件
+$('body').on('focus', '[contenteditable]', function() {
+    var $this = $(this);
+    $this.data('before', $this.html());
+    return $this;
+}).on('blur keyup paste input', '[contenteditable]', function() {
+    var $this = $(this);
+    if ($this.data('before') !== $this.html()) {
+        $this.data('before', $this.html());
+        $this.trigger('change');
+    }
+    return $this;
+});
+
+// 在本地存储评论的内容
+function changeWord(obj) {
+    localStorage.setItem(comment,$(obj).html());
+}
+
+// 从本地存储中获取评论的内容
+if (localStorage.getItem(comment) !== null) {
+    $('.b-box-content').html(localStorage.getItem(comment));
 }
