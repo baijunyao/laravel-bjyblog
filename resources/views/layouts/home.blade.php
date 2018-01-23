@@ -174,7 +174,7 @@
         <footer id="b-foot" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul>
                 <li class="text-center">
-                    本博客使用免费开源的 <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> {{ config('bjyblog.version') }} 搭建 © 2014-2017 {{ parse_url(config('app.url'))['host'] }} 版权所有 @if(!empty($config['WEB_ICP_NUMBER'])) ICP证：{{ $config['WEB_ICP_NUMBER'] }} @endif
+                    本博客使用免费开源的 <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> {{ config('bjyblog.version') }} 搭建 © 2014-2018 {{ parse_url(config('app.url'))['host'] }} 版权所有 @if(!empty($config['WEB_ICP_NUMBER'])) ICP证：{{ $config['WEB_ICP_NUMBER'] }} @endif
                 </li>
                 <li class="text-center">
                     @if(!empty($config['ADMIN_EMAIL']))
