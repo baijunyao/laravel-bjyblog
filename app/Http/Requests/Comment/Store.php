@@ -24,9 +24,9 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'article_id'=>'required|integer',
-            'pid'=>'required|integer',
-            'content'=>'required',
+            'article_id' => 'required|integer',
+            'pid' => 'required|integer',
+            'content' => 'required',
         ];
     }
 
@@ -38,9 +38,9 @@ class Store extends FormRequest
     public function attributes()
     {
         return [
-            'article_id'=>'文章id',
-            'pid'=>'父级id',
-            'content'=>'内容',
+            'article_id' => '文章id',
+            'pid' => '父级id',
+            'content' => '内容',
         ];
     }
 }
