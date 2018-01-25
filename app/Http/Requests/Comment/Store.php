@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Comment;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Comment;
 
 class Store extends FormRequest
 {
@@ -26,7 +27,7 @@ class Store extends FormRequest
         return [
             'article_id' => 'required|integer',
             'pid' => 'required|integer',
-            'content' => 'required',
+            'content' => ['required', new Comment],
         ];
     }
 
