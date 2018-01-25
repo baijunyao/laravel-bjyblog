@@ -193,22 +193,22 @@ class IndexController extends Controller
      */
     public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
-        $data = $request->only('content', 'email', 'article_id', 'pid');
+        $data = $request->only('content', 'article_id', 'pid');
         // 获取用户id
         $userId = session('user.id');
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
-        if (preg_match($pattern, $data['email'])) {
+        $email = $request->input('email');
+        if (preg_match($pattern, $email)) {
             // 修改邮箱
             $oauthUserMap = [
                 'id' => $userId
             ];
             $oauthUserData = [
-                'email' => $data['email']
+                'email' => $email
             ];
             $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
-            session(['user.email' => $data['email']]);
-            unset($data['email']);
+            session(['user.email' => $email]);
         }
         // 存储评论
         $id = $commentModel->storeData($data);
