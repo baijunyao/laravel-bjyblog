@@ -221,6 +221,10 @@ class IndexController extends Controller
         if ($isAdmin !=1 && $count > 10) {
             return ajax_return(403, '评论已被限制');
         }
+        // 只允许使用 oauth 账号登录
+        if (session('user.is_admin') == 1) {
+            return ajax_return(403, '请使用oauth登录后评论');
+        }
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
         if (preg_match($pattern, $data['email'])) {
