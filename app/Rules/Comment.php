@@ -1,0 +1,79 @@
+<?php
+
+namespace App\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+use App\Models\Comment as CommentModel;
+
+class Comment implements Rule
+{
+    private $message;
+    /**
+     * Create a new rule instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
+    public function passes($attribute, $value)
+    {
+        // 过滤无意义评论
+        if (ctype_alnum($value) || in_array($value, ['test', '测试'])) {
+            $this->message = '禁止无意义评论';
+            return false;
+        }
+        // 获取用户id
+        $userId = session('user.id');
+        // 是否是管理员
+        $isAdmin = session('user.is_admin');
+        // 获取当前时间戳
+        $time = time();
+        // 获取最近一次评论时间
+        $commentModel = new CommentModel();
+        $lastCommentDate = $commentModel->where('oauth_user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->value('created_at');
+        $lastCommentTime = strtotime($lastCommentDate);
+        // 限制1分钟内只许评论1次
+        if ($isAdmin !=1 && $time-$lastCommentTime < 60) {
+            $this->message = '评论太过频繁,请稍后再试.';
+            return false;
+        }
+        // 限制用户每天最多评论10条
+        $date = date('Y-m-d', $time);
+        $count = $commentModel
+            ->where('oauth_user_id', session('user.id'))
+            ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
+            ->count();
+        if ($isAdmin !=1 && $count > 10) {
+            $this->message = '评论已被限制.';
+            return false;
+        }
+        // 只允许使用 oauth 账号登录
+        if (session('user.is_admin') == 1) {
+            $this->message = '请使用oauth登录后评论';
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
+    public function message()
+    {
+        return $this->message;
+    }
+}
