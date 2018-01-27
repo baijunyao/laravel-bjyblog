@@ -57,7 +57,7 @@ class Comment extends Base
     {
         $content = html_entity_decode(htmlspecialchars_decode($content));
         // 删标签 去空格 转义
-        $content = strip_tags(trim($content), '<img>');
+        $content = clean(strip_tags(trim($content), '<img>'));
         preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
         $search = $img[0];
         $replace = array_map(function ($v) {
