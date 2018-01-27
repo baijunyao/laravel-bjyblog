@@ -64,7 +64,8 @@ class Comment extends Base
             return '['.$v.']';
         }, $img[1]);
         $content = str_replace($search, $replace, $content);
-        $content = strip_tags($content);
+        $content = clean(strip_tags($content));
+        var_dump($content);die;
         return $content;
     }
 

@@ -193,51 +193,22 @@ class IndexController extends Controller
      */
     public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
-        $data = $request->only('content', 'email', 'article_id', 'pid');
-        if (ctype_alnum($data['content']) || in_array($data['content'], ['test', '测试'])) {
-            return ajax_return(403, '禁止无意义评论');
-        }
+        $data = $request->only('content', 'article_id', 'pid');
         // 获取用户id
         $userId = session('user.id');
-        // 是否是管理员
-        $isAdmin = session('user.is_admin');
-        // 获取当前时间戳
-        $time = time();
-        // 获取最近一次评论时间
-        $lastCommentDate = $commentModel->where('oauth_user_id', $userId)
-            ->orderBy('created_at', 'desc')
-            ->value('created_at');
-        $lastCommentTime = strtotime($lastCommentDate);
-        // 限制1分钟内只许评论1次
-        if ($isAdmin !=1 && $time-$lastCommentTime < 60) {
-            return ajax_return(403, '评论太过频繁,请稍后再试.');
-        }
-        // 限制用户每天最多评论10条
-        $date = date('Y-m-d', $time);
-        $count = $commentModel
-            ->where('oauth_user_id', session('user.id'))
-            ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
-            ->count();
-        if ($isAdmin !=1 && $count > 10) {
-            return ajax_return(403, '评论已被限制');
-        }
-        // 只允许使用 oauth 账号登录
-        if (session('user.is_admin') == 1) {
-            return ajax_return(403, '请使用oauth登录后评论');
-        }
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
-        if (preg_match($pattern, $data['email'])) {
+        $email = $request->input('email');
+        if (preg_match($pattern, $email)) {
             // 修改邮箱
             $oauthUserMap = [
                 'id' => $userId
             ];
             $oauthUserData = [
-                'email' => $data['email']
+                'email' => $email
             ];
             $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
-            session(['user.email' => $data['email']]);
-            unset($data['email']);
+            session(['user.email' => $email]);
         }
         // 存储评论
         $id = $commentModel->storeData($data);
@@ -261,11 +232,13 @@ class IndexController extends Controller
     /**
      * 搜索文章
      *
+     * @param Request $request
      * @param Article $articleModel
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search(Article $articleModel){
-        $wd = request()->input('wd');
+    public function search(Request $request, Article $articleModel){
+        $wd = clean($request->input('wd'));
         $map = [
             'title' => ['like', '%'.$wd.'%']
         ];

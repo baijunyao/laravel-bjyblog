@@ -24,6 +24,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "league/html-to-markdown": "^4.6",
+        "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0"
