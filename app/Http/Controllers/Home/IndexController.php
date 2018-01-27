@@ -232,11 +232,13 @@ class IndexController extends Controller
     /**
      * 搜索文章
      *
+     * @param Request $request
      * @param Article $articleModel
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search(Article $articleModel){
-        $wd = request()->input('wd');
+    public function search(Request $request, Article $articleModel){
+        $wd = clean($request->input('wd'));
         $map = [
             'title' => ['like', '%'.$wd.'%']
         ];
