@@ -197,9 +197,8 @@ class IndexController extends Controller
         // 获取用户id
         $userId = session('user.id');
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
-        $pattern = "/^([0-9A-Za-z\\-_\\.]+)@([0-9a-z]+\\.[a-z]{2,3}(\\.[a-z]{2})?)$/i";
         $email = $request->input('email');
-        if (preg_match($pattern, $email)) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
             // 修改邮箱
             $oauthUserMap = [
                 'id' => $userId
@@ -263,7 +262,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-        
+
     }
 
 
