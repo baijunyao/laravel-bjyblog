@@ -65,7 +65,6 @@ class Comment extends Base
         }, $img[1]);
         $content = str_replace($search, $replace, $content);
         $content = clean(strip_tags($content));
-        var_dump($content);die;
         return $content;
     }
 
