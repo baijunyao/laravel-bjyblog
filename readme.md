@@ -31,6 +31,12 @@
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.9
+1. 使用 mews/purifier 过滤评论加强 xss 防护
+2. 添加EditorConfig配置
+3. 修复移动端版权说明样式错乱的问题
+4. 默认使用 /config/session.php 定义的 session 过期时间
+5. 升级prism增加复制功能
 #### v5.5.0.8
 1. 升级baijunyao/laravel-print至3.1
 2. 只允许使用 oauth 账号登录评论
