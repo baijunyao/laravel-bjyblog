@@ -59,11 +59,6 @@ class Comment implements Rule
             $this->message = '评论已被限制.';
             return false;
         }
-        // 只允许使用 oauth 账号登录
-        if (session('user.is_admin') == 1) {
-            $this->message = '请使用oauth登录后评论';
-            return false;
-        }
         return true;
     }
 
