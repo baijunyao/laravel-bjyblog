@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('home/*', function($view){
             $category = Cache::remember('common:category', 10080, function () {
                 // 获取分类导航
-                return Category::select('id', 'name')->get();
+                return Category::select('id', 'name')->orderBy('sort')->get();
             });
 
             $tag = Cache::remember('common:tag', 10080, function () {
