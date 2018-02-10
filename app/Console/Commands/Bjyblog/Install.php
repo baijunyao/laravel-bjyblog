@@ -58,6 +58,13 @@ class Install extends Command
         ];
         $env = str_replace($search, $replace, $envExample);
         file_put_contents(base_path('.env'), $env);
+        // 覆盖数据库配置
+        $databaseConfig = [
+            'database.connections.mysql.database' => $database,
+            'database.connections.mysql.username' => $username,
+            'database.connections.mysql.password' => $password,
+        ];
+        config($databaseConfig);
         /**
          * 执行迁移填充
          */
