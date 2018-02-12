@@ -7,20 +7,13 @@ use DB;
 class Tag extends Base
 {
     /**
-     * 获取标签下的文章数统计
+     * 关联文章表
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function getArticleCount()
+    public function articles()
     {
-        $prefix = config('database.connections.mysql.prefix');
-        $data = $this->select(DB::raw($prefix.'tags.*, count('.$prefix.'at.article_id) as article_count'))
-            ->join('article_tags as at', 'at.tag_id', 'tags.id')
-            ->rightJoin('articles as a', 'a.id', 'at.article_id')
-            ->where('a.deleted_at', null)
-            ->groupBy('tags.id')
-            ->get();
-        return $data;
+        return $this->belongsToMany(Article::class, 'article_tags');
     }
 
     /**
