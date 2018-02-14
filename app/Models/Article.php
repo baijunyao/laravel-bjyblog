@@ -5,6 +5,15 @@ namespace App\Models;
 class Article extends Base
 {
     /**
+     * 关联文章表
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    /**
      * 添加文章
      *
      * @param array $data
