@@ -118,7 +118,7 @@
                         <?php $tag_i++; ?>
                         <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->article_count }})</a>
+                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>

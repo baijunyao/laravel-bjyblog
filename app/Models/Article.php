@@ -5,6 +5,15 @@ namespace App\Models;
 class Article extends Base
 {
     /**
+     * 关联文章表
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    /**
      * 添加文章
      *
      * @param array $data
@@ -72,22 +81,6 @@ class Article extends Base
             }
         }
         return $cover;
-    }
-
-    /**
-     * 后台文章列表
-     *
-     * @return mixed
-     */
-    public function getAdminList()
-    {
-        $data = $this
-            ->select('articles.*', 'c.name as category_name')
-            ->join('categories as c', 'articles.category_id', 'c.id')
-            ->orderBy('created_at', 'desc')
-            ->withTrashed()
-            ->paginate(15);
-        return $data;
     }
 
     /**

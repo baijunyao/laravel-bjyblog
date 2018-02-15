@@ -17,12 +17,14 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Article $article
      * @return \Illuminate\Http\Response
      */
-    public function index(Article $article)
+    public function index()
     {
-        $article = $article->getAdminList();
+        $article = Article::with('category')
+            ->orderBy('created_at', 'desc')
+            ->withTrashed()
+            ->paginate(15);
         $assign = compact('article');
         return view('admin.article.index', $assign);
     }
