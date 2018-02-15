@@ -30,7 +30,7 @@
         @foreach($article as $k => $v)
             <tr>
                 <td>{{ $v->id }}</td>
-                <td>{{ $v->category_name }}</td>
+                <td>{{ $v->category->name }}</td>
                 <td>
                     <a href="{{ url('article', [$v->id]) }}" target="_blank">{{ $v->title }}</a>
                 </td>
