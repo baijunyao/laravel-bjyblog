@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "948a9f9c0882e13f5c36eb2f64aac757",
+    "content-hash": "3652d1f2f8a68c538d6a359f399708d9",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -125,6 +125,49 @@
                 "php"
             ],
             "time": "2017-12-19T12:37:15+00:00"
+        },
+        {
+            "name": "baijunyao/laravel-flash",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baijunyao/laravel-flash.git",
+                "reference": "a78482a819997b1eb0917ae6eb9f7698be0e1399"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/baijunyao/laravel-flash/a78482a819997b1eb0917ae6eb9f7698be0e1399.zip",
+                "reference": "a78482a819997b1eb0917ae6eb9f7698be0e1399",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Baijunyao\\LaravelFlash\\FlashServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Baijunyao\\LaravelFlash\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "baijunyao",
+                    "email": "baijunyao@baijunyao.com"
+                }
+            ],
+            "description": "flash message",
+            "time": "2017-12-28T05:26:11+00:00"
         },
         {
             "name": "baijunyao/laravel-print",
