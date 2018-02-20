@@ -145,32 +145,7 @@
             </div>
         </div>
 
-        {{--成功或者错误提示--}}
-        @if (count($errors) > 0)
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        @endif
-        @if(Session::has('alert-message'))
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <div class="alert {{session('alert-class')}}">
-                        <ul>
-                            <li>{{ session('alert-message') }}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        @endif
-    <!-- page content -->
+        <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
 
