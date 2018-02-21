@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3652d1f2f8a68c538d6a359f399708d9",
+    "content-hash": "26edc208a391bf60ce69c2fbd5b7d707",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -168,6 +168,42 @@
             ],
             "description": "flash message",
             "time": "2017-12-28T05:26:11+00:00"
+        },
+        {
+            "name": "baijunyao/laravel-model",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baijunyao/laravel-model.git",
+                "reference": "74082c894fc0efe1b338f148ef7ae690dcb5f26e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/baijunyao/laravel-model/74082c894fc0efe1b338f148ef7ae690dcb5f26e.zip",
+                "reference": "74082c894fc0efe1b338f148ef7ae690dcb5f26e",
+                "shasum": ""
+            },
+            "require": {
+                "baijunyao/laravel-flash": "1.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Baijunyao\\LaravelModel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "baijunyao",
+                    "email": "baijunyao@baijunyao.com"
+                }
+            ],
+            "description": "base model",
+            "time": "2018-01-31T07:42:01+00:00"
         },
         {
             "name": "baijunyao/laravel-print",
