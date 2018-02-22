@@ -44,7 +44,7 @@ class Install extends Command
         $password = $this->ask('请输入数据库密码', false);
         $database = $this->ask('请输入数据库名', 'test');
         // ask 不允许为空  此处是为了兼容一些数据库密码为空的情况
-        $password = $password ? '' : $password;
+        $password = $password ? $password : '';
         $envExample = file_get_contents(base_path('.env.example'));
         $search = [
             'DB_DATABASE=homestead',
