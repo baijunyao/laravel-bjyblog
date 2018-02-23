@@ -53,6 +53,8 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 5. 使用模型关联替代join获取后台文章列表
 6. 文章模型关联分类模型
 7. 使用关联模型替代join获取标签下的文章数统计
+
+**注: 因引入了新的包；升级后记得执行`composer install --no-dev && composer dump-autoload`命令**
 #### v5.5.0.10 (2018-02-10)
 1. 解决第三方账号关联管理员后无法回复评论的问题
 2. 增加bjyblog:install命令以简化安装
