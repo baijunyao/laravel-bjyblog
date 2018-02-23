@@ -14,11 +14,11 @@
 ## 安装使用
 可以通过以下两种命令安装；  
 ```bash
-composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisan bjyblog:install
+composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisan bjyblog:install && php artisan bjyblog:migrate
 ```
 或者：  
 ```bash
-git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install
+git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install && php artisan bjyblog:migrate
 ```
 更加详细的安装文档请参考文章：[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
 
