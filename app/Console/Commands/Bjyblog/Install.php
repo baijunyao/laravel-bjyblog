@@ -65,6 +65,7 @@ class Install extends Command
             'database.connections.mysql.password' => $password,
         ];
         config($databaseConfig);
+        sleep(3);
         /**
          * 执行迁移填充
          */
