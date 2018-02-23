@@ -39,6 +39,14 @@ git clone git@github.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .en
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.11 (2018-02-23)
+1. 引入baijunyao/laravel-flash
+2. 引入baijunyao/laravel-model
+3. 增加旧标签记录
+4. readme增加tag日期
+5. 使用模型关联替代join获取后台文章列表
+6. 文章模型关联分类模型
+7. 使用关联模型替代join获取标签下的文章数统计
 #### v5.5.0.10 (2018-02-10)
 1. 解决第三方账号关联管理员后无法回复评论的问题
 2. 增加bjyblog:install命令以简化安装
