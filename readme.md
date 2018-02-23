@@ -39,6 +39,10 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.12 (2018-02-23)
+1. 修复数据库密码获取错误的问题
+2. 使用gitee以解决clone太慢的问题
+3. 解决install报错的问题
 #### v5.5.0.11 (2018-02-23)
 1. 引入baijunyao/laravel-flash
 2. 引入baijunyao/laravel-model
