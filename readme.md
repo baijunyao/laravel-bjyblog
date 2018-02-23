@@ -18,7 +18,7 @@ composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisa
 ```
 或者：  
 ```bash
-git clone git@github.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install
+git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install
 ```
 更加详细的安装文档请参考文章：[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
 
