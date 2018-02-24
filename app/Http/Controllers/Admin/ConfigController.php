@@ -63,7 +63,7 @@ class ConfigController extends Controller
         Artisan::call('route:clear');
         Artisan::call('view:clear');
         Artisan::call('clear-compiled');
-        flash_message('操作成功');
+        flash_success('操作成功');
         return redirect()->back();
     }
 }
