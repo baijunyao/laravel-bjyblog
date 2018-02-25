@@ -17,7 +17,7 @@ class Article extends Base
     /**
      * 关联标签表
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function tags()
     {
