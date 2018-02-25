@@ -13,6 +13,17 @@ class Article extends Base
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * 关联标签表
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'article_tags');
+    }
+
     /**
      * 添加文章
      *

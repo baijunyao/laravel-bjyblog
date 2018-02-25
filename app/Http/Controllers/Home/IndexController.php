@@ -26,7 +26,12 @@ class IndexController extends Controller
     public function index(Article $articleModel)
 	{
 	    // 获取文章列表数据
+        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover')
+            ->with(['category', 'tags'])
+            ->get();
+        p($article);die;
         $article = $articleModel->getHomeList();
+        p($article);die;
         $config = cache('config');
         $head = [
             'title' => $config->get('WEB_TITLE'),
