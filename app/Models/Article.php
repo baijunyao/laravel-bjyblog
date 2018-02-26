@@ -120,27 +120,4 @@ class Article extends Base
         return $data;
     }
 
-    /**
-     * 通过文章id获取数据
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function getDataById($id)
-    {
-        $data = $this->select('articles.*', 'c.name as category_name')
-            ->join('categories as c', 'articles.category_id', 'c.id')
-            ->where('articles.id', $id)
-            ->withTrashed()
-            ->first();
-        if (is_null($data)) {
-            return $data;
-        }
-        $articleTag = new ArticleTag();
-        $tag = $articleTag->getTagNameByArticleIds([$id]);
-        // 处理标签可能为空的情况
-        $data['tag'] = empty($tag) ? [] : current($tag);
-        return $data;
-    }
-
 }

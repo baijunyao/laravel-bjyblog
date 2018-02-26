@@ -57,7 +57,7 @@ class IndexController extends Controller
     public function article($id, Request $request, Article $articleModel, Comment $commentModel)
     {
         // 获取文章数据
-        $data = $articleModel->getDataById($id);
+        $data = Article::with(['category', 'tags'])->find($id);
         if (is_null($data)) {
             return abort(404);
         }
@@ -89,7 +89,7 @@ class IndexController extends Controller
 
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
-        $category_id = $data->category_id;
+        $category_id = $data->category->id;
         $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
         return view('home.index.article', $assign);
     }
