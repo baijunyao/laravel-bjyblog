@@ -61,8 +61,6 @@ class IndexController extends Controller
         if (is_null($data)) {
             return abort(404);
         }
-        // 去掉描述中的换行
-        $data->description = str_replace(["\r", "\n", "\r\n"], '', $data->description);
         // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
         $ipAndId = 'articleRequestList'.$request->ip().':'.$id;
         if (!Cache::has($ipAndId)) {
