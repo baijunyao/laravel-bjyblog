@@ -101,11 +101,12 @@ class IndexController extends Controller
      */
     public function category(Article $articleModel, $id)
     {
-        $map = [
-            'articles.category_id' => $id
-        ];
-        $article = $articleModel->getHomeList($map);
-        $category = Category::find($id);
+        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+            ->where('category_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->with(['category', 'tags'])
+            ->paginate(10);
+        $category = $article->first()->category;
         $head = [
             'title' => $category->name,
             'keywords' => $category->keywords,
