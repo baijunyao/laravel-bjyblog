@@ -113,7 +113,7 @@
                         <li>
                             <p>
                                 <span class="month">博客版本 </span>
-                                <span class="count">{{ config('bjyblog.version') }} <a href="">更新</a></span>
+                                <span class="count">{{ config('bjyblog.version') }} <a href="{{ url('admin/index/upgrade') }}" target="_blank">更新</a></span>
                             </p>
                         </li>
                         <li>
