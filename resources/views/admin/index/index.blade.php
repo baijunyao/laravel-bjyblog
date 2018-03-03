@@ -15,6 +15,12 @@
         .bjy-content{
             height: 352px;
         }
+        ul.widget_tally .month{
+            width: 60%;
+        }
+        ul.widget_tally .count{
+            width: 40%;
+        }
     </style>
 @endsection
 
