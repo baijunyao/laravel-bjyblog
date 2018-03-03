@@ -131,31 +131,27 @@ class IndexController extends Controller
      */
     public function tag($id, Article $articleModel)
     {
-        // 获取标签名
-        $tagName = Tag::where('id', $id)->value('name');
-        // 获取此标签下的文章id
-        $articleIds = ArticleTag::where('tag_id', $id)
-            ->pluck('article_id')
-            ->toArray();
-        // 获取文章数据
-        $map = [
-            'articles.id' => ['in', $articleIds]
-        ];
-        $article = $articleModel->getHomeList($map);
+        // 获取标签
+        $tag = Tag::select('id', 'name')->where('id', $id)->first();
+        // TODO 不取 markdown 和 html 字段
+        // 获取标签下的文章
+        $article = $tag->articles()
+            ->orderBy('created_at', 'desc')
+            ->with(['category', 'tags'])
+            ->paginate(10);
         $head = [
-            'title' => $tagName,
+            'title' => $tag->name,
             'keywords' => '',
             'description' => '',
         ];
         $assign = [
             'category_id' => 'index',
             'article' => $article,
-            'tagName' => $tagName,
-            'title' => $tagName,
+            'tagName' => $tag->name,
+            'title' => $tag->name,
             'head' => $head
         ];
         return view('home.index.index', $assign);
-
     }
 
     /**

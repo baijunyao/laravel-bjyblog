@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use DB;
-
 class Tag extends Base
 {
     /**
