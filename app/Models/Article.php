@@ -5,6 +5,17 @@ namespace App\Models;
 class Article extends Base
 {
     /**
+     * 过滤描述中的换行。
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDescriptionAttribute($value)
+    {
+        return str_replace(["\r", "\n", "\r\n"], '', $value);
+    }
+
+    /**
      * 关联文章表
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -13,6 +24,17 @@ class Article extends Base
     {
         return $this->belongsTo(Category::class);
     }
+
+    /**
+     * 关联标签表
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'article_tags');
+    }
+
     /**
      * 添加文章
      *
@@ -106,29 +128,6 @@ class Article extends Base
         foreach ($data as $k => $v) {
             $data[$k]->tag = isset($tag[$v->id]) ? $tag[$v->id] : [];
         }
-        return $data;
-    }
-
-    /**
-     * 通过文章id获取数据
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function getDataById($id)
-    {
-        $data = $this->select('articles.*', 'c.name as category_name')
-            ->join('categories as c', 'articles.category_id', 'c.id')
-            ->where('articles.id', $id)
-            ->withTrashed()
-            ->first();
-        if (is_null($data)) {
-            return $data;
-        }
-        $articleTag = new ArticleTag();
-        $tag = $articleTag->getTagNameByArticleIds([$id]);
-        // 处理标签可能为空的情况
-        $data['tag'] = empty($tag) ? [] : current($tag);
         return $data;
     }
 

@@ -14,11 +14,11 @@
 ## 安装使用
 可以通过以下两种命令安装；  
 ```bash
-composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisan bjyblog:install
+composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisan bjyblog:install && php artisan bjyblog:migrate
 ```
 或者：  
 ```bash
-git clone git@github.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install
+git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install && php artisan bjyblog:migrate
 ```
 更加详细的安装文档请参考文章：[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
 
@@ -39,6 +39,32 @@ git clone git@github.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .en
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.14 (2018-03-03)
+1. 使用laravel-flash替代flash_message
+2. 文章模型关联标签
+3. 首页列表文章使用模型关联代替join
+4. 解决文章页面有序和无序列表无法正常显示样式的问题
+5. 使用模型关联代替join获取文章详情数据
+6. 使用访问器过滤描述中的换行
+7. 分类页面使用模型关联代替join
+8. 使用模型关联重构前台标签下的文章列表
+9. 更新系统功能完成
+#### v5.5.0.13 (2018-02-23)
+1. 增加bjyblog:migrate命令
+#### v5.5.0.12 (2018-02-23)
+1. 修复数据库密码获取错误的问题
+2. 使用gitee以解决clone太慢的问题
+3. 解决install报错的问题
+#### v5.5.0.11 (2018-02-23)
+1. 引入baijunyao/laravel-flash
+2. 引入baijunyao/laravel-model
+3. 增加旧标签记录
+4. readme增加tag日期
+5. 使用模型关联替代join获取后台文章列表
+6. 文章模型关联分类模型
+7. 使用关联模型替代join获取标签下的文章数统计
+
+**注: 因引入了新的包；升级后记得执行`composer install --no-dev && composer dump-autoload`命令**
 #### v5.5.0.10 (2018-02-10)
 1. 解决第三方账号关联管理员后无法回复评论的问题
 2. 增加bjyblog:install命令以简化安装

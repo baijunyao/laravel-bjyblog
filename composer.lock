@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "948a9f9c0882e13f5c36eb2f64aac757",
+    "content-hash": "26edc208a391bf60ce69c2fbd5b7d707",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -125,6 +125,85 @@
                 "php"
             ],
             "time": "2017-12-19T12:37:15+00:00"
+        },
+        {
+            "name": "baijunyao/laravel-flash",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baijunyao/laravel-flash.git",
+                "reference": "a78482a819997b1eb0917ae6eb9f7698be0e1399"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/baijunyao/laravel-flash/a78482a819997b1eb0917ae6eb9f7698be0e1399.zip",
+                "reference": "a78482a819997b1eb0917ae6eb9f7698be0e1399",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Baijunyao\\LaravelFlash\\FlashServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Baijunyao\\LaravelFlash\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "baijunyao",
+                    "email": "baijunyao@baijunyao.com"
+                }
+            ],
+            "description": "flash message",
+            "time": "2017-12-28T05:26:11+00:00"
+        },
+        {
+            "name": "baijunyao/laravel-model",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baijunyao/laravel-model.git",
+                "reference": "74082c894fc0efe1b338f148ef7ae690dcb5f26e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/baijunyao/laravel-model/74082c894fc0efe1b338f148ef7ae690dcb5f26e.zip",
+                "reference": "74082c894fc0efe1b338f148ef7ae690dcb5f26e",
+                "shasum": ""
+            },
+            "require": {
+                "baijunyao/laravel-flash": "1.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Baijunyao\\LaravelModel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "baijunyao",
+                    "email": "baijunyao@baijunyao.com"
+                }
+            ],
+            "description": "base model",
+            "time": "2018-01-31T07:42:01+00:00"
         },
         {
             "name": "baijunyao/laravel-print",

@@ -83,6 +83,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'index'], function () {
         // 后台首页
         Route::get('index', 'IndexController@index');
+        // 更新系统
+        Route::get('upgrade', 'IndexController@upgrade');
     });
 
     // 文章管理
