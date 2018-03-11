@@ -55,19 +55,12 @@ class Article extends Base
         $data['html'] = markdown_to_html($data['markdown']);
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
-
         //添加数据
-        $result=$this
-            ->create($data)
-            ->id;
+        $result = parent::storeData($data);
         if ($result) {
-            session()->flash('alert-message','添加成功');
-            session()->flash('alert-class','alert-success');
-
             // 给文章添加标签
             $articleTag = new ArticleTag();
             $articleTag->addTagIds($result, $tag_ids);
-
             return $result;
         }else{
             return false;
