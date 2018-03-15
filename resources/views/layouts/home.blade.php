@@ -220,7 +220,6 @@
 
 <script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
 <script>
-    logoutUrl="{:U('Home/User/logout')}";
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
