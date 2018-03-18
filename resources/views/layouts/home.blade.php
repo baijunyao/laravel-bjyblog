@@ -96,7 +96,7 @@
                             1. 手Q扫左侧二维码
                         </p>
                         <p class="b-qun-nuber">
-                            2. 搜群：{{ $config['QQ_QUN_NUMBER'] }}
+                            2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
                         </p>
                         <p class="b-qun-code">
                             3. 点击{!! $config['QQ_QUN_CODE'] !!}
