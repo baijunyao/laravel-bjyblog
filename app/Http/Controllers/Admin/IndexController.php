@@ -24,13 +24,13 @@ class IndexController extends Controller
     public function index(Comment $commentModel)
     {
         // 文章总数
-        $articleCount = Article::count();
+        $articleCount = Article::count('id');
         // 评论总数
-        $commentCount = Comment::count();
+        $commentCount = Comment::count('id');
         // 随言碎语总数
-        $chatCount = Chat::count();
+        $chatCount = Chat::count('id');
         // 用户总数
-        $oauthUserCount = OauthUser::count();
+        $oauthUserCount = OauthUser::count('id');
         // 最新登录的5个用户
         $oauthUserData = OauthUser::select('name', 'avatar', 'login_times', 'updated_at')
             ->orderBy('updated_at', 'desc')

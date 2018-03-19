@@ -94,15 +94,12 @@ class Comment extends Base
         );
 
         // 添加数据
-        $id = $this
-            ->create($comment)
-            ->id;
-        if ($id) {
-            session()->flash('alert-message','添加成功');
-            session()->flash('alert-class','alert-success');
-        }else{
+        $id = parent::storeData($comment);
+
+        if (! $id) {
             return false;
         }
+
         // 获取文章标题
         $title = Article::where('id', $data['article_id'])
             ->withTrashed()

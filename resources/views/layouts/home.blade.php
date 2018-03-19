@@ -96,7 +96,7 @@
                             1. 手Q扫左侧二维码
                         </p>
                         <p class="b-qun-nuber">
-                            2. 搜群：{{ $config['QQ_QUN_NUMBER'] }}
+                            2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
                         </p>
                         <p class="b-qun-code">
                             3. 点击{!! $config['QQ_QUN_CODE'] !!}
@@ -220,7 +220,6 @@
 
 <script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
 <script>
-    logoutUrl="{:U('Home/User/logout')}";
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
