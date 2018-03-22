@@ -302,21 +302,6 @@ if ( !function_exists('strip_html_tags') ) {
 	}
 }
 
-if (!function_exists('flash_message')){
-    /**
-     * 添加成功或者失败的提示
-     *
-     * @param string $message
-     * @param bool $success
-     */
-    function flash_message($message = '成功', $success = true)
-    {
-        $className = $success ? 'alert-success' : 'alert-danger';
-        session()->flash('alert-message', $message);
-        session()->flash('alert-class', $className);
-    }
-}
-
 if (!function_exists('curl_get_contents')) {
     /**
      * 使用curl获取远程数据

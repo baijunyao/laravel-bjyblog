@@ -44,7 +44,7 @@ class Install extends Command
         $password = $this->ask('请输入数据库密码', false);
         $database = $this->ask('请输入数据库名', 'test');
         // ask 不允许为空  此处是为了兼容一些数据库密码为空的情况
-        $password = $password ? '' : $password;
+        $password = $password ? $password : '';
         $envExample = file_get_contents(base_path('.env.example'));
         $search = [
             'DB_DATABASE=homestead',
@@ -58,15 +58,5 @@ class Install extends Command
         ];
         $env = str_replace($search, $replace, $envExample);
         file_put_contents(base_path('.env'), $env);
-        /**
-         * 执行迁移填充
-         */
-        $this->call('key:generate');
-        $this->call('migrate');
-        $this->call('db:seed');
-        $this->info('*************** 安装完成 ***************');
-        $this->line('后台链接：/admin/index/index');
-        $this->line('邮箱：test@test.com ');
-        $this->line('密码：123456 ');
     }
 }

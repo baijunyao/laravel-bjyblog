@@ -96,7 +96,7 @@
                             1. 手Q扫左侧二维码
                         </p>
                         <p class="b-qun-nuber">
-                            2. 搜群：{{ $config['QQ_QUN_NUMBER'] }}
+                            2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
                         </p>
                         <p class="b-qun-code">
                             3. 点击{!! $config['QQ_QUN_CODE'] !!}
@@ -118,7 +118,7 @@
                         <?php $tag_i++; ?>
                         <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->article_count }})</a>
+                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>
@@ -220,7 +220,6 @@
 
 <script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
 <script>
-    logoutUrl="{:U('Home/User/logout')}";
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

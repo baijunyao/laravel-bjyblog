@@ -26,7 +26,10 @@ class IndexController extends Controller
     public function index(Article $articleModel)
 	{
 	    // 获取文章列表数据
-        $article = $articleModel->getHomeList();
+        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+            ->orderBy('created_at', 'desc')
+            ->with(['category', 'tags'])
+            ->paginate(10);
         $config = cache('config');
         $head = [
             'title' => $config->get('WEB_TITLE'),
@@ -54,12 +57,10 @@ class IndexController extends Controller
     public function article($id, Request $request, Article $articleModel, Comment $commentModel)
     {
         // 获取文章数据
-        $data = $articleModel->getDataById($id);
+        $data = Article::with(['category', 'tags'])->find($id);
         if (is_null($data)) {
             return abort(404);
         }
-        // 去掉描述中的换行
-        $data->description = str_replace(["\r", "\n", "\r\n"], '', $data->description);
         // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
         $ipAndId = 'articleRequestList'.$request->ip().':'.$id;
         if (!Cache::has($ipAndId)) {
@@ -86,7 +87,7 @@ class IndexController extends Controller
 
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
-        $category_id = $data->category_id;
+        $category_id = $data->category->id;
         $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
         return view('home.index.article', $assign);
     }
@@ -100,11 +101,12 @@ class IndexController extends Controller
      */
     public function category(Article $articleModel, $id)
     {
-        $map = [
-            'articles.category_id' => $id
-        ];
-        $article = $articleModel->getHomeList($map);
-        $category = Category::find($id);
+        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+            ->where('category_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->with(['category', 'tags'])
+            ->paginate(10);
+        $category = $article->first()->category;
         $head = [
             'title' => $category->name,
             'keywords' => $category->keywords,
@@ -129,31 +131,27 @@ class IndexController extends Controller
      */
     public function tag($id, Article $articleModel)
     {
-        // 获取标签名
-        $tagName = Tag::where('id', $id)->value('name');
-        // 获取此标签下的文章id
-        $articleIds = ArticleTag::where('tag_id', $id)
-            ->pluck('article_id')
-            ->toArray();
-        // 获取文章数据
-        $map = [
-            'articles.id' => ['in', $articleIds]
-        ];
-        $article = $articleModel->getHomeList($map);
+        // 获取标签
+        $tag = Tag::select('id', 'name')->where('id', $id)->first();
+        // TODO 不取 markdown 和 html 字段
+        // 获取标签下的文章
+        $article = $tag->articles()
+            ->orderBy('created_at', 'desc')
+            ->with(['category', 'tags'])
+            ->paginate(10);
         $head = [
-            'title' => $tagName,
+            'title' => $tag->name,
             'keywords' => '',
             'description' => '',
         ];
         $assign = [
             'category_id' => 'index',
             'article' => $article,
-            'tagName' => $tagName,
-            'title' => $tagName,
+            'tagName' => $tag->name,
+            'title' => $tag->name,
             'head' => $head
         ];
         return view('home.index.index', $assign);
-
     }
 
     /**

@@ -5,6 +5,37 @@ namespace App\Models;
 class Article extends Base
 {
     /**
+     * 过滤描述中的换行。
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDescriptionAttribute($value)
+    {
+        return str_replace(["\r", "\n", "\r\n"], '', $value);
+    }
+
+    /**
+     * 关联文章表
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
+     * 关联标签表
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'article_tags');
+    }
+
+    /**
      * 添加文章
      *
      * @param array $data
@@ -24,19 +55,12 @@ class Article extends Base
         $data['html'] = markdown_to_html($data['markdown']);
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
-
         //添加数据
-        $result=$this
-            ->create($data)
-            ->id;
+        $result = parent::storeData($data);
         if ($result) {
-            session()->flash('alert-message','添加成功');
-            session()->flash('alert-class','alert-success');
-
             // 给文章添加标签
             $articleTag = new ArticleTag();
             $articleTag->addTagIds($result, $tag_ids);
-
             return $result;
         }else{
             return false;
@@ -75,22 +99,6 @@ class Article extends Base
     }
 
     /**
-     * 后台文章列表
-     *
-     * @return mixed
-     */
-    public function getAdminList()
-    {
-        $data = $this
-            ->select('articles.*', 'c.name as category_name')
-            ->join('categories as c', 'articles.category_id', 'c.id')
-            ->orderBy('created_at', 'desc')
-            ->withTrashed()
-            ->paginate(15);
-        return $data;
-    }
-
-    /**
      * 获取前台文章列表
      *
      * @return mixed
@@ -113,29 +121,6 @@ class Article extends Base
         foreach ($data as $k => $v) {
             $data[$k]->tag = isset($tag[$v->id]) ? $tag[$v->id] : [];
         }
-        return $data;
-    }
-
-    /**
-     * 通过文章id获取数据
-     *
-     * @param $id
-     * @return mixed
-     */
-    public function getDataById($id)
-    {
-        $data = $this->select('articles.*', 'c.name as category_name')
-            ->join('categories as c', 'articles.category_id', 'c.id')
-            ->where('articles.id', $id)
-            ->withTrashed()
-            ->first();
-        if (is_null($data)) {
-            return $data;
-        }
-        $articleTag = new ArticleTag();
-        $tag = $articleTag->getTagNameByArticleIds([$id]);
-        // 处理标签可能为空的情况
-        $data['tag'] = empty($tag) ? [] : current($tag);
         return $data;
     }
 

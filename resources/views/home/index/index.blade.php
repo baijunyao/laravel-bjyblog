@@ -38,11 +38,11 @@
                             <i class="fa fa-calendar"></i> {{ $v->created_at }}
                         </li>
                         <li class="col-xs-5 col-md-2 col-lg-2">
-                            <i class="fa fa-list-alt"></i> <a href="{{ url('category', [$v->category_id]) }}" target="_blank">{{ $v->category_name }}</a>
+                            <i class="fa fa-list-alt"></i> <a href="{{ url('category', [$v->category->id]) }}" target="_blank">{{ $v->category->name }}</a>
                         </li>
                         <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
-                            @foreach($v->tag as $n)
-                                <a class="b-tag-name" href="{{ url('tag', [$n->tag_id]) }}" target="_blank">{{ $n->name }}</a>
+                            @foreach($v->tags as $n)
+                                <a class="b-tag-name" href="{{ url('tag', [$n->id]) }}" target="_blank">{{ $n->name }}</a>
                             @endforeach
                         </li>
                     </ul>
