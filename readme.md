@@ -40,6 +40,8 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.16 (2018-03-25)
+1. 修复标签名不能跟分类名重复的问题
 #### v5.5.0.15 (2018-03-18)
 1. 解决添加文章时的错误提示
 2. 后台首页只count(id)
