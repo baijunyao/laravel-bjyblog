@@ -21,7 +21,16 @@
                 <td>{{ $v->name }}</td>
                 <td>{{ $v->email }}</td>
                 <td>{{ $v->created_at }}</td>
-                <td><a href="{{ url('admin/user/edit', [$v->id]) }}">编辑</a></td>
+                <td>
+                    <a href="{{ url('admin/user/edit', [$v->id]) }}">编辑</a> |
+                    @if(is_null($v->deleted_at))
+                        <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/user/destroy', [$v->id]) }}'">删除</a>
+                    @else
+                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/user/restore', [$v->id]) }}'">恢复</a>
+                        |
+                        <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/user/forceDelete', [$v->id]) }}'">彻底删除</a>
+                    @endif
+                </td>
             </tr>
         @endforeach
     </table>
