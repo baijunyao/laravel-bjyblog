@@ -15,9 +15,9 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Tag $tagModel)
+    public function index()
     {
-        $data = $tagModel::withTrashed()->get();
+        $data = Tag::withTrashed()->get();
         $assign = compact('data');
         return view('admin.tag.index', $assign);
     }
