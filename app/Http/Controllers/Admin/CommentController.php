@@ -51,7 +51,10 @@ class CommentController extends Controller
      */
     public function restore($id, Comment $commentModel)
     {
-        $result = $commentModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $result = $commentModel->restoreData($map);
         if ($result) {
             // 更新缓存
             Cache::forget('common:newComment');

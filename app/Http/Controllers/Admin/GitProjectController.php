@@ -144,7 +144,10 @@ class GitProjectController extends Controller
      */
     public function restore($id, GitProject $gitProjectModel)
     {
-        $result = $gitProjectModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $result = $gitProjectModel->restoreData($map);
         if ($result) {
             // 更新缓存
             Cache::forget('common:gitProject');

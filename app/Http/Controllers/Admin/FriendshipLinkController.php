@@ -141,7 +141,10 @@ class FriendshipLinkController extends Controller
      */
     public function restore($id, FriendshipLink $friendshipLinkModel)
     {
-        $result = $friendshipLinkModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $result = $friendshipLinkModel->restoreData($map);
         if ($result) {
             // 更新缓存
             Cache::forget('common:friendshipLink');

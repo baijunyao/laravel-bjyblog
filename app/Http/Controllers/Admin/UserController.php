@@ -109,7 +109,10 @@ class UserController extends Controller
      */
     public function restore($id, User $userModel)
     {
-        $userModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $userModel->restoreData($map);
         return redirect('admin/user/index');
     }
 

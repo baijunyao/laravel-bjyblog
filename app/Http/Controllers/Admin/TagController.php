@@ -114,7 +114,10 @@ class TagController extends Controller
      */
     public function restore($id, Tag $tagModel)
     {
-        $result = $tagModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $result = $tagModel->restoreData($map);
         if ($result) {
             // 更新缓存
             Cache::forget('common:tag');
