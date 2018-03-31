@@ -190,7 +190,8 @@ class ArticleController extends Controller
      */
     public function forceDelete($id, Article $articleModel)
     {
-        $articleModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $articleModel->forceDeleteData($map);
         return redirect('admin/article/index');
     }
 }

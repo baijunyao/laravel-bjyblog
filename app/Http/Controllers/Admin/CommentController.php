@@ -72,7 +72,8 @@ class CommentController extends Controller
      */
     public function forceDelete($id, Comment $commentModel)
     {
-        $commentModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $commentModel->forceDeleteData($map);
         return redirect()->back();
     }
 }

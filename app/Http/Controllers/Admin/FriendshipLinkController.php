@@ -162,7 +162,8 @@ class FriendshipLinkController extends Controller
      */
     public function forceDelete($id, FriendshipLink $friendshipLinkModel)
     {
-        $friendshipLinkModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $friendshipLinkModel->forceDeleteData($map);
         return redirect('admin/friendshipLink/index');
     }
 }

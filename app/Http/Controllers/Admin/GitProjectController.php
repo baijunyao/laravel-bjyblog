@@ -165,7 +165,8 @@ class GitProjectController extends Controller
      */
     public function forceDelete($id, GitProject $gitProjectModel)
     {
-        $gitProjectModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $gitProjectModel->forceDeleteData($map);
         return redirect('admin/gitProject/index');
     }
 }

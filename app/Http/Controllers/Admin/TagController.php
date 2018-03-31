@@ -135,7 +135,8 @@ class TagController extends Controller
      */
     public function forceDelete($id, Tag $tagModel)
     {
-        $tagModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $tagModel->forceDeleteData($map);
         return redirect('admin/tag/index');
     }
 }
