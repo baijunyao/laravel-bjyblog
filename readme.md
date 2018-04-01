@@ -37,6 +37,7 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 - [韩佳鑫博客](https://www.hanjiaxin.com)  
 - [Sails博客](https://smile.sails.site)  
 - [義往昔博客](http://www.maocaoying.com)  
+- [Alan博客](http://blog.taobaoroom.cn)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
