@@ -124,8 +124,19 @@ class ArticleController extends Controller
         $data = $request->except('_token');
         $markdown = $articleModel->where('id', $id)->value('markdown');
         preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $markdown, $images);
-        // 获取封面并添加水印
-        $data['cover'] = $articleModel->getCover($data['markdown'], $images[1]);
+        // 添加水印 并获取第一张图
+        $cover = $articleModel->getCover($data['markdown'], $images[1]);
+        // 上传封面图
+        if ($request->hasFile('cover')) {
+            $result = upload('cover', 'uploads/article');
+            if ($result['status_code'] === 200) {
+                $data['cover'] = $result['data']['path'].$result['data']['new_name'];
+            }
+        }
+        // 如果没有上传封面图；则使用第一张图片
+        if (empty($data['cover'])) {
+            $data['cover'] = $cover;
+        }
         // 为文章批量添加标签
         $tag_ids = $data['tag_ids'];
         // 把markdown转html
