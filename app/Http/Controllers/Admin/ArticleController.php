@@ -77,6 +77,13 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
+        // 上传封面图
+        if ($request->hasFile('cover')) {
+            $result = upload('cover', 'uploads/article');
+            if ($result['status_code'] === 200) {
+                $data['cover'] = $result['data']['path'].$result['data']['new_name'];
+            }
+        }
         $result = $article->storeData($data);
         if ($result) {
             // 更新热门推荐文章缓存
