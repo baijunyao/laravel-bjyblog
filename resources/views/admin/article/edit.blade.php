@@ -64,7 +64,7 @@
                 </td>
             </tr>
             <tr>
-                <th>QQ群二维码：</th>
+                <th>封面图</th>
                 <td>
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 180px; height: 180px;">
