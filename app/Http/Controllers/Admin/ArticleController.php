@@ -122,6 +122,7 @@ class ArticleController extends Controller
     public function update(Store $request, Article $articleModel, ArticleTag $articleTagModel, $id)
     {
         $data = $request->except('_token');
+        $data['is_top'] = isset($data['is_top']) ? $data['is_top'] : 0;
         $markdown = $articleModel->where('id', $id)->value('markdown');
         preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $markdown, $images);
         // 添加水印 并获取第一张图
