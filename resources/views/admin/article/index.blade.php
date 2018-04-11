@@ -58,7 +58,7 @@
         @endforeach
     </table>
     <div class="text-center">
-        {{ $article->links() }}
+        {{ $article->links('vendor.pagination.bjypage') }}
     </div>
 
 @endsection

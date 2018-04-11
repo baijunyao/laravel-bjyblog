@@ -13,9 +13,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $userModel)
+    public function index()
     {
-        $data = $userModel->get();
+        $data = User::withTrashed()->get();
         $assign = compact('data');
         return view('admin.user.index', $assign);
     }
@@ -90,8 +90,44 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, User $userModel)
     {
-        //
+        $map = [
+            'id' => $id
+        ];
+        $userModel->destroyData($map);
+        return redirect('admin/user/index');
+    }
+
+    /**
+     * 恢复删除的标签
+     *
+     * @param         $id
+     * @param User    $userModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, User $userModel)
+    {
+        $map = [
+            'id' => $id
+        ];
+        $userModel->restoreData($map);
+        return redirect('admin/user/index');
+    }
+
+    /**
+     * 彻底删除标签
+     *
+     * @param         $id
+     * @param User    $userModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, User $userModel)
+    {
+        $map = compact('id');
+        $userModel->forceDeleteData($map);
+        return redirect('admin/user/index');
     }
 }

@@ -37,9 +37,20 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 - [韩佳鑫博客](https://www.hanjiaxin.com)  
 - [Sails博客](https://smile.sails.site)  
 - [義往昔博客](http://www.maocaoying.com)  
+- [Alan博客](http://blog.taobaoroom.cn)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.18 (2018-04-07)
+1. 自定义文章封面图功能完成
+2. 解决后台列表内容不自动换行的问题
+3. 后台和前台统一分页样式
+#### v5.5.0.17 (2018-03-31)
+1. 删除、恢复、彻底删除管理员功能完成
+2. 所有的恢复数据统一使用restoreData方法
+3. 增加彻底删除数据后的提示
+#### v5.5.0.16 (2018-03-25)
+1. 修复标签名不能跟分类名重复的问题
 #### v5.5.0.15 (2018-03-18)
 1. 解决添加文章时的错误提示
 2. 后台首页只count(id)

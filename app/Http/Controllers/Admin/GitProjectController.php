@@ -144,7 +144,10 @@ class GitProjectController extends Controller
      */
     public function restore($id, GitProject $gitProjectModel)
     {
-        $result = $gitProjectModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $result = $gitProjectModel->restoreData($map);
         if ($result) {
             // 更新缓存
             Cache::forget('common:gitProject');
@@ -162,7 +165,8 @@ class GitProjectController extends Controller
      */
     public function forceDelete($id, GitProject $gitProjectModel)
     {
-        $gitProjectModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $gitProjectModel->forceDeleteData($map);
         return redirect('admin/gitProject/index');
     }
 }

@@ -159,7 +159,8 @@ class CategoryController extends Controller
      */
     public function forceDelete($id, Category $categoryModel)
     {
-        $categoryModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $categoryModel->forceDeleteData($map);
         return redirect('admin/category/index');
     }
 }

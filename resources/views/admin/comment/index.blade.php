@@ -6,6 +6,17 @@
 
 @section('description', '文章评论')
 
+@section('css')
+    <style>
+        /*表格和div内容自动换行*/
+        table,
+        div {
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+    </style>
+@endsection
+
 @section('content')
     <table class="table table-striped table-bordered table-hover">
         <tr>
@@ -47,6 +58,6 @@
         @endforeach
     </table>
     <div class="text-center">
-        {{ $data->links() }}
+        {{ $data->links('vendor.pagination.bjypage') }}
     </div>
 @endsection
