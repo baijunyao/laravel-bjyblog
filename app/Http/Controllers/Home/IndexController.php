@@ -27,7 +27,6 @@ class IndexController extends Controller
 	{
 	    // 获取文章列表数据
         $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
-            ->orderBy('is_top', 'desc')
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);
