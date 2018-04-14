@@ -184,6 +184,11 @@ return [
          */
         SocialiteProviders\Manager\ServiceProvider::class,
 
+        /**
+         * 模糊搜索
+         */
+        TomLingham\Searchy\SearchyServiceProvider::class
+
     ],
 
     /*
