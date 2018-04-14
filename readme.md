@@ -41,6 +41,9 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 更新记录
+#### v5.5.0.19 (2018-04-14)
+1. 解决后台登录错误提示重复的问题
+2. 使用Laravel-Searchy增强文章搜索功能
 #### v5.5.0.18 (2018-04-07)
 1. 自定义文章封面图功能完成
 2. 解决后台列表内容不自动换行的问题
