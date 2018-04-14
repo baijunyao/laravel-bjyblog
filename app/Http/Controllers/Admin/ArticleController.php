@@ -204,11 +204,18 @@ class ArticleController extends Controller
      *
      * @param         $id
      * @param Article $articleModel
+     * @param ArticleTag $articleTagModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Article $articleModel)
+    public function forceDelete($id, Article $articleModel, ArticleTag $articleTagModel)
     {
+        // 先删除此文章下的所有标签
+        $map = [
+            'article_id' => $id
+        ];
+        $articleTagModel->whereMap($map)->forceDelete();
+
         $map = compact('id');
         $articleModel->forceDeleteData($map);
         return redirect('admin/article/index');
