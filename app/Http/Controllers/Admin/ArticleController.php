@@ -210,14 +210,15 @@ class ArticleController extends Controller
      */
     public function forceDelete($id, Article $articleModel, ArticleTag $articleTagModel)
     {
-        // 先删除此文章下的所有标签
-        $map = [
-            'article_id' => $id
-        ];
-        $articleTagModel->whereMap($map)->forceDelete();
-
         $map = compact('id');
-        $articleModel->forceDeleteData($map);
+        $result = $articleModel->forceDeleteData($map);
+        if ($result) {
+            // 删除文章后先同步删除关联表 article_tags 中的数据
+            $map = [
+                'article_id' => $id
+            ];
+            $articleTagModel->destroyData($map);
+        }
         return redirect('admin/article/index');
     }
 }
