@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{{ asset('statics/iCheck-1.0.2/skins/all.css') }}">
     <link rel="stylesheet" href="{{ asset('statics/gentelella/vendors/switchery/dist/switchery.min.css') }}">
     <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        #bjy-content{
+            z-index: 9999;
+        }
+    </style>
 @endsection
 
 @section('nav', '编辑文章')
