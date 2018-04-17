@@ -183,12 +183,6 @@ return [
          * 社会化登录
          */
         SocialiteProviders\Manager\ServiceProvider::class,
-
-        /**
-         * 模糊搜索
-         */
-        TomLingham\Searchy\SearchyServiceProvider::class
-
     ],
 
     /*

@@ -14,7 +14,6 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cache;
-use TomLingham\Searchy\Facades\Searchy;
 
 class IndexController extends Controller
 {
@@ -237,14 +236,8 @@ class IndexController extends Controller
      */
     public function search(Request $request, Article $articleModel){
         $wd = clean($request->input('wd'));
-        $articleId = Searchy::articles('title', 'markdown')
-            ->select('id')
-            ->query('要获取一个test')
-            ->get()
-            ->pluck('id')
-            ->toArray();
         $map = [
-            'articles.id' => ['in', $articleId]
+            'title' => ['like', '%'.$wd.'%']
         ];
         $article = $articleModel->getHomeList($map);
         $head = [
