@@ -24,7 +24,7 @@
             @if($v->type == 1)
                 <div class="github-widget" data-repo="{{ $v->name }}"></div>
             @elseif($v->type == 2)
-                <script src='//git.oschina.net/{{ $v->name }}/widget_preview'></script>
+                <script src='//gitee.com/{{ $v->name }}/widget_preview'></script>
             @endif
         @endforeach
     </div>
