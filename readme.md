@@ -44,6 +44,13 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 - [韩槑槑](https://github.com/Han-MeiM)
 
 ## 更新记录
+#### v5.5.0.20 (2018-04-21)
+1. 删除文章后先同步删除关联表article_tags中的数据
+2. 解决markdown编辑器全屏被遮挡的问题
+3. 添加在评论无意义信息时的提醒并关闭loading
+4. 取消使用Laravel-Searchy
+5. 前台页面不弹出添加评论的提示
+6. 开源项目页面的oschina改为gitee
 #### v5.5.0.19 (2018-04-14)
 1. 解决后台登录错误提示重复的问题
 2. 使用Laravel-Searchy增强文章搜索功能
