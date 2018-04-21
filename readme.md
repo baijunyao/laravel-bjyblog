@@ -40,6 +40,9 @@ git clone git@gitee.com:shuaibai123/laravel-bjyblog.git blog && cd blog && cp .e
 - [Alan博客](http://blog.taobaoroom.cn)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
+### 主要贡献者
+- [韩槑槑](https://github.com/Han-MeiM)
+
 ## 更新记录
 #### v5.5.0.19 (2018-04-14)
 1. 解决后台登录错误提示重复的问题
