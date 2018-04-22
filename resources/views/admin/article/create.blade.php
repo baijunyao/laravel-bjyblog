@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="{{ asset('statics/editormd/css/editormd.min.css') }}">
     <link rel="stylesheet" href="{{ asset('statics/iCheck-1.0.2/skins/all.css') }}">
     <link rel="stylesheet" href="{{ asset('statics/gentelella/vendors/switchery/dist/switchery.min.css') }}">
+    <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
+    <style>
+        #bjy-content{
+            z-index: 9999;
+        }
+    </style>
 @endsection
 
 @section('nav', '发布文章')
@@ -23,7 +29,7 @@
             <a href="{{ url('admin/article/create') }}">发布文章</a>
         </li>
     </ul>
-    <form class="form-horizontal " action="{{ url('admin/article/store') }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/article/store') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
@@ -63,6 +69,24 @@
                 </td>
             </tr>
             <tr>
+                <th>封面图</th>
+                <td>
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 220px; height: 150px;">
+
+                        </div>
+                        <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">选择图片</span>
+                                <span class="fileinput-exists">更改</span>
+                                <input type="file" name="cover">
+                            </span>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <th>描述</th>
                 <td>
                     <textarea class="form-control modal-sm" name="description" rows="7" placeholder="可以不填，如不填；则截取文章内容前300字为描述">{{ old('description') }}</textarea>
@@ -98,6 +122,7 @@
     <script src="{{ asset('statics/gentelella/vendors/switchery/dist/switchery.min.js') }}"></script>
     <script src="{{ asset('statics/editormd/editormd.min.js') }}"></script>
     <script src="{{ asset('statics/iCheck-1.0.2/icheck.min.js') }}"></script>
+    <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         var testEditor;
 

@@ -84,6 +84,12 @@
         @yield('content')
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
+            <div class="b-search">
+                <form class="form-inline"  role="form" action="{{ url('search') }}" method="get">
+                    <input class="b-search-text" type="text" name="wd">
+                    <input class="b-search-submit" type="submit" value="全站搜索">
+                </form>
+            </div>
             @if(!empty($config['QQ_QUN_NUMBER']))
                 <div class="b-tags">
                 <h4 class="b-title">加入组织</h4>
@@ -160,12 +166,6 @@
                     </p>
                 </div>
             </eq>
-            <div class="b-search">
-                <form class="form-inline"  role="form" action="{{ url('search') }}" method="get">
-                    <input class="b-search-text" type="text" name="wd">
-                    <input class="b-search-submit" type="submit" value="全站搜索">
-                </form>
-            </div>
         </div>
         <!-- 通用右部区域结束 -->
     </div>

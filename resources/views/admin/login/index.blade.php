@@ -35,25 +35,6 @@
                         <input type="password" class="form-control" placeholder="Password" required="" name="password">
                     </div>
                     <div>
-                        {{--成功或者错误提示--}}
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        @if(Session::has('alert-message'))
-                            <div class="alert {{session('alert-class')}}">
-                                <ul>
-                                    <li>{{ session('alert-message') }}</li>
-                                </ul>
-                            </div>
-                        @endif
-                    </div>
-                    <div>
                         <button class="btn btn-default submit" type="submit">登录</button>
                     </div>
 

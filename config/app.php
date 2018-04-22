@@ -183,7 +183,6 @@ return [
          * 社会化登录
          */
         SocialiteProviders\Manager\ServiceProvider::class,
-
     ],
 
     /*

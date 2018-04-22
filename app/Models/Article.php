@@ -49,8 +49,14 @@ class Article extends Base
             $data['description'] = re_substr($description, 0, 200, true);
         }
 
-        // 给文章的插图添加水印;并取第一张图片作为封面图
-        $data['cover'] = $this->getCover($data['markdown']);
+        // 给文章的插图添加水印;并取第一张图片
+        $firstImage = $this->getCover($data['markdown']);
+
+        // 如果没有上传封面图；则取第一张图片作为封面图
+        if (empty($data['cover'])) {
+            $data['cover'] = $firstImage;
+        }
+
         // 把markdown转html
         $data['html'] = markdown_to_html($data['markdown']);
         $tag_ids = $data['tag_ids'];

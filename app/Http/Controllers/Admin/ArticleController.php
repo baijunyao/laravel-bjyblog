@@ -77,6 +77,13 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
+        // 上传封面图
+        if ($request->hasFile('cover')) {
+            $result = upload('cover', 'uploads/article');
+            if ($result['status_code'] === 200) {
+                $data['cover'] = $result['data']['path'].$result['data']['new_name'];
+            }
+        }
         $result = $article->storeData($data);
         if ($result) {
             // 更新热门推荐文章缓存
@@ -115,10 +122,22 @@ class ArticleController extends Controller
     public function update(Store $request, Article $articleModel, ArticleTag $articleTagModel, $id)
     {
         $data = $request->except('_token');
+        $data['is_top'] = isset($data['is_top']) ? $data['is_top'] : 0;
         $markdown = $articleModel->where('id', $id)->value('markdown');
         preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $markdown, $images);
-        // 获取封面并添加水印
-        $data['cover'] = $articleModel->getCover($data['markdown'], $images[1]);
+        // 添加水印 并获取第一张图
+        $cover = $articleModel->getCover($data['markdown'], $images[1]);
+        // 上传封面图
+        if ($request->hasFile('cover')) {
+            $result = upload('cover', 'uploads/article');
+            if ($result['status_code'] === 200) {
+                $data['cover'] = $result['data']['path'].$result['data']['new_name'];
+            }
+        }
+        // 如果没有上传封面图；则使用第一张图片
+        if (empty($data['cover'])) {
+            $data['cover'] = $cover;
+        }
         // 为文章批量添加标签
         $tag_ids = $data['tag_ids'];
         // 把markdown转html
@@ -185,12 +204,21 @@ class ArticleController extends Controller
      *
      * @param         $id
      * @param Article $articleModel
+     * @param ArticleTag $articleTagModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Article $articleModel)
+    public function forceDelete($id, Article $articleModel, ArticleTag $articleTagModel)
     {
-        $articleModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $result = $articleModel->forceDeleteData($map);
+        if ($result) {
+            // 删除文章后先同步删除关联表 article_tags 中的数据
+            $map = [
+                'article_id' => $id
+            ];
+            $articleTagModel->destroyData($map);
+        }
         return redirect('admin/article/index');
     }
 }

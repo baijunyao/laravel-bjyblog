@@ -120,7 +120,8 @@ class ChatController extends Controller
      */
     public function forceDelete($id, Chat $chatModel)
     {
-        $chatModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $chatModel->forceDeleteData($map);
         return redirect('admin/chat/index');
     }
 }

@@ -114,7 +114,10 @@ class TagController extends Controller
      */
     public function restore($id, Tag $tagModel)
     {
-        $result = $tagModel->where('id', $id)->restore();
+        $map = [
+            'id' => $id
+        ];
+        $result = $tagModel->restoreData($map);
         if ($result) {
             // 更新缓存
             Cache::forget('common:tag');
@@ -132,7 +135,8 @@ class TagController extends Controller
      */
     public function forceDelete($id, Tag $tagModel)
     {
-        $tagModel->where('id', $id)->forceDelete();
+        $map = compact('id');
+        $tagModel->forceDeleteData($map);
         return redirect('admin/tag/index');
     }
 }
