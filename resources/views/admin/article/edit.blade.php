@@ -74,6 +74,7 @@
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 180px; height: 180px;">
                             <img src="{{ asset($article->cover) }}" alt="封面图">
+                            <input type="hidden" name="cover" value="{{ $article->cover }}">
                         </div>
                         <div>
                             <span class="btn btn-default btn-file">
