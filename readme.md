@@ -44,6 +44,9 @@ git clone git@gitee.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env
 - [韩槑槑](https://github.com/Han-MeiM)
 
 ## 更新记录
+#### v5.5.0.21 (2018-04-22)
+1. 解决编辑文章时封面图会被第一张图片替换的问题
+2. 更改gitee链接
 #### v5.5.0.20 (2018-04-21)
 1. 删除文章后先同步删除关联表article_tags中的数据
 2. 解决markdown编辑器全屏被遮挡的问题
