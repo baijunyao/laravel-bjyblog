@@ -42,6 +42,7 @@ class CategoryController extends Controller
     public function store(Store $request, Category $categoryModel)
     {
         $data = $request->except('_token');
+        $data['sort'] = is_null($data['sort']) ? 0 : $data['sort'];
         $result = $categoryModel->storeData($data);
         if ($result) {
             // 更新缓存
@@ -76,6 +77,7 @@ class CategoryController extends Controller
             'id' => $id
         ];
         $data = $request->except('_token');
+        $data['sort'] = is_null($data['sort']) ? 0 : $data['sort'];
         $result = $categoryModel->updateData($map, $data);
         if ($result) {
             // 更新缓存
