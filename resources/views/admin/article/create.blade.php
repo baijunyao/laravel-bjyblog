@@ -9,7 +9,7 @@
     <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
     <style>
         #bjy-content{
-            z-index: 9999;
+            z-index: 1000;
         }
     </style>
 @endsection
@@ -150,7 +150,6 @@
                 radioClass: "iradio_minimal-blue",
                 increaseArea: "20%"
             });
-
         });
     </script>
 
