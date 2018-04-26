@@ -66,6 +66,7 @@
                     @foreach($tag as $v)
                         {{ $v['name'] }}<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="{{ $v['id'] }}" @if(in_array($v['id'], old('tag_ids', []))) checked="checked" @endif> &emsp;
                     @endforeach
+                    <i class="fa fa-plus-square" style="font-size: 20px;cursor: pointer" data-toggle="modal" data-target="#bjy-tag-modal"></i>
                 </td>
             </tr>
             <tr>
@@ -116,6 +117,24 @@
         </table>
     </form>
 
+    {{--添加标签--}}
+    <div class="modal fade" id="bjy-tag-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加标签</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <form class="form-inline" role="form">
+                        <input class="form-control bjy-tag-name" type="text" placeholder="标签名">
+                        <button type="button" class="btn btn-success" onclick="addTag()">提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('js')
@@ -145,12 +164,38 @@
                 imageUpload: true,
                 imageUploadURL : '{{ url('admin/article/uploadImage') }}',
             });
+        });
+        function icheckInit() {
             $('.bjy-icheck').iCheck({
                 checkboxClass: "icheckbox_minimal-blue",
                 radioClass: "iradio_minimal-blue",
                 increaseArea: "20%"
             });
-        });
+        }
+        icheckInit();
+
+        function addTag() {
+            var postData = {
+                name: $('.bjy-tag-name').val()
+            }
+            $.ajax({
+                type: 'POST',
+                url: '{{ url('admin/tag/store') }}',
+                dataType: 'json',
+                data: postData,
+                success: function (response) {
+                    var redioStr = response.name+'<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="'+response.id+'" checked="checked"> &emsp;';
+                    $('.fa-plus-square').before(redioStr);
+                    icheckInit();
+                    $('#bjy-tag-modal').modal('hide');
+                },
+                error: function (response) {
+                    $.each(response.responseJSON.errors, function (k, v) {
+                        alert(v);
+                    })
+                }
+            })
+        }
     </script>
 
 
