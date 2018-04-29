@@ -44,6 +44,13 @@ git clone git@gitee.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env
 - [韩槑槑](https://github.com/Han-MeiM)
 
 ## 更新记录
+#### v5.5.0.22 (2018-04-29)
+1. 修复在移动端上下篇文章因标题过长导致样式错乱的问题
+2. 解决添加和编辑分类时排序为空时报错的问题
+3. 解决markdown编辑器遮挡modal的问题
+4. 解决ajax不自动携带X-CSRF-TOKEN的问题
+5. 增加在添加文章页面新增标签的功能
+6. 解决访问没有文章的分类时报错的问题
 #### v5.5.0.21 (2018-04-22)
 1. 解决编辑文章时封面图会被第一张图片替换的问题
 2. 更改gitee链接
