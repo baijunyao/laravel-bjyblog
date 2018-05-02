@@ -11,16 +11,10 @@
 下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
 ![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
 
-## 安装使用
-可以通过以下两种命令安装；  
-```bash
-composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisan bjyblog:install && php artisan bjyblog:migrate
-```
-或者：  
-```bash
-git clone git@gitee.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install && php artisan bjyblog:migrate
-```
-更加详细的安装文档请参考文章：[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
+## 下载安装
+如果没有搭建环境： [宝塔搭建laravel所需要的lnmp环境linux-nginx-mysql-php-composer-git](https://baijunyao.com/article/149)  
+如果不熟悉laravel项目的安装使用： [如何正确的下载安装使用别人的laravel项目？](https://baijunyao.com/article/148)  
+针对博客的说明：[开源项目系列之laravel-bjyblog博客](https://baijunyao.com/article/129)  
 
 ## 项目介绍
 1. 纯手工前台响应式页面布局适配PC、平板、手机；
