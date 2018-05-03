@@ -36,6 +36,7 @@
                 <th width="7%">分类</th>
                 <td>
                     <select class="form-control" name="category_id">
+                        <option value="">请选择分类</option>
                         @foreach($category as $v)
                             <option value="{{ $v->id }}" @if(old('category_id')) selected="selected" @endif>{{ $v->name }}</option>
                         @endforeach
