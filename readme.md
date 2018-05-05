@@ -3,7 +3,7 @@
 ## 链接
 - 博客：[http://baijunyao.com](http://baijunyao.com)   
 - github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
-- 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/shuaibai123/laravel-bjyblog)    
+- 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)    
 
 ## 简介
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
@@ -11,16 +11,10 @@
 下图中的[白俊遥博客](https://baijunyao.com)即是使用 laravel-bjyblog 开发的个人博客
 ![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
 
-## 安装使用
-可以通过以下两种命令安装；  
-```bash
-composer create-project baijunyao/laravel-bjyblog  blog && cd blog && php artisan bjyblog:install && php artisan bjyblog:migrate
-```
-或者：  
-```bash
-git clone git@gitee.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env.example .env && composer install -vvv && php artisan bjyblog:install && php artisan bjyblog:migrate
-```
-更加详细的安装文档请参考文章：[开源项目系列之thinkphp-bjyblog博客](https://baijunyao.com/article/129)  
+## 下载安装
+如果没有搭建环境： [宝塔搭建laravel所需要的lnmp环境linux-nginx-mysql-php-composer-git](https://baijunyao.com/article/149)  
+如果不熟悉laravel项目的安装使用： [如何正确的下载安装使用别人的laravel项目？](https://baijunyao.com/article/148)  
+针对博客的说明：[开源项目系列之laravel-bjyblog博客](https://baijunyao.com/article/129)  
 
 ## 项目介绍
 1. 纯手工前台响应式页面布局适配PC、平板、手机；
@@ -44,6 +38,13 @@ git clone git@gitee.com:baijunyao/laravel-bjyblog.git blog && cd blog && cp .env
 - [韩槑槑](https://github.com/Han-MeiM)
 
 ## 更新记录
+#### v5.5.0.22 (2018-04-29)
+1. 修复在移动端上下篇文章因标题过长导致样式错乱的问题
+2. 解决添加和编辑分类时排序为空时报错的问题
+3. 解决markdown编辑器遮挡modal的问题
+4. 解决ajax不自动携带X-CSRF-TOKEN的问题
+5. 增加在添加文章页面新增标签的功能
+6. 解决访问没有文章的分类时报错的问题
 #### v5.5.0.21 (2018-04-22)
 1. 解决编辑文章时封面图会被第一张图片替换的问题
 2. 更改gitee链接

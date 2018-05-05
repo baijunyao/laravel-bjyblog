@@ -43,10 +43,14 @@ class TagController extends Controller
         $data = [
             'name' => $request->input('name')
         ];
-        $result = $tagModel->storeData($data);
-        if ($result) {
+        $id = $tagModel->storeData($data);
+        if ($id) {
             // 更新缓存
             Cache::forget('common:tag');
+        }
+        if ($request->ajax()) {
+            $data['id'] = $id;
+            return ajax_return(200, $data);
         }
         return redirect('admin/tag/index');
     }

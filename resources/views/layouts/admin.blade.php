@@ -5,6 +5,7 @@
     <title>@yield('title') - laravel-bjyblog</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap -->
     <link href="{{ asset('statics/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -198,6 +199,15 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('statics/gentelella/build/js/custom.min.js') }}"></script>
+<script>
+    $(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    })
+</script>
 @yield('js')
 </body>
 </html>
