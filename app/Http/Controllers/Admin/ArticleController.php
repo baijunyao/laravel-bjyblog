@@ -174,6 +174,7 @@ class ArticleController extends Controller
         if ($result) {
             // 更新缓存
             Cache::forget('common:topArticle');
+            Cache::forget('common:tag');
         }
         return redirect('admin/article/index');
     }
