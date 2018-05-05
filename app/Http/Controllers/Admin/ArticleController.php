@@ -165,7 +165,7 @@ class ArticleController extends Controller
      * @param Article $articleModel
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id, Article $articleModel)
+    public function destroy($id, Article $articleModel, ArticleTag $articleTagModel)
     {
         $map = [
             'id' => $id
@@ -175,6 +175,12 @@ class ArticleController extends Controller
             // 更新缓存
             Cache::forget('common:topArticle');
             Cache::forget('common:tag');
+
+            // 删除文章后先同步删除关联表 article_tags 中的数据
+            $map = [
+                'article_id' => $id
+            ];
+            $articleTagModel->destroyData($map);
         }
         return redirect('admin/article/index');
     }
