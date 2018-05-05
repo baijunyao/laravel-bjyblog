@@ -12,19 +12,20 @@ class ArticleTag extends Base
      */
     public function addTagIds($article_id, $tag_ids)
     {
-        // 先删除此文章下的所有标签
+        // 先彻底删除此文章下的所有标签
         $map = [
             'article_id' => $article_id
         ];
-        $this->whereMap($map)->forceDelete();
-        // 循环插入
-        foreach ($tag_ids as $v) {
-            $data = [
+        $this->forceDeleteData($map);
+        // 组合批量插入的数据
+        $data = [];
+        foreach ($tag_ids as $k => $v) {
+            $data[] = [
                 'article_id' => $article_id,
                 'tag_id' => $v
             ];
-            $this->storeData($data);
         }
+        $this->insert($data);
     }
 
     /**
