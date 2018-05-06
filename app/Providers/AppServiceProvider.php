@@ -32,10 +32,10 @@ class AppServiceProvider extends ServiceProvider
                 // 获取分类导航
                 return Category::select('id', 'name')->orderBy('sort')->get();
             });
-
+            Cache::forget('common:tag');
             $tag = Cache::remember('common:tag', 10080, function () {
                 // 获取标签下的文章数统计
-                return Tag::withCount('articles')->get();
+                return Tag::has('articles')->withCount('articles')->get();
             });
 
             $topArticle = Cache::remember('common:topArticle', 10080, function () {
