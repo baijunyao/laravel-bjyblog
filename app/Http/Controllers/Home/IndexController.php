@@ -151,6 +151,9 @@ class IndexController extends Controller
     {
         // 获取标签
         $tag = Tag::select('id', 'name')->where('id', $id)->first();
+        if (is_null($tag)) {
+            return abort(404);
+        }
         // TODO 不取 markdown 和 html 字段
         // 获取标签下的文章
         $article = $tag->articles()
