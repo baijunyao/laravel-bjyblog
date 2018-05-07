@@ -102,9 +102,17 @@ class IndexController extends Controller
     public function category(Article $articleModel, $id)
     {
         // 获取分类数据
-        $category = Category::select('id', 'name', 'keywords', 'description')->where('id', $id)->first();
+        $category = Category::select('id', 'name', 'keywords', 'description')
+            ->where('id', $id)
+            ->first();
+        if (is_null($category)) {
+            return abort(404);
+        }
         // 获取分类下的文章
-        $article = $category->articles()->orderBy('created_at', 'desc')->with('tags')->paginate(10);
+        $article = $category->articles()
+            ->orderBy('created_at', 'desc')
+            ->with('tags')
+            ->paginate(10);
         // 为了和首页共用 html ； 此处手动组合分类数据
         if ($article->isNotEmpty()) {
             $article->setCollection(
