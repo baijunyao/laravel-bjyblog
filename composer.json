@@ -20,6 +20,7 @@
         "baijunyao/laravel-print": "3.0.*",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
+        "fukuball/jieba-php": "^0.33.0",
         "intervention/image": "^2.4",
         "joyqi/hyper-down": "dev-master",
         "laravel/framework": "5.5.*",
@@ -29,7 +30,8 @@
         "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
         "socialiteproviders/qq": "^3.0",
-        "socialiteproviders/weibo": "^3.0"
+        "socialiteproviders/weibo": "^3.0",
+        "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

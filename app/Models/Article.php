@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
+
 class Article extends Base
 {
+    use Searchable;
+
     /**
      * 过滤描述中的换行。
      *
