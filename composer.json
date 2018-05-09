@@ -20,7 +20,7 @@
         "baijunyao/laravel-print": "3.0.*",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
-        "fukuball/jieba-php": "^0.33.0",
+        "fukuball/jieba-php": "~0.25",
         "intervention/image": "^2.4",
         "joyqi/hyper-down": "dev-master",
         "laravel/framework": "5.5.*",
