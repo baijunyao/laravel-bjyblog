@@ -244,12 +244,15 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search(Request $request, Article $articleModel){
+    public function search(Request $request){
         $wd = clean($request->input('wd'));
-        $map = [
-            'title' => ['like', '%'.$wd.'%']
-        ];
-        $article = $articleModel->getHomeList($map);
+        $raw = Article::search($wd)->raw();
+        // 获取文章列表数据
+        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+            ->whereIn('id', $raw['ids'])
+            ->orderBy('created_at', 'desc')
+            ->with(['category', 'tags'])
+            ->paginate(10);
         $head = [
             'title' => $wd,
             'keywords' => '',
@@ -270,7 +273,7 @@ class IndexController extends Controller
      */
     public function test()
     {
-        
+
     }
 
 
