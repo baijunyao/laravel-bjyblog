@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        ini_set('memory_limit', "256M");
         //分配前台通用的数据
         view()->composer('home/*', function($view){
             $category = Cache::remember('common:category', 10080, function () {
