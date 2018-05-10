@@ -9,6 +9,16 @@ class Article extends Base
     use Searchable;
 
     /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return $this->only('id', 'title', 'keywords', 'description', 'markdown');
+    }
+
+    /**
      * 过滤描述中的换行。
      *
      * @param  string  $value
