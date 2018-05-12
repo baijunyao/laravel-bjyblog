@@ -43,6 +43,11 @@
 2. 使用TNTSearch实现全文搜索
 
 **注: 因使用TNTSearch请按执行如下命令升级**  
+.env 增加如下配置项
+```bash
+SCOUT_DRIVER=tntsearch
+TNTSEARCH_TOKENIZER=jieba
+```
 更新 composer  
 ```bash
 composer install --no-dev && composer dump-autoload
