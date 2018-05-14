@@ -143,6 +143,11 @@ class ArticleController extends Controller
         // 把markdown转html
         $data['html'] = markdown_to_html($data['markdown']);
         unset($data['tag_ids']);
+        // 先彻底删除此文章下的所有标签
+        $articleTagMap = [
+            'article_id' => $id
+        ];
+        $articleTagModel->forceDeleteData($articleTagMap);
         $articleTagModel->addTagIds($id, $tag_ids);
         // 编辑文章
         $map = [

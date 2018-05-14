@@ -12,11 +12,6 @@ class ArticleTag extends Base
      */
     public function addTagIds($article_id, $tag_ids)
     {
-        // 先彻底删除此文章下的所有标签
-        $map = [
-            'article_id' => $article_id
-        ];
-        $this->forceDeleteData($map);
         // 组合批量插入的数据
         $data = [];
         foreach ($tag_ids as $k => $v) {
