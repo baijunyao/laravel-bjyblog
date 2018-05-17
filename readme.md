@@ -3,7 +3,7 @@
 ## 链接
 - 博客：[http://baijunyao.com](http://baijunyao.com)   
 - github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
-- 码云：[https://gitee.com/shuaibai123/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)    
+- 码云：[https://gitee.com/baijunyao/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)    
 
 ## 简介
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
@@ -38,6 +38,28 @@
 - [韩槑槑](https://github.com/Han-MeiM)
 
 ## 更新记录
+#### v5.5.1.0 (2018-05-12)
+1. 访问不存在的分类和标签时返回404
+2. 使用TNTSearch实现全文搜索
+
+**注: 因使用TNTSearch请按执行如下命令升级**  
+.env 增加如下配置项
+```bash
+SCOUT_DRIVER=tntsearch
+TNTSEARCH_TOKENIZER=jieba
+```
+更新 composer  
+```bash
+composer install --no-dev && composer dump-autoload
+```
+初始化索引  
+```bash
+php artisan scout:import "App\Models\Article"
+```
+#### v5.5.0.23 (2018-05-06)
+1. 解决容易忘记选分类的问题
+2. 完善article_tags表操作的逻辑
+3. 不展示没有文章的标签
 #### v5.5.0.22 (2018-04-29)
 1. 修复在移动端上下篇文章因标题过长导致样式错乱的问题
 2. 解决添加和编辑分类时排序为空时报错的问题

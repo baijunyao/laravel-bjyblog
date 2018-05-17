@@ -143,6 +143,11 @@ class ArticleController extends Controller
         // 把markdown转html
         $data['html'] = markdown_to_html($data['markdown']);
         unset($data['tag_ids']);
+        // 先彻底删除此文章下的所有标签
+        $articleTagMap = [
+            'article_id' => $id
+        ];
+        $articleTagModel->forceDeleteData($articleTagMap);
         $articleTagModel->addTagIds($id, $tag_ids);
         // 编辑文章
         $map = [
@@ -182,7 +187,7 @@ class ArticleController extends Controller
             ];
             $articleTagModel->destroyData($map);
         }
-        return redirect('admin/article/index');
+        return redirect()->back();
     }
 
     /**
@@ -210,7 +215,7 @@ class ArticleController extends Controller
             ];
             $articleTagModel->restoreData($map);
         }
-        return redirect('admin/article/index');
+        return redirect()->back();
     }
 
     /**
@@ -233,6 +238,6 @@ class ArticleController extends Controller
             ];
             $articleTagModel->forceDeleteData($map);
         }
-        return redirect('admin/article/index');
+        return redirect()->back();
     }
 }

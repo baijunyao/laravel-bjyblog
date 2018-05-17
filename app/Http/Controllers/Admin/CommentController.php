@@ -59,7 +59,7 @@ class CommentController extends Controller
             // 更新缓存
             Cache::forget('common:newComment');
         }
-        return redirect('admin/comment/index');
+        return redirect()->back();
     }
 
     /**
