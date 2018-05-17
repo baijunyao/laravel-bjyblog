@@ -156,16 +156,14 @@
                     @endforeach
                 </div>
             </div>
-            <eq name="show_link" value="1">
-                <div class="b-link">
-                    <h4 class="b-title">友情链接</h4>
-                    <p>
-                        @foreach($friendshipLink as $v)
-                            <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
-                        @endforeach
-                    </p>
-                </div>
-            </eq>
+            <div class="b-link">
+                <h4 class="b-title">友情链接</h4>
+                <p>
+                    @foreach($friendshipLink as $v)
+                        <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
+                    @endforeach
+                </p>
+            </div>
         </div>
         <!-- 通用右部区域结束 -->
     </div>

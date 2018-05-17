@@ -34,12 +34,10 @@
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
                 <div class="js-content">{!! $data->html !!}</div>
-                <eq name="article['current']['is_original']" value="1">
-                    <p class="b-h-20"></p>
-                    <p class="b-copyright">
-                        {!! htmlspecialchars_decode($config['COPYRIGHT_WORD']) !!}
-                    </p>
-                </eq>
+                <p class="b-h-20"></p>
+                <p class="b-copyright">
+                    {!! htmlspecialchars_decode($config['COPYRIGHT_WORD']) !!}
+                </p>
                 <ul class="b-prev-next">
                     <li class="b-prev">
                         上一篇：
