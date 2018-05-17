@@ -187,7 +187,7 @@ class ArticleController extends Controller
             ];
             $articleTagModel->destroyData($map);
         }
-        return redirect('admin/article/index');
+        return redirect()->back();
     }
 
     /**
@@ -215,7 +215,7 @@ class ArticleController extends Controller
             ];
             $articleTagModel->restoreData($map);
         }
-        return redirect('admin/article/index');
+        return redirect()->back();
     }
 
     /**
@@ -238,6 +238,6 @@ class ArticleController extends Controller
             ];
             $articleTagModel->forceDeleteData($map);
         }
-        return redirect('admin/article/index');
+        return redirect()->back();
     }
 }

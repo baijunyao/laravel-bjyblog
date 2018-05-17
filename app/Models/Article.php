@@ -117,5 +117,5 @@ class Article extends Base
         }
         return $cover;
     }
-    
+
 }
