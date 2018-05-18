@@ -1,9 +1,10 @@
-
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
-
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "~font-awesome/scss/font-awesome.scss";
+
+@import "./home/index.scss";
+
+@import "~animate.css/animate.css";
+
+@import "~prismjs/themes/prism-okaidia.css";

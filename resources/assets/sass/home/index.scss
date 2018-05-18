@@ -89,7 +89,7 @@ a{
   min-height: 40px;
   overflow: hidden;
   .navbar-header{
-    background-image:url('../image/button_bg.png');
+    background-image:url('../../images/home/button_bg.png');
     -webkit-transition:background-position 0.5s;
     -moz-transition:background-position 0.5s;
     transition:background-position 0.5s;
@@ -106,7 +106,7 @@ a{
         position: absolute;
         left: 0;
         top: -5px;
-        background-image:url('../image/button_bg.png');
+        background-image:url('../../images/home/button_bg.png');
         -webkit-transition:background-position 0.5s;
         -moz-transition:background-position 0.5s;
         transition:background-position 0.5s;
@@ -338,7 +338,7 @@ a{
       color: #fff;
       border: none;
       float: left;
-      background-image:url('../image/button_bg.png');
+      background-image:url('../../images/home/button_bg.png');
       -webkit-transition:background-position 0.5s;
       -moz-transition:background-position 0.5s;
       transition:background-position 0.5s;
@@ -682,7 +682,7 @@ a{
           position: absolute;
           right: -4px;
           bottom: -2px;
-          background-image:url('../image/button_bg.png');
+          background-image:url('../../images/home/button_bg.png');
           -webkit-transition:background-position 0.5s;
           -moz-transition:background-position 0.5s;
           transition:background-position 0.5s;
@@ -991,3 +991,42 @@ a{
 }
 /* 为pc设置样式结束 */
 
+// pace css开始
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999999;
+  width: 100%;
+  -webkit-transform: translate3d(0, -50px, 0);
+  -ms-transform: translate3d(0, -50px, 0);
+  transform: translate3d(0, -50px, 0);
+  -webkit-transition: -webkit-transform .5s ease-out;
+  -ms-transition: -webkit-transform .5s ease-out;
+  transition: transform .5s ease-out;
+}
+
+.pace.pace-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.pace .pace-progress {
+  display: block;
+  position: fixed;
+  z-index: 999999999999;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 3px;
+  background: #0B94C1;
+  pointer-events: none;
+}
+
+// pace css结束

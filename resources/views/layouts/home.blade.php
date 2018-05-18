@@ -9,12 +9,7 @@
     <meta name="author" content="baijunyao,{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap-theme.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/css/bjy.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/home/index.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/animate/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('css')
 </head>
 <body>
@@ -91,30 +86,30 @@
                 </form>
             </div>
             @if(!empty($config['QQ_QUN_NUMBER']))
-                <div class="b-tags">
-                <h4 class="b-title">加入组织</h4>
-                <ul class="b-all-tname">
-                    <li class="b-qun-or-code">
-                        <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
-                    </li>
-                    <li class="b-qun-word">
-                        <p class="b-qun-nuber">
-                            1. 手Q扫左侧二维码
-                        </p>
-                        <p class="b-qun-nuber">
-                            2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
-                        </p>
-                        <p class="b-qun-code">
-                            3. 点击{!! $config['QQ_QUN_CODE'] !!}
-                        </p>
-                        <p class="b-qun-article">
-                            @if(!empty($qqQunArticle['id']))
-                                <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
-                            @endif
-                        </p>
-                    </li>
-                </ul>
-            </div>
+                <div class="b-qun">
+                    <h4 class="b-title">加入组织</h4>
+                    <ul class="b-all-tname">
+                        <li class="b-qun-or-code">
+                            <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
+                        </li>
+                        <li class="b-qun-word">
+                            <p class="b-qun-nuber">
+                                1. 手Q扫左侧二维码
+                            </p>
+                            <p class="b-qun-nuber">
+                                2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
+                            </p>
+                            <p class="b-qun-code">
+                                3. 点击{!! $config['QQ_QUN_CODE'] !!}
+                            </p>
+                            <p class="b-qun-article">
+                                @if(!empty($qqQunArticle['id']))
+                                    <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                                @endif
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             @endif
             <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
@@ -137,7 +132,7 @@
                     @endforeach
                 </p>
             </div>
-            <div class="b-link">
+            <div class="b-comment-list">
                 <h4 class="b-title">最新评论</h4>
                 <div>
                     @foreach($newComment as $v)

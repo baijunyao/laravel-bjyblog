@@ -6,15 +6,6 @@
 
 @section('description', $data->description)
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('statics/prism/prism.min.css') }}" />
-    <style>
-        .js-content p{
-            margin-bottom: 20px;;
-        }
-    </style>
-@endsection
-
 @section('content')
     <!-- 左侧文章开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
