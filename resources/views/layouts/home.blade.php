@@ -211,23 +211,14 @@
 </div>
 <!-- 登录模态框结束 -->
 
-<script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
+<!-- 百度页面自动提交开始 -->
 <script>
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-</script>
-<script src="{{ asset('statics/bootstrap-3.3.5/js/bootstrap.min.js') }}"></script>
-<!--[if lt IE 9]>
-<script src="{{ asset('statics/js/html5shiv.min.js') }}"></script>
-<script src="{{ asset('statics/js/respond.min.js') }}"></script>
-<![endif]-->
-<script src="{{ asset('statics/pace/pace.min.js') }}"></script>
-<script src="{{ asset('js/home/index.js') }}"></script>
-<!-- 百度页面自动提交开始 -->
-<script>
     (function(){
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
