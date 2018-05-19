@@ -40,3 +40,4 @@ require('prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard')
 require('./home/index');
 
 require('./home/comment');
+

@@ -9,7 +9,7 @@
     <meta name="author" content="baijunyao,{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     @yield('css')
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" onclick="recordId('/',0)">
+            <a class="navbar-brand" href="/">
                 <div class="hidden-xs b-nav-background"></div>
                 <ul class="b-logo-code">
                     <li class="b-lc-start">&lt;?php</li>
@@ -37,11 +37,11 @@
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
                 <li class="b-nav-cname  @if($category_id == 'index') b-nav-active @endif">
-                <a href="/" onclick="recordId('/',0)">首页</a>
+                <a href="/">首页</a>
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if($v->id == $category_id) b-nav-active @endif">
-                        <a href="{{ url('category/'.$v->id) }}" onclick="return recordId('cid', '{{ $v->id }}')">{{ $v->name }}</a>
+                        <a href="{{ url('category/'.$v->id) }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 <li class="b-nav-cname @if($category_id == 'chat') b-nav-active @endif">
@@ -57,11 +57,11 @@
                 @if(empty(session('user.name')))
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
-                        <a href="javascript:;" onclick="login()">登录</a>
+                        <a class="js-login-btn" href="javascript:;">登录</a>
                     </li>
                 @else
                     <li class="b-user-info">
-                        <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}"  /></span>
+                        <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}" /></span>
                         <span class="b-nickname">{{ session('user.name') }}</span>
                         <span><a href="{{ url('auth/oauth/logout') }}">退出</a></span>
                     </li>
@@ -119,7 +119,7 @@
                         <?php $tag_i++; ?>
                         <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->articles_count }})</a>
+                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}">{{ $v->name }} ({{ $v->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>
@@ -176,7 +176,7 @@
                 </li>
             </ul>
             <div class="b-h-20"></div>
-            <a class="go-top fa fa-angle-up animated jello" href="javascript:;" onclick="goTop()"></a>
+            <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>
         </footer>
         <!-- 通用底部文件结束 -->
     </div>
@@ -211,7 +211,7 @@
 </div>
 <!-- 登录模态框结束 -->
 
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 <!-- 百度页面自动提交开始 -->
 <script>
     $.ajaxSetup({

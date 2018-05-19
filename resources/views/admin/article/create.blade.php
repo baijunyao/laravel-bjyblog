@@ -129,7 +129,7 @@
                 <div class="modal-body text-center">
                     <form class="form-inline" role="form">
                         <input class="form-control bjy-tag-name" type="text" placeholder="标签名">
-                        <button type="button" class="btn btn-success" onclick="addTag()">提交</button>
+                        <button type="button" class="btn btn-success js-add-tag">提交</button>
                     </form>
                 </div>
             </div>
@@ -174,8 +174,8 @@
             });
         }
         icheckInit();
-
-        function addTag() {
+        // 添加标签
+        $('.js-add-tag').click(function () {
             var postData = {
                 name: $('.bjy-tag-name').val()
             }
@@ -196,7 +196,7 @@
                     })
                 }
             })
-        }
+        })
     </script>
 
 

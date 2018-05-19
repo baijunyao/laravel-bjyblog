@@ -57,6 +57,15 @@ $(function(){
         $(val).attr('src', img);
     });
 
+    // 点击返回顶部
+    $('.go-top').click(function () {
+        $('body,html').animate({scrollTop:0},500);
+    })
+
+    // 登录
+    $('.js-login-btn').click(function () {
+        $('#b-modal-login').modal('show');
+    })
 })
 
 /**
@@ -78,23 +87,15 @@ function getWidthLeft(obj,change){
     $('.b-nav-mobile').stop().animate({'left':mobileLeft,'width':mobileWidth}, 300);
 }
 
-// 登录
-function login(){
-    $('#b-modal-login').modal('show');
-    setCookie('this_url',window.location.href);
-}
-
 // 退出
 function logout(){
     $.post(logoutUrl);
     setTimeout(function(){location.replace(location)},500);
 }
 
-// 点击返回顶部
-function goTop(){
-    $('body,html').animate({scrollTop:0},500);
-    return false;
-}
+
+
+
 
 /**
  * 设置cookie
