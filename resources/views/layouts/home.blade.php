@@ -211,7 +211,7 @@
 </div>
 <!-- 登录模态框结束 -->
 
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js').time() }}"></script>
 <!-- 百度页面自动提交开始 -->
 <script>
     $.ajaxSetup({
@@ -231,6 +231,47 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);
     })();
+    // 点击添加表情
+    $('.b-comment').on('click','.b-tuzki img', function(event) {
+        /**
+         * 在textarea光标后插入内容
+         * @param  string  str 需要插入的内容
+         */
+        function insertHtmlAtCaret(str) {
+            var sel, range;
+            if(window.getSelection){
+                sel = window.getSelection();
+                if (sel.getRangeAt && sel.rangeCount) {
+                    range = sel.getRangeAt(0);
+                    range.deleteContents();
+                    var el = document.createElement("div");
+                    el.innerHTML = str;
+                    var frag = document.createDocumentFragment(), node, lastNode;
+                    while ( (node = el.firstChild) ) {
+                        lastNode = frag.appendChild(node);
+                    }
+                    range.insertNode(frag);
+                    if(lastNode){
+                        range = range.cloneRange();
+                        range.setStartAfter(lastNode);
+                        range.collapse(true);
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+                }
+            } else if (document.selection && document.selection.type != "Control") {
+                document.selection.createRange().pasteHTML(str);
+            }
+        }
+
+        var str=$(this).prop("outerHTML");
+        console.log(str);
+        console.log($(this).parents('.b-box-textarea').eq(0).find('.b-box-content'));
+        $(this).parents('.b-box-textarea').eq(0).find('.b-box-content').focus();
+        insertHtmlAtCaret(str);
+        $(this).parents('.b-tuzki').hide();
+        tuzkiNumber=1;
+    });
 </script>
 <!-- 百度页面自动提交结束 -->
 
