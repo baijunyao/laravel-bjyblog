@@ -15,7 +15,7 @@
     "require": {
         "php": ">=7.0.0",
         "appstract/laravel-opcache": "^1.4",
-        "baijunyao/laravel-flash": "1.1.*",
+        "baijunyao/laravel-flash": "1.1.0",
         "baijunyao/laravel-model": "1.1.*",
         "baijunyao/laravel-print": "3.0.*",
         "doctrine/dbal": "^2.5",
