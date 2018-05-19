@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4047073c46c70ebd32cfad4177ac2144",
+    "content-hash": "4f3d6fe9f22e79f763e2302a5b4ca9a1",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -1746,16 +1746,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v3.0.9",
+            "version": "v3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "fc1c8d415699e502f3e61cbc61e3250d5bd942eb"
+                "reference": "4d29ba66fdb38ec994b778e5e51657555cc10511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/fc1c8d415699e502f3e61cbc61e3250d5bd942eb",
-                "reference": "fc1c8d415699e502f3e61cbc61e3250d5bd942eb",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/4d29ba66fdb38ec994b778e5e51657555cc10511",
+                "reference": "4d29ba66fdb38ec994b778e5e51657555cc10511",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1810,20 +1810,20 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2017-11-06T16:02:48+00:00"
+            "time": "2018-05-12T17:44:53+00:00"
         },
         {
             "name": "laravel/tinker",
-            "version": "v1.0.6",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "b22fe905fcefdffae76b011e27c7ac09e07e052b"
+                "reference": "e3086ee8cb1f54a39ae8dcb72d1c37d10128997d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/b22fe905fcefdffae76b011e27c7ac09e07e052b",
-                "reference": "b22fe905fcefdffae76b011e27c7ac09e07e052b",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/e3086ee8cb1f54a39ae8dcb72d1c37d10128997d",
+                "reference": "e3086ee8cb1f54a39ae8dcb72d1c37d10128997d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1879,7 +1879,7 @@
                 "laravel",
                 "psysh"
             ],
-            "time": "2018-04-16T12:10:37+00:00"
+            "time": "2018-05-17T13:42:07+00:00"
         },
         {
             "name": "league/flysystem",
@@ -4526,16 +4526,16 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "86b5ca2f67173c9d34340845dd690149c886a605"
+                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/86b5ca2f67173c9d34340845dd690149c886a605",
-                "reference": "86b5ca2f67173c9d34340845dd690149c886a605",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/bd8c740097eb9f2fc3735250fc1912bc811a954e",
+                "reference": "bd8c740097eb9f2fc3735250fc1912bc811a954e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4546,19 +4546,24 @@
             },
             "require": {
                 "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
                 "ext-zip": "*",
                 "php": "^5.6 || ~7.0",
                 "symfony/process": "^2.8 || ^3.1 || ^4.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "guzzle/guzzle": "^3.4.1",
-                "php-coveralls/php-coveralls": "^1.0.2",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "php-coveralls/php-coveralls": "^2.0",
                 "php-mock/php-mock-phpunit": "^1.1",
                 "phpunit/phpunit": "^5.7",
                 "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
                 "squizlabs/php_codesniffer": "^2.6",
                 "symfony/var-dumper": "^3.3 || ^4.0"
+            },
+            "suggest": {
+                "ext-SimpleXML": "For Firefox profile creation"
             },
             "type": "library",
             "extra": {
@@ -4583,7 +4588,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2017-11-15T11:08:09+00:00"
+            "time": "2018-05-16T17:37:13+00:00"
         },
         {
             "name": "filp/whoops",
