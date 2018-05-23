@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use URL;
 use Auth;
 use App\Models\OauthUser;
 use Socialite;
@@ -21,7 +22,7 @@ class OAuthController extends Controller
     {
         // 记录登录前的url
         $data = [
-            'targetUrl' => $_SERVER['HTTP_REFERER']
+            'targetUrl' => URL::previous()
         ];
         session($data);
         return Socialite::driver($service)->redirect();
