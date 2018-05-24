@@ -1,7 +1,30 @@
 $(function () {
 
     // 点击添加表情
-    $('b-comment').on('click','.b-tuzki img', function(event) {
+    $('.b-comment').on('click','.b-tuzki img', function(event) {
+
+        /**
+         * 将光标移到编辑框的最后
+         * @param contentEditableElement
+         */
+        function setEndOfContenteditable(contentEditableElement){
+            var range,selection;
+            if(document.createRange)
+            {
+                range = document.createRange();
+                range.selectNodeContents(contentEditableElement);
+                range.collapse(false);
+                selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+            } else if(document.selection) {
+                range = document.body.createTextRange();
+                range.moveToElementText(contentEditableElement);
+                range.collapse(false);
+                range.select();
+            }
+        }
+
         /**
          * 在textarea光标后插入内容
          * @param  string  str 需要插入的内容
@@ -34,7 +57,7 @@ $(function () {
         }
 
         var str=$(this).prop("outerHTML");
-        $(this).parents('.b-box-textarea').eq(0).find('.b-box-content').focus();
+        setEndOfContenteditable($(this).parents('.b-box-textarea').eq(0).find('.b-box-content').get(0))
         insertHtmlAtCaret(str);
         $(this).parents('.b-tuzki').hide();
         tuzkiNumber=1;

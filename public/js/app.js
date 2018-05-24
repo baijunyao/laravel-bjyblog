@@ -36626,7 +36626,7 @@ $(function () {
     // 在本地存储评论的内容
     $('.b-comment').on('change', '.js-hint', function () {
         localStorage.setItem('comment', $(this).html());
-    });
+    })
 
     // 从本地存储中获取评论的内容
     if (localStorage.getItem('comment') !== null) {

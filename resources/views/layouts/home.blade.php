@@ -232,61 +232,31 @@
         s.parentNode.insertBefore(bp, s);
     })();
     $(function () {
-        // js动态加载表情
-        $('.b-comment').on('click', '.js-get-tuzki', function () {
-
-            //获取当前光标位置
-            const getCursortPosition = function (element) {
-                var caretOffset = 0;
-                var doc = element.ownerDocument || element.document;
-                var win = doc.defaultView || doc.parentWindow;
-                var sel;
-                if (typeof win.getSelection != "undefined") {//谷歌、火狐
-                    sel = win.getSelection();
-                    if (sel.rangeCount > 0) {//选中的区域
-                        var range = win.getSelection().getRangeAt(0);
-                        var preCaretRange = range.cloneRange();//克隆一个选中区域
-                        preCaretRange.selectNodeContents(element);//设置选中区域的节点内容为当前节点
-                        preCaretRange.setEnd(range.endContainer, range.endOffset);  //重置选中区域的结束位置
-                        caretOffset = preCaretRange.toString().length;
-                    }
-                } else if ((sel = doc.selection) && sel.type != "Control") {//IE
-                    var textRange = sel.createRange();
-                    var preCaretTextRange = doc.body.createTextRange();
-                    preCaretTextRange.moveToElementText(element);
-                    preCaretTextRange.setEndPoint("EndToEnd", textRange);
-                    caretOffset = preCaretTextRange.text.length;
-                }
-                return caretOffset;
-            }
-            console.log($('.b-box-content'));
-            console.log(document.querySelector('.b-box-content'));
-
-
-            // console.log(getCursortPosition());
-            return false;
-
-            var tuzkiObj=$(this).siblings('.b-tuzki');
-            if(tuzkiNumber){
-                tuzkiObj.show();
-                var alt=['Kiss', 'Love', 'Yeah', '啊！', '背扭', '顶', '抖胸', '88', '汗', '瞌睡', '鲁拉', '拍砖', '揉脸', '生日快乐', '摊手', '睡觉', '瘫坐', '无聊', '星星闪', '旋转', '也不行', '郁闷', '正Music', '抓墙', '撞墙至死', '歪头', '戳眼', '飘过', '互相拍砖', '砍死你', '扔桌子', '少林寺', '什么？', '转头', '我爱牛奶', '我踢', '摇晃', '晕厥', '在笼子里', '震荡'];
-                var str='';
-                for (var i = 1; i < 41; i++) {
-                    str+='<img src="http://'+window.location.host+'/statics/emote/tuzki/'+i+'.gif" title="'+alt[i-1]+'" alt="'+titleName+'">';
-                };
-                tuzkiObj.html(str);
-                tuzkiNumber=0;
-            }else{
-                tuzkiObj.hide();
-                tuzkiNumber=1;
-            }
-        })
-
-
-
-
         // 点击添加表情
         $('.b-comment').on('click','.b-tuzki img', function(event) {
+
+            /**
+             * 将光标移到编辑框的最后
+             * @param contentEditableElement
+             */
+            function setEndOfContenteditable(contentEditableElement){
+                var range,selection;
+                if(document.createRange)
+                {
+                    range = document.createRange();
+                    range.selectNodeContents(contentEditableElement);
+                    range.collapse(false);
+                    selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                } else if(document.selection) {
+                    range = document.body.createTextRange();
+                    range.moveToElementText(contentEditableElement);
+                    range.collapse(false);
+                    range.select();
+                }
+            }
+
             /**
              * 在textarea光标后插入内容
              * @param  string  str 需要插入的内容
@@ -319,8 +289,7 @@
             }
 
             var str=$(this).prop("outerHTML");
-            console.log(str);
-            console.log($(this).parents('.b-box-textarea').eq(0).find('.b-box-content'));
+            setEndOfContenteditable($(this).parents('.b-box-textarea').eq(0).find('.b-box-content').get(0))
             insertHtmlAtCaret(str);
             $(this).parents('.b-tuzki').hide();
             tuzkiNumber=1;
