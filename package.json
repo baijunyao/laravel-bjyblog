@@ -16,6 +16,7 @@
     "jquery": "^3.2",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
+    "pace": "github:hubspot/pace#v1.0.2",
     "pace-progress": "^1.0.2",
     "vue": "^2.5.7"
   },

@@ -37,6 +37,8 @@ require('prismjs/plugins/keep-markup/prism-keep-markup')
 require('prismjs/plugins/show-language/prism-show-language')
 require('prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard')
 
+require('pace/pace');
+
 require('./home/index');
 
 require('./home/comment');

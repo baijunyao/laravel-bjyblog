@@ -1,5 +1,23 @@
 $(function () {
 
+    // js动态加载表情
+    $('.b-comment').on('click', '.js-get-tuzki', function () {
+        var tuzkiObj=$(this).siblings('.b-tuzki');
+        if(tuzkiNumber){
+            tuzkiObj.show();
+            var alt=['Kiss', 'Love', 'Yeah', '啊！', '背扭', '顶', '抖胸', '88', '汗', '瞌睡', '鲁拉', '拍砖', '揉脸', '生日快乐', '摊手', '睡觉', '瘫坐', '无聊', '星星闪', '旋转', '也不行', '郁闷', '正Music', '抓墙', '撞墙至死', '歪头', '戳眼', '飘过', '互相拍砖', '砍死你', '扔桌子', '少林寺', '什么？', '转头', '我爱牛奶', '我踢', '摇晃', '晕厥', '在笼子里', '震荡'];
+            var str='';
+            for (var i = 1; i < 41; i++) {
+                str+='<img src="http://'+window.location.host+'/statics/emote/tuzki/'+i+'.gif" title="'+alt[i-1]+'" alt="'+titleName+'">';
+            };
+            tuzkiObj.html(str);
+            tuzkiNumber=0;
+        }else{
+            tuzkiObj.hide();
+            tuzkiNumber=1;
+        }
+    })
+
     // 点击添加表情
     $('.b-comment').on('click','.b-tuzki img', function(event) {
 

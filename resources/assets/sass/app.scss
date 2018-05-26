@@ -3,8 +3,6 @@
 
 @import "~font-awesome/scss/font-awesome.scss";
 
-@import "./home/index.scss";
-
 @import "~animate.css/animate.css";
 
 @import "~prismjs/themes/prism-okaidia.css";
@@ -12,3 +10,7 @@
 @import "~prismjs/plugins/toolbar/prism-toolbar.css";
 @import "~prismjs/plugins/previewers/prism-previewers.css";
 @import "~prismjs/plugins/command-line/prism-command-line.css";
+
+@import "~pace/themes/blue/pace-theme-flash.css";
+
+@import "./home/index.scss";

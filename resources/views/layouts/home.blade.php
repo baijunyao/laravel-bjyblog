@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('pace/themes/blue/pace-theme-flash.css') }}">--}}
     @yield('css')
 </head>
 <body>
@@ -212,6 +213,7 @@
 <!-- 登录模态框结束 -->
 
 <script src="{{ mix('js/app.js').time() }}"></script>
+{{--<script src="{{ asset('pace/pace.js') }}"></script>--}}
 <!-- 百度页面自动提交开始 -->
 <script>
     $.ajaxSetup({
@@ -219,6 +221,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    // 百度自动提交
     (function(){
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
@@ -231,71 +234,6 @@
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);
     })();
-    $(function () {
-        // 点击添加表情
-        $('.b-comment').on('click','.b-tuzki img', function(event) {
-
-            /**
-             * 将光标移到编辑框的最后
-             * @param contentEditableElement
-             */
-            function setEndOfContenteditable(contentEditableElement){
-                var range,selection;
-                if(document.createRange)
-                {
-                    range = document.createRange();
-                    range.selectNodeContents(contentEditableElement);
-                    range.collapse(false);
-                    selection = window.getSelection();
-                    selection.removeAllRanges();
-                    selection.addRange(range);
-                } else if(document.selection) {
-                    range = document.body.createTextRange();
-                    range.moveToElementText(contentEditableElement);
-                    range.collapse(false);
-                    range.select();
-                }
-            }
-
-            /**
-             * 在textarea光标后插入内容
-             * @param  string  str 需要插入的内容
-             */
-            function insertHtmlAtCaret(str) {
-                var sel, range;
-                if(window.getSelection){
-                    sel = window.getSelection();
-                    if (sel.getRangeAt && sel.rangeCount) {
-                        range = sel.getRangeAt(0);
-                        range.deleteContents();
-                        var el = document.createElement("div");
-                        el.innerHTML = str;
-                        var frag = document.createDocumentFragment(), node, lastNode;
-                        while ( (node = el.firstChild) ) {
-                            lastNode = frag.appendChild(node);
-                        }
-                        range.insertNode(frag);
-                        if(lastNode){
-                            range = range.cloneRange();
-                            range.setStartAfter(lastNode);
-                            range.collapse(true);
-                            sel.removeAllRanges();
-                            sel.addRange(range);
-                        }
-                    }
-                } else if (document.selection && document.selection.type != "Control") {
-                    document.selection.createRange().pasteHTML(str);
-                }
-            }
-
-            var str=$(this).prop("outerHTML");
-            setEndOfContenteditable($(this).parents('.b-box-textarea').eq(0).find('.b-box-content').get(0))
-            insertHtmlAtCaret(str);
-            $(this).parents('.b-tuzki').hide();
-            tuzkiNumber=1;
-        });
-    })
-
 </script>
 <!-- 百度页面自动提交结束 -->
 
