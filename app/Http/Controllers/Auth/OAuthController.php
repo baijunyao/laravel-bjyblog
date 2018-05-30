@@ -114,10 +114,9 @@ class OAuthController extends Controller
         try {
             // 下载最新的头像到本地
             $client = new Client();
-            $result = $client->request('GET', $user->avatar, [
+            $client->request('GET', $user->avatar, [
                 'sink' => $avatarPath
             ]);
-            dump($result);
         } catch (ClientException $e) {
             // 如果下载失败；则使用默认图片
             copy(public_path('uploads/avatar/default.jpg'), $avatarPath);
