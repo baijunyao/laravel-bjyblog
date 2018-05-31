@@ -66,6 +66,9 @@ $(function(){
     $('.js-login-btn').click(function () {
         $('#b-modal-login').modal('show');
     })
+
+    // 开启进度条
+    Pace.start()
 })
 
 /**

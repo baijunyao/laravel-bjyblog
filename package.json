@@ -17,13 +17,11 @@
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "pace": "github:hubspot/pace#v1.0.2",
-    "pace-progress": "^1.0.2",
     "vue": "^2.5.7"
   },
   "dependencies": {
     "animate.css": "^3.6.1",
     "font-awesome": "^4.7.0",
-    "pace-progress": "^1.0.2",
     "prismjs": "^1.14.0"
   }
 }
