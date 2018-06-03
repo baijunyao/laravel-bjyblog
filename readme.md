@@ -42,6 +42,11 @@ php artisan scout:import "App\Models\Article"
 ### 主要贡献者
 - [韩槑槑](https://github.com/Han-MeiM)
 
+### 分支说明
+- develop: 在此分支上开发新功能
+- test: 我博客使用此分支用于测试新功能
+- master: 经过测试的的稳定代码
+
 ## 更新记录
 #### v5.5.1.2 (2018-05-26)
 1. 默认使用异步创建索引
