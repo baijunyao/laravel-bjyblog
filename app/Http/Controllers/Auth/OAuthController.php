@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use URL;
 use Auth;
 use App\Models\OauthUser;
 use Socialite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 class OAuthController extends Controller
 {
@@ -21,7 +24,7 @@ class OAuthController extends Controller
     {
         // 记录登录前的url
         $data = [
-            'targetUrl' => $_SERVER['HTTP_REFERER']
+            'targetUrl' => URL::previous()
         ];
         session($data);
         return Socialite::driver($service)->redirect();
@@ -45,7 +48,6 @@ class OAuthController extends Controller
         ];
         // 获取用户资料
         $user = Socialite::driver($service)->user();
-
         // 组合存入session中的值
         $sessionData = [
             'user' => [
@@ -107,15 +109,19 @@ class OAuthController extends Controller
             $sessionData['user']['email'] = '';
             $sessionData['user']['is_admin'] = 0;
         }
-        // 下载最新的头像到本地
-        $avatarContent = curl_get_contents($user->avatar);
+
         $avatarPath = public_path('uploads/avatar/'.$userId.'.jpg');
-        // 如果下载失败；则使用默认图片
-        if (empty($avatarContent)) {
+        try {
+            // 下载最新的头像到本地
+            $client = new Client();
+            $client->request('GET', $user->avatar, [
+                'sink' => $avatarPath
+            ]);
+        } catch (ClientException $e) {
+            // 如果下载失败；则使用默认图片
             copy(public_path('uploads/avatar/default.jpg'), $avatarPath);
-        } else {
-            file_put_contents($avatarPath, $avatarContent);
         }
+
         $sessionData['user']['avatar'] = url('uploads/avatar/'.$userId.'.jpg');
         // 将数据存入session
         session($sessionData);

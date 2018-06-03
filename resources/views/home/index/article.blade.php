@@ -6,15 +6,6 @@
 
 @section('description', $data->description)
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('statics/prism/prism.min.css') }}" />
-    <style>
-        .js-content p{
-            margin-bottom: 20px;;
-        }
-    </style>
-@endsection
-
 @section('content')
     <!-- 左侧文章开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
@@ -34,12 +25,10 @@
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
                 <div class="js-content">{!! $data->html !!}</div>
-                <eq name="article['current']['is_original']" value="1">
-                    <p class="b-h-20"></p>
-                    <p class="b-copyright">
-                        {!! htmlspecialchars_decode($config['COPYRIGHT_WORD']) !!}
-                    </p>
-                </eq>
+                <p class="b-h-20"></p>
+                <p class="b-copyright">
+                    {!! htmlspecialchars_decode($config['COPYRIGHT_WORD']) !!}
+                </p>
                 <ul class="b-prev-next">
                     <li class="b-prev">
                         上一篇：
@@ -70,17 +59,17 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
                 <img class="b-head-img" src="@if(empty(session('user.avatar'))){{ asset('images/home/default_head_img.gif') }}@else{{ session('user.avatar') }}@endif" alt="{{ $config['WEB_NAME'] }}" title="{{ $config['WEB_NAME'] }}">
                 <div class="b-box-textarea">
-                    <div class="b-box-content" @if(session()->has('user'))contenteditable="true" @endif onfocus="delete_hint(this)" onchange="changeWord(this)">请先登录后发表评论</div>
+                    <div class="b-box-content js-hint" @if(session()->has('user'))contenteditable="true" @endif>请先登录后发表评论</div>
                     <ul class="b-emote-submit">
                         <li class="b-emote">
-                            <i class="fa fa-smile-o" onclick="getTuzki(this)"></i>
+                            <i class="fa fa-smile-o js-get-tuzki"></i>
                             <input class="form-control b-email" type="text" name="email" placeholder="接收回复的email地址" value="{{ session('user.email') }}">
                             <div class="b-tuzki">
 
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input type="button" value="评 论" aid="{{ request()->id }}" pid="0" onclick="comment(this)">
+                            <input class="js-comment-btn" type="button" value="评 论" aid="{{ request()->id }}" pid="0">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -104,7 +93,7 @@
                             <span class="b-user-name">{{ $v['name'] }}</span>：{!! $v['content'] !!}
                         </p>
                         <p class="b-date">
-                            {{ $v['created_at'] }} <a href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}" onclick="reply(this)">回复</a>
+                            {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">回复</a>
                         </p>
                         <foreach name="v['child']" item="n">
                         @foreach($v['child'] as $m => $n)
@@ -119,7 +108,7 @@
                                         <span class="b-user-name">{{ $n['reply_name'] }}</span>：{!! $n['content'] !!}
                                     </li>
                                     <li class="b-date">
-                                        {{ $n['created_at'] }} <a href="javascript:;" aid="{{ request()->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}" onclick="reply(this)">回复</a>
+                                        {{ $n['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}">回复</a>
                                     </li>
                                     <li class="b-clear-float"></li>
                                 </ul>
@@ -142,7 +131,6 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('statics/prism/prism.min.js') }}"></script>
     <script>
         // 添加行数
         $('pre').addClass('line-numbers');
@@ -155,5 +143,4 @@
         titleName = '{{ $config['WEB_NAME'] }}';
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
-    <script src="{{ asset('js/home/comment.js') }}"></script>
 @endsection

@@ -9,12 +9,8 @@
     <meta name="author" content="baijunyao,{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap-theme.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/font-awesome-4.7.0/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/css/bjy.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/home/index.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/animate/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+{{--    <link rel="stylesheet" href="{{ asset('pace/themes/blue/pace-theme-flash.css') }}">--}}
     @yield('css')
 </head>
 <body>
@@ -28,7 +24,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" onclick="recordId('/',0)">
+            <a class="navbar-brand" href="/">
                 <div class="hidden-xs b-nav-background"></div>
                 <ul class="b-logo-code">
                     <li class="b-lc-start">&lt;?php</li>
@@ -42,11 +38,11 @@
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
                 <li class="b-nav-cname  @if($category_id == 'index') b-nav-active @endif">
-                <a href="/" onclick="recordId('/',0)">首页</a>
+                <a href="/">首页</a>
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if($v->id == $category_id) b-nav-active @endif">
-                        <a href="{{ url('category/'.$v->id) }}" onclick="return recordId('cid', '{{ $v->id }}')">{{ $v->name }}</a>
+                        <a href="{{ url('category/'.$v->id) }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 <li class="b-nav-cname @if($category_id == 'chat') b-nav-active @endif">
@@ -62,11 +58,11 @@
                 @if(empty(session('user.name')))
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
-                        <a href="javascript:;" onclick="login()">登录</a>
+                        <a class="js-login-btn" href="javascript:;">登录</a>
                     </li>
                 @else
                     <li class="b-user-info">
-                        <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}"  /></span>
+                        <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}" /></span>
                         <span class="b-nickname">{{ session('user.name') }}</span>
                         <span><a href="{{ url('auth/oauth/logout') }}">退出</a></span>
                     </li>
@@ -91,30 +87,30 @@
                 </form>
             </div>
             @if(!empty($config['QQ_QUN_NUMBER']))
-                <div class="b-tags">
-                <h4 class="b-title">加入组织</h4>
-                <ul class="b-all-tname">
-                    <li class="b-qun-or-code">
-                        <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
-                    </li>
-                    <li class="b-qun-word">
-                        <p class="b-qun-nuber">
-                            1. 手Q扫左侧二维码
-                        </p>
-                        <p class="b-qun-nuber">
-                            2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
-                        </p>
-                        <p class="b-qun-code">
-                            3. 点击{!! $config['QQ_QUN_CODE'] !!}
-                        </p>
-                        <p class="b-qun-article">
-                            @if(!empty($qqQunArticle['id']))
-                                <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
-                            @endif
-                        </p>
-                    </li>
-                </ul>
-            </div>
+                <div class="b-qun">
+                    <h4 class="b-title">加入组织</h4>
+                    <ul class="b-all-tname">
+                        <li class="b-qun-or-code">
+                            <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
+                        </li>
+                        <li class="b-qun-word">
+                            <p class="b-qun-nuber">
+                                1. 手Q扫左侧二维码
+                            </p>
+                            <p class="b-qun-nuber">
+                                2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
+                            </p>
+                            <p class="b-qun-code">
+                                3. 点击{!! $config['QQ_QUN_CODE'] !!}
+                            </p>
+                            <p class="b-qun-article">
+                                @if(!empty($qqQunArticle['id']))
+                                    <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                                @endif
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             @endif
             <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
@@ -124,7 +120,7 @@
                         <?php $tag_i++; ?>
                         <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }} ({{ $v->articles_count }})</a>
+                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}">{{ $v->name }} ({{ $v->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>
@@ -137,7 +133,7 @@
                     @endforeach
                 </p>
             </div>
-            <div class="b-link">
+            <div class="b-comment-list">
                 <h4 class="b-title">最新评论</h4>
                 <div>
                     @foreach($newComment as $v)
@@ -156,16 +152,14 @@
                     @endforeach
                 </div>
             </div>
-            <eq name="show_link" value="1">
-                <div class="b-link">
-                    <h4 class="b-title">友情链接</h4>
-                    <p>
-                        @foreach($friendshipLink as $v)
-                            <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
-                        @endforeach
-                    </p>
-                </div>
-            </eq>
+            <div class="b-link">
+                <h4 class="b-title">友情链接</h4>
+                <p>
+                    @foreach($friendshipLink as $v)
+                        <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
+                    @endforeach
+                </p>
+            </div>
         </div>
         <!-- 通用右部区域结束 -->
     </div>
@@ -183,7 +177,7 @@
                 </li>
             </ul>
             <div class="b-h-20"></div>
-            <a class="go-top fa fa-angle-up animated jello" href="javascript:;" onclick="goTop()"></a>
+            <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>
         </footer>
         <!-- 通用底部文件结束 -->
     </div>
@@ -218,23 +212,16 @@
 </div>
 <!-- 登录模态框结束 -->
 
-<script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
+<script src="{{ mix('js/app.js').time() }}"></script>
+{{--<script src="{{ asset('pace/pace.js') }}"></script>--}}
+<!-- 百度页面自动提交开始 -->
 <script>
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-</script>
-<script src="{{ asset('statics/bootstrap-3.3.5/js/bootstrap.min.js') }}"></script>
-<!--[if lt IE 9]>
-<script src="{{ asset('statics/js/html5shiv.min.js') }}"></script>
-<script src="{{ asset('statics/js/respond.min.js') }}"></script>
-<![endif]-->
-<script src="{{ asset('statics/pace/pace.min.js') }}"></script>
-<script src="{{ asset('js/home/index.js') }}"></script>
-<!-- 百度页面自动提交开始 -->
-<script>
+    // 百度自动提交
     (function(){
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
