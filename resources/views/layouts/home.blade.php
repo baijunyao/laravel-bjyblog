@@ -212,7 +212,7 @@
 </div>
 <!-- 登录模态框结束 -->
 
-<script src="{{ mix('js/app.js').time() }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 {{--<script src="{{ asset('pace/pace.js') }}"></script>--}}
 <!-- 百度页面自动提交开始 -->
 <script>
