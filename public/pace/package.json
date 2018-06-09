@@ -1,0 +1,88 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "github:HubSpot/pace#v1.0.2",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "github:HubSpot/pace#v1.0.2",
+        "spec": "github:hubspot/pace#v1.0.2",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:hubspot/pace.git#v1.0.2",
+          "sshUrl": "git+ssh://git@github.com/hubspot/pace.git#v1.0.2",
+          "httpsUrl": "git+https://github.com/hubspot/pace.git#v1.0.2",
+          "gitUrl": "git://github.com/hubspot/pace.git#v1.0.2",
+          "shortcut": "github:hubspot/pace#v1.0.2",
+          "directUrl": "https://raw.githubusercontent.com/hubspot/pace/v1.0.2/package.json"
+        }
+      },
+      "/Library/WebServer/Documents/laravel-bjyblog"
+    ]
+  ],
+  "_from": "hubspot/pace#v1.0.2",
+  "_id": "pace@1.0.2",
+  "_inCache": true,
+  "_location": "/pace",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "github:HubSpot/pace#v1.0.2",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "github:HubSpot/pace#v1.0.2",
+    "spec": "github:hubspot/pace#v1.0.2",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:hubspot/pace.git#v1.0.2",
+      "sshUrl": "git+ssh://git@github.com/hubspot/pace.git#v1.0.2",
+      "httpsUrl": "git+https://github.com/hubspot/pace.git#v1.0.2",
+      "gitUrl": "git://github.com/hubspot/pace.git#v1.0.2",
+      "shortcut": "github:hubspot/pace#v1.0.2",
+      "directUrl": "https://raw.githubusercontent.com/hubspot/pace/v1.0.2/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git://github.com/hubspot/pace.git#c6846cbf6b928e9903b569269fa9fbf32f2554f4",
+  "_shasum": "13e9bb5dbccba3268e2bbaf14e3524d3eee2475e",
+  "_shrinkwrap": null,
+  "_spec": "github:HubSpot/pace#v1.0.2",
+  "_where": "/Library/WebServer/Documents/laravel-bjyblog",
+  "authors": [
+    "Zack Bloom <zackbloom@gmail.com>",
+    "Adam Schwartz <adam.flynn.schwartz@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/HubSpot/pace/issues"
+  },
+  "dependencies": {},
+  "description": "Automatic page load progress bar",
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "color": "~0.4.4",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-watch": "~0.5.3"
+  },
+  "gitHead": "c6846cbf6b928e9903b569269fa9fbf32f2554f4",
+  "homepage": "https://github.com/HubSpot/pace#readme",
+  "license": "MIT",
+  "main": "pace.js",
+  "name": "pace",
+  "optionalDependencies": {},
+  "readme": "pace\n====\n\n<a href=\"https://eager.io/app/kYKTiQjoVjQk/install?source=button\">\n  <img src=\"https://install.eager.io/install-button.png\" border=\"0\" width=\"126\">\n</a>\n\nAn automatic web page progress bar.\n\nInclude [pace.js](https://raw.github.com/HubSpot/pace/v1.0.2/pace.min.js) and a [theme](http://github.hubspot.com/pace/docs/welcome/) of your choice to your page and you are done!\n\nPace will automatically monitor your Ajax requests, event loop lag, document ready state and elements on your page to decide on the progress.\n\nIf you use AMD or Browserify, require pace.js and call `pace.start()` as early in the loading process as is possible.\n\n### [Demo](http://github.hubspot.com/pace/docs/welcome/)\n\n### [Documentation](http://github.hubspot.com/pace/)\n\n### Example\n\n```html\n<head>\n  <script src=\"/pace/pace.js\"></script>\n  <link href=\"/pace/themes/pace-theme-barber-shop.css\" rel=\"stylesheet\" />\n</head>\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/HubSpot/pace.git"
+  },
+  "version": "1.0.2"
+}
