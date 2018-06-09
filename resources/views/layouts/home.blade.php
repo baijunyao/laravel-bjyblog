@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-{{--    <link rel="stylesheet" href="{{ asset('pace/themes/blue/pace-theme-flash.css') }}">--}}
     @yield('css')
 </head>
 <body>
@@ -213,30 +212,6 @@
 <!-- 登录模态框结束 -->
 
 <script src="{{ mix('js/app.js') }}"></script>
-{{--<script src="{{ asset('pace/pace.js') }}"></script>--}}
-<!-- 百度页面自动提交开始 -->
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    // 百度自动提交
-    (function(){
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-<!-- 百度页面自动提交结束 -->
-
 <!-- 百度统计开始 -->
 {!! htmlspecialchars_decode($config['WEB_STATISTICS']) !!}
 <!-- 百度统计结束 -->
