@@ -37,6 +37,8 @@ php artisan scout:import "App\Models\Article"
 - [Sails博客](https://smile.sails.site)  
 - [義往昔博客](http://www.maocaoying.com)  
 - [Alan博客](http://blog.taobaoroom.cn)  
+- [善幸的博客](https://lhyong.cn)  
+- [larwas博客](https://www.larwas.com)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ### 主要贡献者
