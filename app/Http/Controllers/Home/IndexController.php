@@ -257,10 +257,10 @@ class IndexController extends Controller
      */
     public function search(Request $request){
         $wd = clean($request->input('wd'));
-        $raw = Article::search($wd)->raw();
+        $id = Article::search($wd)->keys();
         // 获取文章列表数据
         $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
-            ->whereIn('id', $raw['ids'])
+            ->whereIn('id', $id)
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);

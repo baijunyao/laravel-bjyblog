@@ -22,6 +22,7 @@
   "dependencies": {
     "animate.css": "^3.6.1",
     "font-awesome": "^4.7.0",
+    "gentelella": "^1.4.0",
     "prismjs": "^1.14.0"
   }
 }
