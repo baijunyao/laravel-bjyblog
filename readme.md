@@ -37,6 +37,8 @@ php artisan scout:import "App\Models\Article"
 - [Sails博客](https://smile.sails.site)  
 - [義往昔博客](http://www.maocaoying.com)  
 - [Alan博客](http://blog.taobaoroom.cn)  
+- [善幸的博客](https://lhyong.cn)  
+- [larwas博客](https://www.larwas.com)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ### 主要贡献者
@@ -48,6 +50,10 @@ php artisan scout:import "App\Models\Article"
 - master: 经过测试的的稳定代码
 
 ## 更新记录
+#### v5.5.1.5 (2018-06-16)
+1. Admin 模块 webpack 完成
+2. 定义robots禁止搜索引擎抓取搜索页面
+3. 优化搜索
 #### v5.5.1.4 (2018-06-9)
 1. Home 模块 webpack 完成
 #### v5.5.1.3 (2018-06-3)
