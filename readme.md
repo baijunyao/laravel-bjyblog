@@ -50,6 +50,10 @@ php artisan scout:import "App\Models\Article"
 - master: 经过测试的的稳定代码
 
 ## 更新记录
+#### v5.5.1.5 (2018-06-16)
+1. Admin 模块 webpack 完成
+2. 定义robots禁止搜索引擎抓取搜索页面
+3. 优化搜索
 #### v5.5.1.4 (2018-06-9)
 1. Home 模块 webpack 完成
 #### v5.5.1.3 (2018-06-3)

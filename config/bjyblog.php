@@ -2,6 +2,6 @@
 
 return [
     // 博客版本
-    'version' => 'v5.5.1.4',
+    'version' => 'v5.5.1.5',
     'branch' => env('BLOG_BRANCH', 'master')
 ];
