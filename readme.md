@@ -50,6 +50,8 @@ php artisan scout:import "App\Models\Article"
 - master: 经过测试的的稳定代码
 
 ## 更新记录
+#### v5.5.1.6 (2018-06-23)
+1. 解决有恶意访问第三方登录回调的问题
 #### v5.5.1.5 (2018-06-16)
 1. Admin 模块 webpack 完成
 2. 定义robots禁止搜索引擎抓取搜索页面
