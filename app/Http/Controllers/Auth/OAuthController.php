@@ -14,6 +14,25 @@ use GuzzleHttp\Exception\ClientException;
 class OAuthController extends Controller
 {
     /**
+     * OAuthController constructor.
+     *
+     * @param Request $request
+     */
+    public function __construct(Request $request)
+    {
+        $service = $request->route('service');
+        // 因为发现有恶意访问回调地址的情况 此处限制允许使用的第三方登录方式
+        $type = [
+            'qq',
+            'weibo',
+            'github'
+        ];
+        if (!empty($service) && !in_array($service, $type)) {
+            return abort(404);
+        }
+    }
+
+    /**
      * oauth跳转
      *
      * @param Request $request
