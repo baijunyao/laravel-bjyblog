@@ -14,6 +14,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cache;
+use App;
 
 class IndexController extends Controller
 {
@@ -277,6 +278,36 @@ class IndexController extends Controller
             'head' => $head
         ];
         return view('home.index.index', $assign);
+    }
+
+    /**
+     * feed
+     *
+     * @return \Illuminate\Support\Facades\View
+     */
+    public function feed()
+    {
+        // 获取文章
+        $article = Cache::remember('feed:article', 10080, function () {
+            return Article::select('id', 'author', 'title', 'description', 'html', 'created_at')
+                ->latest()
+                ->get();
+        });
+        $feed = App::make("feed");
+        $feed->title = '白俊遥';
+        $feed->description = '白俊遥博客';
+        $feed->logo = 'https://baijunyao.com/uploads/avatar/1.jpg';
+        $feed->link = url('feed');
+        $feed->setDateFormat('carbon');
+        $feed->pubdate = $article->first()->created_at;
+        $feed->lang = 'zh-CN';
+        $feed->ctype = 'application/xml';
+
+        foreach ($article as $v)
+        {
+            $feed->add($v->title, $v->author, url('article', $v->id), $v->created_at, $v->description);
+        }
+        return $feed->render('atom');
     }
 
     /**
