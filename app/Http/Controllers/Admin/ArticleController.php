@@ -90,6 +90,8 @@ class ArticleController extends Controller
             Cache::forget('common:topArticle');
             // 更新标签统计缓存
             Cache::forget('common:tag');
+            // 更新feed
+            Cache::forget('feed:article');
         }
         return redirect('admin/article/index');
     }
@@ -159,6 +161,8 @@ class ArticleController extends Controller
             Cache::forget('common:topArticle');
             // 更新标签统计缓存
             Cache::forget('common:tag');
+            // 更新feed缓存
+            Cache::forget('feed:article');
         }
         return redirect()->back();
     }
@@ -180,6 +184,7 @@ class ArticleController extends Controller
             // 更新缓存
             Cache::forget('common:topArticle');
             Cache::forget('common:tag');
+            Cache::forget('feed:article');
 
             // 删除文章后先同步删除关联表 article_tags 中的数据
             $map = [
@@ -208,6 +213,7 @@ class ArticleController extends Controller
             // 更新缓存
             Cache::forget('common:topArticle');
             Cache::forget('common:tag');
+            Cache::forget('feed:article');
 
             // 恢复删除的文章后先同步恢复关联表 article_tags 中的数据
             $map = [
