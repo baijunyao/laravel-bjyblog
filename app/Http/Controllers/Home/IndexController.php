@@ -258,7 +258,15 @@ class IndexController extends Controller
      */
     public function search(Request $request){
         $wd = clean($request->input('wd'));
-        $id = Article::search($wd)->keys();
+        // 如果不使用全文搜索 则使用 sql like
+        if (empty(config('scout.driver'))) {
+            $id = Article::where('title', 'like', "%$wd%")
+                ->orWhere('description', 'like', "%$wd%")
+                ->orWhere('markdown', 'like', "%$wd%")
+                ->pluck('id');
+        } else {
+            $id = Article::search($wd)->keys();
+        }
         // 获取文章列表数据
         $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
             ->whereIn('id', $id)
