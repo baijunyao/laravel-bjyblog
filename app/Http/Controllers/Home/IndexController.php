@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Home;
 use App\Http\Requests\Comment\Store;
 use App\Models\Category;
 use App\Models\Article;
-use App\Models\ArticleTag;
 use App\Models\Chat;
 use App\Models\Comment;
-use App\Models\Config;
 use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -21,10 +19,10 @@ class IndexController extends Controller
     /**
      * 首页
      *
-     * @param Article $articleModel
-     * @return mixed
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
      */
-    public function index(Article $articleModel)
+    public function index()
 	{
 	    // 获取文章列表数据
         $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
@@ -50,12 +48,13 @@ class IndexController extends Controller
      * 文章详情
      *
      * @param         $id
-     * @param Article $articleModel
+     * @param Request $request
      * @param Comment $commentModel
      *
-     * @return $this
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+     * @throws \Exception
      */
-    public function article($id, Request $request, Article $articleModel, Comment $commentModel)
+    public function article($id, Request $request, Comment $commentModel)
     {
         // 获取文章数据
         $data = Article::with(['category', 'tags'])->find($id);
@@ -71,16 +70,14 @@ class IndexController extends Controller
         }
 
         // 获取上一篇
-        $prev = $articleModel
-            ->select('id', 'title')
+        $prev = Article::select('id', 'title')
             ->orderBy('created_at', 'asc')
             ->where('id', '>', $id)
             ->limit(1)
             ->first();
 
         // 获取下一篇
-        $next = $articleModel
-            ->select('id', 'title')
+        $next = Article::select('id', 'title')
             ->orderBy('created_at', 'desc')
             ->where('id', '<', $id)
             ->limit(1)
@@ -94,13 +91,13 @@ class IndexController extends Controller
     }
 
     /**
-     * 获取栏目下的文章
+     * 获取分类下的文章
      *
-     * @param Article $articleModel
      * @param $id
-     * @return mixed
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
-    public function category(Article $articleModel, $id)
+    public function category($id)
     {
         // 获取分类数据
         $category = Category::select('id', 'name', 'keywords', 'description')
@@ -145,10 +142,10 @@ class IndexController extends Controller
      * 获取标签下的文章
      *
      * @param $id
-     * @param Article $articleModel
-     * @return mixed
+     *
+     * @return \Illuminate\Contracts\View\Factory
      */
-    public function tag($id, Article $articleModel)
+    public function tag($id)
     {
         // 获取标签
         $tag = Tag::select('id', 'name')->where('id', $id)->first();
@@ -209,7 +206,11 @@ class IndexController extends Controller
     /**
      * 文章评论
      *
-     * @param Comment $commentModel
+     * @param Store     $request
+     * @param Comment   $commentModel
+     * @param OauthUser $oauthUserModel
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
@@ -252,7 +253,6 @@ class IndexController extends Controller
      * 搜索文章
      *
      * @param Request $request
-     * @param Article $articleModel
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
