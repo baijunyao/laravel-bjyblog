@@ -97,7 +97,7 @@ class Article extends Base
     public function getCover($content, $except = [])
     {
         // 获取文章中的全部图片
-        preg_match_all('/!\[.*?\]\((\S*).*\)/i', $content, $images);
+        preg_match_all('/!\[.*?\]\((\S*(?<=png|gif|jpg|jpeg)).*?\)/i', $content, $images);
         if (empty($images[1])) {
             $cover = 'uploads/article/default.jpg';
         } else {
