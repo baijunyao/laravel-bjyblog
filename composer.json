@@ -18,6 +18,7 @@
         "baijunyao/laravel-flash": "1.1.0",
         "baijunyao/laravel-model": "1.1.*",
         "baijunyao/laravel-print": "3.0.*",
+        "baijunyao/laravel-scout-elasticsearch": "^2.0",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
         "fukuball/jieba-php": "~0.25",
@@ -29,10 +30,10 @@
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
+        "roumen/feed": "2.11.*",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0",
-        "vanry/laravel-scout-tntsearch": "^1.2",
-        "roumen/feed": "2.11.*"
+        "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
