@@ -185,10 +185,19 @@ return [
         SocialiteProviders\Manager\ServiceProvider::class,
 
         /**
-         * TNTSearch
+         * scout
          */
         Laravel\Scout\ScoutServiceProvider::class,
+
+        /**
+         * TNTSearch
+         */
         Vanry\Scout\TNTSearchScoutServiceProvider::class,
+
+        /**
+         * Elasticsearch全文搜索
+         */
+        Baijunyao\LaravelScoutElasticsearch\ElasticsearchServiceProvider::class,
 
     ],
 
