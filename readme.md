@@ -50,6 +50,10 @@ php artisan scout:import "App\Models\Article"
 - master: 经过测试的的稳定代码
 
 ## 更新记录
+#### v5.5.1.7 (2018-06-30)
+1. 增加 rss 订阅功能
+2. 增加 sql like 搜索方案
+3. 整合 elasticsearch
 #### v5.5.1.6 (2018-06-23)
 1. 解决有恶意访问第三方登录回调的问题
 #### v5.5.1.5 (2018-06-16)
