@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cache;
 use App;
+use Agent;
 
 class IndexController extends Controller
 {
@@ -257,6 +258,10 @@ class IndexController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function search(Request $request){
+        // 禁止蜘蛛抓取搜索页
+        if (Agent::isRobot()) {
+            abort(404);
+        }
         $wd = clean($request->input('wd'));
         // 如果不使用全文搜索 则使用 sql like
         if (empty(config('scout.driver'))) {
