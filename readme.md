@@ -50,6 +50,9 @@ php artisan scout:import "App\Models\Article"
 - master: 经过测试的的稳定代码
 
 ## 更新记录
+#### v5.5.1.8 (2018-7-7)
+1. 禁止蜘蛛抓取搜索页
+2. 全文搜索出错时自动降级使用 sql like
 #### v5.5.1.7 (2018-06-30)
 1. 增加 rss 订阅功能
 2. 增加 sql like 搜索方案
