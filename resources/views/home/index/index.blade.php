@@ -19,7 +19,7 @@
         @if(request()->has('wd'))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">
-                    <h2>搜索到的与<span class="b-highlight">{{ request()->input('wd') }}</span>相关的文章</h2>
+                    <h2>搜索到的与<span class="b-highlight">{{ clean(request()->input('wd')) }}</span>相关的文章</h2>
                 </div>
             </div>
         @endif
