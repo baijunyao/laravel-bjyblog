@@ -53,6 +53,8 @@ php artisan scout:import "App\Models\Article"
 #### v5.5.2.0 (2018-7-14)
 1. 过滤搜索中的特殊符号
 2. 新底部页面完成
+
+**注: 若底部样式展示不完整可执行 php artisan view:clear 刷新缓存**  
 #### v5.5.1.8 (2018-7-7)
 1. 禁止蜘蛛抓取搜索页
 2. 全文搜索出错时自动降级使用 sql like
