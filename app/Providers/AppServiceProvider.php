@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Chat;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
+use App\Models\OauthUser;
 use App\Models\Tag;
 use File;
 use Cache;
@@ -28,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     {
         ini_set('memory_limit', "256M");
         //分配前台通用的数据
-        view()->composer('home/*', function($view){
+        view()->composer('layouts/home', function($view){
             $category = Cache::remember('common:category', 10080, function () {
                 // 获取分类导航
                 return Category::select('id', 'name')->orderBy('sort')->get();
@@ -67,6 +69,33 @@ class AppServiceProvider extends ServiceProvider
 
             // 分配数据
             $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'gitProject');
+            $view->with($assign);
+        });
+
+        // 获取各种统计
+        view()->composer(['layouts/home', 'admin/index/index'], function($view){
+            $articleCount = Cache::remember('count:article', 10080, function () {
+                // 统计文章总数
+                return Article::count('id');
+            });
+
+            $commentCount = Cache::remember('count:comment', 10080, function () {
+                // 统计评论总数
+                return Comment::count('id');
+            });
+
+            $chatCount = Cache::remember('count:chat', 10080, function () {
+                // 统计随言碎语总数
+                return Chat::count('id');
+            });
+
+            $oauthUserCount = Cache::remember('count:article', 10080, function () {
+                // 统计用户总数
+                return OauthUser::count('id');
+            });
+
+            // 分配数据
+            $assign = compact('articleCount', '', 'commentCount', 'chatCount', 'oauthUserCount');
             $view->with($assign);
         });
 

@@ -912,8 +912,28 @@ a{
 /* 通用底部开始 */
 #b-foot{
   margin-top: 10px;
+  padding: 40px 0;
   position: relative;
   z-index: 2;
+  background: #333;
+  color: #9d9d9d;
+  dl{
+    padding: 10px 20px;
+    float: left;
+    dt{
+      font-size: 16px;
+    }
+    dd{
+      height: 25px;
+      line-height: 25px;
+      a{
+        color: #9d9d9d;
+        &:hover{
+          color: #0B7DF2;
+        }
+      }
+    }
+  }
   .go-top{
     width: 30px;
     height: 30px;

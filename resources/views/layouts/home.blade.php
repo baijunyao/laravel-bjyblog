@@ -162,26 +162,47 @@
         </div>
         <!-- 通用右部区域结束 -->
     </div>
-    <div class="row">
-        <!-- 通用底部文件开始 -->
-        <footer id="b-foot" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <ul>
-                <li class="text-center">
-                    本博客使用免费开源的 <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> {{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }} 搭建 © 2014-2018 {{ parse_url(config('app.url'))['host'] }} 版权所有 @if(!empty($config['WEB_ICP_NUMBER'])) ICP证：{{ $config['WEB_ICP_NUMBER'] }} @endif
-                </li>
-                <li class="text-center">
-                    @if(!empty($config['ADMIN_EMAIL']))
-                        联系邮箱：{!! $config['ADMIN_EMAIL'] !!}
-                    @endif
-                </li>
-            </ul>
-            <div class="b-h-20"></div>
-            <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>
-        </footer>
-        <!-- 通用底部文件结束 -->
-    </div>
+
 </div>
 <!-- 主体部分结束 -->
+
+<!-- 通用底部开始 -->
+<footer id="b-foot">
+    <div class="container">
+        <div class="row b-content">
+            <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <dt>权益</dt>
+                <dd>许可协议：<a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
+                <dd>版权所有：© 2014-2018 {{ parse_url(config('app.url'))['host'] }}</dd>
+                @if(!empty($config['WEB_ICP_NUMBER']))
+                    <dd>网站备案：豫ICP备14009546号-3</dd>
+                @endif
+                @if(!empty($config['ADMIN_EMAIL']))
+                    <dd>联系邮箱：<a href="mailto:{!! $config['ADMIN_EMAIL'] !!}">{!! $config['ADMIN_EMAIL'] !!}</a></dd>
+                @endif
+            </dl>
+
+            <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <dt>架构</dt>
+                <dd>项目名称：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a></dd>
+                <dd>版本分支：{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</dd>
+                <dd>项目作者：<a href="https://baijunyao.com">白俊遥</a></dd>
+                <dd>主题名称：<a rel="nofollow" href="https://github.com/baijunyao/blog-theme-blueberry">blog-theme-blueberry</a></dd>
+                <dd>主题作者：<a href="https://baijunyao.com">白俊遥</a></dd>
+            </dl>
+
+            <dl class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <dt>统计</dt>
+                <dd>文章总数：{{ $articleCount }}</dd>
+                <dd>评论总数：{{ $commentCount }}</dd>
+                <dd>登录用户：{{ $oauthUserCount }}</dd>
+                <dd>随言碎语：{{ $chatCount }}</dd>
+            </dl>
+        </div>
+    </div>
+    <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>
+</footer>
+<!-- 通用底部结束 -->
 
 <!-- 登录模态框开始 -->
 <div class="modal fade" id="b-modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
