@@ -89,7 +89,7 @@ class AppServiceProvider extends ServiceProvider
                 return Chat::count('id');
             });
 
-            $oauthUserCount = Cache::remember('count:article', 10080, function () {
+            $oauthUserCount = Cache::remember('count:oauthUser', 10080, function () {
                 // 统计用户总数
                 return OauthUser::count('id');
             });
