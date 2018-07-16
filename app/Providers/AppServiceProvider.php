@@ -62,13 +62,19 @@ class AppServiceProvider extends ServiceProvider
                     ->get();
             });
 
+            // 分配数据
+            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink');
+            $view->with($assign);
+        });
+
+        // 开源项目数据
+        view()->composer(['layouts/home', 'home/index/git'], function($view){
             $gitProject = Cache::remember('common:gitProject', 10080, function () {
                 // 获取开源项目
                 return GitProject::select('name', 'type')->orderBy('sort')->get();
             });
-
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'gitProject');
+            $assign = compact('gitProject');
             $view->with($assign);
         });
 
