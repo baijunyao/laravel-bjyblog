@@ -19,10 +19,21 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Article $articleModel)
     {
+        $wd = $request->input('wd', '');
+
+        if (empty($wd)) {
+            $id = [];
+        } else {
+            $id = $articleModel->searchArticleGetId($wd);
+        }
+
         $article = Article::with('category')
             ->orderBy('created_at', 'desc')
+            ->when($wd, function ($query) use ($id) {
+                return $query->whereIn('id', $id);
+            })
             ->withTrashed()
             ->paginate(15);
         $assign = compact('article');

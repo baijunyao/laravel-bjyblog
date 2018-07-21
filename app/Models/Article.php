@@ -118,4 +118,26 @@ class Article extends Base
         return $cover;
     }
 
+    /**
+     * 搜索文章获取文章id
+     *
+     * @param $wd
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function searchArticleGetId($wd)
+    {
+        // 如果不使用全文搜索或者全文搜索出错则降级使用 sql like
+        try{
+            $id = Article::search($wd)->keys();
+        } catch (\Exception $e) {
+            $id = Article::where('title', 'like', "%$wd%")
+                ->orWhere('description', 'like', "%$wd%")
+                ->orWhere('markdown', 'like', "%$wd%")
+                ->pluck('id');
+        }
+        return $id;
+    }
+
+
 }

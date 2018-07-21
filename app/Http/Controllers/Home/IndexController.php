@@ -258,22 +258,15 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search(Request $request){
+    public function search(Request $request, Article $articleModel){
         // 禁止蜘蛛抓取搜索页
         if (Agent::isRobot()) {
             abort(404);
         }
 
         $wd = clean($request->input('wd'));
-        // 如果不使用全文搜索出错则降级使用 sql like
-        try{
-            $id = Article::search($wd)->keys();
-        } catch (\Exception $e) {
-            $id = Article::where('title', 'like', "%$wd%")
-                ->orWhere('description', 'like', "%$wd%")
-                ->orWhere('markdown', 'like', "%$wd%")
-                ->pluck('id');
-        }
+
+        $id = $articleModel->searchArticleGetId($wd);
 
         // 获取文章列表数据
         $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
