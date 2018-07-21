@@ -15,8 +15,9 @@ class CommentController extends Controller
      * @param Comment $commentModel
      * @return mixed
      */
-    public function index(Comment $commentModel)
+    public function index(Request $request)
     {
+        $wd = $request->input('wd');
         $data = Comment::with([
                 'article' => function ($query) {
                     return $query->select('id', 'title');
@@ -25,6 +26,9 @@ class CommentController extends Controller
                     return $query->select('id', 'name');
                 }
             ])
+            ->when($wd, function ($query) use ($wd) {
+                return $query->where('content', 'like', "%$wd%");
+            })
             ->orderBy('comments.created_at', 'desc')
             ->withTrashed()
             ->paginate(15);
