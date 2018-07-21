@@ -13,10 +13,14 @@ class OauthUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $wd = $request->input('wd');
         $data = OauthUser::orderBy('updated_at', 'desc')
             ->select('id', 'name', 'type', 'email', 'login_times', 'is_admin', 'created_at', 'updated_at')
+            ->when($wd, function ($query) use ($wd) {
+                return $query->where('name', 'like', "%$wd%");
+            })
             ->paginate(50);
         $assign = compact('data');
         return view('admin.oauthUser.index', $assign);
