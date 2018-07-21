@@ -21,6 +21,26 @@ class Comment extends Base
         return $this->ubbToImage($value);
     }
 
+    /**
+     * 关联文章
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
+    }
+
+    /**
+     * 关联第三方用户
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function oauthUser()
+    {
+        return $this->belongsTo(OauthUser::class);
+    }
+
     // 用于递归
     private $child = [];
 
@@ -245,19 +265,6 @@ class Comment extends Base
         }
 
     }
-
-    public function getAdminList()
-    {
-        $data = $this
-            ->select('comments.*', 'a.title', 'ou.name')
-            ->join('articles as a', 'comments.article_id', 'a.id')
-            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
-            ->orderBy('comments.created_at', 'desc')
-            ->withTrashed()
-            ->paginate(15);
-        return $data;
-    }
-
 
 
 }

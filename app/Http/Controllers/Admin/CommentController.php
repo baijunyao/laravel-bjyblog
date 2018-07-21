@@ -17,7 +17,17 @@ class CommentController extends Controller
      */
     public function index(Comment $commentModel)
     {
-        $data = $commentModel->getAdminList();
+        $data = Comment::with([
+                'article' => function ($query) {
+                    return $query->select('id', 'title');
+                },
+                'oauthUser' => function ($query) {
+                    return $query->select('id', 'name');
+                }
+            ])
+            ->orderBy('comments.created_at', 'desc')
+            ->withTrashed()
+            ->paginate(15);
         $assign = compact('data');
         return view('admin.comment.index', $assign);
     }

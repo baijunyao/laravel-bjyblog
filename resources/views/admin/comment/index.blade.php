@@ -33,9 +33,9 @@
                 <td>{{ $v->id }}</td>
                 <td>{!! htmlspecialchars_decode($v->content) !!}</td>
                 <td>
-                    <a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
+                    <a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->article->title }}</a>
                 </td>
-                <td>{{ $v->name }}</td>
+                <td>{{ $v->oauthUser->name }}</td>
                 <td>{{ $v->created_at }}</td>
                 <td>
                     @if(is_null($v->deleted_at))
