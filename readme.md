@@ -20,7 +20,8 @@
 php artisan scout:import "App\Models\Article"
 ```
 关于全文搜索具体的可以查看文章；  
-[laravel下TNTSearch+jieba-php实现全文搜索](https://baijunyao.com/article/154)
+- [laravel下TNTSearch+jieba-php实现全文搜索](https://baijunyao.com/article/154)
+- [laravel下elasticsearch+analysis-ik实现中文全文搜索](https://baijunyao.com/article/156)
 ## 项目介绍
 1. 纯手工前台响应式页面布局适配PC、平板、手机；
 2. 带表情的ajax无限级评论系统；
