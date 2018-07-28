@@ -94,7 +94,7 @@ class Comment extends Base
      * @param array $data
      * @return bool|mixed
      */
-    public function storeData($data)
+    public function storeData($data, $flash = true)
     {
         $user_id = session('user.id');
         $name = session('user.name');
@@ -114,7 +114,7 @@ class Comment extends Base
         );
 
         // 添加数据
-        $id = parent::storeData($comment);
+        $id = parent::storeData($comment, $flash);
 
         if (! $id) {
             return false;

@@ -55,7 +55,7 @@ class Article extends Base
      * @param array $data
      * @return bool|mixed
      */
-    public function storeData($data)
+    public function storeData($data, $flash = true)
     {
         // 如果没有描述;则截取文章内容的前200字作为描述
         if (empty($data['description'])) {
@@ -76,7 +76,7 @@ class Article extends Base
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
         //添加数据
-        $result = parent::storeData($data);
+        $result = parent::storeData($data, $flash);
         if ($result) {
             // 给文章添加标签
             $articleTag = new ArticleTag();

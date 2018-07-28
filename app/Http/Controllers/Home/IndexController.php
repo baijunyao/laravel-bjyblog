@@ -233,7 +233,7 @@ class IndexController extends Controller
             session(['user.email' => $email]);
         }
         // 存储评论
-        $id = $commentModel->storeData($data);
+        $id = $commentModel->storeData($data, false);
         // 更新缓存
         Cache::forget('common:newComment');
         return ajax_return(200, ['id' => $id]);
