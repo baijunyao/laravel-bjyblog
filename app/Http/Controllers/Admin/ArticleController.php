@@ -160,7 +160,7 @@ class ArticleController extends Controller
         $articleTagMap = [
             'article_id' => $id
         ];
-        $articleTagModel->forceDeleteData($articleTagMap);
+        $articleTagModel->forceDeleteData($articleTagMap, false);
         $articleTagModel->addTagIds($id, $tag_ids);
         // 编辑文章
         $map = [
@@ -201,7 +201,7 @@ class ArticleController extends Controller
             $map = [
                 'article_id' => $id
             ];
-            $articleTagModel->destroyData($map);
+            $articleTagModel->destroyData($map, false);
         }
         return redirect()->back();
     }
@@ -230,7 +230,7 @@ class ArticleController extends Controller
             $map = [
                 'article_id' => $id
             ];
-            $articleTagModel->restoreData($map);
+            $articleTagModel->restoreData($map, false);
         }
         return redirect()->back();
     }
@@ -253,7 +253,7 @@ class ArticleController extends Controller
             $map = [
                 'article_id' => $id
             ];
-            $articleTagModel->forceDeleteData($map);
+            $articleTagModel->forceDeleteData($map, false);
         }
         return redirect()->back();
     }
