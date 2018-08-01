@@ -173,9 +173,9 @@
             <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 <dt>权益</dt>
                 <dd>许可协议：<a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
-                <dd>版权所有：© 2014-2018 {{ parse_url(config('app.url'))['host'] }}</dd>
+                <dd>版权所有：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
                 @if(!empty($config['WEB_ICP_NUMBER']))
-                    <dd>网站备案：豫ICP备14009546号-3</dd>
+                    <dd>网站备案：{{ $config['WEB_ICP_NUMBER'] }}</dd>
                 @endif
                 @if(!empty($config['ADMIN_EMAIL']))
                     <dd>联系邮箱：<a href="mailto:{!! $config['ADMIN_EMAIL'] !!}">{!! $config['ADMIN_EMAIL'] !!}</a></dd>
