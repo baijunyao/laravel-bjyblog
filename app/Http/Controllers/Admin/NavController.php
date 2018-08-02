@@ -18,7 +18,6 @@ class NavController extends Controller
         $nav = Nav::get();
         $assign = compact('nav');
         return view('admin.nav.index', $assign);
-
     }
 
     /**
@@ -28,7 +27,7 @@ class NavController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.nav.create');
     }
 
     /**
