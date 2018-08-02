@@ -63,7 +63,9 @@ class NavController extends Controller
      */
     public function edit($id)
     {
-        //
+        $nav = Nav::find($id);
+        $assign = compact('nav');
+        return view('admin.nav.edit', $assign);
     }
 
     /**
