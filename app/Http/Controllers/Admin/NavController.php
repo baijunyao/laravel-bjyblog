@@ -39,7 +39,7 @@ class NavController extends Controller
      */
     public function store(Store $request, Nav $navModel)
     {
-        $data = $request->except('token');
+        $data = $request->except('_token');
         $navModel->storeData($data);
         return redirect(url('admin/nav/index'));
     }
@@ -75,9 +75,12 @@ class NavController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, Nav $navModel)
     {
-        //
+        $map = compact('id');
+        $data = $request->except('_token');
+        $navModel->updateData($map, $data);
+        return redirect()->back();
     }
 
     /**

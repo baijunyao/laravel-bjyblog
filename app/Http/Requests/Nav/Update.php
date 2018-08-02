@@ -4,7 +4,7 @@ namespace App\Http\Requests\Nav;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Store extends FormRequest
+class Update extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:navs',
+            'name'=>'required|unique:navs,name,'.$this->route()->id,
             'url'=>'required',
         ];
     }
