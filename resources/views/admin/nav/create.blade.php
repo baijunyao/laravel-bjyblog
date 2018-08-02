@@ -29,7 +29,7 @@
             <tr>
                 <th>url</th>
                 <td>
-                    <input class="form-control" type="text" name="description" value="{{ old('url') }}">
+                    <input class="form-control" type="text" name="url" value="{{ old('url') }}">
                 </td>
             </tr>
             <tr>

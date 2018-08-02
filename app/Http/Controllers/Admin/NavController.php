@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Nav\Store;
 use App\Models\Nav;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,9 +37,11 @@ class NavController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Store $request, Nav $navModel)
     {
-        //
+        $data = $request->except('token');
+        $navModel->storeData($data);
+        return redirect(url('admin/nav/index'));
     }
 
     /**
