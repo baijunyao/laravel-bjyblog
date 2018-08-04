@@ -52,6 +52,10 @@
 2. 增加菜单管理功能
 
 **注: 因增加了数据表请按执行如下命令升级**  
+更新 composer map
+```bash
+composer dump-autoload
+```
 运行迁移生成表文件
 ```bash
 php artisan migrate
