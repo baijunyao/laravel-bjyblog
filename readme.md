@@ -50,6 +50,15 @@
 #### v5.5.3.0 (2018-8-4)
 1. 解决备案号没有从数据库获取的问题
 2. 增加菜单管理功能
+**注: 因增加了数据表请按执行如下命令升级**  
+运行迁移生成表文件
+```bash
+php artisan migrate
+```
+导入默认的填充数据
+```bash
+php artisan db:seed --class=NavsTableSeeder
+```
 #### v5.5.2.2 (2018-7-28)
 1. 升级laravel-model至1.3
 2. 升级laravel-flash至1.3
