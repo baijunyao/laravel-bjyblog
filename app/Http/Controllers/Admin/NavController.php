@@ -6,6 +6,7 @@ use App\Http\Requests\Nav\Store;
 use App\Models\Nav;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class NavController extends Controller
 {
@@ -40,7 +41,11 @@ class NavController extends Controller
     public function store(Store $request, Nav $navModel)
     {
         $data = $request->except('_token');
-        $navModel->storeData($data);
+        $result = $navModel->storeData($data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:nav');
+        }
         return redirect(url('admin/nav/index'));
     }
 
@@ -79,7 +84,11 @@ class NavController extends Controller
     {
         $map = compact('id');
         $data = $request->except('_token');
-        $navModel->updateData($map, $data);
+        $result = $navModel->updateData($map, $data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:nav');
+        }
         return redirect()->back();
     }
 
@@ -94,7 +103,11 @@ class NavController extends Controller
         $map = [
             'id' => $id
         ];
-        $navModel->destroyData($map);
+        $result = $navModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:nav');
+        }
         return redirect('admin/nav/index');
     }
 
@@ -111,7 +124,11 @@ class NavController extends Controller
         $map = [
             'id' => $id
         ];
-        $navModel->restoreData($map);
+        $result = $navModel->restoreData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:nav');
+        }
         return redirect('admin/nav/index');
     }
 
