@@ -16,7 +16,7 @@ class NavController extends Controller
      */
     public function index()
     {
-        $nav = Nav::get();
+        $nav = Nav::withTrashed()->get();
         $assign = compact('nav');
         return view('admin.nav.index', $assign);
     }
@@ -95,6 +95,23 @@ class NavController extends Controller
             'id' => $id
         ];
         $navModel->destroyData($map);
+        return redirect('admin/nav/index');
+    }
+
+    /**
+     * 恢复删除的菜单
+     *
+     * @param      $id
+     * @param Nav $navModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Nav $navModel)
+    {
+        $map = [
+            'id' => $id
+        ];
+        $navModel->restoreData($map);
         return redirect('admin/nav/index');
     }
 }
