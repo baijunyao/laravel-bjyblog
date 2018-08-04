@@ -34,7 +34,7 @@
                         <input class="form-control" type="text" name="{{ $v->id }}" value="{{ $v->sort }}">
                     </td>
                     <td>{{ $v->name }}</td>
-                    <td>{{ $v->url }}}</td>
+                    <td>{{ $v->url }}</td>
                     <td>
                         @if(is_null($v->deleted_at))
                             √

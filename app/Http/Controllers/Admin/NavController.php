@@ -89,8 +89,12 @@ class NavController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Nav $navModel)
     {
-        //
+        $map = [
+            'id' => $id
+        ];
+        $navModel->destroyData($map);
+        return redirect('admin/nav/index');
     }
 }
