@@ -44,14 +44,11 @@
                         <a href="{{ url('category/'.$v->id) }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
-                <li class="b-nav-cname @if($category_id == 'chat') b-nav-active @endif">
-                <a href="{{ url('chat') }}">随言碎语</a>
-                </li>
-                @if(!$gitProject->isEmpty())
-                    <li class="b-nav-cname hidden-sm  @if($category_id == 'git') b-nav-active @endif">
-                    <a href="{{ url('git') }}">开源项目</a>
+                @foreach($nav as $v)
+                    <li class="b-nav-cname @if($category_id == $v->url) b-nav-active @endif">
+                        <a href="{{ url($v->url) }}">{{ $v->name }}</a>
                     </li>
-                @endif
+                @endforeach
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
                 @if(empty(session('user.name')))

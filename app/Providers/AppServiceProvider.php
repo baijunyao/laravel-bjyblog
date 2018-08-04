@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
+use App\Models\Nav;
 use App\Models\OauthUser;
 use App\Models\Tag;
 use File;
@@ -62,8 +63,15 @@ class AppServiceProvider extends ServiceProvider
                     ->get();
             });
 
+            $nav = Cache::remember('common:nav', 10080, function () {
+                // 获取菜单
+                return Nav::select('name', 'url')
+                    ->orderBy('sort')
+                    ->get();
+            });
+
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink');
+            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav');
             $view->with($assign);
         });
 
