@@ -114,4 +114,19 @@ class NavController extends Controller
         $navModel->restoreData($map);
         return redirect('admin/nav/index');
     }
+
+    /**
+     * 彻底删除菜单
+     *
+     * @param      $id
+     * @param Nav $navModel
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Nav $navModel)
+    {
+        $map = compact('id');
+        $navModel->forceDeleteData($map);
+        return redirect('admin/nav/index');
+    }
 }
