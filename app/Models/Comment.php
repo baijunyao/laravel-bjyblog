@@ -28,7 +28,7 @@ class Comment extends Base
      */
     public function article()
     {
-        return $this->belongsTo(Article::class);
+        return $this->belongsTo(Article::class)->withDefault();
     }
 
     /**
