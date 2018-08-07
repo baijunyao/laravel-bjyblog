@@ -127,7 +127,16 @@ class Article extends Base
      */
     public function searchArticleGetId($wd)
     {
-        // 如果不使用全文搜索或者全文搜索出错则降级使用 sql like
+        // 如果 SCOUT_DRIVER 为 null 则使用 sql 搜索
+        if (is_null(env('SCOUT_DRIVER'))) {
+            $id = Article::where('title', 'like', "%$wd%")
+                ->orWhere('description', 'like', "%$wd%")
+                ->orWhere('markdown', 'like', "%$wd%")
+                ->pluck('id');
+            return $id;
+        }
+
+        // 如果全文搜索出错则降级使用 sql like
         try{
             $id = Article::search($wd)->keys();
         } catch (\Exception $e) {
@@ -138,6 +147,5 @@ class Article extends Base
         }
         return $id;
     }
-
 
 }
