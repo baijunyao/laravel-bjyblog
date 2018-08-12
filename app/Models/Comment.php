@@ -38,7 +38,7 @@ class Comment extends Base
      */
     public function oauthUser()
     {
-        return $this->belongsTo(OauthUser::class);
+        return $this->belongsTo(OauthUser::class)->withDefault();
     }
 
     // 用于递归
