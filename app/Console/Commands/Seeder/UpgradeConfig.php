@@ -105,6 +105,16 @@ class UpgradeConfig extends Command
                 'value' => $config['BAIDU_SITE_URL'],
             ],
             [
+                'id' => 133,
+                'name' => 'services.weibo.client_id',
+                'value' => $config['SINA_API_KEY'],
+            ],
+            [
+                'id' => 134,
+                'name' => 'services.weibo.client_secret',
+                'value' => $config['SINA_SECRET'],
+            ],
+            [
                 'id' => 139,
                 'name' => 'services.github.client_id',
                 'value' => $config['GITHUB_CLIENT_ID'],
@@ -114,7 +124,6 @@ class UpgradeConfig extends Command
                 'name' => 'services.github.client_secret',
                 'value' => $config['GITHUB_CLIENT_SECRET'],
             ],
-
             [
                 'id' => 141,
                 'name' => 'bjyblog.alt_word',

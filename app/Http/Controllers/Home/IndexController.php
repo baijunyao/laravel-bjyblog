@@ -33,7 +33,7 @@ class IndexController extends Controller
             ->paginate(10);
         $config = cache('config');
         $head = [
-            'title' => $config->get('WEB_TITLE'),
+            'title' => config('bjyblog.head.title'),
             'keywords' => $config->get('WEB_KEYWORDS'),
             'description' => $config->get('WEB_DESCRIPTION'),
         ];

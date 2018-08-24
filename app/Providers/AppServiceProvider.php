@@ -117,8 +117,9 @@ class AppServiceProvider extends ServiceProvider
         try {
             // 获取配置项
             $config = Cache::remember('config', 10080, function () {
-                return Config::pluck('value','name');
+                return Config::where('id', '>', 100)->pluck('value','name');
             });
+            p($config);die;
             // 解决初次安装时候没有数据引起报错
             if ($config->isEmpty()) {
                 Artisan::call('cache:clear');
