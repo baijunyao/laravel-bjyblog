@@ -68,6 +68,7 @@ class UpgradeConfig extends Command
             [
                 'id' => 110,
                 'name' => 'bjyblog.water.color',
+                'value' => $config['TEXT_WATER_COLOR'],
             ],
             [
                 'id' => 117,
