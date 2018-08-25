@@ -90,6 +90,11 @@ class UpgradeConfig extends Command
                 'value' => $config['QQ_APP_ID'],
             ],
             [
+                'id' => 123,
+                'name' => 'bjyblog.statistics',
+                'value' => $config['WEB_STATISTICS'],
+            ],
+            [
                 'id' => 125,
                 'name' => 'bjyblog.author',
                 'value' => $config['AUTHOR'],

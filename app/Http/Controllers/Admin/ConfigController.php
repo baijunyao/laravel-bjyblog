@@ -18,7 +18,9 @@ class ConfigController extends Controller
      */
     public function edit()
     {
-        return view('admin.config.edit');
+        $config = cache('config');
+        $assign = compact('config');
+        return view('admin.config.edit', $assign);
     }
 
     /**
@@ -31,15 +33,15 @@ class ConfigController extends Controller
     public function update(Request $request, Config $configModel)
     {
         $data = $request->except('_token');
-        if ($request->hasFile('QQ_QUN_OR_CODE')) {
-            $file = upload('QQ_QUN_OR_CODE', 'uploads/images', false);
+        if ($request->hasFile('bjyblog.qq_qun.or_code')) {
+            $file = upload('bjyblog.qq_qun.or_code', 'uploads/images', false);
             $result = $file['status_code'] === 200 ? '/uploads/images/'.$file['data']['new_name']: '';
-            $data['QQ_QUN_OR_CODE'] = $result;
+            $data['bjyblog.qq_qun.or_code'] = $result;
         }
         $editData = [];
         foreach ($data as $k => $v) {
             $editData[] = [
-                'name' => $k,
+                'id' => $k,
                 'value' => $v
             ];
         }
