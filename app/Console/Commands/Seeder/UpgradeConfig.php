@@ -38,7 +38,7 @@ class UpgradeConfig extends Command
      */
     public function handle()
     {
-        $config = Config::pluck('value', 'name');
+        $config = Config::where('id', '<', 100)->pluck('value', 'name');
         $data = [
             [
                 'id' => 101,

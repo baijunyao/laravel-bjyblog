@@ -52,17 +52,12 @@ class Comment extends Base
      */
     public function ubbToImage($content)
     {
-        // 获取配置项
-        $config = Cache::remember('config', 10080, function () {
-            return Config::pluck('value','name');
-        });
-
         $ubb = ['[Kiss]', '[Love]', '[Yeah]', '[啊！]', '[背扭]', '[顶]', '[抖胸]', '[88]', '[汗]', '[瞌睡]', '[鲁拉]', '[拍砖]', '[揉脸]', '[生日快乐]', '[摊手]', '[睡觉]', '[瘫坐]', '[无聊]', '[星星闪]', '[旋转]', '[也不行]', '[郁闷]', '[正Music]', '[抓墙]', '[撞墙至死]', '[歪头]', '[戳眼]', '[飘过]', '[互相拍砖]', '[砍死你]', '[扔桌子]', '[少林寺]', '[什么？]', '[转头]', '[我爱牛奶]', '[我踢]', '[摇晃]', '[晕厥]', '[在笼子里]', '[震荡]'];
         $count = count($ubb);
         $image = [];
         // 循环生成img标签
         for ($i = 1; $i <= $count; $i++) {
-            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="'.$config->get('WEB_NAME').'">';
+            $image[] = '<img src="'.asset('statics/emote/tuzki/'.$i.'.gif').'" title="'.str_replace(['[', ']'], '', $ubb[$i-1]).'" alt="'.config('bjyblog.web_name').'">';
         }
         return str_replace($ubb, $image, $content);
     }

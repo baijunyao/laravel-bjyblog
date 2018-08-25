@@ -27,7 +27,7 @@
                 <div class="js-content">{!! $data->html !!}</div>
                 <p class="b-h-20"></p>
                 <p class="b-copyright">
-                    {!! htmlspecialchars_decode($config['COPYRIGHT_WORD']) !!}
+                    {!! htmlspecialchars_decode(config('bjyblog.copyright_word')) !!}
                 </p>
                 <ul class="b-prev-next">
                     <li class="b-prev">
@@ -57,7 +57,7 @@
         </script>
         <div class="row b-comment">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
-                <img class="b-head-img" src="@if(empty(session('user.avatar'))){{ asset('images/home/default_head_img.gif') }}@else{{ session('user.avatar') }}@endif" alt="{{ $config['WEB_NAME'] }}" title="{{ $config['WEB_NAME'] }}">
+                <img class="b-head-img" src="@if(empty(session('user.avatar'))){{ asset('images/home/default_head_img.gif') }}@else{{ session('user.avatar') }}@endif" alt="{{ config('bjyblog.web_name') }}" title="{{ config('bjyblog.web_name') }}">
                 <div class="b-box-textarea">
                     <div class="b-box-content js-hint" @if(session()->has('user'))contenteditable="true" @endif>请先登录后发表评论</div>
                     <ul class="b-emote-submit">
@@ -86,7 +86,7 @@
             @foreach($comment as $k => $v)
                 <div id="comment-{{ $v['id'] }}" class="row b-user b-parent">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                        <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v['avatar']) }}" alt="{{ $config['WEB_NAME'] }}" title="{{ $config['WEB_NAME'] }}">
+                        <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v['avatar']) }}" alt="{{ config('bjyblog.web_name') }}" title="{{ config('bjyblog.web_name') }}">
                     </div>
                     <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                         <p class="b-content">
@@ -99,7 +99,7 @@
                         @foreach($v['child'] as $m => $n)
                             <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                    <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($n['avatar']) }}" alt="{{ $config['WEB_NAME'] }}" title="{{ $config['WEB_NAME'] }}">
+                                    <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($n['avatar']) }}" alt="{{ config('bjyblog.web_name') }}" title="{{ config('bjyblog.web_name') }}">
                                 </div>
                                 <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                     <li class="b-content">
@@ -140,7 +140,7 @@
         // 定义评论url
         ajaxCommentUrl = "{{ url('comment') }}";
         checkLogin = "{{ url('checkLogin') }}";
-        titleName = '{{ $config['WEB_NAME'] }}';
+        titleName = '{{ config('bjyblog.web_name') }}';
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
 @endsection

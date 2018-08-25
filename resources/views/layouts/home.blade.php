@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title')@if(request()->path() !== '/') - {{ $config['WEB_TITLE'] }} @endif</title>
+    <title>@yield('title')@if(request()->path() !== '/') - {{ config('bjyblog.head.title') }} @endif</title>
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="description" content="@yield('description')" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="author" content="baijunyao,{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
+    <meta name="author" content="baijunyao,{{ htmlspecialchars_decode(config('bjyblog.admin_email')) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -29,7 +29,7 @@
                     <li class="b-lc-start">&lt;?php</li>
                     <li class="b-lc-echo">echo</li>
                 </ul>
-                <p class="b-logo-word">'{{ $config['WEB_NAME'] }}'</p>
+                <p class="b-logo-word">'{{ config('bjyblog.web_name') }}'</p>
                 <p class="b-logo-end">;</p>
             </a>
         </div>
@@ -82,22 +82,22 @@
                     <input class="b-search-submit" type="submit" value="全站搜索">
                 </form>
             </div>
-            @if(!empty($config['QQ_QUN_NUMBER']))
+            @if(!empty(config('bjyblog.qq_qun.number')))
                 <div class="b-qun">
                     <h4 class="b-title">加入组织</h4>
                     <ul class="b-all-tname">
                         <li class="b-qun-or-code">
-                            <img src="{{ asset($config['QQ_QUN_OR_CODE']) }}" alt="QQ">
+                            <img src="{{ asset(config('bjyblog.qq_qun.or_code')) }}" alt="QQ">
                         </li>
                         <li class="b-qun-word">
                             <p class="b-qun-nuber">
                                 1. 手Q扫左侧二维码
                             </p>
                             <p class="b-qun-nuber">
-                                2. 搜Q群：{{ $config['QQ_QUN_NUMBER'] }}
+                                2. 搜Q群：{{ config('bjyblog.qq_qun.number') }}
                             </p>
                             <p class="b-qun-code">
-                                3. 点击{!! $config['QQ_QUN_CODE'] !!}
+                                3. 点击{!! config('bjyblog.qq_qun.code') !!}
                             </p>
                             <p class="b-qun-article">
                                 @if(!empty($qqQunArticle['id']))
@@ -171,11 +171,11 @@
                 <dt>权益</dt>
                 <dd>许可协议：<a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
                 <dd>版权所有：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
-                @if(!empty($config['WEB_ICP_NUMBER']))
-                    <dd>网站备案：{{ $config['WEB_ICP_NUMBER'] }}</dd>
+                @if(!empty(config('bjyblog.icp')))
+                    <dd>网站备案：{{ config('bjyblog.icp') }}</dd>
                 @endif
-                @if(!empty($config['ADMIN_EMAIL']))
-                    <dd>联系邮箱：<a href="mailto:{!! $config['ADMIN_EMAIL'] !!}">{!! $config['ADMIN_EMAIL'] !!}</a></dd>
+                @if(!empty(config('bjyblog.admin_email')))
+                    <dd>联系邮箱：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
                 @endif
             </dl>
 
@@ -231,7 +231,7 @@
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!-- 百度统计开始 -->
-{!! htmlspecialchars_decode($config['WEB_STATISTICS']) !!}
+{!! htmlspecialchars_decode(config('bjyblog.statistics')) !!}
 <!-- 百度统计结束 -->
 @yield('js')
 </body>

@@ -31,11 +31,10 @@ class IndexController extends Controller
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);
-        $config = cache('config');
         $head = [
             'title' => config('bjyblog.head.title'),
-            'keywords' => $config->get('WEB_KEYWORDS'),
-            'description' => $config->get('WEB_DESCRIPTION'),
+            'keywords' => config('bjyblog.head.keywords'),
+            'description' => config('bjyblog.head.description'),
         ];
         $assign = [
             'category_id' => 'index',
