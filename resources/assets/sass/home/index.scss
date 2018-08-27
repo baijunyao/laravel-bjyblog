@@ -568,6 +568,24 @@ a{
             }
           }
         }
+        table {
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 20px;
+          background-color: transparent;
+          border-collapse: collapse;
+          border-spacing: 0;
+          tbody tr:nth-of-type(2n+1) {
+            background-color: #f9f9f9;
+          }
+          tr:hover {
+            background-color: #f9f9f9;
+          }
+          th, td {
+            padding: 0 5px;
+            border: 1px solid #ddd;
+          }
+        }
       }
     }
 
