@@ -43,8 +43,8 @@
                     <div class="separator">
                         <div class="clearfix"></div>
                         <div>
-                            <h1><i class="fa fa-paw"></i> {{ $config['WEB_NAME'] }}!</h1>
-                            <p>©2017 All Rights Reserved. {{ $config['WEB_NAME'] }}! is a Bootstrap 3 template. Privacy and Terms</p>
+                            <h1><i class="fa fa-paw"></i> {{ config('bjyblog.web_name') }}!</h1>
+                            <p>©2017 All Rights Reserved. {{ config('bjyblog.web_name') }}! is a Bootstrap 3 template. Privacy and Terms</p>
                         </div>
                     </div>
                 </form>
