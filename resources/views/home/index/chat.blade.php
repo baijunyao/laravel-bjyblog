@@ -2,9 +2,9 @@
 
 @section('title', $title)
 
-@section('keywords', $config['WEB_KEYWORDS'])
+@section('keywords', config('bjyblog.head.keywords'))
 
-@section('description', $config['WEB_DESCRIPTION'])
+@section('description', config('bjyblog.head.description'))
 
 @section('content')
     <!-- 左侧列表开始 -->
