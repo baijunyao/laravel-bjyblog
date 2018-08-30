@@ -15,6 +15,7 @@
             <th>邮箱</th>
             <th>登录次数</th>
             <th>管理员</th>
+            <th>ip</th>
             <th>最近登录</th>
             <th>第一次登录</th>
             <th>操作</th>
@@ -36,6 +37,9 @@
                     @else
                         ×
                     @endif
+                </td>
+                <td>
+                    {{ $v->last_login_ip }}
                 </td>
                 <td>{{ $v->updated_at }}</td>
                 <td>{{ $v->created_at }}</td>
