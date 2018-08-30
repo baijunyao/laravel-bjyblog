@@ -21,7 +21,7 @@
 - [韩槑槑](https://github.com/Han-MeiM)
 
 ## 链接
-- 博客：[http://baijunyao.com](http://baijunyao.com)   
+- 博客：[https://baijunyao.com](https://baijunyao.com)   
 - github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
 - 码云：[https://gitee.com/baijunyao/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)   
 
