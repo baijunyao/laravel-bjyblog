@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Requests\Comment\Store;
-use App\Models\Category;
-use App\Models\Article;
+use App;
+use Cache;
+use Agent;
+use App\Models\Tag;
 use App\Models\Chat;
+use App\Models\Article;
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\OauthUser;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Cache;
-use App;
-use Agent;
-use Symfony\Component\Debug\Exception\FatalThrowableError;;
+use App\Http\Requests\Comment\Store;
 
 class IndexController extends Controller
 {
