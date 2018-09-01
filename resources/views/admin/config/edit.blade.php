@@ -136,6 +136,12 @@
                 </td>
             </tr>
             <tr>
+                <th>加密方式：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="156" value="{{  $config['email.encryption'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th>邮箱服务器端口：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="155" value="{{  $config['email.port'] }}" >
