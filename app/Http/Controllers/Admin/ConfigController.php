@@ -23,11 +23,30 @@ class ConfigController extends Controller
         return view('admin.config.edit', $assign);
     }
 
+    /**
+     * 邮箱设置
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
+     */
     public function email()
     {
         $config = cache('config');
         $assign = compact('config');
         return view('admin.config.email', $assign);
+    }
+
+    /**
+     * 第三方登录设置
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
+     */
+    public function oauth()
+    {
+        $config = cache('config');
+        $assign = compact('config');
+        return view('admin.config.oauth', $assign);
     }
 
     /**
@@ -57,7 +76,7 @@ class ConfigController extends Controller
             // 更新缓存
             Cache::forget('config');
         }
-        return redirect('admin/config/edit');
+        return redirect()->back();
     }
 
     /**

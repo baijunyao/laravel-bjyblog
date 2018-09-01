@@ -223,10 +223,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
     // 系统设置
     Route::group(['prefix' => 'config'], function () {
-        // 编辑配置项
+        // 编辑配置项页面
         Route::get('edit', 'ConfigController@edit');
-        // 编辑邮箱配置
+        // 编辑邮箱配置页面
         Route::get('email', 'ConfigController@email');
+        // 编辑 oauth 配置页面
+        Route::get('oauth', 'ConfigController@oauth');
+        // 编辑配置
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存
         Route::get('clear', 'ConfigController@clear');
