@@ -225,6 +225,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     Route::group(['prefix' => 'config'], function () {
         // 编辑配置项
         Route::get('edit', 'ConfigController@edit');
+        // 编辑邮箱配置
+        Route::get('email', 'ConfigController@email');
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存
         Route::get('clear', 'ConfigController@clear');

@@ -23,6 +23,13 @@ class ConfigController extends Controller
         return view('admin.config.edit', $assign);
     }
 
+    public function email()
+    {
+        $config = cache('config');
+        $assign = compact('config');
+        return view('admin.config.email', $assign);
+    }
+
     /**
      * Update the specified resource in storage.
      *
