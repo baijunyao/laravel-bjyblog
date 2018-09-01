@@ -4,6 +4,7 @@ namespace App\Console\Commands\Upgrade;
 
 use Illuminate\Console\Command;
 use App\Models\Config;
+use Artisan;
 
 class V5_5_4_1 extends Command
 {
@@ -44,6 +45,8 @@ class V5_5_4_1 extends Command
             'value' => 'ssl'
         ];
         Config::firstOrCreate($data);
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
         $this->info('success');
     }
 }
