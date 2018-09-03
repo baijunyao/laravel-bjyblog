@@ -71,15 +71,15 @@ class IndexController extends Controller
 
         // 获取上一篇
         $prev = Article::select('id', 'title')
-            ->orderBy('created_at', 'asc')
-            ->where('id', '>', $id)
+            ->orderBy('created_at', 'desc')
+            ->where('id', '<', $id)
             ->limit(1)
             ->first();
 
         // 获取下一篇
         $next = Article::select('id', 'title')
-            ->orderBy('created_at', 'desc')
-            ->where('id', '<', $id)
+            ->orderBy('created_at', 'asc')
+            ->where('id', '>', $id)
             ->limit(1)
             ->first();
 
