@@ -5,7 +5,7 @@
 ![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
 
 ## 文档
-[详细文档](https://baijunyao.com/docs/laravel-bjyblog)
+[详细文档](https://baijunyao.com/docs/laravel-bjyblog) [更新记录](https://baijunyao.com/docs/laravel-bjyblog/更新记录.html)
 
 ## 使用本项目搭建的博客
 - [白俊遥博客](https://baijunyao.com)  
