@@ -15,7 +15,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-        
+        $site = Site::orderBy('sort')->get();
+        $assign = compact('site');
+        return view('admin.site.index', $assign);
     }
 
     /**
