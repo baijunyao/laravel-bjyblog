@@ -19,7 +19,7 @@ class CreateSitesTable extends Migration
             $table->string('name')->default('')->comment('网站名');
             $table->string('url')->default('')->comment('网站链接');
             $table->tinyInteger('audit')->default(0)->comment('审核状态1为通过审核');
-            $table->tinyInteger('sort')->default(1)->comment('排序');
+            $table->tinyInteger('sort')->default(0)->comment('排序');
             $table->timestamps();
             $table->softDeletes();
         });
