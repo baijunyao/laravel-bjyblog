@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Cache;
 
 class SiteController extends Controller
 {
@@ -36,9 +37,15 @@ class SiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Site $siteModel)
     {
-        //
+        $data = $request->except('_token');
+        $result = $siteModel->storeData($data);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:site');
+        }
+        return redirect('admin/site/index');
     }
 
     /**
