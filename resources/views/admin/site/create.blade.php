@@ -1,23 +1,23 @@
 @extends('layouts.admin')
 
-@section('title', '添加友情链接')
+@section('title', '添加推荐博客')
 
-@section('nav', '添加友情链接')
+@section('nav', '添加推荐博客')
 
-@section('description', '添加新的友情链接')
+@section('description', '添加新的推荐博客')
 
 @section('content')
 
     <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
+            <a href="{{ url('admin/site/index') }}">推荐博客列表</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/friendshipLink/create') }}">添加友情链接</a>
+            <a href="{{ url('admin/site/create') }}">添加推荐博客</a>
         </li>
     </ul>
-    <form class="form-horizontal " action="{{ url('admin/friendshipLink/store') }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/site/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
