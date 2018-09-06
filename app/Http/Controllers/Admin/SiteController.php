@@ -46,7 +46,6 @@ class SiteController extends Controller
             Cache::forget('common:site');
         }
         return redirect('admin/site/index');
-
     }
 
     /**
