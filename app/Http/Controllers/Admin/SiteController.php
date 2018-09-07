@@ -67,7 +67,9 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $site = Site::find($id);
+        $assign = compact('site');
+        return view('admin.site.edit', $assign);
     }
 
     /**

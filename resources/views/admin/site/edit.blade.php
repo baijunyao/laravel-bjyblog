@@ -1,41 +1,41 @@
 @extends('layouts.admin')
 
-@section('title', '编辑友情链接')
+@section('title', '编辑推荐博客')
 
-@section('nav', '编辑友情链接')
+@section('nav', '编辑推荐博客')
 
-@section('description', '编辑新的友情链接')
+@section('description', '编辑新的推荐博客')
 
 @section('content')
 
     <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
+            <a href="{{ url('admin/site/index') }}">推荐博客列表</a>
         </li>
         <li class="active">
-            <a href="">编辑友情链接</a>
+            <a href="">编辑推荐博客</a>
         </li>
     </ul>
-    <form class="form-horizontal " action="{{ url('admin/friendshipLink/update', [$data->id]) }}" method="post">
+    <form class="form-horizontal " action="{{ url('admin/site/update', [$site->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
                 <th>名称</th>
                 <td>
-                    <input class="form-control" type="text" name="name" value="{{ $data->name }}">
+                    <input class="form-control" type="text" name="name" value="{{ $site->name }}">
                 </td>
             </tr>
             <tr>
                 <th>链接</th>
                 <td>
-                    <input class="form-control" type="text" name="url" value="{{ $data->url }}">
+                    <input class="form-control" type="text" name="url" value="{{ $site->url }}">
                 </td>
             </tr>
             <tr>
                 <th>排序</th>
                 <td>
-                    <input class="form-control" type="text" name="sort" value="{{ $data->sort }}">
+                    <input class="form-control" type="text" name="sort" value="{{ $site->sort }}">
                 </td>
             </tr>
             <tr>
