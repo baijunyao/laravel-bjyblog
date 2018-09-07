@@ -85,6 +85,32 @@ class SiteController extends Controller
     }
 
     /**
+     * 排序
+     *
+     * @param Request $request
+     * @param Site    $siteModel
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function sort(Request $request, Site $siteModel)
+    {
+        $data = $request->except('_token');
+        $editData = [];
+        foreach ($data as $k => $v) {
+            $editData[] = [
+                'id' => $k,
+                'sort' => $v
+            ];
+        }
+        $result = $siteModel->updateBatch($editData);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:site');
+        }
+        return redirect()->back();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
