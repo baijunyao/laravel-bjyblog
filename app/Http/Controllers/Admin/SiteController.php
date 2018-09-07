@@ -116,8 +116,16 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Site $siteModel)
     {
-        //
+        $map = [
+            'id' => $id
+        ];
+        $result = $siteModel->destroyData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:site');
+        }
+        return redirect()->back();
     }
 }
