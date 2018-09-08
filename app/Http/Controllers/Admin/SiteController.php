@@ -16,7 +16,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $site = Site::orderBy('sort')->get();
+        $site = Site::orderBy('sort')
+            ->withTrashed()
+            ->get();
         $assign = compact('site');
         return view('admin.site.index', $assign);
     }
@@ -127,5 +129,39 @@ class SiteController extends Controller
             Cache::forget('common:site');
         }
         return redirect()->back();
+    }
+
+    /**
+     * 恢复删除
+     *
+     * @param                $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function restore($id, Site $siteModel)
+    {
+        $map = [
+            'id' => $id
+        ];
+        $result = $siteModel->restoreData($map);
+        if ($result) {
+            // 更新缓存
+            Cache::forget('common:site');
+        }
+        return redirect('admin/site/index');
+    }
+
+    /**
+     * 彻底删除
+     *
+     * @param                $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function forceDelete($id, Site $siteModel)
+    {
+        $map = compact('id');
+        $siteModel->forceDeleteData($map);
+        return redirect('admin/site/index');
     }
 }
