@@ -37846,10 +37846,35 @@ $(function () {
     });
 
     $('.b-s-submit').click(function () {
-        var postData = $('#b-modal-site').serialize();
-        $.post(storeSite, postData, function (response) {
-            console.log(response);
-        }, 'json');
+        var postData = $('#b-modal-site form').serialize();
+        // 显示loading
+        layer.load(1);
+        // ajax 申请
+        $.ajax({
+            type: 'POST',
+            url: storeSite,
+            data: postData,
+            success: function success(data, status) {
+                layer.msg('提交成功，等待审核。', {
+                    icon: 5,
+                    time: 2000
+                });
+                // 关闭loading
+                layer.closeAll();
+            },
+            error: function error(response) {
+                if (response.status == 422) {
+                    // 关闭loading
+                    layer.closeAll();
+                    $.each(response.responseJSON.errors, function (k, v) {
+                        layer.msg(v[0], {
+                            icon: 5,
+                            time: 2000
+                        });
+                    });
+                }
+            }
+        });
     });
 });
 

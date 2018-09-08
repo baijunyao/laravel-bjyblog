@@ -42,27 +42,27 @@
                     <form class="form-horizontal" role="form" action="{{ url('site/store') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="firstname" class="col-sm-2 control-label">名称</label>
+                            <label for="name" class="col-sm-2 control-label">名称</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="请输入网站名">
+                                <input type="text" class="form-control" name="name" placeholder="请输入网站名">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lastname" class="col-sm-2 control-label">链接</label>
+                            <label for="url" class="col-sm-2 control-label">链接</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="请输入URL">
+                                <input type="text" class="form-control" name="url" placeholder="请输入URL">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lastname" class="col-sm-2 control-label">描述</label>
+                            <label for="description" class="col-sm-2 control-label">描述</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="请输入博客描述">
+                                <input type="text" class="form-control" name="description" placeholder="请输入博客描述">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="lastname" class="col-sm-2 control-label">邮箱</label>
+                            <label for="email" class="col-sm-2 control-label">邮箱</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" placeholder="请输入邮箱用于接收通知">
+                                <input type="text" class="form-control" name="email" placeholder="请输入邮箱用于接收通知">
                             </div>
                         </div>
 
