@@ -33,6 +33,12 @@
                 </td>
             </tr>
             <tr>
+                <th>描述</th>
+                <td>
+                    <input class="form-control" type="text" name="description" value="{{ old('description') }}">
+                </td>
+            </tr>
+            <tr>
                 <th>排序</th>
                 <td>
                     <input class="form-control" type="text" name="sort" value="{{ old('sort') }}">

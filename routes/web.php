@@ -35,6 +35,11 @@ Route::group(['namespace' => 'Home'], function () {
     Route::get('feed', 'IndexController@feed');
     // 用于测试
     Route::get('test', 'IndexController@test');
+    // 推荐博客
+    Route::prefix('site')->group(function () {
+        Route::get('/', 'SiteController@index');
+        Route::post('store', 'SiteController@store')->middleware('home.auth');;
+    });
 });
 
 // Home模块下 三级模式
