@@ -30,7 +30,7 @@ class SiteController extends Controller
         $assign = [
             'site' => $site,
             'head' => $head,
-            'category_id' => '',
+            'category_id' => 'index',
             'tagName' => ''
         ];
         return view('home.site.index', $assign);
@@ -54,7 +54,7 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

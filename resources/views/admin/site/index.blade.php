@@ -22,8 +22,9 @@
             <tr>
                 <th width="5%">id</th>
                 <th width="5%">排序</th>
-                <th width="20%">链接名</th>
-                <th width="40%">链接地址</th>
+                <th width="10%">名称</th>
+                <th width="10%">链接</th>
+                <th width="40%">描述</th>
                 <th width="5%">状态</th>
                 <th width="15%">操作</th>
             </tr>
@@ -35,6 +36,7 @@
                     </td>
                     <td>{{ $v->name }}</td>
                     <td><a href="{{ $v->url }}" target="_blank">{{ $v->url }}</a></td>
+                    <td>{{ $v->description }}</td>
                     <td>
                         @if(is_null($v->deleted_at))
                             √

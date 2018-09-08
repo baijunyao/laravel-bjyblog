@@ -43,3 +43,5 @@ require('./home/index');
 
 require('./home/comment');
 
+require('./home/site');
+
