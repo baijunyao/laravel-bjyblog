@@ -38,7 +38,7 @@
                     <td><a href="{{ $v->url }}" target="_blank">{{ $v->url }}</a></td>
                     <td>{{ $v->description }}</td>
                     <td>
-                        @if(is_null($v->deleted_at))
+                        @if($v->audit == 1)
                             √
                         @else
                             ×

@@ -19,8 +19,9 @@ class SiteController extends Controller
     public function index()
     {
         // 获取文章
-        $site = Cache::remember('common:site', 10080, function () {
+        $site = Cache::remember('home:site', 10080, function () {
             return Site::select('id', 'name', 'url')
+                ->where('audit', 1)
                 ->orderBy('sort')
                 ->get();
         });
