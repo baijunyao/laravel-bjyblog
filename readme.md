@@ -16,6 +16,7 @@
 - [善幸的博客](https://lhyong.cn)  
 - [larwas博客](https://www.larwas.com)  
 - [Snail's Blog](https://www.snail-c.cn)  
+- [任志帆博客](https://renzhifan.cn)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 主要贡献者
