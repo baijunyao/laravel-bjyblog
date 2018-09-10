@@ -8,7 +8,8 @@ return [
                 '/',
                 'article/*',
                 'category/*',
-                'tag/*'
+                'tag/*',
+                'site'
             ]
         ],
     ]
