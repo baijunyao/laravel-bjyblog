@@ -60,8 +60,12 @@ class SiteController extends Controller
     public function store(Store $request, Site $siteModel, OauthUser $oauthUser)
     {
         $oauthUserId = session('user.id');
+
         $siteData = $request->only('name', 'url', 'description');
         $siteData['oauth_user_id'] = $oauthUserId;
+        // 获取序号
+        $sort = Site::orderBy('sort', 'desc')->value('sort');
+        $siteData['sort'] = (int)$sort + 1;
         $result = $siteModel->storeData($siteData);
 
         if ($result) {
