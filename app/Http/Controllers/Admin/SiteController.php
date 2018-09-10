@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Site\Store;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,9 +40,14 @@ class SiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Site $siteModel)
+    public function store(Store $request, Site $siteModel)
     {
         $data = $request->except('_token');
+        if (empty($data['sort'])) {
+            // 获取序号
+            $sort = Site::orderBy('sort', 'desc')->value('sort');
+            $data['sort'] = (int)$sort + 1;
+        }
         $result = $siteModel->storeData($data);
         if ($result) {
             // 更新缓存
