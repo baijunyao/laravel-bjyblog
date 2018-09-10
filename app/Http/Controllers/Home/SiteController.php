@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\Site\Store;
+use App\Models\OauthUser;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -48,14 +49,33 @@ class SiteController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 新增
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Store     $request
+     * @param Site      $siteModel
+     * @param OauthUser $oauthUser
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Store $request)
+    public function store(Store $request, Site $siteModel, OauthUser $oauthUser)
     {
-        
+        $oauthUserId = session('user.id');
+        $siteData = $request->only('name', 'url', 'description');
+        $siteData['oauth_user_id'] = $oauthUserId;
+        $result = $siteModel->storeData($siteData);
+
+        if ($result) {
+            $oauthUserMap = [
+                'id' => $oauthUserId
+            ];
+            $oAuthUserData = [
+                'email' => $request->input('email')
+            ];
+            $oauthUser->updateData($oauthUserMap, $oAuthUserData);
+            return ajax_return(200, '提交成功');
+        } else {
+            return ajax_return(400, '提交失败');
+        }
     }
 
     /**

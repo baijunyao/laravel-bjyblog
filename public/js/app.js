@@ -37855,12 +37855,12 @@ $(function () {
             url: storeSite,
             data: postData,
             success: function success(data, status) {
-                layer.msg('提交成功，等待审核。', {
-                    icon: 5,
-                    time: 2000
-                });
                 // 关闭loading
                 layer.closeAll();
+                layer.msg('提交成功，等待审核。', {
+                    icon: 1,
+                    time: 2000
+                });
             },
             error: function error(response) {
                 if (response.status == 422) {

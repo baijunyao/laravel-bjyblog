@@ -27,6 +27,7 @@ class Store extends FormRequest
             'name'=>'required|unique:sites,name',
             'url'=>'required|unique:sites,url',
             'description'=>'required',
+            'email' => 'email'
         ];
     }
 
