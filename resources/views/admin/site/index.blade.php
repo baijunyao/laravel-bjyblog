@@ -45,6 +45,12 @@
                         @endif
                     </td>
                     <td>
+                        @if($v->audit == 1)
+                            <a class="js-audit" href="javascript:;" data-id="{{ $v->id }}" data-audit="0">取消审核</a>
+                        @else
+                            <a class="js-audit" href="javascript:;" data-id="{{ $v->id }}" data-audit="1">通过审核</a>
+                        @endif
+                        |
                         <a href="{{ url('admin/site/edit', [$v->id]) }}">编辑</a> |
                         @if(is_null($v->deleted_at))
                             <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/site/destroy', [$v->id]) }}'">删除</a>
@@ -68,4 +74,19 @@
             </tr>
         </table>
     </form>
+@endsection
+
+@section('js')
+    <script>
+        $('.js-audit').click(function () {
+            var id = $(this).attr('data-id');
+            var url = '{{ url('admin/site/update') }}' + '/' + id;
+            var postData = {
+                audit: $(this).attr('data-audit')
+            }
+            $.post(url, postData, function () {
+                location.reload();
+            })
+        })
+    </script>
 @endsection
