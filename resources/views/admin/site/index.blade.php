@@ -79,6 +79,9 @@
 @section('js')
     <script>
         $('.js-audit').click(function () {
+            if (!confirm('确定操作?')) {
+                return false;
+            }
             var id = $(this).attr('data-id');
             var url = '{{ url('admin/site/update') }}' + '/' + id;
             var postData = {
