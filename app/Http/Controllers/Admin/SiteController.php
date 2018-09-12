@@ -98,6 +98,9 @@ class SiteController extends Controller
             // 更新缓存
             Cache::forget('home:site');
         }
+        if ($request->ajax()) {
+            return ajax_return(200, '成功');
+        }
         return redirect()->back();
     }
 
