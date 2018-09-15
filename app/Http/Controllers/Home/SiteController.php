@@ -20,7 +20,7 @@ class SiteController extends Controller
     {
         // 获取文章
         $site = Cache::remember('home:site', 10080, function () {
-            return Site::select('id', 'name', 'url')
+            return Site::select('id', 'name', 'url', 'description')
                 ->where('audit', 1)
                 ->orderBy('sort')
                 ->get();
