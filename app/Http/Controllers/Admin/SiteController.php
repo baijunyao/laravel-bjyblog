@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\SiteAudit;
 use App\Http\Requests\Site\Store;
 use App\Models\Site;
 use Illuminate\Http\Request;
@@ -97,6 +98,10 @@ class SiteController extends Controller
         if ($result) {
             // 更新缓存
             Cache::forget('home:site');
+            // 如果通过审核 发送邮件通知
+            if (!empty($data['audit'])) {
+                event(new SiteAudit($id));
+            }
         }
         if ($request->ajax()) {
             return ajax_return(200, '成功');
