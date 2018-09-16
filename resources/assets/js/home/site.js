@@ -30,6 +30,7 @@ $(function () {
                     icon: 1,
                     time: 2000
                 })
+                $('#b-modal-site').modal('hide');
             },
             error: response => {
                 if (response.status == 422) {
