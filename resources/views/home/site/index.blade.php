@@ -22,7 +22,7 @@
             <div class="col-xs-12 col-md-4 col-lg-4 b-site">
                 <div class="b-s-inside">
                     <img class="b-s-plus" src="{{ asset('images/home/plus.png') }}">
-                    <a class="b-s-url" href="javascript:;" ></a>
+                    <a class="b-s-url js-add-site" href="javascript:;" ></a>
                 </div>
             </div>
         </div>

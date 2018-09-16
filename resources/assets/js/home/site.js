@@ -1,5 +1,5 @@
 $(function () {
-    $('.b-s-url').click(function () {
+    $('.js-add-site').click(function () {
         $.get(checkLogin, function(data) {
             console.log(data);
             if(data==1){
