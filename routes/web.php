@@ -38,7 +38,7 @@ Route::group(['namespace' => 'Home'], function () {
     // 推荐博客
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');
-        Route::post('store', 'SiteController@store')->middleware('home.auth');;
+        Route::post('store', 'SiteController@store')->middleware('home.auth', 'clean.xss');;
     });
 });
 
