@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'admin.auth' => \App\Http\Middleware\AdminAuth::class,
         'home.auth' => \App\Http\Middleware\HomeAuth::class,
         'admin.login' => \App\Http\Middleware\AdminLogin::class,
+        'clean.xss' => \App\Http\Middleware\CleanXss::class,
     ];
 }
