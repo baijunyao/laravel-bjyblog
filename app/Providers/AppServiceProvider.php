@@ -19,6 +19,7 @@ use Illuminate\Support\ServiceProvider;
 use DB;
 use Illuminate\Database\QueryException;
 use Artisan;
+use Exception;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         ini_set('memory_limit', "256M");
+
+        // 获取配置项
+        $config = Cache::remember('config', 10080, function () {
+            return Config::where('id', '>', 100)->pluck('value','name');
+        });
+
+        // 动态替换 /config 目录下的配置项
+        config($config->toArray());
 
         // 开源项目数据
         view()->composer(['layouts/home', 'home/index/git'], function($view){
@@ -68,26 +77,6 @@ class AppServiceProvider extends ServiceProvider
             $assign = compact('articleCount', '', 'commentCount', 'chatCount', 'oauthUserCount');
             $view->with($assign);
         });
-
-        // 使用 try catch 是为了解决 composer install 时候触发 php artisan optimize 但此时无数据库的问题
-        try {
-            Artisan::call('cache:clear');
-            // 获取配置项
-            $config = Cache::remember('config', 10080, function () {
-                return Config::where('id', '>', 100)->pluck('value','name');
-            });
-
-            // 解决初次安装时候没有数据引起报错
-            if ($config->isEmpty()) {
-                Artisan::call('cache:clear');
-            } else {
-                // 用 config 表中的配置项替换 /config/ 目录下文件中的配置项
-                config($config->toArray());
-            }
-        } catch (QueryException $e) {
-            // 此处清除缓存是为了解决上面无数据库时缓存时 config 缓存了空数据 db:seed 后 config 走了缓存为空的问题
-            Artisan::call('cache:clear');
-        }
 
         //分配前台通用的数据
         view()->composer('layouts/home', function($view){
