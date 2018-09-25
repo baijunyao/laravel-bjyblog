@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Home;
 use App\Http\Requests\Site\Store;
 use App\Models\OauthUser;
 use App\Models\Site;
+use App\Notifications\ApplySite;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cache;
+use Notification;
 
 class SiteController extends Controller
 {
@@ -77,6 +79,9 @@ class SiteController extends Controller
                 'email' => $request->input('email')
             ];
             $oauthUser->updateData($oauthUserMap, $oAuthUserData);
+
+            Notification::route('mail', config('bjyblog.notification_email'))
+                ->notify(new ApplySite());
             return ajax_return(200, '提交成功');
         } else {
             return ajax_return(400, '提交失败');
