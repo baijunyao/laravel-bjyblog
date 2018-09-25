@@ -29,7 +29,6 @@ class SiteAudit extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
         // 只在外网生产环境下发送邮件通知
         // if (env('APP_ENV') == 'local') {
         if (env('APP_ENV') == 'production') {
