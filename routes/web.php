@@ -254,6 +254,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('email', 'ConfigController@email');
         // 编辑 oauth 配置页面
         Route::get('oauth', 'ConfigController@oauth');
+        // 编辑 qq 群配置页面
+        Route::get('qqQun', 'ConfigController@qqQun');
         // 编辑配置
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存

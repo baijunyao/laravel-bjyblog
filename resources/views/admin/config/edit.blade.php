@@ -22,12 +22,6 @@
                 </td>
             </tr>
             <tr>
-                <th>站长邮箱：</th>
-                <td>
-                    <input class="form-control modal-sm" type="text" name="118" value="{{  $config['bjyblog.admin_email'] }}" >
-                </td>
-            </tr>
-            <tr>
                 <th>网站名：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="101" value="{{  $config['bjyblog.web_name'] }}" >
@@ -94,46 +88,15 @@
                 </td>
             </tr>
             <tr>
+                <th>站长邮箱：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="118" value="{{  $config['bjyblog.admin_email'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th>用于接收通知的邮箱：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="148" value="{{  $config['bjyblog.notification_email'] }}" >
-                </td>
-            </tr>
-            <tr>
-                <th>QQ群说明文章id：</th>
-                <td>
-                    <input class="form-control modal-sm" type="text" name="150" value="{{  $config['bjyblog.qq_qun.article_id'] }}" >
-                </td>
-            </tr>
-            <tr>
-                <th>QQ群账号：</th>
-                <td>
-                    <input class="form-control modal-sm" type="text" name="151" value="{{  $config['bjyblog.qq_qun.number'] }}" >如果群账号为空则前台不展示赞赏捐赠模块
-                </td>
-            </tr>
-            <tr>
-                <th>QQ群代码：</th>
-                <td>
-                    <textarea class="form-control modal-sm" name="152" rows="5" placeholder="">{{  $config['bjyblog.qq_qun.code'] }}</textarea><a href="http://qun.qq.com/join.html" target="_blank">http://qun.qq.com/join.html</a>
-                </td>
-            </tr>
-            <tr>
-                <th>QQ群二维码：</th>
-                <td>
-                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 180px; height: 180px;">
-                            <img src="{{ asset($config['bjyblog.qq_qun.or_code']) }}" alt="群二维码">
-                        </div>
-                        <div>
-                            <span class="btn btn-default btn-file">
-                                <span class="fileinput-new">选择图片</span>
-                                <span class="fileinput-exists">更改</span>
-                                <input type="file" name="153">
-                            </span>
-                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
-                        </div>
-                    </div>
-                    <a href="http://qun.qq.com/join.html" target="_blank">http://qun.qq.com/join.html</a>
                 </td>
             </tr>
             <tr>

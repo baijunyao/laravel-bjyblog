@@ -50,6 +50,19 @@ class ConfigController extends Controller
     }
 
     /**
+     * QQ群设置
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
+     */
+    public function qqQun()
+    {
+        $config = cache('config');
+        $assign = compact('config');
+        return view('admin.config.qqQun', $assign);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
