@@ -76,5 +76,11 @@ class AllVersions extends Command
             $consoleModel->storeData($consoleData);
             $this->info($version . ' success');
         }
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+        Artisan::call('clear-compiled');
+        Artisan::call('queue:restart');
     }
 }
