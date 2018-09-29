@@ -32,6 +32,9 @@ class AppServiceProvider extends ServiceProvider
     {
         ini_set('memory_limit', "256M");
 
+        // 为了防止 git clone 后 composer install
+        // 因为还没运行迁移 php artisan package:discover 报错的问题
+        // 如果表不存在则不再向下执行
         try {
             // 获取配置项
             $config = Cache::remember('config', 10080, function () {
