@@ -32,10 +32,14 @@ class AppServiceProvider extends ServiceProvider
     {
         ini_set('memory_limit', "256M");
 
-        // 获取配置项
-        $config = Cache::remember('config', 10080, function () {
-            return Config::where('id', '>', 100)->pluck('value','name');
-        });
+        try {
+            // 获取配置项
+            $config = Cache::remember('config', 10080, function () {
+                return Config::where('id', '>', 100)->pluck('value','name');
+            });
+        } catch (Exception $exception) {
+            return true;
+        }
 
         // 动态替换 /config 目录下的配置项
         config($config->toArray());
