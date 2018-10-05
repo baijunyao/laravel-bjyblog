@@ -50,7 +50,7 @@
                 <div class="col-xs-12 col-md-12 col-lg-12">
                     <div class="row">
                         <!-- 文章封面图片开始 -->
-                        <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
+                        <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs b-oa-thumbnail">
                             <figure class="b-oa-pic b-style1">
                                 <a href="{{ url('article', $v->id) }}" target="_blank">
                                     <img src="{{ asset($v->cover) }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
@@ -59,6 +59,9 @@
                                     <a href="{{ url('article', [$v->id]) }}" target="_blank"></a>
                                 </figcaption>
                             </figure>
+                            @if(1 == $v->is_top)
+                                <img class="b-top-icon" src="{{ asset('images/home/top.png') }}" alt="top">
+                            @endif
                         </div>
                         <!-- 文章封面图片结束 -->
 

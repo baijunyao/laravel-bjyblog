@@ -462,16 +462,26 @@ a{
         margin-right: 5px;
       }
     }
-    .b-oa-pic{
-      padding: 3px;
-      width: 100%;
-      height: auto;
-      border: 1px solid #CCC;
-      overflow: hidden;
-      img{
-        width: 220px;
-        height: 150px;
-      }
+    .b-oa-thumbnail{
+        position: relative;
+        .b-oa-pic{
+            padding: 3px;
+            width: 100%;
+            height: auto;
+            border: 1px solid #CCC;
+            overflow: hidden;
+            img{
+                width: 220px;
+                height: 150px;
+            }
+        }
+        .b-top-icon{
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 50px;
+            height: 50px;
+        }
     }
     .b-style1{
       img{

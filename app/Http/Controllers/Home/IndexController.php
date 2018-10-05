@@ -26,7 +26,11 @@ class IndexController extends Controller
     public function index()
 	{
 	    // 获取文章列表数据
-        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+        $article = Article::select(
+                'id', 'category_id', 'title',
+                'author', 'description', 'cover',
+                'is_top', 'created_at'
+            )
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);
@@ -267,7 +271,11 @@ class IndexController extends Controller
         $id = $articleModel->searchArticleGetId($wd);
 
         // 获取文章列表数据
-        $article = Article::select('id', 'category_id', 'title', 'author', 'description', 'cover', 'created_at')
+        $article = Article::select(
+                'id', 'category_id', 'title',
+                'author', 'description', 'cover',
+                'is_top', 'created_at'
+            )
             ->whereIn('id', $id)
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
