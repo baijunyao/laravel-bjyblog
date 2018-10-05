@@ -13,8 +13,9 @@ let mix = require('laravel-mix');
 
 // home 模块
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .version();
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .copyDirectory('resources/assets/images', 'public/images')
+    .version();
 
 // admin 模块
 mix.js('resources/assets/js/admin.js', 'public/js')
