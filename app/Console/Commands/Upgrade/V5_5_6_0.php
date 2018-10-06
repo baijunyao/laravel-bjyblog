@@ -51,6 +51,7 @@ class V5_5_6_0 extends Command
         // 运行填充
         Artisan::call('db:seed', [
             '--class' => 'ConsolesTableSeeder',
+            '--force' => true,
         ]);
         $this->info('finish');
     }
