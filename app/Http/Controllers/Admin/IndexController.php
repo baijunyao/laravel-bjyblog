@@ -36,7 +36,7 @@ class IndexController extends Controller
             'php' => PHP_VERSION,
             'mysql' => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value
         ];
-        $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount', 'oauthUserData', 'commentData', 'version');
+        $assign = compact('oauthUserData', 'commentData', 'version');
         return view('admin.index.index', $assign);
     }
 
