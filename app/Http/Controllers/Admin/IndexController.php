@@ -13,6 +13,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\PhpExecutableFinder;
 use Artisan;
+use Composer\Semver\Comparator;
 
 class IndexController extends Controller
 {
@@ -47,39 +48,18 @@ class IndexController extends Controller
      */
     public function upgrade()
     {
-        $data = file_get_contents('https://gitee.com/shuaibai123/laravel-bjyblog/raw/master/config/bjyblog.php');
-        preg_match("/\d+(\.\d+){3}/", $data, $version);
-        $newVersion = str_replace('.', '', $version[0]);
-        $oldVersion = str_replace(['v', '.'], '', config('bjyblog.version'));
-        if ($newVersion <= $oldVersion) {
+        $data = file_get_contents('https://gitee.com/baijunyao/laravel-bjyblog/raw/master/config/bjyblog.php');
+        preg_match("/v\d+(\.\d+){3}/", $data, $version);
+        $newVersion = $version[0];
+        $oldVersion = config('bjyblog.version');
+
+        if (Comparator::greaterThan($newVersion, $oldVersion)) {
+            return redirect('https://baijunyao.com/docs/laravel-bjyblog/更新记录.html');
+        } else {
             flash_error('没有需要更新的版本');
-            return redirect()->back();
+            return redirect(url('admin/index/index'));
         }
-        // 进入项目根目录
-        $basePath = base_path();
-        chdir($basePath);
-        // 获取 php 命令目录
-        $phpBinPath = dirname((new PhpExecutableFinder)->find());
-        $command = <<<php
-git pull
-export PATH=\$PATH:$phpBinPath
-composer install --no-dev
-php;
-        // 拉取代码 执行 composer install
-        $process = new Process($command);
-        $process->run();
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
-        }
-        dump($process->getOutput());
 
-        // 执行迁移
-        Artisan::call('migrate', [
-            '--force' => true,
-        ]);
-
-        // 清空缓存
-        Artisan::call('cache:clear');
     }
 
 }
