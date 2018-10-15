@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -27,4 +28,14 @@ class AdminController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin/index/index';
+
+    /**
+     * 使用 admin guard
+     *
+     * @return \Illuminate\Contracts\Auth\Guard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
+    }
 }
