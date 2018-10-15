@@ -27,14 +27,4 @@ class AdminController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin/index/index';
-
-    /**
-     * 显示登录页面
-     *
-     * @return mixed
-     */
-    public function index()
-    {
-        return view('login.public.index');
-    }
 }
