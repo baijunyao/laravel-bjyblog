@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class AdminLogin
 {
@@ -16,7 +17,7 @@ class AdminLogin
     public function handle($request, Closure $next)
     {
         // 如果登录;则重定向到首页
-        if (session('user.is_admin') == 1) {
+        if (Auth::guard('admin')->check()) {
             return redirect('admin/index/index');
         }
         return $next($request);

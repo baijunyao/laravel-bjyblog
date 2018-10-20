@@ -100,6 +100,10 @@ class OAuthController extends Controller
             $sessionData['user']['id'] = $userId;
             $sessionData['user']['email'] = $oldUserData->email;
             $sessionData['user']['is_admin'] = $oldUserData->is_admin;
+            // 如果是管理员；则自动登录后台
+            if ($oldUserData->is_admin) {
+                Auth::guard('admin')->loginUsingId(1, true);
+            }
         } else {
             $data = [
                 'type' => $type[$service],
