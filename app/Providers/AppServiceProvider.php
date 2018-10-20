@@ -20,6 +20,7 @@ use DB;
 use Illuminate\Database\QueryException;
 use Artisan;
 use Exception;
+use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -46,6 +47,20 @@ class AppServiceProvider extends ServiceProvider
 
         // 动态替换 /config 目录下的配置项
         config($config->toArray());
+
+        // 分配后台管理员用户
+        view()->composer('layouts/admin', function($view){
+            // 如果在前台登录了则使用前台的用户信息；否则使用后台用户信息
+            if (empty(session('user'))) {
+                $adminUser = Auth::guard('admin')->user();
+                $adminUser['avatar'] = 'uploads/avatar/default.jpg';
+            } else {
+                $adminUser = session('user');
+            }
+            // 分配数据
+            $assign = compact('adminUser');
+            $view->with($assign);
+        });
 
         // 开源项目数据
         view()->composer(['layouts/home', 'home/index/git'], function($view){
