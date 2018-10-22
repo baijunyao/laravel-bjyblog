@@ -87,6 +87,9 @@
                 <div id="comment-{{ $v['id'] }}" class="row b-user b-parent">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
                         <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v['avatar']) }}" alt="{{ config('bjyblog.web_name') }}" title="{{ config('bjyblog.web_name') }}">
+                        @if($v['is_admin'] == 1)
+                            <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('bjyblog.web_name') }}">
+                        @endif
                     </div>
                     <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                         <p class="b-content">
@@ -100,6 +103,9 @@
                             <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
                                     <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($n['avatar']) }}" alt="{{ config('bjyblog.web_name') }}" title="{{ config('bjyblog.web_name') }}">
+                                    @if($n['is_admin'] == 1)
+                                        <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('bjyblog.web_name') }}">
+                                    @endif
                                 </div>
                                 <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                     <li class="b-content">

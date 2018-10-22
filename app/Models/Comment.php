@@ -203,7 +203,7 @@ class Comment extends Base
         ];
         // 关联第三方用户表获取一级评论
         $data=$this
-            ->select('comments.*', 'ou.name', 'ou.avatar')
+            ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
             ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
             ->where($map)
             ->orderBy('created_at', 'desc')
@@ -244,8 +244,8 @@ class Comment extends Base
             'pid' => $data['id']
         ];
         $child=$this
-            ->select('comments.*', 'ou.name', 'ou.avatar')
-            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
+            ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
+            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id', 'ou.is_admin')
             ->where($map)
             ->orderBy('created_at', 'desc')
             ->get()

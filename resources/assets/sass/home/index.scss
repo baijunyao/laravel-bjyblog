@@ -747,12 +747,19 @@ a{
         padding-top: 10px;
         height: 100%;
         .b-pic-col{
+            position: relative;
           .b-user-pic{
             width: 45px;
             height: 45px;
-
           }
-
+          .b-crown{
+              position: absolute;
+              left: 2px;
+              top: -12px;
+              width: 25px;
+              height: 25px;
+              transform: rotate(-50deg);
+          }
         }
         .b-content-col{
           .b-content{

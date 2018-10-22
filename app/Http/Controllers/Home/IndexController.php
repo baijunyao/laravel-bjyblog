@@ -89,6 +89,7 @@ class IndexController extends Controller
 
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
+        // p($comment);die;
         $category_id = $data->category->id;
         $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
         return view('home.index.article', $assign);
