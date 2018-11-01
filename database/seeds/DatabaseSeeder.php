@@ -11,16 +11,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersTableSeeder::class);
-        $this->call(ConfigsTableSeeder::class);
-        $this->call(TagsTableSeeder::class);
-        $this->call(CategoriesTableSeeder::class);
-        $this->call(ArticlesTableSeeder::class);
-        $this->call(ArticleTagsTableSeeder::class);
-        $this->call(ChatsTableSeeder::class);
-        $this->call(FriendshipLinksTableSeeder::class);
-        $this->call(OauthUsersTableSeeder::class);
-        $this->call(CommentsTableSeeder::class);
-        $this->call(GitProjectsTableSeeder::class);
+        $file = collect(File::files(database_path('seeds')))
+            ->transform(function ($v) {
+                return [
+                    'cTime' => $v->getCTime(),
+                    'filename' => basename($v->getFilename(), '.php')
+                ];
+            })
+            ->filter(function ($v) {
+                return $v['filename'] === 'DatabaseSeeder' ? false : true;
+            })
+            ->sortBy('cTime')
+            ->pluck('filename');
+        // 自动 call 目录下的文件
+        foreach ($file as $k => $v) {
+            $this->call($v);
+        }
     }
 }

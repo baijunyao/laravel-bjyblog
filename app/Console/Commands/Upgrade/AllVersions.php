@@ -2,10 +2,13 @@
 
 namespace App\Console\Commands\Upgrade;
 
+use App\Models\Config;
 use App\Models\Console;
+use App\Models\Nav;
 use Illuminate\Console\Command;
 use File;
 use Artisan;
+use Schema;
 
 class AllVersions extends Command
 {
@@ -44,6 +47,23 @@ class AllVersions extends Command
         Artisan::call('migrate', [
             '--force' => true,
         ]);
+
+        // 填充 navs 表的默认数据
+        $navCount = Nav::select('id')->count();
+        if ($navCount === 0) {
+            Artisan::call('db:seed', [
+                '--class' => 'NavsTableSeeder',
+            ]);
+            $this->info('navs seed success');
+        }
+
+        // 升级 config 配置项的表数据
+        $configCount = Config::where('id', '>', 100)->count();
+        if ($configCount === 0) {
+            Artisan::call('seeder:upgradeConfig');
+            $this->info('upgrade config success');
+        }
+
         $consoleModel = new Console();
 
         // 获取 Console/Commands/Upgrade 目录下的文件并按创建日期排序
