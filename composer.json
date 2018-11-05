@@ -33,6 +33,7 @@
         "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
         "roumen/feed": "2.11.*",
+        "sentry/sentry-laravel": "^0.11.0",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0",
         "vanry/laravel-scout-tntsearch": "^1.2"
