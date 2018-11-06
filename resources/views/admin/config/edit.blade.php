@@ -100,6 +100,12 @@
                 </td>
             </tr>
             <tr>
+                <th>Sentry DSN：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="158" value="{{  $config['sentry.dsn'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="提交">

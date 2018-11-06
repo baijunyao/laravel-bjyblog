@@ -749,8 +749,14 @@ class ConfigsTableSeeder extends Seeder
                 "updated_at" => "2018-08-22 21:03:01",
                 "deleted_at" => null,
             ],
+            86 => [
+                "id" => 158,
+                "name" => "sentry.dsn",
+                "value" => "",
+                "created_at" => "2018-08-22 21:03:01",
+                "updated_at" => "2018-08-22 21:03:01",
+                "deleted_at" => null,
+            ],
         ));
-        
-        
     }
 }
