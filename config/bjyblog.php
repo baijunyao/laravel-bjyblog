@@ -2,7 +2,7 @@
 
 return [
     // 博客版本
-    'version' => 'v5.5.6.5',
+    'version' => 'v5.5.7.0',
     'branch' => env('DEPLOY_BRANCH', 'master'),
     'web_name' => '',
     'head' => [
