@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/baijunyao/laravel-bjyblog.svg?branch=master)](https://travis-ci.com/baijunyao/laravel-bjyblog)
 ## 简介
 这个项目是把 [thinkphp-bjyblog](https://github.com/baijunyao/thinkphp-bjyblog) 用 laravel 框架重构后的产物；  
 
