@@ -89,6 +89,15 @@ $(function(){
 
     // 开启进度条
     Pace.start()
+
+    // 文章详情点击图片放大
+    $.each($('.js-content img'), function (k, v) {
+        console.log($(v));
+        $(v).wrap(function(){
+            return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
+        });
+    })
+    $('.js-fluidbox').fluidbox();
 })
 
 /**
