@@ -293,9 +293,10 @@ class IndexController extends Controller
             'title' => $wd,
             'head' => $head
         ];
+
         // 增加 X-Robots-Tag 用于禁止搜搜引擎抓取搜索结果页面 防止利用搜索结果页生成恶意广告
-        return response()->header('X-Robots-Tag', 'noindex')
-            ->view('home.index.index', $assign);
+        return response()->view('home.index.index', $assign)
+            ->header('X-Robots-Tag', 'noindex');
     }
 
     /**

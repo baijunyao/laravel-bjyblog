@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Home'], function () {
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
-    Route::get('search', 'IndexController@search');
+    Route::post('search', 'IndexController@search');
     // feed
     Route::get('feed', 'IndexController@feed');
     // 用于测试
