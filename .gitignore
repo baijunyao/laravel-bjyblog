@@ -16,3 +16,7 @@ _ide_helper.php
 /public/Demo/*
 phpunit.dusk.xml
 public/favicon.ico
+docs
+public/baidu*
+public/google*
+public/fileauth*
