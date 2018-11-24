@@ -75,7 +75,7 @@ class IndexControllerTest extends TestCase
     public function testSearch()
     {
         $word = '序言';
-        $response = $this->call('GET', '/search', [
+        $response = $this->call('POST', '/search', [
             'wd' => $word
         ]);
         $response->assertStatus(200);
