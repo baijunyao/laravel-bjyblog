@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Home;
 
-use Tests\TestCase;
+use Tests\Feature\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -46,23 +46,12 @@ class IndexControllerTest extends TestCase
 
     public function testComment()
     {
-        $session = [
-            'user' => [
-                'id' => 1,
-                'email' => 'test@test.com',
-                'name' => 'test',
-                'type' => 1,
-                'is_admin' => 0,
-                'avatar' => url('uploads/avatar/default.jpg')
-            ]
-        ];
         $comment = [
             'article_id' => 1,
             'pid' => 0,
             'content' => '评论666'
         ];
-        $response = $this->withSession($session)
-            ->post('/comment', $comment);
+        $response = $this->loginByUserId(1)->post('/comment', $comment);
         $response->assertStatus(200);
     }
 
