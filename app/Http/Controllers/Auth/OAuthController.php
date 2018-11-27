@@ -67,13 +67,6 @@ class OAuthController extends Controller
         ];
         // 获取用户资料
         $user = Socialite::driver($service)->user();
-        // 组合存入session中的值
-        $sessionData = [
-            'user' => [
-                'name' => $user->nickname,
-                'type' => $type[$service],
-            ]
-        ];
         // 查找此用户是否已经登录过
         $countMap = [
             'type' => $type[$service],
@@ -96,10 +89,6 @@ class OAuthController extends Controller
             ];
             // 更新数据
             $oauthUserModel->updateData($editMap, $editData, false);
-            // 组合session中要用到的数据
-            $sessionData['user']['id'] = $userId;
-            $sessionData['user']['email'] = $oldUserData->email;
-            $sessionData['user']['is_admin'] = $oldUserData->is_admin;
             // 如果是管理员；则自动登录后台
             if ($oldUserData->is_admin) {
                 Auth::guard('admin')->loginUsingId(1, true);
@@ -127,10 +116,6 @@ class OAuthController extends Controller
                 'avatar' => $avatarPath
             ];
             $oauthUserModel->updateData($editMap, $editData, false);
-            // 组合session中要用到的数据
-            $sessionData['user']['id'] = $userId;
-            $sessionData['user']['email'] = '';
-            $sessionData['user']['is_admin'] = 0;
         }
 
         $avatarPath = public_path('uploads/avatar/'.$userId.'.jpg');
@@ -145,9 +130,7 @@ class OAuthController extends Controller
             copy(public_path('uploads/avatar/default.jpg'), $avatarPath);
         }
 
-        $sessionData['user']['avatar'] = url('uploads/avatar/'.$userId.'.jpg');
-        // 将数据存入session
-        session($sessionData);
+        Auth::guard('oauth')->loginUsingId($userId, true);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(session('targetUrl', url('/')));
     }
