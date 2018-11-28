@@ -142,7 +142,7 @@ class OAuthController extends Controller
      */
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        Auth::guard('oauth')->logout();
         return redirect()->back();
     }
 }
