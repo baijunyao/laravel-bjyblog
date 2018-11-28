@@ -23,11 +23,11 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="{{ auth()->guard('admin')->user()->avatar }}" class="img-circle profile_img">
+                        <img src="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>{{ auth()->guard('admin')->user()->name }}</h2>
+                        <h2>{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->name : auth()->guard('admin')->user()->name }}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -119,7 +119,6 @@
             </div>
         </div>
 
-
         <!-- top navigation -->
         <div class="top_nav">
             <div class="nav_menu">
@@ -131,7 +130,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ auth()->guard('admin')->user()->avatar }}" alt="">{{ auth()->guard('admin')->user()->name }}
+                                {{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->name : auth()->guard('admin')->user()->name }}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
