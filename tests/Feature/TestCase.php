@@ -9,13 +9,7 @@ abstract class TestCase extends BaseTestCase
 {
     public function loginByUserId($userId)
     {
-        $user = OauthUser::select('id', 'email', 'name', 'type', 'is_admin', 'avatar')
-            ->where('id', $userId)
-            ->first()
-            ->toArray();
-        $session = [
-            'user' => $user
-        ];
-        return $this->withSession($session);
+        $user = OauthUser::find($userId);
+        return $this->actingAs($user, 'oauth');
     }
 }

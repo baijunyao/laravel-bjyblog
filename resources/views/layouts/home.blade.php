@@ -51,16 +51,16 @@
                 @endforeach
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
-                @if(empty(session('user.name')))
+                @if(auth()->guard('oauth')->check())
+                    <li class="b-user-info">
+                        <span><img class="b-head_img" src="{{ auth()->guard('oauth')->user()->avatar }}" alt="{{ auth()->guard('oauth')->user()->name }}" title="{{ auth()->guard('oauth')->user()->name }}" /></span>
+                        <span class="b-nickname">{{ auth()->guard('oauth')->user()->name }}</span>
+                        <span><a href="{{ url('auth/oauth/logout') }}">退出</a></span>
+                    </li>
+                @else
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
                         <a class="js-login-btn" href="javascript:;">登录</a>
-                    </li>
-                @else
-                    <li class="b-user-info">
-                        <span><img class="b-head_img" src="{{ session('user.avatar') }}" alt="{{ session('user.name') }}" title="{{ session('user.name') }}" /></span>
-                        <span class="b-nickname">{{ session('user.name') }}</span>
-                        <span><a href="{{ url('auth/oauth/logout') }}">退出</a></span>
                     </li>
                 @endif
             </ul>

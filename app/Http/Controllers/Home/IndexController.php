@@ -221,9 +221,9 @@ class IndexController extends Controller
     {
         $data = $request->only('content', 'article_id', 'pid');
         // 获取用户id
-        $userId = session('user.id');
+        $userId = auth()->guard('oauth')->user()->id;
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
-        $email = $request->input('email');
+        $email = $request->input('email', '');
         if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
             // 修改邮箱
             $oauthUserMap = [
@@ -233,7 +233,6 @@ class IndexController extends Controller
                 'email' => $email
             ];
             $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
-            session(['user.email' => $email]);
         }
         // 存储评论
         $id = $commentModel->storeData($data, false);
@@ -247,10 +246,10 @@ class IndexController extends Controller
      */
     public function checkLogin()
     {
-        if (empty(session('user.id'))) {
-            return 0;
-        } else {
+        if (auth()->guard('oauth')->check()) {
             return 1;
+        } else {
+            return 0;
         }
     }
 

@@ -33,9 +33,9 @@ class Comment implements Rule
             return false;
         }
         // 获取用户id
-        $userId = session('user.id');
+        $userId = auth()->guard('oauth')->user()->id;
         // 是否是管理员
-        $isAdmin = session('user.is_admin');
+        $isAdmin = auth()->guard('oauth')->user()->is_admin;
         // 获取当前时间戳
         $time = time();
         // 获取最近一次评论时间
@@ -52,7 +52,7 @@ class Comment implements Rule
         // 限制用户每天最多评论10条
         $date = date('Y-m-d', $time);
         $count = $commentModel
-            ->where('oauth_user_id', session('user.id'))
+            ->where('oauth_user_id', auth()->guard('oauth')->user()->id)
             ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
             ->count();
         if ($isAdmin !=1 && $count > 10) {

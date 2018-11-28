@@ -62,7 +62,7 @@ class SiteController extends Controller
      */
     public function store(Store $request, Site $siteModel, OauthUser $oauthUser)
     {
-        $oauthUserId = session('user.id');
+        $oauthUserId = auth()->guard('oauth')->user()->id;
 
         $siteData = $request->only('name', 'url', 'description');
         $siteData['oauth_user_id'] = $oauthUserId;

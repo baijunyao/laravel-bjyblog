@@ -23,11 +23,11 @@
                 <!-- menu profile quick info -->
                 <div class="profile">
                     <div class="profile_pic">
-                        <img src="{{ asset($adminUser['avatar']) }}" class="img-circle profile_img">
+                        <img src="{{ auth()->guard('admin')->user()->avatar }}" class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>{{ $adminUser['name'] }}</h2>
+                        <h2>{{ auth()->guard('admin')->user()->name }}</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -131,7 +131,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset($adminUser['avatar']) }}" alt="">{{ $adminUser['name'] }}
+                                <img src="{{ auth()->guard('admin')->user()->avatar }}" alt="">{{ auth()->guard('admin')->user()->name }}
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">

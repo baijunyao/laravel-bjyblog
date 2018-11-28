@@ -33,7 +33,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        session()->forget('user');
         return redirect('admin/login/index');
     }
 

@@ -91,8 +91,8 @@ class Comment extends Base
      */
     public function storeData($data, $flash = true)
     {
-        $user_id = session('user.id');
-        $name = session('user.name');
+        $user_id = auth()->guard('oauth')->user()->id;
+        $name = auth()->guard('oauth')->user()->name;
 
         $isAdmin = OauthUser::where('id', $user_id)->value('is_admin');
         $content = $this->imageToUbb($data['content']);
