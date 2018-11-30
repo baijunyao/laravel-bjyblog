@@ -33,7 +33,7 @@ class IndexController extends Controller
         $commentData = $commentModel->getNewData(5);
         $version = [
             'system' => PHP_OS,
-            'webServer' => $_SERVER['SERVER_SOFTWARE'],
+            'webServer' => isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '',
             'php' => PHP_VERSION,
             'mysql' => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value
         ];
