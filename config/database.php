@@ -52,6 +52,11 @@ return [
             'prefix' => 'bjy_',
             'strict' => false,
             'engine' => null,
+            'dump' => [
+                'dump_binary_path' => '',
+                'use_single_transaction',
+                'timeout' => 60 * 5, // 5 minute timeout
+            ]
         ],
 
         'pgsql' => [

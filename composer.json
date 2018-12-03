@@ -36,6 +36,7 @@
         "sentry/sentry-laravel": "^0.11.0",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0",
+        "spatie/laravel-backup": "^5.11",
         "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
