@@ -59,7 +59,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
                 <img class="b-head-img" src="@if(auth()->guard('oauth')->check()){{ auth()->guard('oauth')->user()->avatar }}@else{{ asset('images/home/default_head_img.gif') }}@endif" alt="{{ config('bjyblog.web_name') }}" title="{{ config('bjyblog.web_name') }}">
                 <div class="b-box-textarea">
-                    <div class="b-box-content js-hint" @if(!auth()->guard('oauth')->check())contenteditable="true" @endif>请先登录后发表评论</div>
+                    <div class="b-box-content js-hint" @if(auth()->guard('oauth')->check())contenteditable="true" @endif>请先登录后发表评论</div>
                     <ul class="b-emote-submit">
                         <li class="b-emote">
                             <i class="fa fa-smile-o js-get-tuzki"></i>
