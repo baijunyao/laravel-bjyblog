@@ -757,6 +757,14 @@ class ConfigsTableSeeder extends Seeder
                 "updated_at" => "2018-08-22 21:03:01",
                 "deleted_at" => null,
             ],
+            87 => [
+                "id" => 159,
+                "name" => "database.connections.mysql.dump.dump_binary_path",
+                "value" => "/bin/",
+                "created_at" => "2018-12-03 21:39:22",
+                "updated_at" => "2018-12-03 21:39:22",
+                "deleted_at" => null,
+            ],
         ));
     }
 }
