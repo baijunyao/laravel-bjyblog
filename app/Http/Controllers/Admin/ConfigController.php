@@ -63,6 +63,19 @@ class ConfigController extends Controller
     }
 
     /**
+     * 备份
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
+     */
+    public function backup()
+    {
+        $config = cache('config');
+        $assign = compact('config');
+        return view('admin.config.backup', $assign);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

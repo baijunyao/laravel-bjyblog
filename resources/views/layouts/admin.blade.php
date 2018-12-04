@@ -91,6 +91,7 @@
                                     <li><a href="{{ url('admin/config/oauth') }}">第三方登录</a></li>
                                     <li><a href="{{ url('admin/gitProject/index') }}">开源项目</a></li>
                                     <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
+                                    <li><a href="{{ url('admin/config/backup') }}">备份</a></li>
                                     <li><a href="{{ url('admin/config/edit') }}">其他配置</a></li>
                                     <li><a href="{{ url('admin/config/clear') }}">清空缓存</a></li>
                                 </ul>
