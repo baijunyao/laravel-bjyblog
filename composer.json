@@ -14,6 +14,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "apollopy/flysystem-aliyun-oss": "^1.2",
         "appstract/laravel-opcache": "^1.4",
         "baijunyao/laravel-flash": "1.3.*",
         "baijunyao/laravel-model": "1.3.*",

@@ -4,8 +4,102 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ab744407f72ecec29021d964ef3f77a",
+    "content-hash": "84c7723a31fc31bdc78cdcbfa26e50be",
     "packages": [
+        {
+            "name": "aliyuncs/oss-sdk-php",
+            "version": "v2.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aliyun/aliyun-oss-php-sdk.git",
+                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aliyun/aliyun-oss-php-sdk/zipball/0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e",
+                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OSS\\": "src/OSS"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aliyuncs",
+                    "homepage": "http://www.aliyun.com"
+                }
+            ],
+            "description": "Aliyun OSS SDK for PHP",
+            "homepage": "http://www.aliyun.com/product/oss/",
+            "time": "2017-04-25T09:15:12+00:00"
+        },
+        {
+            "name": "apollopy/flysystem-aliyun-oss",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apollopy/flysystem-aliyun-oss.git",
+                "reference": "984879bd38a48db05a4d78142df4c6ad9318f0fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apollopy/flysystem-aliyun-oss/zipball/984879bd38a48db05a4d78142df4c6ad9318f0fa",
+                "reference": "984879bd38a48db05a4d78142df4c6ad9318f0fa",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "aliyuncs/oss-sdk-php": "~2.2.1",
+                "league/flysystem": "~1.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ApolloPY\\Flysystem\\AliyunOss\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ApolloPY",
+                    "email": "ApolloPY@Gmail.com"
+                }
+            ],
+            "description": "This is a Flysystem adapter for the Aliyun OSS ~2.0.4",
+            "time": "2017-01-10T04:32:54+00:00"
+        },
         {
             "name": "appstract/laravel-opcache",
             "version": "1.4",

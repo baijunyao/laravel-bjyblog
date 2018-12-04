@@ -199,6 +199,11 @@ return [
          */
         Baijunyao\LaravelScoutElasticsearch\ElasticsearchServiceProvider::class,
 
+        /**
+         * 阿里云 oss
+         */
+        ApolloPY\Flysystem\AliyunOss\AliyunOssServiceProvider::class,
+
     ],
 
     /*
