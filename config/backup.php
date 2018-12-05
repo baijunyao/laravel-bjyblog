@@ -87,6 +87,7 @@ return [
              */
             'disks' => [
                 'local',
+                'oss',
             ],
         ],
 
@@ -121,7 +122,7 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => config('bjyblog.notification_email'),
+            'to' => '',
         ],
 
         'slack' => [

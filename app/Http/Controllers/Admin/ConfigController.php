@@ -94,7 +94,7 @@ class ConfigController extends Controller
         foreach ($data as $k => $v) {
             $editData[] = [
                 'id' => $k,
-                'value' => $v
+                'value' => is_array($v) ? json_encode($v) : $v
             ];
         }
         $result = $configModel->updateBatch($editData);
