@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ini_set('memory_limit', "256M");
+        ini_set('memory_limit', "512M");
 
         // 为了防止 git clone 后 composer install
         // 因为还没运行迁移 php artisan package:discover 报错的问题
