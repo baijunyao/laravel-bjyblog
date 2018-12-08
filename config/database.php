@@ -55,7 +55,7 @@ return [
             'dump' => [
                 'dump_binary_path' => '',
                 'use_single_transaction',
-                'timeout' => 60 * 5, // 5 minute timeout
+                'timeout' => 60 * 30, // 30 minute timeout
             ]
         ],
 
