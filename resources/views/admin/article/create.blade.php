@@ -104,7 +104,7 @@
             <tr>
                 <th>置顶</th>
                 <td>
-                    <input class="js-switch" type="checkbox" name="is_top" value="1" @if(old('is_top', 0) == 1) checked="checked" @endif>
+                    <input class="bootstrap-switch" type="checkbox" name="is_top" value="1" @if(old('is_top', 0) == 1) checked="checked" @endif>
                 </td>
             </tr>
 

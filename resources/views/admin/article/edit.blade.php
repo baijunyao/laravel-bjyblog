@@ -4,7 +4,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('statics/editormd/css/editormd.min.css') }}">
-    <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
     <style>
         #bjy-content{
             z-index: 9999;
@@ -102,7 +101,7 @@
             <tr>
                 <th>置顶</th>
                 <td>
-                    <input class="js-switch" type="checkbox" name="is_top" value="1" @if($article->is_top == 1) checked="checked" @endif>
+                    <input class="bootstrap-switch" type="checkbox" name="is_top" value="1" @if($article->is_top == 1) checked="checked" @endif>
                 </td>
             </tr>
 
@@ -119,7 +118,6 @@
 
 @section('js')
     <script src="{{ asset('statics/editormd/editormd.min.js') }}"></script>
-    <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         var testEditor;
 
