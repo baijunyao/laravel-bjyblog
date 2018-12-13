@@ -4,8 +4,6 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('statics/editormd/css/editormd.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('statics/iCheck-1.0.2/skins/all.css') }}">
-    <link rel="stylesheet" href="{{ asset('statics/gentelella/vendors/switchery/dist/switchery.min.css') }}">
     <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
     <style>
         #bjy-content{
@@ -120,9 +118,7 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('statics/gentelella/vendors/switchery/dist/switchery.min.js') }}"></script>
     <script src="{{ asset('statics/editormd/editormd.min.js') }}"></script>
-    <script src="{{ asset('statics/iCheck-1.0.2/icheck.min.js') }}"></script>
     <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         var testEditor;

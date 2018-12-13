@@ -3,7 +3,6 @@
 @section('title', '配置项')
 
 @section('css')
-    <link href="{{ asset('statics/gentelella/vendors/iCheck/skins/square/blue.css') }}" rel="stylesheet">
     <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
 @endsection
 
@@ -116,7 +115,6 @@
 @endsection
 
 @section('js')
-    <script src="{{ asset('statics/gentelella/vendors/iCheck/icheck.min.js') }}"></script>
     <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
     <script>
         $(document).ready(function(){
