@@ -126,6 +126,7 @@
             editormd.urls.atLinkBase = "https://github.com/";
 
             testEditor = editormd("bjy-content", {
+                autoFocus : false,
                 width     : "100%",
                 height    : 720,
                 toc       : true,
