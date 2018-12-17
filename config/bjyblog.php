@@ -4,6 +4,10 @@ return [
     // 博客版本
     'version' => 'v5.5.9.1',
     'branch' => env('DEPLOY_BRANCH', 'master'),
+    /**
+     * 以下配置项会在 @see \App\Providers\AppServiceProvider::boot() 中被覆盖
+     * 请勿直接修改本配置项文件
+     */
     'web_name' => '',
     'head' => [
         'title' => '',
