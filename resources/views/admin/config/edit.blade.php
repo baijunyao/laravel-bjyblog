@@ -2,10 +2,6 @@
 
 @section('title', '配置项')
 
-@section('css')
-    <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
-@endsection
-
 @section('nav', '配置项')
 
 @section('description', '配置项')
@@ -112,17 +108,4 @@
             </tr>
         </table>
     </form>
-@endsection
-
-@section('js')
-    <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('.bjy-icheck').iCheck({
-                checkboxClass: 'icheckbox_square-red',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-            });
-        });
-    </script>
 @endsection

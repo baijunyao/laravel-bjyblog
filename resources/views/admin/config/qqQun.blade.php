@@ -2,10 +2,6 @@
 
 @section('title', 'QQ群配置')
 
-@section('css')
-    <link href="{{ asset('statics/jasny-bootstrap/css/jasny-bootstrap.min.css') }}" rel="stylesheet">
-@endsection
-
 @section('nav', 'QQ群配置')
 
 @section('description', 'QQ群配置')
@@ -59,8 +55,4 @@
             </tr>
         </table>
     </form>
-@endsection
-
-@section('js')
-    <script src="{{ asset('statics/jasny-bootstrap/js/jasny-bootstrap.min.js') }}"></script>
 @endsection
