@@ -22,6 +22,6 @@
 @task('deploy', ['on' => 'web'])
 	cd {{ $path }}
 	git pull origin {{ $branch }}
-	composer install --no-dev
+    composer install --no-dev --optimize-autoloader
 	php artisan upgrade:allVersions
 @endtask
