@@ -13,9 +13,9 @@
             <tr>
                 <th>备份方案：</th>
                 <td>
-                    <input type="checkbox" name="164[]" value="local" @if(in_array('local', config('backup.backup.destination.disks'))) checked  @endif>本地
+                    <input class="bjy-icheck" type="checkbox" name="164[]" value="local" @if(in_array('local', config('backup.backup.destination.disks'))) checked  @endif>本地
                     &emsp;
-                    <input type="checkbox" name="164[]" value="oss" @if(in_array('oss', config('backup.backup.destination.disks'))) checked  @endif>阿里云oss
+                    <input class="bjy-icheck" type="checkbox" name="164[]" value="oss" @if(in_array('oss', config('backup.backup.destination.disks'))) checked  @endif>阿里云oss
                 </td>
             </tr>
             <tr>

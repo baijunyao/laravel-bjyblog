@@ -161,14 +161,7 @@
                 imageUploadURL : '{{ url('admin/article/uploadImage') }}',
             });
         });
-        function icheckInit() {
-            $('.bjy-icheck').iCheck({
-                checkboxClass: "icheckbox_minimal-blue",
-                radioClass: "iradio_minimal-blue",
-                increaseArea: "20%"
-            });
-        }
-        icheckInit();
+
         // 添加标签
         $('.js-add-tag').click(function () {
             var postData = {

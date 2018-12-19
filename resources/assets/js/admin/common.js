@@ -5,9 +5,12 @@ $(function () {
         onColor: 'success'
     });
 
-    $('.bjy-icheck').iCheck({
-        checkboxClass: 'icheckbox_square-red',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
-    });
+    function icheckInit() {
+        $('.bjy-icheck').iCheck({
+            checkboxClass: "icheckbox_minimal-blue",
+            radioClass: "iradio_minimal-blue",
+            increaseArea: "20%"
+        });
+    }
+    icheckInit();
 })
