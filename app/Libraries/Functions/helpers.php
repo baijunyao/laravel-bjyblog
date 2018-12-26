@@ -185,7 +185,7 @@ if ( !function_exists('re_substr') ) {
 	}
 }
 
-if ( !function_exists('Add_text_water') ) {
+if ( !function_exists('add_text_water') ) {
     /**
      * 给图片添加文字水印
      *
@@ -194,7 +194,7 @@ if ( !function_exists('Add_text_water') ) {
      * @param string $color
      * @return mixed
      */
-    function Add_text_water($file, $text, $color = '#0B94C1') {
+    function add_text_water($file, $text, $color = '#0B94C1') {
         $image = Image::make($file);
         $image->text($text, $image->width()-20, $image->height()-30, function($font) use($color) {
             $font->file(public_path('fonts/msyh.ttf'));
