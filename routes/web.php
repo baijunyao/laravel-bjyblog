@@ -74,13 +74,13 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
 
 // 后台登录页面
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::redirect('/', url('admin/login/index'));
     Route::group(['prefix' => 'login'], function () {
         // 登录页面
         Route::get('index', 'LoginController@index')->middleware('admin.login');
         // 退出
         Route::get('logout', 'LoginController@logout');
     });
-
 });
 
 

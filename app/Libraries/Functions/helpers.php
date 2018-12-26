@@ -196,7 +196,6 @@ if ( !function_exists('add_text_water') ) {
      */
     function add_text_water($file, $text, $color = '#0B94C1') {
         $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-        dump($extension !== 'gif');die;
         if ($extension !== 'gif') {
             $image = Image::make($file);
             $image->text($text, $image->width()-20, $image->height()-30, function($font) use($color) {
