@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @return void
+     * @return void|bool
+     * @throws Exception
      */
     public function boot()
     {
@@ -42,6 +43,17 @@ class AppServiceProvider extends ServiceProvider
                 return Config::where('id', '>', 100)->pluck('value','name');
             });
         } catch (Exception $exception) {
+            return true;
+        }
+
+        /**
+         * 如果已经执行了 migrate ；
+         * 当再当执行 db:seed 的时候上面的 try 并不会触发错误
+         * 而是缓存了一个空的 config
+         * 所以此处需要清空缓存并不再向下执行
+         */
+        if ($config->isEmpty()) {
+            cache()->forget('config');
             return true;
         }
 
