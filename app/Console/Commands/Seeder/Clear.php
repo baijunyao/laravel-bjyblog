@@ -7,12 +7,12 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Chat;
 use App\Models\Comment;
-use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\OauthUser;
 use App\Models\Tag;
 use Illuminate\Console\Command;
+use Artisan;
 
 class Clear extends Command
 {
@@ -56,6 +56,12 @@ class Clear extends Command
         Tag::truncate();
         GitProject::truncate();
         FriendshipLink::truncate();
+
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+        Artisan::call('queue:restart');
         $this->info('successfully');
     }
 }
