@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Upgrade;
+namespace App\Console\Commands\Bjyblog;
 
 use App\Models\Config;
 use App\Models\Console;
@@ -8,23 +8,22 @@ use App\Models\Nav;
 use Illuminate\Console\Command;
 use File;
 use Artisan;
-use Schema;
 
-class AllVersions extends Command
+class Update extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'upgrade:allVersions';
+    protected $signature = 'bjyblog:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'blog update';
 
     /**
      * Create a new command instance.
@@ -73,9 +72,6 @@ class AllVersions extends Command
                     'cTime' => $v->getCTime(),
                     'filename' => basename($v->getFilename(), '.php')
                 ];
-            })
-            ->filter(function ($v) {
-                return $v['filename'] === 'AllVersions' ? false : true;
             })
             ->sortBy('cTime')
             ->pluck('filename');
