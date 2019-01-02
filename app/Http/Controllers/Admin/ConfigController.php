@@ -7,6 +7,7 @@ use App\Models\Config;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cache;
+use Baijunyao\LaravelUpload\Upload;
 
 class ConfigController extends Controller
 {
@@ -86,8 +87,8 @@ class ConfigController extends Controller
     {
         $data = $request->except('_token');
         if ($request->hasFile('153')) {
-            $file = upload('153', 'uploads/images', false);
-            $result = $file['status_code'] === 200 ? '/uploads/images/'.$file['data']['new_name']: '';
+            $file = Upload::file('153', 'uploads/images', [], false);
+            $result = $file['status_code'] === 200 ? $file['data'][0]['path']: '';
             $data['153'] = $result;
         }
         $editData = [];

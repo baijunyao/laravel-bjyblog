@@ -8,6 +8,7 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Config;
 use App\Models\Tag;
+use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Cache;
@@ -61,12 +62,12 @@ class ArticleController extends Controller
      */
     public function uploadImage()
     {
-        $result = upload('editormd-image-file', 'uploads/article');
+        $result = Upload::file('editormd-image-file', 'uploads/article');
         if ($result['status_code'] === 200) {
             $data = [
                 'success' => 1,
                 'message' => $result['message'],
-                'url' => $result['data']['path'].$result['data']['new_name']
+                'url' => $result['data'][0]['path']
             ];
         } else {
             $data = [
@@ -90,9 +91,9 @@ class ArticleController extends Controller
         $data = $request->except('_token');
         // 上传封面图
         if ($request->hasFile('cover')) {
-            $result = upload('cover', 'uploads/article');
+            $result = Upload::file('cover', 'uploads/article');
             if ($result['status_code'] === 200) {
-                $data['cover'] = $result['data']['path'].$result['data']['new_name'];
+                $data['cover'] = $result['data'][0]['path'];
             }
         }
         $result = $article->storeData($data);
@@ -142,9 +143,9 @@ class ArticleController extends Controller
         $cover = $articleModel->getCover($data['markdown'], $images[1]);
         // 上传封面图
         if ($request->hasFile('cover')) {
-            $result = upload('cover', 'uploads/article');
+            $result = Upload::file('cover', 'uploads/article');
             if ($result['status_code'] === 200) {
-                $data['cover'] = $result['data']['path'].$result['data']['new_name'];
+                $data['cover'] = $result['data'][0]['path'];
             }
         }
         // 如果没有上传封面图；则使用第一张图片
