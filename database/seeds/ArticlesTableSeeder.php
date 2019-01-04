@@ -13,10 +13,10 @@ class ArticlesTableSeeder extends Seeder
     {
         DB::table('articles')->delete();
         DB::table('articles')->insert([
-            0 =>[
+            [
                 'id' => 1,
                 'category_id' => 1,
-                'title' => ' 写给 thinkphp 开发者的 laravel 系列教程 (一) 序言',
+                'title' => '写给 thinkphp 开发者的 laravel 系列教程 (一) 序言',
                 'author' => '白俊遥',
                 'markdown' => '终于；终于；终于；
 开始正式写 laravel 系列了；
@@ -73,6 +73,22 @@ google是必不可少的；
                 'created_at' => '2017-7-16 07:35:12',
                 'updated_at' => '2016-7-16 07:35:12',
                 'deleted_at' => NULL,
+            ],
+            [
+                'id' => 2,
+                'category_id' => 1,
+                'title' => '已删除',
+                'author' => '白俊遥',
+                'markdown' => '内容',
+                'html' => '内容',
+                'description' => '描述',
+                'keywords' => 'test',
+                'cover' => '/uploads/article/5958ab4dd9db4.jpg',
+                'is_top' => 0,
+                'click' => 222,
+                'created_at' => '2019-01-04 16:35:12',
+                'updated_at' => '2019-01-04 16:35:12',
+                'deleted_at' => '2019-01-04 16:35:12',
             ],
         ]);
     }
