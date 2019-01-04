@@ -6,7 +6,7 @@ trait TestForceDelete
 {
     public function testForceDelete()
     {
-        $this->adminGet('forceDelete/' . $this->force_delete_id)->assertSessionHasAll([
+        $this->adminGet('forceDelete/' . $this->forceDeleteId)->assertSessionHasAll([
             'laravel-flash' => [
                 [
                     'alert-message' => '彻底删除成功',

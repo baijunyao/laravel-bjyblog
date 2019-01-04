@@ -6,7 +6,7 @@ trait TestEdit
 {
     public function testEdit()
     {
-        $this->adminGet('edit/' . $this->edit_id)
+        $this->adminGet('edit/' . $this->editId)
             ->assertStatus(200);
     }
 }

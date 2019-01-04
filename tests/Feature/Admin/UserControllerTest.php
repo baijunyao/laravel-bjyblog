@@ -16,18 +16,9 @@ class UserControllerTest extends TestCase
 
     protected $urlPrefix = 'admin/user/';
 
-    public function testUpdate()
-    {
-        $this->adminPost('update/' . $this->edit_id, [
-            'name' => 'example',
-            'email' => 'user@example.com',
-            'password' => '666666'
-        ])->assertStatus(302);
-
-        $this->assertDatabaseHas('users', [
-            'name' => 'example',
-            'email' => 'user@example.com',
-        ]);
-    }
-
+    protected $updateData = [
+        'name' => 'example',
+        'email' => 'user@example.com',
+        'password' => '666666'
+    ];
 }

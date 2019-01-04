@@ -6,7 +6,7 @@ trait TestDestroy
 {
     public function testDestroy()
     {
-        $this->adminGet('destroy/' . $this->destroy_id)->assertSessionHasAll([
+        $this->adminGet('destroy/' . $this->destroyId)->assertSessionHasAll([
             'laravel-flash' => [
                 [
                     'alert-message' => '删除成功',

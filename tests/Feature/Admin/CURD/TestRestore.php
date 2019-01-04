@@ -6,7 +6,7 @@ trait TestRestore
 {
     public function testRestore()
     {
-        $this->adminGet('restore/' . $this->restore_id)->assertSessionHasAll([
+        $this->adminGet('restore/' . $this->restoreId)->assertSessionHasAll([
             'laravel-flash' => [
                 [
                     'alert-message' => '恢复成功',
