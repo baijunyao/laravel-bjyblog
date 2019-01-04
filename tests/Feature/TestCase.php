@@ -5,9 +5,8 @@ namespace Tests\Feature;
 use App\Models\User;
 use Exception;
 use App\Models\OauthUser;
-use Tests\TestCase as BaseTestCase;
 
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends \Tests\TestCase
 {
     protected const ADMIN_USER_ID = 1;
     protected const OAUTH_USER_ID = 1;

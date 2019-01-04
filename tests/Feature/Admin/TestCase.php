@@ -2,17 +2,17 @@
 
 namespace Tests\Feature\Admin;
 
-use Tests\Feature\TestCase as BaseTestCase;
-
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends \Tests\Feature\TestCase
 {
-    public function adminGet($uri, array $headers = [])
+    protected $urlPrefix = '';
+
+    protected function adminGet($uri, array $headers = [])
     {
-        return $this->loginByUserId(static::ADMIN_USER_ID, 'admin')->get($uri, $headers);
+        return $this->loginByUserId(static::ADMIN_USER_ID, 'admin')->get($this->urlPrefix . $uri, $headers);
     }
 
-    public function adminPost($uri, array $data = [], array $headers = [])
+    protected function adminPost($uri, array $data = [], array $headers = [])
     {
-        return $this->loginByUserId(static::ADMIN_USER_ID, 'admin')->post($uri, $data, $headers);
+        return $this->loginByUserId(static::ADMIN_USER_ID, 'admin')->post($this->urlPrefix . $uri, $data, $headers);
     }
 }
