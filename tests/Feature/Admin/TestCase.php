@@ -5,6 +5,10 @@ namespace Tests\Feature\Admin;
 abstract class TestCase extends \Tests\Feature\TestCase
 {
     protected $urlPrefix = '';
+    protected $edit_id = 1;
+    protected $destroy_id = 1;
+    protected $restore_id = 2;
+    protected $force_delete_id = 2;
 
     protected function adminGet($uri, array $headers = [])
     {

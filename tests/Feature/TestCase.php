@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Exception;
 use App\Models\OauthUser;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 abstract class TestCase extends \Tests\TestCase
 {
