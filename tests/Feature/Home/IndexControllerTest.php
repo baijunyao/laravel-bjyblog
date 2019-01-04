@@ -9,8 +9,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class IndexControllerTest extends TestCase
 {
-    use DatabaseTransactions;
-
     public function testIndex()
     {
         $response = $this->get('/');

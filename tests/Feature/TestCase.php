@@ -8,6 +8,8 @@ use App\Models\OauthUser;
 
 abstract class TestCase extends \Tests\TestCase
 {
+    use DatabaseTransactions;
+
     protected const ADMIN_USER_ID = 1;
     protected const OAUTH_USER_ID = 1;
 
