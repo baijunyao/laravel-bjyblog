@@ -10,10 +10,12 @@ use Tests\Feature\Admin\CURD\TestEdit;
 use Tests\Feature\Admin\CURD\TestForceDelete;
 use Tests\Feature\Admin\CURD\TestIndex;
 use Tests\Feature\Admin\CURD\TestRestore;
+use Tests\Feature\Admin\CURD\TestStore;
+use Tests\Feature\Admin\CURD\TestUpdate;
 
 class SiteControllerTest extends TestCase
 {
-    use TestIndex, TestCreate, TestEdit, TestDestroy, TestRestore, TestForceDelete;
+    use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
 
     protected $urlPrefix = 'admin/site/';
     protected $table = 'sites';

@@ -30,7 +30,7 @@ class SiteTableSeeder extends Seeder
                 'oauth_user_id' => 1,
                 'name' => '已删除',
                 'description' => '用于测试',
-                'url' => 'https://test.com',
+                'url' => 'https://deleted.com',
                 'audit' => 1,
                 'sort' => 1,
                 'created_at' => '2019-01-04 16:35:12',
