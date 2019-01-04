@@ -6,7 +6,7 @@ trait TestStore
 {
     public function testStore()
     {
-        $this->adminGet('store', $this->storeData)->assertSessionHasAll([
+        $this->adminPost('store', $this->storeData)->assertSessionHasAll([
             'laravel-flash' => [
                 [
                     'alert-message' => '添加成功',

@@ -13,7 +13,7 @@ class SiteTableSeeder extends Seeder
     {
         DB::table('sites')->delete();
         DB::table('sites')->insert([
-            0 =>[
+            [
                 'id' => 1,
                 'oauth_user_id' => 1,
                 'name' => '白俊遥博客',
@@ -24,6 +24,18 @@ class SiteTableSeeder extends Seeder
                 'created_at' => '2018-11-15 20:35:12',
                 'updated_at' => '2018-11-15 20:35:12',
                 'deleted_at' => NULL,
+            ],
+            [
+                'id' => 2,
+                'oauth_user_id' => 1,
+                'name' => '已删除',
+                'description' => '用于测试',
+                'url' => 'https://test.com',
+                'audit' => 1,
+                'sort' => 1,
+                'created_at' => '2019-01-04 16:35:12',
+                'updated_at' => '2019-01-04 16:35:12',
+                'deleted_at' => '2019-01-04 16:35:12',
             ],
         ]);
     }

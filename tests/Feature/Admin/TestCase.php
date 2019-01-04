@@ -7,6 +7,7 @@ abstract class TestCase extends \Tests\Feature\TestCase
     protected $urlPrefix = '';
     protected $table = '';
     protected $editId = 1;
+    protected $updateId = 1;
     protected $destroyId = 1;
     protected $restoreId = 2;
     protected $forceDeleteId = 2;
