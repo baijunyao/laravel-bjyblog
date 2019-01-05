@@ -23,5 +23,5 @@
 	cd {{ $path }}
 	git pull origin {{ $branch }}
     composer install --no-dev --optimize-autoloader
-	php artisan upgrade:allVersions
+	php artisan bjyblog:update
 @endtask
