@@ -25,32 +25,34 @@ if ( !function_exists('ajax_return') ) {
 		if (is_object($data)) {
 			$data = $data->toArray();
 		}
-		/**
-		 * 将数组递归转字符串
-		 * @param  array $arr 需要转的数组
-		 * @return array       转换后的数组
-		 */
-		function to_string($arr)
-		{
-			// app 禁止使用和为了统一字段做的判断
-			$reserved_words = [];
-			foreach ($arr as $k => $v) {
-				//如果是对象先转数组
-				if (is_object($v)) {
-					$v = $v->toArray();
-				}
-				//如果是数组；则递归转字符串
-				if (is_array($v)) {
-					$arr[$k] = to_string($v);
-				} else {
-					//判断是否有移动端禁止使用的字段
-					in_array($k, $reserved_words, true) && die('不允许使用【' . $k . '】这个键名 —— 此提示是helper.php 中的ajaxReturn函数返回的');
-					//转成字符串类型
-					$arr[$k] = strval($v);
-				}
-			}
-			return $arr;
-		}
+        if ( !function_exists('to_string') ) {
+            /**
+             * 将数组递归转字符串
+             * @param  array $arr 需要转的数组
+             * @return array       转换后的数组
+             */
+            function to_string($arr)
+            {
+                // app 禁止使用和为了统一字段做的判断
+                $reserved_words = [];
+                foreach ($arr as $k => $v) {
+                    //如果是对象先转数组
+                    if (is_object($v)) {
+                        $v = $v->toArray();
+                    }
+                    //如果是数组；则递归转字符串
+                    if (is_array($v)) {
+                        $arr[$k] = to_string($v);
+                    } else {
+                        //判断是否有移动端禁止使用的字段
+                        in_array($k, $reserved_words, true) && die('不允许使用【' . $k . '】这个键名 —— 此提示是helper.php 中的ajaxReturn函数返回的');
+                        //转成字符串类型
+                        $arr[$k] = strval($v);
+                    }
+                }
+                return $arr;
+            }
+        }
 
 		//判断是否有返回的数据
 		if (is_array($data)) {

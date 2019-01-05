@@ -1,0 +1,43 @@
+<?php
+
+namespace Tests\Feature\Home;
+
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
+use Tests\Feature\Admin\CURD\TestStore;
+
+class SiteControllerTest extends TestCase
+{
+    use TestStore;
+
+    protected $urlPrefix = 'site/';
+    protected $table = 'sites';
+    protected $storeData = [
+        'name' => '新增',
+        'url' => 'https://store.com',
+        'description' => '用于测试',
+        'email' => 'test@test.com'
+    ];
+
+    public function testIndex()
+    {
+        $this->UserGet('/')
+            ->assertStatus(200);
+    }
+
+    /**
+     * @group test
+     */
+    public function testStore()
+    {
+        Notification::fake();
+        $this->UserPost('store', $this->storeData)
+            ->assertStatus(200);
+        $this->assertDatabaseHas($this->table, [
+            'name' => '新增',
+            'url' => 'https://store.com',
+            'description' => '用于测试',
+        ]);
+    }
+}

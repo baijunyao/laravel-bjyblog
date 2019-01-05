@@ -13,6 +13,15 @@ abstract class TestCase extends \Tests\TestCase
 
     protected const ADMIN_USER_ID = 1;
     protected const OAUTH_USER_ID = 1;
+    protected $urlPrefix = '';
+    protected $table = '';
+    protected $editId = 1;
+    protected $updateId = 1;
+    protected $destroyId = 1;
+    protected $restoreId = 2;
+    protected $forceDeleteId = 2;
+    protected $storeData = [];
+    protected $updateData = [];
 
     public function loginByUserId($userId, $guard = 'oauth')
     {

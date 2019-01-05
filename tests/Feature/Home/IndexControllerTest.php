@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Home;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\Feature\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
