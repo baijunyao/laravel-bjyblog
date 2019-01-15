@@ -11,12 +11,10 @@
 ## 使用本项目搭建的博客
 - [白俊遥博客](https://baijunyao.com)  
 - [Sails博客](https://smile.sails.site)  
-- [義往昔博客](http://www.maocaoying.com)  
 - [Alan博客](http://blog.taobaoroom.cn)  
 - [善幸的博客](https://lhyong.cn)  
 - [larwas博客](https://www.larwas.com)  
 - [Snail's Blog](https://www.snail-c.cn)  
-- [任志帆博客](https://renzhifan.cn)  
 欢迎提交PR或者告诉我来收录你的网站；  
 
 ## 主要贡献者
