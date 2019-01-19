@@ -171,7 +171,7 @@
         <div class="row b-content">
             <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                 <dt>权益</dt>
-                <dd>许可协议：<a href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
+                <dd>许可协议：<a rel="nofollow" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
                 <dd>版权所有：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
                 @if(!empty(config('bjyblog.icp')))
                     <dd>网站备案：{{ config('bjyblog.icp') }}</dd>
