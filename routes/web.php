@@ -162,6 +162,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('restore/{id}', 'CommentController@restore');
         // 彻底删除评论
         Route::get('forceDelete/{id}', 'CommentController@forceDelete');
+        // 批量替换功能视图
+        Route::get('replaceView', 'CommentController@replaceView');
+        // 批量替换功能
+        Route::post('replace', 'CommentController@replace');
     });
 
     // 管理员

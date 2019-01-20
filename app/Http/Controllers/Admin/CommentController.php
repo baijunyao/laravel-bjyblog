@@ -90,4 +90,31 @@ class CommentController extends Controller
         $commentModel->forceDeleteData($map);
         return redirect()->back();
     }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function replaceView()
+    {
+        return view('admin.comment.replaceView');
+    }
+
+    public function replace(Request $request, Comment $commentModel)
+    {
+        $search = $request->input('search');
+        $replace = $request->input('replace');
+        $data = Comment::select('id', 'content')
+            ->where('content', 'like', "%$search%")
+            ->get();
+        foreach ($data as $k => $v) {
+            $updateMap = [
+                'id' => $v->id
+            ];
+            $updateData = [
+                'content' => str_replace($search, $replace, $v->content)
+            ];
+            $commentModel->updateData($updateMap, $updateData);
+        }
+        return redirect()->back();
+    }
 }

@@ -54,6 +54,7 @@
                                     <a><i class="fa fa-comments"></i> 评论管理 <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('admin/comment/index') }}">评论列表</a></li>
+                                        <li><a href="{{ url('admin/comment/replaceView') }}">批量替换</a></li>
                                     </ul>
                                 </li>
                                 <li>
