@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', '批量替换评论内容')
+@section('title', '批量替换文章内容')
 
-@section('nav', '批量替换评论内容')
+@section('nav', '批量替换文章内容')
 
-@section('description', '批量替换评论内容')
+@section('description', '批量替换文章内容')
 
 @section('content')
-    <form class="form-inline" action="{{ url('admin/comment/replace') }}" method="post">
+    <form class="form-inline" action="{{ url('admin/article/replace') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>

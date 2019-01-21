@@ -112,6 +112,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('restore/{id}', 'ArticleController@restore');
         // 彻底删除文章
         Route::get('forceDelete/{id}', 'ArticleController@forceDelete');
+        // 批量替换功能视图
+        Route::get('replaceView', 'ArticleController@replaceView');
+        // 批量替换功能
+        Route::post('replace', 'ArticleController@replace');
     });
 
     // 分类管理

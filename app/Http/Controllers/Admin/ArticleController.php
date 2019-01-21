@@ -258,4 +258,48 @@ class ArticleController extends Controller
         }
         return redirect()->back();
     }
+
+    /**
+     * 批量替换功能视图
+     *
+     * @return \Illuminate\View\View
+     */
+    public function replaceView()
+    {
+        return view('admin.article.replaceView');
+    }
+
+    /**
+     * 批量替换功能
+     *
+     * @param Request $request
+     * @param Article $articleModel
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function replace(Request $request, Article $articleModel)
+    {
+        $search = $request->input('search');
+        $replace = $request->input('replace');
+        $data = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
+            ->where('title', 'like', "%$search%")
+            ->orWhere('keywords', 'like', "%$search%")
+            ->orWhere('description', 'like', "%$search%")
+            ->orWhere('markdown', 'like', "%$search%")
+            ->orWhere('html', 'like', "%$search%")
+            ->get();
+        foreach ($data as $k => $v) {
+            $updateMap = [
+                'id' => $v->id
+            ];
+            $updateData = [
+                'title' => str_replace($search, $replace, $v->title),
+                'keywords' => str_replace($search, $replace, $v->keywords),
+                'description' => str_replace($search, $replace, $v->description),
+                'markdown' => str_replace($search, $replace, $v->markdown),
+                'html' => str_replace($search, $replace, $v->html),
+            ];
+            $articleModel->updateData($updateMap, $updateData);
+        }
+        return redirect()->back();
+    }
 }

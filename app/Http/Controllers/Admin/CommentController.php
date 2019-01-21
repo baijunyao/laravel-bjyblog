@@ -92,6 +92,8 @@ class CommentController extends Controller
     }
 
     /**
+     * 批量替换功能视图
+     *
      * @return \Illuminate\View\View
      */
     public function replaceView()
@@ -99,6 +101,13 @@ class CommentController extends Controller
         return view('admin.comment.replaceView');
     }
 
+    /**
+     * 批量替换功能
+     *
+     * @param Request $request
+     * @param Comment $commentModel
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function replace(Request $request, Comment $commentModel)
     {
         $search = $request->input('search');

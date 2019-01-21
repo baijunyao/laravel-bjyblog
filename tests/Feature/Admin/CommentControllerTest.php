@@ -15,15 +15,15 @@ class CommentControllerTest extends TestCase
     protected $urlPrefix = 'admin/comment/';
     protected $table = 'comments';
 
-    public function replaceView()
+    public function testReplaceView()
     {
         $this->adminGet('replaceView')
             ->assertStatus(200);
     }
 
-    public function replace()
+    public function testReplace()
     {
-        $this->adminPost('store', [
+        $this->adminPost('replace', [
             'search' => '评论',
             'replace' => '替换'
         ])->assertSessionHasAll([
@@ -35,11 +35,11 @@ class CommentControllerTest extends TestCase
             ]
         ]);
 
-        $this->assertDatabaseMissing('', [
+        $this->assertDatabaseMissing('comments', [
             'content' => '评论的内容'
         ]);
 
-        $this->assertDatabaseHas('', [
+        $this->assertDatabaseHas('comments', [
             'content' => '替换的内容'
         ]);
     }

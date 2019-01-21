@@ -82,4 +82,43 @@ class ArticleControllerTest extends TestCase
             'markdown' => 'update',
         ]);
     }
+
+    public function testReplaceView()
+    {
+        $this->adminGet('replaceView')
+            ->assertStatus(200);
+    }
+
+    public function testReplace()
+    {
+        $search = '教程';
+        $replace = '替换';
+        $this->adminPost('replace', [
+            'search' => $search,
+            'replace' => $replace
+        ])->assertSessionHasAll([
+            'laravel-flash' => [
+                [
+                    'alert-message' => '修改成功',
+                    'alert-type' => 'success'
+                ]
+            ]
+        ]);
+
+        $columns = [
+            'title', 'keywords', 'description', 'markdown', 'html'
+        ];
+
+        foreach ($columns as $column) {
+            $this->assertDatabaseMissing('articles', [
+                $column => $search,
+            ]);
+        }
+
+        foreach ($columns as $column) {
+            $this->assertDatabaseMissing('articles', [
+                $column => $replace,
+            ]);
+        }
+    }
 }
