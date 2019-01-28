@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Models\Article;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -33,14 +34,16 @@ class ArticleControllerTest extends TestCase
     public function testStore()
     {
         $file = UploadedFile::fake()->image('cover.jpg');
-        $this->adminPost('store', [
+        $commonColumn = [
             'category_id' => 1,
             'title' => 'title',
             'author' => '白俊遥',
             'keywords' => 'keywords',
+            'markdown' => 'content',
+        ];
+        $this->adminPost('store', $commonColumn + [
             'tag_ids' => [1],
             'description' => '',
-            'markdown' => 'content',
             'cover' => $file
         ])->assertSessionHas('laravel-flash', [
             [
@@ -49,12 +52,10 @@ class ArticleControllerTest extends TestCase
             ]
         ]);
 
-        $this->assertDatabaseHas($this->table, [
-            'category_id' => 1,
-            'title' => 'title',
-            'author' => '白俊遥',
-            'keywords' => 'keywords',
-            'markdown' => 'content',
+        $this->assertDatabaseHas($this->table, $commonColumn);
+        $this->assertDatabaseHas('article_tags', [
+            'article_id' => Article::where($commonColumn)->value('id'),
+            'tag_id' => 1
         ]);
     }
 

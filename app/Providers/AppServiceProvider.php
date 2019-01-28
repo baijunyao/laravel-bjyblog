@@ -12,6 +12,7 @@ use App\Models\GitProject;
 use App\Models\Nav;
 use App\Models\OauthUser;
 use App\Models\Tag;
+use App\Observers\ArticleObserver;
 use File;
 use Cache;
 use App\Observers\CacheClearObserver;
@@ -152,6 +153,9 @@ class AppServiceProvider extends ServiceProvider
             $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav', 'qqQunArticle');
             $view->with($assign);
         });
+
+        Article::observe(ArticleObserver::class);
+
     }
 
     /**
