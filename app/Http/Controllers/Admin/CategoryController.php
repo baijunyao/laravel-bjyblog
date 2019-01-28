@@ -7,7 +7,6 @@ use App\Http\Requests\Category\Update;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Cache;
 
 class CategoryController extends Controller
 {
@@ -39,15 +38,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Category $categoryModel)
+    public function store(Store $request)
     {
-        $data = $request->except('_token');
-        $data['sort'] = is_null($data['sort']) ? 0 : $data['sort'];
-        $result = $categoryModel->storeData($data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:category');
-        }
+        Category::create($request->except('_token'));
         return redirect('admin/category/index');
     }
 
@@ -71,18 +64,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Update $request, $id, Category $categoryModel)
+    public function update(Update $request, $id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $data = $request->except('_token');
-        $data['sort'] = is_null($data['sort']) ? 0 : $data['sort'];
-        $result = $categoryModel->updateData($map, $data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:category');
-        }
+        Category::find($id)->forceFill($request->except('_token'))->save();
         return redirect()->back();
     }
 
@@ -92,16 +76,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Category $categoryModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $categoryModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:category');
-        }
+        Category::destroy($id);
         return redirect('admin/category/index');
     }
 
@@ -122,11 +99,7 @@ class CategoryController extends Controller
                 'sort' => $v
             ];
         }
-        $result = $categoryModel->updateBatch($sortData);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:category');
-        }
+        $categoryModel->updateBatch($sortData);
         return redirect()->back();
     }
 
@@ -134,20 +107,12 @@ class CategoryController extends Controller
      * 恢复删除的分类
      *
      * @param          $id
-     * @param Category $categoryModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, Category $categoryModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $categoryModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:category');
-        }
+        Category::onlyTrashed()->find($id)->restore();
         return redirect('admin/category/index');
     }
 
@@ -155,14 +120,12 @@ class CategoryController extends Controller
      * 彻底删除分类
      *
      * @param          $id
-     * @param Category $categoryModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Category $categoryModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $categoryModel->forceDeleteData($map);
+        Category::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/category/index');
     }
 }

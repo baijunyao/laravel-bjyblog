@@ -33,4 +33,16 @@ class CategoryControllerTest extends TestCase
         'description' => '编辑',
         'sort' => 10,
     ];
+
+    public function testDestroyHasArticle()
+    {
+        $this->adminGet('destroy/1')->assertSessionHasAll([
+            'laravel-flash' => [
+                [
+                    'alert-message' => '请先删除此分类下的文章',
+                    'alert-type' => 'error'
+                ]
+            ]
+        ]);
+    }
 }
