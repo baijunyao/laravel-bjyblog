@@ -17,6 +17,7 @@ use App\Observers\CategoryObserver;
 use App\Observers\ChatObserver;
 use App\Observers\CommentObserver;
 use App\Observers\FriendshipLinkObserver;
+use App\Observers\GitProjectObserver;
 use File;
 use Cache;
 use App\Observers\CacheClearObserver;
@@ -163,6 +164,7 @@ class AppServiceProvider extends ServiceProvider
         Chat::observe(ChatObserver::class);
         Comment::observe(CommentObserver::class);
         FriendshipLink::observe(FriendshipLinkObserver::class);
+        GitProject::observe(GitProjectObserver::class);
     }
 
     /**
