@@ -18,7 +18,6 @@ class CategoryObserver extends BaseObserver
 
     protected function clearCache()
     {
-        // 更新分类缓存
         Cache::forget('common:category');
     }
 }

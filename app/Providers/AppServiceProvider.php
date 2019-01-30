@@ -15,6 +15,8 @@ use App\Models\Tag;
 use App\Observers\ArticleObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ChatObserver;
+use App\Observers\CommentObserver;
+use App\Observers\FriendshipLinkObserver;
 use File;
 use Cache;
 use App\Observers\CacheClearObserver;
@@ -159,6 +161,8 @@ class AppServiceProvider extends ServiceProvider
         Article::observe(ArticleObserver::class);
         Category::observe(CategoryObserver::class);
         Chat::observe(ChatObserver::class);
+        Comment::observe(CommentObserver::class);
+        FriendshipLink::observe(FriendshipLinkObserver::class);
     }
 
     /**
