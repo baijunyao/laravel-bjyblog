@@ -40,10 +40,9 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Chat $chatModel)
+    public function store(Store $request)
     {
-        $data = $request->only('content');
-        $chatModel->storeData($data);
+        Chat::create($request->only('content'));
         return redirect('admin/chat/index');
     }
 
@@ -67,15 +66,10 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Chat $chatModel)
+    public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        $map = [
-            'id' => $id
-        ];
-        $chatModel->updateData($map, $data);
+        Chat::find($id)->update($request->except('_token'));
         return redirect()->back();
-
     }
 
     /**
@@ -84,12 +78,9 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Chat $chatModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $chatModel->destroyData($map);
+        Chat::destroy($id);
         return redirect('admin/chat/index');
     }
 
@@ -97,16 +88,12 @@ class ChatController extends Controller
      * 恢复删除的随言碎语
      *
      * @param      $id
-     * @param Chat $chatModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, Chat $chatModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $chatModel->restoreData($map);
+        Chat::onlyTrashed()->find($id)->restore();
         return redirect('admin/chat/index');
     }
 
@@ -118,10 +105,9 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Chat $chatModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $chatModel->forceDeleteData($map);
+        Chat::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/chat/index');
     }
 }

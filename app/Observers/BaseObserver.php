@@ -2,9 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\Article;
-use App\Models\Category;
-use Cache;
+use Illuminate\Database\Eloquent\Model;
 
 class BaseObserver
 {
@@ -14,27 +12,19 @@ class BaseObserver
         $this->clearCache();
     }
 
-    public function updated(Category $category)
+    public function updated(Model $model)
     {
         // restore() triggering both restored() and updated()
-        if($category->getOriginal('deleted_at') === $category->deleted_at){
+        if($model->getOriginal('deleted_at') === $model->deleted_at){
             flash_success('修改成功');
         }
         $this->clearCache();
     }
 
-    public function deleting(Category $category)
-    {
-        if (Article::where('category_id', $category->id)->count() !== 0) {
-            flash_error('请先删除此分类下的文章');
-            return false;
-        }
-    }
-
-    public function deleted(Category $category)
+    public function deleted(Model $model)
     {
         // delete() and forceDelete() will triggering deleted()
-        if ($category->isForceDeleting()) {
+        if ($model->isForceDeleting()) {
             flash_success('彻底删除成功');
         } else {
             flash_success('删除成功');
