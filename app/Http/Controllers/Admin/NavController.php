@@ -38,14 +38,9 @@ class NavController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Nav $navModel)
+    public function store(Store $request)
     {
-        $data = $request->except('_token');
-        $result = $navModel->storeData($data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:nav');
-        }
+        Nav::create($request->except('_token'));
         return redirect(url('admin/nav/index'));
     }
 
@@ -80,15 +75,9 @@ class NavController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Nav $navModel)
+    public function update(Request $request, $id)
     {
-        $map = compact('id');
-        $data = $request->except('_token');
-        $result = $navModel->updateData($map, $data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:nav');
-        }
+        Nav::find($id)->update($request->except('_token'));
         return redirect()->back();
     }
 
@@ -98,16 +87,9 @@ class NavController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Nav $navModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $navModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:nav');
-        }
+        Nav::destroy($id);
         return redirect('admin/nav/index');
     }
 
@@ -115,20 +97,12 @@ class NavController extends Controller
      * 恢复删除的菜单
      *
      * @param      $id
-     * @param Nav $navModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, Nav $navModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $navModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:nav');
-        }
+        Nav::onlyTrashed()->find($id)->restore();
         return redirect('admin/nav/index');
     }
 
@@ -140,10 +114,9 @@ class NavController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Nav $navModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $navModel->forceDeleteData($map);
+        Nav::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/nav/index');
     }
 }
