@@ -13,6 +13,7 @@ use App\Models\Nav;
 use App\Models\OauthUser;
 use App\Models\Site;
 use App\Models\Tag;
+use App\Models\User;
 use App\Observers\ArticleObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ChatObserver;
@@ -23,6 +24,7 @@ use App\Observers\NavObserver;
 use App\Observers\OauthUserObserver;
 use App\Observers\SiteObserver;
 use App\Observers\TagObserver;
+use App\Observers\UserObserver;
 use File;
 use Cache;
 use App\Observers\CacheClearObserver;
@@ -174,6 +176,7 @@ class AppServiceProvider extends ServiceProvider
         OauthUser::observe(OauthUserObserver::class);
         Site::observe(SiteObserver::class);
         Tag::observe(TagObserver::class);
+        User::observe(UserObserver::class);
     }
 
     /**
