@@ -22,6 +22,7 @@ use App\Observers\GitProjectObserver;
 use App\Observers\NavObserver;
 use App\Observers\OauthUserObserver;
 use App\Observers\SiteObserver;
+use App\Observers\TagObserver;
 use File;
 use Cache;
 use App\Observers\CacheClearObserver;
@@ -172,6 +173,7 @@ class AppServiceProvider extends ServiceProvider
         Nav::observe(NavObserver::class);
         OauthUser::observe(OauthUserObserver::class);
         Site::observe(SiteObserver::class);
+        Tag::observe(TagObserver::class);
     }
 
     /**

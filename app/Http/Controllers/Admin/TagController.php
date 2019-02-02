@@ -38,16 +38,9 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Tag $tagModel)
+    public function store(Store $request)
     {
-        $data = [
-            'name' => $request->input('name')
-        ];
-        $id = $tagModel->storeData($data);
-        if ($id) {
-            // 更新缓存
-            Cache::forget('common:tag');
-        }
+        $id = Tag::create($request->only('name'));
         if ($request->ajax()) {
             $data['id'] = $id;
             return ajax_return(200, $data);
@@ -75,17 +68,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Tag $tagModel)
+    public function update(Request $request, $id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $data = $request->except('_token');
-        $result = $tagModel->updateData($map, $data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:tag');
-        }
+        Tag::find($id)->update($request->except('_token'));
         return redirect()->back();
     }
 
@@ -95,16 +80,9 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Tag $tagModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $tagModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:tag');
-        }
+        Tag::destroy($id);
         return redirect('admin/tag/index');
     }
 
@@ -112,20 +90,12 @@ class TagController extends Controller
      * 恢复删除的标签
      *
      * @param         $id
-     * @param Tag     $tagModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, Tag $tagModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $tagModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:tag');
-        }
+        Tag::onlyTrashed()->find($id)->restore();
         return redirect('admin/tag/index');
     }
 
@@ -133,14 +103,12 @@ class TagController extends Controller
      * 彻底删除标签
      *
      * @param         $id
-     * @param Tag     $tagModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Tag $tagModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $tagModel->forceDeleteData($map);
+        Tag::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/tag/index');
     }
 }
