@@ -19,6 +19,7 @@ use App\Observers\CommentObserver;
 use App\Observers\FriendshipLinkObserver;
 use App\Observers\GitProjectObserver;
 use App\Observers\NavObserver;
+use App\Observers\OauthUserObserver;
 use File;
 use Cache;
 use App\Observers\CacheClearObserver;
@@ -167,6 +168,7 @@ class AppServiceProvider extends ServiceProvider
         FriendshipLink::observe(FriendshipLinkObserver::class);
         GitProject::observe(GitProjectObserver::class);
         Nav::observe(NavObserver::class);
+        OauthUser::observe(OauthUserObserver::class);
     }
 
     /**
