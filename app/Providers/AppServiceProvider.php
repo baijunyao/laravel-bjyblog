@@ -45,6 +45,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Article::observe(ArticleObserver::class);
+        Category::observe(CategoryObserver::class);
+        Chat::observe(ChatObserver::class);
+        Comment::observe(CommentObserver::class);
+        FriendshipLink::observe(FriendshipLinkObserver::class);
+        GitProject::observe(GitProjectObserver::class);
+        Nav::observe(NavObserver::class);
+        OauthUser::observe(OauthUserObserver::class);
+        Site::observe(SiteObserver::class);
+        Tag::observe(TagObserver::class);
+        User::observe(UserObserver::class);
+
         ini_set('memory_limit', "512M");
 
         // 为了防止 git clone 后 composer install
@@ -165,18 +177,6 @@ class AppServiceProvider extends ServiceProvider
             $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav', 'qqQunArticle');
             $view->with($assign);
         });
-
-        Article::observe(ArticleObserver::class);
-        Category::observe(CategoryObserver::class);
-        Chat::observe(ChatObserver::class);
-        Comment::observe(CommentObserver::class);
-        FriendshipLink::observe(FriendshipLinkObserver::class);
-        GitProject::observe(GitProjectObserver::class);
-        Nav::observe(NavObserver::class);
-        OauthUser::observe(OauthUserObserver::class);
-        Site::observe(SiteObserver::class);
-        Tag::observe(TagObserver::class);
-        User::observe(UserObserver::class);
     }
 
     /**

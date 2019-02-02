@@ -21,21 +21,10 @@ class User extends Base implements AuthenticatableContract, AuthorizableContract
         'password', 'remember_token',
     ];
 
-    /**
-     * 修改数据
-     *
-     * @param $map  where条件
-     * @param $data 需要修改的数据
-     * @return bool 是否成功
-     */
-    public function updateData($map, $data, $flash = true)
+    public function setPasswordAttribute($password)
     {
-        //如果传password 则加密
-        if (!empty($data['password'])) {
-            $data['password']=bcrypt($data['password']);
+        if (! empty($password)) {
+            $this->attributes['password'] = bcrypt($password);
         }
-        return parent::updateData($map, $data, $flash);
     }
-
-
 }

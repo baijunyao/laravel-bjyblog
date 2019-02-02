@@ -15,7 +15,7 @@ class BaseObserver
     public function updated(Model $model)
     {
         // restore() triggering both restored() and updated()
-        if($model->getOriginal('deleted_at') === $model->deleted_at){
+        if(! $model->isDirty('deleted_at')){
             flash_success('修改成功');
         }
         $this->clearCache();
