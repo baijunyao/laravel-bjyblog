@@ -11,29 +11,11 @@ use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\Nav;
 use App\Models\OauthUser;
-use App\Models\Site;
 use App\Models\Tag;
-use App\Models\User;
-use App\Observers\ArticleObserver;
-use App\Observers\CategoryObserver;
-use App\Observers\ChatObserver;
-use App\Observers\CommentObserver;
-use App\Observers\FriendshipLinkObserver;
-use App\Observers\GitProjectObserver;
-use App\Observers\NavObserver;
-use App\Observers\OauthUserObserver;
-use App\Observers\SiteObserver;
-use App\Observers\TagObserver;
-use App\Observers\UserObserver;
-use File;
 use Cache;
 use App\Observers\CacheClearObserver;
 use Illuminate\Support\ServiceProvider;
-use DB;
-use Illuminate\Database\QueryException;
-use Artisan;
 use Exception;
-use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,18 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Article::observe(ArticleObserver::class);
-        Category::observe(CategoryObserver::class);
-        Chat::observe(ChatObserver::class);
-        Comment::observe(CommentObserver::class);
-        FriendshipLink::observe(FriendshipLinkObserver::class);
-        GitProject::observe(GitProjectObserver::class);
-        Nav::observe(NavObserver::class);
-        OauthUser::observe(OauthUserObserver::class);
-        Site::observe(SiteObserver::class);
-        Tag::observe(TagObserver::class);
-        User::observe(UserObserver::class);
-
         ini_set('memory_limit', "512M");
 
         // 为了防止 git clone 后 composer install

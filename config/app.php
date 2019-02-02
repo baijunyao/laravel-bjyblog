@@ -204,6 +204,11 @@ return [
          */
         ApolloPY\Flysystem\AliyunOss\AliyunOssServiceProvider::class,
 
+        /**
+         * Observe
+         */
+        App\Providers\ObserveServiceProvider::class
+
     ],
 
     /*
