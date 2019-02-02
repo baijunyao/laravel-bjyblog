@@ -12,15 +12,10 @@ use App\Models\GitProject;
 use App\Models\Nav;
 use App\Models\OauthUser;
 use App\Models\Tag;
-use File;
 use Cache;
 use App\Observers\CacheClearObserver;
 use Illuminate\Support\ServiceProvider;
-use DB;
-use Illuminate\Database\QueryException;
-use Artisan;
 use Exception;
-use Auth;
 
 class AppServiceProvider extends ServiceProvider
 {

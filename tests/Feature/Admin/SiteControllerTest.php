@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Notifications\SiteAudit;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Admin\CURD\TestCreate;
@@ -11,11 +12,11 @@ use Tests\Feature\Admin\CURD\TestForceDelete;
 use Tests\Feature\Admin\CURD\TestIndex;
 use Tests\Feature\Admin\CURD\TestRestore;
 use Tests\Feature\Admin\CURD\TestStore;
-use Tests\Feature\Admin\CURD\TestUpdate;
+use Illuminate\Support\Facades\Queue;
 
 class SiteControllerTest extends TestCase
 {
-    use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
+    use TestIndex, TestCreate, TestStore, TestEdit, TestDestroy, TestRestore, TestForceDelete;
 
     protected $urlPrefix = 'admin/site/';
     protected $table = 'sites';
@@ -27,12 +28,27 @@ class SiteControllerTest extends TestCase
         'audit' => 1,
         'sort' => 1,
     ];
-    protected $updateData = [
-        'oauth_user_id' => 2,
-        'name' => '编辑',
-        'description' => '编辑',
-        'url' => 'https://update.com',
-        'audit' => 0,
-        'sort' => 2,
-    ];
+
+    public function testUpdate()
+    {
+        $site = [
+            'oauth_user_id' => 2,
+            'name' => '编辑',
+            'description' => '编辑',
+            'url' => 'https://update.com',
+            'audit' => 1,
+            'sort' => 2,
+        ];
+
+        $this->adminPost('update/' . $this->updateId, $site)->assertSessionHasAll([
+            'laravel-flash' => [
+                [
+                    'alert-message' => '修改成功',
+                    'alert-type' => 'success'
+                ]
+            ]
+        ]);
+
+        $this->assertDatabaseHas($this->table, $this->updateData);
+    }
 }

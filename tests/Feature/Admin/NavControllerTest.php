@@ -19,8 +19,8 @@ class NavControllerTest extends TestCase
 
     protected $urlPrefix = 'admin/nav/';
     protected $table = 'navs';
-    protected $restoreId = 2;
-    protected $forceDeleteId = 2;
+    protected $restoreId = 3;
+    protected $forceDeleteId = 3;
     protected $storeData = [
         'name' => '测试',
         'url' => 'test',

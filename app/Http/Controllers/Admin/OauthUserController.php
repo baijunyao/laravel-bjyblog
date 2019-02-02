@@ -78,14 +78,11 @@ class OauthUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, OauthUser $oauthUserModel)
+    public function update(Request $request, $id)
     {
         $data = $request->except('_token');
         $data['is_admin'] = $request->input('is_admin', 0);
-        $map = [
-            'id' => $id
-        ];
-        $oauthUserModel->updateData($map, $data);
+        OauthUser::find($id)->update($data);
         return redirect()->back();
     }
 

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Events\SiteAudit;
 use App\Http\Requests\Site\Store;
 use App\Models\Site;
 use Illuminate\Http\Request;
@@ -41,7 +40,7 @@ class SiteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, Site $siteModel)
+    public function store(Store $request)
     {
         $data = $request->except('_token');
         if (empty($data['sort'])) {
@@ -49,11 +48,7 @@ class SiteController extends Controller
             $sort = Site::orderBy('sort', 'desc')->value('sort');
             $data['sort'] = (int)$sort + 1;
         }
-        $result = $siteModel->storeData($data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('home:site');
-        }
+        Site::create($data);
         return redirect('admin/site/index');
     }
 
@@ -88,24 +83,9 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, Site $siteModel)
+    public function update(Request $request, $id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $data = $request->except('_token');
-        $result = $siteModel->updateData($map, $data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('home:site');
-            // 如果通过审核 发送邮件通知
-            if (!empty($data['audit'])) {
-                event(new SiteAudit($id));
-            }
-        }
-        if ($request->ajax()) {
-            return ajax_return(200, '成功');
-        }
+        Site::find($id)->update($request->except('_token'));
         return redirect()->back();
     }
 
@@ -141,16 +121,9 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Site $siteModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $siteModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:site');
-        }
+        Site::destroy($id);
         return redirect()->back();
     }
 
@@ -161,16 +134,9 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, Site $siteModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $siteModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:site');
-        }
+        Site::onlyTrashed()->find($id)->restore();
         return redirect('admin/site/index');
     }
 
@@ -181,10 +147,9 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Site $siteModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $siteModel->forceDeleteData($map);
+        Site::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/site/index');
     }
 }

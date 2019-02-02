@@ -44,14 +44,9 @@ class GitProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, GitProject $gitProjectModel)
+    public function store(Store $request)
     {
-        $data = $request->except('_token');
-        $result = $gitProjectModel->storeData($data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:gitProject');
-        }
+        GitProject::create($request->except('_token'));
         return redirect('admin/gitProject/index');
     }
 
@@ -77,15 +72,7 @@ class GitProjectController extends Controller
      */
     public function update(Request $request, $id, GitProject $gitProjectModel)
     {
-        $data = $request->except('_token');
-        $map = [
-            'id' => $id
-        ];
-        $result = $gitProjectModel->updateData($map, $data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:gitProject');
-        }
+        GitProject::find($id)->update($request->except('_token'));
         return redirect()->back();
     }
 
@@ -121,16 +108,9 @@ class GitProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, GitProject $gitProjectModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $gitProjectModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:gitProject');
-        }
+        GitProject::destroy($id);
         return redirect()->back();
     }
 
@@ -142,16 +122,9 @@ class GitProjectController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, GitProject $gitProjectModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $gitProjectModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:gitProject');
-        }
+        GitProject::onlyTrashed()->find($id)->restore();
         return redirect('admin/gitProject/index');
     }
 
@@ -159,14 +132,12 @@ class GitProjectController extends Controller
      * 彻底删除开源项目
      *
      * @param            $id
-     * @param GitProject $gitProjectModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, GitProject $gitProjectModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $gitProjectModel->forceDeleteData($map);
+        GitProject::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/gitProject/index');
     }
 }

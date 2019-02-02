@@ -5,12 +5,9 @@ namespace Tests\Feature;
 use App\Models\User;
 use Exception;
 use App\Models\OauthUser;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 abstract class TestCase extends \Tests\TestCase
 {
-    use DatabaseTransactions;
-
     protected const ADMIN_USER_ID = 1;
     protected const OAUTH_USER_ID = 1;
     protected $urlPrefix = '';

@@ -26,9 +26,6 @@ class SiteControllerTest extends TestCase
             ->assertStatus(200);
     }
 
-    /**
-     * @group test
-     */
     public function testStore()
     {
         Notification::fake();
