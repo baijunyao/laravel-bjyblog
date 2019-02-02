@@ -44,14 +44,7 @@ class CommentController extends Controller
      */
     public function destroy($id, Comment $commentModel)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $commentModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:newComment');
-        }
+        Comment::destroy($id);
         return redirect()->back();
     }
 
@@ -65,14 +58,7 @@ class CommentController extends Controller
      */
     public function restore($id, Comment $commentModel)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $commentModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:newComment');
-        }
+        Comment::onlyTrashed()->find($id)->restore();
         return redirect()->back();
     }
 
@@ -80,14 +66,12 @@ class CommentController extends Controller
      * 彻底删除评论
      *
      * @param         $id
-     * @param Comment $commentModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, Comment $commentModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $commentModel->forceDeleteData($map);
+        Comment::onlyTrashed()->find($id)->forceDelete();
         return redirect()->back();
     }
 
@@ -111,18 +95,13 @@ class CommentController extends Controller
     public function replace(Request $request, Comment $commentModel)
     {
         $search = $request->input('search');
-        $replace = $request->input('replace');
         $data = Comment::select('id', 'content')
             ->where('content', 'like', "%$search%")
             ->get();
         foreach ($data as $k => $v) {
-            $updateMap = [
-                'id' => $v->id
-            ];
-            $updateData = [
-                'content' => str_replace($search, $replace, $v->content)
-            ];
-            $commentModel->updateData($updateMap, $updateData);
+            Comment::find($v->id)->update([
+                'content' => str_replace($search, $request->input('replace'), $v->content)
+            ]);
         }
         return redirect()->back();
     }

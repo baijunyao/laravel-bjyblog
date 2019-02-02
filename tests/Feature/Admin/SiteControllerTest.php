@@ -32,7 +32,7 @@ class SiteControllerTest extends TestCase
         'name' => '编辑',
         'description' => '编辑',
         'url' => 'https://update.com',
-        'audit' => 0,
+        'audit' => 1,
         'sort' => 2,
     ];
 }

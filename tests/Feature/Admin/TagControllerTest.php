@@ -20,6 +20,8 @@ class TagControllerTest extends TestCase
     protected $urlPrefix = 'admin/tag/';
     protected $table = 'tags';
     protected $destroyId = 2;
+    protected $restoreId = 3;
+    protected $forceDeleteId = 3;
     protected $storeData = [
         'name' => '测试'
     ];

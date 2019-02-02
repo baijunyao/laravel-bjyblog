@@ -11,7 +11,6 @@ use App\Models\Tag;
 use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Cache;
 
 class ArticleController extends Controller
 {
@@ -96,15 +95,8 @@ class ArticleController extends Controller
                 $data['cover'] = $result['data'][0]['path'];
             }
         }
-        $result = $article->storeData($data);
-        if ($result) {
-            // 更新热门推荐文章缓存
-            Cache::forget('common:topArticle');
-            // 更新标签统计缓存
-            Cache::forget('common:tag');
-            // 更新feed
-            Cache::forget('feed:article');
-        }
+        $article->storeData($data);
+
         return redirect('admin/article/index');
     }
 
@@ -167,15 +159,8 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $result = $articleModel->updateData($map, $data);
-        if ($result) {
-            // 更新热门推荐文章缓存
-            Cache::forget('common:topArticle');
-            // 更新标签统计缓存
-            Cache::forget('common:tag');
-            // 更新feed缓存
-            Cache::forget('feed:article');
-        }
+        $articleModel->updateData($map, $data);
+
         return redirect()->back();
     }
 
@@ -188,22 +173,8 @@ class ArticleController extends Controller
      */
     public function destroy($id, Article $articleModel, ArticleTag $articleTagModel)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $articleModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:topArticle');
-            Cache::forget('common:tag');
-            Cache::forget('feed:article');
+        Article::destroy($id);
 
-            // 删除文章后先同步删除关联表 article_tags 中的数据
-            $map = [
-                'article_id' => $id
-            ];
-            $articleTagModel->destroyData($map, false);
-        }
         return redirect()->back();
     }
 
@@ -220,19 +191,7 @@ class ArticleController extends Controller
         $map = [
             'id' => $id
         ];
-        $result = $articleModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:topArticle');
-            Cache::forget('common:tag');
-            Cache::forget('feed:article');
-
-            // 恢复删除的文章后先同步恢复关联表 article_tags 中的数据
-            $map = [
-                'article_id' => $id
-            ];
-            $articleTagModel->restoreData($map, false);
-        }
+        $articleModel->restoreData($map);
         return redirect()->back();
     }
 
@@ -247,15 +206,8 @@ class ArticleController extends Controller
      */
     public function forceDelete($id, Article $articleModel, ArticleTag $articleTagModel)
     {
-        $map = compact('id');
-        $result = $articleModel->forceDeleteData($map);
-        if ($result) {
-            // 删除文章后先同步删除关联表 article_tags 中的数据
-            $map = [
-                'article_id' => $id
-            ];
-            $articleTagModel->forceDeleteData($map, false);
-        }
+        Article::onlyTrashed()->find($id)->forceDelete();
+
         return redirect()->back();
     }
 

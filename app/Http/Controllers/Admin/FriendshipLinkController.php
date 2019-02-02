@@ -41,16 +41,10 @@ class FriendshipLinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Store $request, FriendshipLink $friendshipLinkModel)
+    public function store(Store $request)
     {
-        $data = $request->except('_token');
-        $result = $friendshipLinkModel->storeData($data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:friendshipLink');
-        }
+        FriendshipLink::create($request->except('_token'));
         return redirect('admin/friendshipLink/index');
-
     }
 
     /**
@@ -73,17 +67,9 @@ class FriendshipLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Store $request, $id, FriendshipLink $friendshipLinkModel)
+    public function update(Store $request, $id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $data = $request->except('_token');
-        $result = $friendshipLinkModel->updateData($map, $data);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:friendshipLink');
-        }
+        FriendshipLink::find($id)->update($request->except('_token'));
         return redirect()->back();
     }
 
@@ -118,16 +104,9 @@ class FriendshipLinkController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, FriendshipLink $friendshipLinkModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $friendshipLinkModel->destroyData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:friendshipLink');
-        }
+        FriendshipLink::destroy($id);
         return redirect()->back();
     }
 
@@ -135,20 +114,12 @@ class FriendshipLinkController extends Controller
      * 恢复删除的友情链接
      *
      * @param                $id
-     * @param FriendshipLink $friendshipLinkModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, FriendshipLink $friendshipLinkModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $result = $friendshipLinkModel->restoreData($map);
-        if ($result) {
-            // 更新缓存
-            Cache::forget('common:friendshipLink');
-        }
+        FriendshipLink::onlyTrashed()->find($id)->restore();
         return redirect('admin/friendshipLink/index');
     }
 
@@ -156,14 +127,12 @@ class FriendshipLinkController extends Controller
      * 彻底删除友情链接
      *
      * @param                $id
-     * @param FriendshipLink $friendshipLinkModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, FriendshipLink $friendshipLinkModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $friendshipLinkModel->forceDeleteData($map);
+        FriendshipLink::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/friendshipLink/index');
     }
 }

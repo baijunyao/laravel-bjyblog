@@ -72,15 +72,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id, User $userModel)
+    public function update(Request $request, $id)
     {
-        $data = $request->except('_token');
-        // 如果不修改密码 则去掉password字段
-        $data = array_filter($data);
-        $map = [
-            'id' => $id
-        ];
-        $userModel->updateData($map, $data);
+        User::find($id)->update($request->except('_token'));
         return redirect()->back();
     }
 
@@ -90,12 +84,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, User $userModel)
+    public function destroy($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $userModel->destroyData($map);
+        User::destroy($id);
         return redirect('admin/user/index');
     }
 
@@ -103,16 +94,12 @@ class UserController extends Controller
      * 恢复删除的标签
      *
      * @param         $id
-     * @param User    $userModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function restore($id, User $userModel)
+    public function restore($id)
     {
-        $map = [
-            'id' => $id
-        ];
-        $userModel->restoreData($map);
+        User::onlyTrashed()->find($id)->restore();
         return redirect('admin/user/index');
     }
 
@@ -120,14 +107,12 @@ class UserController extends Controller
      * 彻底删除标签
      *
      * @param         $id
-     * @param User    $userModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function forceDelete($id, User $userModel)
+    public function forceDelete($id)
     {
-        $map = compact('id');
-        $userModel->forceDeleteData($map);
+        User::onlyTrashed()->find($id)->forceDelete();
         return redirect('admin/user/index');
     }
 }
