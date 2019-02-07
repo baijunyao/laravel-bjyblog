@@ -47,7 +47,7 @@
                 </td>
             </tr>
             <tr>
-                <th>作者{{ $author }}</th>
+                <th>作者</th>
                 <td>
                     <input class="form-control" type="text" name="author" value="@if(empty(old('author'))){{ $author }}@else{{ old('author') }}@endif">
                 </td>
