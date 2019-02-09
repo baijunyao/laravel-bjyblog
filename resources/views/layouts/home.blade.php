@@ -140,7 +140,7 @@
                                 {{ $v->name }}<span>{{ word_time($v->created_at) }}</span>
                             </li>
                             <li class="b-nc-article">
-                                在<a href="{{ url('article', [$v->article_id]) }}" target="_blank">{{ $v->title }}</a>中评论
+                                在<a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>中评论
                             </li>
                             <li class="b-content">
                                 {!! $v->content !!}

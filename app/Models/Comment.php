@@ -168,7 +168,7 @@ class Comment extends Base
      */
     public function getNewData($limit = 20)
     {
-        $data = $this->select('comments.content', 'comments.created_at', 'ou.name', 'ou.avatar', 'a.title', 'a.id as article_id')
+        $data = $this->select('comments.id', 'comments.content', 'comments.created_at', 'ou.name', 'ou.avatar', 'a.title', 'a.id as article_id')
             ->join('articles as a', 'comments.article_id', 'a.id')
             ->join('oauth_users as ou', 'ou.id', 'comments.oauth_user_id')
             ->orderBy('comments.created_at', 'desc')
