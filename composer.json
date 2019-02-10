@@ -60,7 +60,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Libraries/Functions/helpers.php"
+            "app/Support/helpers.php"
         ]
     },
     "autoload-dev": {
