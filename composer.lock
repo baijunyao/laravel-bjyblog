@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6e28fed60030b1d05f401bbb4ad0be5",
+    "content-hash": "f5757aed50e38b4b9db40546101fda3d",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -521,16 +521,16 @@
         },
         {
             "name": "baijunyao/laravel-test-support",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-test-support.git",
-                "reference": "ece673cb5a726211674e7a256ca6e124fe62fd6f"
+                "reference": "4eda7c586dfdd0fd59c5530619bfe25bcb85c618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/ece673cb5a726211674e7a256ca6e124fe62fd6f",
-                "reference": "ece673cb5a726211674e7a256ca6e124fe62fd6f",
+                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/4eda7c586dfdd0fd59c5530619bfe25bcb85c618",
+                "reference": "4eda7c586dfdd0fd59c5530619bfe25bcb85c618",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -561,7 +561,7 @@
                 "support",
                 "test"
             ],
-            "time": "2019-02-01T10:39:40+00:00"
+            "time": "2019-02-15T11:21:56+00:00"
         },
         {
             "name": "baijunyao/laravel-toastr",
