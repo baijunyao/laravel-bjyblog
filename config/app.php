@@ -207,7 +207,12 @@ return [
         /**
          * Observe
          */
-        App\Providers\ObserveServiceProvider::class
+        App\Providers\ObserveServiceProvider::class,
+
+        /**
+         * assign data
+         */
+        App\Providers\ComposerServiceProvider::class
 
     ],
 
