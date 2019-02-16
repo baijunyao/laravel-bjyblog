@@ -40,43 +40,43 @@ class V5_5_9_0 extends Command
     public function handle()
     {
         $configModel = new Config();
-        $count = $configModel->where('id', '>', 159)->count();
+        $count       = $configModel->where('id', '>', 159)->count();
         if ($count === 0) {
             $data = [
                 [
-                    "id" => 159,
-                    "name" => "database.connections.mysql.dump.dump_binary_path",
-                    "value" => "/bin/",
+                    'id'    => 159,
+                    'name'  => 'database.connections.mysql.dump.dump_binary_path',
+                    'value' => '/bin/',
                 ],
                 [
-                    "id" => 160,
-                    "name" => "filesystems.disks.oss.access_id",
-                    "value" => "",
+                    'id'    => 160,
+                    'name'  => 'filesystems.disks.oss.access_id',
+                    'value' => '',
                 ],
                 [
-                    "id" => 161,
-                    "name" => "filesystems.disks.oss.access_key",
-                    "value" => "",
+                    'id'    => 161,
+                    'name'  => 'filesystems.disks.oss.access_key',
+                    'value' => '',
                 ],
                 [
-                    "id" => 162,
-                    "name" => "filesystems.disks.oss.bucket",
-                    "value" => "",
+                    'id'    => 162,
+                    'name'  => 'filesystems.disks.oss.bucket',
+                    'value' => '',
                 ],
                 [
-                    "id" => 163,
-                    "name" => "filesystems.disks.oss.endpoint",
-                    "value" => "",
+                    'id'    => 163,
+                    'name'  => 'filesystems.disks.oss.endpoint',
+                    'value' => '',
                 ],
                 [
-                    "id" => 164,
-                    "name" => "backup.backup.destination.disks",
-                    "value" => "[]",
+                    'id'    => 164,
+                    'name'  => 'backup.backup.destination.disks',
+                    'value' => '[]',
                 ],
                 [
-                    "id" => 165,
-                    "name" => "backup.notifications.mail.to",
-                    "value" => "",
+                    'id'    => 165,
+                    'name'  => 'backup.notifications.mail.to',
+                    'value' => '',
                 ],
             ];
             $configModel->insert($data);

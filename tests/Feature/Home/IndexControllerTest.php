@@ -2,9 +2,6 @@
 
 namespace Tests\Feature\Home;
 
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
 class IndexControllerTest extends TestCase
 {
     public function testIndex()
@@ -47,8 +44,8 @@ class IndexControllerTest extends TestCase
     {
         $comment = [
             'article_id' => 1,
-            'pid' => 0,
-            'content' => '评论666'
+            'pid'        => 0,
+            'content'    => '评论666',
         ];
         $response = $this->loginByUserId(1)->post('/comment', $comment);
         $response->assertStatus(200);
@@ -62,9 +59,9 @@ class IndexControllerTest extends TestCase
 
     public function testSearch()
     {
-        $word = '序言';
+        $word     = '序言';
         $response = $this->call('POST', '/search', [
-            'wd' => $word
+            'wd' => $word,
         ]);
         $response->assertStatus(200);
     }

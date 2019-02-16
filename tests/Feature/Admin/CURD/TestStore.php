@@ -10,9 +10,9 @@ trait TestStore
             'laravel-flash' => [
                 [
                     'alert-message' => '添加成功',
-                    'alert-type' => 'success'
-                ]
-            ]
+                    'alert-type'    => 'success',
+                ],
+            ],
         ]);
 
         $this->assertDatabaseHas($this->table, $this->storeData);

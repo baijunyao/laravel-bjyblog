@@ -10,9 +10,9 @@ trait TestForceDelete
             'laravel-flash' => [
                 [
                     'alert-message' => '彻底删除成功',
-                    'alert-type' => 'success'
-                ]
-            ]
+                    'alert-type'    => 'success',
+                ],
+            ],
         ]);
     }
 }

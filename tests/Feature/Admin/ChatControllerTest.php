@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin;
 
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestEdit;
@@ -17,11 +15,11 @@ class ChatControllerTest extends TestCase
 {
     use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
     protected $urlPrefix = 'admin/chat/';
-    protected $table = 'chats';
+    protected $table     = 'chats';
     protected $storeData = [
-        'content' => '新增'
+        'content' => '新增',
     ];
     protected $updateData = [
-        'content' => '编辑'
+        'content' => '编辑',
     ];
 }

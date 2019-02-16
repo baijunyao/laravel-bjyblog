@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin;
 
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestEdit;
@@ -17,16 +15,16 @@ class NavControllerTest extends TestCase
 {
     use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
 
-    protected $urlPrefix = 'admin/nav/';
-    protected $table = 'navs';
-    protected $restoreId = 3;
+    protected $urlPrefix     = 'admin/nav/';
+    protected $table         = 'navs';
+    protected $restoreId     = 3;
     protected $forceDeleteId = 3;
-    protected $storeData = [
+    protected $storeData     = [
         'name' => '测试',
-        'url' => 'test',
+        'url'  => 'test',
     ];
     protected $updateData = [
         'name' => '编辑',
-        'url' => 'update',
+        'url'  => 'update',
     ];
 }

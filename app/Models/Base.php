@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Baijunyao\LaravelModel\Models\BaseModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Base extends BaseModel
 {

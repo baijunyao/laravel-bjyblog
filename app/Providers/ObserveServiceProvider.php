@@ -24,7 +24,6 @@ use App\Observers\OauthUserObserver;
 use App\Observers\SiteObserver;
 use App\Observers\TagObserver;
 use App\Observers\UserObserver;
-use App\Observers\CacheClearObserver;
 use Illuminate\Support\ServiceProvider;
 
 class ObserveServiceProvider extends ServiceProvider

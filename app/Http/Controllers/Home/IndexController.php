@@ -2,30 +2,31 @@
 
 namespace App\Http\Controllers\Home;
 
-use App;
-use Cache;
 use Agent;
-use App\Models\Tag;
-use App\Models\Chat;
-use App\Models\Article;
-use App\Models\Category;
-use App\Models\Comment;
-use App\Models\OauthUser;
-use Illuminate\Http\Request;
+use App;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\Store;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Chat;
+use App\Models\Comment;
+use App\Models\OauthUser;
+use App\Models\Tag;
+use Cache;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     /**
      * 首页
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Exception
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
-	{
-	    // 获取文章列表数据
+    {
+        // 获取文章列表数据
         $article = Article::select(
                 'id', 'category_id', 'title',
                 'author', 'description', 'cover',
@@ -35,18 +36,19 @@ class IndexController extends Controller
             ->with(['category', 'tags'])
             ->paginate(10);
         $head = [
-            'title' => config('bjyblog.head.title'),
-            'keywords' => config('bjyblog.head.keywords'),
+            'title'       => config('bjyblog.head.title'),
+            'keywords'    => config('bjyblog.head.keywords'),
             'description' => config('bjyblog.head.description'),
         ];
         $assign = [
             'category_id' => 'index',
-            'article' => $article,
-            'head' => $head,
-            'tagName' => ''
+            'article'     => $article,
+            'head'        => $head,
+            'tagName'     => '',
         ];
-		return view('home.index.index', $assign);
-	}
+
+        return view('home.index.index', $assign);
+    }
 
     /**
      * 文章详情
@@ -55,18 +57,19 @@ class IndexController extends Controller
      * @param Request $request
      * @param Comment $commentModel
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      * @throws \Exception
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
      */
     public function article($id, Request $request, Comment $commentModel)
     {
         // 获取文章数据
         $data = Article::with(['category', 'tags'])->find($id);
-        if (is_null($data)) {
+        if ($data === null) {
             return abort(404);
         }
         // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
-        $ipAndId = 'articleRequestList'.$request->ip().':'.$id;
+        $ipAndId = 'articleRequestList' . $request->ip() . ':' . $id;
         if (!Cache::has($ipAndId)) {
             cache([$ipAndId => ''], 1440);
             // 文章点击量+1
@@ -91,7 +94,8 @@ class IndexController extends Controller
         $comment = $commentModel->getDataByArticleId($id);
         // p($comment);die;
         $category_id = $data->category->id;
-        $assign = compact('category_id', 'data', 'prev', 'next', 'comment');
+        $assign      = compact('category_id', 'data', 'prev', 'next', 'comment');
+
         return view('home.index.article', $assign);
     }
 
@@ -108,7 +112,7 @@ class IndexController extends Controller
         $category = Category::select('id', 'name', 'keywords', 'description')
             ->where('id', $id)
             ->first();
-        if (is_null($category)) {
+        if ($category === null) {
             return abort(404);
         }
         // 获取分类下的文章
@@ -123,23 +127,25 @@ class IndexController extends Controller
                     $article->items()
                 )->map(function ($v) use ($category) {
                     $v->category = $category;
+
                     return $v;
                 })
             );
         }
 
         $head = [
-            'title' => $category->name,
-            'keywords' => $category->keywords,
+            'title'       => $category->name,
+            'keywords'    => $category->keywords,
             'description' => $category->description,
         ];
         $assign = [
             'category_id' => $id,
-            'article' => $article,
-            'tagName' => '',
-            'title' => $category->name,
-            'head' => $head
+            'article'     => $article,
+            'tagName'     => '',
+            'title'       => $category->name,
+            'head'        => $head,
         ];
+
         return view('home.index.index', $assign);
     }
 
@@ -154,7 +160,7 @@ class IndexController extends Controller
     {
         // 获取标签
         $tag = Tag::select('id', 'name')->where('id', $id)->first();
-        if (is_null($tag)) {
+        if ($tag === null) {
             return abort(404);
         }
         // TODO 不取 markdown 和 html 字段
@@ -164,17 +170,18 @@ class IndexController extends Controller
             ->with(['category', 'tags'])
             ->paginate(10);
         $head = [
-            'title' => $tag->name,
-            'keywords' => '',
+            'title'       => $tag->name,
+            'keywords'    => '',
             'description' => '',
         ];
         $assign = [
             'category_id' => 'index',
-            'article' => $article,
-            'tagName' => $tag->name,
-            'title' => $tag->name,
-            'head' => $head
+            'article'     => $article,
+            'tagName'     => $tag->name,
+            'title'       => $tag->name,
+            'head'        => $head,
         ];
+
         return view('home.index.index', $assign);
     }
 
@@ -185,12 +192,13 @@ class IndexController extends Controller
      */
     public function chat()
     {
-        $chat = Chat::orderBy('created_at', 'desc')->get();
-        $assign =[
+        $chat   = Chat::orderBy('created_at', 'desc')->get();
+        $assign = [
             'category_id' => 'chat',
-            'chat' => $chat,
-            'title' => '随言碎语',
+            'chat'        => $chat,
+            'title'       => '随言碎语',
         ];
+
         return view('home.index.chat', $assign);
     }
 
@@ -203,8 +211,9 @@ class IndexController extends Controller
     {
         $assign = [
             'category_id' => 'git',
-            'title' => '开源项目',
+            'title'       => '开源项目',
         ];
+
         return view('home.index.git', $assign);
     }
 
@@ -227,10 +236,10 @@ class IndexController extends Controller
         if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
             // 修改邮箱
             $oauthUserMap = [
-                'id' => $userId
+                'id' => $userId,
             ];
             $oauthUserData = [
-                'email' => $email
+                'email' => $email,
             ];
             $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
         }
@@ -238,6 +247,7 @@ class IndexController extends Controller
         $id = $commentModel->storeData($data, false);
         // 更新缓存
         Cache::forget('common:newComment');
+
         return ajax_return(200, ['id' => $id]);
     }
 
@@ -260,7 +270,8 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function search(Request $request, Article $articleModel){
+    public function search(Request $request, Article $articleModel)
+    {
         // 禁止蜘蛛抓取搜索页
         if (Agent::isRobot()) {
             abort(404);
@@ -281,16 +292,16 @@ class IndexController extends Controller
             ->with(['category', 'tags'])
             ->paginate(10);
         $head = [
-            'title' => $wd,
-            'keywords' => '',
+            'title'       => $wd,
+            'keywords'    => '',
             'description' => '',
         ];
         $assign = [
             'category_id' => 'index',
-            'article' => $article,
-            'tagName' => '',
-            'title' => $wd,
-            'head' => $head
+            'article'     => $article,
+            'tagName'     => '',
+            'title'       => $wd,
+            'head'        => $head,
         ];
 
         // 增加 X-Robots-Tag 用于禁止搜搜引擎抓取搜索结果页面 防止利用搜索结果页生成恶意广告
@@ -311,20 +322,20 @@ class IndexController extends Controller
                 ->latest()
                 ->get();
         });
-        $feed = App::make("feed");
-        $feed->title = '白俊遥';
+        $feed              = App::make('feed');
+        $feed->title       = '白俊遥';
         $feed->description = '白俊遥博客';
-        $feed->logo = 'https://baijunyao.com/uploads/avatar/1.jpg';
-        $feed->link = url('feed');
+        $feed->logo        = 'https://baijunyao.com/uploads/avatar/1.jpg';
+        $feed->link        = url('feed');
         $feed->setDateFormat('carbon');
         $feed->pubdate = $article->first()->created_at;
-        $feed->lang = 'zh-CN';
-        $feed->ctype = 'application/xml';
+        $feed->lang    = 'zh-CN';
+        $feed->ctype   = 'application/xml';
 
-        foreach ($article as $v)
-        {
+        foreach ($article as $v) {
             $feed->add($v->title, $v->author, url('article', $v->id), $v->created_at, $v->description);
         }
+
         return $feed->render('atom');
     }
 
@@ -333,8 +344,5 @@ class IndexController extends Controller
      */
     public function test()
     {
-
     }
-
-
 }

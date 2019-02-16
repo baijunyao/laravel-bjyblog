@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Tag\Store;
 use App\Models\Tag;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Cache;
 
 class TagController extends Controller
 {
@@ -17,8 +16,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $data = Tag::withTrashed()->get();
+        $data   = Tag::withTrashed()->get();
         $assign = compact('data');
+
         return view('admin.tag.index', $assign);
     }
 
@@ -35,7 +35,8 @@ class TagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Store $request)
@@ -43,72 +44,82 @@ class TagController extends Controller
         $id = Tag::create($request->only('name'));
         if ($request->ajax()) {
             $data['id'] = $id;
+
             return ajax_return(200, $data);
         }
+
         return redirect('admin/tag/index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id, Tag $tagModel)
     {
-        $data = $tagModel->find($id);
+        $data   = $tagModel->find($id);
         $assign = compact('data');
+
         return view('admin.tag.edit', $assign);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         Tag::find($id)->update($request->except('_token'));
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         Tag::destroy($id);
+
         return redirect('admin/tag/index');
     }
 
     /**
      * 恢复删除的标签
      *
-     * @param         $id
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function restore($id)
     {
         Tag::onlyTrashed()->find($id)->restore();
+
         return redirect('admin/tag/index');
     }
 
     /**
      * 彻底删除标签
      *
-     * @param         $id
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function forceDelete($id)
     {
         Tag::onlyTrashed()->find($id)->forceDelete();
+
         return redirect('admin/tag/index');
     }
 }

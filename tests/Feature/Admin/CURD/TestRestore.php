@@ -10,9 +10,9 @@ trait TestRestore
             'laravel-flash' => [
                 [
                     'alert-message' => '恢复成功',
-                    'alert-type' => 'success'
-                ]
-            ]
+                    'alert-type'    => 'success',
+                ],
+            ],
         ]);
     }
 }

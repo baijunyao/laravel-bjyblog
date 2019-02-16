@@ -2,20 +2,20 @@
 
 namespace App\Console\Commands\Migration;
 
-use App\Models\Category;
-use App\Models\Tag;
-use Illuminate\Console\Command;
-use DB;
-use App\Models\Chat;
-use HyperDown\Parser;
-use App\Models\Config;
 use App\Models\Article;
-use App\Models\Comment;
-use App\Models\OauthUser;
 use App\Models\ArticleTag;
+use App\Models\Category;
+use App\Models\Chat;
+use App\Models\Comment;
+use App\Models\Config;
 use App\Models\FriendshipLink;
-use League\HTMLToMarkdown\HtmlConverter;
+use App\Models\OauthUser;
+use App\Models\Tag;
 use Artisan;
+use DB;
+use HyperDown\Parser;
+use Illuminate\Console\Command;
+use League\HTMLToMarkdown\HtmlConverter;
 
 class FromThinkPHPBjyBlog extends Command
 {
@@ -48,15 +48,15 @@ class FromThinkPHPBjyBlog extends Command
      */
     public function handle()
     {
-        $articleModel = new Article();
-        $articleTagModel = new ArticleTag();
-        $commentModel = new Comment();
+        $articleModel        = new Article();
+        $articleTagModel     = new ArticleTag();
+        $commentModel        = new Comment();
         $friendshipLinkModel = new FriendshipLink();
-        $configModel = new Config();
-        $oauthUserModel = new OauthUser();
-        $chatModel = new Chat();
-        $categoryModel = new Category();
-        $tagModel = new Tag();
+        $configModel         = new Config();
+        $oauthUserModel      = new OauthUser();
+        $chatModel           = new Chat();
+        $categoryModel       = new Category();
+        $tagModel            = new Tag();
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
             die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
@@ -67,12 +67,12 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('category')->get()->toArray();
         foreach ($data as $v) {
             $category = [
-                'id' => $v->cid,
-                'name' => $v->cname,
-                'keywords' => $v->keywords,
+                'id'          => $v->cid,
+                'name'        => $v->cname,
+                'keywords'    => $v->keywords,
                 'description' => $v->description,
-                'sort' => $v->sort,
-                'pid' => $v->pid,
+                'sort'        => $v->sort,
+                'pid'         => $v->pid,
             ];
             $categoryModel->storeData($category);
         }
@@ -81,7 +81,7 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('tag')->get()->toArray();
         foreach ($data as $v) {
             $category = [
-                'id' => $v->tid,
+                'id'   => $v->tid,
                 'name' => $v->tname,
             ];
             $tagModel->storeData($category);
@@ -89,58 +89,58 @@ class FromThinkPHPBjyBlog extends Command
 
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
-        $parser = new Parser();
-        $data = DB::connection('old')
+        $parser        = new Parser();
+        $data          = DB::connection('old')
             ->table('article')
             ->get()
             ->toArray();
         $articleModel->where('id', '<', 87)->forceDelete();
         foreach ($data as $k => $v) {
-            $content = htmlspecialchars_decode($v->content);
-            $content = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
-            $content = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
-            $content = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">',  '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", "\r\n"], $content);
-            $content = str_replace('```js', '```javascript', $content);
-            $content = str_replace("\r\n", '|rn|', $content);
-            $content = str_replace('<p>', '', $content);
-            $content = str_replace('</p>', '|rn|', $content);
-            $content = str_replace('&nbsp;', '|nbsp|', $content);
+            $content  = htmlspecialchars_decode($v->content);
+            $content  = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
+            $content  = str_replace('/Upload/image/ueditor', '/uploads/article', $content);
+            $content  = str_replace(['<pre class="brush:', '</pre>', ';toolbar:false">',  '<p><br/></p>'], ["\r\n```", "\r\n```\r\n", "\r\n", "\r\n"], $content);
+            $content  = str_replace('```js', '```javascript', $content);
+            $content  = str_replace("\r\n", '|rn|', $content);
+            $content  = str_replace('<p>', '', $content);
+            $content  = str_replace('</p>', '|rn|', $content);
+            $content  = str_replace('&nbsp;', '|nbsp|', $content);
             $markdown = $htmlConverter->convert($content);
             $markdown = htmlspecialchars($markdown);
             $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
             $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
             $markdown = str_replace('http://www.baijunyao.com/uploads/article', 'uploads/article', $markdown);
             $markdown = str_replace('|nbsp|', '&nbsp;', $markdown);
-            preg_match_all("/\/\/\*+.*\*+/", $markdown, $arr);
+            preg_match_all('/\\/\\/\\*+.*\\*+/', $markdown, $arr);
             $tmp = [];
             foreach ($arr[0] as $m => $n) {
                 $tmp[$m] = str_replace('*', '\*', $n);
             }
             $markdown = str_replace($arr[0], $tmp, $markdown);
             // markdown 转html
-            $html = $parser->makeHtml($markdown);
-            $html = html_entity_decode($html);
-            $html = str_replace(['<code class="', '\\\\'], ['<code class="lang-', '\\'], $html);
+            $html    = $parser->makeHtml($markdown);
+            $html    = html_entity_decode($html);
+            $html    = str_replace(['<code class="', '\\\\'], ['<code class="lang-', '\\'], $html);
             $article = [
-                'id' => $v->aid,
+                'id'          => $v->aid,
                 'category_id' => $v->cid,
-                'title' => $v->title,
-                'author' => $v->author,
-                'markdown' => $markdown,
-                'html' => $html,
+                'title'       => $v->title,
+                'author'      => $v->author,
+                'markdown'    => $markdown,
+                'html'        => $html,
                 'description' => $v->description,
-                'keywords' => $v->keywords,
-                'cover' => $articleModel->getCover($markdown),
-                'is_top' => $v->is_top,
-                'click' => $v->click,
+                'keywords'    => $v->keywords,
+                'cover'       => $articleModel->getCover($markdown),
+                'is_top'      => $v->is_top,
+                'click'       => $v->click,
             ];
             $articleModel->create($article);
             $editArticleMap = [
-                'id' => $v->aid
+                'id' => $v->aid,
             ];
 
             $editArticleData = [
-                'created_at' => date('Y-m-d H:i:s', $v->addtime)
+                'created_at' => date('Y-m-d H:i:s', $v->addtime),
             ];
             $articleModel->updateData($editArticleMap, $editArticleData);
         }
@@ -150,7 +150,7 @@ class FromThinkPHPBjyBlog extends Command
         foreach ($data as $v) {
             $article_tag = [
                 'article_id' => $v->aid,
-                'tag_id' => $v->tid
+                'tag_id'     => $v->tid,
             ];
             $articleTagModel->storeData($article_tag);
         }
@@ -167,27 +167,27 @@ class FromThinkPHPBjyBlog extends Command
             $content = html_entity_decode(htmlspecialchars_decode($v->content));
             // 匹配图片
             preg_match_all('/<img.*?title="(.*?)".*?>/i', $content, $img);
-            $search = $img[0];
+            $search  = $img[0];
             $replace = array_map(function ($v) {
-                return '['.$v.']';
+                return '[' . $v . ']';
             }, $img[1]);
-            $content = str_replace($search, $replace, $content);
-            $content = strip_tags($content);
+            $content      = str_replace($search, $replace, $content);
+            $content      = strip_tags($content);
             $comment_data = [
-                'id' => $v->cmtid,
+                'id'            => $v->cmtid,
                 'oauth_user_id' => $v->ouid,
-                'type' => $v->type,
-                'pid' => $v->pid,
-                'article_id' => $v->aid,
-                'content' => $content,
-                'status' => $v->status,
+                'type'          => $v->type,
+                'pid'           => $v->pid,
+                'article_id'    => $v->aid,
+                'content'       => $content,
+                'status'        => $v->status,
             ];
             $commentModel->create($comment_data);
             $editCommentMap = [
                 'id' => $v->cmtid,
             ];
             $editCommentData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
+                'created_at' => date('Y-m-d H:i:s', $v->date),
             ];
             $commentModel->updateData($editCommentMap, $editCommentData);
         }
@@ -196,10 +196,10 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('link')->get()->toArray();
         foreach ($data as $v) {
             $link_data = [
-                'id' => $v->lid,
+                'id'   => $v->lid,
                 'name' => $v->lname,
-                'url' => $v->url,
-                'sort' => $v->sort
+                'url'  => $v->url,
+                'sort' => $v->sort,
             ];
             if ($v->is_show === 0) {
                 $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
@@ -211,11 +211,11 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('config')->get()->toArray();
         foreach ($data as $v) {
             $updateMap = [
-                'name' => $v->name
+                'name' => $v->name,
             ];
             $updateData = [
-                'name' => $v->name,
-                'value' => $v->value
+                'name'  => $v->name,
+                'value' => $v->value,
             ];
             // 判断是否有此配置项；如果有；则修改；如果没有则新增
             $count = $configModel->whereMap($updateMap)->count();
@@ -230,23 +230,23 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
         foreach ($data as $v) {
             $oauthUserData = [
-                'id' => $v->id,
-                'type' => $v->type,
-                'name' => $v->nickname,
-                'avatar' => $v->head_img,
-                'openid' => $v->openid,
-                'access_token' => $v->access_token,
+                'id'            => $v->id,
+                'type'          => $v->type,
+                'name'          => $v->nickname,
+                'avatar'        => $v->head_img,
+                'openid'        => $v->openid,
+                'access_token'  => $v->access_token,
                 'last_login_ip' => $v->last_login_ip,
-                'login_times' => $v->login_times,
-                'email' => $v->email,
-                'is_admin' => $v->is_admin
+                'login_times'   => $v->login_times,
+                'email'         => $v->email,
+                'is_admin'      => $v->is_admin,
             ];
             $oauthUserModel->storeData($oauthUserData);
             $editOauthUserMap = [
                 'id' => $v->id,
             ];
             $editOauthUserData = [
-                'created_at' => date('Y-m-d H:i:s', $v->create_time)
+                'created_at' => date('Y-m-d H:i:s', $v->create_time),
             ];
             $oauthUserModel->updateData($editOauthUserMap, $editOauthUserData);
         }
@@ -255,7 +255,7 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('chat')->get()->toArray();
         foreach ($data as $v) {
             $chatData = [
-                'id' => $v->chid,
+                'id'      => $v->chid,
                 'content' => $v->content,
             ];
             $chatModel->storeData($chatData);
@@ -263,7 +263,7 @@ class FromThinkPHPBjyBlog extends Command
                 'id' => $v->chid,
             ];
             $editChatData = [
-                'created_at' => date('Y-m-d H:i:s', $v->date)
+                'created_at' => date('Y-m-d H:i:s', $v->date),
             ];
             $chatModel->updateData($editChatMap, $editChatData);
         }
@@ -283,13 +283,13 @@ class FromThinkPHPBjyBlog extends Command
         $data = $oauthUserModel->select('id', 'avatar')->get();
         foreach ($data as $k => $v) {
             $editMap = [
-                'id' => $v->id
+                'id' => $v->id,
             ];
             if (strpos($v->avatar, 'http') !== false) {
-                $avatarPath = 'uploads/avatar/'.$v->id.'.jpg';
+                $avatarPath = 'uploads/avatar/' . $v->id . '.jpg';
                 file_put_contents(public_path($avatarPath), curl_get_contents($v->avatar));
                 $editData = [
-                    'avatar' => '/'.$avatarPath
+                    'avatar' => '/' . $avatarPath,
                 ];
                 $oauthUserModel->updateData($editMap, $editData);
             }

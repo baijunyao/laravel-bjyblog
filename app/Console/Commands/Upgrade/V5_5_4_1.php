@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands\Upgrade;
 
-use Illuminate\Console\Command;
 use App\Models\Config;
 use Artisan;
+use Illuminate\Console\Command;
 
 class V5_5_4_1 extends Command
 {
@@ -40,9 +40,9 @@ class V5_5_4_1 extends Command
     public function handle()
     {
         $data = [
-            'id' => 156,
-            'name' => 'email.encryption',
-            'value' => 'ssl'
+            'id'    => 156,
+            'name'  => 'email.encryption',
+            'value' => 'ssl',
         ];
         Config::firstOrCreate($data);
         Artisan::call('cache:clear');

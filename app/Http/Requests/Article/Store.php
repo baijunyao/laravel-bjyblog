@@ -24,12 +24,12 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'category_id'=>'required',
-            'title'=>'required',
-            'author'=>'required',
-            'keywords'=>'required',
-            'tag_ids'=>'required',
-            'markdown'=>'required'
+            'category_id' => 'required',
+            'title'       => 'required',
+            'author'      => 'required',
+            'keywords'    => 'required',
+            'tag_ids'     => 'required',
+            'markdown'    => 'required',
         ];
     }
 
@@ -41,12 +41,12 @@ class Store extends FormRequest
     public function attributes()
     {
         return [
-            'category_id'=>'分类',
-            'title'=>'标题',
-            'author'=>'作者',
-            'tag_ids'=>'标签',
-            'keywords'=>'关键词',
-            'markdown'=>'内容'
+            'category_id' => '分类',
+            'title'       => '标题',
+            'author'      => '作者',
+            'tag_ids'     => '标签',
+            'keywords'    => '关键词',
+            'markdown'    => '内容',
         ];
     }
 
@@ -58,7 +58,7 @@ class Store extends FormRequest
     public function messages()
     {
         return [
-            'tag_ids.required'=>'必须选择标签',
+            'tag_ids.required' => '必须选择标签',
         ];
     }
 }
