@@ -20,3 +20,4 @@ docs
 public/baidu*
 public/google*
 public/fileauth*
+.php_cs.cache
