@@ -2,9 +2,8 @@
 
 namespace Tests\Browser\Home;
 
-use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\DuskTestCase;
 
 class IndexTest extends DuskTestCase
 {
@@ -29,7 +28,7 @@ class IndexTest extends DuskTestCase
                 ->type('password', env('DUSK_GITHUB_PASSWORD'))
                 ->press('Sign in')
                 ->waitForLocation('/article/1')
-                ->script("$('.b-box-content').text('dusk评论".date('Y-m-d H:i:s', time())."')");
+                ->script("$('.b-box-content').text('dusk评论" . date('Y-m-d H:i:s', time()) . "')");
 
             $browser->script("$('.b-comment-box .b-submit-button input').click();");
             $browser->pause(3000);

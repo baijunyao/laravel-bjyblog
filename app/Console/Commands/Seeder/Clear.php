@@ -11,8 +11,8 @@ use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\OauthUser;
 use App\Models\Tag;
-use Illuminate\Console\Command;
 use Artisan;
+use Illuminate\Console\Command;
 
 class Clear extends Command
 {

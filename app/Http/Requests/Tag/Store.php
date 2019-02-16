@@ -24,7 +24,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:tags',
+            'name' => 'required|unique:tags',
         ];
     }
 
@@ -36,7 +36,7 @@ class Store extends FormRequest
     public function attributes()
     {
         return [
-            'name'=>'分类名',
+            'name' => '分类名',
         ];
     }
 }

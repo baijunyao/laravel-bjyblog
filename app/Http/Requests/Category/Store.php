@@ -24,9 +24,9 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:categories',
-            'keywords'=>'required',
-            'description'=>'required',
+            'name'        => 'required|unique:categories',
+            'keywords'    => 'required',
+            'description' => 'required',
         ];
     }
 
@@ -38,9 +38,9 @@ class Store extends FormRequest
     public function attributes()
     {
         return [
-            'name'=>'分类名',
-            'keywords'=>'关键字',
-            'description'=>'描述',
+            'name'        => '分类名',
+            'keywords'    => '关键字',
+            'description' => '描述',
         ];
     }
 }

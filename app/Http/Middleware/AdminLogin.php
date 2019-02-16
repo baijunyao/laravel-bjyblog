@@ -2,16 +2,17 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Auth;
+use Closure;
 
 class AdminLogin
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -20,6 +21,7 @@ class AdminLogin
         if (Auth::guard('admin')->check()) {
             return redirect('admin/index/index');
         }
+
         return $next($request);
     }
 }

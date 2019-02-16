@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\GitProject\Store;
 use App\Models\GitProject;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Cache;
+use Illuminate\Http\Request;
 
 class GitProjectController extends Controller
 {
@@ -22,9 +22,10 @@ class GitProjectController extends Controller
             ->get();
         $gitProjectType = [
             1 => 'github',
-            2 => 'gitee'
+            2 => 'gitee',
         ];
         $assign = compact('data', 'gitProjectType');
+
         return view('admin.gitProject.index', $assign);
     }
 
@@ -41,38 +42,44 @@ class GitProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Store $request)
     {
         GitProject::create($request->except('_token'));
+
         return redirect('admin/gitProject/index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = GitProject::find($id);
+        $data   = GitProject::find($id);
         $assign = compact('data');
+
         return view('admin.gitProject.edit', $assign);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id, GitProject $gitProjectModel)
     {
         GitProject::find($id)->update($request->except('_token'));
+
         return redirect()->back();
     }
 
@@ -86,12 +93,12 @@ class GitProjectController extends Controller
      */
     public function sort(Request $request, GitProject $gitProjectModel)
     {
-        $data = $request->except('_token');
+        $data     = $request->except('_token');
         $editData = [];
         foreach ($data as $k => $v) {
             $editData[] = [
-                'id' => $k,
-                'sort' => $v
+                'id'   => $k,
+                'sort' => $v,
             ];
         }
         $result = $gitProjectModel->updateBatch($editData);
@@ -99,18 +106,21 @@ class GitProjectController extends Controller
             // 更新缓存
             Cache::forget('common:gitProject');
         }
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         GitProject::destroy($id);
+
         return redirect()->back();
     }
 
@@ -125,19 +135,21 @@ class GitProjectController extends Controller
     public function restore($id)
     {
         GitProject::onlyTrashed()->find($id)->restore();
+
         return redirect('admin/gitProject/index');
     }
 
     /**
      * 彻底删除开源项目
      *
-     * @param            $id
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function forceDelete($id)
     {
         GitProject::onlyTrashed()->find($id)->forceDelete();
+
         return redirect('admin/gitProject/index');
     }
 }

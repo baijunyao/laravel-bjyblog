@@ -2,23 +2,23 @@
 
 namespace Tests\Feature;
 
+use App\Models\OauthUser;
 use App\Models\User;
 use Exception;
-use App\Models\OauthUser;
 
 abstract class TestCase extends \Tests\TestCase
 {
     protected const ADMIN_USER_ID = 1;
     protected const OAUTH_USER_ID = 1;
-    protected $urlPrefix = '';
-    protected $table = '';
-    protected $editId = 1;
-    protected $updateId = 1;
-    protected $destroyId = 1;
-    protected $restoreId = 2;
-    protected $forceDeleteId = 2;
-    protected $storeData = [];
-    protected $updateData = [];
+    protected $urlPrefix          = '';
+    protected $table              = '';
+    protected $editId             = 1;
+    protected $updateId           = 1;
+    protected $destroyId          = 1;
+    protected $restoreId          = 2;
+    protected $forceDeleteId      = 2;
+    protected $storeData          = [];
+    protected $updateData         = [];
 
     public function loginByUserId($userId, $guard = 'oauth')
     {
@@ -29,6 +29,7 @@ abstract class TestCase extends \Tests\TestCase
         } else {
             throw new Exception('不支持的 ' . $guard . ' 这种 guard 类型');
         }
+
         return $this->actingAs($user, $guard);
     }
 }

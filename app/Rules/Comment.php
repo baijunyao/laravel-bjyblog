@@ -2,12 +2,13 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use App\Models\Comment as CommentModel;
+use Illuminate\Contracts\Validation\Rule;
 
 class Comment implements Rule
 {
     private $message;
+
     /**
      * Create a new rule instance.
      *
@@ -15,14 +16,14 @@ class Comment implements Rule
      */
     public function __construct()
     {
-        //
     }
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
@@ -30,6 +31,7 @@ class Comment implements Rule
         // 过滤无意义评论
         if (ctype_alnum($value) || in_array($value, ['test', '测试'])) {
             $this->message = '禁止无意义评论';
+
             return false;
         }
         // 获取用户id
@@ -39,26 +41,29 @@ class Comment implements Rule
         // 获取当前时间戳
         $time = time();
         // 获取最近一次评论时间
-        $commentModel = new CommentModel();
+        $commentModel    = new CommentModel();
         $lastCommentDate = $commentModel->where('oauth_user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->value('created_at');
         $lastCommentTime = strtotime($lastCommentDate);
         // 限制1分钟内只许评论1次
-        if ($isAdmin !=1 && $time-$lastCommentTime < 60) {
+        if ($isAdmin != 1 && $time - $lastCommentTime < 60) {
             $this->message = '评论太过频繁,请稍后再试.';
+
             return false;
         }
         // 限制用户每天最多评论10条
-        $date = date('Y-m-d', $time);
+        $date  = date('Y-m-d', $time);
         $count = $commentModel
             ->where('oauth_user_id', auth()->guard('oauth')->user()->id)
-            ->whereBetween('created_at', [$date.' 00:00:00', $date.' 23:59:59'])
+            ->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:59'])
             ->count();
-        if ($isAdmin !=1 && $count > 10) {
+        if ($isAdmin != 1 && $count > 10) {
             $this->message = '评论已被限制.';
+
             return false;
         }
+
         return true;
     }
 

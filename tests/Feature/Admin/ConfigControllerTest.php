@@ -2,13 +2,10 @@
 
 namespace Tests\Feature\Admin;
 
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
 class ConfigControllerTest extends TestCase
 {
     protected $urlPrefix = 'admin/config/';
-    protected $table = 'configs';
+    protected $table     = 'configs';
 
     protected $updateData = [
         '101' => '网站名',
@@ -26,9 +23,9 @@ class ConfigControllerTest extends TestCase
             'laravel-flash' => [
                 [
                     'alert-message' => '操作成功',
-                    'alert-type' => 'success'
-                ]
-            ]
+                    'alert-type'    => 'success',
+                ],
+            ],
         ]);
 
         $this->assertDatabaseHas($this->table, [

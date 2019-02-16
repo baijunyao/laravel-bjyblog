@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Store;
 use App\Models\Site;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Cache;
+use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
@@ -21,6 +21,7 @@ class SiteController extends Controller
             ->withTrashed()
             ->get();
         $assign = compact('site');
+
         return view('admin.site.index', $assign);
     }
 
@@ -37,7 +38,8 @@ class SiteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Store $request)
@@ -45,47 +47,52 @@ class SiteController extends Controller
         $data = $request->except('_token');
         if (empty($data['sort'])) {
             // 获取序号
-            $sort = Site::orderBy('sort', 'desc')->value('sort');
-            $data['sort'] = (int)$sort + 1;
+            $sort         = Site::orderBy('sort', 'desc')->value('sort');
+            $data['sort'] = (int) $sort + 1;
         }
         Site::create($data);
+
         return redirect('admin/site/index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $site = Site::find($id);
+        $site   = Site::find($id);
         $assign = compact('site');
+
         return view('admin.site.edit', $assign);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         Site::find($id)->update($request->except('_token'));
+
         return redirect()->back();
     }
 
@@ -99,12 +106,12 @@ class SiteController extends Controller
      */
     public function sort(Request $request, Site $siteModel)
     {
-        $data = $request->except('_token');
+        $data     = $request->except('_token');
         $editData = [];
         foreach ($data as $k => $v) {
             $editData[] = [
-                'id' => $k,
-                'sort' => $v
+                'id'   => $k,
+                'sort' => $v,
             ];
         }
         $result = $siteModel->updateBatch($editData);
@@ -112,44 +119,49 @@ class SiteController extends Controller
             // 更新缓存
             Cache::forget('home:site');
         }
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         Site::destroy($id);
+
         return redirect()->back();
     }
 
     /**
      * 恢复删除
      *
-     * @param                $id
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function restore($id)
     {
         Site::onlyTrashed()->find($id)->restore();
+
         return redirect('admin/site/index');
     }
 
     /**
      * 彻底删除
      *
-     * @param                $id
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function forceDelete($id)
     {
         Site::onlyTrashed()->find($id)->forceDelete();
+
         return redirect('admin/site/index');
     }
 }

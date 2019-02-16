@@ -10,9 +10,9 @@ trait TestUpdate
             'laravel-flash' => [
                 [
                     'alert-message' => '修改成功',
-                    'alert-type' => 'success'
-                ]
-            ]
+                    'alert-type'    => 'success',
+                ],
+            ],
         ]);
 
         $this->assertDatabaseHas($this->table, $this->updateData);

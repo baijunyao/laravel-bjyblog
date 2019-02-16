@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\OauthUser;
 use Auth;
-use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
@@ -34,7 +34,7 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
         Auth::guard('oauth')->logout();
+
         return redirect('admin/login/index');
     }
-
 }

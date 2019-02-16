@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use URL;
-use Auth;
-use App\Models\OauthUser;
-use Socialite;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\OauthUser;
+use Auth;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Illuminate\Http\Request;
+use Socialite;
+use URL;
 
 class OAuthController extends Controller
 {
@@ -25,7 +25,7 @@ class OAuthController extends Controller
         $type = [
             'qq',
             'weibo',
-            'github'
+            'github',
         ];
         if (!empty($service) && !in_array($service, $type)) {
             return abort(404);
@@ -37,55 +37,58 @@ class OAuthController extends Controller
      *
      * @param Request $request
      * @param $service
+     *
      * @return mixed
      */
     public function redirectToProvider(Request $request, $service)
     {
         // 记录登录前的url
         $data = [
-            'targetUrl' => URL::previous()
+            'targetUrl' => URL::previous(),
         ];
         session($data);
+
         return Socialite::driver($service)->redirect();
     }
 
     /**
      * 获取用户资料并登录
      *
-     * @param Request $request
+     * @param Request   $request
      * @param OauthUser $oauthUserModel
      * @param $service
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function handleProviderCallback(Request $request, OauthUser $oauthUserModel, $service)
     {
         // 定义各种第三方登录的type对应的数字
         $type = [
-            'qq' => 1,
-            'weibo' => 2,
-            'github' => 3
+            'qq'     => 1,
+            'weibo'  => 2,
+            'github' => 3,
         ];
         // 获取用户资料
         $user = Socialite::driver($service)->user();
         // 查找此用户是否已经登录过
         $countMap = [
-            'type' => $type[$service],
-            'openid' => $user->id
+            'type'   => $type[$service],
+            'openid' => $user->id,
         ];
         $oldUserData = $oauthUserModel->select('id', 'login_times', 'is_admin', 'email')
             ->where($countMap)
             ->first();
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         if ($oldUserData) {
-            $userId = $oldUserData->id;
+            $userId  = $oldUserData->id;
             $editMap = [
-                'id' => $userId
+                'id' => $userId,
             ];
             $editData = [
-                'name' => $user->nickname,
-                'access_token' => $user->token,
+                'name'          => $user->nickname,
+                'access_token'  => $user->token,
                 'last_login_ip' => $request->getClientIp(),
-                'login_times' => $oldUserData->login_times+1,
+                'login_times'   => $oldUserData->login_times + 1,
             ];
             // 更新数据
             $oauthUserModel->updateData($editMap, $editData, false);
@@ -95,35 +98,35 @@ class OAuthController extends Controller
             }
         } else {
             $data = [
-                'type' => $type[$service],
-                'name' => $user->nickname,
-                'openid' => $user->id,
-                'access_token' => $user->token,
+                'type'          => $type[$service],
+                'name'          => $user->nickname,
+                'openid'        => $user->id,
+                'access_token'  => $user->token,
                 'last_login_ip' => $request->getClientIp(),
-                'login_times' => 1,
-                'is_admin' => 0,
-                'email' => ''
+                'login_times'   => 1,
+                'is_admin'      => 0,
+                'email'         => '',
             ];
             // 新增数据
             $userId = $oauthUserModel->storeData($data, false);
             // 组合头像地址
-            $avatarPath = '/uploads/avatar/'.$userId.'.jpg';
+            $avatarPath = '/uploads/avatar/' . $userId . '.jpg';
             // 更新头像
             $editMap = [
-                'id' => $userId
+                'id' => $userId,
             ];
             $editData = [
-                'avatar' => $avatarPath
+                'avatar' => $avatarPath,
             ];
             $oauthUserModel->updateData($editMap, $editData, false);
         }
 
-        $avatarPath = public_path('uploads/avatar/'.$userId.'.jpg');
+        $avatarPath = public_path('uploads/avatar/' . $userId . '.jpg');
         try {
             // 下载最新的头像到本地
             $client = new Client();
             $client->request('GET', $user->avatar, [
-                'sink' => $avatarPath
+                'sink' => $avatarPath,
             ]);
         } catch (ClientException $e) {
             // 如果下载失败；则使用默认图片
@@ -144,6 +147,7 @@ class OAuthController extends Controller
     {
         Auth::guard('oauth')->logout();
         Auth::guard('admin')->logout();
+
         return redirect()->back();
     }
 }

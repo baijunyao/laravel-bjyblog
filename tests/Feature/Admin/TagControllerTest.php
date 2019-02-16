@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin;
 
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestEdit;
@@ -17,15 +15,15 @@ class TagControllerTest extends TestCase
 {
     use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
 
-    protected $urlPrefix = 'admin/tag/';
-    protected $table = 'tags';
-    protected $destroyId = 2;
-    protected $restoreId = 3;
+    protected $urlPrefix     = 'admin/tag/';
+    protected $table         = 'tags';
+    protected $destroyId     = 2;
+    protected $restoreId     = 3;
     protected $forceDeleteId = 3;
-    protected $storeData = [
-        'name' => '测试'
+    protected $storeData     = [
+        'name' => '测试',
     ];
     protected $updateData = [
-        'name' => '编辑'
+        'name' => '编辑',
     ];
 }

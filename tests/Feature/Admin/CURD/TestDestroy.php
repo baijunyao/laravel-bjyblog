@@ -10,9 +10,9 @@ trait TestDestroy
             'laravel-flash' => [
                 [
                     'alert-message' => '删除成功',
-                    'alert-type' => 'success'
-                ]
-            ]
+                    'alert-type'    => 'success',
+                ],
+            ],
         ]);
     }
 }

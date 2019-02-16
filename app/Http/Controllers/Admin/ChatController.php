@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Chat\Store;
 use App\Models\Chat;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ChatController extends Controller
 {
@@ -21,6 +21,7 @@ class ChatController extends Controller
             ->withTrashed()
             ->paginate(50);
         $assign = compact('data');
+
         return view('admin.chat.index', $assign);
     }
 
@@ -37,63 +38,72 @@ class ChatController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Store $request)
     {
         Chat::create($request->only('content'));
+
         return redirect('admin/chat/index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $data = Chat::find($id);
+        $data   = Chat::find($id);
         $assign = compact('data');
+
         return view('admin.chat.edit', $assign);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         Chat::find($id)->update($request->except('_token'));
+
         return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         Chat::destroy($id);
+
         return redirect('admin/chat/index');
     }
 
     /**
      * 恢复删除的随言碎语
      *
-     * @param      $id
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function restore($id)
     {
         Chat::onlyTrashed()->find($id)->restore();
+
         return redirect('admin/chat/index');
     }
 
@@ -108,6 +118,7 @@ class ChatController extends Controller
     public function forceDelete($id)
     {
         Chat::onlyTrashed()->find($id)->forceDelete();
+
         return redirect('admin/chat/index');
     }
 }

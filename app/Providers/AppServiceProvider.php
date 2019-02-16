@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use App\Observers\CacheClearObserver;
 use Illuminate\Support\ServiceProvider;
-
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ini_set('memory_limit', "512M");
+        ini_set('memory_limit', '512M');
     }
 
     /**

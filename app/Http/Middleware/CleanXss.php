@@ -9,8 +9,9 @@ class CleanXss extends TransformsRequest
     /**
      * 过滤 xss
      *
-     * @param  string  $key
-     * @param  mixed  $value
+     * @param string $key
+     * @param mixed  $value
+     *
      * @return mixed
      */
     protected function transform($key, $value)

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Comment;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Comment;
+use Illuminate\Foundation\Http\FormRequest;
 
 class Store extends FormRequest
 {
@@ -26,8 +26,8 @@ class Store extends FormRequest
     {
         return [
             'article_id' => 'required|integer',
-            'pid' => 'required|integer',
-            'content' => ['required', new Comment],
+            'pid'        => 'required|integer',
+            'content'    => ['required', new Comment()],
         ];
     }
 
@@ -40,8 +40,8 @@ class Store extends FormRequest
     {
         return [
             'article_id' => '文章id',
-            'pid' => '父级id',
-            'content' => '内容',
+            'pid'        => '父级id',
+            'content'    => '内容',
         ];
     }
 }

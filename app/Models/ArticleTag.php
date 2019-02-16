@@ -17,10 +17,9 @@ class ArticleTag extends Base
         foreach ($tag_ids as $k => $v) {
             $data[] = [
                 'article_id' => $article_id,
-                'tag_id' => $v
+                'tag_id'     => $v,
             ];
         }
         $this->insert($data);
     }
-
 }

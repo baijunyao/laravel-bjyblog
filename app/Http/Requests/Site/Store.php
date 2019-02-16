@@ -24,10 +24,10 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:sites,name',
-            'url'=>'required|unique:sites,url',
-            'description'=>'required',
-            'email' => 'email'
+            'name'        => 'required|unique:sites,name',
+            'url'         => 'required|unique:sites,url',
+            'description' => 'required',
+            'email'       => 'email',
         ];
     }
 
@@ -39,9 +39,9 @@ class Store extends FormRequest
     public function attributes()
     {
         return [
-            'name'=>'名称',
-            'url'=>'链接',
-            'description'=>'描述',
+            'name'        => '名称',
+            'url'         => '链接',
+            'description' => '描述',
         ];
     }
 }

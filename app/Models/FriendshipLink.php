@@ -4,17 +4,19 @@ namespace App\Models;
 
 class FriendshipLink extends Base
 {
-
     /**
      * 添加数据
      *
      * @param array $data
+     * @param mixed $flash
+     *
      * @return bool
      */
     public function storeData($data, $flash = true)
     {
         // 如果排序是空；则设置为null
         $data['sort'] = empty($data['sort']) ? null : $data['sort'];
+
         return parent::storeData($data, $flash);
     }
 
@@ -23,6 +25,8 @@ class FriendshipLink extends Base
      *
      * @param array $map
      * @param array $data
+     * @param mixed $flash
+     *
      * @return bool
      */
     public function updateData($map, $data, $flash = true)
@@ -31,23 +35,25 @@ class FriendshipLink extends Base
         if (isset($data['sort']) && empty($data['sort'])) {
             $data['sort'] = null;
         }
+
         return parent::updateData($map, $data, $flash);
     }
 
     /**
      * 给url添加http 或者删除/
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function setFirstNameAttribute($value)
     {
         // 如果没有http 则补上http
         if (strpos($value, 'http') === false) {
-            $value = 'http://'.$value;
+            $value = 'http://' . $value;
         }
         // 删除右侧的/
-        $value = rtrim($value, '/');
+        $value                          = rtrim($value, '/');
         $this->attributes['first_name'] = strtolower($value);
     }
 }

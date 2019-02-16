@@ -13,10 +13,10 @@ class Site extends Base
     {
         // 如果没有http 则补上http
         if (strpos($value, 'http') === false) {
-            $value = 'http://'.$value;
+            $value = 'http://' . $value;
         }
         // 删除右侧的/
-        $value = rtrim($value, '/');
+        $value                   = rtrim($value, '/');
         $this->attributes['url'] = strtolower($value);
     }
 }
