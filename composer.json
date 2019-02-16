@@ -20,7 +20,7 @@
         "baijunyao/laravel-model": "1.3.*",
         "baijunyao/laravel-print": "3.0.*",
         "baijunyao/laravel-scout-elasticsearch": "^2.0",
-        "baijunyao/laravel-test-support": "1.0.*",
+        "baijunyao/laravel-test-support": "1.1.*",
         "baijunyao/laravel-upload": "^2.0",
         "composer/semver": "^1.4",
         "doctrine/dbal": "^2.5",
@@ -60,7 +60,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Libraries/Functions/helpers.php"
+            "app/Support/helpers.php"
         ]
     },
     "autoload-dev": {

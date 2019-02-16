@@ -59,13 +59,13 @@
                 </td>
             </tr>
             <tr>
-                <th>文字水印内容：</th>
+                <th>水印内容：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="107" value="{{  $config['bjyblog.water.text'] }}" >
                 </td>
             </tr>
             <tr>
-                <th>文字水印文字颜色：</th>
+                <th>水印颜色：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="110" value="{{  $config['bjyblog.water.color'] }}" >
                 </td>
