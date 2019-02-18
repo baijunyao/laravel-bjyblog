@@ -25,14 +25,8 @@ class UserControllerTest extends TestCase
         ];
         $password = 'abc123';
 
-        $this->adminPost('update/' . $this->updateId, $user + ['password' => $password])->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '修改成功',
-                    'alert-type'    => 'success',
-                ],
-            ],
-        ]);
+        $this->adminPost('update/' . $this->updateId, $user + ['password' => $password])
+            ->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $user);
 
@@ -46,14 +40,8 @@ class UserControllerTest extends TestCase
             'email'    => 'update@example.com',
             'password' => '',
         ];
-        $this->adminPost('update/' . $this->updateId, $user)->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '修改成功',
-                    'alert-type'    => 'success',
-                ],
-            ],
-        ]);
+        $this->adminPost('update/' . $this->updateId, $user)
+            ->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         static::assertTrue(Hash::check('123456', User::find($this->updateId)->password));
     }

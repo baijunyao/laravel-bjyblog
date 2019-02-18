@@ -24,14 +24,7 @@ class CommentControllerTest extends TestCase
         $this->adminPost('replace', [
             'search'  => '评论',
             'replace' => '替换',
-        ])->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '修改成功',
-                    'alert-type'    => 'success',
-                ],
-            ],
-        ]);
+        ])->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseMissing('comments', [
             'content' => '评论的内容',

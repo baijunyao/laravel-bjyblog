@@ -43,12 +43,7 @@ class ArticleControllerTest extends TestCase
             'tag_ids'     => [1],
             'description' => '',
             'cover'       => $file,
-        ])->assertSessionHas('laravel-flash', [
-            [
-                'alert-message' => '添加成功',
-                'alert-type'    => 'success',
-            ],
-        ]);
+        ])->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $commonColumn);
         $this->assertDatabaseHas('article_tags', [
@@ -66,12 +61,7 @@ class ArticleControllerTest extends TestCase
             'tag_ids'     => [1],
             'keywords'    => 'update',
             'markdown'    => 'update',
-        ])->assertSessionHas('laravel-flash', [
-            [
-                'alert-message' => '修改成功',
-                'alert-type'    => 'success',
-            ],
-        ]);
+        ])->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas('articles', [
             'category_id' => 1,
@@ -95,14 +85,7 @@ class ArticleControllerTest extends TestCase
         $this->adminPost('replace', [
             'search'  => $search,
             'replace' => $replace,
-        ])->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '修改成功',
-                    'alert-type'    => 'success',
-                ],
-            ],
-        ]);
+        ])->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $columns = [
             'title', 'keywords', 'description', 'markdown', 'html',

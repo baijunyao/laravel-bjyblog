@@ -36,14 +36,8 @@ class SiteControllerTest extends TestCase
             'sort'          => 2,
         ];
 
-        $this->adminPost('update/' . $this->updateId, $site)->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '修改成功',
-                    'alert-type'    => 'success',
-                ],
-            ],
-        ]);
+        $this->adminPost('update/' . $this->updateId, $site)
+            ->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $this->updateData);
     }

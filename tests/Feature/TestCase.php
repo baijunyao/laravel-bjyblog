@@ -8,8 +8,48 @@ use Exception;
 
 abstract class TestCase extends \Tests\TestCase
 {
-    protected const ADMIN_USER_ID = 1;
-    protected const OAUTH_USER_ID = 1;
+    protected const ADMIN_USER_ID         = 1;
+    protected const OAUTH_USER_ID         = 1;
+    protected const STORE_SUCCESS_MESSAGE = [
+        'laravel-flash' => [
+            [
+                'alert-message' => '添加成功',
+                'alert-type'    => 'success',
+            ],
+        ],
+    ];
+    protected const UPDATE_SUCCESS_MESSAGE = [
+        'laravel-flash' => [
+            [
+                'alert-message' => '修改成功',
+                'alert-type'    => 'success',
+            ],
+        ],
+    ];
+    protected const DESTROY_SUCCESS_MESSAGE = [
+        'laravel-flash' => [
+            [
+                'alert-message' => '删除成功',
+                'alert-type'    => 'success',
+            ],
+        ],
+    ];
+    protected const RESTORE_SUCCESS_MESSAGE = [
+        'laravel-flash' => [
+            [
+                'alert-message' => '恢复成功',
+                'alert-type'    => 'success',
+            ],
+        ],
+    ];
+    protected const FORCE_DELETE_SUCCESS_MESSAGE = [
+        'laravel-flash' => [
+            [
+                'alert-message' => '彻底删除成功',
+                'alert-type'    => 'success',
+            ],
+        ],
+    ];
     protected $urlPrefix          = '';
     protected $table              = '';
     protected $editId             = 1;
