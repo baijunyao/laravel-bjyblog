@@ -6,38 +6,32 @@ class IndexControllerTest extends TestCase
 {
     public function testIndex()
     {
-        $response = $this->get('/');
-        $response->assertStatus(200);
+        $this->get('/')->assertStatus(200);
     }
 
     public function testArticle()
     {
-        $response = $this->get('/article/1');
-        $response->assertStatus(200);
+        $this->get('/article/1')->assertStatus(200);
     }
 
     public function testCategory()
     {
-        $response = $this->get('/category/1');
-        $response->assertStatus(200);
+        $this->get('/category/1')->assertStatus(200);
     }
 
     public function testTag()
     {
-        $response = $this->get('/tag/1');
-        $response->assertStatus(200);
+        $this->get('/tag/1')->assertStatus(200);
     }
 
     public function testChat()
     {
-        $response = $this->get('/chat');
-        $response->assertStatus(200);
+        $this->get('/chat')->assertStatus(200);
     }
 
     public function testGit()
     {
-        $response = $this->get('/git');
-        $response->assertStatus(200);
+        $this->get('/git')->assertStatus(200);
     }
 
     public function testComment()
@@ -53,28 +47,23 @@ class IndexControllerTest extends TestCase
 
     public function testCheckLogin()
     {
-        $response = $this->get('/checkLogin');
-        $response->assertStatus(200);
+        $this->get('/checkLogin')->assertStatus(200);
     }
 
     public function testSearch()
     {
-        $word     = '序言';
-        $response = $this->call('POST', '/search', [
-            'wd' => $word,
-        ]);
-        $response->assertStatus(200);
+        $this->call('POST', '/search', [
+            'wd' => '序言',
+        ])->assertStatus(200);
     }
 
     public function testFeed()
     {
-        $response = $this->get('/feed');
-        $response->assertStatus(200);
+        $this->get('/feed')->assertStatus(200);
     }
 
     public function testTest()
     {
-        $response = $this->get('test');
-        $response->assertStatus(200);
+        $this->get('test')->assertStatus(200);
     }
 }
