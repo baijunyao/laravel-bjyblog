@@ -41,8 +41,10 @@ class IndexControllerTest extends TestCase
             'pid'        => 0,
             'content'    => '评论666',
         ];
-        $response = $this->loginByUserId(1)->post('/comment', $comment);
-        $response->assertStatus(200);
+        $this->loginByUserId(1)
+            ->post('/comment', $comment)
+            ->assertStatus(200);
+        $this->assertDatabaseHas('comments', $comment);
     }
 
     public function testCheckLogin()

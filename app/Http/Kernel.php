@@ -57,8 +57,8 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'auth.oauth' => \App\Http\Middleware\AuthenticateWithOauthGuard::class,
         'admin.auth' => \App\Http\Middleware\AdminAuth::class,
-        'home.auth' => \App\Http\Middleware\HomeAuth::class,
         'admin.login' => \App\Http\Middleware\AdminLogin::class,
         'clean.xss' => \App\Http\Middleware\CleanXss::class,
     ];

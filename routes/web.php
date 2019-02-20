@@ -15,7 +15,7 @@ Route::namespace('Home')->group(function () {
     // 文章详情
     Route::get('article/{id}', 'IndexController@article');
     // 文章评论
-    Route::post('comment', 'IndexController@comment')->middleware('home.auth');
+    Route::post('comment', 'IndexController@comment')->middleware('auth.oauth');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
@@ -27,7 +27,7 @@ Route::namespace('Home')->group(function () {
     // 推荐博客
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');
-        Route::post('store', 'SiteController@store')->middleware('home.auth', 'clean.xss');
+        Route::post('store', 'SiteController@store')->middleware('auth.oauth', 'clean.xss');
     });
 });
 
