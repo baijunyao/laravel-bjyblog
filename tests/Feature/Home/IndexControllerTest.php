@@ -47,6 +47,28 @@ class IndexControllerTest extends TestCase
         $this->assertDatabaseHas('comments', $comment);
     }
 
+    public function testCommentInvalidContent()
+    {
+        $comment = [
+            'article_id' => 1,
+            'pid'        => 0,
+            'content'    => 'test',
+        ];
+        $this->loginByUserId(1)
+            ->post('/comment', $comment)
+            ->assertStatus(302);
+    }
+
+    public function testCommentNotLoggedIn()
+    {
+        $comment = [
+            'article_id' => 1,
+            'pid'        => 0,
+            'content'    => '评论666',
+        ];
+        $this->post('/comment', $comment)->assertStatus(401);
+    }
+
     public function testCheckLogin()
     {
         $this->get('/checkLogin')->assertStatus(200);
