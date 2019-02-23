@@ -2,7 +2,7 @@
 
 return [
     // 博客版本
-    'version' => 'v5.5.10.6',
+    'version' => 'v5.5.10.7',
     'branch' => env('DEPLOY_BRANCH', 'master'),
     /**
      * 以下配置项会在 @see \App\Providers\AppServiceProvider::boot() 中被覆盖
