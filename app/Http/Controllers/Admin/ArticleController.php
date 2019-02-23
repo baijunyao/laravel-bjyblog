@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Article\Store;
 use App\Models\Article;
 use App\Models\ArticleTag;
@@ -10,7 +11,6 @@ use App\Models\Config;
 use App\Models\Tag;
 use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
@@ -37,6 +37,7 @@ class ArticleController extends Controller
             ->withTrashed()
             ->paginate(15);
         $assign = compact('article');
+
         return view('admin.article.index', $assign);
     }
 
@@ -48,9 +49,10 @@ class ArticleController extends Controller
     public function create()
     {
         $category = Category::all();
-        $tag = Tag::all();
-        $author = Config::where('name', 'AUTHOR')->value('value');
-        $assign = compact('category', 'tag', 'author');
+        $tag      = Tag::all();
+        $author   = Config::where('name', 'AUTHOR')->value('value');
+        $assign   = compact('category', 'tag', 'author');
+
         return view('admin.article.create', $assign);
     }
 
@@ -66,23 +68,25 @@ class ArticleController extends Controller
             $data = [
                 'success' => 1,
                 'message' => $result['message'],
-                'url' => $result['data'][0]['path']
+                'url'     => $result['data'][0]['path'],
             ];
         } else {
             $data = [
                 'success' => 0,
                 'message' => $result['message'],
-                'url' => ''
+                'url'     => '',
             ];
         }
+
         return response()->json($data);
     }
 
     /**
      * 添加文章
      *
-     * @param Store $request
+     * @param Store   $request
      * @param Article $article
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Store $request, Article $article)
@@ -103,33 +107,36 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $article = Article::withTrashed()->find($id);
+        $article          = Article::withTrashed()->find($id);
         $article->tag_ids = ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray();
-        $category = Category::all();
-        $tag = Tag::all();
-        $assign = compact('article', 'category', 'tag');
+        $category         = Category::all();
+        $tag              = Tag::all();
+        $assign           = compact('article', 'category', 'tag');
+
         return view('admin.article.edit', $assign);
     }
 
     /**
      * 编辑文章
      *
-     * @param Store $request
-     * @param Article $articleModel
+     * @param Store      $request
+     * @param Article    $articleModel
      * @param ArticleTag $articleTagModel
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Store $request, Article $articleModel, ArticleTag $articleTagModel, $id)
     {
-        $data = $request->except('_token');
-        $data['is_top'] = isset($data['is_top']) ? $data['is_top'] : 0;
-        $markdown = $articleModel->where('id', $id)->value('markdown');
+        $data           = $request->except('_token');
+        $data['is_top'] = $data['is_top'] ?? 0;
+        $markdown       = $articleModel->where('id', $id)->value('markdown');
         preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $markdown, $images);
         // 添加水印 并获取第一张图
         $cover = $articleModel->getCover($data['markdown'], $images[1]);
@@ -151,13 +158,13 @@ class ArticleController extends Controller
         unset($data['tag_ids']);
         // 先彻底删除此文章下的所有标签
         $articleTagMap = [
-            'article_id' => $id
+            'article_id' => $id,
         ];
         $articleTagModel->forceDeleteData($articleTagMap, false);
         $articleTagModel->addTagIds($id, $tag_ids);
         // 编辑文章
         $map = [
-            'id' => $id
+            'id' => $id,
         ];
         $articleModel->updateData($map, $data);
 
@@ -169,6 +176,7 @@ class ArticleController extends Controller
      *
      * @param $id
      * @param Article $articleModel
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id, Article $articleModel, ArticleTag $articleTagModel)
@@ -189,17 +197,18 @@ class ArticleController extends Controller
     public function restore($id, Article $articleModel, ArticleTag $articleTagModel)
     {
         $map = [
-            'id' => $id
+            'id' => $id,
         ];
         $articleModel->restoreData($map);
+
         return redirect()->back();
     }
 
     /**
      * 彻底删除文章
      *
-     * @param         $id
-     * @param Article $articleModel
+     * @param            $id
+     * @param Article    $articleModel
      * @param ArticleTag $articleTagModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -226,13 +235,14 @@ class ArticleController extends Controller
      *
      * @param Request $request
      * @param Article $articleModel
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function replace(Request $request, Article $articleModel)
     {
-        $search = $request->input('search');
+        $search  = $request->input('search');
         $replace = $request->input('replace');
-        $data = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
+        $data    = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
             ->where('title', 'like', "%$search%")
             ->orWhere('keywords', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%")
@@ -241,17 +251,18 @@ class ArticleController extends Controller
             ->get();
         foreach ($data as $k => $v) {
             $updateMap = [
-                'id' => $v->id
+                'id' => $v->id,
             ];
             $updateData = [
-                'title' => str_replace($search, $replace, $v->title),
-                'keywords' => str_replace($search, $replace, $v->keywords),
+                'title'       => str_replace($search, $replace, $v->title),
+                'keywords'    => str_replace($search, $replace, $v->keywords),
                 'description' => str_replace($search, $replace, $v->description),
-                'markdown' => str_replace($search, $replace, $v->markdown),
-                'html' => str_replace($search, $replace, $v->html),
+                'markdown'    => str_replace($search, $replace, $v->markdown),
+                'html'        => str_replace($search, $replace, $v->html),
             ];
             $articleModel->updateData($updateMap, $updateData);
         }
+
         return redirect()->back();
     }
 }

@@ -40,10 +40,10 @@ class V5_5_7_0 extends Command
     public function handle()
     {
         $configModel = new Config();
-        $configData = [
-            'id' => '158',
-            'name' => 'sentry.dsn',
-            'value' => ''
+        $configData  = [
+            'id'    => '158',
+            'name'  => 'sentry.dsn',
+            'value' => '',
         ];
         $configModel->storeData($configData);
         $this->info('finish');

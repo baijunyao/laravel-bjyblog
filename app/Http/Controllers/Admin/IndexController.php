@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use DB;
-use App\Models\Article;
-use App\Models\Chat;
+use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\OauthUser;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-use Symfony\Component\Process\PhpExecutableFinder;
-use Artisan;
 use Composer\Semver\Comparator;
+use DB;
 
 class IndexController extends Controller
 {
@@ -31,13 +24,14 @@ class IndexController extends Controller
             ->get();
         // 最新的5条评论
         $commentData = $commentModel->getNewData(5);
-        $version = [
-            'system' => PHP_OS,
-            'webServer' => isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '',
-            'php' => PHP_VERSION,
-            'mysql' => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value
+        $version     = [
+            'system'    => PHP_OS,
+            'webServer' => $_SERVER['SERVER_SOFTWARE'] ?? '',
+            'php'       => PHP_VERSION,
+            'mysql'     => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value,
         ];
         $assign = compact('oauthUserData', 'commentData', 'version');
+
         return view('admin.index.index', $assign);
     }
 
@@ -49,7 +43,7 @@ class IndexController extends Controller
     public function upgrade()
     {
         $data = file_get_contents('https://gitee.com/baijunyao/laravel-bjyblog/raw/master/config/bjyblog.php');
-        preg_match("/v\d+(\.\d+){3}/", $data, $version);
+        preg_match('/v\\d+(\\.\\d+){3}/', $data, $version);
         $newVersion = $version[0];
         $oldVersion = config('bjyblog.version');
 
@@ -57,9 +51,8 @@ class IndexController extends Controller
             return redirect('https://baijunyao.com/docs/laravel-bjyblog/更新记录.html');
         } else {
             flash_error('没有需要更新的版本');
+
             return redirect(url('admin/index/index'));
         }
-
     }
-
 }

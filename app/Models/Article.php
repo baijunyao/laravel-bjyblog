@@ -21,7 +21,8 @@ class Article extends Base
     /**
      * 过滤描述中的换行。
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function getDescriptionAttribute($value)
@@ -53,13 +54,15 @@ class Article extends Base
      * 添加文章
      *
      * @param array $data
+     * @param mixed $flash
+     *
      * @return bool|mixed
      */
     public function storeData($data, $flash = true)
     {
         // 如果没有描述;则截取文章内容的前200字作为描述
         if (empty($data['description'])) {
-            $description = preg_replace(array('/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'), '', $data['markdown']);
+            $description         = preg_replace(['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'], '', $data['markdown']);
             $data['description'] = re_substr($description, 0, 200, true);
         }
 
@@ -73,7 +76,7 @@ class Article extends Base
 
         // 把markdown转html
         $data['html'] = markdown_to_html($data['markdown']);
-        $tag_ids = $data['tag_ids'];
+        $tag_ids      = $data['tag_ids'];
         unset($data['tag_ids']);
         //添加数据
         $result = parent::storeData($data, $flash);
@@ -81,8 +84,9 @@ class Article extends Base
             // 给文章添加标签
             $articleTag = new ArticleTag();
             $articleTag->addTagIds($result, $tag_ids);
+
             return $result;
-        }else{
+        } else {
             return false;
         }
     }
@@ -91,7 +95,8 @@ class Article extends Base
      * 给文章的插图添加水印;并取第一张图片作为封面图
      *
      * @param $content        markdown格式的文章内容
-     * @param array $except   忽略加水印的图片
+     * @param array $except 忽略加水印的图片
+     *
      * @return string
      */
     public function getCover($content, $except = [])
@@ -104,7 +109,7 @@ class Article extends Base
             // 循环给图片添加水印
             foreach ($images[1] as $k => $v) {
                 $image = explode(' ', $v);
-                $file = public_path().$image[0];
+                $file  = public_path() . $image[0];
                 if (file_exists($file) && !in_array($v, $except)) {
                     add_text_water($file, config('bjyblog.water.text'));
                 }
@@ -115,6 +120,7 @@ class Article extends Base
                 }
             }
         }
+
         return $cover;
     }
 
@@ -128,24 +134,23 @@ class Article extends Base
     public function searchArticleGetId($wd)
     {
         // 如果 SCOUT_DRIVER 为 null 则使用 sql 搜索
-        if (is_null(env('SCOUT_DRIVER'))) {
-            $id = Article::where('title', 'like', "%$wd%")
+        if (env('SCOUT_DRIVER') === null) {
+            return self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")
                 ->orWhere('markdown', 'like', "%$wd%")
                 ->pluck('id');
-            return $id;
         }
 
         // 如果全文搜索出错则降级使用 sql like
-        try{
-            $id = Article::search($wd)->keys();
+        try {
+            $id = self::search($wd)->keys();
         } catch (\Exception $e) {
-            $id = Article::where('title', 'like', "%$wd%")
+            $id = self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")
                 ->orWhere('markdown', 'like', "%$wd%")
                 ->pluck('id');
         }
+
         return $id;
     }
-
 }

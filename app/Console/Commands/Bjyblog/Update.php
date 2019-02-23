@@ -5,9 +5,9 @@ namespace App\Console\Commands\Bjyblog;
 use App\Models\Config;
 use App\Models\Console;
 use App\Models\Nav;
-use Illuminate\Console\Command;
-use File;
 use Artisan;
+use File;
+use Illuminate\Console\Command;
 
 class Update extends Command
 {
@@ -69,8 +69,8 @@ class Update extends Command
         $file = collect(File::files(app_path('Console/Commands/Upgrade')))
             ->transform(function ($v) {
                 return [
-                    'cTime' => $v->getCTime(),
-                    'filename' => basename($v->getFilename(), '.php')
+                    'cTime'    => $v->getCTime(),
+                    'filename' => basename($v->getFilename(), '.php'),
                 ];
             })
             ->sortBy('cTime')
@@ -87,7 +87,7 @@ class Update extends Command
             $command = 'upgrade:' . $version;
             Artisan::call($command);
             $consoleData = [
-                'name' => $name
+                'name' => $name,
             ];
             $consoleModel->storeData($consoleData);
             $this->info($version . ' success');

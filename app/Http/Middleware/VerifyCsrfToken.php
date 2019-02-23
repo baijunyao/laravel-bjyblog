@@ -13,6 +13,6 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'admin/article/uploadImage',
-        'hook/*'
+        'hook/*',
     ];
 }

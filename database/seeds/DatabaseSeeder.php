@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
         $file = collect(File::files(database_path('seeds')))
             ->transform(function ($v) {
                 return [
-                    'cTime' => $v->getCTime(),
-                    'filename' => basename($v->getFilename(), '.php')
+                    'cTime'    => $v->getCTime(),
+                    'filename' => basename($v->getFilename(), '.php'),
                 ];
             })
             ->filter(function ($v) {

@@ -2,11 +2,10 @@
 
 namespace App\Jobs;
 
-use App\Models\OauthUser;
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
 class SendCommentEmail implements ShouldQueue
 {
@@ -36,7 +35,7 @@ class SendCommentEmail implements ShouldQueue
     /**
      * 评论内容
      *
-     * @var $content
+     * @var
      */
     protected $content;
 
@@ -50,8 +49,8 @@ class SendCommentEmail implements ShouldQueue
      */
     public function __construct($email, $name, $subject, array $content)
     {
-        $this->email = $email;
-        $this->name = $name;
+        $this->email   = $email;
+        $this->name    = $name;
         $this->subject = $subject;
         $this->content = $content;
     }

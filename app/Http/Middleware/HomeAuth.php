@@ -9,16 +9,18 @@ class HomeAuth
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
         // 屏蔽未登录的访问
-        if (! auth()->guard('oauth')->check()) {
+        if (!auth()->guard('oauth')->check()) {
             die('未登录');
         }
+
         return $next($request);
     }
 }

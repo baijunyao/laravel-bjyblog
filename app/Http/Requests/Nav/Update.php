@@ -24,8 +24,8 @@ class Update extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique:navs,name,'.$this->route()->id,
-            'url'=>'required',
+            'name' => 'required|unique:navs,name,' . $this->route()->id,
+            'url'  => 'required',
         ];
     }
 
@@ -37,8 +37,8 @@ class Update extends FormRequest
     public function attributes()
     {
         return [
-            'name'=>'菜单名',
-            'url'=>'链接',
+            'name' => '菜单名',
+            'url'  => '链接',
         ];
     }
 }

@@ -6,14 +6,8 @@ trait TestUpdate
 {
     public function testUpdate()
     {
-        $this->adminPost('update/' . $this->updateId, $this->updateData)->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '修改成功',
-                    'alert-type' => 'success'
-                ]
-            ]
-        ]);
+        $this->adminPost('update/' . $this->updateId, $this->updateData)
+            ->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $this->updateData);
     }

@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Admin;
 
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestEdit;
@@ -16,11 +14,11 @@ use Tests\Feature\Admin\CURD\TestUpdate;
 class GitProjectControllerTest extends TestCase
 {
     use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
-    protected $urlPrefix = 'admin/gitProject/';
-    protected $table = 'git_projects';
-    protected $restoreId = 9;
+    protected $urlPrefix     = 'admin/gitProject/';
+    protected $table         = 'git_projects';
+    protected $restoreId     = 9;
     protected $forceDeleteId = 9;
-    protected $storeData = [
+    protected $storeData     = [
         'sort' => 10,
         'type' => 1,
         'name' => 'store/store',
@@ -30,5 +28,4 @@ class GitProjectControllerTest extends TestCase
         'type' => 2,
         'name' => 'update/update',
     ];
-
 }

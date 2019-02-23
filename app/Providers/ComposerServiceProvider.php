@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Chat;
@@ -15,14 +14,16 @@ use App\Models\OauthUser;
 use App\Models\Tag;
 use Cache;
 use Exception;
+use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function boot()
     {
@@ -32,7 +33,7 @@ class ComposerServiceProvider extends ServiceProvider
         try {
             // 获取配置项
             $config = Cache::remember('config', 10080, function () {
-                return Config::where('id', '>', 100)->pluck('value','name');
+                return Config::where('id', '>', 100)->pluck('value', 'name');
             });
         } catch (Exception $exception) {
             return true;
@@ -46,6 +47,7 @@ class ComposerServiceProvider extends ServiceProvider
          */
         if ($config->isEmpty()) {
             cache()->forget('config');
+
             return true;
         }
 
@@ -53,7 +55,7 @@ class ComposerServiceProvider extends ServiceProvider
         config($config->toArray());
 
         // 开源项目数据
-        view()->composer(['layouts/home', 'home/index/git'], function($view){
+        view()->composer(['layouts/home', 'home/index/git'], function ($view) {
             $gitProject = Cache::remember('common:gitProject', 10080, function () {
                 // 获取开源项目
                 return GitProject::select('name', 'type')->orderBy('sort')->get();
@@ -64,7 +66,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         // 获取各种统计
-        view()->composer(['layouts/home', 'admin/index/index'], function($view){
+        view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
             $articleCount = Cache::remember('count:article', 10080, function () {
                 // 统计文章总数
                 return Article::count('id');
@@ -91,7 +93,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         //分配前台通用的数据
-        view()->composer('layouts/home', function($view){
+        view()->composer('layouts/home', function ($view) {
             $category = Cache::remember('common:category', 10080, function () {
                 // 获取分类导航
                 return Category::select('id', 'name')->orderBy('sort')->get();
@@ -113,6 +115,7 @@ class ComposerServiceProvider extends ServiceProvider
             $newComment = Cache::remember('common:newComment', 10080, function () {
                 // 获取最新评论
                 $commentModel = new Comment();
+
                 return $commentModel->getNewData();
             });
 
@@ -135,7 +138,7 @@ class ComposerServiceProvider extends ServiceProvider
             if (empty($qunArticleId)) {
                 $qqQunArticle = [];
             } else {
-                $qqQunArticle = Cache::remember('qqQunArticle', 10080, function () use($qunArticleId) {
+                $qqQunArticle = Cache::remember('qqQunArticle', 10080, function () use ($qunArticleId) {
                     return Article::select('id', 'title')->where('id', $qunArticleId)->first();
                 });
             }
@@ -153,6 +156,5 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 }

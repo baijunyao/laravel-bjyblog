@@ -38,7 +38,7 @@ Route::group(['namespace' => 'Home'], function () {
     // 推荐博客
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');
-        Route::post('store', 'SiteController@store')->middleware('home.auth', 'clean.xss');;
+        Route::post('store', 'SiteController@store')->middleware('home.auth', 'clean.xss');
     });
 });
 
@@ -52,7 +52,6 @@ Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
         Route::get('avatar', 'MigrationController@avatar');
     });
 });
-
 
 // auth
 Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
@@ -82,7 +81,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('logout', 'LoginController@logout');
     });
 });
-
 
 // Admin 模块
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin.auth'], function () {

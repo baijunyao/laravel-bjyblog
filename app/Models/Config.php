@@ -8,6 +8,7 @@ class Config extends Base
      * 如果 value 是 json 则转成数组
      *
      * @param $value
+     *
      * @return mixed
      */
     public function getValueAttribute($value)
