@@ -19,7 +19,7 @@
             <tr>
                 <th>网站名：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="101" value="{{  $config['bjyblog.web_name'] }}" >
+                    <input class="form-control modal-sm" type="text" name="101" value="{{  $config['app.name'] }}" >
                 </td>
             </tr>
             <tr>

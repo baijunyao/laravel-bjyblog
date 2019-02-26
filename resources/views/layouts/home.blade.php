@@ -29,7 +29,7 @@
                     <li class="b-lc-start">&lt;?php</li>
                     <li class="b-lc-echo">echo</li>
                 </ul>
-                <p class="b-logo-word">'{{ config('bjyblog.web_name') }}'</p>
+                <p class="b-logo-word">'{{ config('app.name') }}'</p>
                 <p class="b-logo-end">;</p>
             </a>
         </div>
