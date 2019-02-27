@@ -342,6 +342,14 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2018-12-04 22:29:52',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 166,
+                'name'       => 'app.locale',
+                'value'      => 'en',
+                'created_at' => '2019-02-26 21:10:52',
+                'updated_at' => '2019-02-26 21:10:52',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

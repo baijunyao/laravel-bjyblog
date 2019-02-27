@@ -11,6 +11,12 @@
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
+                <th>语言：</th>
+                <td>
+                    <input class="form-control modal-sm" type="text" name="166" value="{{  $config['app.locale'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th>备案号：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="117" value="{{  $config['bjyblog.icp'] }}" >
