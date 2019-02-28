@@ -32,62 +32,64 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-book"></i> 文章管理 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-book"></i> {{ __('Article') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/article/index') }}">文章列表</a></li>
-                                        <li><a href="{{ url('admin/article/replaceView') }}">批量替换</a></li>
+                                        <li><a href="{{ url('admin/article/index') }}">{{ __('List') }}</a></li>
+                                        <li><a href="{{ url('admin/article/replaceView') }}">{{ __('Batch Replace') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-th"></i> 分类菜单 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-th"></i> {{ __('Category & Menu') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/category/index') }}">分类管理</a></li>
-                                        <li><a href="{{ url('admin/nav/index') }}">菜单管理</a></li>
+                                        <li><a href="{{ url('admin/category/index') }}">{{ __('Category') }}</a></li>
+                                        <li><a href="{{ url('admin/nav/index') }}">{{ __('Menu') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-tags"></i> 标签管理 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-tags"></i> {{ __('Tag') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/tag/index') }}">标签列表</a></li>
+                                        <li><a href="{{ url('admin/tag/index') }}">{{ __('List') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-comments"></i> 评论管理 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-comments"></i> {{ __('Comment') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/comment/index') }}">评论列表</a></li>
-                                        <li><a href="{{ url('admin/comment/replaceView') }}">批量替换</a></li>
+                                        <li><a href="{{ url('admin/comment/index') }}">{{ __('List') }}</a></li>
+                                        <li><a href="{{ url('admin/comment/replaceView') }}">{{ __('Batch Replace') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-users"></i> 用户管理 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-users"></i> {{ __('User') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/user/index') }}">管理员列表</a></li>
-                                        <li><a href="{{ url('admin/oauthUser/index') }}">第三方用户列表</a></li>
+                                        <li><a href="{{ url('admin/user/index') }}">{{ __('Administrator') }}</a></li>
+                                        <li><a href="{{ url('admin/oauthUser/index') }}">{{ __('OAuth User') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-link"></i> 友情链接 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-link"></i> {{ __('Link') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/friendshipLink/index') }}">友情链接</a></li>
-                                        <li><a href="{{ url('admin/site/index') }}">推荐博客</a></li>
+                                        <li><a href="{{ url('admin/friendshipLink/index') }}">{{ __('Link') }}</a></li>
+                                        <li><a href="{{ url('admin/site/index') }}">{{ __('Recommend Blog') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-commenting"></i> 随言碎语 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-commenting"></i> {{ __('Chat') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/chat/index') }}">随言碎语列表</a></li>
+                                        <li><a href="{{ url('admin/chat/index') }}">{{ __('List') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-cogs"></i> 系统设置 <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cogs"></i> {{ __('Setting') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/config/email') }}">邮箱配置</a></li>
-                                        <li><a href="{{ url('admin/config/oauth') }}">第三方登录</a></li>
-                                        <li><a href="{{ url('admin/gitProject/index') }}">开源项目</a></li>
-                                        <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
-                                        <li><a href="{{ url('admin/config/backup') }}">备份</a></li>
-                                        <li><a href="{{ url('admin/config/edit') }}">其他配置</a></li>
-                                        <li><a href="{{ url('admin/config/clear') }}">清空缓存</a></li>
+                                        <li><a href="{{ url('admin/config/email') }}">{{ __('Email') }}</a></li>
+                                        <li><a href="{{ url('admin/config/oauth') }}">{{ __('OAuth') }}</a></li>
+                                        <li><a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source') }}</a></li>
+                                        @if(config('app.locale') === 'zh-CN')
+                                            <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
+                                        @endif
+                                        <li><a href="{{ url('admin/config/backup') }}">{{ __('Backup') }}</a></li>
+                                        <li><a href="{{ url('admin/config/edit') }}">{{ __('Other Setting') }}</a></li>
+                                        <li><a href="{{ url('admin/config/clear') }}">{{ __('Clear Cache') }}</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -127,7 +129,7 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="{{ url('admin/login/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                    <li><a href="{{ url('admin/login/logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out </a></li>
                                 </ul>
                             </li>
                         </ul>
