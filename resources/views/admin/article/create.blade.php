@@ -185,8 +185,6 @@
         })
     </script>
 
-
-
 @endsection
 
 

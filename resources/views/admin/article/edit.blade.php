@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', '编辑文章')
+@section('title', __('Edit Article'))
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('statics/editormd/css/editormd.min.css') }}">
@@ -11,26 +11,24 @@
     </style>
 @endsection
 
-@section('nav', '编辑文章')
-
-@section('description', '编辑或者查看文章详情')
+@section('nav', __('Edit Article'))
 
 @section('content')
 
     <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/article/index') }}">文章列表</a>
+            <a href="{{ url('admin/article/index') }}">{{ __('Article List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/article/create') }}">编辑文章</a>
+            <a href="{{ url('admin/article/create') }}">{{ __('Edit Article') }}</a>
         </li>
     </ul>
     <form class="form-horizontal " action="{{ url('admin/article/update', [$article->id]) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th width="7%">分类</th>
+                <th width="7%">{{ __('Category') }}</th>
                 <td>
                     <select class="form-control" name="category_id">
                         @foreach($category as $v)
@@ -40,25 +38,25 @@
                 </td>
             </tr>
             <tr>
-                <th>标题</th>
+                <th>{{ __('Title') }}</th>
                 <td>
                     <input class="form-control" type="text" name="title" value="{{ $article->title }}">
                 </td>
             </tr>
             <tr>
-                <th>作者</th>
+                <th>{{ __('Author') }}</th>
                 <td>
                     <input class="form-control" type="text" name="author" value="{{ $article->author }}">
                 </td>
             </tr>
             <tr>
-                <th>关键词</th>
+                <th>{{ __('Keywords') }}</th>
                 <td>
                     <input class="form-control" type="text" name="keywords" value="{{ $article->keywords }}">
                 </td>
             </tr>
             <tr>
-                <th>标签</th>
+                <th>{{ __('Tag') }}</th>
                 <td>
                     @foreach($tag as $v)
                         {{ $v['name'] }}<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="{{ $v['id'] }}" @if(in_array($v['id'], $article->tag_ids)) checked="checked" @endif> &emsp;
@@ -66,32 +64,32 @@
                 </td>
             </tr>
             <tr>
-                <th>封面图</th>
+                <th>{{ __('Cover') }}</th>
                 <td>
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 180px; height: 180px;">
-                            <img src="{{ asset($article->cover) }}" alt="封面图">
+                            <img src="{{ asset($article->cover) }}" alt="{{ __('Cover') }}">
                             <input type="hidden" name="cover" value="{{ $article->cover }}">
                         </div>
                         <div>
                             <span class="btn btn-default btn-file">
-                                <span class="fileinput-new">选择图片</span>
-                                <span class="fileinput-exists">更改</span>
+                                <span class="fileinput-new">{{ __('Select Image') }}</span>
+                                <span class="fileinput-exists">{{ __('Change') }}</span>
                                 <input type="file" name="cover">
                             </span>
-                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ __('Delete') }}</a>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th>描述</th>
+                <th>{{ __('Description') }}</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="description" rows="7" placeholder="可以不填，如不填；则截取文章内容前300字为描述">{{ $article->description }}</textarea>
+                    <textarea class="form-control modal-sm" name="description" rows="7" placeholder="{{ __('If it is empty, intercept the first 300 words of the article content.') }}">{{ $article->description }}</textarea>
                 </td>
             </tr>
             <tr>
-                <th>内容</th>
+                <th>{{ __('Content') }}</th>
                 <td>
                     <div id="bjy-content">
                         <textarea name="markdown">{{ $article->markdown }}</textarea>
@@ -99,7 +97,7 @@
                 </td>
             </tr>
             <tr>
-                <th>置顶</th>
+                <th>{{ __('Topping') }}</th>
                 <td>
                     <input class="bootstrap-switch" type="checkbox" name="is_top" value="1" @if($article->is_top == 1) checked="checked" @endif>
                 </td>
@@ -108,7 +106,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}"">
                 </td>
             </tr>
         </table>
@@ -133,7 +131,7 @@
                 //atLink    : false,    // disable @link
                 //emailLink : false,    // disable email address auto link
                 todoList  : true,
-                placeholder: '输入文章内容',
+                placeholder: "{{ __('Enter article content') }}",
                 toolbarAutoFixed: false,
                 path      : '{{ asset('/statics/editormd/lib') }}/',
                 emoji: true,
@@ -149,8 +147,6 @@
 
         });
     </script>
-
-
 
 @endsection
 
