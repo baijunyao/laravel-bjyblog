@@ -20,20 +20,20 @@
     <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/article/index') }}">文章列表</a>
+            <a href="{{ url('admin/article/index') }}">{{ __('Article List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/article/create') }}">发布文章</a>
+            <a href="{{ url('admin/article/create') }}">{{ __('Add Article') }}</a>
         </li>
     </ul>
     <form class="form-horizontal " action="{{ url('admin/article/store') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th width="7%">分类</th>
+                <th width="7%">{{ __('Category') }}</th>
                 <td>
                     <select class="form-control" name="category_id">
-                        <option value="">请选择分类</option>
+                        <option value="">{{ __('Select Category') }}</option>
                         @foreach($category as $v)
                             <option value="{{ $v->id }}" @if(old('category_id')) selected="selected" @endif>{{ $v->name }}</option>
                         @endforeach
@@ -41,25 +41,25 @@
                 </td>
             </tr>
             <tr>
-                <th>标题</th>
+                <th>{{ __('Title') }}</th>
                 <td>
                     <input class="form-control" type="text" name="title" value="{{ old('title') }}">
                 </td>
             </tr>
             <tr>
-                <th>作者</th>
+                <th>{{ __('Author') }}</th>
                 <td>
                     <input class="form-control" type="text" name="author" value="@if(empty(old('author'))){{ $author }}@else{{ old('author') }}@endif">
                 </td>
             </tr>
             <tr>
-                <th>关键词</th>
+                <th>{{ __('Keywords') }}</th>
                 <td>
-                    <input class="form-control" type="text" placeholder="用英文逗号分隔" name="keywords" value="{{ old('keywords') }}">
+                    <input class="form-control" type="text" placeholder="{{ __('Separated by commas') }}" name="keywords" value="{{ old('keywords') }}">
                 </td>
             </tr>
             <tr>
-                <th>标签</th>
+                <th>{{ __('Tag') }}</th>
                 <td>
                     @foreach($tag as $v)
                         {{ $v['name'] }}<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="{{ $v['id'] }}" @if(in_array($v['id'], old('tag_ids', []))) checked="checked" @endif> &emsp;
@@ -68,7 +68,7 @@
                 </td>
             </tr>
             <tr>
-                <th>封面图</th>
+                <th>{{ __('Cover') }}</th>
                 <td>
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 220px; height: 150px;">
@@ -76,23 +76,23 @@
                         </div>
                         <div>
                             <span class="btn btn-default btn-file">
-                                <span class="fileinput-new">选择图片</span>
-                                <span class="fileinput-exists">更改</span>
+                                <span class="fileinput-new">{{ __('Select Image') }}</span>
+                                <span class="fileinput-exists">{{ __('Change') }}</span>
                                 <input type="file" name="cover">
                             </span>
-                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ __('Delete') }}</a>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th>描述</th>
+                <th>{{ __('Description') }}</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="description" rows="7" placeholder="可以不填，如不填；则截取文章内容前300字为描述">{{ old('description') }}</textarea>
+                    <textarea class="form-control modal-sm" name="description" rows="7" placeholder="{{ __('If it is empty, intercept the first 300 words of the article content.') }}">{{ old('description') }}</textarea>
                 </td>
             </tr>
             <tr>
-                <th>内容</th>
+                <th>{{ __('Content') }}</th>
                 <td>
                     <div id="bjy-content">
                         <textarea name="markdown">{{ old('markdown') }}</textarea>
@@ -100,7 +100,7 @@
                 </td>
             </tr>
             <tr>
-                <th>置顶</th>
+                <th>{{ __('Topping') }}</th>
                 <td>
                     <input class="bootstrap-switch" type="checkbox" name="is_top" value="1" @if(old('is_top', 0) == 1) checked="checked" @endif>
                 </td>
@@ -109,7 +109,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>
@@ -121,12 +121,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">添加标签</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ __('Add Tag') }}</h4>
                 </div>
                 <div class="modal-body text-center">
                     <form class="form-inline" role="form">
-                        <input class="form-control bjy-tag-name" type="text" placeholder="标签名">
-                        <button type="button" class="btn btn-success js-add-tag">提交</button>
+                        <input class="form-control bjy-tag-name" type="text" placeholder="{{ __('Name') }}">
+                        <button type="button" class="btn btn-success js-add-tag">{{ __('Submit') }}</button>
                     </form>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 //atLink    : false,    // disable @link
                 //emailLink : false,    // disable email address auto link
                 todoList  : true,
-                placeholder: '输入文章内容',
+                placeholder: "{{ __('Enter article content') }}",
                 toolbarAutoFixed: false,
                 path      : '{{ asset('/statics/editormd/lib') }}/',
                 emoji: true,
