@@ -67,5 +67,13 @@
     "Description": "描述",
     "Separated by commas": "用英文逗号分隔",
     "Yes": "是",
-    "No": "否"
+    "No": "否",
+    "Click Counts": "点击数",
+    "Status": "状态",
+    "Created_at": "创建时间",
+    "Handle": "操作",
+    "Edit": "编辑",
+    "Delete": "删除",
+    "Force Delete": "彻底删除",
+    "Restore": "恢复"
 }

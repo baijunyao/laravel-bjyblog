@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', '发布文章')
+@section('title', __('Add Article'))
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('statics/editormd/css/editormd.min.css') }}">
@@ -11,9 +11,7 @@
     </style>
 @endsection
 
-@section('nav', '发布文章')
-
-@section('description', '发布新的文章')
+@section('nav', __('Add Article'))
 
 @section('content')
 
