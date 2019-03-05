@@ -24,8 +24,8 @@
                 <th width="5%">{{ __('Sort') }}</th>
                 <th width="20%">项目</th>
                 <th width="40%">类型</th>
-                <th width="5%">状态</th>
-                <th width="15%">操作</th>
+                <th width="5%">{{ __('Status') }}</th>
+                <th width="15%">{{ __('Handle') }}</th>
             </tr>
             @foreach($data as $v)
                 <tr>

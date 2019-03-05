@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <!-- 导航栏结束 -->
+
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
             <a href="{{ url('admin/site/index') }}">推荐博客列表</a>

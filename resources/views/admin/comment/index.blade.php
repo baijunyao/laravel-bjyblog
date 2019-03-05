@@ -25,8 +25,8 @@
             <th width="25%">文章</th>
             <th width="10%">用户</th>
             <th width="15%">评论日期</th>
-            <th width="5%">状态</th>
-            <th width="5%">操作</th>
+            <th width="5%">{{ __('Status') }}</th>
+            <th width="5%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>

@@ -18,7 +18,7 @@
             <th>ip</th>
             <th>最近登录</th>
             <th>第一次登录</th>
-            <th>操作</th>
+            <th>{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>

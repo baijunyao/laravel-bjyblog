@@ -1,19 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', '标签列表')
+@section('title', __('Tag List'))
 
-@section('nav', '标签列表')
-
-@section('description', '博客标签')
+@section('nav', __('Tag List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/tag/index') }}">标签列表</a>
+            <a href="{{ url('admin/tag/index') }}">{{ __('Tag List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/tag/create') }}">添加标签</a>
+            <a href="{{ url('admin/tag/create') }}">{{ __('Add Tag') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/tag/sort') }}" method="post">
@@ -21,9 +19,9 @@
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th>id</th>
-                <th>标签名</th>
-                <td>状态</td>
-                <th>操作</th>
+                <th>{{ __('Tag Name') }}</th>
+                <td>{{ __('Status') }}</td>
+                <th>{{ __('Handle') }}</th>
             </tr>
             @foreach($data as $v)
                 <tr>

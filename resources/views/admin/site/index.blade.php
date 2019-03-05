@@ -25,8 +25,8 @@
                 <th width="10%">名称</th>
                 <th width="10%">链接</th>
                 <th width="40%">描述</th>
-                <th width="5%">状态</th>
-                <th width="15%">操作</th>
+                <th width="5%">{{ __('Status') }}</th>
+                <th width="15%">{{ __('Handle') }}</th>
             </tr>
             @foreach($site as $v)
                 <tr>

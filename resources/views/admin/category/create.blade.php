@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <!-- 导航栏结束 -->
+
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
             <a href="{{ url('admin/category/index') }}">{{ __('Category List') }}</a>

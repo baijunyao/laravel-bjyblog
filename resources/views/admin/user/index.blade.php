@@ -13,7 +13,7 @@
             <th>用户名</th>
             <th>邮箱</th>
             <th width="15%">创建日期</th>
-            <th width="10%">操作</th>
+            <th width="10%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>

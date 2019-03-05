@@ -21,8 +21,8 @@
             <th width="5%">id</th>
             <th width="65%">内容</th>
             <th width="15%">添加日期</th>
-            <th width="5%">状态</th>
-            <th width="10%">操作</th>
+            <th width="5%">{{ __('Status') }}</th>
+            <th width="10%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
