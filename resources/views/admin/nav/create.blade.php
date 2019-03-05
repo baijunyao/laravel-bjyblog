@@ -1,33 +1,31 @@
 @extends('layouts.admin')
 
-@section('title', '添加菜单')
+@section('title', __('Add Nav'))
 
-@section('nav', '添加菜单')
-
-@section('description', '添加新的菜单')
+@section('nav', __('Add Nav'))
 
 @section('content')
 
     <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/nav/index') }}">菜单列表</a>
+            <a href="{{ url('admin/nav/index') }}">{{ __('Nav List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/nav/create') }}">添加菜单</a>
+            <a href="{{ url('admin/nav/create') }}">{{ __('Add Nav') }}</a>
         </li>
     </ul>
     <form class="form-horizontal " action="{{ url('admin/nav/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>菜单名</th>
+                <th>{{ __('Nav Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ old('name') }}">
                 </td>
             </tr>
             <tr>
-                <th>url</th>
+                <th>URL</th>
                 <td>
                     <input class="form-control" type="text" name="url" value="{{ old('url') }}">
                 </td>
