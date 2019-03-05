@@ -13,6 +13,13 @@
     "Theme Name": "主题名称",
     "Category Name": "分类名",
 
+    "Handle": "操作",
+    "Edit": "编辑",
+    "Delete": "删除",
+    "Force Delete": "彻底删除",
+    "Restore": "恢复",
+    "Sort": "排序",
+
     "Home": "首页",
     "Sign out": "退出",
     "Sign In": "登录",
@@ -84,11 +91,7 @@
     "Click Counts": "点击数",
     "Status": "状态",
     "Created_at": "创建时间",
-    "Handle": "操作",
-    "Edit": "编辑",
-    "Delete": "删除",
-    "Force Delete": "彻底删除",
-    "Restore": "恢复",
+
     "Edit Article": "编辑文章",
     "Replace to": "替换成"
 }
