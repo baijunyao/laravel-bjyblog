@@ -1,45 +1,43 @@
 @extends('layouts.admin')
 
-@section('title', '添加分类')
+@section('title', __('Add Category'))
 
-@section('nav', '添加分类')
-
-@section('description', '添加新的分类')
+@section('nav', __('Add Category'))
 
 @section('content')
 
     <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/category/index') }}">分类列表</a>
+            <a href="{{ url('admin/category/index') }}">{{ __('Category List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/category/create') }}">添加分类</a>
+            <a href="{{ url('admin/category/create') }}">{{ __('Add Category') }}</a>
         </li>
     </ul>
     <form class="form-horizontal " action="{{ url('admin/category/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>分类名</th>
+                <th>{{ __('Category Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ old('name') }}">
                 </td>
             </tr>
             <tr>
-                <th>关键字</th>
+                <th>{{ __('Keywords') }}</th>
                 <td>
                     <input class="form-control" type="text" name="keywords" value="{{ old('keywords') }}">
                 </td>
             </tr>
             <tr>
-                <th>描述</th>
+                <th>{{ __('Description') }}</th>
                 <td>
                     <input class="form-control" type="text" name="description" value="{{ old('description') }}">
                 </td>
             </tr>
             <tr>
-                <th>排序</th>
+                <th>{{ __('Sort') }}</th>
                 <td>
                     <input class="form-control" type="text" name="sort" value="{{ old('sort') }}">
                 </td>
@@ -47,7 +45,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>

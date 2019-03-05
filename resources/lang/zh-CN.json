@@ -1,4 +1,18 @@
 {
+    "Add Category": "新增分类",
+    "Add Tag": "新增标签",
+    "Add Article": "新增文章",
+    "Add Chat": "新增随言碎语",
+
+    "List": "列表",
+    "Category List": "分类列表",
+    "Tag List": "标签列表",
+    "Article List": "文章列表",
+
+    "Project Name": "项目名称",
+    "Theme Name": "主题名称",
+    "Category Name": "分类名",
+
     "Home": "首页",
     "Sign out": "退出",
     "Sign In": "登录",
@@ -14,10 +28,10 @@
     "Contact Email": "联系邮箱",
     "ICP": "网站备案",
     "Structure": "架构",
-    "Project Name": "项目名称",
+
     "Branch": "版本分支",
     "Project Author": "项目作者",
-    "Theme Name": "主题名称",
+
     "Theme Author": "主题作者",
     "Junyao Bai": "白俊遥",
     "Counts": "统计",
@@ -35,7 +49,7 @@
     "Link": "友情链接",
     "Chat": "随言碎语",
     "Setting": "设置",
-    "List": "列表",
+
     "Batch Replace": "批量替换",
     "Category": "分类",
     "Menu": "菜单",
@@ -48,8 +62,7 @@
     "Backup": "备份",
     "Other Setting": "其他设置",
     "Clear Cache": "清空缓存",
-    "Article List": "文章列表",
-    "Add Article": "新增文章",
+
     "Select Category": "选择分类",
     "Title": "标题",
     "Author": "作者",
@@ -61,7 +74,7 @@
     "Content": "内容",
     "Topping": "置顶",
     "Submit": "提交",
-    "Add Tag": "添加标签",
+
     "Enter article content": "输入文章内容",
     "Keywords": "关键词",
     "Description": "描述",
