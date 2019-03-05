@@ -148,7 +148,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
-        // app('translator')->setLocale($config->get('app.locale'));
+        app('translator')->setLocale($config->get('app.locale'));
     }
 
     /**

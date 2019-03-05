@@ -4,6 +4,11 @@
     "Add Article": "新增文章",
     "Add Chat": "新增随言碎语",
 
+    "Edit Article": "修改文章",
+    "Edit Category": "修改分类",
+    "Edit Chat": "修改随言碎语",
+    "Edit Chat": "修改标签",
+
     "List": "列表",
     "Category List": "分类列表",
     "Tag List": "标签列表",
@@ -14,7 +19,7 @@
     "Category Name": "分类名",
 
     "Handle": "操作",
-    "Edit": "编辑",
+    "Edit": "修改",
     "Delete": "删除",
     "Force Delete": "彻底删除",
     "Restore": "恢复",
@@ -92,6 +97,6 @@
     "Status": "状态",
     "Created_at": "创建时间",
 
-    "Edit Article": "编辑文章",
+
     "Replace to": "替换成"
 }
