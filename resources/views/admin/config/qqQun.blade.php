@@ -41,7 +41,7 @@
                                 <span class="fileinput-exists">更改</span>
                                 <input type="file" name="153">
                             </span>
-                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">删除</a>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ __('Delete') }}</a>
                         </div>
                     </div>
                     <a href="http://qun.qq.com/join.html" target="_blank">http://qun.qq.com/join.html</a>
@@ -50,7 +50,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>

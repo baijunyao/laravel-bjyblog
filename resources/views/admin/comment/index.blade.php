@@ -46,11 +46,11 @@
                 </td>
                 <td>
                     @if(is_null($v->deleted_at))
-                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">删除</a>
+                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">恢复</a>
+                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">彻底删除</a>
+                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                     @endif
 
                 </td>

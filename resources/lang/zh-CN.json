@@ -3,20 +3,24 @@
     "Add Tag": "新增标签",
     "Add Article": "新增文章",
     "Add Chat": "新增随言碎语",
+    "Add Nav": "新增菜单",
 
     "Edit Article": "修改文章",
     "Edit Category": "修改分类",
     "Edit Chat": "修改随言碎语",
     "Edit Chat": "修改标签",
+    "Edit Nav": "修改菜单",
 
     "List": "列表",
     "Category List": "分类列表",
     "Tag List": "标签列表",
     "Article List": "文章列表",
+    "Nav List": "文章列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",
     "Category Name": "分类名",
+    "Menu Name": "分类名",
 
     "Handle": "操作",
     "Edit": "修改",

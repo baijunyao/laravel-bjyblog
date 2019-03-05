@@ -43,7 +43,7 @@
                 </td>
                 <td>{{ $v->updated_at }}</td>
                 <td>{{ $v->created_at }}</td>
-                <td><a href="{{ url('admin/oauthUser/edit', [$v->id]) }}">编辑</a></td>
+                <td><a href="{{ url('admin/oauthUser/edit', [$v->id]) }}">{{ __('Edit') }}</a></td>
             </tr>
         @endforeach
     </table>

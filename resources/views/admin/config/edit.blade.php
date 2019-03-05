@@ -112,7 +112,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>

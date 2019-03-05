@@ -39,7 +39,7 @@
                 </td>
             </tr>
             <tr>
-                <th>排序</th>
+                <th>{{ __('Sort') }}</th>
                 <td>
                     <input class="form-control" type="text" name="sort" value="{{ $site->sort }}">
                 </td>
@@ -47,7 +47,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>
