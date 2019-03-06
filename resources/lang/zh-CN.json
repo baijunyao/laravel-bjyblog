@@ -10,6 +10,7 @@
     "Edit Chat": "修改随言碎语",
     "Edit Chat": "修改标签",
     "Edit Nav": "修改导航",
+    "Edit Administrator": "修改管理员",
 
     "List": "列表",
     "Category List": "分类列表",
@@ -17,12 +18,14 @@
     "Article List": "文章列表",
     "Nav List": "导航列表",
     "Comment List": "评论列表",
+    "Administrator List": "管理员列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",
     "Category Name": "分类名",
     "Nav Name": "导航名",
     "Tag Name": "标签名",
+    "User Name": "用户名",
 
     "Handle": "操作",
     "Edit": "修改",
@@ -107,6 +110,7 @@
     "Status": "状态",
     "Created_at": "创建时间",
     "Date": "日期",
+    "Password": "密码",
 
     "Replace to": "替换成"
 }

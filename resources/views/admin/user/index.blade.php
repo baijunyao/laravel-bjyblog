@@ -1,18 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', '管理员列表')
+@section('title', __('Administrator List'))
 
-@section('nav', '管理员列表')
-
-@section('description', '博客管理员')
+@section('nav', __('Administrator List'))
 
 @section('content')
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th>用户名</th>
-            <th>邮箱</th>
-            <th width="15%">创建日期</th>
+            <th>{{ __('Name Name') }}</th>
+            <th>{{ __('Email') }}</th>
+            <th width="15%">{{ __('Date') }}</th>
             <th width="10%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)

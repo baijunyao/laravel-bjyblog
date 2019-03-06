@@ -1,29 +1,27 @@
 @extends('layouts.admin')
 
-@section('title', '编辑管理员')
+@section('title', __('Edit Administrator'))
 
-@section('nav', '编辑管理员')
-
-@section('description', '编辑或者查看管理员详情')
+@section('nav', __('Edit Administrator'))
 
 @section('content')
     <form class="form-inline" action="{{ url('admin/user/update', [$data->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>用户名</th>
+                <th>{{ __('User Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ $data->name }}">
                 </td>
             </tr>
             <tr>
-                <th>邮箱</th>
+                <th>{{ __('Email') }}</th>
                 <td>
                     <input class="form-control" type="text" name="email" value="{{ $data->email }}">
                 </td>
             </tr>
             <tr>
-                <th>密码</th>
+                <th>{{ __('Password') }}</th>
                 <td>
                     <input class="form-control" type="text" name="password">
                 </td>
