@@ -39,10 +39,10 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-th"></i> {{ __('Category & Menu') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-th"></i> {{ __('Category & Nav') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('admin/category/index') }}">{{ __('Category') }}</a></li>
-                                        <li><a href="{{ url('admin/nav/index') }}">{{ __('Menu') }}</a></li>
+                                        <li><a href="{{ url('admin/nav/index') }}">{{ __('Nav') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>

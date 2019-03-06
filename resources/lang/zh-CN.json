@@ -16,6 +16,7 @@
     "Tag List": "标签列表",
     "Article List": "文章列表",
     "Nav List": "导航列表",
+    "Comment List": "评论列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",
@@ -31,14 +32,24 @@
     "Sort": "排序",
 
     "Home": "首页",
-    "Sign out": "退出",
+    "Article": "文章",
+    "Links": "友情链接",
+    "Comment": "评论",
+    "Tag": "标签",
+    "Category": "分类",
+    "Nav": "导航",
+    "Link": "友情链接",
+    "Chat": "随言碎语",
+
     "Sign In": "登录",
+    "Sign out": "退出",
+    "Without registration, you can log in with the account below.": "无需注册，用以下帐号即可直接登录。",
+
     "Hot Tags": "热门标签",
     "Recent Comments": "最新评论",
-    "Links": "友情链接",
-    "More": "更多",
     "Top Articles": "置顶推荐",
-    "Comment": "评论",
+    "More": "更多",
+
     "Rights": "权益",
     "Licenses": "许可协议",
     "Copyright": "版权所有",
@@ -48,28 +59,22 @@
 
     "Branch": "版本分支",
     "Project Author": "项目作者",
-
     "Theme Author": "主题作者",
     "Junyao Bai": "白俊遥",
+
     "Counts": "统计",
     "Article Counts": "文章总数",
     "Comment Counts": "评论总数",
     "User Counts": "登录用户",
     "Chat Counts": "随言碎语",
-    "Without registration, you can log in with the account below.": "无需注册，用以下帐号即可直接登录。",
+
     "Weibo": "微博",
-    "Article": "文章",
-    "Category & Menu": "分类导航",
-    "Tag": "标签",
+    "Category & Nav": "分类导航",
     "Comment": "评论",
     "User": "用户",
-    "Link": "友情链接",
-    "Chat": "随言碎语",
     "Setting": "设置",
-
     "Batch Replace": "批量替换",
-    "Category": "分类",
-    "Menu": "菜单",
+
     "Administrator": "管理员",
     "OAuth User": "第三方登录用户",
     "Recommend Blog": "推荐博客",
@@ -101,7 +106,7 @@
     "Click Counts": "点击数",
     "Status": "状态",
     "Created_at": "创建时间",
-
+    "Date": "日期",
 
     "Replace to": "替换成"
 }

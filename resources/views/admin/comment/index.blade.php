@@ -1,10 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', '评论列表')
+@section('title', __('Comment List'))
 
-@section('nav', '评论列表')
-
-@section('description', '文章评论')
+@section('nav', __('Comment List'))
 
 @section('css')
     <style>
@@ -21,10 +19,10 @@
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="35%">评论内容</th>
-            <th width="25%">文章</th>
-            <th width="10%">用户</th>
-            <th width="15%">评论日期</th>
+            <th width="35%">{{ __('Content') }}</th>
+            <th width="25%">{{ __('Article') }}</th>
+            <th width="10%">{{ __('User') }}</th>
+            <th width="15%">{{ __('Date') }}</th>
             <th width="5%">{{ __('Status') }}</th>
             <th width="5%">{{ __('Handle') }}</th>
         </tr>
