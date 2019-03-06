@@ -11,6 +11,7 @@
     "Edit Chat": "修改标签",
     "Edit Nav": "修改导航",
     "Edit Administrator": "修改管理员",
+    "Edit OAuth User": "修改第三方用户",
 
     "List": "列表",
     "Category List": "分类列表",
@@ -19,6 +20,7 @@
     "Nav List": "导航列表",
     "Comment List": "评论列表",
     "Administrator List": "管理员列表",
+    "OAuth User List": "管理员列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",
@@ -111,6 +113,11 @@
     "Created_at": "创建时间",
     "Date": "日期",
     "Password": "密码",
+    "Type": "类型",
+    "Is Administrator?": "是否是管理员?",
+    "Login times": "登录次数",
+    "Last login": "最近一次登录",
+    "First login": "第一次登录",
 
     "Replace to": "替换成"
 }
