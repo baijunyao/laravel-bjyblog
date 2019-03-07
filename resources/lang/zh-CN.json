@@ -4,6 +4,7 @@
     "Add Article": "新增文章",
     "Add Chat": "新增随言碎语",
     "Add Nav": "新增导航",
+    "Add Friendship Link": "新增友情链接",
 
     "Edit Article": "修改文章",
     "Edit Category": "修改分类",
@@ -12,6 +13,7 @@
     "Edit Nav": "修改导航",
     "Edit Administrator": "修改管理员",
     "Edit OAuth User": "修改第三方用户",
+    "Edit Friendship Link": "修改友情链接",
 
     "List": "列表",
     "Category List": "分类列表",
@@ -21,6 +23,7 @@
     "Comment List": "评论列表",
     "Administrator List": "管理员列表",
     "OAuth User List": "管理员列表",
+    "Friendship Link List": "友情链接列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",

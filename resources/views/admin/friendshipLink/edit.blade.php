@@ -1,33 +1,31 @@
 @extends('layouts.admin')
 
-@section('title', '编辑友情链接')
+@section('title', __('Edit Friendship Link'))
 
-@section('nav', '编辑友情链接')
-
-@section('description', '编辑新的友情链接')
+@section('nav', __('Edit Friendship Link'))
 
 @section('content')
 
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
+            <a href="{{ url('admin/friendshipLink/index') }}">{{ __('Friendship Link List') }}</a>
         </li>
         <li class="active">
-            <a href="">编辑友情链接</a>
+            <a href="">{{ __('Edit Friendship Link') }}</a>
         </li>
     </ul>
     <form class="form-horizontal " action="{{ url('admin/friendshipLink/update', [$data->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>名称</th>
+                <th>{{ __('Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ $data->name }}">
                 </td>
             </tr>
             <tr>
-                <th>链接</th>
+                <th>URL</th>
                 <td>
                     <input class="form-control" type="text" name="url" value="{{ $data->url }}">
                 </td>

@@ -1,19 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', '友情链接列表')
+@section('title', __('Friendship Link List'))
 
-@section('nav', '友情链接列表')
-
-@section('description', '博客友情链接')
+@section('nav', __('Friendship Link List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
+            <a href="{{ url('admin/friendshipLink/index') }}">{{ __('Friendship Link List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/friendshipLink/create') }}">添加友情链接</a>
+            <a href="{{ url('admin/friendshipLink/create') }}">{{ __('Add Friendship Link') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/friendshipLink/sort') }}" method="post">
@@ -22,8 +20,8 @@
             <tr>
                 <th width="5%">id</th>
                 <th width="5%">{{ __('Sort') }}</th>
-                <th width="20%">链接名</th>
-                <th width="40%">链接地址</th>
+                <th width="20%">{{ __('Name') }}</th>
+                <th width="40%">URL</th>
                 <th width="5%">{{ __('Status') }}</th>
                 <th width="15%">{{ __('Handle') }}</th>
             </tr>
