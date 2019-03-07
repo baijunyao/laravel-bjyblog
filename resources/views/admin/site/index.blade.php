@@ -1,19 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', '推荐博客列表')
+@section('title', __('Recommend Blog List'))
 
-@section('nav', '推荐博客列表')
-
-@section('description', '博客推荐博客')
+@section('nav', __('Recommend Blog List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/site/index') }}">推荐博客列表</a>
+            <a href="{{ url('admin/site/index') }}">{{ __('Recommend Blog List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/site/create') }}">添加推荐博客</a>
+            <a href="{{ url('admin/site/create') }}">{{ __('Add Recommend Blog') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/site/sort') }}" method="post">
@@ -22,9 +20,9 @@
             <tr>
                 <th width="5%">id</th>
                 <th width="5%">{{ __('Sort') }}</th>
-                <th width="10%">名称</th>
-                <th width="10%">链接</th>
-                <th width="40%">描述</th>
+                <th width="10%">{{ __('Name') }}</th>
+                <th width="10%">URL</th>
+                <th width="40%">{{ __('Description') }}</th>
                 <th width="5%">{{ __('Status') }}</th>
                 <th width="15%">{{ __('Handle') }}</th>
             </tr>
@@ -46,9 +44,9 @@
                     </td>
                     <td>
                         @if($v->audit == 1)
-                            <a class="js-audit" href="javascript:;" data-id="{{ $v->id }}" data-audit="0">取消审核</a>
+                            <a class="js-audit" href="javascript:;" data-id="{{ $v->id }}" data-audit="0">{{ __('Remove Approval') }}</a>
                         @else
-                            <a class="js-audit" href="javascript:;" data-id="{{ $v->id }}" data-audit="1">通过审核</a>
+                            <a class="js-audit" href="javascript:;" data-id="{{ $v->id }}" data-audit="1">{{ __('Approve') }}</a>
                         @endif
                         |
                         <a href="{{ url('admin/site/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
@@ -79,7 +77,7 @@
 @section('js')
     <script>
         $('.js-audit').click(function () {
-            if (!confirm('确定操作?')) {
+            if (!confirm('{{ __('Confirm') }}?')) {
                 return false;
             }
             var id = $(this).attr('data-id');

@@ -5,6 +5,7 @@
     "Add Chat": "新增随言碎语",
     "Add Nav": "新增导航",
     "Add Friendship Link": "新增友情链接",
+    "Add Recommend Blog": "新增推荐博客",
 
     "Edit Article": "修改文章",
     "Edit Category": "修改分类",
@@ -14,6 +15,7 @@
     "Edit Administrator": "修改管理员",
     "Edit OAuth User": "修改第三方用户",
     "Edit Friendship Link": "修改友情链接",
+    "Edit Recommend Blog": "修改推荐博客",
 
     "List": "列表",
     "Category List": "分类列表",
@@ -24,6 +26,7 @@
     "Administrator List": "管理员列表",
     "OAuth User List": "管理员列表",
     "Friendship Link List": "友情链接列表",
+    "Recommend Blog List": "推荐博客列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",
@@ -122,5 +125,8 @@
     "Last login": "最近一次登录",
     "First login": "第一次登录",
 
-    "Replace to": "替换成"
+    "Replace to": "替换成",
+    "Remove Approval": "取消审核",
+    "Approve": "通过审核",
+    "Confirm": "确认"
 }
