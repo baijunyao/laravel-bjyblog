@@ -4,8 +4,6 @@
 
 @section('nav', 'QQ群配置')
 
-@section('description', 'QQ群配置')
-
 @section('content')
     <form class="form-inline" enctype="multipart/form-data" action="{{ url('admin/config/update') }}" method="post">
         {{ csrf_field() }}
