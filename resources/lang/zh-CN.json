@@ -131,5 +131,15 @@
     "Replace to": "替换成",
     "Remove Approval": "取消审核",
     "Approve": "通过审核",
-    "Confirm": "确认"
+    "Confirm": "确认",
+
+    "Backup Config": "备份配置",
+    "Email Config": "邮箱配置",
+    "OAuth Config": "第三方登录配置",
+    "Open Source Config": "开源项目配置",
+    "Other Config": "其他配置",
+
+    "Local": "本地",
+    "MySQL Dump Path": "MySQL Dump Path 所在目录",
+    "Aliyun": "阿里云"
 }
