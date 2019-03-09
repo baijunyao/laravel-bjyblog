@@ -134,12 +134,23 @@
     "Confirm": "确认",
 
     "Backup Config": "备份配置",
-    "Email Config": "邮箱配置",
+
     "OAuth Config": "第三方登录配置",
     "Open Source Config": "开源项目配置",
     "Other Config": "其他配置",
 
     "Local": "本地",
     "MySQL Dump Path": "MySQL Dump Path 所在目录",
-    "Aliyun": "阿里云"
+    "Aliyun": "阿里云",
+
+    "Email Config": "邮箱配置",
+    "Email Driver": "邮箱服务器类型",
+    "Email Encryption": "加密方式",
+    "Email Port": "邮箱服务器端口",
+    "Email Host": "邮箱服务器地址",
+    "Email Username": "邮箱账号",
+    "Email Password": "邮箱密码",
+    "Email From Name": "发件人名称",
+    "Email From Address": "发件人邮箱",
+  
 }

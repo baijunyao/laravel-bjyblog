@@ -11,9 +11,9 @@
             <tr>
                 <th>{{ __('Type') }}：</th>
                 <td>
-                    <input class="bjy-icheck" type="checkbox" name="164[]" value="local" @if(in_array('local', config('backup.backup.destination.disks'))) checked  @endif>{{ __('Local') }}
+                    <input class="bjy-icheck" type="checkbox" name="164[]" value="local" @if(in_array('local', $config['backup.backup.destination.disks'])) checked  @endif>{{ __('Local') }}
                     &emsp;
-                    <input class="bjy-icheck" type="checkbox" name="164[]" value="oss" @if(in_array('oss', config('backup.backup.destination.disks'))) checked  @endif>{{ __('Aliyun') }} OSS
+                    <input class="bjy-icheck" type="checkbox" name="164[]" value="oss" @if(in_array('oss', $config['backup.backup.destination.disks'])) checked  @endif>{{ __('Aliyun') }} OSS
                 </td>
             </tr>
             <tr>
