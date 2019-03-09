@@ -1,29 +1,27 @@
 @extends('layouts.admin')
 
-@section('title', '编辑菜单')
+@section('title', __('Edit Nav'))
 
-@section('nav', '编辑菜单')
-
-@section('description', '编辑菜单')
+@section('nav', __('Edit Nav'))
 
 @section('content')
     <form class="form-horizontal " action="{{ url('admin/nav/update', [$nav->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>菜单名</th>
+                <th>{{ __('Nav Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ $nav->name }}">
                 </td>
             </tr>
             <tr>
-                <th>链接</th>
+                <th>URL</th>
                 <td>
                     <input class="form-control" type="text" name="url" value="{{ $nav->url }}">
                 </td>
             </tr>
             <tr>
-                <th>排序</th>
+                <th>{{ __('Sort') }}</th>
                 <td>
                     <input class="form-control" type="text" name="sort" value="{{ $nav->sort }}">
                 </td>
@@ -31,7 +29,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>

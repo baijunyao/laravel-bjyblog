@@ -37,7 +37,7 @@
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
                 <li class="b-nav-cname  @if($category_id == 'index') b-nav-active @endif">
-                <a href="/">首页</a>
+                <a href="/">{{ __('Home') }}</a>
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if($v->id == $category_id) b-nav-active @endif">
@@ -55,12 +55,12 @@
                     <li class="b-user-info">
                         <span><img class="b-head_img" src="{{ auth()->guard('oauth')->user()->avatar }}" alt="{{ auth()->guard('oauth')->user()->name }}" title="{{ auth()->guard('oauth')->user()->name }}" /></span>
                         <span class="b-nickname">{{ auth()->guard('oauth')->user()->name }}</span>
-                        <span><a href="{{ url('auth/oauth/logout') }}">退出</a></span>
+                        <span><a href="{{ url('auth/oauth/logout') }}">{{ __('Sign out') }}</a></span>
                     </li>
                 @else
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
-                        <a class="js-login-btn" href="javascript:;">登录</a>
+                        <a class="js-login-btn" href="javascript:;">{{ __('Sign In') }}</a>
                     </li>
                 @endif
             </ul>
@@ -110,7 +110,7 @@
                 </div>
             @endif
             <div class="b-tags">
-                <h4 class="b-title">热门标签</h4>
+                <h4 class="b-title">{{ __('Hot Tags') }}</h4>
                 <ul class="b-all-tname">
                     <?php $tag_i = 0; ?>
                     @foreach($tag as $v)
@@ -123,7 +123,7 @@
                 </ul>
             </div>
             <div class="b-recommend">
-                <h4 class="b-title">置顶推荐</h4>
+                <h4 class="b-title">{{ __('Top Articles') }}</h4>
                 <p class="b-recommend-p">
                     @foreach($topArticle as $v)
                         <a class="b-recommend-a" href="{{ url('article', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
@@ -131,7 +131,7 @@
                 </p>
             </div>
             <div class="b-comment-list">
-                <h4 class="b-title">最新评论</h4>
+                <h4 class="b-title">{{ __('Recent Comments') }}</h4>
                 <div>
                     @foreach($newComment as $v)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
@@ -140,7 +140,7 @@
                                 {{ $v->name }}<span>{{ word_time($v->created_at) }}</span>
                             </li>
                             <li class="b-nc-article">
-                                在<a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>中评论
+                                {{ __('Comment') }}<a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
                             </li>
                             <li class="b-content">
                                 {!! $v->content !!}
@@ -150,12 +150,12 @@
                 </div>
             </div>
             <div class="b-link">
-                <h4 class="b-title">友情链接</h4>
+                <h4 class="b-title">Links</h4>
                 <p>
                     @foreach($friendshipLink as $v)
                         <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
                     @endforeach
-                        <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> 更多 </a>
+                        <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> {{ __('More') }} </a>
                 </p>
             </div>
         </div>
@@ -170,32 +170,32 @@
     <div class="container">
         <div class="row b-content">
             <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <dt>权益</dt>
-                <dd>许可协议：<a rel="nofollow" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
-                <dd>版权所有：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
-                @if(!empty(config('bjyblog.icp')))
-                    <dd>网站备案：{{ config('bjyblog.icp') }}</dd>
-                @endif
+                <dt>{{ __('Rights') }}</dt>
+                <dd>{{ __("Licenses") }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
+                <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
                 @if(!empty(config('bjyblog.admin_email')))
-                    <dd>联系邮箱：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
+                    <dd>{{ __('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
+                @endif
+                @if(!empty(config('bjyblog.icp')))
+                    <dd>{{ __('ICP') }}：{{ config('bjyblog.icp') }}</dd>
                 @endif
             </dl>
 
             <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                <dt>架构</dt>
-                <dd>项目名称：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a></dd>
-                <dd>版本分支：{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</dd>
-                <dd>项目作者：<a href="https://baijunyao.com">白俊遥</a></dd>
-                <dd>主题名称：<a rel="nofollow" href="https://github.com/baijunyao/blog-theme-blueberry">blog-theme-blueberry</a></dd>
-                <dd>主题作者：<a href="https://baijunyao.com">白俊遥</a></dd>
+                <dt>{{ __('Structure') }}</dt>
+                <dd>{{ __('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a></dd>
+                <dd>{{ __('Branch') }}：{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</dd>
+                <dd>{{ __('Project Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
+                <dd>{{ __('Theme Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/blog-theme-blueberry">blog-theme-blueberry</a></dd>
+                <dd>{{ __('Theme Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
             </dl>
 
             <dl class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                <dt>统计</dt>
-                <dd>文章总数：{{ $articleCount }}</dd>
-                <dd>评论总数：{{ $commentCount }}</dd>
-                <dd>登录用户：{{ $oauthUserCount }}</dd>
-                <dd>随言碎语：{{ $chatCount }}</dd>
+                <dt>{{ __('Counts') }}</dt>
+                <dd>{{ __('Article Counts') }}：{{ $articleCount }}</dd>
+                <dd>{{ __('Comment Counts') }}：{{ $commentCount }}</dd>
+                <dd>{{ __('User Counts') }}：{{ $oauthUserCount }}</dd>
+                <dd>{{ __('Chat Counts') }}：{{ $chatCount }}</dd>
             </dl>
         </div>
     </div>
@@ -210,19 +210,19 @@
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title b-ta-center" id="myModalLabel">无需注册，用以下帐号即可直接登录</h4>
+                    <h4 class="modal-title b-ta-center" id="myModalLabel">{{ __('Without registration, you can log in with the account below.') }}</h4>
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
                 <ul class="row">
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/qq') }}"><img src="{{ asset('images/home/qq-login.png') }}" alt="QQ登录" title="QQ登录"></a>
+                        <a href="{{ url('auth/oauth/redirectToProvider/qq') }}"><img src="{{ asset('images/home/qq-login.png') }}" alt="QQ" title="QQ"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/weibo') }}"><img src="{{ asset('images/home/sina-login.png') }}" alt="微博登录" title="微博登录"></a>
+                        <a href="{{ url('auth/oauth/redirectToProvider/weibo') }}"><img src="{{ asset('images/home/sina-login.png') }}" alt="{{ __('Weibo') }}" title="{{ __('Weibo') }}"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/github') }}"><img src="{{ asset('images/home/github-login.jpg') }}" alt="github登录" title="github登录"></a>
+                        <a href="{{ url('auth/oauth/redirectToProvider/github') }}"><img src="{{ asset('images/home/github-login.jpg') }}" alt="github" title="github"></a>
                     </li>
                 </ul>
             </div>

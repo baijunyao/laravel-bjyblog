@@ -1,19 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', '友情链接列表')
+@section('title', __('Friendship Link List'))
 
-@section('nav', '友情链接列表')
-
-@section('description', '博客友情链接')
+@section('nav', __('Friendship Link List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/friendshipLink/index') }}">友情链接列表</a>
+            <a href="{{ url('admin/friendshipLink/index') }}">{{ __('Friendship Link List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/friendshipLink/create') }}">添加友情链接</a>
+            <a href="{{ url('admin/friendshipLink/create') }}">{{ __('Add Friendship Link') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/friendshipLink/sort') }}" method="post">
@@ -21,11 +19,11 @@
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th width="5%">id</th>
-                <th width="5%">排序</th>
-                <th width="20%">链接名</th>
-                <th width="40%">链接地址</th>
-                <th width="5%">状态</th>
-                <th width="15%">操作</th>
+                <th width="5%">{{ __('Sort') }}</th>
+                <th width="20%">{{ __('Name') }}</th>
+                <th width="40%">URL</th>
+                <th width="5%">{{ __('Status') }}</th>
+                <th width="15%">{{ __('Handle') }}</th>
             </tr>
             @foreach($data as $v)
                 <tr>
@@ -43,13 +41,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/friendshipLink/edit', [$v->id]) }}">编辑</a> |
+                        <a href="{{ url('admin/friendshipLink/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/friendshipLink/destroy', [$v->id]) }}'">删除</a>
+                            <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/friendshipLink/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                         @else
-                            <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/friendshipLink/restore', [$v->id]) }}'">恢复</a>
+                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/friendshipLink/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                             |
-                            <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/friendshipLink/forceDelete', [$v->id]) }}'">彻底删除</a>
+                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/friendshipLink/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                         @endif
                     </td>
                 </tr>
@@ -57,7 +55,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input class="btn btn-success" type="submit" value="排序">
+                    <input class="btn btn-success" type="submit" value="{{ __('Sort') }}">
                 </td>
                 <td></td>
                 <td></td>

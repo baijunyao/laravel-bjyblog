@@ -1,31 +1,29 @@
 @extends('layouts.admin')
 
-@section('title', '菜单列表')
+@section('title', __('Nav List'))
 
-@section('nav', '菜单列表')
-
-@section('description', '博客菜单')
+@section('nav', __('Nav List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/nav/index') }}">菜单列表</a>
+            <a href="{{ url('admin/nav/index') }}">{{ __('Nav List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/nav/create') }}">新增菜单</a>
+            <a href="{{ url('admin/nav/create') }}">{{ __('Add Nav') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/nav/sort') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
-                <th width="5%">id</th>
-                <th width="5%">排序</th>
-                <th width="20%">菜单名</th>
-                <th width="40%">url</th>
-                <th width="5%">状态</th>
-                <th width="15%">操作</th>
+                <th width="5%">Id</th>
+                <th width="5%">{{ __('Sort') }}</th>
+                <th width="20%">{{ __('Nav Name') }}</th>
+                <th width="40%">URL</th>
+                <th width="5%">{{ __('Status') }}</th>
+                <th width="15%">{{ __('Handle') }}</th>
             </tr>
             @foreach($nav as $v)
                 <tr>
@@ -43,13 +41,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/nav/edit', [$v->id]) }}">编辑</a> |
+                        <a href="{{ url('admin/nav/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/nav/destroy', [$v->id]) }}'">删除</a>
+                            <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/nav/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                         @else
-                            <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/nav/restore', [$v->id]) }}'">恢复</a>
+                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/nav/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                             |
-                            <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/nav/forceDelete', [$v->id]) }}'">彻底删除</a>
+                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/nav/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                         @endif
                     </td>
                 </tr>
@@ -57,7 +55,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input class="btn btn-success" type="submit" value="排序">
+                    <input class="btn btn-success" type="submit" value="{{ __('Sort') }}">
                 </td>
                 <td></td>
                 <td></td>

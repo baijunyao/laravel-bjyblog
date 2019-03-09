@@ -147,6 +147,8 @@ class ComposerServiceProvider extends ServiceProvider
             $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav', 'qqQunArticle');
             $view->with($assign);
         });
+
+        app('translator')->setLocale($config->get('app.locale'));
     }
 
     /**
