@@ -1,19 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', '开源项目列表')
+@section('title', __('Open Source List'))
 
-@section('nav', '开源项目列表')
-
-@section('description', '博客开源项目')
+@section('nav', __('Open Source List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/gitProject/index') }}">开源项目列表</a>
+            <a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/gitProject/create') }}">新增开源</a>
+            <a href="{{ url('admin/gitProject/create') }}">{{ __('Add Open Source') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/gitProject/sort') }}" method="post">
@@ -22,8 +20,8 @@
             <tr>
                 <th width="5%">id</th>
                 <th width="5%">{{ __('Sort') }}</th>
-                <th width="20%">项目</th>
-                <th width="40%">类型</th>
+                <th width="20%">{{ __('Name') }}</th>
+                <th width="40%">{{ __('Type') }}</th>
                 <th width="5%">{{ __('Status') }}</th>
                 <th width="15%">{{ __('Handle') }}</th>
             </tr>

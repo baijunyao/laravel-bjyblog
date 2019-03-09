@@ -1,27 +1,25 @@
 @extends('layouts.admin')
 
-@section('title', '添加开源项目')
+@section('title', __('Add Open Source'))
 
-@section('nav', '添加开源项目')
-
-@section('description', '添加新的开源项目')
+@section('nav', __('Add Open Source'))
 
 @section('content')
 
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/gitProject/index') }}">开源项目列表</a>
+            <a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/gitProject/create') }}">添加开源项目</a>
+            <a href="{{ url('admin/gitProject/create') }}">{{ __('Add Open Source') }}</a>
         </li>
     </ul>
     <form class="form-inline " action="{{ url('admin/gitProject/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>类型</th>
+                <th>{{ __('Type') }}</th>
                 <td>
                     <span class="inputword">github</span>
                     <input class="bjy-icheck" type="radio" name="type" value="1" @if(empty(old('type')) || old('type') == 1) checked @endif>
@@ -30,7 +28,7 @@
                 </td>
             </tr>
             <tr>
-                <th>项目</th>
+                <th>{{ __('Name') }}</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="name" value="{{ old('name') }}">
                 </td>
