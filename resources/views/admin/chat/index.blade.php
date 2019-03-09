@@ -1,28 +1,26 @@
 @extends('layouts.admin')
 
-@section('title', '随言碎语列表')
+@section('title', __('Chat List'))
 
-@section('nav', '随言碎语列表')
-
-@section('description', '博客随言碎语')
+@section('nav', __('Chat List'))
 
 @section('content')
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/chat/index') }}">随言碎语列表</a>
+            <a href="{{ url('admin/chat/index') }}">{{ __('Chat List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/chat/create') }}">添加随言碎语</a>
+            <a href="{{ url('admin/chat/create') }}">{{ __('Add Chat') }}</a>
         </li>
     </ul>
 
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="65%">内容</th>
-            <th width="15%">添加日期</th>
-            <th width="5%">状态</th>
-            <th width="10%">操作</th>
+            <th width="65%">{{ __('Content') }}</th>
+            <th width="15%">{{ __('Date') }}</th>
+            <th width="5%">{{ __('Status') }}</th>
+            <th width="10%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
@@ -37,14 +35,14 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ url('admin/chat/edit', [$v->id]) }}">编辑</a>
+                    <a href="{{ url('admin/chat/edit', [$v->id]) }}">{{ __('Edit') }}</a>
                     |
                     @if(is_null($v->deleted_at))
-                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/chat/destroy', [$v->id]) }}'">删除</a>
+                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/chat/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/chat/restore', [$v->id]) }}'">恢复</a>
+                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/chat/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/chat/forceDelete', [$v->id]) }}'">彻底删除</a>
+                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/chat/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                     @endif
                 </td>
             </tr>

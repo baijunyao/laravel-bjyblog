@@ -1,31 +1,29 @@
 @extends('layouts.admin')
 
-@section('title', '文章列表')
+@section('title', __('Article List'))
 
-@section('nav', '文章列表')
-
-@section('description', '已发布的文章列表')
+@section('nav', __('Article List'))
 
 @section('content')
 
-    <!-- 导航栏结束 -->
+
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/article/index') }}">文章列表</a>
+            <a href="{{ url('admin/article/index') }}">{{ __('Article List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/article/create') }}">发布文章</a>
+            <a href="{{ url('admin/article/create') }}">{{ __('Add Article') }}</a>
         </li>
     </ul>
     <table class="table table-striped table-bordered table-hover">
         <tr>
-            <th>文章id</th>
-            <th>分类</th>
-            <th>标题</th>
-            <th>点击数</th>
-            <th>状态</th>
-            <th>发布时间</th>
-            <th>操作</th>
+            <th>Id</th>
+            <th>{{ __('Category') }}</th>
+            <th>{{ __('Title') }}</th>
+            <th>{{ __('Click Counts') }}</th>
+            <th>{{ __('Status') }}</th>
+            <th>{{ __('Created_at') }}</th>
+            <th>{{ __('Handle') }}</th>
         </tr>
         @foreach($article as $k => $v)
             <tr>
@@ -44,14 +42,14 @@
                 </td>
                 <td>{{ $v->created_at }}</td>
                 <td>
-                    <a href="{{ url('admin/article/edit', [$v->id]) }}">编辑</a>
+                    <a href="{{ url('admin/article/edit', [$v->id]) }}">{{ __('Edit') }}</a>
                     |
                     @if($v->trashed())
-                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/article/restore', [$v->id]) }}'">恢复</a>
+                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/article/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/article/forceDelete', [$v->id]) }}'">彻底删除</a>
+                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/article/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">删除</a>
+                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                     @endif
                 </td>
             </tr>

@@ -1,27 +1,24 @@
 @extends('layouts.admin')
 
-@section('title', '添加标签')
+@section('title', __('Add Tag'))
 
-@section('nav', '添加标签')
-
-@section('description', '添加新的标签')
+@section('nav', __('Add Tag'))
 
 @section('content')
 
-    <!-- 导航栏结束 -->
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/tag/index') }}">标签列表</a>
+            <a href="{{ url('admin/tag/index') }}">{{ __('Tag List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/tag/create') }}">添加标签</a>
+            <a href="{{ url('admin/tag/create') }}">{{ __('Add Tag') }}</a>
         </li>
     </ul>
     <form class="form-inline" action="{{ url('admin/tag/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>标签名</th>
+                <th>{{ __('Tag Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ old('name') }}">
                 </td>
@@ -29,7 +26,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="提交">
+                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
                 </td>
             </tr>
         </table>

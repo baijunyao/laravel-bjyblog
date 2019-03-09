@@ -51,7 +51,7 @@ class V5_5_11_0 extends Command
         if (empty($appLocale)) {
             Config::create([
                 'name'  => 'app.locale',
-                'value' => 'en'
+                'value' => 'zh-CN'
             ]);
         }
 

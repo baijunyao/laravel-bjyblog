@@ -1,19 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', '标签列表')
+@section('title', __('Tag List'))
 
-@section('nav', '标签列表')
-
-@section('description', '博客标签')
+@section('nav', __('Tag List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/tag/index') }}">标签列表</a>
+            <a href="{{ url('admin/tag/index') }}">{{ __('Tag List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/tag/create') }}">添加标签</a>
+            <a href="{{ url('admin/tag/create') }}">{{ __('Add Tag') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/tag/sort') }}" method="post">
@@ -21,9 +19,9 @@
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th>id</th>
-                <th>标签名</th>
-                <td>状态</td>
-                <th>操作</th>
+                <th>{{ __('Tag Name') }}</th>
+                <td>{{ __('Status') }}</td>
+                <th>{{ __('Handle') }}</th>
             </tr>
             @foreach($data as $v)
                 <tr>
@@ -37,13 +35,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/tag/edit', [$v->id]) }}">编辑</a> |
+                        <a href="{{ url('admin/tag/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('确定要删除吗?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">删除</a>
+                            <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                         @else
-                            <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/tag/restore', [$v->id]) }}'">恢复</a>
+                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/tag/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                             |
-                            <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/tag/forceDelete', [$v->id]) }}'">彻底删除</a>
+                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/tag/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                         @endif
                     </td>
                 </tr>

@@ -1,10 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', '评论列表')
+@section('title', __('Comment List'))
 
-@section('nav', '评论列表')
-
-@section('description', '文章评论')
+@section('nav', __('Comment List'))
 
 @section('css')
     <style>
@@ -21,12 +19,12 @@
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="35%">评论内容</th>
-            <th width="25%">文章</th>
-            <th width="10%">用户</th>
-            <th width="15%">评论日期</th>
-            <th width="5%">状态</th>
-            <th width="5%">操作</th>
+            <th width="35%">{{ __('Content') }}</th>
+            <th width="25%">{{ __('Article') }}</th>
+            <th width="10%">{{ __('User') }}</th>
+            <th width="15%">{{ __('Date') }}</th>
+            <th width="5%">{{ __('Status') }}</th>
+            <th width="5%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
@@ -46,11 +44,11 @@
                 </td>
                 <td>
                     @if(is_null($v->deleted_at))
-                        <a href="javascript:if(confirm('确认删除?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">删除</a>
+                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('确认恢复?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">恢复</a>
+                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('彻底删除?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">彻底删除</a>
+                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                     @endif
 
                 </td>
