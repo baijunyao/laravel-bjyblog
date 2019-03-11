@@ -42,16 +42,6 @@ Route::group(['namespace' => 'Home'], function () {
     });
 });
 
-// Home模块下 三级模式
-Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
-    // 迁移数据
-    Route::group(['prefix' => 'migration'], function () {
-        // 从旧系统迁移数据
-        Route::get('index', 'MigrationController@index');
-        // 只迁移第三方用户和评论数据
-        Route::get('avatar', 'MigrationController@avatar');
-    });
-});
 
 // auth
 Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
@@ -311,12 +301,3 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 });
 
-/**
- * 各种钩子
- */
-Route::group(['prefix' => 'hook', 'namespace' => 'Hook'], function () {
-    // 开源中国
-    Route::group(['prefix' => 'oschina'], function () {
-        Route::post('push', 'OschinaController@push');
-    });
-});
