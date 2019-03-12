@@ -6,7 +6,6 @@
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="description" content="@yield('description')" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="author" content="baijunyao,{{ htmlspecialchars_decode(config('bjyblog.admin_email')) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
