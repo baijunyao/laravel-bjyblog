@@ -3,12 +3,10 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\OauthUser;
-use Auth;
 use Mockery;
 use Socialite;
-use Tests\Feature\TestCase;
 
-class OAuthControllerTest extends TestCase
+class OAuthControllerTest extends \Tests\Feature\TestCase
 {
     public function testRedirectToProviderForQQ()
     {
@@ -87,7 +85,7 @@ class OAuthControllerTest extends TestCase
 
     public function testLogout()
     {
-        Auth::guard('oauth')->login(OauthUser::find(1));
+        $this->loginByUserId(1, 'oauth');
         $this->assertAuthenticated('oauth');
         $this->get('auth/oauth/logout')->assertStatus(302);
         $this->assertGuest('oauth');
