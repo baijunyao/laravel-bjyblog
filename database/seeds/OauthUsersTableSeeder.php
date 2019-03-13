@@ -11,7 +11,7 @@ class OauthUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('oauth_users')->delete();
+        DB::table('oauth_users')->truncate();
         DB::table('oauth_users')->insert([
             [
                 'id'            => 1,
