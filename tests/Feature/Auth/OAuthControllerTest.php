@@ -6,7 +6,7 @@ use App\Models\OauthUser;
 use Mockery;
 use Socialite;
 
-class OAuthControllerTest extends \Tests\Feature\TestCase
+class OAuthControllerTest extends TestCase
 {
     public function testRedirectToProviderForQQ()
     {
