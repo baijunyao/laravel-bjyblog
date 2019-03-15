@@ -11,7 +11,7 @@ class ConfigsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('configs')->delete();
+        \DB::table('configs')->truncate();
 
         \DB::table('configs')->insert([
             [

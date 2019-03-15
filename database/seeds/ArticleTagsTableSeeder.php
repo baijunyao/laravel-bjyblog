@@ -11,7 +11,7 @@ class ArticleTagsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('article_tags')->delete();
+        DB::table('article_tags')->truncate();
         DB::table('article_tags')->insert([
             [
                 'article_id' => 1,

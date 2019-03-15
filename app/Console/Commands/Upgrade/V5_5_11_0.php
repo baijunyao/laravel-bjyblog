@@ -40,9 +40,9 @@ class V5_5_11_0 extends Command
     {
         $webName = Config::where('name', 'bjyblog.web_name')->first();
 
-        if (! empty($webName)) {
+        if (!empty($webName)) {
             $webName->update([
-                'name' => 'app.name'
+                'name' => 'app.name',
             ]);
         }
 
@@ -51,7 +51,7 @@ class V5_5_11_0 extends Command
         if (empty($appLocale)) {
             Config::create([
                 'name'  => 'app.locale',
-                'value' => 'zh-CN'
+                'value' => 'zh-CN',
             ]);
         }
 

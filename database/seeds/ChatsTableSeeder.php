@@ -11,7 +11,7 @@ class ChatsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('chats')->delete();
+        DB::table('chats')->truncate();
         DB::table('chats')->insert([
             [
                 'id'         => 1,
