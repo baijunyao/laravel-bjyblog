@@ -1,18 +1,7 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Home 模块
-Route::group(['namespace' => 'Home'], function () {
+Route::namespace('Home')->group(function () {
     // 首页
     Route::get('/', 'IndexController@index');
     // 分类
@@ -26,7 +15,7 @@ Route::group(['namespace' => 'Home'], function () {
     // 文章详情
     Route::get('article/{id}', 'IndexController@article');
     // 文章评论
-    Route::post('comment', 'IndexController@comment')->middleware('home.auth');
+    Route::post('comment', 'IndexController@comment')->middleware('auth.oauth');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
@@ -38,25 +27,14 @@ Route::group(['namespace' => 'Home'], function () {
     // 推荐博客
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');
-        Route::post('store', 'SiteController@store')->middleware('home.auth', 'clean.xss');
-    });
-});
-
-// Home模块下 三级模式
-Route::group(['namespace' => 'Home', 'prefix' => 'home'], function () {
-    // 迁移数据
-    Route::group(['prefix' => 'migration'], function () {
-        // 从旧系统迁移数据
-        Route::get('index', 'MigrationController@index');
-        // 只迁移第三方用户和评论数据
-        Route::get('avatar', 'MigrationController@avatar');
+        Route::post('store', 'SiteController@store')->middleware('auth.oauth', 'clean.xss');
     });
 });
 
 // auth
-Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
+Route::namespace('Auth')->prefix('auth')->group(function () {
     // 第三方登录
-    Route::group(['prefix' => 'oauth'], function () {
+    Route::prefix('oauth')->group(function () {
         // 重定向
         Route::get('redirectToProvider/{service}', 'OAuthController@redirectToProvider');
         // 获取用户资料并登录
@@ -66,15 +44,15 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     });
 
     // 后台登录
-    Route::group(['prefix' => 'admin'], function () {
+    Route::prefix('admin')->group(function () {
         Route::post('login', 'AdminController@login');
     });
 });
 
 // 后台登录页面
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::redirect('/', url('admin/login/index'));
-    Route::group(['prefix' => 'login'], function () {
+    Route::prefix('login')->group(function () {
         // 登录页面
         Route::get('index', 'LoginController@index')->middleware('admin.login');
         // 退出
@@ -83,9 +61,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 });
 
 // Admin 模块
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin.auth'], function () {
+Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(function () {
     // 首页控制器
-    Route::group(['prefix' => 'index'], function () {
+    Route::prefix('index')->group(function () {
         // 后台首页
         Route::get('index', 'IndexController@index');
         // 更新系统
@@ -93,7 +71,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 文章管理
-    Route::group(['prefix' => 'article'], function () {
+    Route::prefix('article')->group(function () {
         // 文章列表
         Route::get('index', 'ArticleController@index');
         // 发布文章
@@ -117,7 +95,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 分类管理
-    Route::group(['prefix' => 'category'], function () {
+    Route::prefix('category')->group(function () {
         // 分类列表
         Route::get('index', 'CategoryController@index');
         // 添加分类
@@ -137,7 +115,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 标签管理
-    Route::group(['prefix' => 'tag'], function () {
+    Route::prefix('tag')->group(function () {
         // 标签列表
         Route::get('index', 'TagController@index');
         // 添加标签
@@ -155,7 +133,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 评论管理
-    Route::group(['prefix' => 'comment'], function () {
+    Route::prefix('comment')->group(function () {
         // 评论列表
         Route::get('index', 'CommentController@index');
         // 删除评论
@@ -171,7 +149,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 管理员
-    Route::group(['prefix' => 'user'], function () {
+    Route::prefix('user')->group(function () {
         // 管理员列表
         Route::get('index', 'UserController@index');
         // 编辑管理员
@@ -186,7 +164,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 第三方用户管理
-    Route::group(['prefix' => 'oauthUser'], function () {
+    Route::prefix('oauthUser')->group(function () {
         // 用户列表
         Route::get('index', 'OauthUserController@index');
         // 编辑管理员
@@ -195,7 +173,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 友情链接管理
-    Route::group(['prefix' => 'friendshipLink'], function () {
+    Route::prefix('friendshipLink')->group(function () {
         // 友情链接列表
         Route::get('index', 'FriendshipLinkController@index');
         // 添加友情链接
@@ -215,7 +193,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 推荐博客管理
-    Route::group(['prefix' => 'site'], function () {
+    Route::prefix('site')->group(function () {
         // 推荐博客列表
         Route::get('index', 'SiteController@index');
         // 添加推荐博客
@@ -235,7 +213,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 随言碎语管理
-    Route::group(['prefix' => 'chat'], function () {
+    Route::prefix('chat')->group(function () {
         // 随言碎语列表
         Route::get('index', 'ChatController@index');
         // 添加随言碎语
@@ -253,7 +231,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 系统设置
-    Route::group(['prefix' => 'config'], function () {
+    Route::prefix('config')->group(function () {
         // 编辑配置项页面
         Route::get('edit', 'ConfigController@edit');
         // 编辑邮箱配置页面
@@ -271,7 +249,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 开源项目管理
-    Route::group(['prefix' => 'gitProject'], function () {
+    Route::prefix('gitProject')->group(function () {
         // 开源项目列表
         Route::get('index', 'GitProjectController@index');
         // 添加开源项目
@@ -291,7 +269,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
     });
 
     // 菜单管理
-    Route::group(['prefix' => 'nav'], function () {
+    Route::prefix('nav')->group(function () {
         // 菜单列表
         Route::get('index', 'NavController@index');
         // 添加菜单
@@ -308,15 +286,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
         Route::get('restore/{id}', 'NavController@restore');
         // 彻底删除菜单
         Route::get('forceDelete/{id}', 'NavController@forceDelete');
-    });
-});
-
-/**
- * 各种钩子
- */
-Route::group(['prefix' => 'hook', 'namespace' => 'Hook'], function () {
-    // 开源中国
-    Route::group(['prefix' => 'oschina'], function () {
-        Route::post('push', 'OschinaController@push');
     });
 });

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class HomeAuth
+class AuthenticateWithOauthGuard
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,8 @@ class HomeAuth
      */
     public function handle($request, Closure $next)
     {
-        // 屏蔽未登录的访问
         if (!auth()->guard('oauth')->check()) {
-            die('未登录');
+            return response('请先登录', 401);
         }
 
         return $next($request);

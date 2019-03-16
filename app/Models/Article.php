@@ -30,6 +30,20 @@ class Article extends Base
         return str_replace(["\r", "\n", "\r\n"], '', $value);
     }
 
+    public function setDescriptionAttribute($value)
+    {
+        if (empty($value)) {
+            $description         = preg_replace(
+                ['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'],
+                '',
+                $this->getAttribute('markdown')
+            );
+            $this->attributes['description'] = re_substr($description, 0, 200, true);
+        } else {
+            $this->attributes['description'] = $value;
+        }
+    }
+
     /**
      * 关联文章表
      *
@@ -60,12 +74,6 @@ class Article extends Base
      */
     public function storeData($data, $flash = true)
     {
-        // 如果没有描述;则截取文章内容的前200字作为描述
-        if (empty($data['description'])) {
-            $description         = preg_replace(['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'], '', $data['markdown']);
-            $data['description'] = re_substr($description, 0, 200, true);
-        }
-
         // 给文章的插图添加水印;并取第一张图片
         $firstImage = $this->getCover($data['markdown']);
 

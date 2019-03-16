@@ -11,14 +11,14 @@ class OauthUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('oauth_users')->delete();
+        DB::table('oauth_users')->truncate();
         DB::table('oauth_users')->insert([
             [
                 'id'            => 1,
                 'type'          => 1,
                 'name'          => '白俊遥',
                 'avatar'        => '/uploads/article/default.jpg',
-                'openid'        => '',
+                'openid'        => '1',
                 'access_token'  => '',
                 'last_login_ip' => '127.0.0.1',
                 'login_times'   => 1,
@@ -33,7 +33,7 @@ class OauthUsersTableSeeder extends Seeder
                 'type'          => 1,
                 'name'          => '已删除',
                 'avatar'        => '/uploads/article/default.jpg',
-                'openid'        => '',
+                'openid'        => '2',
                 'access_token'  => '',
                 'last_login_ip' => '127.0.0.1',
                 'login_times'   => 1,
