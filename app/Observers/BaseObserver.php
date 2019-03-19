@@ -2,8 +2,6 @@
 
 namespace App\Observers;
 
-use Illuminate\Database\Eloquent\Model;
-
 class BaseObserver
 {
     public function created()
@@ -12,7 +10,7 @@ class BaseObserver
         $this->clearCache();
     }
 
-    public function updated(Model $model)
+    public function updated($model)
     {
         // restore() triggering both restored() and updated()
         if(! $model->isDirty('deleted_at')){
@@ -21,7 +19,7 @@ class BaseObserver
         $this->clearCache();
     }
 
-    public function deleted(Model $model)
+    public function deleted($model)
     {
         // delete() and forceDelete() will triggering deleted()
         if ($model->isForceDeleting()) {

@@ -88,7 +88,7 @@ class ComposerServiceProvider extends ServiceProvider
             });
 
             // 分配数据
-            $assign = compact('articleCount', '', 'commentCount', 'chatCount', 'oauthUserCount');
+            $assign = compact('articleCount', 'commentCount', 'chatCount', 'oauthUserCount');
             $view->with($assign);
         });
 
