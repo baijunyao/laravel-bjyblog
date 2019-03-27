@@ -13,53 +13,65 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.0.0",
+        "php": "^7.1.3",
         "apollopy/flysystem-aliyun-oss": "^1.2",
-        "appstract/laravel-opcache": "^1.4",
+        "appstract/laravel-opcache": "^2.0",
         "baijunyao/laravel-flash": "1.3.*",
         "baijunyao/laravel-model": "1.3.*",
         "baijunyao/laravel-print": "3.0.*",
         "baijunyao/laravel-scout-elasticsearch": "^2.0",
-        "baijunyao/laravel-test-support": "1.1.*",
+        "baijunyao/laravel-test-support": "^2.0",
         "baijunyao/laravel-upload": "^2.0",
         "composer/semver": "^1.4",
         "doctrine/dbal": "^2.5",
-        "fideloper/proxy": "~3.3",
+        "fideloper/proxy": "^4.0",
         "fukuball/jieba-php": "~0.25",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
         "joyqi/hyper-down": "dev-master",
-        "laravel/framework": "5.5.*",
-        "laravel/socialite": "^3.0",
-        "laravel/tinker": "~1.0",
+        "laravel/framework": "5.8.*",
+        "laravel/socialite": "^4.1",
+        "laravel/tinker": "^1.0",
+        "laravelium/feed": "3.1.*",
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
-        "roumen/feed": "2.11.*",
-        "sentry/sentry-laravel": "^0.11.0",
+        "sentry/sentry-laravel": "^1.0",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0",
-        "spatie/laravel-backup": "^5.11",
+        "spatie/laravel-backup": "^6.1",
         "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "filp/whoops": "~2.0",
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.14",
-        "fzaninotto/faker": "~1.4",
-        "laravel/dusk": "^2.0",
-        "mockery/mockery": "~1.0",
-        "phpunit/phpunit": "~6.0"
+        "fzaninotto/faker": "^1.4",
+        "laravel/dusk": "^5.0",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
     },
     "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
         "classmap": [
             "database/seeds",
             "database/factories"
         ],
-        "psr-4": {
-            "App\\": "app/"
-        },
         "files": [
             "app/Support/helpers.php"
         ]
@@ -69,32 +81,23 @@
             "Tests\\": "tests/"
         }
     },
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-            ]
-        }
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "phpcs": "vendor/bin/php-cs-fixer fix",
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate"
+            "@php artisan key:generate --ansi"
         ],
         "post-update-cmd": [
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
         ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
     }
 }

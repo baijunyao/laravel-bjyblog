@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -13,10 +14,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+        // 'Illuminate\Auth\Events\Registered' => [
+        //     SendEmailVerificationNotification::class,
+        // ],
+
         'SocialiteProviders\Manager\SocialiteWasCalled' => [
             'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
             'SocialiteProviders\QQ\QqExtendSocialite@handle',
         ],
+
         /**
          * 推荐博客审核通过
          */

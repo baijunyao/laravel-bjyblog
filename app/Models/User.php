@@ -20,6 +20,15 @@ class User extends Base implements AuthenticatableContract, AuthorizableContract
         'password', 'remember_token',
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
     public function setPasswordAttribute($password)
     {
         if (!empty($password)) {
