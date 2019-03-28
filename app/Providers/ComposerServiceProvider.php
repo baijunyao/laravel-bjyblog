@@ -18,6 +18,8 @@ use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider
 {
+    protected const CACHE_EXPIRE = 86400; // One day in second
+
     /**
      * Bootstrap the application services.
      *
@@ -32,7 +34,7 @@ class ComposerServiceProvider extends ServiceProvider
         // 如果表不存在则不再向下执行
         try {
             // 获取配置项
-            $config = Cache::remember('config', 10080, function () {
+            $config = Cache::remember('config', static::CACHE_EXPIRE, function () {
                 return Config::where('id', '>', 100)->pluck('value', 'name');
             });
         } catch (Exception $exception) {
@@ -56,7 +58,7 @@ class ComposerServiceProvider extends ServiceProvider
 
         // 开源项目数据
         view()->composer(['layouts/home', 'home/index/git'], function ($view) {
-            $gitProject = Cache::remember('common:gitProject', 10080, function () {
+            $gitProject = Cache::remember('common:gitProject', static::CACHE_EXPIRE, function () {
                 // 获取开源项目
                 return GitProject::select('name', 'type')->orderBy('sort')->get();
             });
@@ -67,22 +69,22 @@ class ComposerServiceProvider extends ServiceProvider
 
         // 获取各种统计
         view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
-            $articleCount = Cache::remember('count:article', 10080, function () {
+            $articleCount = Cache::remember('count:article', static::CACHE_EXPIRE, function () {
                 // 统计文章总数
                 return Article::count('id');
             });
 
-            $commentCount = Cache::remember('count:comment', 10080, function () {
+            $commentCount = Cache::remember('count:comment', static::CACHE_EXPIRE, function () {
                 // 统计评论总数
                 return Comment::count('id');
             });
 
-            $chatCount = Cache::remember('count:chat', 10080, function () {
+            $chatCount = Cache::remember('count:chat', static::CACHE_EXPIRE, function () {
                 // 统计随言碎语总数
                 return Chat::count('id');
             });
 
-            $oauthUserCount = Cache::remember('count:oauthUser', 10080, function () {
+            $oauthUserCount = Cache::remember('count:oauthUser', static::CACHE_EXPIRE, function () {
                 // 统计用户总数
                 return OauthUser::count('id');
             });
@@ -94,17 +96,17 @@ class ComposerServiceProvider extends ServiceProvider
 
         //分配前台通用的数据
         view()->composer('layouts/home', function ($view) {
-            $category = Cache::remember('common:category', 10080, function () {
+            $category = Cache::remember('common:category', static::CACHE_EXPIRE, function () {
                 // 获取分类导航
                 return Category::select('id', 'name')->orderBy('sort')->get();
             });
 
-            $tag = Cache::remember('common:tag', 10080, function () {
+            $tag = Cache::remember('common:tag', static::CACHE_EXPIRE, function () {
                 // 获取标签下的文章数统计
                 return Tag::has('articles')->withCount('articles')->get();
             });
 
-            $topArticle = Cache::remember('common:topArticle', 10080, function () {
+            $topArticle = Cache::remember('common:topArticle', static::CACHE_EXPIRE, function () {
                 // 获取置顶推荐文章
                 return Article::select('id', 'title')
                     ->where('is_top', 1)
@@ -112,21 +114,21 @@ class ComposerServiceProvider extends ServiceProvider
                     ->get();
             });
 
-            $newComment = Cache::remember('common:newComment', 10080, function () {
+            $newComment = Cache::remember('common:newComment', static::CACHE_EXPIRE, function () {
                 // 获取最新评论
                 $commentModel = new Comment();
 
                 return $commentModel->getNewData();
             });
 
-            $friendshipLink = Cache::remember('common:friendshipLink', 10080, function () {
+            $friendshipLink = Cache::remember('common:friendshipLink', static::CACHE_EXPIRE, function () {
                 // 获取友情链接
                 return FriendshipLink::select('name', 'url')
                     ->orderBy('sort')
                     ->get();
             });
 
-            $nav = Cache::remember('common:nav', 10080, function () {
+            $nav = Cache::remember('common:nav', static::CACHE_EXPIRE, function () {
                 // 获取菜单
                 return Nav::select('name', 'url')
                     ->orderBy('sort')
@@ -138,7 +140,7 @@ class ComposerServiceProvider extends ServiceProvider
             if (empty($qunArticleId)) {
                 $qqQunArticle = [];
             } else {
-                $qqQunArticle = Cache::remember('qqQunArticle', 10080, function () use ($qunArticleId) {
+                $qqQunArticle = Cache::remember('qqQunArticle', static::CACHE_EXPIRE, function () use ($qunArticleId) {
                     return Article::select('id', 'title')->where('id', $qunArticleId)->first();
                 });
             }
