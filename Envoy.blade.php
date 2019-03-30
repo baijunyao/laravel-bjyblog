@@ -1,6 +1,6 @@
 @setup
 	require __DIR__.'/vendor/autoload.php';
-	$dotenv = new Dotenv\Dotenv(__DIR__);
+	$dotenv = Dotenv\Dotenv::create(__DIR__);
 	try {
 		$dotenv->load();
 		$dotenv->required(['DEPLOY_IP', 'DEPLOY_PORT', 'DEPLOY_USER', 'DEPLOY_PATH', 'DEPLOY_BRANCH'])->notEmpty();
