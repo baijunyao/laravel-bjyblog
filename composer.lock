@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52457816f88adec87a521a651710391d",
+    "content-hash": "9ab7f3f502ce350eee70cd231011a5ba",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -234,16 +234,16 @@
         },
         {
             "name": "baijunyao/laravel-flash",
-            "version": "v1.3.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-flash.git",
-                "reference": "9c7d2e02fda95c303e660673775964c10755f069"
+                "reference": "5c6676c210cff43e86bce3656ac6f22db5efff63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-flash/zipball/9c7d2e02fda95c303e660673775964c10755f069",
-                "reference": "9c7d2e02fda95c303e660673775964c10755f069",
+                "url": "https://api.github.com/repos/baijunyao/laravel-flash/zipball/5c6676c210cff43e86bce3656ac6f22db5efff63",
+                "reference": "5c6676c210cff43e86bce3656ac6f22db5efff63",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -253,8 +253,8 @@
                 ]
             },
             "require": {
-                "baijunyao/laravel-plugin-manager": "2.1.*",
-                "baijunyao/laravel-toastr": "1.0.*"
+                "baijunyao/laravel-plugin-manager": "^3.0",
+                "baijunyao/laravel-toastr": "^1.0"
             },
             "type": "library",
             "extra": {
@@ -283,7 +283,7 @@
                 }
             ],
             "description": "flash message",
-            "time": "2018-07-28T15:17:05+00:00"
+            "time": "2019-04-01T15:32:14+00:00"
         },
         {
             "name": "baijunyao/laravel-jquery",
@@ -333,16 +333,16 @@
         },
         {
             "name": "baijunyao/laravel-model",
-            "version": "v1.3.2",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-model.git",
-                "reference": "e2ab628001afabbb0f3e4ff0e19eed7b0c49d004"
+                "reference": "8d7a12d17618d3384a3331e3d227ea7479748132"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-model/zipball/e2ab628001afabbb0f3e4ff0e19eed7b0c49d004",
-                "reference": "e2ab628001afabbb0f3e4ff0e19eed7b0c49d004",
+                "url": "https://api.github.com/repos/baijunyao/laravel-model/zipball/8d7a12d17618d3384a3331e3d227ea7479748132",
+                "reference": "8d7a12d17618d3384a3331e3d227ea7479748132",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -352,7 +352,7 @@
                 ]
             },
             "require": {
-                "baijunyao/laravel-flash": "1.3.*"
+                "baijunyao/laravel-flash": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -371,20 +371,20 @@
                 }
             ],
             "description": "base model",
-            "time": "2018-07-30T05:10:27+00:00"
+            "time": "2019-04-01T15:34:26+00:00"
         },
         {
             "name": "baijunyao/laravel-plugin-manager",
-            "version": "v2.1.3",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-plugin-manager.git",
-                "reference": "9793cd4e60540c232dea97706a1e986aa187f761"
+                "reference": "32bb0005fc9246795ea2126e20c9eec76cc069dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-plugin-manager/zipball/9793cd4e60540c232dea97706a1e986aa187f761",
-                "reference": "9793cd4e60540c232dea97706a1e986aa187f761",
+                "url": "https://api.github.com/repos/baijunyao/laravel-plugin-manager/zipball/32bb0005fc9246795ea2126e20c9eec76cc069dd",
+                "reference": "32bb0005fc9246795ea2126e20c9eec76cc069dd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -420,7 +420,7 @@
                 }
             ],
             "description": "plugin manager",
-            "time": "2018-07-28T15:15:09+00:00"
+            "time": "2019-04-01T15:23:26+00:00"
         },
         {
             "name": "baijunyao/laravel-print",
@@ -574,16 +574,16 @@
         },
         {
             "name": "baijunyao/laravel-toastr",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-toastr.git",
-                "reference": "700a2182d1b8d030b38799007f6b319ea6f033bf"
+                "reference": "80f9dfd2bdaa719d5a99cd9c767a3b5177b2bd27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-toastr/zipball/700a2182d1b8d030b38799007f6b319ea6f033bf",
-                "reference": "700a2182d1b8d030b38799007f6b319ea6f033bf",
+                "url": "https://api.github.com/repos/baijunyao/laravel-toastr/zipball/80f9dfd2bdaa719d5a99cd9c767a3b5177b2bd27",
+                "reference": "80f9dfd2bdaa719d5a99cd9c767a3b5177b2bd27",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -622,7 +622,7 @@
                 }
             ],
             "description": "toastr",
-            "time": "2018-07-12T10:05:04+00:00"
+            "time": "2018-08-13T07:37:01+00:00"
         },
         {
             "name": "baijunyao/laravel-upload",
@@ -1274,16 +1274,16 @@
         },
         {
             "name": "dragonmantank/cron-expression",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonmantank/cron-expression.git",
-                "reference": "92a2c3768d50e21a1f26a53cb795ce72806266c5"
+                "reference": "72b6fbf76adb3cf5bc0db68559b33d41219aba27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/92a2c3768d50e21a1f26a53cb795ce72806266c5",
-                "reference": "92a2c3768d50e21a1f26a53cb795ce72806266c5",
+                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/72b6fbf76adb3cf5bc0db68559b33d41219aba27",
+                "reference": "72b6fbf76adb3cf5bc0db68559b33d41219aba27",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1293,12 +1293,17 @@
                 ]
             },
             "require": {
-                "php": ">=7.0.0"
+                "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~6.4"
+                "phpunit/phpunit": "^6.4|^7.0"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Cron\\": "src/Cron/"
@@ -1325,7 +1330,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2018-06-06T03:12:17+00:00"
+            "time": "2019-03-31T00:38:28+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2827,16 +2832,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.50",
+            "version": "1.0.51",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "dab4e7624efa543a943be978008f439c333f2249"
+                "reference": "755ba7bf3fb9031e6581d091db84d78275874396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dab4e7624efa543a943be978008f439c333f2249",
-                "reference": "dab4e7624efa543a943be978008f439c333f2249",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/755ba7bf3fb9031e6581d091db84d78275874396",
+                "reference": "755ba7bf3fb9031e6581d091db84d78275874396",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2913,7 +2918,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-02-01T08:50:36+00:00"
+            "time": "2019-03-30T13:22:34+00:00"
         },
         {
             "name": "league/html-to-markdown",
