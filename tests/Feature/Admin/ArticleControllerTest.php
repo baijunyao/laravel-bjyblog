@@ -39,13 +39,16 @@ class ArticleControllerTest extends TestCase
             'keywords'    => 'keywords',
             'markdown'    => 'content',
         ];
-        $this->adminPost('store', $commonColumn + [
+        $this->adminPost('store', [
             'tag_ids'     => [1],
             'description' => '',
             'cover'       => $file,
-        ])->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
+        ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
-        $this->assertDatabaseHas($this->table, $commonColumn);
+        $this->assertDatabaseHas($this->table, $commonColumn + [
+            'description' => re_substr($commonColumn['markdown'], 0, 200, true)
+        ]);
+
         $this->assertDatabaseHas('article_tags', [
             'article_id' => Article::where($commonColumn)->value('id'),
             'tag_id'     => 1,
