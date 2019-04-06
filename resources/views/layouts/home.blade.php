@@ -12,7 +12,6 @@
     @yield('css')
 </head>
 <body>
-<!-- 顶部导航开始 -->
 <header id="b-public-nav" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -66,14 +65,12 @@
         </div>
     </div>
 </header>
-<!-- 顶部导航结束 -->
 
 <div class="b-h-70"></div>
 
 <div id="b-content" class="container">
     <div class="row">
         @yield('content')
-        <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
             <div class="b-search">
                 <form class="form-inline" role="form" action="{{ url('search') }}" method="post">
@@ -82,7 +79,7 @@
                     <input class="b-search-submit" type="submit" value="全站搜索">
                 </form>
             </div>
-            @if(!empty(config('bjyblog.qq_qun.number')))
+            @if(!empty(config('bjyblog.qq_qun.number')) && config('app.locale') === 'zh-CN')
                 <div class="b-qun">
                     <h4 class="b-title">加入组织</h4>
                     <ul class="b-all-tname">
@@ -149,7 +146,7 @@
                 </div>
             </div>
             <div class="b-link">
-                <h4 class="b-title">Links</h4>
+                <h4 class="b-title">{{ __('Links') }}</h4>
                 <p>
                     @foreach($friendshipLink as $v)
                         <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
@@ -158,13 +155,9 @@
                 </p>
             </div>
         </div>
-        <!-- 通用右部区域结束 -->
     </div>
-
 </div>
-<!-- 主体部分结束 -->
 
-<!-- 通用底部开始 -->
 <footer id="b-foot">
     <div class="container">
         <div class="row b-content">
@@ -175,7 +168,7 @@
                 @if(!empty(config('bjyblog.admin_email')))
                     <dd>{{ __('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
                 @endif
-                @if(!empty(config('bjyblog.icp')))
+                @if(!empty(config('bjyblog.icp')) && config('app.locale') === 'zh-CN')
                     <dd>{{ __('ICP') }}：{{ config('bjyblog.icp') }}</dd>
                 @endif
             </dl>
@@ -200,9 +193,7 @@
     </div>
     <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>
 </footer>
-<!-- 通用底部结束 -->
 
-<!-- 登录模态框开始 -->
 <div class="modal fade" id="b-modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content row">
@@ -228,12 +219,9 @@
         </div>
     </div>
 </div>
-<!-- 登录模态框结束 -->
 
 <script src="{{ mix('js/app.js') }}"></script>
-<!-- 百度统计开始 -->
 {!! htmlspecialchars_decode(config('bjyblog.statistics')) !!}
-<!-- 百度统计结束 -->
 @yield('js')
 </body>
 </html>
