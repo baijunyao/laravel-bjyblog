@@ -375,16 +375,16 @@
         },
         {
             "name": "baijunyao/laravel-plugin-manager",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-plugin-manager.git",
-                "reference": "32bb0005fc9246795ea2126e20c9eec76cc069dd"
+                "reference": "1d2f75619912d3063eaf25574f8e61cadc357ec3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-plugin-manager/zipball/32bb0005fc9246795ea2126e20c9eec76cc069dd",
-                "reference": "32bb0005fc9246795ea2126e20c9eec76cc069dd",
+                "url": "https://api.github.com/repos/baijunyao/laravel-plugin-manager/zipball/1d2f75619912d3063eaf25574f8e61cadc357ec3",
+                "reference": "1d2f75619912d3063eaf25574f8e61cadc357ec3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -420,7 +420,7 @@
                 }
             ],
             "description": "plugin manager",
-            "time": "2019-04-01T15:23:26+00:00"
+            "time": "2019-04-10T13:26:06+00:00"
         },
         {
             "name": "baijunyao/laravel-print",
