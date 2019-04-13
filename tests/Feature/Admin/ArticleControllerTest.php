@@ -46,7 +46,7 @@ class ArticleControllerTest extends TestCase
         ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $commonColumn + [
-            'description' => re_substr($commonColumn['markdown'], 0, 200, true)
+            'description' => re_substr($commonColumn['markdown'], 0, 200, true),
         ]);
 
         $this->assertDatabaseHas('article_tags', [
