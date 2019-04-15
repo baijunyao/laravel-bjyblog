@@ -60,7 +60,7 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Store $request, Site $siteModel, OauthUser $oauthUser)
+    public function store(Store $request, OauthUser $oauthUser)
     {
         $oauthUserId = auth()->guard('oauth')->user()->id;
 
@@ -69,16 +69,12 @@ class SiteController extends Controller
         // 获取序号
         $sort             = Site::orderBy('sort', 'desc')->value('sort');
         $siteData['sort'] = (int) $sort + 1;
-        $result           = $siteModel->storeData($siteData);
+        $result           = Site::create($siteData);
 
         if ($result) {
-            $oauthUserMap = [
-                'id' => $oauthUserId,
-            ];
-            $oAuthUserData = [
-                'email' => $request->input('email'),
-            ];
-            $oauthUser->updateData($oauthUserMap, $oAuthUserData);
+            OauthUser::where('id', $oauthUserId)->update([
+                'email' => $request->input('email')
+            ]);
 
             Notification::route('mail', config('bjyblog.notification_email'))
                 ->notify(new ApplySite());

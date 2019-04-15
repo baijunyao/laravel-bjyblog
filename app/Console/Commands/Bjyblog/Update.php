@@ -86,10 +86,9 @@ class Update extends Command
             $version = strtolower(str_replace('_', '.', $v));
             $command = 'upgrade:' . $version;
             Artisan::call($command);
-            $consoleData = [
-                'name' => $name,
-            ];
-            $consoleModel->storeData($consoleData);
+            Console::create([
+                'name' => $name
+            ]);
             $this->info($version . ' success');
         }
         Artisan::call('cache:clear');

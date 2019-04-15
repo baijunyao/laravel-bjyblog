@@ -97,7 +97,7 @@ class OAuthController extends Controller
                 Auth::guard('admin')->loginUsingId(1, true);
             }
         } else {
-            $data = [
+            $userId = OauthUser::create([
                 'type'          => $type[$service],
                 'name'          => $user->nickname,
                 'openid'        => $user->id,
@@ -106,19 +106,12 @@ class OAuthController extends Controller
                 'login_times'   => 1,
                 'is_admin'      => 0,
                 'email'         => '',
-            ];
-            // 新增数据
-            $userId = $oauthUserModel->storeData($data, false);
-            // 组合头像地址
-            $avatarPath = '/uploads/avatar/' . $userId . '.jpg';
+            ]);
+
             // 更新头像
-            $editMap = [
-                'id' => $userId,
-            ];
-            $editData = [
-                'avatar' => $avatarPath,
-            ];
-            $oauthUserModel->updateData($editMap, $editData, false);
+            OauthUser::where('id', $userId)->update([
+                'avatar' => '/uploads/avatar/' . $userId . '.jpg'
+            ]);
         }
 
         $avatarPath = public_path('uploads/avatar/' . $userId . '.jpg');

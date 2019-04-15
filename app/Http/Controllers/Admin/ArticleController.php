@@ -92,6 +92,7 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token', 'description');
+
         // 上传封面图
         if ($request->hasFile('cover')) {
             $result = Upload::file('cover', 'uploads/article');
@@ -101,7 +102,7 @@ class ArticleController extends Controller
         }
 
         $data['description'] = $request->input('description', '');
-        $article->storeData($data);
+        Article::create($data);
 
         return redirect('admin/article/index');
     }
