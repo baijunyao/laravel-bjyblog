@@ -165,11 +165,9 @@ class ArticleController extends Controller
         ];
         $articleTagModel->forceDeleteData($articleTagMap, false);
         $articleTagModel->addTagIds($id, $tag_ids);
+
         // 编辑文章
-        $map = [
-            'id' => $id,
-        ];
-        $articleModel->updateData($map, $data);
+        Article::where('id', $id)->update($id);
 
         return redirect()->back();
     }
@@ -253,17 +251,13 @@ class ArticleController extends Controller
             ->orWhere('html', 'like', "%$search%")
             ->get();
         foreach ($data as $k => $v) {
-            $updateMap = [
-                'id' => $v->id,
-            ];
-            $updateData = [
+            Article::where('id', $v->id)->update([
                 'title'       => str_replace($search, $replace, $v->title),
                 'keywords'    => str_replace($search, $replace, $v->keywords),
                 'description' => str_replace($search, $replace, $v->description),
                 'markdown'    => str_replace($search, $replace, $v->markdown),
                 'html'        => str_replace($search, $replace, $v->html),
-            ];
-            $articleModel->updateData($updateMap, $updateData);
+            ]);
         }
 
         return redirect()->back();

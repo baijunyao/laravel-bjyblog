@@ -133,14 +133,10 @@ class FromThinkPHPBjyBlog extends Command
                 'click'       => $v->click,
             ];
             $articleModel->create($article);
-            $editArticleMap = [
-                'id' => $v->aid,
-            ];
 
-            $editArticleData = [
+            Article::where('id', $v->aid)->update([
                 'created_at' => date('Y-m-d H:i:s', $v->addtime),
-            ];
-            $articleModel->updateData($editArticleMap, $editArticleData);
+            ]);
         }
 
         // 从旧系统中迁移文章标签中间表
@@ -180,13 +176,10 @@ class FromThinkPHPBjyBlog extends Command
                 'status'        => $v->status,
             ];
             $commentModel->create($comment_data);
-            $editCommentMap = [
-                'id' => $v->cmtid,
-            ];
-            $editCommentData = [
+
+            Comment::where('id', $v->cmtid)->update([
                 'created_at' => date('Y-m-d H:i:s', $v->date),
-            ];
-            $commentModel->updateData($editCommentMap, $editCommentData);
+            ]);
         }
 
         // 迁移友情链接
@@ -266,16 +259,12 @@ class FromThinkPHPBjyBlog extends Command
     {
         $data = $oauthUserModel->select('id', 'avatar')->get();
         foreach ($data as $k => $v) {
-            $editMap = [
-                'id' => $v->id,
-            ];
             if (strpos($v->avatar, 'http') !== false) {
                 $avatarPath = 'uploads/avatar/' . $v->id . '.jpg';
                 file_put_contents(public_path($avatarPath), curl_get_contents($v->avatar));
-                $editData = [
+                OauthUser::where('id', $v->id)->update([
                     'avatar' => '/' . $avatarPath,
-                ];
-                $oauthUserModel->updateData($editMap, $editData);
+                ]);
             }
         }
     }
