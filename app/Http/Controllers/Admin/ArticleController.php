@@ -197,10 +197,7 @@ class ArticleController extends Controller
      */
     public function restore($id, Article $articleModel, ArticleTag $articleTagModel)
     {
-        $map = [
-            'id' => $id,
-        ];
-        $articleModel->restoreData($map);
+        Article::whereId($id)->restore();
 
         return redirect()->back();
     }
