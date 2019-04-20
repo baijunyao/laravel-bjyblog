@@ -15,8 +15,7 @@ class Site extends Base
         if (strpos($value, 'http') === false) {
             $value = 'http://' . $value;
         }
-        // 删除右侧的/
-        $value                   = rtrim($value, '/');
-        $this->attributes['url'] = strtolower($value);
+
+        $this->attributes['url'] = strtolower(rtrim($value, '/'));
     }
 }

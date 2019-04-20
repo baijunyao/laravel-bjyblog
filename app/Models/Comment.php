@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Jobs\SendCommentEmail;
-
 /**
  * 评论
  */
@@ -22,6 +20,11 @@ class Comment extends Base
     public function getContentAttribute($value)
     {
         return $this->ubbToImage($value);
+    }
+
+    public function setContentAttribute($value)
+    {
+        $this->attributes['content'] =  $this->imageToUbb($value);
     }
 
     /**
@@ -84,86 +87,6 @@ class Comment extends Base
         $content = str_replace($search, $replace, $content);
 
         return clean(strip_tags($content));
-    }
-
-    /**
-     * 添加数据
-     *
-     * @param array $data
-     * @param mixed $flash
-     *
-     * @return bool|mixed
-     */
-    public function storeData($data, $flash = true)
-    {
-        $user_id = auth()->guard('oauth')->user()->id;
-        $name    = auth()->guard('oauth')->user()->name;
-
-        $isAdmin = OauthUser::where('id', $user_id)->value('is_admin');
-        $content = $this->imageToUbb($data['content']);
-        if (empty($content)) {
-            return false;
-        }
-        $comment = [
-            'oauth_user_id' => $user_id,
-            'type'          => 1,
-            'article_id'    => $data['article_id'],
-            'pid'           => $data['pid'],
-            'content'       => $content,
-            'status'        => 1,
-        ];
-
-        // 添加数据
-        $id = parent::storeData($comment, $flash);
-
-        if (!$id) {
-            return false;
-        }
-
-        // 获取文章标题
-        $title = Article::where('id', $data['article_id'])
-            ->withTrashed()
-            ->value('title');
-        // 给站长发送通知邮件
-        if ($isAdmin == 0) {
-            $address = Config::where('name', 'EMAIL_RECEIVE')->value('value');
-            if (!empty($address)) {
-                $emailData = [
-                    'name'    => '站长',
-                    'user'    => $name,
-                    'date'    => date('Y-m-d H:i:s'),
-                    'type'    => '评论',
-                    'url'     => url('article', [$data['article_id']]) . '#comment-' . $id,
-                    'title'   => $title,
-                    'content' => $this->ubbToImage($content),
-                ];
-                $subject = $name . '评论了 ' . $title;
-                dispatch(new SendCommentEmail($address, '站长', $subject, $emailData));
-            }
-        }
-        // 给用户发送邮件通知
-        if ($data['pid'] != 0) {
-            $parent_user_id = self::where('id', $data['pid'])->value('oauth_user_id');
-            $parentData     = OauthUser::select('name', 'email')
-                ->where('id', $parent_user_id)
-                ->first()
-                ->toArray();
-            if (!empty($parentData['email'])) {
-                $emailData = [
-                    'name'    => $parentData['name'],
-                    'user'    => $name,
-                    'date'    => date('Y-m-d H:i:s'),
-                    'type'    => '回复',
-                    'url'     => url('article', [$data['article_id']]) . '#comment-' . $id,
-                    'title'   => $title,
-                    'content' => $this->ubbToImage($content),
-                ];
-                $subject = $name . '评论了 ' . $title;
-                dispatch(new SendCommentEmail($parentData['email'], $parentData['name'], $subject, $emailData));
-            }
-        }
-
-        return $id;
     }
 
     /**

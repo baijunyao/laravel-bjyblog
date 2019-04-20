@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ab7f3f502ce350eee70cd231011a5ba",
+    "content-hash": "f985b867d5a0fca4695f956dd4ccd1f9",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -330,48 +330,6 @@
             ],
             "description": "laravel jquery",
             "time": "2018-06-14T07:29:52+00:00"
-        },
-        {
-            "name": "baijunyao/laravel-model",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/baijunyao/laravel-model.git",
-                "reference": "8d7a12d17618d3384a3331e3d227ea7479748132"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-model/zipball/8d7a12d17618d3384a3331e3d227ea7479748132",
-                "reference": "8d7a12d17618d3384a3331e3d227ea7479748132",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "baijunyao/laravel-flash": "^2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Baijunyao\\LaravelModel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "baijunyao",
-                    "email": "baijunyao@baijunyao.com"
-                }
-            ],
-            "description": "base model",
-            "time": "2019-04-01T15:34:26+00:00"
         },
         {
             "name": "baijunyao/laravel-plugin-manager",

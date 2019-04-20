@@ -38,26 +38,22 @@ class V5_5_4_3 extends Command
      */
     public function handle()
     {
-        // 获取配置项
-        $configModel = new Config();
-        $config      = $configModel->where('name', 'like', 'email.%')->get();
+        $config = Config::where('name', 'like', 'email.%')->get();
+
         // 把 email 改为 mail
         foreach ($config as $k => $v) {
-            $updateMap = [
-                'id' => $v->id,
-            ];
-            $updateData = [
-                'name' => str_replace('email.', 'mail.', $v->name),
-            ];
-            $configModel->updateData($updateMap, $updateData);
+            Config::where('id', $v->id)->update([
+                'name' => str_replace('email.', 'mail.', $v->name)
+            ]);
         }
+
         // 增加 mail.from.address 配置
-        $storeData = [
+        Config::create([
             'id'    => 157,
             'name'  => 'mail.from.address',
             'value' => $config->where('id', 143)->first()->value,
-        ];
-        $configModel->storeData($storeData);
+        ]);
+
         $this->info('success');
     }
 }

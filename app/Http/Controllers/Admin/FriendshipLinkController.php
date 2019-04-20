@@ -75,7 +75,13 @@ class FriendshipLinkController extends Controller
      */
     public function update(Store $request, $id)
     {
-        FriendshipLink::find($id)->update($request->except('_token'));
+        $friendshipLink = $request->except('_token');
+
+        if (isset($friendshipLink['sort']) && empty($friendshipLink['sort'])) {
+            $friendshipLink['sort'] = null;
+        }
+
+        FriendshipLink::find($id)->update($friendshipLink);
 
         return redirect()->back();
     }

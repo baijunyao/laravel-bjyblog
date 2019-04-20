@@ -8,7 +8,7 @@ use Cache;
 
 class TagObserver extends BaseObserver
 {
-    public function deleting(Tag $tag)
+    public function deleting($tag)
     {
         if (ArticleTag::where('tag_id', $tag->id)->count() !== 0) {
             flash_error('此标签下有文章，不可以删除。');
