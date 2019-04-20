@@ -241,7 +241,15 @@ class IndexController extends Controller
         }
 
         // 存储评论
-        $id = Comment::create($request->only('content', 'article_id', 'pid'));
+        $id = Comment::create($request->only('article_id', 'content', 'pid') + [
+            'oauth_user_id' => $userId,
+            'type'          => 1,
+            'status'        => 1,
+        ]);
+
+        if (! $id) {
+            return ajax_return(500);
+        }
 
         return ajax_return(200, ['id' => $id]);
     }

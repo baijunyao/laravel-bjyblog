@@ -49,17 +49,11 @@ class FromThinkPHPBjyBlog extends Command
     public function handle()
     {
         $articleModel        = new Article();
-        $articleTagModel     = new ArticleTag();
         $commentModel        = new Comment();
-        $friendshipLinkModel = new FriendshipLink();
-        $configModel         = new Config();
-        $oauthUserModel      = new OauthUser();
-        $chatModel           = new Chat();
-        $categoryModel       = new Category();
-        $tagModel            = new Tag();
+
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
-            die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
+            die('已经迁移过,如需重新迁移,请先删除 /storage/lock/migration.lock 文件');
         }
         Artisan::call('seeder:clear');
 
@@ -151,10 +145,10 @@ class FromThinkPHPBjyBlog extends Command
         // 从旧系统中迁移评论
         $data = DB::connection('old')
             ->table('comment')
-            // ->where('cmtid', 1614)
             ->orderBy('cmtid', 'desc')
             ->get()
             ->toArray();
+
         foreach ($data as $v) {
             // 把img标签反转义
             $content = html_entity_decode(htmlspecialchars_decode($v->content));
@@ -166,7 +160,7 @@ class FromThinkPHPBjyBlog extends Command
             }, $img[1]);
             $content      = str_replace($search, $replace, $content);
             $content      = strip_tags($content);
-            $comment_data = [
+            $commentModel->insert([
                 'id'            => $v->cmtid,
                 'oauth_user_id' => $v->ouid,
                 'type'          => $v->type,
@@ -174,11 +168,8 @@ class FromThinkPHPBjyBlog extends Command
                 'article_id'    => $v->aid,
                 'content'       => $content,
                 'status'        => $v->status,
-            ];
-            $commentModel->create($comment_data);
-
-            Comment::where('id', $v->cmtid)->update([
                 'created_at' => date('Y-m-d H:i:s', $v->date),
+                'updated_at' => date('Y-m-d H:i:s', $v->date),
             ]);
         }
 
@@ -231,7 +222,8 @@ class FromThinkPHPBjyBlog extends Command
                 'login_times'   => $v->login_times,
                 'email'         => $v->email,
                 'is_admin'      => $v->is_admin,
-                'created_at'    => date('Y-m-d H:i:s', $v->create_time)
+                'created_at'    => date('Y-m-d H:i:s', $v->create_time),
+                'updated_at'    => date('Y-m-d H:i:s', $v->create_time),
             ]);
         }
 
@@ -242,6 +234,7 @@ class FromThinkPHPBjyBlog extends Command
                 'id'      => $v->chid,
                 'content' => $v->content,
                 'created_at' => date('Y-m-d H:i:s', $v->date),
+                'updated_at' => date('Y-m-d H:i:s', $v->date),
             ]);
         }
         Artisan::call('bjyblog:update');

@@ -41,7 +41,7 @@ class V5_5_10_0 extends Command
         $id = Console::whereIn('id', [5, 6])->pluck('id');
 
         if (!$id->contains(5)) {
-            Console::create([
+            Console::insert([
                 'id'         => 5,
                 'name'       => 'App\Console\Commands\Upgrade\V5_5_8_0',
                 'created_at' => '2018-12-31 21:03:00',
@@ -51,7 +51,7 @@ class V5_5_10_0 extends Command
         }
 
         if (!$id->contains(6)) {
-            Console::create([
+            Console::insert([
                 'id'         => 6,
                 'name'       => 'App\Console\Commands\Upgrade\V5_5_9_0',
                 'created_at' => '2018-12-31 21:03:00',

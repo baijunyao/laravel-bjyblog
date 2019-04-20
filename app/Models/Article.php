@@ -65,41 +65,6 @@ class Article extends Base
     }
 
     /**
-     * 添加文章
-     *
-     * @param array $data
-     * @param mixed $flash
-     *
-     * @return bool|mixed
-     */
-    public function storeData($data, $flash = true)
-    {
-        // 给文章的插图添加水印;并取第一张图片
-        $firstImage = $this->getCover($data['markdown']);
-
-        // 如果没有上传封面图；则取第一张图片作为封面图
-        if (empty($data['cover'])) {
-            $data['cover'] = $firstImage;
-        }
-
-        // 把markdown转html
-        $data['html'] = markdown_to_html($data['markdown']);
-        $tag_ids      = $data['tag_ids'];
-        unset($data['tag_ids']);
-        //添加数据
-        $result = parent::storeData($data, $flash);
-        if ($result) {
-            // 给文章添加标签
-            $articleTag = new ArticleTag();
-            $articleTag->addTagIds($result, $tag_ids);
-
-            return $result;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * 给文章的插图添加水印;并取第一张图片作为封面图
      *
      * @param $content        markdown格式的文章内容

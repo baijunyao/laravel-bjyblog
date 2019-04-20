@@ -89,11 +89,10 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Store $request, Article $article)
+    public function store(Store $request, Article $articleModel)
     {
         $data = $request->except('_token', 'description');
 
-        // 上传封面图
         if ($request->hasFile('cover')) {
             $result = Upload::file('cover', 'uploads/article');
             if ($result['status_code'] === 200) {
@@ -101,8 +100,23 @@ class ArticleController extends Controller
             }
         }
 
+        if (empty($data['cover'])) {
+            $firstImage = $articleModel->getCover($data['markdown']);
+            $data['cover'] = $firstImage;
+        }
+
+        $data['html'] = markdown_to_html($data['markdown']);
+        $tag_ids      = $data['tag_ids'];
+        unset($data['tag_ids']);
+
         $data['description'] = $request->input('description', '');
-        Article::create($data);
+        $article = Article::create($data);
+
+        if ($article) {
+            // 给文章添加标签
+            $articleTag = new ArticleTag();
+            $articleTag->addTagIds($article->id, $tag_ids);
+        }
 
         return redirect('admin/article/index');
     }
@@ -160,14 +174,12 @@ class ArticleController extends Controller
         $data['html'] = markdown_to_html($data['markdown']);
         unset($data['tag_ids']);
         // 先彻底删除此文章下的所有标签
-        ArticleTag::where('article_id', $id)->get()->each(function ($articleTag) {
-            $articleTag->forceDelete();
-        });
+        ArticleTag::where('article_id', $id)->forceDelete();
 
         $articleTagModel->addTagIds($id, $tag_ids);
 
         // 编辑文章
-        Article::where('id', $id)->update($id);
+        Article::find($id)->update($data);
 
         return redirect()->back();
     }
@@ -197,7 +209,7 @@ class ArticleController extends Controller
      */
     public function restore($id, Article $articleModel, ArticleTag $articleTagModel)
     {
-        Article::whereId($id)->restore();
+        Article::onlyTrashed()->find($id)->restore();
 
         return redirect()->back();
     }
@@ -248,7 +260,7 @@ class ArticleController extends Controller
             ->orWhere('html', 'like', "%$search%")
             ->get();
         foreach ($data as $k => $v) {
-            Article::where('id', $v->id)->update([
+            Article::find($v->id)->update([
                 'title'       => str_replace($search, $replace, $v->title),
                 'keywords'    => str_replace($search, $replace, $v->keywords),
                 'description' => str_replace($search, $replace, $v->description),

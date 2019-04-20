@@ -2,18 +2,12 @@
 
 namespace App\Observers;
 
-use App\Models\Article;
 use App\Models\ArticleTag;
 use Cache;
 
-class ArticleObserver
+class ArticleObserver extends BaseObserver
 {
-    public function saved()
-    {
-        $this->clearCache();
-    }
-
-    public function deleted(Article $article)
+    public function deleted($article)
     {
         // 删除文章后同步删除关联表 article_tags 中的数据
         if ($article->isForceDeleting()) {
@@ -27,7 +21,7 @@ class ArticleObserver
         $this->clearCache();
     }
 
-    public function restored(Article $article)
+    public function restored($article)
     {
         // 恢复删除的文章后同步恢复关联表 article_tags 中的数据
         ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();
@@ -36,7 +30,7 @@ class ArticleObserver
         $this->clearCache();
     }
 
-    private function clearCache()
+    protected function clearCache()
     {
         // 更新热门推荐文章缓存
         Cache::forget('common:topArticle');

@@ -72,7 +72,7 @@ class CategoryController extends Controller
      */
     public function update(Update $request, $id)
     {
-        Category::find($id)->forceFill($request->except('_token'))->save();
+        Category::find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }
