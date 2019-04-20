@@ -4,7 +4,7 @@ namespace App\Observers;
 
 class BaseObserver
 {
-    public function created()
+    public function created($model)
     {
         flash_success('添加成功');
         $this->clearCache();
@@ -31,7 +31,7 @@ class BaseObserver
         $this->clearCache();
     }
 
-    public function restored()
+    public function restored($model)
     {
         flash_success('恢复成功');
         $this->clearCache();

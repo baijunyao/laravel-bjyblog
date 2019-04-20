@@ -3,24 +3,23 @@
 namespace App\Console\Commands\Upgrade;
 
 use App\Models\Config;
-use App\Models\Console;
 use Illuminate\Console\Command;
 
-class V5_5_7_0 extends Command
+class V5_8_1_0 extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'upgrade:v5.5.7.0';
+    protected $signature = 'upgrade:v5.8.1.0';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'upgrade to v5.8.1.0';
 
     /**
      * Create a new command instance.
@@ -39,11 +38,12 @@ class V5_5_7_0 extends Command
      */
     public function handle()
     {
-        Config::create([
-            'id'    => '158',
-            'name'  => 'sentry.dsn',
-            'value' => '',
-        ]);
-        $this->info('finish');
+        $disks = Config::where('id', 164)->first();
+
+        if ($disks->value === '') {
+            $disks->update([
+                'value' => []
+            ]);
+        }
     }
 }

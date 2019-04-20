@@ -81,23 +81,21 @@ class OAuthController extends Controller
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         if ($oldUserData) {
             $userId  = $oldUserData->id;
-            $editMap = [
-                'id' => $userId,
-            ];
-            $editData = [
+
+            // 更新数据
+            OauthUser::where('id', $userId)->update([
                 'name'          => $user->nickname,
                 'access_token'  => $user->token,
                 'last_login_ip' => $request->getClientIp(),
                 'login_times'   => $oldUserData->login_times + 1,
-            ];
-            // 更新数据
-            $oauthUserModel->updateData($editMap, $editData, false);
+            ]);
+
             // 如果是管理员；则自动登录后台
             if ($oldUserData->is_admin) {
                 Auth::guard('admin')->loginUsingId(1, true);
             }
         } else {
-            $data = [
+            $userId = OauthUser::create([
                 'type'          => $type[$service],
                 'name'          => $user->nickname,
                 'openid'        => $user->id,
@@ -106,19 +104,12 @@ class OAuthController extends Controller
                 'login_times'   => 1,
                 'is_admin'      => 0,
                 'email'         => '',
-            ];
-            // 新增数据
-            $userId = $oauthUserModel->storeData($data, false);
-            // 组合头像地址
-            $avatarPath = '/uploads/avatar/' . $userId . '.jpg';
+            ])->id;
+
             // 更新头像
-            $editMap = [
-                'id' => $userId,
-            ];
-            $editData = [
-                'avatar' => $avatarPath,
-            ];
-            $oauthUserModel->updateData($editMap, $editData, false);
+            OauthUser::where('id', $userId)->update([
+                'avatar' => '/uploads/avatar/' . $userId . '.jpg'
+            ]);
         }
 
         $avatarPath = public_path('uploads/avatar/' . $userId . '.jpg');

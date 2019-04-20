@@ -228,25 +228,28 @@ class IndexController extends Controller
      */
     public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
     {
-        $data = $request->only('content', 'article_id', 'pid');
         // 获取用户id
         $userId = auth()->guard('oauth')->user()->id;
         // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
         $email = $request->input('email', '');
+
         if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
             // 修改邮箱
-            $oauthUserMap = [
-                'id' => $userId,
-            ];
-            $oauthUserData = [
+            OauthUser::where('id', $userId)->update([
                 'email' => $email,
-            ];
-            $oauthUserModel->updateData($oauthUserMap, $oauthUserData);
+            ]);
         }
+
         // 存储评论
-        $id = $commentModel->storeData($data, false);
-        // 更新缓存
-        Cache::forget('common:newComment');
+        $id = Comment::create($request->only('article_id', 'content', 'pid') + [
+            'oauth_user_id' => $userId,
+            'type'          => 1,
+            'status'        => 1,
+        ]);
+
+        if (! $id) {
+            return ajax_return(500);
+        }
 
         return ajax_return(200, ['id' => $id]);
     }

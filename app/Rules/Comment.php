@@ -34,6 +34,12 @@ class Comment implements Rule
 
             return false;
         }
+        $commentModel    = new CommentModel();
+        if (empty($commentModel->imageToUbb($value))) {
+            $this->message = '内容不能为空';
+
+            return false;
+        }
         // 获取用户id
         $userId = auth()->guard('oauth')->user()->id;
         // 是否是管理员
@@ -41,7 +47,6 @@ class Comment implements Rule
         // 获取当前时间戳
         $time = time();
         // 获取最近一次评论时间
-        $commentModel    = new CommentModel();
         $lastCommentDate = $commentModel->where('oauth_user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->value('created_at');

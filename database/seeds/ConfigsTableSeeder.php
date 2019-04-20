@@ -329,7 +329,7 @@ class ConfigsTableSeeder extends Seeder
             [
                 'id'         => 164,
                 'name'       => 'backup.backup.destination.disks',
-                'value'      => '',
+                'value'      => '[]',
                 'created_at' => '2018-12-04 22:29:52',
                 'updated_at' => '2018-12-04 22:29:52',
                 'deleted_at' => null,

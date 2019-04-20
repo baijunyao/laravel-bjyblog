@@ -49,42 +49,34 @@ class FromThinkPHPBjyBlog extends Command
     public function handle()
     {
         $articleModel        = new Article();
-        $articleTagModel     = new ArticleTag();
         $commentModel        = new Comment();
-        $friendshipLinkModel = new FriendshipLink();
-        $configModel         = new Config();
-        $oauthUserModel      = new OauthUser();
-        $chatModel           = new Chat();
-        $categoryModel       = new Category();
-        $tagModel            = new Tag();
+
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
-            die('已经迁移过,如需重新迁移,请先删除/storage/lock/migration.lock文件');
+            die('已经迁移过,如需重新迁移,请先删除 /storage/lock/migration.lock 文件');
         }
         Artisan::call('seeder:clear');
 
         // 从旧系统中迁移分类表
         $data = DB::connection('old')->table('category')->get()->toArray();
         foreach ($data as $v) {
-            $category = [
+            Category::create([
                 'id'          => $v->cid,
                 'name'        => $v->cname,
                 'keywords'    => $v->keywords,
                 'description' => $v->description,
                 'sort'        => $v->sort,
                 'pid'         => $v->pid,
-            ];
-            $categoryModel->storeData($category);
+            ]);
         }
 
         // 从旧系统中迁移标签表
         $data = DB::connection('old')->table('tag')->get()->toArray();
         foreach ($data as $v) {
-            $category = [
+            Tag::create([
                 'id'   => $v->tid,
                 'name' => $v->tname,
-            ];
-            $tagModel->storeData($category);
+            ]);
         }
 
         // 从旧系统中迁移文章
@@ -135,33 +127,28 @@ class FromThinkPHPBjyBlog extends Command
                 'click'       => $v->click,
             ];
             $articleModel->create($article);
-            $editArticleMap = [
-                'id' => $v->aid,
-            ];
 
-            $editArticleData = [
+            Article::where('id', $v->aid)->update([
                 'created_at' => date('Y-m-d H:i:s', $v->addtime),
-            ];
-            $articleModel->updateData($editArticleMap, $editArticleData);
+            ]);
         }
 
         // 从旧系统中迁移文章标签中间表
         $data = DB::connection('old')->table('article_tag')->get()->toArray();
         foreach ($data as $v) {
-            $article_tag = [
+            ArticleTag::create([
                 'article_id' => $v->aid,
                 'tag_id'     => $v->tid,
-            ];
-            $articleTagModel->storeData($article_tag);
+            ]);
         }
 
         // 从旧系统中迁移评论
         $data = DB::connection('old')
             ->table('comment')
-            // ->where('cmtid', 1614)
             ->orderBy('cmtid', 'desc')
             ->get()
             ->toArray();
+
         foreach ($data as $v) {
             // 把img标签反转义
             $content = html_entity_decode(htmlspecialchars_decode($v->content));
@@ -173,7 +160,7 @@ class FromThinkPHPBjyBlog extends Command
             }, $img[1]);
             $content      = str_replace($search, $replace, $content);
             $content      = strip_tags($content);
-            $comment_data = [
+            $commentModel->insert([
                 'id'            => $v->cmtid,
                 'oauth_user_id' => $v->ouid,
                 'type'          => $v->type,
@@ -181,55 +168,50 @@ class FromThinkPHPBjyBlog extends Command
                 'article_id'    => $v->aid,
                 'content'       => $content,
                 'status'        => $v->status,
-            ];
-            $commentModel->create($comment_data);
-            $editCommentMap = [
-                'id' => $v->cmtid,
-            ];
-            $editCommentData = [
                 'created_at' => date('Y-m-d H:i:s', $v->date),
-            ];
-            $commentModel->updateData($editCommentMap, $editCommentData);
+                'updated_at' => date('Y-m-d H:i:s', $v->date),
+            ]);
         }
 
         // 迁移友情链接
         $data = DB::connection('old')->table('link')->get()->toArray();
+
         foreach ($data as $v) {
-            $link_data = [
+            $linkData = [
                 'id'   => $v->lid,
                 'name' => $v->lname,
                 'url'  => $v->url,
                 'sort' => $v->sort,
             ];
+
             if ($v->is_show === 0) {
-                $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
+                $linkData['deleted_at'] = date('Y-m-d H:i:s', time());
             }
-            $friendshipLinkModel->storeData($link_data);
+
+            FriendshipLink::create($linkData);
         }
 
         // 迁移配置项
         $data = DB::connection('old')->table('config')->get()->toArray();
         foreach ($data as $v) {
-            $updateMap = [
-                'name' => $v->name,
-            ];
-            $updateData = [
-                'name'  => $v->name,
-                'value' => $v->value,
-            ];
-            // 判断是否有此配置项；如果有；则修改；如果没有则新增
-            $count = $configModel->whereMap($updateMap)->count();
-            if ($count) {
-                $configModel->updateData($updateMap, $updateData);
+            $config = Config::where('name', $v->name)->first();
+
+            if ($config === null) {
+                Config::create([
+                    'name'  => $v->name,
+                    'value' => $v->value,
+                ]);
             } else {
-                $configModel->storeData($updateData);
+                $config->update([
+                    'value' => $v->value
+                ]);
             }
         }
 
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
         foreach ($data as $v) {
-            $oauthUserData = [
+            OauthUser::insert([
                 'id'            => $v->id,
                 'type'          => $v->type,
                 'name'          => $v->nickname,
@@ -240,32 +222,20 @@ class FromThinkPHPBjyBlog extends Command
                 'login_times'   => $v->login_times,
                 'email'         => $v->email,
                 'is_admin'      => $v->is_admin,
-            ];
-            $oauthUserModel->storeData($oauthUserData);
-            $editOauthUserMap = [
-                'id' => $v->id,
-            ];
-            $editOauthUserData = [
-                'created_at' => date('Y-m-d H:i:s', $v->create_time),
-            ];
-            $oauthUserModel->updateData($editOauthUserMap, $editOauthUserData);
+                'created_at'    => date('Y-m-d H:i:s', $v->create_time),
+                'updated_at'    => date('Y-m-d H:i:s', $v->create_time),
+            ]);
         }
 
         // 迁移随言碎语表
         $data = DB::connection('old')->table('chat')->get()->toArray();
         foreach ($data as $v) {
-            $chatData = [
+            Chat::insert([
                 'id'      => $v->chid,
                 'content' => $v->content,
-            ];
-            $chatModel->storeData($chatData);
-            $editChatMap = [
-                'id' => $v->chid,
-            ];
-            $editChatData = [
                 'created_at' => date('Y-m-d H:i:s', $v->date),
-            ];
-            $chatModel->updateData($editChatMap, $editChatData);
+                'updated_at' => date('Y-m-d H:i:s', $v->date),
+            ]);
         }
         Artisan::call('bjyblog:update');
         $this->info('从旧系统迁移数据完成');
@@ -282,16 +252,12 @@ class FromThinkPHPBjyBlog extends Command
     {
         $data = $oauthUserModel->select('id', 'avatar')->get();
         foreach ($data as $k => $v) {
-            $editMap = [
-                'id' => $v->id,
-            ];
             if (strpos($v->avatar, 'http') !== false) {
                 $avatarPath = 'uploads/avatar/' . $v->id . '.jpg';
                 file_put_contents(public_path($avatarPath), curl_get_contents($v->avatar));
-                $editData = [
+                OauthUser::where('id', $v->id)->update([
                     'avatar' => '/' . $avatarPath,
-                ];
-                $oauthUserModel->updateData($editMap, $editData);
+                ]);
             }
         }
     }

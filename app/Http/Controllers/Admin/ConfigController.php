@@ -102,14 +102,22 @@ class ConfigController extends Controller
             $result      = $file['status_code'] === 200 ? $file['data'][0]['path'] : '';
             $data['153'] = $result;
         }
+
+        if (isset($data['165']) && empty($data['164'])) {
+            $data['164'] = [];
+        }
+
         $editData = [];
+
         foreach ($data as $k => $v) {
             $editData[] = [
                 'id'    => $k,
                 'value' => is_array($v) ? json_encode($v) : $v,
             ];
         }
+
         $result = $configModel->updateBatch($editData);
+
         if ($result) {
             // 更新缓存
             Cache::forget('config');

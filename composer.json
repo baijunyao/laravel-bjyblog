@@ -17,7 +17,6 @@
         "apollopy/flysystem-aliyun-oss": "^1.2",
         "appstract/laravel-opcache": "^2.0",
         "baijunyao/laravel-flash": "^2.0",
-        "baijunyao/laravel-model": "^2.0",
         "baijunyao/laravel-plugin-manager": "^3.0",
         "baijunyao/laravel-print": "^3.0",
         "baijunyao/laravel-scout-elasticsearch": "^2.0",

@@ -11,10 +11,29 @@ class ConfigControllerTest extends TestCase
         '101' => '网站名',
     ];
 
+    public function testBackup()
+    {
+        $this->adminGet('backup')->assertStatus(200);
+    }
+
     public function testEdit()
     {
-        $this->adminGet('edit')
-            ->assertStatus(200);
+        $this->adminGet('edit')->assertStatus(200);
+    }
+
+    public function testEmail()
+    {
+        $this->adminGet('email')->assertStatus(200);
+    }
+
+    public function testOAuth()
+    {
+        $this->adminGet('oauth')->assertStatus(200);
+    }
+
+    public function testQQQun()
+    {
+        $this->adminGet('qqQun')->assertStatus(200);
     }
 
     public function testUpdate()
