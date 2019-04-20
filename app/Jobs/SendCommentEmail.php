@@ -37,7 +37,7 @@ class SendCommentEmail implements ShouldQueue
      *
      * @var
      */
-    protected $content;
+    public $content;
 
     /**
      * SendCommentEmail constructor.

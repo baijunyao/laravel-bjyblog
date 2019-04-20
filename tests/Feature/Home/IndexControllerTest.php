@@ -2,6 +2,10 @@
 
 namespace Tests\Feature\Home;
 
+use App\Jobs\SendCommentEmail;
+use App\Models\Comment;
+use Bus;
+
 class IndexControllerTest extends TestCase
 {
     public function testIndex()
@@ -36,15 +40,48 @@ class IndexControllerTest extends TestCase
 
     public function testComment()
     {
+        Bus::fake();
+
+        $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
+        $comment = [
+            'article_id' => 1,
+            'pid'        => 1,
+        ];
+
+        /** For @see \App\Observers\CommentObserver::created() */
+        config([
+            'bjyblog.notification_email' => 'test@test.com'
+        ]);
+
+        $this->loginByUserId(1)
+            ->post('/comment', $comment + [
+                'content' => $content
+            ])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('comments', $comment + [
+            'content' => (new Comment())->imageToUbb($content)
+        ]);
+
+        Bus::assertDispatched(SendCommentEmail::class, function ($job) {
+            return $job->content['type'] === '评论';
+        });
+
+        Bus::assertDispatched(SendCommentEmail::class, function ($job) {
+            return $job->content['type'] === '回复';
+        });
+    }
+
+    public function testCommentEmptyContent()
+    {
         $comment = [
             'article_id' => 1,
             'pid'        => 0,
-            'content'    => '评论666',
+            'content'    => '',
         ];
         $this->loginByUserId(1)
             ->post('/comment', $comment)
-            ->assertStatus(200);
-        $this->assertDatabaseHas('comments', $comment);
+            ->assertStatus(302);
     }
 
     public function testCommentInvalidContent()
