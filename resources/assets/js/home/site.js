@@ -1,8 +1,7 @@
 $(function () {
     $('.js-add-site').click(function () {
         $.get(checkLogin, function(data) {
-            console.log(data);
-            if(data==1){
+            if(data.status === 1){
                 $('#b-modal-site').modal('show');
             }else{
                 layer.msg('请先登录', {
@@ -11,7 +10,7 @@ $(function () {
                 })
                 $('#b-modal-login').modal('show');
             }
-        });
+        }, 'json');
     })
 
     $('.b-s-submit').click(function () {

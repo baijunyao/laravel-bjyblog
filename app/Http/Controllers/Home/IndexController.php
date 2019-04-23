@@ -259,11 +259,9 @@ class IndexController extends Controller
      */
     public function checkLogin()
     {
-        if (auth()->guard('oauth')->check()) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return response()->json([
+            'status' => (int)auth()->guard('oauth')->check()
+        ]);
     }
 
     /**
