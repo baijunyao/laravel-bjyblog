@@ -22,8 +22,6 @@ Route::namespace('Home')->group(function () {
     Route::post('search', 'IndexController@search');
     // feed
     Route::get('feed', 'IndexController@feed');
-    // 用于测试
-    Route::get('test', 'IndexController@test');
     // 推荐博客
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');

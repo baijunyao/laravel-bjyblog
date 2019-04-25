@@ -340,11 +340,4 @@ class IndexController extends Controller
 
         return $feed->render('atom');
     }
-
-    /**
-     * 用于做测试的方法
-     */
-    public function test()
-    {
-    }
 }

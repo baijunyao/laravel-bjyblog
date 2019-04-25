@@ -133,9 +133,4 @@ class IndexControllerTest extends TestCase
     {
         $this->get('/feed')->assertStatus(200);
     }
-
-    public function testTest()
-    {
-        $this->get('test')->assertStatus(200);
-    }
 }
