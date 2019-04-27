@@ -106,9 +106,20 @@ class IndexControllerTest extends TestCase
         $this->post('/comment', $comment)->assertStatus(401);
     }
 
-    public function testCheckLogin()
+    public function testCheckLoginWhenLogin()
     {
-        $this->get('/checkLogin')->assertStatus(200);
+        auth()->guard('oauth')->loginUsingId(1);
+
+        $this->get('/checkLogin')->assertStatus(200)->assertJson([
+            'status' => 1
+        ]);
+    }
+
+    public function testCheckLoginWhenLogout()
+    {
+        $this->get('/checkLogin')->assertStatus(200)->assertJson([
+            'status' => 0
+        ]);
     }
 
     public function testSearch()
@@ -121,10 +132,5 @@ class IndexControllerTest extends TestCase
     public function testFeed()
     {
         $this->get('/feed')->assertStatus(200);
-    }
-
-    public function testTest()
-    {
-        $this->get('test')->assertStatus(200);
     }
 }

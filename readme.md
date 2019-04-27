@@ -31,7 +31,7 @@ Welcome to submit a PR or tell me to include your blog
 
 ## Links
 - Blog：[https://baijunyao.com](https://baijunyao.com)   
-- github：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
+- GitHub：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
 - Gitee：[https://gitee.com/baijunyao/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)   
 
 ## License

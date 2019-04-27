@@ -1,5 +1,4 @@
 $(function () {
-
     // js动态加载表情
     $('.b-comment').on('click', '.js-get-tuzki', function () {
         var tuzkiObj=$(this).siblings('.b-tuzki');
@@ -131,7 +130,7 @@ $(function () {
     $('.b-comment').on('click', '.js-comment-btn', function () {
         var obj=$(this);
         $.get(checkLogin, function(data) {
-            if(data==1){
+            if(data.status === 1){
                 var content=$(obj).parents('.b-box-textarea').eq(0).find('.b-box-content').html();
                 if(content!='' && content!='请先登录后发表评论'){
                     var aid=$(obj).attr('aid'),
@@ -186,10 +185,12 @@ $(function () {
                     });
                 }
             }else{
+                layer.msg('请先登录', {
+                    icon: 5,
+                    time: 2000
+                })
                 $('#b-modal-login').modal('show');
             }
-        });
+        }, 'json');
     })
-
-
 })
