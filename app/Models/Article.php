@@ -33,7 +33,7 @@ class Article extends Base
     /**
      * 关联文章表
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo
      */
     public function category()
     {
