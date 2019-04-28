@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Resource\Rest\Index;
+use App\Http\Controllers\Resource\Rest\Store;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    use Index;
+    use Index, Store;
 
     private const MODEL = Article::class;
 
@@ -26,27 +27,6 @@ class ArticleController extends Controller
             'name'
         ],
     ];
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
