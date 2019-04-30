@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Resource\Rest\Index;
+use App\Http\Controllers\Resource\Rest\Show;
 use App\Http\Controllers\Resource\Rest\Store;
 use App\Models\Article;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-    use Index, Store;
+    use Index, Store, Show;
 
     private const MODEL = Article::class;
 
@@ -27,28 +28,6 @@ class ArticleController extends Controller
             'name'
         ],
     ];
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
