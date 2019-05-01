@@ -7,7 +7,7 @@ trait Show
     public function show()
     {
         $model = static::MODEL;
-        $id = current(request()->route()->parameters);
+        $id = $this->getRouteId();
 
         return response()->json((new $model)->find($id));
     }
