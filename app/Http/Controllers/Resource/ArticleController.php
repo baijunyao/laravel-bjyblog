@@ -13,9 +13,9 @@ class ArticleController extends Controller
 {
     use Index, Store, Show, Update, Destroy;
 
-    private const MODEL = Article::class;
+    public const MODEL = Article::class;
 
-    private const COLUMN = [
+    public const COLUMN = [
         'id',
         'category_id',
         'title',

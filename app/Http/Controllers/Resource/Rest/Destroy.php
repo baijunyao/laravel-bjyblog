@@ -6,9 +6,10 @@ trait Destroy
 {
     public function destroy()
     {
-        $model = static::MODEL;
+        $model = static::getModelObject();
         $id = $this->getRouteId();
+        $model->destroy($id);
 
-        return response()->json((new $model)->destroy($id));
+        return response('');
     }
 }

@@ -6,8 +6,8 @@ trait Store
 {
     public function store()
     {
-        $model = static::MODEL;
+        $model = $this->getModelObject();
 
-        return response()->json((new $model)->create(request()->all()));
+        return response()->json($model->create(request()->all()));
     }
 }

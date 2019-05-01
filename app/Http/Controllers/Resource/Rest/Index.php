@@ -6,7 +6,7 @@ trait Index
 {
     public function index()
     {
-        $model = static::MODEL;
+        $model = $this->getModelObject();
 
         $relations = [];
         foreach (static::RELATIONS as $relation => $column) {
@@ -15,7 +15,7 @@ trait Index
             };
         }
 
-        $list = (new $model)->select(static::COLUMN)
+        $list = $model->select(static::COLUMN)
             ->with($relations)
             ->withTrashed()
             ->paginate();

@@ -6,9 +6,10 @@ trait Update
 {
     public function update()
     {
-        $model = static::MODEL;
-        $id = $this->getRouteId();
+        $model = $this->getModelObject();
+        $currentModel = $model->withTrashed()->find($this->getRouteId());
+        $model->update(request()->all());
 
-        return response()->json((new $model)->find($id)->update(request()->all()));
+        return response()->json($currentModel);
     }
 }

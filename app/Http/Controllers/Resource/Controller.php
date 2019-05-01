@@ -10,4 +10,11 @@ class Controller extends BaseController
     {
         return current(request()->route()->parameters);
     }
+
+    protected function getModelObject()
+    {
+        $model = static::MODEL;
+
+        return new $model;
+    }
 }

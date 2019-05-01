@@ -6,9 +6,9 @@ trait Show
 {
     public function show()
     {
-        $model = static::MODEL;
+        $model = $this->getModelObject();
         $id = $this->getRouteId();
 
-        return response()->json((new $model)->find($id));
+        return response()->json($model->withTrashed()->find($id));
     }
 }
