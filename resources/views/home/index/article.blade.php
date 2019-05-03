@@ -10,6 +10,9 @@
     <!-- 左侧文章开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
         <div class="row b-article">
+            @if(auth()->guard('admin')->check())
+                <a class="fa fa-edit b-edit-icon" href="{{ url('admin/article/edit', [$data->id]) }}"></a>
+            @endif
             <h1 class="col-xs-12 col-md-12 col-lg-12 b-title">{{ $data->title }}</h1>
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <ul class="row b-metadata">
