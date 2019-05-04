@@ -519,6 +519,13 @@ a{
     background: #fff;
     font-size: 16px;
     box-shadow: 0px 1px 2px 0px #E2E2E2;
+    position: relative;
+    .b-edit-icon {
+      position: absolute;
+      z-index: 1;
+      right: 5px;
+      top: 5px;
+    }
     .b-title{
       padding-top: 20px;
       padding-bottom: 20px;

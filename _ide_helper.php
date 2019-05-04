@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.13 on 2019-04-20 19:41:42.
+ * Generated for Laravel 5.8.15 on 2019-05-04 08:39:01.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4595,7 +4595,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Determine if the connection in a "dry run".
+         * Determine if the connection is in a "dry run".
          *
          * @return bool 
          * @static 
@@ -7885,6 +7885,20 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Support\Testing\Fakes\QueueFake $instance */
                         return $instance->setConnectionName($name);
+        }
+        
+        /**
+         * Get the retry delay for an object-based queue handler.
+         *
+         * @param mixed $job
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getJobRetryDelay($job)
+        {
+            //Method inherited from \Illuminate\Queue\Queue            
+                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        return $instance->getJobRetryDelay($job);
         }
         
         /**
@@ -18845,6 +18859,30 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->cloneWithoutBindings($except);
+            }
+         
+            /**
+             * Dump the current SQL and bindings.
+             *
+             * @return void 
+             * @static 
+             */ 
+            public static function dump()
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                $instance->dump();
+            }
+         
+            /**
+             * Die and dump the current SQL and bindings.
+             *
+             * @return void 
+             * @static 
+             */ 
+            public static function dd()
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                $instance->dd();
             }
          
             /**

@@ -34,16 +34,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
-                <li class="b-nav-cname  @if($category_id == 'index') b-nav-active @endif">
-                <a href="/">{{ __('Home') }}</a>
+                <li class="b-nav-cname  @if(request()->path() == '/') b-nav-active @endif">
+                    <a href="/">{{ __('Home') }}</a>
                 </li>
                 @foreach($category as $v)
-                    <li class="b-nav-cname @if($v->id == $category_id) b-nav-active @endif">
+                    <li class="b-nav-cname @if((request()->path() === 'category/' . $v->id) || (isset($data->category_id) && $v->id == $data->category_id)) b-nav-active @endif">
                         <a href="{{ url('category/'.$v->id) }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 @foreach($nav as $v)
-                    <li class="b-nav-cname @if($category_id == $v->url) b-nav-active @endif">
+                    <li class="b-nav-cname @if(request()->path() == $v->url) b-nav-active @endif">
                         <a href="{{ url($v->url) }}">{{ $v->name }}</a>
                     </li>
                 @endforeach

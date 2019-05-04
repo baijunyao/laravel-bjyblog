@@ -1,4 +1,9 @@
 $(function(){
+    navActive = $('.b-nav-parent .b-nav-active')
+    if (navActive.length === 2) {
+        $(navActive[0]).removeClass('b-nav-active');
+    }
+
     // 调整导航条hover的样式
     if($('.b-nav-mobile').css('display')=='block'){
         var widthLeft=getWidthLeft($('.b-nav-active'),false);
