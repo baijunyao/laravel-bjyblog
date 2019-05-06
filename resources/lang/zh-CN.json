@@ -171,6 +171,12 @@
     "Baidu Site URL": "百度推送site提交链接",
     "Statistics Code": "第三方统计代码",
     "Admin Email": "站长邮箱",
-    "Notification Email": "用于接收通知的邮箱"
+    "Notification Email": "用于接收通知的邮箱",
+
+    "Store Success": "添加成功",
+    "Update Success": "修改成功",
+    "Delete Success": "删除成功",
+    "Force Delete Success": "彻底删除成功",
+    "Restore Success": "恢复成功"
 
 }
