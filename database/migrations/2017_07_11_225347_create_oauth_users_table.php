@@ -23,6 +23,7 @@ class CreateOauthUsersTable extends Migration
             $table->integer('login_times')->unsigned()->default(0)->comment('登录次数');
             $table->string('email')->default('')->comment('邮箱');
             $table->boolean('is_admin')->default(0)->comment('是否是admin');
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
         });

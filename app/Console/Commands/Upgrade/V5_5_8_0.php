@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands\Upgrade;
 
-use Artisan;
 use Illuminate\Console\Command;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class V5_5_8_0 extends Command
 {
@@ -38,10 +39,10 @@ class V5_5_8_0 extends Command
      */
     public function handle()
     {
-        // 运行迁移
-        Artisan::call('migrate', [
-            '--force' => true,
-        ]);
-        $this->info('Upgrade to v5.5.8.0 version completed');
+        Schema::table('oauth_users', function (Blueprint $table) {
+            $table->string('remember_token', 100)
+                ->after('is_admin')
+                ->nullable();
+        });
     }
 }
