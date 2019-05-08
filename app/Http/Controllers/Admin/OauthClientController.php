@@ -24,26 +24,11 @@ class OauthClientController extends Controller
         return view('admin.oauthClient.edit', $assign);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $oauthClient = $request->only('client_id', 'client_secret');
+        OauthClient::find($id)->update($oauthClient);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->back();
     }
 }
