@@ -20,6 +20,7 @@
     "Edit Recommend Blog": "修改推荐博客",
     "Edit Chat": "修改随言碎语",
     "Edit Open Source": "修改开源项目",
+    "Edit OAuth Client": "修改第三方登录",
 
     "List": "列表",
     "Category List": "分类列表",
@@ -33,6 +34,7 @@
     "Recommend Blog List": "推荐博客列表",
     "Chat List": "随言碎语列表",
     "Open Source List": "开源项目列表",
+    "OAuth Client List": "第三方登录列表",
 
     "Project Name": "项目名称",
     "Theme Name": "主题名称",
@@ -180,4 +182,5 @@
     "Restore Success": "恢复成功",
 
     "OAuth Client Name": "OAuth 名称"
+
 }

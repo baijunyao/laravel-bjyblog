@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', __('OAuth'))
+@section('title', __('OAuth Client List'))
 
-@section('nav', __('OAuth'))
+@section('nav', __('OAuth Client List'))
 
 @section('content')
     <table class="table table-striped table-bordered table-hover">

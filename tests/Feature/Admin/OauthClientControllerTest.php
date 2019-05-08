@@ -8,7 +8,7 @@ use Tests\Feature\Admin\CURD\TestUpdate;
 
 class OauthClientControllerTest extends TestCase
 {
-    use TestIndex;
+    use TestIndex, TestEdit;
 
     protected $urlPrefix  = 'admin/oauthClient/';
     protected $table      = 'oauth_clients';
