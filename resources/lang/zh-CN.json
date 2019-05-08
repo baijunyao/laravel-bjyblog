@@ -177,6 +177,7 @@
     "Update Success": "修改成功",
     "Delete Success": "删除成功",
     "Force Delete Success": "彻底删除成功",
-    "Restore Success": "恢复成功"
+    "Restore Success": "恢复成功",
 
+    "OAuth Client Name": "OAuth 名称"
 }

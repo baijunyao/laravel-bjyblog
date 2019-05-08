@@ -82,7 +82,7 @@
                                     <a><i class="fa fa-cogs"></i> {{ __('Setting') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('admin/config/email') }}">{{ __('Email') }}</a></li>
-                                        <li><a href="{{ url('admin/config/oauth') }}">{{ __('OAuth') }}</a></li>
+                                        <li><a href="{{ url('admin/oauthClient/index') }}">{{ __('OAuth') }}</a></li>
                                         <li><a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source') }}</a></li>
                                         @if(config('app.locale') === 'zh-CN')
                                             <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
