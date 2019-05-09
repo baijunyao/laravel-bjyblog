@@ -18,6 +18,8 @@ class CreateOauthClientsTable extends Migration
             $table->string('name')->default('');
             $table->string('client_id')->default('');
             $table->string('client_secret')->default('');
+            $table->string('client_id_config')->default('');
+            $table->string('client_secret_config')->default('');
             $table->timestamps();
             $table->softDeletes();
         });
