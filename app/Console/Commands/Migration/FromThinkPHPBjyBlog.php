@@ -168,8 +168,8 @@ class FromThinkPHPBjyBlog extends Command
                 'article_id'    => $v->aid,
                 'content'       => $content,
                 'status'        => $v->status,
-                'created_at' => date('Y-m-d H:i:s', $v->date),
-                'updated_at' => date('Y-m-d H:i:s', $v->date),
+                'created_at'    => date('Y-m-d H:i:s', $v->date),
+                'updated_at'    => date('Y-m-d H:i:s', $v->date),
             ]);
         }
 
@@ -203,7 +203,7 @@ class FromThinkPHPBjyBlog extends Command
                 ]);
             } else {
                 $config->update([
-                    'value' => $v->value
+                    'value' => $v->value,
                 ]);
             }
         }
@@ -231,8 +231,8 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('chat')->get()->toArray();
         foreach ($data as $v) {
             Chat::insert([
-                'id'      => $v->chid,
-                'content' => $v->content,
+                'id'         => $v->chid,
+                'content'    => $v->content,
                 'created_at' => date('Y-m-d H:i:s', $v->date),
                 'updated_at' => date('Y-m-d H:i:s', $v->date),
             ]);

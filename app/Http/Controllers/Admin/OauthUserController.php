@@ -17,10 +17,11 @@ class OauthUserController extends Controller
     {
         $wd   = $request->input('wd');
         $data = OauthUser::orderBy('updated_at', 'desc')
-            ->select('id', 'name', 'type', 'email', 'login_times', 'is_admin', 'last_login_ip', 'created_at', 'updated_at')
+            ->select('id', 'name', 'oauth_client_id', 'email', 'login_times', 'is_admin', 'last_login_ip', 'created_at', 'updated_at')
             ->when($wd, function ($query) use ($wd) {
                 return $query->where('name', 'like', "%$wd%");
             })
+            ->with('oauthClient')
             ->paginate(50);
         $assign = compact('data');
 

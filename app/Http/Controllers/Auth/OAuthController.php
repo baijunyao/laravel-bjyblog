@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\OauthUser;
 use Auth;
+use Cache;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
@@ -13,6 +14,8 @@ use URL;
 
 class OAuthController extends Controller
 {
+    private $oauthClients;
+
     /**
      * OAuthController constructor.
      *
@@ -20,14 +23,11 @@ class OAuthController extends Controller
      */
     public function __construct(Request $request)
     {
-        $service = $request->route('service');
+        $this->oauthClients = cache('oauthClients');
+        $service            = $request->route('service');
+
         // 因为发现有恶意访问回调地址的情况 此处限制允许使用的第三方登录方式
-        $type = [
-            'qq',
-            'weibo',
-            'github',
-        ];
-        if (!empty($service) && !in_array($service, $type)) {
+        if (!empty($service) && !$this->oauthClients->pluck('name')->contains($service)) {
             return abort(404);
         }
     }
@@ -63,17 +63,13 @@ class OAuthController extends Controller
     public function handleProviderCallback(Request $request, OauthUser $oauthUserModel, $service)
     {
         // 定义各种第三方登录的type对应的数字
-        $type = [
-            'qq'     => 1,
-            'weibo'  => 2,
-            'github' => 3,
-        ];
+        $type = $this->oauthClients->pluck('id', 'name');
         // 获取用户资料
         $user = Socialite::driver($service)->user();
         // 查找此用户是否已经登录过
         $countMap = [
-            'type'   => $type[$service],
-            'openid' => $user->id,
+            'oauth_client_id'   => $type[$service],
+            'openid'            => $user->id,
         ];
         $oldUserData = $oauthUserModel->select('id', 'login_times', 'is_admin', 'email')
             ->where($countMap)
@@ -96,19 +92,19 @@ class OAuthController extends Controller
             }
         } else {
             $userId = OauthUser::create([
-                'type'          => $type[$service],
-                'name'          => $user->nickname,
-                'openid'        => $user->id,
-                'access_token'  => $user->token,
-                'last_login_ip' => $request->getClientIp(),
-                'login_times'   => 1,
-                'is_admin'      => 0,
-                'email'         => '',
+                'oauth_client_id'          => $type[$service],
+                'name'                     => $user->nickname,
+                'openid'                   => $user->id,
+                'access_token'             => $user->token,
+                'last_login_ip'            => $request->getClientIp(),
+                'login_times'              => 1,
+                'is_admin'                 => 0,
+                'email'                    => '',
             ])->id;
 
             // 更新头像
             OauthUser::where('id', $userId)->update([
-                'avatar' => '/uploads/avatar/' . $userId . '.jpg'
+                'avatar' => '/uploads/avatar/' . $userId . '.jpg',
             ]);
         }
 

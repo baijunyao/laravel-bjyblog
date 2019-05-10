@@ -50,17 +50,17 @@ class IndexControllerTest extends TestCase
 
         /** For @see \App\Observers\CommentObserver::created() */
         config([
-            'bjyblog.notification_email' => 'test@test.com'
+            'bjyblog.notification_email' => 'test@test.com',
         ]);
 
         $this->loginByUserId(1)
             ->post('/comment', $comment + [
-                'content' => $content
+                'content' => $content,
             ])
             ->assertStatus(200);
 
         $this->assertDatabaseHas('comments', $comment + [
-            'content' => (new Comment())->imageToUbb($content)
+            'content' => (new Comment())->imageToUbb($content),
         ]);
 
         Bus::assertDispatched(SendCommentEmail::class, function ($job) {
@@ -111,14 +111,14 @@ class IndexControllerTest extends TestCase
         auth()->guard('oauth')->loginUsingId(1);
 
         $this->get('/checkLogin')->assertStatus(200)->assertJson([
-            'status' => 1
+            'status' => 1,
         ]);
     }
 
     public function testCheckLoginWhenLogout()
     {
         $this->get('/checkLogin')->assertStatus(200)->assertJson([
-            'status' => 0
+            'status' => 0,
         ]);
     }
 

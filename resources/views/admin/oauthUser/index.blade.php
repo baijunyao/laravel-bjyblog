@@ -9,7 +9,7 @@
         <tr>
             <th>id</th>
             <th>{{ __('User Name') }}</th>
-            <th>{{ __('Type') }}</th>
+            <th>{{ __('OAuth Client Name') }}</th>
             <th>{{ __('Email') }}</th>
             <th>{{ __('Login times') }}</th>
             <th>{{ __('Is Administrator?') }}?</th>
@@ -23,9 +23,7 @@
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->name }}</td>
                 <td>
-                    @if($v->type == 1)QQ @endif
-                    @if($v->type == 2){{ __('Weibo') }} @endif
-                    @if($v->type == 3)github @endif
+                    {{ $v->oauthClient->name }}
                 </td>
                 <td>{{ $v->email }}</td>
                 <td>{{ $v->login_times }}</td>
