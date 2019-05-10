@@ -57,10 +57,14 @@ class ComposerServiceProvider extends ServiceProvider
         // 动态替换 /config 目录下的配置项
         config($config->toArray());
 
-        // Get OAuth clients
-        $oauthClients = Cache::remember('oauthClients', static::CACHE_EXPIRE, function () {
-            return OauthClient::all();
-        });
+        try {
+            // Get OAuth clients
+            $oauthClients = Cache::remember('oauthClients', static::CACHE_EXPIRE, function () {
+                return OauthClient::all();
+            });
+        } catch (Exception $exception) {
+            return true;
+        }
 
         $oauthClients->map(function ($oauthClient) {
             config([
