@@ -247,7 +247,7 @@ class IndexController extends Controller
             'status'        => 1,
         ]);
 
-        if (! $id) {
+        if (!$id) {
             return ajax_return(500);
         }
 
@@ -260,7 +260,7 @@ class IndexController extends Controller
     public function checkLogin()
     {
         return response()->json([
-            'status' => (int)auth()->guard('oauth')->check()
+            'status' => (int) auth()->guard('oauth')->check(),
         ]);
     }
 

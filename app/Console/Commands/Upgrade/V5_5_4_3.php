@@ -43,7 +43,7 @@ class V5_5_4_3 extends Command
         // 把 email 改为 mail
         foreach ($config as $k => $v) {
             Config::where('id', $v->id)->update([
-                'name' => str_replace('email.', 'mail.', $v->name)
+                'name' => str_replace('email.', 'mail.', $v->name),
             ]);
         }
 

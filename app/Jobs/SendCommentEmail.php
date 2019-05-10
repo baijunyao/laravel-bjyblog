@@ -12,6 +12,13 @@ class SendCommentEmail implements ShouldQueue
     use InteractsWithQueue, Queueable, SerializesModels;
 
     /**
+     * 评论内容
+     *
+     * @var
+     */
+    public $content;
+
+    /**
      * 收件人邮箱地址
      *
      * @var
@@ -31,13 +38,6 @@ class SendCommentEmail implements ShouldQueue
      * @var
      */
     protected $subject;
-
-    /**
-     * 评论内容
-     *
-     * @var
-     */
-    public $content;
 
     /**
      * SendCommentEmail constructor.

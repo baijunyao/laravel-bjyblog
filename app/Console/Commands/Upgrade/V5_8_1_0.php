@@ -42,7 +42,7 @@ class V5_8_1_0 extends Command
 
         if ($disks->value === '') {
             $disks->update([
-                'value' => []
+                'value' => [],
             ]);
         }
     }

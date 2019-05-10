@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\OauthClient;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class OauthClientController extends Controller
 {
     public function index()
     {
         $oauthClients   = OauthClient::all();
-        $assign = compact('oauthClients');
+        $assign         = compact('oauthClients');
 
         return view('admin.oauthClient.index', $assign);
     }
@@ -19,7 +19,7 @@ class OauthClientController extends Controller
     public function edit($id)
     {
         $oauthClient   = OauthClient::find($id);
-        $assign = compact('oauthClient');
+        $assign        = compact('oauthClient');
 
         return view('admin.oauthClient.edit', $assign);
     }

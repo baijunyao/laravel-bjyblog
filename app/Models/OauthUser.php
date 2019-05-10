@@ -11,4 +11,9 @@ use Illuminate\Notifications\Notifiable;
 class OauthUser extends Base implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, Notifiable;
+
+    public function oauthClient()
+    {
+        return $this->belongsTo(OauthClient::class);
+    }
 }

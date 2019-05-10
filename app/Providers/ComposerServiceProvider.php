@@ -10,6 +10,7 @@ use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\Nav;
+use App\Models\OauthClient;
 use App\Models\OauthUser;
 use App\Models\Tag;
 use Cache;
@@ -55,6 +56,18 @@ class ComposerServiceProvider extends ServiceProvider
 
         // 动态替换 /config 目录下的配置项
         config($config->toArray());
+
+        // Get OAuth clients
+        $oauthClients = Cache::remember('oauthClients', static::CACHE_EXPIRE, function () {
+            return OauthClient::all();
+        });
+
+        $oauthClients->map(function ($oauthClient) {
+            config([
+                'services.' . $oauthClient->name . '.client_id'     => $oauthClient->client_id,
+                'services.' . $oauthClient->name . '.client_secret' => $oauthClient->client_secret,
+            ]);
+        });
 
         // 开源项目数据
         view()->composer(['layouts/home', 'home/index/git'], function ($view) {
