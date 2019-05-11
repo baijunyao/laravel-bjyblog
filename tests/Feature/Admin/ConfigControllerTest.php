@@ -26,11 +26,6 @@ class ConfigControllerTest extends TestCase
         $this->adminGet('email')->assertStatus(200);
     }
 
-    public function testOAuth()
-    {
-        $this->adminGet('oauth')->assertStatus(200);
-    }
-
     public function testQQQun()
     {
         $this->adminGet('qqQun')->assertStatus(200);

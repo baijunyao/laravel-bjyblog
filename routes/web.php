@@ -161,6 +161,13 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('forceDelete/{id}', 'UserController@forceDelete');
     });
 
+    // OAuth client
+    Route::prefix('oauthClient')->group(function () {
+        Route::get('index', 'OauthClientController@index');
+        Route::get('edit/{id}', 'OauthClientController@edit');
+        Route::post('update/{id}', 'OauthClientController@update');
+    });
+
     // 第三方用户管理
     Route::prefix('oauthUser')->group(function () {
         // 用户列表

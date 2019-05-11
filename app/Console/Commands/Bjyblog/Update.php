@@ -87,7 +87,7 @@ class Update extends Command
             $command = 'upgrade:' . $version;
             Artisan::call($command);
             Console::create([
-                'name' => $name
+                'name' => $name,
             ]);
             $this->info($version . ' success');
         }

@@ -6,7 +6,7 @@ class BaseObserver
 {
     public function created($model)
     {
-        flash_success('添加成功');
+        flash_success(__('Store Success'));
         $this->clearCache();
     }
 
@@ -14,7 +14,7 @@ class BaseObserver
     {
         // restore() triggering both restored() and updated()
         if(! $model->isDirty('deleted_at')){
-            flash_success('修改成功');
+            flash_success(__('Update Success'));
         }
         $this->clearCache();
     }
@@ -23,9 +23,9 @@ class BaseObserver
     {
         // delete() and forceDelete() will triggering deleted()
         if ($model->isForceDeleting()) {
-            flash_success('彻底删除成功');
+            flash_success(__('Force Delete Success'));
         } else {
-            flash_success('删除成功');
+            flash_success(__('Delete Success'));
         }
 
         $this->clearCache();
@@ -33,7 +33,7 @@ class BaseObserver
 
     public function restored($model)
     {
-        flash_success('恢复成功');
+        flash_success(__('Restore Success'));
         $this->clearCache();
     }
 

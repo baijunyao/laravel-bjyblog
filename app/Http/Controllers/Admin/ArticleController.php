@@ -101,7 +101,7 @@ class ArticleController extends Controller
         }
 
         if (empty($data['cover'])) {
-            $firstImage = $articleModel->getCover($data['markdown']);
+            $firstImage    = $articleModel->getCover($data['markdown']);
             $data['cover'] = $firstImage;
         }
 
@@ -110,7 +110,7 @@ class ArticleController extends Controller
         unset($data['tag_ids']);
 
         $data['description'] = $request->input('description', '');
-        $article = Article::create($data);
+        $article             = Article::create($data);
 
         if ($article) {
             // 给文章添加标签

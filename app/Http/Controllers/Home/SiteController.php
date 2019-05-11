@@ -73,7 +73,7 @@ class SiteController extends Controller
 
         if ($result) {
             OauthUser::where('id', $oauthUserId)->update([
-                'email' => $request->input('email')
+                'email' => $request->input('email'),
             ]);
 
             Notification::route('mail', config('bjyblog.notification_email'))

@@ -11,9 +11,7 @@
             <tr>
                 <th>{{ __('Type') }}</th>
                 <td>
-                    @if($data->type == 1)QQ @endif
-                    @if($data->type == 2){{ __('Weibo') }} @endif
-                    @if($data->type == 3)github @endif
+                    {{ $data->oauthClient->name }}
                 </td>
             </tr>
             <tr>

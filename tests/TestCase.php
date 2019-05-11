@@ -11,4 +11,11 @@ abstract class TestCase extends BaseTestCase
     protected static $bootstrappers = [
         ComposerServiceProvider::class,
     ];
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        app('translator')->setLocale('zh-CN');
+    }
 }
