@@ -61,4 +61,10 @@ return [
         'client_secret' => env('GITHUB_SECRET'),
         'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/github'
     ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_KEY'),
+        'client_secret' => env('GOOGLE_SECRET'),
+        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/google'
+    ],
 ];

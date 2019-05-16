@@ -37,6 +37,7 @@
         "mews/purifier": "^2.0",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
+        "socialiteproviders/google": "^3.0",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.1",
