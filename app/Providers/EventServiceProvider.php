@@ -22,6 +22,7 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
             'SocialiteProviders\QQ\QqExtendSocialite@handle',
             'SocialiteProviders\Google\GoogleExtendSocialite@handle',
+            'SocialiteProviders\Facebook\FacebookExtendSocialite@handle',
         ],
 
         /**

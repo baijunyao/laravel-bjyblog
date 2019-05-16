@@ -67,4 +67,10 @@ return [
         'client_secret' => env('GOOGLE_SECRET'),
         'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/google'
     ],
+
+    'facebook' => [
+        'client_id' => env('FACEBOOK_KEY'),
+        'client_secret' => env('FACEBOOK_SECRET'),
+        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/facebook'
+    ],
 ];

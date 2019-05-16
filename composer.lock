@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d80dc82d7e4d864540e983d96ab32d6",
+    "content-hash": "29c9c5e42ff72c76a26c343a62f18090",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -6325,6 +6325,49 @@
             "time": "2019-04-24T10:48:42+00:00"
         },
         {
+            "name": "socialiteproviders/facebook",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SocialiteProviders/Facebook.git",
+                "reference": "c89d5fa4c770c9e1ec0e472ccb7dd7353a199619"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SocialiteProviders/Facebook/zipball/c89d5fa4c770c9e1ec0e472ccb7dd7353a199619",
+                "reference": "c89d5fa4c770c9e1ec0e472ccb7dd7353a199619",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^5.6 || ^7.0",
+                "socialiteproviders/manager": "~3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SocialiteProviders\\Facebook\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oleksandr Prypkhan (Alex Wells)",
+                    "email": "autaut03@googlemail.com"
+                }
+            ],
+            "description": "Facebook (facebook.com) OAuth2 Provider for Laravel Socialite",
+            "time": "2019-01-11T19:47:04+00:00"
+        },
+        {
             "name": "socialiteproviders/google",
             "version": "v3.0.0",
             "source": {
@@ -10072,7 +10115,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "joyqi/hyper-down": 20
+        "joyqi/hyper-down": 20,
+        "socialiteproviders/facebook": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
