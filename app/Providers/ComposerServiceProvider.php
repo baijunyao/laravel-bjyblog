@@ -112,7 +112,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         //分配前台通用的数据
-        view()->composer('layouts/home', function ($view) {
+        view()->composer('layouts/home', function ($view) use ($oauthClients) {
             $category = Cache::remember('common:category', static::CACHE_EXPIRE, function () {
                 // 获取分类导航
                 return Category::select('id', 'name')->orderBy('sort')->get();
@@ -162,8 +162,12 @@ class ComposerServiceProvider extends ServiceProvider
                 });
             }
 
+            $oauthClients = $oauthClients->filter(function ($oauthClient) {
+                return !empty($oauthClient->client_id) && !empty($oauthClient->client_secret);
+            });
+
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav', 'qqQunArticle');
+            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav', 'qqQunArticle', 'oauthClients');
             $view->with($assign);
         });
 

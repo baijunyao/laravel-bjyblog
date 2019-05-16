@@ -1144,15 +1144,14 @@ a {
     .b-login-row {
         padding-top: 10px;
         padding-bottom: 10px;
-
-        .b-login-img {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            height: 32px;
-
-            img {
-                width: 100%;
-                height: 100%;
+        text-align: center;
+        .fa {
+            margin: 0 20px;
+            font-size: 50px;
+            cursor: pointer;
+            color: #333;
+            &:hover{
+                color: #337ab7;
             }
         }
     }
