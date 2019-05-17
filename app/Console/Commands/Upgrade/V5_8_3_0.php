@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Upgrade;
 
+use App\Models\OauthClient;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,14 +14,14 @@ class V5_8_3_0 extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'upgrade:v5.8.3.0';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'upgrade to v5.8.3.0';
 
     /**
      * Create a new command instance.
@@ -43,5 +44,26 @@ class V5_8_3_0 extends Command
             $table->dropColumn('client_id_config');
             $table->dropColumn('client_secret_config');
         });
+
+        OauthClient::insert([
+            [
+                'id'            => 4,
+                'name'          => 'google',
+                'client_id'     => '',
+                'client_secret' => '',
+                'created_at'    => '2019-05-14 23:26:38',
+                'updated_at'    => '2019-05-14 23:26:38',
+                'deleted_at'    => null,
+            ],
+            [
+                'id'            => 5,
+                'name'          => 'facebook',
+                'client_id'     => '',
+                'client_secret' => '',
+                'created_at'    => '2019-05-14 23:26:38',
+                'updated_at'    => '2019-05-14 23:26:38',
+                'deleted_at'    => null,
+            ],
+        ]);
     }
 }
