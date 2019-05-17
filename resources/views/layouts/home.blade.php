@@ -204,17 +204,9 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
-                <ul class="row">
-                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/qq') }}"><img src="{{ asset('images/home/qq-login.png') }}" alt="QQ" title="QQ"></a>
-                    </li>
-                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/weibo') }}"><img src="{{ asset('images/home/sina-login.png') }}" alt="{{ __('Weibo') }}" title="{{ __('Weibo') }}"></a>
-                    </li>
-                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="{{ url('auth/oauth/redirectToProvider/github') }}"><img src="{{ asset('images/home/github-login.jpg') }}" alt="github" title="github"></a>
-                    </li>
-                </ul>
+                @foreach($oauthClients as $oauthClient)
+                    <a class="fa fa-{{ $oauthClient->name }}" href="{{ url('auth/oauth/redirectToProvider/' . $oauthClient->name) }}" alt="{{ $oauthClient->name }}" title="{{ $oauthClient->name }}"></a>
+                @endforeach
             </div>
         </div>
     </div>

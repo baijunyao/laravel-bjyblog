@@ -75,12 +75,14 @@ class OAuthController extends Controller
             ->where($countMap)
             ->first();
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
+        $name = $user->nickname ?? $user->name;
+
         if ($oldUserData) {
             $userId  = $oldUserData->id;
 
             // 更新数据
             OauthUser::where('id', $userId)->update([
-                'name'          => $user->nickname,
+                'name'          => $name,
                 'access_token'  => $user->token,
                 'last_login_ip' => $request->getClientIp(),
                 'login_times'   => $oldUserData->login_times + 1,
@@ -93,7 +95,7 @@ class OAuthController extends Controller
         } else {
             $userId = OauthUser::create([
                 'oauth_client_id'          => $type[$service],
-                'name'                     => $user->nickname,
+                'name'                     => $name,
                 'openid'                   => $user->id,
                 'access_token'             => $user->token,
                 'last_login_ip'            => $request->getClientIp(),
