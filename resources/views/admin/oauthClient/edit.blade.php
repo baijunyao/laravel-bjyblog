@@ -9,7 +9,7 @@
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>{{ __('OAuth 名称') }}</th>
+                <th>{{ __('OAuth Client Name') }}</th>
                 <td>
                     {{ $oauthClient->name }}
                 </td>
