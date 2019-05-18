@@ -40,6 +40,24 @@ class OauthClientsTableSeeder extends Seeder
                 'updated_at'    => '2019-05-08 22:13:54',
                 'deleted_at'    => null,
             ],
+            [
+                'id'            => 4,
+                'name'          => 'google',
+                'client_id'     => '',
+                'client_secret' => '',
+                'created_at'    => '2019-05-14 23:26:38',
+                'updated_at'    => '2019-05-14 23:26:38',
+                'deleted_at'    => null,
+            ],
+            [
+                'id'            => 5,
+                'name'          => 'facebook',
+                'client_id'     => '',
+                'client_secret' => '',
+                'created_at'    => '2019-05-14 23:26:38',
+                'updated_at'    => '2019-05-14 23:26:38',
+                'deleted_at'    => null,
+            ],
         ]);
     }
 }

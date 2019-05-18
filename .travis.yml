@@ -18,3 +18,7 @@ script:
 
 services:
 - mysql
+
+notifications:
+  slack: baijunyao:Lp3CWSGT0kfZRfo8XTIHfKyN
+
