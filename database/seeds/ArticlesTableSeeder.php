@@ -80,6 +80,7 @@ google是必不可少的；
                 'id'          => 2,
                 'category_id' => 1,
                 'title'       => '已删除',
+                 'slug'        => str_slug('已删除', '-'),
                 'author'      => '白俊遥',
                 'markdown'    => '内容',
                 'html'        => '内容',
