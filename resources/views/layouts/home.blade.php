@@ -39,7 +39,7 @@
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if((request()->path() === 'category/' . $v->id) || (isset($data->category_id) && $v->id == $data->category_id)) b-nav-active @endif">
-                        <a href="{{ url('category/'.$v->id) }}">{{ $v->name }}</a>
+                        <a href="{{ url('category/'.$v->id.'/'.$v->slug) }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 @foreach($nav as $v)
