@@ -4,6 +4,8 @@ use HyperDown\Parser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use Str;
 
 if (!function_exists('ajax_return')) {
     /**
@@ -350,5 +352,24 @@ if (!function_exists('is_json')) {
         json_decode($json);
 
         return json_last_error() == JSON_ERROR_NONE;
+    }
+}
+
+if (!function_exists('translate_slug')) {
+    /**
+     * Translate slug to english
+     *
+     * @param $content
+     * @return string
+     * @throws ErrorException
+     */
+    function translate_slug($content)
+    {
+        $tr = new GoogleTranslate('en');
+        $englishContent =  $tr->setUrl('http://translate.google.cn/translate_a/single')
+            ->setSource('zh-CN')
+            ->translate($content);
+
+        return Str::slug($englishContent);
     }
 }
