@@ -4,11 +4,10 @@ namespace App\Observers;
 
 use App\Models\ArticleTag;
 use Cache;
-use Str;
 
 class ArticleObserver extends BaseObserver
 {
-    public function creating($article)
+    public function saving($article)
     {
         if (empty($article->description)) {
             $article->description = preg_replace(
@@ -18,8 +17,8 @@ class ArticleObserver extends BaseObserver
             );
         }
 
-        if (config('bjyblog.seo.use_slug') === true && empty($article->slug)) {
-            $article->slug = config('app.locale') === 'en' ? Str::slug($article->title) : translate_slug($article->title);
+        if (config('bjyblog.seo.use_slug') === true && $article->isDirty('title') && empty($article->slug)) {
+            $article->slug = generate_english_slug($article->title);
         }
     }
 

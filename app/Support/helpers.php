@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-use Str;
+use Illuminate\Support\Str;
 
 if (!function_exists('ajax_return')) {
     /**
@@ -355,21 +355,26 @@ if (!function_exists('is_json')) {
     }
 }
 
-if (!function_exists('translate_slug')) {
+if (!function_exists('generate_english_slug')) {
     /**
-     * Translate slug to english
+     * Generate English slug
      *
      * @param $content
      * @return string
      * @throws ErrorException
      */
-    function translate_slug($content)
+    function generate_english_slug($content)
     {
-        $tr = new GoogleTranslate('en');
-        $englishContent =  $tr->setUrl('http://translate.google.cn/translate_a/single')
-            ->setSource('zh-CN')
-            ->translate($content);
+        $locale = config('app.locale');
 
-        return Str::slug($englishContent);
+        if ('en' !== $locale) {
+            $googleTranslate = new GoogleTranslate();
+            $content =  $googleTranslate->setUrl('http://translate.google.cn/translate_a/single')
+                ->setSource($locale)
+                ->translate($content);
+
+        }
+
+        return Str::slug($content);
     }
 }

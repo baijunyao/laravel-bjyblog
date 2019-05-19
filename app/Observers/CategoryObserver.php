@@ -4,9 +4,17 @@ namespace App\Observers;
 
 use App\Models\Article;
 use Cache;
+use Str;
 
 class CategoryObserver extends BaseObserver
 {
+    public function saving($category)
+    {
+        if (config('bjyblog.seo.use_slug') === true && $category->isDirty('name') && empty($category->slug)) {
+            $category->slug = generate_english_slug($category->name);
+        }
+    }
+
     public function deleting($category)
     {
         if (Article::where('category_id', $category->id)->count() !== 0) {
