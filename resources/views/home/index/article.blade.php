@@ -18,10 +18,10 @@
                 <ul class="row b-metadata">
                     <li class="col-xs-5 col-md-2 col-lg-3"><i class="fa fa-user"></i> {{ $data->author }}</li>
                     <li class="col-xs-7 col-md-3 col-lg-3"><i class="fa fa-calendar"></i> {{ $data->created_at }}</li>
-                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ url('category', [$data->category->id]) }}">{{ $data->category->name }}</a>
+                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ url('category', [$data->category->id, $data->category->slug]) }}">{{ $data->category->name }}</a>
                     <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
                         @foreach($data->tags as $v)
-                            <a class="b-tag-name" href="{{ url('tag', [$v->id]) }}">{{ $v->name }}</a>
+                            <a class="b-tag-name" href="{{ url('tag', [$v->id, $v->slug]) }}">{{ $v->name }}</a>
                         @endforeach
                     </li>
                 </ul>

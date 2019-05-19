@@ -41,10 +41,14 @@ class TagController extends Controller
      */
     public function store(Store $request)
     {
-        $id = Tag::create($request->only('name'));
+
+        $data = $request->only('name');
+        $tag_slug = str_slug($request->name, '-');
+        $data['slug'] = $tag_slug;
+        $id = Tag::create($data);
         if ($request->ajax()) {
             $data['id'] = $id;
-
+            $data['slug'] = $tag_slug;
             return ajax_return(200, $data);
         }
 
@@ -76,7 +80,9 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Tag::find($id)->update($request->except('_token'));
+        $data  = $request->except('_token');
+        $data['slug'] = str_slug($request->name, '-');
+        Tag::find($id)->update($data);
 
         return redirect()->back();
     }
@@ -121,5 +127,15 @@ class TagController extends Controller
         Tag::onlyTrashed()->find($id)->forceDelete();
 
         return redirect('admin/tag/index');
+    }
+
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->name, '-');
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return action('IndexController@category', [$this->id, $this->slug]);
     }
 }

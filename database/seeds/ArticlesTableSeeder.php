@@ -12,11 +12,13 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         DB::table('articles')->truncate();
+        $title = '写给 thinkphp 开发者的 laravel 系列教程 (一) 序言';
         DB::table('articles')->insert([
             [
                 'id'          => 1,
                 'category_id' => 1,
-                'title'       => '写给 thinkphp 开发者的 laravel 系列教程 (一) 序言',
+                'title'       => $title,
+                'slug'        => str_slug($title, '-'),
                 'author'      => '白俊遥',
                 'markdown'    => '终于；终于；终于；
 开始正式写 laravel 系列了；
@@ -78,6 +80,7 @@ google是必不可少的；
                 'id'          => 2,
                 'category_id' => 1,
                 'title'       => '已删除',
+                 'slug'        => str_slug('已删除', '-'),
                 'author'      => '白俊遥',
                 'markdown'    => '内容',
                 'html'        => '内容',

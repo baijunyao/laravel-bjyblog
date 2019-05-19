@@ -13,4 +13,14 @@ class Tag extends Base
     {
         return $this->belongsToMany(Article::class, 'article_tags');
     }
+
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->name, '-');
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return action('IndexController@tag', [$this->id, $this->slug]);
+    }
 }
