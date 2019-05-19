@@ -42,6 +42,7 @@
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.1",
+        "stichoza/google-translate-php": "^4.0",
         "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
