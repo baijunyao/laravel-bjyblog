@@ -113,8 +113,14 @@ class Article extends Base
         return $id;
     }
 
-    public function getUrlAttribute(): string
+    public function getUrlAttribute()
     {
-        return action('IndexController@article', [$this->id, $this->slug]);
+        $parameters = [$this->id];
+
+        if (config('bjyblog.seo.use_slug') === 'true') {
+            $parameters[] = $this->slug;
+        }
+
+        return url('article', $parameters);
     }
 }

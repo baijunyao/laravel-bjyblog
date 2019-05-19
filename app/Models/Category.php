@@ -12,13 +12,14 @@ class Category extends Base
         return $this->hasMany(Article::class);
     }
 
- 	public function getSlugAttribute(): string
+    public function getUrlAttribute()
     {
-        return str_slug($this->name, '-');
-    }
+        $parameters = [$this->id];
 
-    public function getUrlAttribute(): string
-    {
-        return action('IndexController@category', [$this->id, $this->slug]);
+        if (config('bjyblog.seo.use_slug') === 'true') {
+            $parameters[] = $this->slug;
+        }
+
+        return url('category', $parameters);
     }
 }

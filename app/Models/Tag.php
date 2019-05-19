@@ -14,13 +14,14 @@ class Tag extends Base
         return $this->belongsToMany(Article::class, 'article_tags');
     }
 
-    public function getSlugAttribute(): string
+    public function getUrlAttribute()
     {
-        return str_slug($this->name, '-');
-    }
+        $parameters = [$this->id];
 
-    public function getUrlAttribute(): string
-    {
-        return action('IndexController@tag', [$this->id, $this->slug]);
+        if (config('bjyblog.seo.use_slug') === 'true') {
+            $parameters[] = $this->slug;
+        }
+
+        return url('tag', $parameters);
     }
 }

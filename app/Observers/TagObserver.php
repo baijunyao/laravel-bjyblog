@@ -10,7 +10,7 @@ class TagObserver extends BaseObserver
 {
     public function saving($category)
     {
-        if (config('bjyblog.seo.use_slug') === true && $category->isDirty('name') && empty($category->slug)) {
+        if ($category->isDirty('name') && empty($category->slug)) {
             $category->slug = generate_english_slug($category->name);
         }
     }

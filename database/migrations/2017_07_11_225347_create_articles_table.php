@@ -16,6 +16,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id')->comment('文章表主键');
             $table->boolean('category_id')->default(0)->comment('分类id');
             $table->string('title')->default('')->comment('标题');
+            $table->string('slug')->default('')->comment('slug');
             $table->string('author')->default('')->comment('作者');
             $table->mediumText('markdown')->comment('markdown文章内容');
             $table->mediumText('html')->comment('markdown转的html页面');

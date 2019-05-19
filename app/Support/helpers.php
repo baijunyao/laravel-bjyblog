@@ -372,7 +372,6 @@ if (!function_exists('generate_english_slug')) {
             $content =  $googleTranslate->setUrl('http://translate.google.cn/translate_a/single')
                 ->setSource($locale)
                 ->translate($content);
-
         }
 
         return Str::slug($content);

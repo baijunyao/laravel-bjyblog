@@ -106,4 +106,83 @@ class ArticleControllerTest extends TestCase
             ]);
         }
     }
+
+    public function testCreateForEnLocale()
+    {
+        config([
+            'app.locale' => 'en'
+        ]);
+
+        $file         = UploadedFile::fake()->image('cover.jpg');
+        $commonColumn = [
+            'category_id' => 1,
+            'title'       => 'title slug',
+            'author'      => '白俊遥',
+            'keywords'    => 'keywords',
+            'markdown'    => 'content',
+        ];
+        $this->adminPost('store', [
+            'tag_ids'     => [1],
+            'description' => '',
+            'slug'        => '',
+            'cover'       => $file,
+        ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
+
+        $this->assertDatabaseHas($this->table, $commonColumn + [
+            'description' => re_substr($commonColumn['markdown'], 0, 200, true),
+            'slug'        => 'title-slug'
+        ]);
+
+        $this->assertDatabaseHas('article_tags', [
+            'article_id' => Article::where($commonColumn)->value('id'),
+            'tag_id'     => 1,
+        ]);
+    }
+
+    public function testCreateForCnLocale()
+    {
+        config([
+            'app.locale' => 'zh-CN'
+        ]);
+
+        $file         = UploadedFile::fake()->image('cover.jpg');
+        $commonColumn = [
+            'category_id' => 1,
+            'title'       => '测试标题',
+            'author'      => '白俊遥',
+            'keywords'    => 'keywords',
+            'markdown'    => 'content',
+        ];
+        $this->adminPost('store', [
+            'tag_ids'     => [1],
+            'description' => '',
+            'slug'        => '',
+            'cover'       => $file,
+        ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
+
+        $this->assertDatabaseHas($this->table, $commonColumn + [
+            'description' => re_substr($commonColumn['markdown'], 0, 200, true),
+            'slug'        => 'test-title'
+        ]);
+
+        $this->assertDatabaseHas('article_tags', [
+            'article_id' => Article::where($commonColumn)->value('id'),
+            'tag_id'     => 1,
+        ]);
+    }
+
+    public function testUseSlug()
+    {
+        $article = Article::find(1);
+
+        config([
+            'bjyblog.seo.use_slug' => 'true'
+        ]);
+        $this->assertEquals($article->url, url('article', [$article->id, $article->slug]));
+
+        config([
+            'bjyblog.seo.use_slug' => 'false'
+        ]);
+        $this->assertEquals($article->url, url('article', [$article->id]));
+    }
 }

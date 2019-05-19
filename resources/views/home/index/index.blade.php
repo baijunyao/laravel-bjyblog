@@ -27,7 +27,7 @@
         @foreach($article as $k => $v)
             <div class="row b-one-article">
                 <h3 class="col-xs-12 col-md-12 col-lg-12">
-                    <a class="b-oa-title" href="{{ url('article', [$v->id, $v->slug]) }}" target="_blank">{{ $v->title }}</a>
+                    <a class="b-oa-title" href="{{ $v->url }}" target="_blank">{{ $v->title }}</a>
                 </h3>
                 <div class="col-xs-12 col-md-12 col-lg-12 b-date">
                     <ul class="row">
@@ -38,11 +38,11 @@
                             <i class="fa fa-calendar"></i> {{ $v->created_at }}
                         </li>
                         <li class="col-xs-5 col-md-2 col-lg-2">
-                            <i class="fa fa-list-alt"></i> <a href="{{ url('category', [$v->category->id, $v->category->slug]) }}" target="_blank">{{ $v->category->name }}</a>
+                            <i class="fa fa-list-alt"></i> <a href="{{ $v->category->url }}" target="_blank">{{ $v->category->name }}</a>
                         </li>
                         <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
                             @foreach($v->tags as $n)
-                                <a class="b-tag-name" href="{{ url('tag', [$n->id, $n->slug]) }}" target="_blank">{{ $n->name }}</a>
+                                <a class="b-tag-name" href="{{ $n->url }}" target="_blank">{{ $n->name }}</a>
                             @endforeach
                         </li>
                     </ul>
@@ -52,7 +52,7 @@
                         <!-- 文章封面图片开始 -->
                         <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs b-oa-thumbnail">
                             <figure class="b-oa-pic b-style1">
-                                <a href="{{ url('article', [ $v->id, $v->slug ]) }}" target="_blank">
+                                <a href="{{ $v->url }}" target="_blank">
                                     <img src="{{ asset($v->cover) }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
                                 </a>
                                 <figcaption>
@@ -72,7 +72,7 @@
                         <!-- 文章描述结束 -->
                     </div>
                 </div>
-                <a class=" b-readall" href="{{ url('article', [$v->id, $v->slug]) }}" target="_blank">阅读全文</a>
+                <a class=" b-readall" href="{{ $v->url }}" target="_blank">阅读全文</a>
             </div>
         @endforeach
         <!-- 循环文章列表结束 -->

@@ -18,10 +18,10 @@
                 <ul class="row b-metadata">
                     <li class="col-xs-5 col-md-2 col-lg-3"><i class="fa fa-user"></i> {{ $data->author }}</li>
                     <li class="col-xs-7 col-md-3 col-lg-3"><i class="fa fa-calendar"></i> {{ $data->created_at }}</li>
-                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ url('category', [$data->category->id, $data->category->slug]) }}">{{ $data->category->name }}</a>
+                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ $data->category->url }}">{{ $data->category->name }}</a>
                     <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
-                        @foreach($data->tags as $v)
-                            <a class="b-tag-name" href="{{ url('tag', [$v->id, $v->slug]) }}">{{ $v->name }}</a>
+                        @foreach($data->tags as $tag)
+                            <a class="b-tag-name" href="{{ $tag->url }}">{{ $tag->name }}</a>
                         @endforeach
                     </li>
                 </ul>
@@ -38,7 +38,7 @@
                         @if(is_null($prev))
                             <span>没有了</span>
                         @else
-                            <a href="{{ url('article', [$prev->id, $prev->slug]) }}">{{ $prev->title }}</a>
+                            <a href="{{ $prev->url }}">{{ $prev->title }}</a>
                         @endif
 
                     </li>
@@ -47,7 +47,7 @@
                         @if(is_null($next))
                             <span>没有了</span>
                         @else
-                            <a href="{{ url('article', [$next->id, $next->slug]) }}">{{ $next->title }}</a>
+                            <a href="{{ $next->url }}">{{ $next->title }}</a>
                         @endif
                     </li>
                 </ul>

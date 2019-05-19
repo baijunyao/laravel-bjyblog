@@ -42,10 +42,7 @@ class CategoryController extends Controller
      */
     public function store(Store $request)
     {
-        $data = $request->except('_token');
-        $category_slug = str_slug($request->name, '-');
-        $data['slug'] = $category_slug;
-        Category::create($data);
+        Category::create($request->except('_token'));
 
         return redirect('admin/category/index');
     }
@@ -75,10 +72,7 @@ class CategoryController extends Controller
      */
     public function update(Update $request, $id)
     {
-        $data  = $request->except('_token');
-        $data['slug'] = str_slug($request->name, '-');
-        
-        Category::find($id)->update($data);
+        Category::find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }

@@ -17,7 +17,7 @@ class ArticleObserver extends BaseObserver
             );
         }
 
-        if (config('bjyblog.seo.use_slug') === true && $article->isDirty('title') && empty($article->slug)) {
+        if ($article->isDirty('title') && empty($article->slug)) {
             $article->slug = generate_english_slug($article->title);
         }
     }
