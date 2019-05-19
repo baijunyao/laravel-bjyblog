@@ -176,12 +176,12 @@ class ArticleControllerTest extends TestCase
         $article = Article::find(1);
 
         config([
-            'bjyblog.seo.use_slug' => 'true'
+            'bjyblog.seo.use_slug' => true
         ]);
         $this->assertEquals($article->url, url('article', [$article->id, $article->slug]));
 
         config([
-            'bjyblog.seo.use_slug' => 'false'
+            'bjyblog.seo.use_slug' => false
         ]);
         $this->assertEquals($article->url, url('article', [$article->id]));
     }

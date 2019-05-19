@@ -247,6 +247,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('qqQun', 'ConfigController@qqQun');
         // 编辑备份配置页面
         Route::get('backup', 'ConfigController@backup');
+        // SEO
+        Route::get('seo', 'ConfigController@seo');
         // 编辑配置
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存

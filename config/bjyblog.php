@@ -33,5 +33,7 @@ return [
         'code' => '',
         'or_code' => '',
     ],
-
+    'seo' => [
+        'use_slug' => ''
+    ]
 ];

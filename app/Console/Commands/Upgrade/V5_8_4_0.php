@@ -4,6 +4,7 @@ namespace App\Console\Commands\Upgrade;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Config;
 use App\Models\Tag;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
@@ -71,5 +72,14 @@ class V5_8_4_0 extends Command
                 'slug' => generate_english_slug($tag->name)
             ]);
         });
+
+        Config::create([
+            'id'         => 167,
+            'name'       => 'bjyblog.seo.use_slug',
+            'value'      => 'false',
+            'created_at' => '2019-05-19 19:43:00',
+            'updated_at' => '2019-05-19 19:43:00',
+            'deleted_at' => null,
+        ]);
     }
 }

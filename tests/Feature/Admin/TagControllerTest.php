@@ -65,12 +65,12 @@ class TagControllerTest extends TestCase
         $tag = Tag::find(1);
 
         config([
-            'bjyblog.seo.use_slug' => 'true'
+            'bjyblog.seo.use_slug' => true
         ]);
         $this->assertEquals($tag->url, url('tag', [$tag->id, $tag->slug]));
 
         config([
-            'bjyblog.seo.use_slug' => 'false'
+            'bjyblog.seo.use_slug' => false
         ]);
         $this->assertEquals($tag->url, url('tag', [$tag->id]));
     }
