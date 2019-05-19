@@ -110,6 +110,7 @@ class ArticleController extends Controller
         unset($data['tag_ids']);
 
         $data['description'] = $request->input('description', '');
+        $data['slug']        = str_slug($data['title'], '-');
         $article             = Article::create($data);
 
         if ($article) {
@@ -178,6 +179,7 @@ class ArticleController extends Controller
 
         $articleTagModel->addTagIds($id, $tag_ids);
 
+        $data['slug'] = str_slug($data['title'], '-');
         // 编辑文章
         Article::find($id)->update($data);
 

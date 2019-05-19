@@ -126,4 +126,14 @@ class Article extends Base
 
         return $id;
     }
+
+    public function getSlugAttribute(): string
+    {
+        return str_slug($this->title, '-');
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return action('IndexController@article', [$this->id, $this->slug]);
+    }
 }
