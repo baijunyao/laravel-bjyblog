@@ -13,7 +13,7 @@ Route::namespace('Home')->group(function () {
     // 开源项目
     Route::get('git', 'IndexController@git');
     // 文章详情
-    Route::get('article/{id}', 'IndexController@article');
+    Route::get('article/{id}/{slug?}', 'IndexController@article');
     // 文章评论
     Route::post('comment', 'IndexController@comment')->middleware('auth.oauth');
     // 检测是否登录

@@ -38,7 +38,7 @@
                         @if(is_null($prev))
                             <span>没有了</span>
                         @else
-                            <a href="{{ url('article', [$prev->id]) }}">{{ $prev->title }}</a>
+                            <a href="{{ url('article', [$prev->id, $prev->slug]) }}">{{ $prev->title }}</a>
                         @endif
 
                     </li>
@@ -47,7 +47,7 @@
                         @if(is_null($next))
                             <span>没有了</span>
                         @else
-                            <a href="{{ url('article', [$next->id]) }}">{{ $next->title }}</a>
+                            <a href="{{ url('article', [$next->id, $next->slug]) }}">{{ $next->title }}</a>
                         @endif
                     </li>
                 </ul>

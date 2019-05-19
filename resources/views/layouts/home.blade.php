@@ -122,7 +122,7 @@
                 <h4 class="b-title">{{ __('Top Articles') }}</h4>
                 <p class="b-recommend-p">
                     @foreach($topArticle as $v)
-                        <a class="b-recommend-a" href="{{ url('article', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                        <a class="b-recommend-a" href="{{ url('article', [$v->id, $v->slug]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
                     @endforeach
                 </p>
             </div>
