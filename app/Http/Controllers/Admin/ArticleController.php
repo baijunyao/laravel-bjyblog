@@ -108,9 +108,6 @@ class ArticleController extends Controller
         $data['html'] = markdown_to_html($data['markdown']);
         $tag_ids      = $data['tag_ids'];
         unset($data['tag_ids']);
-
-        $data['description'] = $request->input('description', '');
-        $data['slug']        = str_slug($data['title'], '-');
         $article             = Article::create($data);
 
         if ($article) {
