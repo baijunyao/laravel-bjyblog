@@ -9,10 +9,34 @@
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>Use Slug：</th>
+                <th>{{ __('Use Slug') }}：</th>
                 <td>
                     {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="167" value="true" @if($config['bjyblog.seo.use_slug'] === true) checked @endif> &emsp;&emsp;
                     {{ __('No') }} <input class="bjy-icheck" type="radio" name="167" value="false" @if($config['bjyblog.seo.use_slug'] === false) checked @endif>
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Blog Name') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="101" value="{{  $config['app.name'] }}" >
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Blog Title') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="149" value="{{  $config['bjyblog.head.title'] }}" >
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Blog Keywords') }}</th>
+                <td>
+                    <textarea class="form-control" name="102" rows="5" placeholder="">{{  $config['bjyblog.head.keywords'] }}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Blog Description') }}</th>
+                <td>
+                    <textarea class="form-control" name="103" rows="5" placeholder="">{{  $config['bjyblog.head.description'] }}</textarea>
                 </td>
             </tr>
             <tr>

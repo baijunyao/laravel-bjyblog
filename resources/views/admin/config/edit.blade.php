@@ -26,30 +26,6 @@
                 </tr>
             @endif
             <tr>
-                <th>{{ __('Blog Name') }}</th>
-                <td>
-                    <input class="form-control" type="text" name="101" value="{{  $config['app.name'] }}" >
-                </td>
-            </tr>
-            <tr>
-                <th>{{ __('Blog Title') }}</th>
-                <td>
-                    <input class="form-control" type="text" name="149" value="{{  $config['bjyblog.head.title'] }}" >
-                </td>
-            </tr>
-            <tr>
-                <th>{{ __('Blog Keywords') }}</th>
-                <td>
-                    <textarea class="form-control" name="102" rows="5" placeholder="">{{  $config['bjyblog.head.keywords'] }}</textarea>
-                </td>
-            </tr>
-            <tr>
-                <th>{{ __('Blog Description') }}</th>
-                <td>
-                    <textarea class="form-control" name="103" rows="5" placeholder="">{{  $config['bjyblog.head.description'] }}</textarea>
-                </td>
-            </tr>
-            <tr>
                 <th>{{ __('Default Author') }}</th>
                 <td>
                     <input class="form-control" type="text" name="125" value="{{  $config['bjyblog.author'] }}" >
