@@ -3,6 +3,8 @@
 namespace Tests\Feature\Admin;
 
 use App\Models\Tag;
+use Mockery;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestEdit;
@@ -50,6 +52,9 @@ class TagControllerTest extends TestCase
         config([
             'app.locale' => 'zh-CN'
         ]);
+
+        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andReturn('New');
 
         $this->adminPost('store', [
             'slug' => ''

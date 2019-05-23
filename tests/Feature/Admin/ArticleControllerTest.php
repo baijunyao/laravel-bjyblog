@@ -4,6 +4,8 @@ namespace Tests\Feature\Admin;
 
 use App\Models\Article;
 use Illuminate\Http\UploadedFile;
+use Mockery;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestForceDelete;
@@ -144,6 +146,9 @@ class ArticleControllerTest extends TestCase
         config([
             'app.locale' => 'zh-CN'
         ]);
+
+        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andReturn('Test title');
 
         $file         = UploadedFile::fake()->image('cover.jpg');
         $commonColumn = [
