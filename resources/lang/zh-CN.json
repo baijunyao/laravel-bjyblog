@@ -181,6 +181,7 @@
     "Force Delete Success": "彻底删除成功",
     "Restore Success": "恢复成功",
 
-    "OAuth Client Name": "OAuth 名称"
+    "OAuth Client Name": "OAuth 名称",
+    "Use Slug": "使用 Slug"
 
 }

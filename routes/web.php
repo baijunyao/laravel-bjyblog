@@ -5,15 +5,15 @@ Route::namespace('Home')->group(function () {
     // 首页
     Route::get('/', 'IndexController@index');
     // 分类
-    Route::get('category/{id}', 'IndexController@category');
+    Route::get('category/{id}/{slug?}', 'IndexController@category');
     // 标签
-    Route::get('tag/{id}', 'IndexController@tag');
+    Route::get('tag/{id}/{slug?}', 'IndexController@tag');
     // 随言碎语
     Route::get('chat', 'IndexController@chat');
     // 开源项目
     Route::get('git', 'IndexController@git');
     // 文章详情
-    Route::get('article/{id}', 'IndexController@article');
+    Route::get('article/{id}/{slug?}', 'IndexController@article');
     // 文章评论
     Route::post('comment', 'IndexController@comment')->middleware('auth.oauth');
     // 检测是否登录
@@ -247,6 +247,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('qqQun', 'ConfigController@qqQun');
         // 编辑备份配置页面
         Route::get('backup', 'ConfigController@backup');
+        // SEO
+        Route::get('seo', 'ConfigController@seo');
         // 编辑配置
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存

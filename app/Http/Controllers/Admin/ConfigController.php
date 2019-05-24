@@ -86,6 +86,14 @@ class ConfigController extends Controller
         return view('admin.config.backup', $assign);
     }
 
+    public function seo()
+    {
+        $config = cache('config');
+        $assign = compact('config');
+
+        return view('admin.config.seo', $assign);
+    }
+
     /**
      * Update the specified resource in storage.
      *

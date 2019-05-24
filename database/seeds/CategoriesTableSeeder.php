@@ -16,6 +16,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'id'          => 1,
                 'name'        => 'php',
+                'slug'        => 'php',
                 'keywords'    => 'php',
                 'description' => 'php相关的文章',
                 'sort'        => 1,
@@ -27,6 +28,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'id'          => 2,
                 'name'        => '用于删除',
+                'slug'        => 'for-deletion',
                 'keywords'    => '用于删除',
                 'description' => '用于删除',
                 'sort'        => 2,
@@ -38,6 +40,7 @@ class CategoriesTableSeeder extends Seeder
             [
                 'id'          => 3,
                 'name'        => '已删除',
+                'slug'        => 'deleted',
                 'keywords'    => '已删除',
                 'description' => '已删除',
                 'sort'        => 3,

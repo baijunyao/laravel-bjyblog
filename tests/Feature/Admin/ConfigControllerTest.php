@@ -31,6 +31,11 @@ class ConfigControllerTest extends TestCase
         $this->adminGet('qqQun')->assertStatus(200);
     }
 
+    public function testSeo()
+    {
+        $this->adminGet('seo')->assertStatus(200);
+    }
+
     public function testUpdate()
     {
         $this->adminPost('update', $this->updateData)->assertSessionHasAll([

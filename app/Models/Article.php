@@ -30,20 +30,6 @@ class Article extends Base
         return str_replace(["\r", "\n", "\r\n"], '', $value);
     }
 
-    public function setDescriptionAttribute($value)
-    {
-        if (empty($value)) {
-            $description         = preg_replace(
-                ['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'],
-                '',
-                $this->getAttribute('markdown')
-            );
-            $this->attributes['description'] = re_substr($description, 0, 200, true);
-        } else {
-            $this->attributes['description'] = $value;
-        }
-    }
-
     /**
      * 关联文章表
      *
@@ -125,5 +111,16 @@ class Article extends Base
         }
 
         return $id;
+    }
+
+    public function getUrlAttribute()
+    {
+        $parameters = [$this->id];
+
+        if (config('bjyblog.seo.use_slug') === true) {
+            $parameters[] = $this->slug;
+        }
+
+        return url('article', $parameters);
     }
 }

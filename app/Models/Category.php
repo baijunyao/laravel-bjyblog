@@ -11,4 +11,15 @@ class Category extends Base
     {
         return $this->hasMany(Article::class);
     }
+
+    public function getUrlAttribute()
+    {
+        $parameters = [$this->id];
+
+        if (config('bjyblog.seo.use_slug') === true) {
+            $parameters[] = $this->slug;
+        }
+
+        return url('category', $parameters);
+    }
 }

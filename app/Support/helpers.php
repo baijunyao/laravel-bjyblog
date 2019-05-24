@@ -4,6 +4,8 @@ use HyperDown\Parser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
+use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Str;
 
 if (!function_exists('ajax_return')) {
     /**
@@ -350,5 +352,28 @@ if (!function_exists('is_json')) {
         json_decode($json);
 
         return json_last_error() == JSON_ERROR_NONE;
+    }
+}
+
+if (!function_exists('generate_english_slug')) {
+    /**
+     * Generate English slug
+     *
+     * @param $content
+     * @return string
+     * @throws ErrorException
+     */
+    function generate_english_slug($content)
+    {
+        $locale = config('app.locale');
+
+        if ('en' !== $locale) {
+            $googleTranslate = new GoogleTranslate();
+            $content =  $googleTranslate->setUrl('http://translate.google.cn/translate_a/single')
+                ->setSource($locale)
+                ->translate($content);
+        }
+
+        return Str::slug($content);
     }
 }

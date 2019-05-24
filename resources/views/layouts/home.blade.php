@@ -39,7 +39,7 @@
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if((request()->path() === 'category/' . $v->id) || (isset($data->category_id) && $v->id == $data->category_id)) b-nav-active @endif">
-                        <a href="{{ url('category/'.$v->id) }}">{{ $v->name }}</a>
+                        <a href="{{ $v->url }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
                 @foreach($nav as $v)
@@ -113,7 +113,7 @@
                         <?php $tag_i++; ?>
                         <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}">{{ $v->name }} ({{ $v->articles_count }})</a>
+                            <a class="tstyle-{{ $tag_i }}" href="{{ $v->url }}">{{ $v->name }} ({{ $v->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>
@@ -122,7 +122,7 @@
                 <h4 class="b-title">{{ __('Top Articles') }}</h4>
                 <p class="b-recommend-p">
                     @foreach($topArticle as $v)
-                        <a class="b-recommend-a" href="{{ url('article', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                        <a class="b-recommend-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
                     @endforeach
                 </p>
             </div>
@@ -136,7 +136,7 @@
                                 {{ $v->name }}<span>{{ word_time($v->created_at) }}</span>
                             </li>
                             <li class="b-nc-article">
-                                {{ __('Comment') }}<a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
+                                {{ __('Comment') }}<a href="{{ url('article', [$v->article_id, $v->slug]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
                             </li>
                             <li class="b-content">
                                 {!! $v->content !!}

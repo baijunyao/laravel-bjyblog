@@ -115,7 +115,7 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer('layouts/home', function ($view) use ($oauthClients) {
             $category = Cache::remember('common:category', static::CACHE_EXPIRE, function () {
                 // 获取分类导航
-                return Category::select('id', 'name')->orderBy('sort')->get();
+                return Category::select('id', 'name', 'slug')->orderBy('sort')->get();
             });
 
             $tag = Cache::remember('common:tag', static::CACHE_EXPIRE, function () {
@@ -125,7 +125,7 @@ class ComposerServiceProvider extends ServiceProvider
 
             $topArticle = Cache::remember('common:topArticle', static::CACHE_EXPIRE, function () {
                 // 获取置顶推荐文章
-                return Article::select('id', 'title')
+                return Article::select('id', 'title', 'slug')
                     ->where('is_top', 1)
                     ->orderBy('created_at', 'desc')
                     ->get();

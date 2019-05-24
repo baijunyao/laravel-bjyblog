@@ -7,6 +7,21 @@ use Cache;
 
 class ArticleObserver extends BaseObserver
 {
+    public function saving($article)
+    {
+        if (empty($article->description)) {
+            $article->description = preg_replace(
+                ['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'],
+                '',
+                $article->markdown
+            );
+        }
+
+        if ($article->isDirty('title') && empty($article->slug)) {
+            $article->slug = generate_english_slug($article->title);
+        }
+    }
+
     public function deleted($article)
     {
         // 删除文章后同步删除关联表 article_tags 中的数据

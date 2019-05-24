@@ -13,4 +13,15 @@ class Tag extends Base
     {
         return $this->belongsToMany(Article::class, 'article_tags');
     }
+
+    public function getUrlAttribute()
+    {
+        $parameters = [$this->id];
+
+        if (config('bjyblog.seo.use_slug') === true) {
+            $parameters[] = $this->slug;
+        }
+
+        return url('tag', $parameters);
+    }
 }
