@@ -136,7 +136,7 @@
                                 {{ $v->name }}<span>{{ word_time($v->created_at) }}</span>
                             </li>
                             <li class="b-nc-article">
-                                {{ __('Comment') }}<a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
+                                {{ __('Comment') }}<a href="{{ url('article', [$v->article_id, $v->slug]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
                             </li>
                             <li class="b-content">
                                 {!! $v->content !!}
