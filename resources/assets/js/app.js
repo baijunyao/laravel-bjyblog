@@ -48,3 +48,5 @@ require('./home/comment');
 
 require('./home/site');
 
+// JsSocials : recompile with "npm run dev" or yarn...
+require('jssocials/dist/jssocials.min');

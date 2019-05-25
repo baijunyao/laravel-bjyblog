@@ -35,5 +35,11 @@ return [
     ],
     'seo' => [
         'use_slug' => ''
+    ],
+    'social_share' => [
+        'allow_social_share' => env('ALLOW_SOCIAL_SHARE', false),
+        'show_count' => env('SOCIAL_SHOW_COUNT', false),
+        'show_label' => env('SOCIAL_SHOW_LABEL', false),
+        'networks' => env('SOCIAL_NETWORKS', '[]'),
     ]
 ];
