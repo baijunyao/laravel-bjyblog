@@ -53,6 +53,10 @@
                 </ul>
             </div>
         </div>
+        <!-- social share -->
+        @if( config('bjyblog.social_share.allow_social_share') === true )
+        <div id="share"></div>
+        @endif
         <!-- 引入通用评论开始 -->
         <script>
             var userEmail='{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->email : '' }}';
@@ -139,6 +143,14 @@
     <!-- 左侧文章结束 -->
 @endsection
 
+@section('css')
+<!-- @if( config('bjyblog.social_share.allow_social_share') === true)
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-plain.css" />
+@endif -->
+@endsection
+
 @section('js')
     <script>
         // 添加行数
@@ -152,4 +164,23 @@
         titleName = '{{ config('app.name') }}';
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
+
+    @if( config('bjyblog.social_share.allow_social_share') === true )
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>  -->
+    <script>
+        $("#share").jsSocials({
+            @if( config('bjyblog.social_share.show_label') === true )
+                showLabel: true,
+            @else
+                showLabel: false,
+            @endif
+            @if( config('bjyblog.social_share.show_label') === true )
+                showCount: {!! config('bjyblog.social_share.show_count') !!},
+            @else
+                showCount: false,
+            @endif
+            shares: {!! config('bjyblog.social_share.networks') !!}
+        });
+    </script>
+    @endif
 @endsection
