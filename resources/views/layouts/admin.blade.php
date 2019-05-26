@@ -18,7 +18,7 @@
                             <img src="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
+                            <span>{{ __('others.Admin Welcome') }}</span>
                             <h2>{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->name : auth()->guard('admin')->user()->name }}</h2>
                         </div>
                     </div>

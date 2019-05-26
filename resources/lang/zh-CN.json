@@ -159,6 +159,7 @@
     "Other Config": "其他配置",
     "Language": "语言",
     "English": "英语",
+    "French": "法國",
     "Chinese(Simplified)": "简体中文",
     "ICP": "ICP 备案",
     "Blog Name": "网站名",
@@ -182,6 +183,8 @@
     "Restore Success": "恢复成功",
 
     "OAuth Client Name": "OAuth 名称",
-    "Use Slug": "使用 Slug"
+    "Use Slug": "使用 Slug",
+
+    "Read More": "阅读全文"
 
 }

@@ -12,7 +12,8 @@
                 <th>{{ __('Language') }}</th>
                 <td>
                     <select class="form-control" name="166">
-                        <option value="en" @if($config['app.locale'] === 'en') selected @endif>{{ __('English') }}</option>
+                        <option value="en" @if($config['app.locale'] === 'en') selected @endif>{{ __('English') }}</option> 
+                        <option value="fr" @if($config['app.locale'] === 'fr') selected @endif>{{ __('French') }}</option>
                         <option value="zh-CN" @if($config['app.locale'] === 'zh-CN') selected @endif>{{ __('Chinese(Simplified)') }}</option>
                     </select>
                 </td>
