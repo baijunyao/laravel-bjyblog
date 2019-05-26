@@ -34,18 +34,18 @@
                 </p>
                 <ul class="b-prev-next">
                     <li class="b-prev">
-                        上一篇：
+                         {{ __('others.Previous Article') }}：
                         @if(is_null($prev))
-                            <span>没有了</span>
+                            <span>{{ __('others.No More Article') }}</span>
                         @else
                             <a href="{{ $prev->url }}">{{ $prev->title }}</a>
                         @endif
 
                     </li>
                     <li class="b-next">
-                        下一篇：
+                        {{ __('others.Next Article') }}：
                         @if(is_null($next))
-                            <span>没有了</span>
+                            <span>{{ __('others.No More Article') }}</span>
                         @else
                             <a href="{{ $next->url }}">{{ $next->title }}</a>
                         @endif
@@ -66,17 +66,17 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
                 <img class="b-head-img" src="@if(auth()->guard('oauth')->check()){{ auth()->guard('oauth')->user()->avatar }}@else{{ asset('images/home/default_head_img.gif') }}@endif" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                 <div class="b-box-textarea">
-                    <div class="b-box-content js-hint" @if(auth()->guard('oauth')->check())contenteditable="true" @endif>请先登录后发表评论</div>
+                    <div class="b-box-content js-hint" @if(auth()->guard('oauth')->check())contenteditable="true" @endif>{{ __('others.Connect To Comment') }}</div>
                     <ul class="b-emote-submit">
                         <li class="b-emote">
                             <i class="fa fa-smile-o js-get-tuzki"></i>
-                            <input class="form-control b-email" type="text" name="email" placeholder="接收回复的email地址" value="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->email : '' }}">
+                            <input class="form-control b-email" type="text" name="email" placeholder="{{ __('others.Comment Email') }}" value="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->email : '' }}">
                             <div class="b-tuzki">
 
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input class="js-comment-btn" type="button" value="评 论" aid="{{ request()->id }}" pid="0">
+                            <input class="js-comment-btn" type="button" value="{{ __('others.Comment Submit') }}" aid="{{ request()->id }}" pid="0">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -85,8 +85,8 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-title">
                 <ul class="row">
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">最新评论</li>
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">总共<span>{{ count($comment) }}</span>条评论</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{ __('others.Last Comment') }}</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">{{ __('others.Total Comments') }}<span>{{ count($comment) }}</span>{{ __('others.Comments') }}</li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">

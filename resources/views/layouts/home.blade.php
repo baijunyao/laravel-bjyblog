@@ -24,11 +24,11 @@
             <a class="navbar-brand" href="/">
                 <div class="hidden-xs b-nav-background"></div>
                 <ul class="b-logo-code">
-                    <li class="b-lc-start">&lt;?php</li>
-                    <li class="b-lc-echo">echo</li>
+                    <li class="b-lc-start">{{ __('others.b-lc-start') }}</li>
+                    <li class="b-lc-echo">{{ __('others.b-lc-echo') }}</li>
                 </ul>
-                <p class="b-logo-word">'{{ config('app.name') }}'</p>
-                <p class="b-logo-end">;</p>
+                <p class="b-logo-word">{{ config('app.name') }}</p>
+                <p class="b-logo-end">{{ __('others.b-logo-end') }}</p>
             </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -76,7 +76,7 @@
                 <form class="form-inline" role="form" action="{{ url('search') }}" method="post">
                     {{ csrf_field() }}
                     <input class="b-search-text" type="text" name="wd">
-                    <input class="b-search-submit" type="submit" value="全站搜索">
+                    <input class="b-search-submit" type="submit" value="{{ __('others.Search') }}">
                 </form>
             </div>
             @if(!empty(config('bjyblog.qq_qun.number')) && config('app.locale') === 'zh-CN')
