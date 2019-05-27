@@ -1,5 +1,4 @@
 <h1 align="center">laravel-bjyblog</h1>
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 <p align="center">
     <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/baijunyao/laravel-bjyblog.svg"/></a>
     <a href="https://travis-ci.com/baijunyao/laravel-bjyblog"><img alt="Build Status" src="https://travis-ci.com/baijunyao/laravel-bjyblog.svg?branch=master"/></a>
@@ -7,6 +6,7 @@
     <a href="https://github.com/baijunyao/laravel-bjyblog"><img alt="stars" src="https://img.shields.io/github/stars/baijunyao/laravel-bjyblog.svg"/></a>
     <a href="https://github.com/baijunyao/laravel-bjyblog"><img alt="License" src="https://img.shields.io/github/license/baijunyao/laravel-bjyblog.svg"/></a>
     <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="PHP version" src="https://img.shields.io/packagist/php-v/baijunyao/laravel-bjyblog.svg"/></a>
+    <a href='https://github.com/baijunyao/laravel-bjyblog#contributors'><img alt='All Contributors' src='https://img.shields.io/badge/all_contributors-2-orange.svg'/></a>
 </p>
 
 
