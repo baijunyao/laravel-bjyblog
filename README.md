@@ -25,10 +25,6 @@
 - [Snail's Blog](https://www.snail-c.cn)    
 Welcome to submit a PR or tell me to include your blog
 
-## Contributions
-- [Han-MeiM](https://github.com/Han-MeiM)
-- [loyating](https://github.com/loyating)
-
 ## Links
 - Blog：[https://baijunyao.com](https://baijunyao.com)   
 - GitHub：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
