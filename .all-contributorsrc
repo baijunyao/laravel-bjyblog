@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Han-MeiM",
+      "name": "韩槑槑",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/27951114?v=4",
+      "profile": "https://www.hanjiaxin.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "laravel-bjyblog",
+  "projectOwner": "baijunyao",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
