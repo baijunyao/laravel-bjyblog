@@ -4691,6 +4691,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+"jssocials@github:tabalinas/jssocials":
+  version "1.5.0"
+  resolved "https://codeload.github.com/tabalinas/jssocials/tar.gz/beb798b3451142b620b6bbebdf893705e06d077d"
+
 killable@^1.0.0:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/killable/download/killable-1.0.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fkillable%2Fdownload%2Fkillable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
@@ -7300,6 +7304,10 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
+
+"social-share.js@github:overtrue/share.js":
+  version "1.1.0"
+  resolved "https://codeload.github.com/overtrue/share.js/tar.gz/a2ec49c509b3106a6940ba603ca3b3f6567633a4"
 
 sockjs-client@1.1.5:
   version "1.1.5"

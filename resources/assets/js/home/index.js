@@ -103,6 +103,9 @@ $(function(){
         });
     })
     $('.js-fluidbox').fluidbox();
+
+    $('#b-share-js').share(sharejsConfig);
+    $('#b-js-socials').jsSocials(jsSocialsConfig)
 })
 
 /**

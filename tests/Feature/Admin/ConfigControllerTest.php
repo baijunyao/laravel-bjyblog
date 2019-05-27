@@ -38,14 +38,7 @@ class ConfigControllerTest extends TestCase
 
     public function testUpdate()
     {
-        $this->adminPost('update', $this->updateData)->assertSessionHasAll([
-            'laravel-flash' => [
-                [
-                    'alert-message' => '操作成功',
-                    'alert-type'    => 'success',
-                ],
-            ],
-        ]);
+        $this->adminPost('update', $this->updateData)->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, [
             'value' => '网站名',

@@ -13,7 +13,11 @@ class Config extends Base
      */
     public function getValueAttribute($value)
     {
-        return is_json($value) ? json_decode($value, true) : $value;
+        if (is_json($value) && mb_substr($value, 0, 1) === '[') {
+            return json_decode($value, true);
+        } else {
+            return $value;
+        }
     }
 
     /**

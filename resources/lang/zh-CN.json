@@ -185,6 +185,9 @@
     "OAuth Client Name": "OAuth 名称",
     "Use Slug": "使用 Slug",
 
-    "Read More": "阅读全文"
+    "Read More": "阅读全文",
 
+    "Select Plugin": "选择插件",
+    "jsSocials Config": "jsSocials 配置项",
+    "ShareJs Config": "ShareJs 配置项"
 }

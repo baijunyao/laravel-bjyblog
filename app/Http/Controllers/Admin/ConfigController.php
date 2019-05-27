@@ -94,6 +94,14 @@ class ConfigController extends Controller
         return view('admin.config.seo', $assign);
     }
 
+    public function socialShare()
+    {
+        $config = cache('config');
+        $assign = compact('config');
+
+        return view('admin.config.socialShare', $assign);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -104,32 +112,25 @@ class ConfigController extends Controller
      */
     public function update(Request $request, Config $configModel)
     {
-        $data = $request->except('_token');
+        $configs = $request->except('_token');
+
         if ($request->hasFile('153')) {
             $file        = Upload::file('153', 'uploads/images', [], false);
             $result      = $file['status_code'] === 200 ? $file['data'][0]['path'] : '';
-            $data['153'] = $result;
+            $configs['153'] = $result;
         }
 
-        if (isset($data['165']) && empty($data['164'])) {
-            $data['164'] = [];
+        if (isset($configs['165']) && empty($configs['164'])) {
+            $configs['164'] = [];
         }
 
-        $editData = [];
-
-        foreach ($data as $k => $v) {
-            $editData[] = [
-                'id'    => $k,
-                'value' => is_array($v) ? json_encode($v) : $v,
-            ];
+        foreach ($configs as $id => $config) {
+            Config::find($id)->update([
+                'value' => is_array($config) ? json_encode($config) : $config
+            ]);
         }
 
-        $result = $configModel->updateBatch($editData);
-
-        if ($result) {
-            // 更新缓存
-            Cache::forget('config');
-        }
+        Cache::forget('config');
 
         return redirect()->back();
     }
