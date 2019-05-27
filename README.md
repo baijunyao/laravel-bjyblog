@@ -1,5 +1,5 @@
 <h1 align="center">laravel-bjyblog</h1>
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 <p align="center">
     <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/baijunyao/laravel-bjyblog.svg"/></a>
     <a href="https://travis-ci.com/baijunyao/laravel-bjyblog"><img alt="Build Status" src="https://travis-ci.com/baijunyao/laravel-bjyblog.svg?branch=master"/></a>
@@ -40,7 +40,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://www.hanjiaxin.com"><img src="https://avatars2.githubusercontent.com/u/27951114?v=4" width="100px;" alt="韩槑槑"/><br /><sub><b>韩槑槑</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=Han-MeiM" title="Code">💻</a></td></tr></table>
+<table><tr><td align="center"><a href="https://www.hanjiaxin.com"><img src="https://avatars2.githubusercontent.com/u/27951114?v=4" width="100px;" alt="韩槑槑"/><br /><sub><b>韩槑槑</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=Han-MeiM" title="Code">💻</a></td><td align="center"><a href="https://github.com/khyoz"><img src="https://avatars1.githubusercontent.com/u/26684951?v=4" width="100px;" alt="k26"/><br /><sub><b>k26</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=khyoz" title="Code">💻</a> <a href="#translation-khyoz" title="Translation">🌍</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
