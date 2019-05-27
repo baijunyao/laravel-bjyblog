@@ -23,6 +23,15 @@
         "code",
         "translation"
       ]
+    },
+    {
+      "login": "loyating",
+      "name": "loyating",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5088390?v=4",
+      "profile": "https://www.loyating.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
