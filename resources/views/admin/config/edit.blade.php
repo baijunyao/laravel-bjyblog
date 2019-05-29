@@ -18,6 +18,13 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <th>{{ __('Logo Style') }}：</th>
+                <td>
+                    Text with php tag <input class="bjy-icheck" type="radio" name="171" value="true" @if($config['bjyblog.logo_with_php_tag'] === "true") checked @endif> &emsp;&emsp;
+                    Only text <input class="bjy-icheck" type="radio" name="171" value="false" @if($config['bjyblog.logo_with_php_tag'] === "false") checked @endif>
+                </td>
+            </tr>
             @if($config['app.locale'] === 'zh-CN')
                 <tr>
                     <th>{{ __('ICP') }}</th>

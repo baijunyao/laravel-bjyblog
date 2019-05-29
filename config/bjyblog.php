@@ -40,5 +40,6 @@ return [
         'select_plugin' => '',
         'jssocials_config' => '',
         'sharejs_config' => ''
-    ]
+    ],
+    'logo_with_php_tag' => ''
 ];
