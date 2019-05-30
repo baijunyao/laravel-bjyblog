@@ -87,12 +87,12 @@ class CategoryControllerTest extends TestCase
         $category = Category::find(1);
 
         config([
-            'bjyblog.seo.use_slug' => true
+            'bjyblog.seo.use_slug' => 'true'
         ]);
         $this->assertEquals($category->url, url('category', [$category->id, $category->slug]));
 
         config([
-            'bjyblog.seo.use_slug' => false
+            'bjyblog.seo.use_slug' => 'false'
         ]);
         $this->assertEquals($category->url, url('category', [$category->id]));
     }

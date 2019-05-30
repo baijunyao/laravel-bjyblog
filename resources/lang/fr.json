@@ -43,7 +43,7 @@
     "Tag Name": "Nom tag",
     "User Name": "Nom utilisateur",
 
-    "Handle": "操作",
+    "Handle": "Manipuler",
     "Edit": "Modifier",
     "Delete": "Supprimer",
     "Force Delete": "Supprimer définitivement",
@@ -62,7 +62,7 @@
 
     "Sign In": "Se connecter",
     "Sign out": "Se déconnecter",
-    "Without registration, you can log in with the account below.": "无需注册，用以下帐号即可直接登录。",
+    "Without registration, you can log in with the account below.": "Sans inscription, vous pouvez vous connecter avec le compte ci-dessous.",
 
     "Hot Tags": "Tags",
     "Recent Comments": "Commentaires récents",
@@ -111,7 +111,7 @@
     "Select Image": "Sélectionner image",
     "Change": "Changer",
     "Delete": "Supprimer",
-    "If it is empty, intercept the first 300 words of the article content.": "可以不填，如不填；则截取文章内容前300字为描述",
+    "If it is empty, intercept the first 300 words of the article content.": "S'il est vide, intercepte les 300 premiers mots du contenu de l'article",
     "Content": "Contenu",
     "Topping": "Mettre en avant",
     "Submit": "Envoyer",
@@ -183,6 +183,37 @@
     "Restore Success": "Restauration réussie",
 
     "OAuth Client Name": "Nom utilisateur OAuth",
-    "Use Slug": "Utilisation Slug"
+    "Use Slug": "Utilisation Slug",
 
+    "Select Plugin": "Sélectionnez le plugin",
+    "jsSocials Config": "jsSocials La configuration",
+    "ShareJs Config": "ShareJs La configuration",
+
+    "Read More": "Lire plus",
+    "Search": "Chercher",
+    "Previous Article": "Article précédent",
+    "Next Article": "Article suivant",
+    "No More Article": "Aucun",
+    "Please login to comment": "Connectez-vous pour commenter",
+    "latest comments": "Derniers commentaires",
+    "Email for notifications": "Adresse mail",
+    "Submit": "Soumettre",
+    "Admin Welcome": "Bienvenue",
+    "Admin Page": "Admin Page",
+    "Number of comments": "Nombre de commentaires",
+    "Number of OAuth users": "Nombre d'utilisateurs OAuth",
+    "Number of articles": "Nombre d'articles",
+    "Number of chats": "Nombre de chats",
+    "Latest logged in users": "Derniers utilisateurs connectés",
+    "Login times": "Temps de connexion",
+    "Log in time": "Heure de connexion",
+    "Server environment": "Environnement serveur",
+    "Blog version": "Version du blog",
+    "System": "Système",
+    "Web server": "Serveur Web",
+    "Upgrade": "Améliorer",
+
+    "Logo Style": "Style de logo",
+    "Text with php tag": "Texte avec balise php",
+    "Only text": "Seulement du texte"
 }
