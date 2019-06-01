@@ -12,6 +12,7 @@
   "devDependencies": {
     "axios": "^0.17",
     "cross-env": "^5.1",
+    "jssocials": "github:tabalinas/jssocials",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "vue": "^2.6.7"
@@ -28,6 +29,7 @@
     "node-sass": "^4.11.0",
     "pace": "github:hubspot/pace#v1.0.2",
     "prismjs": "^1.14.0",
+    "social-share.js": "github:overtrue/share.js",
     "switchery": "0.0.2"
   }
 }

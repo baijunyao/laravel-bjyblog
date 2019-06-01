@@ -249,6 +249,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('backup', 'ConfigController@backup');
         // SEO
         Route::get('seo', 'ConfigController@seo');
+        // Social Share
+        Route::get('socialShare', 'ConfigController@socialShare');
         // 编辑配置
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存

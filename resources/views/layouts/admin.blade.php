@@ -18,7 +18,7 @@
                             <img src="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>Welcome,</span>
+                            <span>{{ __('Admin Welcome') }}</span>
                             <h2>{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->name : auth()->guard('admin')->user()->name }}</h2>
                         </div>
                     </div>
@@ -89,6 +89,7 @@
                                         @endif
                                         <li><a href="{{ url('admin/config/backup') }}">{{ __('Backup') }}</a></li>
                                         <li><a href="{{ url('admin/config/seo') }}">{{ __('SEO') }}</a></li>
+                                        <li><a href="{{ url('admin/config/socialShare') }}">{{ __('Social Share') }}</a></li>
                                         <li><a href="{{ url('admin/config/edit') }}">{{ __('Other Setting') }}</a></li>
                                         <li><a href="{{ url('admin/config/clear') }}">{{ __('Clear Cache') }}</a></li>
                                     </ul>

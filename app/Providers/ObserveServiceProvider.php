@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Chat;
 use App\Models\Comment;
+use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\Nav;
@@ -18,6 +19,7 @@ use App\Observers\ArticleObserver;
 use App\Observers\CategoryObserver;
 use App\Observers\ChatObserver;
 use App\Observers\CommentObserver;
+use App\Observers\ConfigObserver;
 use App\Observers\FriendshipLinkObserver;
 use App\Observers\GitProjectObserver;
 use App\Observers\NavObserver;
@@ -44,5 +46,6 @@ class ObserveServiceProvider extends ServiceProvider
         Site::observe(SiteObserver::class);
         Tag::observe(TagObserver::class);
         User::observe(UserObserver::class);
+        Config::observe(ConfigObserver::class);
     }
 }

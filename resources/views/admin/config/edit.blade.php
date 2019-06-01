@@ -12,9 +12,17 @@
                 <th>{{ __('Language') }}</th>
                 <td>
                     <select class="form-control" name="166">
-                        <option value="en" @if($config['app.locale'] === 'en') selected @endif>{{ __('English') }}</option>
+                        <option value="en" @if($config['app.locale'] === 'en') selected @endif>{{ __('English') }}</option> 
+                        <option value="fr" @if($config['app.locale'] === 'fr') selected @endif>{{ __('French') }}</option>
                         <option value="zh-CN" @if($config['app.locale'] === 'zh-CN') selected @endif>{{ __('Chinese(Simplified)') }}</option>
                     </select>
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Logo Style') }}：</th>
+                <td>
+                    {{ __('Text with php tag') }} <input class="bjy-icheck" type="radio" name="171" value="true" @if($config['bjyblog.logo_with_php_tag'] === "true") checked @endif> &emsp;&emsp;
+                    {{ __('Only text') }} <input class="bjy-icheck" type="radio" name="171" value="false" @if($config['bjyblog.logo_with_php_tag'] === "false") checked @endif>
                 </td>
             </tr>
             @if($config['app.locale'] === 'zh-CN')

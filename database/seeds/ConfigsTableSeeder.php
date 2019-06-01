@@ -310,6 +310,38 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2019-05-19 19:43:00',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 168,
+                'name'       => 'bjyblog.social_share.select_plugin',
+                'value'      => 'sharejs',
+                'created_at' => '2019-05-27 22:22:00',
+                'updated_at' => '2019-05-27 22:22:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 169,
+                'name'       => 'bjyblog.social_share.jssocials_config',
+                'value'      => '{}',
+                'created_at' => '2019-05-27 22:22:00',
+                'updated_at' => '2019-05-27 22:22:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 170,
+                'name'       => 'bjyblog.social_share.sharejs_config',
+                'value'      => '{}',
+                'created_at' => '2019-05-27 22:22:00',
+                'updated_at' => '2019-05-27 22:22:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 171,
+                'name'       => 'bjyblog.logo_with_php_tag',
+                'value'      => 'true',
+                'created_at' => '2019-05-28 23:15:00',
+                'updated_at' => '2019-05-28 23:15:00',
+                'deleted_at' => null,
+            ]
         ]);
     }
 }

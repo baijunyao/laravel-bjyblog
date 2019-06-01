@@ -159,6 +159,7 @@
     "Other Config": "其他配置",
     "Language": "语言",
     "English": "英语",
+    "French": "法语",
     "Chinese(Simplified)": "简体中文",
     "ICP": "ICP 备案",
     "Blog Name": "网站名",
@@ -182,6 +183,37 @@
     "Restore Success": "恢复成功",
 
     "OAuth Client Name": "OAuth 名称",
-    "Use Slug": "使用 Slug"
+    "Use Slug": "使用 Slug",
 
+    "Select Plugin": "选择插件",
+    "jsSocials Config": "jsSocials 配置项",
+    "ShareJs Config": "ShareJs 配置项",
+
+    "Read More": "阅读全文",
+    "Search": "搜索",
+    "Previous Article": "上一篇",
+    "Next Article": "下一篇",
+    "No More Article": "没有了",
+    "Please login to comment": "请先登录后发表评论",
+    "Last Comments": "最新评论",
+    "Email for notifications": "接收回复的邮箱",
+    "Submit": "提 交",
+    "Admin Welcome": "欢迎",
+    "Admin Page": "后台首页",
+    "Number of comments": "总评论数",
+    "Number of OAuth users": "第三方用户",
+    "Number of articles": "文章总数",
+    "Number of chats": "随言碎语",
+    "Latest logged in users": "最新登录的用户",
+    "Login times": "登录次数",
+    "Log in time": "登录时间",
+    "Server environment": "环境",
+    "Blog version": "博客版本",
+    "System": "操作系统",
+    "Web server": "Web 服务器",
+    "Upgrade": "升级",
+
+    "Logo Style": "Logo 风格",
+    "Text with php tag": "带 PHP 标签",
+    "Only text": "纯文本"
 }
