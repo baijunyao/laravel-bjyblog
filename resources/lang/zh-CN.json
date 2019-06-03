@@ -215,5 +215,7 @@
 
     "Logo Style": "Logo 风格",
     "Text with php tag": "带 PHP 标签",
-    "Only text": "纯文本"
+    "Only text": "纯文本",
+    "Need to add OAuth client first,": "需要先增加第三方登录配置，",
+    "Click to go.": "点击前往。"
 }
