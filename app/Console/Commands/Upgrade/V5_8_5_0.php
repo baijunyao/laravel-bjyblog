@@ -50,7 +50,12 @@ class V5_8_5_0 extends Command
             [
                 'id'         => 169,
                 'name'       => 'bjyblog.social_share.jssocials_config',
-                'value'      => '{}',
+                'value'      => '{
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "pocket", "whatsapp", "messenger", "vkontakte", "telegram", "line"],
+    showLabel: false,
+    showCount: false,
+    shareIn: "popup"
+}',
                 'created_at' => '2019-05-27 22:22:00',
                 'updated_at' => '2019-05-27 22:22:00',
                 'deleted_at' => null,
@@ -58,7 +63,9 @@ class V5_8_5_0 extends Command
             [
                 'id'         => 170,
                 'name'       => 'bjyblog.social_share.sharejs_config',
-                'value'      => '{}',
+                'value'      => '{
+    sites: ["weibo", "qq", "wechat", "douban", "qzone", "linkedin", "facebook", "twitter", "google"]
+}',
                 'created_at' => '2019-05-27 22:22:00',
                 'updated_at' => '2019-05-27 22:22:00',
                 'deleted_at' => null,

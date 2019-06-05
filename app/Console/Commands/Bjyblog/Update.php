@@ -6,6 +6,7 @@ use App\Models\Config;
 use App\Models\Console;
 use App\Models\Nav;
 use Artisan;
+use Composer\Semver\Comparator;
 use File;
 use Illuminate\Console\Command;
 
@@ -63,34 +64,26 @@ class Update extends Command
             $this->info('upgrade config success');
         }
 
-        $consoleModel = new Console();
-
-        // 获取 Console/Commands/Upgrade 目录下的文件并按创建日期排序
-        $file = collect(File::files(app_path('Console/Commands/Upgrade')))
-            ->transform(function ($v) {
-                return [
-                    'cTime'    => $v->getCTime(),
-                    'filename' => basename($v->getFilename(), '.php'),
-                ];
-            })
-            ->sortBy('cTime')
-            ->pluck('filename');
-
-        // 如果还没有执行过升级命令的则执行升级命令
         $console = Console::pluck('name');
-        foreach ($file as $k => $v) {
-            $name = 'App\Console\Commands\Upgrade\\' . $v;
-            if ($console->contains($name)) {
-                continue;
+
+        collect(File::files(app_path('Console/Commands/Upgrade')))->transform(function ($file) {
+            return strtolower(str_replace('_', '.', basename($file->getFilename(), '.php')));
+        })->sort(function ($prev, $next) {
+            return Comparator::greaterThan($prev, $next);
+        })->each(function ($version) use ($console) {
+            $name = 'App\Console\Commands\Upgrade\\' . strtoupper(str_replace('.', '_', $version));
+
+            if (! $console->contains($name)) {
+                dump($name);
+                $command = 'upgrade:' . $version;
+                Artisan::call($command);
+                Console::create([
+                    'name' => $name,
+                ]);
+                $this->info($version . ' success');
             }
-            $version = strtolower(str_replace('_', '.', $v));
-            $command = 'upgrade:' . $version;
-            Artisan::call($command);
-            Console::create([
-                'name' => $name,
-            ]);
-            $this->info($version . ' success');
-        }
+        });
+
         Artisan::call('cache:clear');
         Artisan::call('config:clear');
         Artisan::call('route:clear');
