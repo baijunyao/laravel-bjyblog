@@ -130,8 +130,6 @@ class ConfigController extends Controller
             ]);
         }
 
-        Cache::forget('config');
-
         return redirect()->back();
     }
 
