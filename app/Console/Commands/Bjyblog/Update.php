@@ -73,7 +73,7 @@ class Update extends Command
         })->each(function ($version) use ($console) {
             $name = 'App\Console\Commands\Upgrade\\' . strtoupper(str_replace('.', '_', $version));
 
-            if (! $console->contains($name)) {
+            if (!$console->contains($name)) {
                 dump($name);
                 $command = 'upgrade:' . $version;
                 Artisan::call($command);

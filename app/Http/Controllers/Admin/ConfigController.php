@@ -115,8 +115,8 @@ class ConfigController extends Controller
         $configs = $request->except('_token');
 
         if ($request->hasFile('153')) {
-            $file        = Upload::file('153', 'uploads/images', [], false);
-            $result      = $file['status_code'] === 200 ? $file['data'][0]['path'] : '';
+            $file           = Upload::file('153', 'uploads/images', [], false);
+            $result         = $file['status_code'] === 200 ? $file['data'][0]['path'] : '';
             $configs['153'] = $result;
         }
 
@@ -126,7 +126,7 @@ class ConfigController extends Controller
 
         foreach ($configs as $id => $config) {
             Config::find($id)->update([
-                'value' => is_array($config) ? json_encode($config) : $config
+                'value' => is_array($config) ? json_encode($config) : $config,
             ]);
         }
 
