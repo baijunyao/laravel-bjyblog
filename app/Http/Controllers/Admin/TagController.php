@@ -41,7 +41,6 @@ class TagController extends Controller
      */
     public function store(Store $request)
     {
-
         $id = Tag::create($request->only('name'));
 
         if ($request->ajax()) {

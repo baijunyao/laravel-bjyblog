@@ -214,6 +214,10 @@
                 @foreach($oauthClients as $oauthClient)
                     <a class="fa fa-{{ $oauthClient->name }}" href="{{ url('auth/oauth/redirectToProvider/' . $oauthClient->name) }}" alt="{{ $oauthClient->name }}" title="{{ $oauthClient->name }}"></a>
                 @endforeach
+
+                @if($oauthClients->isEmpty())
+                    {{ __('Need to add OAuth client first,') }} <a href="{{ url('admin/oauthClient/index') }}">{{ __('Click to go.') }}</a>
+                @endif
             </div>
         </div>
     </div>

@@ -33,35 +33,35 @@ class TagControllerTest extends TestCase
     public function testCreateForEnLocale()
     {
         config([
-            'app.locale' => 'en'
+            'app.locale' => 'en',
         ]);
 
         $this->adminPost('store', [
             'name' => 'Add',
-            'slug' => ''
+            'slug' => '',
         ] + $this->storeData)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, [
             'name' => 'Add',
-            'slug' => 'add'
+            'slug' => 'add',
         ] + $this->storeData);
     }
 
     public function testCreateForCnLocale()
     {
         config([
-            'app.locale' => 'zh-CN'
+            'app.locale' => 'zh-CN',
         ]);
 
         $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
         $googleTranslate->shouldReceive('setUrl->setSource->translate')->andReturn('New');
 
         $this->adminPost('store', [
-            'slug' => ''
+            'slug' => '',
         ] + $this->storeData)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, [
-            'slug' => 'new'
+            'slug' => 'new',
         ] + $this->storeData);
     }
 
@@ -70,13 +70,13 @@ class TagControllerTest extends TestCase
         $tag = Tag::find(1);
 
         config([
-            'bjyblog.seo.use_slug' => 'true'
+            'bjyblog.seo.use_slug' => 'true',
         ]);
-        $this->assertEquals($tag->url, url('tag', [$tag->id, $tag->slug]));
+        static::assertEquals($tag->url, url('tag', [$tag->id, $tag->slug]));
 
         config([
-            'bjyblog.seo.use_slug' => 'false'
+            'bjyblog.seo.use_slug' => 'false',
         ]);
-        $this->assertEquals($tag->url, url('tag', [$tag->id]));
+        static::assertEquals($tag->url, url('tag', [$tag->id]));
     }
 }

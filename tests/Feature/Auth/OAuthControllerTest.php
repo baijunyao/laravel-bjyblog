@@ -42,7 +42,7 @@ class OAuthControllerTest extends TestCase
             ->andReturn($abstractUser);
 
         Socialite::shouldReceive('driver')->with('qq')->andReturn($provider);
-        $this->get('auth/oauth/handleProviderCallback/qq')
+        $this->get('auth/oauth/handleProviderCallback/qq?code=xxx')
             ->assertStatus(302);
         $this->assertAuthenticatedAs(OauthUser::find(1), 'oauth');
     }
@@ -60,7 +60,7 @@ class OAuthControllerTest extends TestCase
             ->andReturn($abstractUser);
 
         Socialite::shouldReceive('driver')->with('weibo')->andReturn($provider);
-        $this->get('auth/oauth/handleProviderCallback/weibo')
+        $this->get('auth/oauth/handleProviderCallback/weibo?code=xxx')
             ->assertStatus(302);
         $this->assertAuthenticatedAs(OauthUser::find(3), 'oauth');
     }
@@ -78,7 +78,7 @@ class OAuthControllerTest extends TestCase
             ->andReturn($abstractUser);
 
         Socialite::shouldReceive('driver')->with('github')->andReturn($provider);
-        $this->get('auth/oauth/handleProviderCallback/github')
+        $this->get('auth/oauth/handleProviderCallback/github?code=xxx')
             ->assertStatus(302);
         $this->assertAuthenticatedAs(OauthUser::find(3), 'oauth');
     }

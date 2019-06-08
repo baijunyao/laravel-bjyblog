@@ -62,6 +62,10 @@ class OAuthController extends Controller
      */
     public function handleProviderCallback(Request $request, OauthUser $oauthUserModel, $service)
     {
+        if (!$request->has('code')) {
+            return abort(404);
+        }
+
         // 定义各种第三方登录的type对应的数字
         $type = $this->oauthClients->pluck('id', 'name');
         // 获取用户资料

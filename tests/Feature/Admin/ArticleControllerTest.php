@@ -112,7 +112,7 @@ class ArticleControllerTest extends TestCase
     public function testCreateForEnLocale()
     {
         config([
-            'app.locale' => 'en'
+            'app.locale' => 'en',
         ]);
 
         $file         = UploadedFile::fake()->image('cover.jpg');
@@ -132,7 +132,7 @@ class ArticleControllerTest extends TestCase
 
         $this->assertDatabaseHas($this->table, $commonColumn + [
             'description' => re_substr($commonColumn['markdown'], 0, 200, true),
-            'slug'        => 'title-slug'
+            'slug'        => 'title-slug',
         ]);
 
         $this->assertDatabaseHas('article_tags', [
@@ -144,7 +144,7 @@ class ArticleControllerTest extends TestCase
     public function testCreateForCnLocale()
     {
         config([
-            'app.locale' => 'zh-CN'
+            'app.locale' => 'zh-CN',
         ]);
 
         $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
@@ -167,7 +167,7 @@ class ArticleControllerTest extends TestCase
 
         $this->assertDatabaseHas($this->table, $commonColumn + [
             'description' => re_substr($commonColumn['markdown'], 0, 200, true),
-            'slug'        => 'test-title'
+            'slug'        => 'test-title',
         ]);
 
         $this->assertDatabaseHas('article_tags', [
@@ -181,13 +181,13 @@ class ArticleControllerTest extends TestCase
         $article = Article::find(1);
 
         config([
-            'bjyblog.seo.use_slug' => 'true'
+            'bjyblog.seo.use_slug' => 'true',
         ]);
-        $this->assertEquals($article->url, url('article', [$article->id, $article->slug]));
+        static::assertEquals($article->url, url('article', [$article->id, $article->slug]));
 
         config([
-            'bjyblog.seo.use_slug' => 'false'
+            'bjyblog.seo.use_slug' => 'false',
         ]);
-        $this->assertEquals($article->url, url('article', [$article->id]));
+        static::assertEquals($article->url, url('article', [$article->id]));
     }
 }

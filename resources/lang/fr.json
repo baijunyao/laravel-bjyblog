@@ -215,5 +215,7 @@
 
     "Logo Style": "Style de logo",
     "Text with php tag": "Texte avec balise php",
-    "Only text": "Seulement du texte"
+    "Only text": "Seulement du texte",
+    "Need to add OAuth client first.": "Besoin d'ajouter le client OAuth en premier.",
+    "Click to go.": "Cliquez pour aller."
 }
