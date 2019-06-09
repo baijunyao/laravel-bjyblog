@@ -32,11 +32,13 @@
                 <p class="b-copyright">
                     {!! htmlspecialchars_decode(config('bjyblog.copyright_word')) !!}
                 </p>
-                @if(config('bjyblog.social_share.select_plugin') === 'sharejs')
-                    <div id="b-share-js"></div>
-                @else
-                    <div id="b-js-socials"></div>
-                @endif
+                <div class="b-share-plugin">
+                    @if(config('bjyblog.social_share.select_plugin') === 'sharejs')
+                        <div id="b-share-js"></div>
+                    @else
+                        <div id="b-js-socials"></div>
+                    @endif
+                </div>
                 <ul class="b-prev-next">
                     <li class="b-prev">
                          {{ __('Previous Article') }}：

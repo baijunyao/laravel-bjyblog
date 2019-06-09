@@ -641,8 +641,16 @@ a {
                 color: #EE542A;
             }
 
+            .b-share-plugin {
+                position: relative;
+                margin: 10px 0;
+                width: 100%;
+                height: 60px;
+                line-height: 60px;
+                z-index: 999;
+            }
+
             .b-prev-next {
-                margin-top: 40px;
                 width: 100%;
                 height: 60px;
                 font-size: 14px;
