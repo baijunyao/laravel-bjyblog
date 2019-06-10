@@ -152,13 +152,6 @@
         $('pre').addClass('line-numbers');
         // 新页面跳转
         $('.js-content a').attr('target', '_blank')
-
-        // 定义评论url
-        ajaxCommentUrl = "{{ url('comment') }}";
-        checkLogin = "{{ url('checkLogin') }}";
-        titleName = '{{ config('app.name') }}';
-        jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
-        sharejsConfig = {!! config('bjyblog.social_share.sharejs_config') !!};
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
 @endsection

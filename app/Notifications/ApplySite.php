@@ -46,8 +46,8 @@ class ApplySite extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->line('有新的推荐博客申请等待审核。')
-            ->action('点击查看详情', url('admin/site/index'));
+            ->line(__('Someone applied for a recommendation blog.'))
+            ->action(__('Click for details.'), url('admin/site/index'));
     }
 
     /**

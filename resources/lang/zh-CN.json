@@ -217,5 +217,12 @@
     "Text with php tag": "带 PHP 标签",
     "Only text": "纯文本",
     "Need to add OAuth client first,": "需要先增加第三方登录配置，",
-    "Click to go.": "点击前往。"
+    "Click to go.": "点击前往。",
+    "Click for details.": "点击查看详情。",
+    "Someone applied for a recommendation blog.": "有新的推荐博客申请等待审核。",
+    "The recommended blog has been approved.": "推荐博客已经通过审核。",
+    "Previous page": "上一页",
+    "Next page": "下一页",
+    "Please log in first.": "请先登录。",
+    "Submitted successfully, waiting for approve.": "提交成功，等待审核。"
 }

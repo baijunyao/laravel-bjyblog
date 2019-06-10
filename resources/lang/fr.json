@@ -217,5 +217,12 @@
     "Text with php tag": "Texte avec balise php",
     "Only text": "Seulement du texte",
     "Need to add OAuth client first.": "Besoin d'ajouter le client OAuth en premier.",
-    "Click to go.": "Cliquez pour aller."
+    "Click to go.": "Cliquez pour aller.",
+    "Click for details.": "Cliquer pour les détails.",
+    "Someone applied for a recommendation blog.": "Quelqu'un a postulé pour un blog de recommandation.",
+    "The recommended blog has been approved.": "Le blog recommandé a été approuvé.",
+    "Previous page": "Page précédente",
+    "Next page": "Page suivante",
+    "Please log in first.": "S'il vous plait Connectez-vous d'abord.",
+    "Submitted successfully, waiting for approve.": "Soumis avec succès, en attente de révision."
 }
