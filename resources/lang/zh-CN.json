@@ -156,6 +156,11 @@
     "Email From Name": "发件人名称",
     "Email From Address": "发件人邮箱",
 
+    "Social Share": "社会化分享",
+    "Select Plugin": "选择插件",
+    "jsSocials Config": "jsSocials 配置项",
+    "ShareJs Config": "ShareJs 配置项",
+
     "Other Config": "其他配置",
     "Language": "语言",
     "English": "英语",
@@ -184,10 +189,6 @@
 
     "OAuth Client Name": "OAuth 名称",
     "Use Slug": "使用 Slug",
-
-    "Select Plugin": "选择插件",
-    "jsSocials Config": "jsSocials 配置项",
-    "ShareJs Config": "ShareJs 配置项",
 
     "Read More": "阅读全文",
     "Search": "搜索",
