@@ -98,7 +98,8 @@
             <tr>
                 <th>{{ __('Topping') }}</th>
                 <td>
-                    <input class="bootstrap-switch" type="checkbox" name="is_top" value="1" @if($article->is_top == 1) checked="checked" @endif>
+                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="is_top" value="1" @if($article->is_top === 1) checked @endif> &emsp;&emsp;
+                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="is_top" value="0" @if($article->is_top === 0) checked @endif>
                 </td>
             </tr>
 
@@ -143,7 +144,6 @@
                 radioClass: "iradio_minimal-blue",
                 increaseArea: "20%"
             });
-
         });
     </script>
 
