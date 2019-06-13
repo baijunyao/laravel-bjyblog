@@ -63,7 +63,7 @@ class ArticleController extends Controller
      */
     public function uploadImage()
     {
-        $result = Upload::file('editormd-image-file', 'uploads/article');
+        $result = Upload::image('editormd-image-file', 'uploads/article');
         if ($result['status_code'] === 200) {
             $data = [
                 'success' => 1,
