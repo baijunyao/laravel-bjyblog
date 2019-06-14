@@ -96,7 +96,7 @@ class Comment extends Base
      *
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getNewData($limit = 20)
+    public function getNewData($limit = 17)
     {
         $data = $this->select('comments.id', 'comments.content', 'comments.created_at', 'ou.name', 'ou.avatar', 'a.title', 'a.slug', 'a.id as article_id')
             ->join('articles as a', 'comments.article_id', 'a.id')
