@@ -32,11 +32,13 @@
                 <p class="b-copyright">
                     {!! htmlspecialchars_decode(config('bjyblog.copyright_word')) !!}
                 </p>
-                @if(config('bjyblog.social_share.select_plugin') === 'sharejs')
-                    <div id="b-share-js"></div>
-                @else
-                    <div id="b-js-socials"></div>
-                @endif
+                <div class="b-share-plugin">
+                    @if(config('bjyblog.social_share.select_plugin') === 'sharejs')
+                        <div id="b-share-js"></div>
+                    @else
+                        <div id="b-js-socials"></div>
+                    @endif
+                </div>
                 <ul class="b-prev-next">
                     <li class="b-prev">
                          {{ __('Previous Article') }}：
@@ -150,13 +152,6 @@
         $('pre').addClass('line-numbers');
         // 新页面跳转
         $('.js-content a').attr('target', '_blank')
-
-        // 定义评论url
-        ajaxCommentUrl = "{{ url('comment') }}";
-        checkLogin = "{{ url('checkLogin') }}";
-        titleName = '{{ config('app.name') }}';
-        jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
-        sharejsConfig = {!! config('bjyblog.social_share.sharejs_config') !!};
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
 @endsection

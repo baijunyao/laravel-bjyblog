@@ -222,7 +222,16 @@
         </div>
     </div>
 </div>
-
+<script>
+    // 定义评论url
+    ajaxCommentUrl = "{{ url('comment') }}";
+    checkLogin = "{{ url('checkLogin') }}";
+    titleName = '{{ config('app.name') }}';
+    jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
+    sharejsConfig = {!! config('bjyblog.social_share.sharejs_config') !!};
+    pleaseLogInFirst = '{{ __('Please log in first.') }}';
+    submittedSuccessfullyWaitingForApprove = '{{ __('Submitted successfully, waiting for approve.') }}';
+</script>
 <script src="{{ mix('js/app.js') }}"></script>
 {!! htmlspecialchars_decode(config('bjyblog.statistics')) !!}
 @yield('js')

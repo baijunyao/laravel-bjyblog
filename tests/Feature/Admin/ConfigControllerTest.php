@@ -36,6 +36,11 @@ class ConfigControllerTest extends TestCase
         $this->adminGet('seo')->assertStatus(200);
     }
 
+    public function testSocialShare()
+    {
+        $this->adminGet('socialShare')->assertStatus(200);
+    }
+
     public function testUpdate()
     {
         $this->adminPost('update', $this->updateData)->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);

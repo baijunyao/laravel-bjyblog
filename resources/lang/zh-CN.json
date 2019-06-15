@@ -156,6 +156,11 @@
     "Email From Name": "发件人名称",
     "Email From Address": "发件人邮箱",
 
+    "Social Share": "社会化分享",
+    "Select Plugin": "选择插件",
+    "jsSocials Config": "jsSocials 配置项",
+    "ShareJs Config": "ShareJs 配置项",
+
     "Other Config": "其他配置",
     "Language": "语言",
     "English": "英语",
@@ -185,10 +190,6 @@
     "OAuth Client Name": "OAuth 名称",
     "Use Slug": "使用 Slug",
 
-    "Select Plugin": "选择插件",
-    "jsSocials Config": "jsSocials 配置项",
-    "ShareJs Config": "ShareJs 配置项",
-
     "Read More": "阅读全文",
     "Search": "搜索",
     "Previous Article": "上一篇",
@@ -217,5 +218,12 @@
     "Text with php tag": "带 PHP 标签",
     "Only text": "纯文本",
     "Need to add OAuth client first,": "需要先增加第三方登录配置，",
-    "Click to go.": "点击前往。"
+    "Click to go.": "点击前往。",
+    "Click for details.": "点击查看详情。",
+    "Someone applied for a recommendation blog.": "有新的推荐博客申请等待审核。",
+    "The recommended blog has been approved.": "推荐博客已经通过审核。",
+    "Previous page": "上一页",
+    "Next page": "下一页",
+    "Please log in first.": "请先登录。",
+    "Submitted successfully, waiting for approve.": "提交成功，等待审核。"
 }
