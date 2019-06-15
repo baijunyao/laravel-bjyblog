@@ -19,5 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('Resource')->group(function () {
     // Route::resource('categories', 'CategoryController');
-    Route::resource('articles', 'ArticleController');
+    Route::apiResource('articles', 'ArticleController');
+    Route::apiResource('tags', 'TagController');
+
+    Route::patch('articles/{article}/restore', 'ArticleController@restore')->name('articles.restore');
+    Route::patch('tags/{tag}/restore', 'TagController@restore')->name('tags.restore');
+    Route::delete('tags/{tag}/forceDelete', 'TagController@forceDelete')->name('tags.forceDelete');
 });

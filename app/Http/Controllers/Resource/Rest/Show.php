@@ -8,7 +8,14 @@ trait Show
     {
         $model = $this->getModelObject();
         $id = $this->getRouteId();
+        $relations = [];
 
-        return response()->json($model->withTrashed()->find($id));
+        foreach (static::RELATIONS as $relation => $column) {
+            $relations[$relation] = function ($query) use ($column) {
+                $query->select($column);
+            };
+        }
+
+        return response()->json($model->withTrashed()->with($relations)->find($id));
     }
 }
