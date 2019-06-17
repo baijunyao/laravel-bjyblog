@@ -52,9 +52,9 @@ return [
             'provider' => 'users',
         ],
 
-        'oauth' => [
+        'socialite' => [
             'driver' => 'session',
-            'provider' => 'oauth',
+            'provider' => 'socialite',
         ],
     ],
 
@@ -81,9 +81,9 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        'oauth' => [
+        'socialite' => [
             'driver' => 'eloquent',
-            'model' => App\Models\OauthUser::class,
+            'model' => App\Models\SocialiteUser::class,
         ],
 
         // 'users' => [

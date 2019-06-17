@@ -15,7 +15,7 @@ class CreateSitesTable extends Migration
     {
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('oauth_user_id')->unsigned()->default(0)->comment('第三方用户id');
+            $table->integer('socialite_user_id')->unsigned()->default(0)->comment('第三方用户id');
             $table->string('name')->default('')->comment('网站名');
             $table->string('description')->default('')->comment('描述');
             $table->string('url')->default('')->comment('网站链接');

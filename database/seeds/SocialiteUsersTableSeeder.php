@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class OauthUsersTableSeeder extends Seeder
+class SocialiteUsersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,11 +11,11 @@ class OauthUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('oauth_users')->truncate();
-        DB::table('oauth_users')->insert([
+        DB::table('socialite_users')->truncate();
+        DB::table('socialite_users')->insert([
             [
                 'id'                       => 1,
-                'oauth_client_id'          => 1,
+                'socialite_client_id'          => 1,
                 'name'                     => '白俊遥',
                 'avatar'                   => '/uploads/article/default.jpg',
                 'openid'                   => '1',
@@ -30,7 +30,7 @@ class OauthUsersTableSeeder extends Seeder
             ],
             [
                 'id'                       => 2,
-                'oauth_client_id'          => 1,
+                'socialite_client_id'          => 1,
                 'name'                     => '已删除',
                 'avatar'                   => '/uploads/article/default.jpg',
                 'openid'                   => '2',

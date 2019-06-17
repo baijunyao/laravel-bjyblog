@@ -56,11 +56,11 @@
                 @endforeach
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
-                @if(auth()->guard('oauth')->check())
+                @if(auth()->guard('socialite')->check())
                     <li class="b-user-info">
-                        <span><img class="b-head_img" src="{{ auth()->guard('oauth')->user()->avatar }}" alt="{{ auth()->guard('oauth')->user()->name }}" title="{{ auth()->guard('oauth')->user()->name }}" /></span>
-                        <span class="b-nickname">{{ auth()->guard('oauth')->user()->name }}</span>
-                        <span><a href="{{ url('auth/oauth/logout') }}">{{ __('Sign out') }}</a></span>
+                        <span><img class="b-head_img" src="{{ auth()->guard('socialite')->user()->avatar }}" alt="{{ auth()->guard('socialite')->user()->name }}" title="{{ auth()->guard('socialite')->user()->name }}" /></span>
+                        <span class="b-nickname">{{ auth()->guard('socialite')->user()->name }}</span>
+                        <span><a href="{{ url('auth/socialite/logout') }}">{{ __('Sign out') }}</a></span>
                     </li>
                 @else
                     <li class="b-nav-cname b-nav-login">
@@ -193,7 +193,7 @@
                 <dt>{{ __('Counts') }}</dt>
                 <dd>{{ __('Article Counts') }}：{{ $articleCount }}</dd>
                 <dd>{{ __('Comment Counts') }}：{{ $commentCount }}</dd>
-                <dd>{{ __('User Counts') }}：{{ $oauthUserCount }}</dd>
+                <dd>{{ __('User Counts') }}：{{ $socialiteUserCount }}</dd>
                 <dd>{{ __('Chat Counts') }}：{{ $chatCount }}</dd>
             </dl>
         </div>
@@ -211,12 +211,12 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
-                @foreach($oauthClients as $oauthClient)
-                    <a class="fa fa-{{ $oauthClient->name }}" href="{{ url('auth/oauth/redirectToProvider/' . $oauthClient->name) }}" alt="{{ $oauthClient->name }}" title="{{ $oauthClient->name }}"></a>
+                @foreach($socialiteClients as $socialiteClient)
+                    <a class="fa fa-{{ $socialiteClient->name }}" href="{{ url('auth/socialite/redirectToProvider/' . $socialiteClient->name) }}" alt="{{ $socialiteClient->name }}" title="{{ $socialiteClient->name }}"></a>
                 @endforeach
 
-                @if($oauthClients->isEmpty())
-                    {{ __('Need to add OAuth client first,') }} <a href="{{ url('admin/oauthClient/index') }}">{{ __('Click to go.') }}</a>
+                @if($socialiteClients->isEmpty())
+                    {{ __('Need to add socialite client first,') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ __('Click to go.') }}</a>
                 @endif
             </div>
         </div>

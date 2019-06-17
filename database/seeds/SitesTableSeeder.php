@@ -15,7 +15,7 @@ class SitesTableSeeder extends Seeder
         DB::table('sites')->insert([
             [
                 'id'            => 1,
-                'oauth_user_id' => 1,
+                'socialite_user_id' => 1,
                 'name'          => '白俊遥博客',
                 'description'   => '白俊遥的个人博客',
                 'url'           => 'https://baijunyao.com',
@@ -27,7 +27,7 @@ class SitesTableSeeder extends Seeder
             ],
             [
                 'id'            => 2,
-                'oauth_user_id' => 1,
+                'socialite_user_id' => 1,
                 'name'          => '已删除',
                 'description'   => '用于测试',
                 'url'           => 'https://deleted.com',

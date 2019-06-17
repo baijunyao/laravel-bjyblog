@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use App\Models\User;
 use Exception;
 
 abstract class TestCase extends \Tests\TestCase
 {
     protected const ADMIN_USER_ID         = 1;
-    protected const OAUTH_USER_ID         = 1;
+    protected const SOCIALITE_USER_ID         = 1;
     protected const STORE_SUCCESS_MESSAGE = [
         'laravel-flash' => [
             [
@@ -60,10 +60,10 @@ abstract class TestCase extends \Tests\TestCase
     protected $storeData          = [];
     protected $updateData         = [];
 
-    public function loginByUserId($userId, $guard = 'oauth')
+    public function loginByUserId($userId, $guard = 'socialite')
     {
-        if ($guard === 'oauth') {
-            $user = OauthUser::find($userId);
+        if ($guard === 'socialite') {
+            $user = SocialiteUser::find($userId);
         } elseif ($guard === 'admin') {
             $user = User::find($userId);
         } else {

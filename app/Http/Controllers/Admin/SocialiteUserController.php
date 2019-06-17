@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use Illuminate\Http\Request;
 
-class OauthUserController extends Controller
+class SocialiteUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +16,16 @@ class OauthUserController extends Controller
     public function index(Request $request)
     {
         $wd   = $request->input('wd');
-        $data = OauthUser::orderBy('updated_at', 'desc')
-            ->select('id', 'name', 'oauth_client_id', 'email', 'login_times', 'is_admin', 'last_login_ip', 'created_at', 'updated_at')
+        $data = SocialiteUser::orderBy('updated_at', 'desc')
+            ->select('id', 'name', 'socialite_client_id', 'email', 'login_times', 'is_admin', 'last_login_ip', 'created_at', 'updated_at')
             ->when($wd, function ($query) use ($wd) {
                 return $query->where('name', 'like', "%$wd%");
             })
-            ->with('oauthClient')
+            ->with('socialiteClient')
             ->paginate(50);
         $assign = compact('data');
 
-        return view('admin.oauthUser.index', $assign);
+        return view('admin.socialiteUser.index', $assign);
     }
 
     /**
@@ -68,10 +68,10 @@ class OauthUserController extends Controller
      */
     public function edit($id)
     {
-        $data   = OauthUser::find($id);
+        $data   = SocialiteUser::find($id);
         $assign = compact('data');
 
-        return view('admin.oauthUser.edit', $assign);
+        return view('admin.socialiteUser.edit', $assign);
     }
 
     /**
@@ -86,7 +86,7 @@ class OauthUserController extends Controller
     {
         $data             = $request->except('_token');
         $data['is_admin'] = $request->input('is_admin', 0);
-        OauthUser::find($id)->update($data);
+        SocialiteUser::find($id)->update($data);
 
         return redirect()->back();
     }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class OauthClientsTableSeeder extends Seeder
+class SocialiteClientsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,8 @@ class OauthClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('oauth_clients')->truncate();
-        DB::table('oauth_clients')->insert([
+        DB::table('socialite_clients')->truncate();
+        DB::table('socialite_clients')->insert([
             [
                 'id'            => 1,
                 'name'          => 'qq',

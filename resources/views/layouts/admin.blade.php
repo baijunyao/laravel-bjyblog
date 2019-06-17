@@ -15,11 +15,11 @@
                     <!-- menu profile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
+                            <img src="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>{{ __('Admin Welcome') }}</span>
-                            <h2>{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->name : auth()->guard('admin')->user()->name }}</h2>
+                            <h2>{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->name : auth()->guard('admin')->user()->name }}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -62,7 +62,7 @@
                                     <a><i class="fa fa-users"></i> {{ __('User') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('admin/user/index') }}">{{ __('Administrator') }}</a></li>
-                                        <li><a href="{{ url('admin/oauthUser/index') }}">{{ __('OAuth User') }}</a></li>
+                                        <li><a href="{{ url('admin/socialiteUser/index') }}">{{ __('Socialite User') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
@@ -82,7 +82,7 @@
                                     <a><i class="fa fa-cogs"></i> {{ __('Setting') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('admin/config/email') }}">{{ __('Email') }}</a></li>
-                                        <li><a href="{{ url('admin/oauthClient/index') }}">{{ __('OAuth') }}</a></li>
+                                        <li><a href="{{ url('admin/socialiteClient/index') }}">{{ __('Socialite') }}</a></li>
                                         <li><a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source') }}</a></li>
                                         @if(config('app.locale') === 'zh-CN')
                                             <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
@@ -127,7 +127,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    {{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->name : auth()->guard('admin')->user()->name }}
+                                    {{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->name : auth()->guard('admin')->user()->name }}
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">

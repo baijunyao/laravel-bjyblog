@@ -62,18 +62,18 @@
         </div>
         <!-- 引入通用评论开始 -->
         <script>
-            var userEmail='{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->email : '' }}';
+            var userEmail='{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->email : '' }}';
             tuzkiNumber=1;
         </script>
         <div class="row b-comment">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
-                <img class="b-head-img" src="@if(auth()->guard('oauth')->check()){{ auth()->guard('oauth')->user()->avatar }}@else{{ asset('images/home/default_head_img.gif') }}@endif" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+                <img class="b-head-img" src="@if(auth()->guard('socialite')->check()){{ auth()->guard('socialite')->user()->avatar }}@else{{ asset('images/home/default_head_img.gif') }}@endif" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                 <div class="b-box-textarea">
-                    <div class="b-box-content js-hint" @if(auth()->guard('oauth')->check())contenteditable="true" @endif>{{ __('Please login to comment') }}</div>
+                    <div class="b-box-content js-hint" @if(auth()->guard('socialite')->check())contenteditable="true" @endif>{{ __('Please login to comment') }}</div>
                     <ul class="b-emote-submit">
                         <li class="b-emote">
                             <i class="fa fa-smile-o js-get-tuzki"></i>
-                            <input class="form-control b-email" type="text" name="email" placeholder="{{ __('Email for notifications') }}" value="{{ auth()->guard('oauth')->check() ? auth()->guard('oauth')->user()->email : '' }}">
+                            <input class="form-control b-email" type="text" name="email" placeholder="{{ __('Email for notifications') }}" value="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->email : '' }}">
                             <div class="b-tuzki">
 
                             </div>

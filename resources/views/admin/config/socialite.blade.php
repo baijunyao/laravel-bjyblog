@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', __('OAuth Config'))
+@section('title', __('Socialite Config'))
 
-@section('nav', __('OAuth Config'))
+@section('nav', __('Socialite Config'))
 
 @section('content')
     <form class="form-inline" enctype="multipart/form-data" action="{{ url('admin/config/update') }}" method="post">

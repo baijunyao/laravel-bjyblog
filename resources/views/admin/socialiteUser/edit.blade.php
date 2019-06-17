@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 
-@section('title', __('Edit OAuth User'))
+@section('title', __('Edit Socialite User'))
 
-@section('nav', __('Edit OAuth User'))
+@section('nav', __('Edit Socialite User'))
 
 @section('content')
-    <form class="form-inline" action="{{ url('admin/oauthUser/update', [$data->id]) }}" method="post">
+    <form class="form-inline" action="{{ url('admin/socialiteUser/update', [$data->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
                 <th>{{ __('Type') }}</th>
                 <td>
-                    {{ $data->oauthClient->name }}
+                    {{ $data->socialiteClient->name }}
                 </td>
             </tr>
             <tr>

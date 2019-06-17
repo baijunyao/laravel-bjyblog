@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
-@section('title', __('OAuth User'))
+@section('title', __('Socialite User'))
 
-@section('nav', __('OAuth User'))
+@section('nav', __('Socialite User'))
 
 @section('content')
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>id</th>
             <th>{{ __('User Name') }}</th>
-            <th>{{ __('OAuth Client Name') }}</th>
+            <th>{{ __('Socialite Client Name') }}</th>
             <th>{{ __('Email') }}</th>
             <th>{{ __('Login times') }}</th>
             <th>{{ __('Is Administrator?') }}?</th>
@@ -23,7 +23,7 @@
                 <td>{{ $v->id }}</td>
                 <td>{{ $v->name }}</td>
                 <td>
-                    {{ $v->oauthClient->name }}
+                    {{ $v->socialiteClient->name }}
                 </td>
                 <td>{{ $v->email }}</td>
                 <td>{{ $v->login_times }}</td>
@@ -39,7 +39,7 @@
                 </td>
                 <td>{{ $v->updated_at }}</td>
                 <td>{{ $v->created_at }}</td>
-                <td><a href="{{ url('admin/oauthUser/edit', [$v->id]) }}">{{ __('Edit') }}</a></td>
+                <td><a href="{{ url('admin/socialiteUser/edit', [$v->id]) }}">{{ __('Edit') }}</a></td>
             </tr>
         @endforeach
     </table>

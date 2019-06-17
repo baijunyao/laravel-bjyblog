@@ -22,7 +22,7 @@ class CommentController extends Controller
             'article' => function ($query) {
                 return $query->select('id', 'title');
             },
-            'oauthUser' => function ($query) {
+            'socialiteUser' => function ($query) {
                 return $query->select('id', 'name');
             },
         ])

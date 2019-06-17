@@ -5,16 +5,16 @@ namespace App\Observers;
 use App\Jobs\SendCommentEmail;
 use App\Models\Article;
 use App\Models\Comment;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use Cache;
 
 class CommentObserver extends BaseObserver
 {
     public function created($comment)
     {
-        $isAdmin = OauthUser::where('id', auth()->guard('oauth')->user()->id)
+        $isAdmin = SocialiteUser::where('id', auth()->guard('socialite')->user()->id)
             ->value('is_admin');
-        $name    = auth()->guard('oauth')->user()->name;
+        $name    = auth()->guard('socialite')->user()->name;
 
         // 获取文章标题
         $title = Article::where('id', $comment->article_id)
@@ -42,8 +42,8 @@ class CommentObserver extends BaseObserver
 
         // 给用户发送邮件通知
         if ($comment->pid != 0) {
-            $parent_user_id = Comment::where('id', $comment->pid)->value('oauth_user_id');
-            $parentData     = OauthUser::select('name', 'email')
+            $parent_user_id = Comment::where('id', $comment->pid)->value('socialite_user_id');
+            $parentData     = SocialiteUser::select('name', 'email')
                 ->where('id', $parent_user_id)
                 ->first()
                 ->toArray();
