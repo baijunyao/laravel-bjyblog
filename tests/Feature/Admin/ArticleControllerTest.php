@@ -57,6 +57,30 @@ class ArticleControllerTest extends TestCase
         ]);
     }
 
+    public function testStoreDescriptionNotEmpty()
+    {
+        $file         = UploadedFile::fake()->image('cover.jpg');
+        $commonColumn = [
+            'category_id' => 1,
+            'title'       => 'title',
+            'author'      => '白俊遥',
+            'keywords'    => 'keywords',
+            'description' => 'test',
+            'markdown'    => 'content',
+        ];
+        $this->adminPost('store', [
+            'tag_ids'     => [1],
+            'cover'       => $file,
+        ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
+
+        $this->assertDatabaseHas($this->table, $commonColumn);
+
+        $this->assertDatabaseHas('article_tags', [
+            'article_id' => Article::where($commonColumn)->value('id'),
+            'tag_id'     => 1,
+        ]);
+    }
+
     public function testUpdate()
     {
         $this->adminPost('update/' . $this->updateId, [
@@ -65,6 +89,7 @@ class ArticleControllerTest extends TestCase
             'author'      => '白俊遥',
             'tag_ids'     => [1],
             'keywords'    => 'update',
+            'description' => '',
             'markdown'    => 'update',
         ])->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
@@ -73,6 +98,29 @@ class ArticleControllerTest extends TestCase
             'title'       => 'update',
             'author'      => '白俊遥',
             'keywords'    => 'update',
+            'description' => 'update',
+            'markdown'    => 'update',
+        ]);
+    }
+
+    public function testUpdateDescriptionNotEmpty()
+    {
+        $this->adminPost('update/' . $this->updateId, [
+            'category_id' => 1,
+            'title'       => 'update',
+            'author'      => '白俊遥',
+            'tag_ids'     => [1],
+            'keywords'    => 'update',
+            'description' => 'updated description',
+            'markdown'    => 'update',
+        ])->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
+
+        $this->assertDatabaseHas('articles', [
+            'category_id' => 1,
+            'title'       => 'update',
+            'author'      => '白俊遥',
+            'keywords'    => 'update',
+            'description' => 'updated description',
             'markdown'    => 'update',
         ]);
     }

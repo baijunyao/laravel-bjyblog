@@ -91,7 +91,7 @@ class ArticleController extends Controller
      */
     public function store(Store $request, Article $articleModel)
     {
-        $data = $request->except('_token', 'description');
+        $data = $request->except('_token');
 
         if ($request->hasFile('cover')) {
             $result = Upload::file('cover', 'uploads/article');
