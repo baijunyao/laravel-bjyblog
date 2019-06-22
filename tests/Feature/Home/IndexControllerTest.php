@@ -108,7 +108,7 @@ class IndexControllerTest extends TestCase
 
     public function testCheckLoginWhenLogin()
     {
-        auth()->guard('oauth')->loginUsingId(1);
+        auth()->guard('socialite')->loginUsingId(1);
 
         $this->get('/checkLogin')->assertStatus(200)->assertJson([
             'status' => 1,

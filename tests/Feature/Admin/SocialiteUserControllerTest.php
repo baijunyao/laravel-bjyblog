@@ -6,14 +6,14 @@ use Tests\Feature\Admin\CURD\TestEdit;
 use Tests\Feature\Admin\CURD\TestIndex;
 use Tests\Feature\Admin\CURD\TestUpdate;
 
-class OauthUserControllerTest extends TestCase
+class SocialiteUserControllerTest extends TestCase
 {
     use TestIndex, TestEdit, TestUpdate;
 
-    protected $urlPrefix  = 'admin/oauthUser/';
-    protected $table      = 'oauth_users';
+    protected $urlPrefix  = 'admin/socialiteUser/';
+    protected $table      = 'socialite_users';
     protected $updateData = [
-        'oauth_client_id'          => 2,
+        'socialite_client_id'          => 2,
         'name'                     => '编辑',
         'avatar'                   => '/uploads/article/default.jpg',
         'openid'                   => '',

@@ -9,7 +9,7 @@ use App\Models\Chat;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Artisan;
 use DB;
@@ -162,7 +162,7 @@ class FromThinkPHPBjyBlog extends Command
             $content      = strip_tags($content);
             $commentModel->insert([
                 'id'            => $v->cmtid,
-                'oauth_user_id' => $v->ouid,
+                'socialite_user_id' => $v->ouid,
                 'type'          => $v->type,
                 'pid'           => $v->pid,
                 'article_id'    => $v->aid,
@@ -211,7 +211,7 @@ class FromThinkPHPBjyBlog extends Command
         // 迁移第三方登录用户表
         $data = DB::connection('old')->table('oauth_user')->get()->toArray();
         foreach ($data as $v) {
-            OauthUser::insert([
+            SocialiteUser::insert([
                 'id'            => $v->id,
                 'type'          => $v->type,
                 'name'          => $v->nickname,
@@ -246,16 +246,16 @@ class FromThinkPHPBjyBlog extends Command
     /**
      * 把用户的头像保存到本地
      *
-     * @param OauthUser $oauthUserModel
+     * @param SocialiteUser $socialiteUserModel
      */
-    public function avatar(OauthUser $oauthUserModel)
+    public function avatar(SocialiteUser $socialiteUserModel)
     {
-        $data = $oauthUserModel->select('id', 'avatar')->get();
+        $data = $socialiteUserModel->select('id', 'avatar')->get();
         foreach ($data as $k => $v) {
             if (strpos($v->avatar, 'http') !== false) {
                 $avatarPath = 'uploads/avatar/' . $v->id . '.jpg';
                 file_put_contents(public_path($avatarPath), curl_get_contents($v->avatar));
-                OauthUser::where('id', $v->id)->update([
+                SocialiteUser::where('id', $v->id)->update([
                     'avatar' => '/' . $avatarPath,
                 ]);
             }

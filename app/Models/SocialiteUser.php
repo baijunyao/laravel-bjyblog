@@ -8,12 +8,12 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 
-class OauthUser extends Base implements AuthenticatableContract, AuthorizableContract
+class SocialiteUser extends Base implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, Notifiable;
 
-    public function oauthClient()
+    public function socialiteClient()
     {
-        return $this->belongsTo(OauthClient::class);
+        return $this->belongsTo(SocialiteClient::class);
     }
 }

@@ -42,9 +42,9 @@ class Comment extends Base
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function oauthUser()
+    public function socialiteUser()
     {
-        return $this->belongsTo(OauthUser::class)->withDefault();
+        return $this->belongsTo(SocialiteUser::class)->withDefault();
     }
 
     /**
@@ -100,7 +100,7 @@ class Comment extends Base
     {
         $data = $this->select('comments.id', 'comments.content', 'comments.created_at', 'ou.name', 'ou.avatar', 'a.title', 'a.slug', 'a.id as article_id')
             ->join('articles as a', 'comments.article_id', 'a.id')
-            ->join('oauth_users as ou', 'ou.id', 'comments.oauth_user_id')
+            ->join('socialite_users as ou', 'ou.id', 'comments.socialite_user_id')
             ->orderBy('comments.created_at', 'desc')
             ->where('a.deleted_at', null)
             ->where('ou.is_admin', '<>', 1)
@@ -137,7 +137,7 @@ class Comment extends Base
         // 关联第三方用户表获取一级评论
         $data = $this
             ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
-            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id')
+            ->join('socialite_users as ou', 'comments.socialite_user_id', 'ou.id')
             ->where($map)
             ->orderBy('created_at', 'desc')
             ->get()
@@ -161,12 +161,12 @@ class Comment extends Base
                 });
                 foreach ($child as $m => $n) {
                     // 获取被评论人id
-                    $replyUserId = $this->where('id', $n['pid'])->pluck('oauth_user_id');
+                    $replyUserId = $this->where('id', $n['pid'])->pluck('socialite_user_id');
                     // 获取被评论人昵称
-                    $oauthUserMap = [
+                    $socialiteUserMap = [
                         'id' => $replyUserId,
                     ];
-                    $child[$m]['reply_name'] = OauthUser::where($oauthUserMap)->value('name');
+                    $child[$m]['reply_name'] = SocialiteUser::where($socialiteUserMap)->value('name');
                 }
             }
             $data[$k]['child'] = $child;
@@ -183,7 +183,7 @@ class Comment extends Base
         ];
         $child = $this
             ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
-            ->join('oauth_users as ou', 'comments.oauth_user_id', 'ou.id', 'ou.is_admin')
+            ->join('socialite_users as ou', 'comments.socialite_user_id', 'ou.id', 'ou.is_admin')
             ->where($map)
             ->orderBy('created_at', 'desc')
             ->get()

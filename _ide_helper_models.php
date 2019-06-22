@@ -303,7 +303,7 @@ namespace App\Models{
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $deleted_at
      * @property-read \App\Models\Article $article
-     * @property-read \App\Models\OauthUser $oauthUser
+     * @property-read \App\Models\OauthUser $socialiteUser
      *
      * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment newQuery()
@@ -364,7 +364,7 @@ namespace App\Models{
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $deleted_at
-     * @property-read \App\Models\OauthUser $oauthUser
+     * @property-read \App\Models\OauthUser $socialiteUser
      *
      * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Site newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Site newQuery()

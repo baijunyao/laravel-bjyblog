@@ -10,7 +10,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Chat;
 use App\Models\Comment;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Cache;
 use Illuminate\Http\Request;
@@ -222,27 +222,27 @@ class IndexController extends Controller
      *
      * @param Store     $request
      * @param Comment   $commentModel
-     * @param OauthUser $oauthUserModel
+     * @param SocialiteUser $socialiteUserModel
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function comment(Store $request, Comment $commentModel, OauthUser $oauthUserModel)
+    public function comment(Store $request, Comment $commentModel, SocialiteUser $socialiteUserModel)
     {
         // 获取用户id
-        $userId = auth()->guard('oauth')->user()->id;
-        // 如果用户输入邮箱；则将邮箱记录入oauth_user表中
+        $userId = auth()->guard('socialite')->user()->id;
+        // 如果用户输入邮箱；则将邮箱记录入socialite_user表中
         $email = $request->input('email', '');
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
             // 修改邮箱
-            OauthUser::where('id', $userId)->update([
+            SocialiteUser::where('id', $userId)->update([
                 'email' => $email,
             ]);
         }
 
         // 存储评论
         $id = Comment::create($request->only('article_id', 'content', 'pid') + [
-            'oauth_user_id' => $userId,
+            'socialite_user_id' => $userId,
             'type'          => 1,
             'status'        => 1,
         ]);
@@ -260,7 +260,7 @@ class IndexController extends Controller
     public function checkLogin()
     {
         return response()->json([
-            'status' => (int) auth()->guard('oauth')->check(),
+            'status' => (int) auth()->guard('socialite')->check(),
         ]);
     }
 

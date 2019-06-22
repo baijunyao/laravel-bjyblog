@@ -48,12 +48,12 @@ class ConfigController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function oauth()
+    public function socialite()
     {
         $config = cache('config');
         $assign = compact('config');
 
-        return view('admin.config.oauth', $assign);
+        return view('admin.config.socialite', $assign);
     }
 
     /**

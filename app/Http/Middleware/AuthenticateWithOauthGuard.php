@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AuthenticateWithOauthGuard
+class AuthenticateWithSocialiteGuard
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AuthenticateWithOauthGuard
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->guard('oauth')->check()) {
+        if (!auth()->guard('socialite')->check()) {
             return response('请先登录', 401);
         }
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateOauthUsersTable extends Migration
+class CreateSocialiteUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateOauthUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('oauth_users', function (Blueprint $table) {
+        Schema::create('socialite_users', function (Blueprint $table) {
             $table->increments('id')->comment('主键id');
-            $table->boolean('oauth_client_id')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');
+            $table->boolean('socialite_client_id')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');
             $table->string('name', 30)->default('')->comment('第三方昵称');
             $table->string('avatar')->default('')->comment('头像');
             $table->string('openid', 40)->default('')->comment('第三方用户id');
@@ -36,6 +36,6 @@ class CreateOauthUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oauth_users');
+        Schema::dropIfExists('socialite_users');
     }
 }

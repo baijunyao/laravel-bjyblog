@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\SiteAudit;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use App\Models\Site;
 use App\Notifications\SiteAudit as SiteAuditNotification;
 
@@ -29,16 +29,16 @@ class SendSiteAuditNotification
     {
         // 获取推荐第三方登录的用户id
         $siteId      = $event->siteId;
-        $oauthUserId = Site::where('id', $siteId)->value('oauth_user_id');
-        if (empty($oauthUserId)) {
+        $socialiteUserId = Site::where('id', $siteId)->value('socialite_user_id');
+        if (empty($socialiteUserId)) {
             return false;
         }
         // 获取第三方登录用户
-        $oauthUser = OauthUser::find($oauthUserId);
+        $socialiteUser = SocialiteUser::find($socialiteUserId);
         // 如果邮箱为空则不发通知
-        if (empty($oauthUser->email)) {
+        if (empty($socialiteUser->email)) {
             return false;
         }
-        $oauthUser->notify(new SiteAuditNotification());
+        $socialiteUser->notify(new SiteAuditNotification());
     }
 }

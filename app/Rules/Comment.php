@@ -41,13 +41,13 @@ class Comment implements Rule
             return false;
         }
         // 获取用户id
-        $userId = auth()->guard('oauth')->user()->id;
+        $userId = auth()->guard('socialite')->user()->id;
         // 是否是管理员
-        $isAdmin = auth()->guard('oauth')->user()->is_admin;
+        $isAdmin = auth()->guard('socialite')->user()->is_admin;
         // 获取当前时间戳
         $time = time();
         // 获取最近一次评论时间
-        $lastCommentDate = $commentModel->where('oauth_user_id', $userId)
+        $lastCommentDate = $commentModel->where('socialite_user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->value('created_at');
         $lastCommentTime = strtotime($lastCommentDate);
@@ -60,7 +60,7 @@ class Comment implements Rule
         // 限制用户每天最多评论10条
         $date  = date('Y-m-d', $time);
         $count = $commentModel
-            ->where('oauth_user_id', auth()->guard('oauth')->user()->id)
+            ->where('socialite_user_id', auth()->guard('socialite')->user()->id)
             ->whereBetween('created_at', [$date . ' 00:00:00', $date . ' 23:59:59'])
             ->count();
         if ($isAdmin != 1 && $count > 10) {
