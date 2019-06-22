@@ -9,7 +9,7 @@ use App\Models\Chat;
 use App\Models\Comment;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Artisan;
 use Illuminate\Console\Command;
@@ -52,7 +52,7 @@ class Clear extends Command
         Category::truncate();
         Chat::truncate();
         Comment::truncate();
-        OauthUser::truncate();
+        SocialiteUser::truncate();
         Tag::truncate();
         GitProject::truncate();
         FriendshipLink::truncate();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Store;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use App\Models\Site;
 use App\Notifications\ApplySite;
 use Cache;
@@ -56,23 +56,23 @@ class SiteController extends Controller
      *
      * @param Store     $request
      * @param Site      $siteModel
-     * @param OauthUser $oauthUser
+     * @param SocialiteUser $socialiteUser
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Store $request, OauthUser $oauthUser)
+    public function store(Store $request, SocialiteUser $socialiteUser)
     {
-        $oauthUserId = auth()->guard('oauth')->user()->id;
+        $socialiteUserId = auth()->guard('socialite')->user()->id;
 
         $siteData                  = $request->only('name', 'url', 'description');
-        $siteData['oauth_user_id'] = $oauthUserId;
+        $siteData['socialite_user_id'] = $socialiteUserId;
         // 获取序号
         $sort             = Site::orderBy('sort', 'desc')->value('sort');
         $siteData['sort'] = (int) $sort + 1;
         $result           = Site::create($siteData);
 
         if ($result) {
-            OauthUser::where('id', $oauthUserId)->update([
+            SocialiteUser::where('id', $socialiteUserId)->update([
                 'email' => $request->input('email'),
             ]);
 

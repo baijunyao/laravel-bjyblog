@@ -15,7 +15,7 @@ Route::namespace('Home')->group(function () {
     // 文章详情
     Route::get('article/{id}/{slug?}', 'IndexController@article');
     // 文章评论
-    Route::post('comment', 'IndexController@comment')->middleware('auth.oauth');
+    Route::post('comment', 'IndexController@comment')->middleware('auth.socialite');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
@@ -25,20 +25,20 @@ Route::namespace('Home')->group(function () {
     // 推荐博客
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');
-        Route::post('store', 'SiteController@store')->middleware('auth.oauth', 'clean.xss');
+        Route::post('store', 'SiteController@store')->middleware('auth.socialite', 'clean.xss');
     });
 });
 
 // auth
-Route::namespace('Auth')->prefix('auth')->group(function () {
-    // 第三方登录
-    Route::prefix('oauth')->group(function () {
+Route::namespace('Auth')->prefix('auth')->as('auth.')->group(function () {
+    // Socialite
+    Route::prefix('socialite')->as('socialite.')->group(function () {
         // 重定向
-        Route::get('redirectToProvider/{service}', 'OAuthController@redirectToProvider');
+        Route::get('redirectToProvider/{service}', 'SocialiteController@redirectToProvider')->name('redirectToProvider');
         // 获取用户资料并登录
-        Route::get('handleProviderCallback/{service}', 'OAuthController@handleProviderCallback');
+        Route::get('handleProviderCallback/{service}', 'SocialiteController@handleProviderCallback')->name('handleProviderCallback');
         // 退出登录
-        Route::get('logout', 'OAuthController@logout');
+        Route::get('logout', 'SocialiteController@logout')->name('logout');
     });
 
     // 后台登录
@@ -161,20 +161,20 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('forceDelete/{id}', 'UserController@forceDelete');
     });
 
-    // OAuth client
-    Route::prefix('oauthClient')->group(function () {
-        Route::get('index', 'OauthClientController@index');
-        Route::get('edit/{id}', 'OauthClientController@edit');
-        Route::post('update/{id}', 'OauthClientController@update');
+    // Socialite client
+    Route::prefix('socialiteClient')->group(function () {
+        Route::get('index', 'SocialiteClientController@index');
+        Route::get('edit/{id}', 'SocialiteClientController@edit');
+        Route::post('update/{id}', 'SocialiteClientController@update');
     });
 
     // 第三方用户管理
-    Route::prefix('oauthUser')->group(function () {
+    Route::prefix('socialiteUser')->group(function () {
         // 用户列表
-        Route::get('index', 'OauthUserController@index');
+        Route::get('index', 'SocialiteUserController@index');
         // 编辑管理员
-        Route::get('edit/{id}', 'OauthUserController@edit');
-        Route::post('update/{id}', 'OauthUserController@update');
+        Route::get('edit/{id}', 'SocialiteUserController@edit');
+        Route::post('update/{id}', 'SocialiteUserController@update');
     });
 
     // 友情链接管理
@@ -241,8 +241,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('edit', 'ConfigController@edit');
         // 编辑邮箱配置页面
         Route::get('email', 'ConfigController@email');
-        // 编辑 oauth 配置页面
-        Route::get('oauth', 'ConfigController@oauth');
+        // 编辑 socialite 配置页面
+        Route::get('socialite', 'ConfigController@socialite');
         // 编辑 qq 群配置页面
         Route::get('qqQun', 'ConfigController@qqQun');
         // 编辑备份配置页面

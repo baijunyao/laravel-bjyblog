@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use Auth;
 
 class LoginController extends Controller
@@ -13,10 +13,10 @@ class LoginController extends Controller
      *
      * @return mixed
      */
-    public function index(OauthUser $oauthUserModel)
+    public function index(SocialiteUser $socialiteUserModel)
     {
         // 获取是否有第三方用户被设置为管理员
-        $count = $oauthUserModel->where('is_admin', 1)->count();
+        $count = $socialiteUserModel->where('is_admin', 1)->count();
         // 如果有第三方账号管理员；则通过第三方账号登录
         if ($count) {
             die('请通过第三方账号登录');
@@ -33,7 +33,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        Auth::guard('oauth')->logout();
+        Auth::guard('socialite')->logout();
 
         return redirect('admin/login/index');
     }

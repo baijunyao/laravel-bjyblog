@@ -116,6 +116,9 @@
 
 @section('js')
     <script src="{{ asset('statics/editormd/editormd.min.js') }}"></script>
+    @if(config('app.locale') !== 'zh-CN')
+        <script src="{{ asset('statics/editormd/languages/en.js') }}"></script>
+    @endif
     <script>
         var testEditor;
 

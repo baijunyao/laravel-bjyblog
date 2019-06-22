@@ -42,8 +42,8 @@
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-users"></i></div>
-                <div class="count">{{ $oauthUserCount }}</div>
-                <h3>{{ __('Number of OAuth users') }}</h3>
+                <div class="count">{{ $socialiteUserCount }}</div>
+                <h3>{{ __('Number of Socialite users') }}</h3>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -69,7 +69,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @foreach($oauthUserData as $k => $v)
+                    @foreach($socialiteUserData as $k => $v)
                         <article class="media event">
                             <a class="pull-left">
                                 <img class="bjy-img" src="{{ url($v->avatar) }}" alt="">

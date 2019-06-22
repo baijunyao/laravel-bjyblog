@@ -17,7 +17,7 @@ class SiteControllerTest extends TestCase
     protected $urlPrefix = 'admin/site/';
     protected $table     = 'sites';
     protected $storeData = [
-        'oauth_user_id' => 1,
+        'socialite_user_id' => 1,
         'name'          => '测试',
         'description'   => '用于测试',
         'url'           => 'https://test.com',
@@ -28,7 +28,7 @@ class SiteControllerTest extends TestCase
     public function testUpdate()
     {
         $site = [
-            'oauth_user_id' => 2,
+            'socialite_user_id' => 2,
             'name'          => '编辑',
             'description'   => '编辑',
             'url'           => 'https://update.com',

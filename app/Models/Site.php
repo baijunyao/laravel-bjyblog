@@ -4,9 +4,9 @@ namespace App\Models;
 
 class Site extends Base
 {
-    public function oauthUser()
+    public function socialiteUser()
     {
-        return $this->belongsTo(OauthUser::class);
+        return $this->belongsTo(SocialiteUser::class);
     }
 
     public function setUrlAttribute($value)

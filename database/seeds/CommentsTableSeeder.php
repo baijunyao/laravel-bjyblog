@@ -15,7 +15,7 @@ class CommentsTableSeeder extends Seeder
         DB::table('comments')->insert([
             [
                 'id'            => 1,
-                'oauth_user_id' => 1,
+                'socialite_user_id' => 1,
                 'type'          => 1,
                 'pid'           => 0,
                 'article_id'    => 1,
@@ -27,7 +27,7 @@ class CommentsTableSeeder extends Seeder
             ],
             [
                 'id'            => 2,
-                'oauth_user_id' => 1,
+                'socialite_user_id' => 1,
                 'type'          => 1,
                 'pid'           => 0,
                 'article_id'    => 1,

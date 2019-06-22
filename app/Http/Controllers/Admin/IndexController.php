@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\OauthUser;
+use App\Models\SocialiteUser;
 use Composer\Semver\Comparator;
 use DB;
 
@@ -18,7 +18,7 @@ class IndexController extends Controller
     public function index(Comment $commentModel)
     {
         // 最新登录的5个用户
-        $oauthUserData = OauthUser::select('name', 'avatar', 'login_times', 'updated_at')
+        $socialiteUserData = SocialiteUser::select('name', 'avatar', 'login_times', 'updated_at')
             ->orderBy('updated_at', 'desc')
             ->limit(5)
             ->get();
@@ -30,7 +30,7 @@ class IndexController extends Controller
             'php'       => PHP_VERSION,
             'mysql'     => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value,
         ];
-        $assign = compact('oauthUserData', 'commentData', 'version');
+        $assign = compact('socialiteUserData', 'commentData', 'version');
 
         return view('admin.index.index', $assign);
     }
