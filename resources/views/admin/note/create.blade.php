@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', __('Add Chat'))
+@section('title', __('Add Note'))
 
-@section('nav', __('Add Chat'))
+@section('nav', __('Add Note'))
 
 @section('content')
     <ul id="myTab" class="nav nav-tabs bar_tabs">
@@ -10,7 +10,7 @@
             <a href="{{ url('admin/chat/index') }}">{{ __('Chat List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/chat/create') }}">{{ __('Add Chat') }}</a>
+            <a href="{{ url('admin/note/create') }}">{{ __('Add Note') }}</a>
         </li>
     </ul>
 

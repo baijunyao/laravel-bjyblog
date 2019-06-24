@@ -73,7 +73,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-commenting"></i> {{ __('Chat') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-commenting"></i> {{ __('Note') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="{{ url('admin/chat/index') }}">{{ __('List') }}</a></li>
                                     </ul>

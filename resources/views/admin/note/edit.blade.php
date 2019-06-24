@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', __('Edit Chat'))
+@section('title', __('Edit Note'))
 
-@section('nav', __('Edit Chat'))
+@section('nav', __('Edit Note'))
 
 @section('content')
     <form class="form-inline" action="{{ url('admin/chat/update', [$data->id]) }}" method="post">

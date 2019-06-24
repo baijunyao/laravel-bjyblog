@@ -5,7 +5,7 @@ namespace App\Console\Commands\Migration;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
-use App\Models\Chat;
+use App\Models\Note;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
@@ -230,7 +230,7 @@ class FromThinkPHPBjyBlog extends Command
         // 迁移随言碎语表
         $data = DB::connection('old')->table('chat')->get()->toArray();
         foreach ($data as $v) {
-            Chat::insert([
+            Note::insert([
                 'id'         => $v->chid,
                 'content'    => $v->content,
                 'created_at' => date('Y-m-d H:i:s', $v->date),

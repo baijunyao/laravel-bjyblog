@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Chat;
+use App\Models\Note;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
@@ -17,7 +17,7 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Observers\ArticleObserver;
 use App\Observers\CategoryObserver;
-use App\Observers\ChatObserver;
+use App\Observers\NoteObserver;
 use App\Observers\CommentObserver;
 use App\Observers\ConfigObserver;
 use App\Observers\FriendshipLinkObserver;
@@ -36,7 +36,7 @@ class ObserveServiceProvider extends ServiceProvider
     {
         Article::observe(ArticleObserver::class);
         Category::observe(CategoryObserver::class);
-        Chat::observe(ChatObserver::class);
+        Note::observe(NoteObserver::class);
         Comment::observe(CommentObserver::class);
         FriendshipLink::observe(FriendshipLinkObserver::class);
         GitProject::observe(GitProjectObserver::class);

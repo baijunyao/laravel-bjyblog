@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\Store;
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Chat;
+use App\Models\Note;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
@@ -190,16 +190,16 @@ class IndexController extends Controller
      *
      * @return mixed
      */
-    public function chat()
+    public function note()
     {
-        $chat   = Chat::orderBy('created_at', 'desc')->get();
+        $notes   = Note::orderBy('created_at', 'desc')->get();
         $assign = [
-            'category_id' => 'chat',
-            'chat'        => $chat,
+            'category_id' => 'note',
+            'notes'        => $notes,
             'title'       => '随言碎语',
         ];
 
-        return view('home.index.chat', $assign);
+        return view('home.index.note', $assign);
     }
 
     /**

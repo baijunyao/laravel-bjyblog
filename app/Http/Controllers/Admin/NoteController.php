@@ -3,26 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Chat\Store;
-use App\Models\Chat;
+use App\Http\Requests\Note\Store;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
-class ChatController extends Controller
+class NoteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Chat $chatModel)
+    public function index(Note $noteModel)
     {
-        $data = $chatModel
+        $data = $noteModel
             ->orderBy('created_at', 'desc')
             ->withTrashed()
             ->paginate(50);
         $assign = compact('data');
 
-        return view('admin.chat.index', $assign);
+        return view('admin.note.index', $assign);
     }
 
     /**
@@ -32,7 +32,7 @@ class ChatController extends Controller
      */
     public function create()
     {
-        return view('admin.chat.create');
+        return view('admin.note.create');
     }
 
     /**
@@ -44,9 +44,9 @@ class ChatController extends Controller
      */
     public function store(Store $request)
     {
-        Chat::create($request->only('content'));
+        Note::create($request->only('content'));
 
-        return redirect('admin/chat/index');
+        return redirect('admin/note/index');
     }
 
     /**
@@ -58,10 +58,10 @@ class ChatController extends Controller
      */
     public function edit($id)
     {
-        $data   = Chat::find($id);
+        $data   = Note::find($id);
         $assign = compact('data');
 
-        return view('admin.chat.edit', $assign);
+        return view('admin.note.edit', $assign);
     }
 
     /**
@@ -74,7 +74,7 @@ class ChatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Chat::find($id)->update($request->except('_token'));
+        Note::find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -88,9 +88,9 @@ class ChatController extends Controller
      */
     public function destroy($id)
     {
-        Chat::destroy($id);
+        Note::destroy($id);
 
-        return redirect('admin/chat/index');
+        return redirect('admin/note/index');
     }
 
     /**
@@ -102,23 +102,23 @@ class ChatController extends Controller
      */
     public function restore($id)
     {
-        Chat::onlyTrashed()->find($id)->restore();
+        Note::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/chat/index');
+        return redirect('admin/note/index');
     }
 
     /**
      * 彻底删除随言碎语
      *
      * @param      $id
-     * @param Chat $chatModel
+     * @param Note $noteModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function forceDelete($id)
     {
-        Chat::onlyTrashed()->find($id)->forceDelete();
+        Note::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/chat/index');
+        return redirect('admin/note/index');
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ChatsTableSeeder extends Seeder
+class NotesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,8 @@ class ChatsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('chats')->truncate();
-        DB::table('chats')->insert([
+        DB::table('notes')->truncate();
+        DB::table('notes')->insert([
             [
                 'id'         => 1,
                 'content'    => '技术这东西；懂的越多；不懂的就越多；',
