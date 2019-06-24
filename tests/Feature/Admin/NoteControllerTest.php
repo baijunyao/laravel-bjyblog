@@ -11,11 +11,11 @@ use Tests\Feature\Admin\CURD\TestRestore;
 use Tests\Feature\Admin\CURD\TestStore;
 use Tests\Feature\Admin\CURD\TestUpdate;
 
-class ChatControllerTest extends TestCase
+class NoteControllerTest extends TestCase
 {
     use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
-    protected $urlPrefix = 'admin/chat/';
-    protected $table     = 'chats';
+    protected $urlPrefix = 'admin/note/';
+    protected $table     = 'notes';
     protected $storeData = [
         'content' => '新增',
     ];

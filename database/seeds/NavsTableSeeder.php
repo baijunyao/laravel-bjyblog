@@ -16,7 +16,7 @@ class NavsTableSeeder extends Seeder
             [
                 'id'         => 1,
                 'name'       => '随言碎语',
-                'url'        => 'chat',
+                'url'        => 'note',
                 'created_at' => '2018-08-04 12:41:26',
                 'updated_at' => '2018-08-04 12:41:26',
                 'deleted_at' => null,

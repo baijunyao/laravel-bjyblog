@@ -5,7 +5,7 @@ namespace App\Console\Commands\Seeder;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
-use App\Models\Chat;
+use App\Models\Note;
 use App\Models\Comment;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
@@ -50,7 +50,7 @@ class Clear extends Command
         ArticleTag::truncate();
         Article::truncate();
         Category::truncate();
-        Chat::truncate();
+        Note::truncate();
         Comment::truncate();
         SocialiteUser::truncate();
         Tag::truncate();

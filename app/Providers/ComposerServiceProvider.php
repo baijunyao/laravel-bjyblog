@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Chat;
+use App\Models\Note;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
@@ -96,9 +96,9 @@ class ComposerServiceProvider extends ServiceProvider
                 return Comment::count('id');
             });
 
-            $chatCount = Cache::remember('count:chat', static::CACHE_EXPIRE, function () {
+            $chatCount = Cache::remember('count:note', static::CACHE_EXPIRE, function () {
                 // 统计随言碎语总数
-                return Chat::count('id');
+                return Note::count('id');
             });
 
             $socialiteUserCount = Cache::remember('count:socialiteUser', static::CACHE_EXPIRE, function () {

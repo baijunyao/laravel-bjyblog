@@ -9,7 +9,7 @@ Route::namespace('Home')->group(function () {
     // 标签
     Route::get('tag/{id}/{slug?}', 'IndexController@tag');
     // 随言碎语
-    Route::get('chat', 'IndexController@chat');
+    Route::get('note', 'IndexController@note');
     // 开源项目
     Route::get('git', 'IndexController@git');
     // 文章详情
@@ -218,21 +218,21 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
     });
 
     // 随言碎语管理
-    Route::prefix('chat')->group(function () {
+    Route::prefix('note')->group(function () {
         // 随言碎语列表
-        Route::get('index', 'ChatController@index');
+        Route::get('index', 'NoteController@index');
         // 添加随言碎语
-        Route::get('create', 'ChatController@create');
-        Route::post('store', 'ChatController@store');
+        Route::get('create', 'NoteController@create');
+        Route::post('store', 'NoteController@store');
         // 编辑随言碎语
-        Route::get('edit/{id}', 'ChatController@edit');
-        Route::post('update/{id}', 'ChatController@update');
+        Route::get('edit/{id}', 'NoteController@edit');
+        Route::post('update/{id}', 'NoteController@update');
         // 删除随言碎语
-        Route::get('destroy/{id}', 'ChatController@destroy');
+        Route::get('destroy/{id}', 'NoteController@destroy');
         // 恢复删除的随言碎语
-        Route::get('restore/{id}', 'ChatController@restore');
+        Route::get('restore/{id}', 'NoteController@restore');
         // 彻底删除随言碎语
-        Route::get('forceDelete/{id}', 'ChatController@forceDelete');
+        Route::get('forceDelete/{id}', 'NoteController@forceDelete');
     });
 
     // 系统设置

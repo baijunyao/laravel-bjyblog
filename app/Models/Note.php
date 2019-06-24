@@ -2,6 +2,6 @@
 
 namespace App\Models;
 
-class Chat extends Base
+class Note extends Base
 {
 }
