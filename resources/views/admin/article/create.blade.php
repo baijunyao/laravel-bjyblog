@@ -100,7 +100,8 @@
             <tr>
                 <th>{{ __('Topping') }}</th>
                 <td>
-                    <input class="bootstrap-switch" type="checkbox" name="is_top" value="1" @if(old('is_top', 0) == 1) checked="checked" @endif>
+                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="is_top" value="1"> &emsp;&emsp;
+                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="is_top" value="0" checked="checked">
                 </td>
             </tr>
 
