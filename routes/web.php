@@ -9,7 +9,7 @@ Route::namespace('Home')->group(function () {
     // 标签
     Route::get('tag/{id}/{slug?}', 'IndexController@tag');
     // 随言碎语
-    Route::get('note', 'IndexController@note');
+    Route::get('note', 'IndexController@note')->name('note');
     // 开源项目
     Route::get('git', 'IndexController@git');
     // 文章详情

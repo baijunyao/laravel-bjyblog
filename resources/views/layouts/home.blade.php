@@ -194,7 +194,7 @@
                 <dd>{{ __('Article Counts') }}：{{ $articleCount }}</dd>
                 <dd>{{ __('Comment Counts') }}：{{ $commentCount }}</dd>
                 <dd>{{ __('User Counts') }}：{{ $socialiteUserCount }}</dd>
-                <dd>{{ __('Chat Counts') }}：{{ $chatCount }}</dd>
+                <dd>{{ __('Note Counts') }}：{{ $chatCount }}</dd>
             </dl>
         </div>
     </div>

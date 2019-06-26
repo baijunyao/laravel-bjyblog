@@ -5,7 +5,7 @@
 @section('nav', __('Edit Note'))
 
 @section('content')
-    <form class="form-inline" action="{{ url('admin/chat/update', [$data->id]) }}" method="post">
+    <form class="form-inline" action="{{ url('admin/note/update', [$data->id]) }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>

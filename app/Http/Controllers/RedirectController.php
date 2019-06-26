@@ -21,4 +21,9 @@ class RedirectController extends Controller
     {
         return redirect()->route('auth.socialite.logout')->withInput();
     }
+
+    public function note()
+    {
+        return redirect()->route('note');
+    }
 }

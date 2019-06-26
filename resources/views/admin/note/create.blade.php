@@ -7,14 +7,14 @@
 @section('content')
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/chat/index') }}">{{ __('Chat List') }}</a>
+            <a href="{{ url('admin/note/index') }}">{{ __('Note List') }}</a>
         </li>
         <li>
             <a href="{{ url('admin/note/create') }}">{{ __('Add Note') }}</a>
         </li>
     </ul>
 
-    <form class="form-inline" action="{{ url('admin/chat/store') }}" method="post">
+    <form class="form-inline" action="{{ url('admin/note/store') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
