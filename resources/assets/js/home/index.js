@@ -102,11 +102,14 @@ $(function(){
             return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
         });
     })
+    console.log($('.js-content').html());
     $('.js-content').html(editormd.emojiRenderer($('.js-content').html()));
     $('.js-fluidbox').fluidbox();
 
     $('#b-share-js').share(sharejsConfig);
     $('#b-js-socials').jsSocials(jsSocialsConfig)
+
+    lazyload(document.querySelectorAll(".bjy-lazyload"));
 })
 
 /**

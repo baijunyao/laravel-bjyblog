@@ -31,6 +31,9 @@ var faIconReg       = regexs.fontAwesome;
 var editormdLogoReg = regexs.editormdLogo;
 
 editormd.emojiRenderer = function(text) {
+    if (text === undefined) {
+        return '';
+    }
 
     text = text.replace(editormd.regexs.emojiDatetime, function($1) {
         return $1.replace(/:/g, "&#58;");
