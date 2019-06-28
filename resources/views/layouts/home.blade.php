@@ -138,7 +138,7 @@
                 <div>
                     @foreach($newComment as $v)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
-                            <img class="b-head-img js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v->avatar) }}" alt="{{ $v->name }}">
+                            <img class="b-head-img bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($v->avatar) }}" alt="{{ $v->name }}">
                             <li class="b-nickname">
                                 {{ $v->name }}<span>{{ word_time($v->created_at) }}</span>
                             </li>
