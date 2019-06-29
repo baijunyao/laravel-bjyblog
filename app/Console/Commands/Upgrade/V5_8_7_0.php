@@ -46,7 +46,7 @@ class V5_8_7_0 extends Command
 
         if ($chat !== null) {
             $chat->update([
-                'url' => 'note'
+                'url' => 'note',
             ]);
         }
     }

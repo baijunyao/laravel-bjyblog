@@ -8,9 +8,9 @@ use Exception;
 
 abstract class TestCase extends \Tests\TestCase
 {
-    protected const ADMIN_USER_ID         = 1;
+    protected const ADMIN_USER_ID             = 1;
     protected const SOCIALITE_USER_ID         = 1;
-    protected const STORE_SUCCESS_MESSAGE = [
+    protected const STORE_SUCCESS_MESSAGE     = [
         'laravel-flash' => [
             [
                 'alert-message' => '添加成功',

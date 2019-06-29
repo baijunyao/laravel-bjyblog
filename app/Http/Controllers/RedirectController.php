@@ -14,6 +14,7 @@ class RedirectController extends Controller
     public function handleProviderCallback(Request $request, $service)
     {
         $url = route('auth.socialite.handleProviderCallback', ['service' => $service]) . '?' . $request->getQueryString();
+
         return redirect($url);
     }
 

@@ -4,12 +4,12 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Note;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
 use App\Models\GitProject;
 use App\Models\Nav;
+use App\Models\Note;
 use App\Models\SocialiteClient;
 use App\Models\SocialiteUser;
 use App\Models\Tag;

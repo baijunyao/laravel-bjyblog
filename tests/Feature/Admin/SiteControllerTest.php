@@ -18,22 +18,22 @@ class SiteControllerTest extends TestCase
     protected $table     = 'sites';
     protected $storeData = [
         'socialite_user_id' => 1,
-        'name'          => '测试',
-        'description'   => '用于测试',
-        'url'           => 'https://test.com',
-        'audit'         => 1,
-        'sort'          => 1,
+        'name'              => '测试',
+        'description'       => '用于测试',
+        'url'               => 'https://test.com',
+        'audit'             => 1,
+        'sort'              => 1,
     ];
 
     public function testUpdate()
     {
         $site = [
             'socialite_user_id' => 2,
-            'name'          => '编辑',
-            'description'   => '编辑',
-            'url'           => 'https://update.com',
-            'audit'         => 1,
-            'sort'          => 2,
+            'name'              => '编辑',
+            'description'       => '编辑',
+            'url'               => 'https://update.com',
+            'audit'             => 1,
+            'sort'              => 2,
         ];
 
         $this->adminPost('update/' . $this->updateId, $site)

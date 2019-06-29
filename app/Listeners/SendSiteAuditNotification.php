@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\SiteAudit;
-use App\Models\SocialiteUser;
 use App\Models\Site;
+use App\Models\SocialiteUser;
 use App\Notifications\SiteAudit as SiteAuditNotification;
 
 class SendSiteAuditNotification
@@ -28,7 +28,7 @@ class SendSiteAuditNotification
     public function handle(SiteAudit $event)
     {
         // 获取推荐第三方登录的用户id
-        $siteId      = $event->siteId;
+        $siteId          = $event->siteId;
         $socialiteUserId = Site::where('id', $siteId)->value('socialite_user_id');
         if (empty($socialiteUserId)) {
             return false;
