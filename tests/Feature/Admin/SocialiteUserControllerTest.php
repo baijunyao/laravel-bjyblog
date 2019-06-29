@@ -14,13 +14,13 @@ class SocialiteUserControllerTest extends TestCase
     protected $table      = 'socialite_users';
     protected $updateData = [
         'socialite_client_id'          => 2,
-        'name'                     => '编辑',
-        'avatar'                   => '/uploads/article/default.jpg',
-        'openid'                   => '',
-        'access_token'             => '',
-        'last_login_ip'            => '127.0.0.1',
-        'login_times'              => 2,
-        'email'                    => 'update@baijunyao.com',
-        'is_admin'                 => 1,
+        'name'                         => '编辑',
+        'avatar'                       => '/uploads/article/default.jpg',
+        'openid'                       => '',
+        'access_token'                 => '',
+        'last_login_ip'                => '127.0.0.1',
+        'login_times'                  => 2,
+        'email'                        => 'update@baijunyao.com',
+        'is_admin'                     => 1,
     ];
 }

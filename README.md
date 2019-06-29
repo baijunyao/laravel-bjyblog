@@ -6,6 +6,7 @@
     <a href="https://github.com/baijunyao/laravel-bjyblog"><img alt="stars" src="https://img.shields.io/github/stars/baijunyao/laravel-bjyblog.svg"/></a>
     <a href="https://github.com/baijunyao/laravel-bjyblog"><img alt="License" src="https://img.shields.io/github/license/baijunyao/laravel-bjyblog.svg"/></a>
     <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="PHP version" src="https://img.shields.io/packagist/php-v/baijunyao/laravel-bjyblog.svg"/></a>
+    <a href="https://join.slack.com/t/baijunyao/shared_invite/enQtNjU3Nzk4Nzk4NjU3LWRhYmI4YmI3YjhjOTQyZGE2YTA3OTZjMjlhNGM4ZWQyNzNiOTMyYWI5YzAzYmE0ZDBhNmVjOWU1NTc4MWIxMzc"><img src="https://img.shields.io/badge/Slack%20%23laravel--bjyblog-join-orange.svg" alt="Chat on Slack"></a>
 </p>
 
 

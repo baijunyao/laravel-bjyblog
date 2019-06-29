@@ -30,7 +30,7 @@ class IndexControllerTest extends TestCase
 
     public function testChat()
     {
-        $this->get('/chat')->assertStatus(200);
+        $this->get('/note')->assertStatus(200);
     }
 
     public function testGit()

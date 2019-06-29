@@ -54,3 +54,5 @@ require('./home/site');
 require('jssocials/dist/jssocials.min');
 
 require('social-share.js/dist/js/jquery.share.min');
+
+require('lazyload/lazyload');

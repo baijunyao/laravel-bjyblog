@@ -12,7 +12,6 @@
   "devDependencies": {
     "axios": "^0.19.0",
     "cross-env": "^5.1",
-    "jssocials": "github:tabalinas/jssocials",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "vue": "^2.6.7"
@@ -20,16 +19,16 @@
   "dependencies": {
     "animate.css": "^3.6.1",
     "bootstrap-sass": ">=3.4.1",
-    "bootstrap-switch": "^3.3.4",
     "fluidbox": "^2.0.5",
     "font-awesome": "^4.7.0",
     "gentelella": "^1.4.0",
     "jasny-bootstrap": "^3.1.3",
     "jquery": "^3.4",
+    "jssocials": "github:tabalinas/jssocials",
+    "lazyload": "^2.0.0-rc.2",
     "node-sass": "^4.11.0",
     "pace": "github:hubspot/pace#v1.0.2",
     "prismjs": "^1.14.0",
-    "social-share.js": "github:overtrue/share.js",
-    "switchery": "0.0.2"
+    "social-share.js": "github:overtrue/share.js"
   }
 }

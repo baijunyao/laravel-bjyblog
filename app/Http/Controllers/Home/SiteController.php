@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Store;
-use App\Models\SocialiteUser;
 use App\Models\Site;
+use App\Models\SocialiteUser;
 use App\Notifications\ApplySite;
 use Cache;
 use Illuminate\Http\Request;
@@ -54,8 +54,8 @@ class SiteController extends Controller
     /**
      * 新增
      *
-     * @param Store     $request
-     * @param Site      $siteModel
+     * @param Store         $request
+     * @param Site          $siteModel
      * @param SocialiteUser $socialiteUser
      *
      * @return \Illuminate\Http\JsonResponse
@@ -64,7 +64,7 @@ class SiteController extends Controller
     {
         $socialiteUserId = auth()->guard('socialite')->user()->id;
 
-        $siteData                  = $request->only('name', 'url', 'description');
+        $siteData                      = $request->only('name', 'url', 'description');
         $siteData['socialite_user_id'] = $socialiteUserId;
         // 获取序号
         $sort             = Site::orderBy('sort', 'desc')->value('sort');

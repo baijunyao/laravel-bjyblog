@@ -11,7 +11,7 @@ class SocialiteClientController extends Controller
     public function index()
     {
         $socialiteClients   = SocialiteClient::all();
-        $assign         = compact('socialiteClients');
+        $assign             = compact('socialiteClients');
 
         return view('admin.socialiteClient.index', $assign);
     }
@@ -19,7 +19,7 @@ class SocialiteClientController extends Controller
     public function edit($id)
     {
         $socialiteClient   = SocialiteClient::find($id);
-        $assign        = compact('socialiteClient');
+        $assign            = compact('socialiteClient');
 
         return view('admin.socialiteClient.edit', $assign);
     }

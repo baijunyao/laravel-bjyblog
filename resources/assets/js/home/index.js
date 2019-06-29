@@ -57,11 +57,6 @@ $(function(){
         $(el).css('top', $(el).parent('.b-chat-one').height()/2.5);
     });
 
-    $.each($('.js-head-img'), function(index, val) {
-        var img=$(val).attr('_src');
-        $(val).attr('src', img);
-    });
-
     // 点击返回顶部
     $('.go-top').click(function () {
         $('body,html').animate({scrollTop:0},500);
@@ -95,18 +90,24 @@ $(function(){
     // 开启进度条
     Pace.start()
 
-    // 文章详情点击图片放大
-    $.each($('.js-content img'), function (k, v) {
-        console.log($(v));
-        $(v).wrap(function(){
-            return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
-        });
-    })
-    $('.js-content').html(editormd.emojiRenderer($('.js-content').html()));
-    $('.js-fluidbox').fluidbox();
+    lazyload(document.querySelectorAll(".bjy-lazyload"));
 
-    $('#b-share-js').share(sharejsConfig);
-    $('#b-js-socials').jsSocials(jsSocialsConfig)
+    // Article detail page
+    if($('.js-content').length !== 0) {
+        // 文章详情点击图片放大
+        $.each($('.js-content img'), function (k, v) {
+            $(v).wrap(function(){
+                return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
+            });
+        })
+
+        $('.js-content').html(editormd.emojiRenderer($('.js-content').html()));
+        $('.js-fluidbox').fluidbox();
+
+        $('#b-share-js').share(sharejsConfig);
+        $('#b-js-socials').jsSocials(jsSocialsConfig)
+    }
+
 })
 
 /**

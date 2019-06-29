@@ -96,7 +96,7 @@
             @foreach($comment as $k => $v)
                 <div id="comment-{{ $v['id'] }}" class="row b-user b-parent">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                        <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($v['avatar']) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+                        <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($v['avatar']) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                         @if($v['is_admin'] == 1)
                             <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('app.name') }}">
                         @endif
@@ -112,7 +112,7 @@
                         @foreach($v['child'] as $m => $n)
                             <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                    <img class="b-user-pic js-head-img" src="{{ asset('uploads/avatar/default.jpg') }}" _src="{{ asset($n['avatar']) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+                                    <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($n['avatar']) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                                     @if($n['is_admin'] == 1)
                                         <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('app.name') }}">
                                     @endif

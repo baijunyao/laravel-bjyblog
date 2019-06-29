@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', __('Chat List'))
+@section('title', __('Note List'))
 
-@section('nav', __('Chat List'))
+@section('nav', __('Note List'))
 
 @section('content')
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/chat/index') }}">{{ __('Chat List') }}</a>
+            <a href="{{ url('admin/note/index') }}">{{ __('Note List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/chat/create') }}">{{ __('Add Chat') }}</a>
+            <a href="{{ url('admin/note/create') }}">{{ __('Add Note') }}</a>
         </li>
     </ul>
 
@@ -35,14 +35,14 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ url('admin/chat/edit', [$v->id]) }}">{{ __('Edit') }}</a>
+                    <a href="{{ url('admin/note/edit', [$v->id]) }}">{{ __('Edit') }}</a>
                     |
                     @if(is_null($v->deleted_at))
-                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/chat/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
+                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/note/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/chat/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
+                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/note/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/chat/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
+                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/note/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                     @endif
                 </td>
             </tr>

@@ -5,10 +5,10 @@ namespace App\Console\Commands\Migration;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
-use App\Models\Chat;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
+use App\Models\Note;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Artisan;
@@ -161,15 +161,15 @@ class FromThinkPHPBjyBlog extends Command
             $content      = str_replace($search, $replace, $content);
             $content      = strip_tags($content);
             $commentModel->insert([
-                'id'            => $v->cmtid,
+                'id'                => $v->cmtid,
                 'socialite_user_id' => $v->ouid,
-                'type'          => $v->type,
-                'pid'           => $v->pid,
-                'article_id'    => $v->aid,
-                'content'       => $content,
-                'status'        => $v->status,
-                'created_at'    => date('Y-m-d H:i:s', $v->date),
-                'updated_at'    => date('Y-m-d H:i:s', $v->date),
+                'type'              => $v->type,
+                'pid'               => $v->pid,
+                'article_id'        => $v->aid,
+                'content'           => $content,
+                'status'            => $v->status,
+                'created_at'        => date('Y-m-d H:i:s', $v->date),
+                'updated_at'        => date('Y-m-d H:i:s', $v->date),
             ]);
         }
 
@@ -230,7 +230,7 @@ class FromThinkPHPBjyBlog extends Command
         // 迁移随言碎语表
         $data = DB::connection('old')->table('chat')->get()->toArray();
         foreach ($data as $v) {
-            Chat::insert([
+            Note::insert([
                 'id'         => $v->chid,
                 'content'    => $v->content,
                 'created_at' => date('Y-m-d H:i:s', $v->date),
