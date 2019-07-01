@@ -58,6 +58,15 @@ class SocialiteClientsTableSeeder extends Seeder
                 'updated_at'    => '2019-05-14 23:26:38',
                 'deleted_at'    => null,
             ],
+            [
+                'id'            => 6,
+                'name'          => 'vkontakte',
+                'client_id'     => '',
+                'client_secret' => '',
+                'created_at'    => '2019-07-01 23:26:38',
+                'updated_at'    => '2019-07-01 23:26:38',
+                'deleted_at'    => null,
+            ]
         ]);
     }
 }

@@ -73,4 +73,10 @@ return [
         'client_secret' => env('FACEBOOK_SECRET'),
         'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/facebook'
     ],
+
+    'vkontakte' => [
+        'client_id' => env('VKONTAKTE_KEY'),
+        'client_secret' => env('VKONTAKTE_SECRET'),
+        'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/vkontakte'
+    ],
 ];
