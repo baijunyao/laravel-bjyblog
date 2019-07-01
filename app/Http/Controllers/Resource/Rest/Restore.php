@@ -6,10 +6,16 @@ trait Restore
 {
     public function restore()
     {
-        $model = static::getModelObject();
-        $id = $this->getRouteId();
-        $model->onlyTrashed()->find($id)->restore();
+        $relations = [];
+        foreach (static::RELATIONS as $relation => $column) {
+            $relations[$relation] = function ($query) use ($column) {
+                $query->select($column);
+            };
+        }
 
-        return response('');
+        $model = static::getModelObject()->onlyTrashed()->with($relations)->find($this->getRouteId());
+        $model->restore();
+
+        return response($model);
     }
 }

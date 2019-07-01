@@ -20,5 +20,7 @@ class TagController extends Controller
     protected const COLUMN = [
         'id',
         'name',
+        'created_at',
+        'updated_at'
     ];
 }
