@@ -212,7 +212,7 @@
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
                 @foreach($socialiteClients as $socialiteClient)
-                    <a class="fa fa-{{ $socialiteClient->name }}" href="{{ url('auth/socialite/redirectToProvider/' . $socialiteClient->name) }}" alt="{{ $socialiteClient->name }}" title="{{ $socialiteClient->name }}"></a>
+                    <a class="fa fa-{{ $socialiteClient->icon }}" href="{{ url('auth/socialite/redirectToProvider/' . $socialiteClient->name) }}" alt="{{ $socialiteClient->name }}" title="{{ $socialiteClient->name }}"></a>
                 @endforeach
 
                 @if($socialiteClients->isEmpty())
