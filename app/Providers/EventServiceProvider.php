@@ -23,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\QQ\QqExtendSocialite@handle',
             'SocialiteProviders\Google\GoogleExtendSocialite@handle',
             'SocialiteProviders\Facebook\FacebookExtendSocialite@handle',
+            'SocialiteProviders\VKontakte\VKontakteExtendSocialite@handle',
         ],
 
         /**

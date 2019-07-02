@@ -40,6 +40,7 @@
         "socialiteproviders/facebook": "dev-master",
         "socialiteproviders/google": "^3.0",
         "socialiteproviders/qq": "^3.0",
+        "socialiteproviders/vkontakte": "^4.0",
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.1",
         "stichoza/google-translate-php": "^4.0",
