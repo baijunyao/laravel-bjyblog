@@ -14,4 +14,10 @@ class IndexControllerTest extends TestCase
         $response = $this->adminGet('admin/index/index');
         $response->assertStatus(200);
     }
+
+    public function testIndexGuest()
+    {
+        $response = $this->get('admin/index/index');
+        $response->assertRedirect('admin/login/index');
+    }
 }
