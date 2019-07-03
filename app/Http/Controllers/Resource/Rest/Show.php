@@ -16,6 +16,13 @@ trait Show
             };
         }
 
-        return response()->json($model->withTrashed()->with($relations)->find($id));
+        return response()->json(
+            $model->withTrashed()
+                ->when(count(static::COLUMN) > 0, function ($query) {
+                    $query->select(static::COLUMN);
+                })
+                ->with($relations)
+                ->find($id)
+        );
     }
 }

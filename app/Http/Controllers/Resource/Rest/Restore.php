@@ -13,7 +13,7 @@ trait Restore
             };
         }
 
-        $model = static::getModelObject()->onlyTrashed()->with($relations)->find($this->getRouteId());
+        $model = static::getModelObject()->withTrashed()->with($relations)->find($this->getRouteId());
         $model->restore();
 
         return response($model);

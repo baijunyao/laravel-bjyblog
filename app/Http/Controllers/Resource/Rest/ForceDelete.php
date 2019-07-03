@@ -8,7 +8,7 @@ trait ForceDelete
     {
         $model = static::getModelObject();
         $id = $this->getRouteId();
-        $model->onlyTrashed()->find($id)->forceDelete();
+        $model->withTrashed()->find($id)->forceDelete();
 
         return response('');
     }

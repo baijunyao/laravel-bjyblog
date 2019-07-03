@@ -15,9 +15,11 @@ trait Index
             };
         }
 
-        $list = $model->select(static::COLUMN)
+        $list = $model->withTrashed()
+            ->when(count(static::COLUMN) > 0, function ($query) {
+                $query->select(static::COLUMN);
+            })
             ->with($relations)
-            ->withTrashed()
             ->paginate();
 
         return response()->json($list);
