@@ -38,23 +38,33 @@ class ArticleController extends Controller
         ]
     ];
 
-    // public function store(Store $request, Article $articleModel, ArticleTag $articleTag)
-    // {
-    //     $newArticle = $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown');
-    //
-    //     if (empty($newArticle['cover'])) {
-    //         $firstImage    = $articleModel->getCover($newArticle['markdown']);
-    //         $newArticle['cover'] = $firstImage;
-    //     }
-    //
-    //     $newArticle['html'] = markdown_to_html($newArticle['markdown']);
-    //     $article             = Article::create($newArticle);
-    //
-    //     if ($article) {
-    //         $articleTag->addTagIds($article->id, $request->input('tag_ids'));
-    //     }
-    //
-    //     return response($article);
-    // }
+    public function store(Store $request, Article $articleModel, ArticleTag $articleTag)
+    {
+        $article = Article::create(
+            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown')
+        );
+
+        if ($article) {
+            $articleTag->addTagIds($article->id, $request->input('tag_ids'));
+        }
+
+        return response($article);
+    }
+
+    public function update(Store $request, Article $articleModel, ArticleTag $articleTag)
+    {
+        $article = Article::find($request->route('article'));
+
+        $result = $article->update(
+            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown')
+        );
+
+        if ($result) {
+            ArticleTag::where('article_id', $request->route('article'))->forceDelete();
+            $articleTag->addTagIds($request->route('article'), $request->input('tag_ids'));
+        }
+
+        return response($article);
+    }
 
 }

@@ -12,7 +12,7 @@ use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
 
 class ArticleControllerTest extends TestCase
 {
-    use TestIndex, TestShow, TestDestroy, TestRestore, TestForceDelete;
+    use TestIndex, TestShow, TestStore, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
 
     protected $storeData     = [
         'category_id' => 1,
@@ -25,6 +25,7 @@ class ArticleControllerTest extends TestCase
         'cover'       => '',
     ];
     protected $updateData = [
+        'category_id' => 1,
         'title'       => 'updated title',
         'author'      => 'updated baijunyao',
         'keywords'    => 'updated keywords',

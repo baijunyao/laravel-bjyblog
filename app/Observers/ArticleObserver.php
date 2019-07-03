@@ -17,6 +17,12 @@ class ArticleObserver extends BaseObserver
             );
         }
 
+        if (empty($article->cover)) {
+            $article->cover = $article->getCover($article->markdown);
+        }
+
+        $article->html = markdown_to_html($article->markdown);
+
         if ($article->isDirty('title') && empty($article->slug)) {
             $article->slug = generate_english_slug($article->title);
         }

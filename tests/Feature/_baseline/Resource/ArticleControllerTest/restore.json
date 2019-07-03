@@ -23,7 +23,7 @@
         "slug": "deleted",
         "author": "白俊遥",
         "markdown": "内容",
-        "html": "内容",
+        "html": "<p>内容<\/p>",
         "description": "描述",
         "keywords": "test",
         "cover": "\/uploads\/article\/5958ab4dd9db4.jpg",
