@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::namespace('Resource')->middleware('auth:api')->group(function () {
-    // Route::resource('categories', 'CategoryController');
+    Route::apiResource('categories', 'CategoryController');
+    Route::patch('categories/{categorie}/restore', 'CategoryController@restore')->name('categories.restore');
+    Route::delete('categories/{categorie}/forceDelete', 'CategoryController@forceDelete')->name('categories.forceDelete');
 
     Route::apiResource('tags', 'TagController');
     Route::patch('tags/{tag}/restore', 'TagController@restore')->name('tags.restore');
