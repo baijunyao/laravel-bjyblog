@@ -6,23 +6,10 @@ trait Show
 {
     public function show()
     {
-        $model = $this->getModelObject();
+        $model = $this->getModelFQN();
+        $resource = $this->getResourceFQN();
         $id = $this->getRouteId();
-        $relations = [];
 
-        foreach (static::RELATIONS as $relation => $column) {
-            $relations[$relation] = function ($query) use ($column) {
-                $query->select($column);
-            };
-        }
-
-        return response()->json(
-            $model->withTrashed()
-                ->when(count(static::COLUMN) > 0, function ($query) {
-                    $query->select(static::COLUMN);
-                })
-                ->with($relations)
-                ->find($id)
-        );
+        return new $resource((new $model)->withTrashed()->find($id));
     }
 }

@@ -6,8 +6,9 @@ trait Store
 {
     public function store()
     {
-        $model = $this->getModelObject();
+        $model = $this->getModelFQN();
+        $resource = $this->getResourceFQN();
 
-        return response()->json($model->create(request()->all()));
+        return new $resource((new $model)->create(request()->all()));
     }
 }

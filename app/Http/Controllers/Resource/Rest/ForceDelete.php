@@ -6,9 +6,9 @@ trait ForceDelete
 {
     public function forceDelete()
     {
-        $model = static::getModelObject();
+        $model = static::getModelFQN();
         $id = $this->getRouteId();
-        $model->withTrashed()->find($id)->forceDelete();
+        (new $model)->withTrashed()->find($id)->forceDelete();
 
         return response('');
     }
