@@ -22,6 +22,13 @@ class Controller extends BaseController
         return $model;
     }
 
+    public function getResourceFQN()
+    {
+        $resource  = 'App\\Http\\Resources\\' . $this->getResourceName();
+
+        return $resource;
+    }
+
     protected function getResourceName()
     {
         return substr(trim(strrchr(static::class, '\\'),'\\'), 0, -10);
