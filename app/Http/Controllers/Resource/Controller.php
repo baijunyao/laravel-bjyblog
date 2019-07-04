@@ -6,19 +6,24 @@ use App\Http\Controllers\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    protected const MODEL = null;
-    protected const COLUMN = [];
-    protected const RELATIONS = [];
-
     protected function getRouteId()
     {
         return current(request()->route()->parameters);
     }
 
-    protected function getModelObject()
+    protected function getModelFQN()
     {
         $model = static::MODEL;
 
-        return new $model;
+        if (empty($model)) {
+            $model = 'App\\Models\\' . $this->getResourceName();
+        }
+
+        return $model;
+    }
+
+    protected function getResourceName()
+    {
+        return substr(trim(strrchr(static::class, '\\'),'\\'), 0, -10);
     }
 }
