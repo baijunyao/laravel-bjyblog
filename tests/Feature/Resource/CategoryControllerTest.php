@@ -7,11 +7,12 @@ use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
 use Baijunyao\LaravelTestSupport\Rest\TestIndex;
 use Baijunyao\LaravelTestSupport\Rest\TestRestore;
 use Baijunyao\LaravelTestSupport\Rest\TestShow;
+use Baijunyao\LaravelTestSupport\Rest\TestStore;
 use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
 
 class CategoryControllerTest extends TestCase
 {
-    use TestIndex, TestShow, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
+    use TestIndex, TestShow, TestStore, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
 
     protected $storeData     = [
         'name' => 'Store',

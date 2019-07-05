@@ -17,7 +17,6 @@
         "set-cookie": "set-cookie_ignore"
     },
     "content": {
-        "current_page": 1,
         "data": [
             {
                 "id": 1,
@@ -56,15 +55,20 @@
                 "deleted_at": "2019-01-04 16:35:12"
             }
         ],
-        "first_page_url": "http:\/\/laravel-bjyblog.test\/api\/categories?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http:\/\/laravel-bjyblog.test\/api\/categories?page=1",
-        "next_page_url": null,
-        "path": "http:\/\/laravel-bjyblog.test\/api\/categories",
-        "per_page": 15,
-        "prev_page_url": null,
-        "to": 3,
-        "total": 3
+        "links": {
+            "first": "http:\/\/laravel-bjyblog.test\/api\/categories?page=1",
+            "last": "http:\/\/laravel-bjyblog.test\/api\/categories?page=1",
+            "prev": null,
+            "next": null
+        },
+        "meta": {
+            "current_page": 1,
+            "from": 1,
+            "last_page": 1,
+            "path": "http:\/\/laravel-bjyblog.test\/api\/categories",
+            "per_page": 15,
+            "to": 3,
+            "total": 3
+        }
     }
 }

@@ -16,7 +16,7 @@ class Controller extends BaseController
         $model = static::MODEL;
 
         if (empty($model)) {
-            $model = 'App\\Models\\' . $this->getResourceName();
+            $model = '\\App\\Models\\' . $this->getResourceName();
         }
 
         return $model;
@@ -24,7 +24,7 @@ class Controller extends BaseController
 
     public function getResourceFQN()
     {
-        $resource  = 'App\\Http\\Resources\\' . $this->getResourceName();
+        $resource  = '\\App\\Http\\Resources\\' . $this->getResourceName();
 
         return $resource;
     }
