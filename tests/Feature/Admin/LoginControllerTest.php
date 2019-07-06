@@ -10,6 +10,12 @@ class LoginControllerTest extends TestCase
             ->assertStatus(200);
     }
 
+    public function testIndexLogin()
+    {
+        $this->adminGet('admin/login/index')
+            ->assertRedirect('admin/index/index');
+    }
+
     public function testLogout()
     {
         $this->loginByUserId(1, 'admin');

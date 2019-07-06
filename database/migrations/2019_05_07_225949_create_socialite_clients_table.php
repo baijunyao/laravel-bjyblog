@@ -16,6 +16,7 @@ class CreateSocialiteClientsTable extends Migration
         Schema::create('socialite_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('');
+            $table->string('icon')->default('');
             $table->string('client_id')->default('');
             $table->string('client_secret')->default('');
             $table->timestamps();

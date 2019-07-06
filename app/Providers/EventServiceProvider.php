@@ -18,11 +18,12 @@ class EventServiceProvider extends ServiceProvider
         //     SendEmailVerificationNotification::class,
         // ],
 
-        'SocialiteProviders\Manager\SocialiteWasCalled' => [
-            'SocialiteProviders\Weibo\WeiboExtendSocialite@handle',
-            'SocialiteProviders\QQ\QqExtendSocialite@handle',
-            'SocialiteProviders\Google\GoogleExtendSocialite@handle',
-            'SocialiteProviders\Facebook\FacebookExtendSocialite@handle',
+        \SocialiteProviders\Manager\SocialiteWasCalled::class => [
+            'SocialiteProviders\\Weibo\\WeiboExtendSocialite@handle',
+            'SocialiteProviders\\QQ\\QqExtendSocialite@handle',
+            'SocialiteProviders\\Google\\GoogleExtendSocialite@handle',
+            'SocialiteProviders\\Facebook\\FacebookExtendSocialite@handle',
+            'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite@handle',
         ],
 
         /**
