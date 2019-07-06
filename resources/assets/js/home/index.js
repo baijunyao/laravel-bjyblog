@@ -117,6 +117,12 @@ $(function(){
  * @return {subject}         获取到的left和宽
  */
 function getWidthLeft(obj,change){
+    if (obj.length === 0) {
+        return {
+            'left': 0,
+            'width': 0
+        };
+    }
     var mobileLeft=obj.position().left;
     var mobileWidth=obj.width();
     var widthLeft={
