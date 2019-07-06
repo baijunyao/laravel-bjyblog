@@ -46,7 +46,7 @@ class V5_8_8_0 extends Command
 
         SocialiteClient::all()->each(function ($socialiteClient) {
             $socialiteClient->update([
-                'icon' => $socialiteClient->name
+                'icon' => $socialiteClient->name,
             ]);
         });
 
