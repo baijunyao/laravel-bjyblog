@@ -89,7 +89,7 @@ $(function () {
         var aid=$(this).attr('aid');
         var pid=$(this).attr('pid');
         var username=$(this).attr('username');
-        var str='<div class="b-box-textarea"><div class="b-box-content js-hint" contenteditable="true">请先登录后回复评论</div><ul class="b-emote-submit"><li class="b-emote"><i class="fa fa-smile-o js-get-tuzki"></i><input class="form-control b-email" type="text" name="email" placeholder="接收回复的email地址" value="'+userEmail+'"><div class="b-tuzki"></div></li><li class="b-submit-button"><input class="js-comment-btn" type="button" value="评 论" aid="'+aid+'" pid="'+pid+'" username="'+username+'"></li><li class="b-clear-float"></li></ul></div>';
+        var str='<div class="b-box-textarea"><div class="b-box-content js-hint" contenteditable="true">' + translate.pleaseLoginToReply +'</div><ul class="b-emote-submit"><li class="b-emote"><i class="fa fa-smile-o js-get-tuzki"></i><input class="form-control b-email" type="text" name="email" placeholder="' + translate.emailForNotifications + '" value="'+userEmail+'"><div class="b-tuzki"></div></li><li class="b-submit-button"><input class="js-comment-btn" type="button" value="评 论" aid="'+aid+'" pid="'+pid+'" username="'+username+'"></li><li class="b-clear-float"></li></ul></div>';
         $(this).parents('.b-cc-first').eq(0).append(str);
     })
 
@@ -109,8 +109,8 @@ $(function () {
 
     // 删除提示和样式
     $('.b-comment').on('focus', '.js-hint', function () {
-        var word=$(this).text();
-        if(word=='请先登录后发表评论' || word=='请先登录后回复评论'){
+        var word = $(this).text();
+        if(word === translate.pleaseLoginToComment || word === translate.pleaseLoginToReply){
             $(this).text('');
             $(this).css('color', '#333');
         }
@@ -132,7 +132,7 @@ $(function () {
         $.get(checkLogin, function(data) {
             if(data.status === 1){
                 var content=$(obj).parents('.b-box-textarea').eq(0).find('.b-box-content').html();
-                if(content!='' && content!='请先登录后发表评论'){
+                if(content !== '' && content !== translate.pleaseLoginToComment){
                     var aid=$(obj).attr('aid'),
                         pid=$(obj).attr('pid'),
                         email=$(obj).parents('.b-box-textarea').eq(0).find("input[name='email']").val(),
@@ -160,11 +160,11 @@ $(function () {
                             var nickName = $('#b-login-word .b-nickname').text();
                             if (pid == 0) {
                                 // pid为0表示新增评论
-                                var str = '<div class="row b-user b-parent"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="' + titleName + '" alt="' + titleName + '" src="' + headImg + '" class="b-user-pic"></div><div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><p class="b-content"><span class="b-user-name">' + nickName + '</span>：' + content + '</p><p class="b-date">' + date + ' <a class="js-reply" username="' + nickName + '" pid="' + newPid + '" aid="' + aid + '" href="javascript:;">回复</a></p><div class="b-clear-float"></div></div></div>';
+                                var str = '<div class="row b-user b-parent"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="' + titleName + '" alt="' + titleName + '" src="' + headImg + '" class="b-user-pic"></div><div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><p class="b-content"><span class="b-user-name">' + nickName + '</span>：' + content + '</p><p class="b-date">' + date + ' <a class="js-reply" username="' + nickName + '" pid="' + newPid + '" aid="' + aid + '" href="javascript:;">' + translate.reply + '</a></p><div class="b-clear-float"></div></div></div>';
                                 $('.b-user-comment').prepend(str);
                             } else {
                                 // pid不为0表示是回复评论
-                                var str = '<div class="row b-user b-child"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="' + titleName + '" alt="' + titleName + '" src="' + headImg + '" class="b-user-pic"></div><ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><li class="b-content"><span class="b-reply-name">' + nickName + '</span><span class="b-reply">回复</span><span class="b-user-name">' + replyName + '</span>：' + content + '</li><li class="b-date">' + date + ' <a class="js-reply" pid="' + newPid + '" aid="' + aid + '" username="' + replyName + '" href="javascript:;">回复</a></li><li class="b-clear-float"></li></ul></div>';
+                                var str = '<div class="row b-user b-child"><div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col"><img title="' + titleName + '" alt="' + titleName + '" src="' + headImg + '" class="b-user-pic"></div><ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col"><li class="b-content"><span class="b-reply-name">' + nickName + '</span><span class="b-reply">' + translate.reply + '</span><span class="b-user-name">' + replyName + '</span>：' + content + '</li><li class="b-date">' + date + ' <a class="js-reply" pid="' + newPid + '" aid="' + aid + '" username="' + replyName + '" href="javascript:;">' + translate.reply + '</a></li><li class="b-clear-float"></li></ul></div>';
                                 $(obj).parents('.b-content-col').eq(0).append(str);
                                 $(obj).parents('.b-box-textarea').eq(0).remove();
                             }
@@ -185,7 +185,7 @@ $(function () {
                     });
                 }
             }else{
-                layer.msg('请先登录', {
+                layer.msg(translate.pleaseLogin, {
                     icon: 5,
                     time: 2000
                 })
