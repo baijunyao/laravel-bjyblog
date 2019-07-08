@@ -106,7 +106,7 @@
                             <span class="b-user-name">{{ $v['name'] }}</span>：{!! $v['content'] !!}
                         </p>
                         <p class="b-date">
-                            {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">回复</a>
+                            {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">{{ __('Reply') }}</a>
                         </p>
                         <foreach name="v['child']" item="n">
                         @foreach($v['child'] as $m => $n)
@@ -120,11 +120,11 @@
                                 <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
                                     <li class="b-content">
                                         <span class="b-reply-name">{{ $n['name'] }}</span>
-                                        <span class="b-reply">回复</span>
+                                        <span class="b-reply">{{ __('Reply') }}</span>
                                         <span class="b-user-name">{{ $n['reply_name'] }}</span>：{!! $n['content'] !!}
                                     </li>
                                     <li class="b-date">
-                                        {{ $n['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}">回复</a>
+                                        {{ $n['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}">{{ __('Reply') }}</a>
                                     </li>
                                     <li class="b-clear-float"></li>
                                 </ul>
@@ -152,6 +152,13 @@
         $('pre').addClass('line-numbers');
         // 新页面跳转
         $('.js-content a').attr('target', '_blank')
+        translate = {
+            pleaseLoginToComment: "{{ __('Please login to comment') }}",
+            pleaseLoginToReply: "{{ __('Please login to reply') }}",
+            emailForNotifications: "{{ __('Email for notifications') }}",
+            pleaseLogin: "{{ __('Please login') }}",
+            reply: "{{ __('Reply') }}"
+        }
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
 @endsection
