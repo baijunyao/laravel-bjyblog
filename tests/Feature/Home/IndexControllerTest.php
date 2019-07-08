@@ -42,6 +42,15 @@ class IndexControllerTest extends TestCase
     {
         Bus::fake();
 
+        config([
+            'mail.host' => 'test',
+            'mail.username' => 'test',
+            'mail.password' => 'test',
+            'mail.from.address' => 'test',
+            'mail.from.name' => 'test',
+            'bjyblog.notification_email' => 'test',
+        ]);
+
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
         $comment = [
             'article_id' => 1,
@@ -68,6 +77,49 @@ class IndexControllerTest extends TestCase
         });
 
         Bus::assertDispatched(SendCommentEmail::class, function ($job) {
+            return $job->content['type'] === '回复';
+        });
+    }
+
+    public function testCommentNoMailConfigured()
+    {
+        Bus::fake();
+
+        config([
+            'mail.host' => '',
+            'mail.username' => '',
+            'mail.password' => '',
+            'mail.from.address' => 'test',
+            'mail.from.name' => 'test',
+            'bjyblog.notification_email' => 'test',
+        ]);
+
+        $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
+        $comment = [
+            'article_id' => 1,
+            'pid'        => 1,
+        ];
+
+        /** For @see \App\Observers\CommentObserver::created() */
+        config([
+            'bjyblog.notification_email' => 'test@test.com',
+        ]);
+
+        $this->loginByUserId(1)
+            ->post('/comment', $comment + [
+                    'content' => $content,
+                ])
+            ->assertStatus(200);
+
+        $this->assertDatabaseHas('comments', $comment + [
+                'content' => (new Comment())->imageToUbb($content),
+            ]);
+
+        Bus::assertNotDispatched(SendCommentEmail::class, function ($job) {
+            return $job->content['type'] === '评论';
+        });
+
+        Bus::assertNotDispatched(SendCommentEmail::class, function ($job) {
             return $job->content['type'] === '回复';
         });
     }
