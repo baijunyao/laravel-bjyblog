@@ -44,7 +44,8 @@
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.1",
         "stichoza/google-translate-php": "^4.0",
-        "vanry/laravel-scout-tntsearch": "^1.2"
+        "vanry/laravel-scout-tntsearch": "^1.2",
+        "webuni/commonmark-table-extension": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
