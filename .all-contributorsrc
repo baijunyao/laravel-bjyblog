@@ -50,6 +50,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "yuri25",
+      "name": "Yuran",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/253228?v=4",
+      "profile": "http://xtty.ru",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
