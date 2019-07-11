@@ -1,6 +1,5 @@
 <?php
 
-use HyperDown\Parser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -212,45 +211,6 @@ if (!function_exists('word_time')) {
         }
 
         return $str;
-    }
-}
-
-if (!function_exists('markdown_to_html')) {
-    /**
-     * 把markdown转为html
-     *
-     * @param $markdown
-     *
-     * @return mixed|string
-     */
-    function markdown_to_html($markdown)
-    {
-        // 正则匹配到全部的iframe
-        preg_match_all('/&lt;iframe.*iframe&gt;/', $markdown, $iframe);
-        // 如果有iframe 则先替换为临时字符串
-        if (!empty($iframe[0])) {
-            $tmp = [];
-            // 组合临时字符串
-            foreach ($iframe[0] as $k => $v) {
-                $tmp[] = '【iframe' . $k . '】';
-            }
-            // 替换临时字符串
-            $markdown = str_replace($iframe[0], $tmp, $markdown);
-            // 讲iframe转义
-            $replace = array_map(function ($v) {
-                return htmlspecialchars_decode($v);
-            }, $iframe[0]);
-        }
-        // markdown转html
-        $parser = new Parser();
-        $html   = $parser->makeHtml($markdown);
-        $html   = str_replace('<code class="', '<code class="lang-', $html);
-        // 将临时字符串替换为iframe
-        if (!empty($iframe[0])) {
-            $html = str_replace($tmp, $replace, $html);
-        }
-
-        return $html;
     }
 }
 
