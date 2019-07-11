@@ -11,6 +11,7 @@ use App\Models\Config;
 use App\Models\Tag;
 use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
+use Markdown;
 
 class ArticleController extends Controller
 {
@@ -105,7 +106,7 @@ class ArticleController extends Controller
             $data['cover'] = $firstImage;
         }
 
-        $data['html'] = markdown_to_html($data['markdown']);
+        $data['html'] = Markdown::convertToHtml($data['markdown']);
         $tag_ids      = $data['tag_ids'];
         unset($data['tag_ids']);
         $article             = Article::create($data);
@@ -169,7 +170,8 @@ class ArticleController extends Controller
         // 为文章批量添加标签
         $tag_ids = $data['tag_ids'];
         // 把markdown转html
-        $data['html'] = markdown_to_html($data['markdown']);
+        $data['html'] = Markdown::convertToHtml($data['markdown']);
+
         unset($data['tag_ids']);
         // 先彻底删除此文章下的所有标签
         ArticleTag::where('article_id', $id)->forceDelete();
