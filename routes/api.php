@@ -30,5 +30,9 @@ Route::namespace('Resource')->middleware('auth:api')->group(function () {
     Route::patch('articles/{article}/restore', 'ArticleController@restore')->name('articles.restore');
     Route::delete('articles/{article}/forceDelete', 'ArticleController@forceDelete')->name('articles.forceDelete');
 
-
+    Route::get('comments', 'CommentController@index')->name('comments.index');
+    Route::get('comments/{comment}', 'CommentController@show')->name('comments.show');
+    Route::delete('comments/{comment}/destroy', 'CommentController@destroy')->name('comments.destroy');
+    Route::patch('comments/{comment}/restore', 'CommentController@restore')->name('comments.restore');
+    Route::delete('comments/{comment}/forceDelete', 'CommentController@forceDelete')->name('comments.forceDelete');
 });
