@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29d98aef3e4d17f14a6d6c87f280bd16",
+    "content-hash": "867d95e9b2e4074887ef08508c05c69d",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -6831,16 +6831,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.2.1",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "e136adb7d87da68ec66c10474a65e8213e82b7fc"
+                "reference": "529d97c9d13a02d483b06840940a460e61519d37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/e136adb7d87da68ec66c10474a65e8213e82b7fc",
-                "reference": "e136adb7d87da68ec66c10474a65e8213e82b7fc",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/529d97c9d13a02d483b06840940a460e61519d37",
+                "reference": "529d97c9d13a02d483b06840940a460e61519d37",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6907,7 +6907,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2019-07-01T21:38:43+00:00"
+            "time": "2019-07-08T06:28:03+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -8984,6 +8984,7 @@
                 "markdown",
                 "table"
             ],
+            "abandoned": "league/commonmark-ext-table",
             "time": "2019-07-09T13:34:17+00:00"
         },
         {
