@@ -18,7 +18,8 @@ return [
                  * The list of directories and files that will be included in the backup.
                  */
                 'include' => [
-                    base_path(),
+                    base_path('.env'),
+                    public_path('uploads'),
                 ],
 
                 /*
@@ -29,14 +30,12 @@ return [
                 'exclude' => [
                     base_path('vendor'),
                     base_path('node_modules'),
-                    base_path('.git'),
-                    storage_path('framework'),
                 ],
 
                 /*
                  * Determines if symlinks should be followed.
                  */
-                'followLinks' => false,
+                'follow_links' => false,
             ],
 
             /*
@@ -53,7 +52,18 @@ return [
              *                'table_to_exclude_from_backup',
              *                'another_table_to_exclude'
              *            ]
-             *       ]
+             *       ],
+             * ],
+             *
+             * If you are using only InnoDB tables on a MySQL server, you can
+             * also supply the useSingleTransaction option to avoid table locking.
+             *
+             * E.g.
+             * 'mysql' => [
+             *       ...
+             *      'dump' => [
+             *           'useSingleTransaction' => true,
+             *       ],
              * ],
              *
              * For a complete list of available customization options, see https://github.com/spatie/db-dumper
@@ -86,7 +96,9 @@ return [
             /*
              * The disk names on which the backups will be stored.
              */
-            'disks' => [],
+            'disks' => [
+                'local',
+            ],
         ],
 
         /*
@@ -97,7 +109,7 @@ return [
 
     /*
      * You can get notified when specific events occur. Out of the box you can use 'mail' and 'slack'.
-     * For Slack you need to install guzzlehttp/guzzle.
+     * For Slack you need to install guzzlehttp/guzzle and laravel/slack-notification-channel.
      *
      * You can also use your own notification classes, just make sure the class is named after one of
      * the `Spatie\Backup\Events` classes.
@@ -105,12 +117,12 @@ return [
     'notifications' => [
 
         'notifications' => [
-            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class         => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['mail'],
             \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class        => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class     => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class   => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class    => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => ['mail'],
         ],
 
         /*
@@ -143,20 +155,24 @@ return [
      * If a backup does not meet the specified requirements the
      * UnHealthyBackupWasFound event will be fired.
      */
-    'monitorBackups' => [
+    'monitor_backups' => [
         [
-            'name' => config('app.name'),
+            'name' => 'daily-backup',
             'disks' => ['local'],
-            'newestBackupsShouldNotBeOlderThanDays' => 1,
-            'storageUsedMayNotBeHigherThanMegabytes' => 5000,
+            'health_checks' => [
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,
+            ],
         ],
 
         /*
         [
             'name' => 'name of the second app',
             'disks' => ['local', 's3'],
-            'newestBackupsShouldNotBeOlderThanDays' => 1,
-            'storageUsedMayNotBeHigherThanMegabytes' => 5000,
+            'health_checks' => [
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,
+            ],
         ],
         */
     ],
@@ -173,38 +189,38 @@ return [
          */
         'strategy' => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
 
-        'defaultStrategy' => [
+        'default_strategy' => [
 
             /*
              * The number of days for which backups must be kept.
              */
-            'keepAllBackupsForDays' => 7,
+            'keep_all_backups_for_days' => 7,
 
             /*
              * The number of days for which daily backups must be kept.
              */
-            'keepDailyBackupsForDays' => 16,
+            'keep_daily_backups_for_days' => 16,
 
             /*
              * The number of weeks for which one weekly backup must be kept.
              */
-            'keepWeeklyBackupsForWeeks' => 8,
+            'keep_weekly_backups_for_weeks' => 8,
 
             /*
              * The number of months for which one monthly backup must be kept.
              */
-            'keepMonthlyBackupsForMonths' => 4,
+            'keep_monthly_backups_for_months' => 4,
 
             /*
              * The number of years for which one yearly backup must be kept.
              */
-            'keepYearlyBackupsForYears' => 2,
+            'keep_yearly_backups_for_years' => 2,
 
             /*
              * After cleaning up the backups remove the oldest backup until
              * this amount of megabytes has been reached.
              */
-            'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 5000,
+            'delete_oldest_backups_when_using_more_megabytes_than' => 5000,
         ],
     ],
 ];

@@ -26,9 +26,9 @@
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.0",
         "fukuball/jieba-php": "~0.25",
+        "graham-campbell/markdown": "^11.0",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
-        "joyqi/hyper-down": "dev-master",
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
@@ -42,9 +42,10 @@
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/vkontakte": "^4.0",
         "socialiteproviders/weibo": "^3.0",
-        "spatie/laravel-backup": "^6.1",
+        "spatie/laravel-backup": "^6.3",
         "stichoza/google-translate-php": "^4.0",
-        "vanry/laravel-scout-tntsearch": "^1.2"
+        "vanry/laravel-scout-tntsearch": "^1.2",
+        "webuni/commonmark-table-extension": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
