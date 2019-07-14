@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller as BaseController;
+use App\Http\Requests\Tag\Store as StoreRequest;
+use Illuminate\Routing\Redirector;
 
 class Controller extends BaseController
 {
     protected function getRouteId()
     {
         return current(request()->route()->parameters);
+    }
+
+    protected function getResourceName()
+    {
+        return substr(trim(strrchr(static::class, '\\'),'\\'), 0, -10);
     }
 
     protected function getModelFQN()
@@ -22,15 +29,18 @@ class Controller extends BaseController
         return $model;
     }
 
-    public function getResourceFQN()
+    protected function getResourceFQN()
     {
         $resource  = '\\App\\Http\\Resources\\' . $this->getResourceName();
 
         return $resource;
     }
 
-    protected function getResourceName()
+    protected function formRequestValidation()
     {
-        return substr(trim(strrchr(static::class, '\\'),'\\'), 0, -10);
+        $app = app();
+        $request = StoreRequest::createFrom($app['request']);
+        $request->setContainer($app)->setRedirector($app->make(Redirector::class));
+        $request->validateResolved();
     }
 }

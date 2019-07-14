@@ -6,6 +6,10 @@ trait Store
 {
     public function store()
     {
+        if (file_exists(app_path('Http/Requests/Tag/' . 'Store.php'))) {
+            $this->formRequestValidation();
+        }
+
         $model = $this->getModelFQN();
         $resource = $this->getResourceFQN();
 
