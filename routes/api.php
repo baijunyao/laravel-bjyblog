@@ -35,4 +35,8 @@ Route::namespace('Resource')->middleware('auth:api')->group(function () {
     Route::delete('comments/{comment}/destroy', 'CommentController@destroy')->name('comments.destroy');
     Route::patch('comments/{comment}/restore', 'CommentController@restore')->name('comments.restore');
     Route::delete('comments/{comment}/forceDelete', 'CommentController@forceDelete')->name('comments.forceDelete');
+
+    Route::get('configs', 'ConfigController@index')->name('configs.index');
+    Route::get('configs/{config}', 'ConfigController@show')->name('configs.show');
+    Route::put('configs/{config}', 'ConfigController@update')->name('configs.update');
 });

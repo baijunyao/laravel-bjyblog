@@ -1,0 +1,29 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 101,
+            "name": "app.name",
+            "value": "白俊遥博客",
+            "created_at": "2018-08-22 21:03:01",
+            "updated_at": "2018-08-22 21:03:01",
+            "deleted_at": null
+        }
+    }
+}
