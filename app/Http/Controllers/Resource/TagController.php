@@ -16,11 +16,4 @@ class TagController extends Controller
     use Index, Show, Store, Update, Destroy, Restore, ForceDelete;
 
     protected const MODEL = Tag::class;
-
-    protected const COLUMN = [
-        'id',
-        'name',
-        'created_at',
-        'updated_at'
-    ];
 }

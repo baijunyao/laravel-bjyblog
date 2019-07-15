@@ -6,7 +6,7 @@
         ],
         "date": "date_ignore",
         "content-type": [
-            "text\/html; charset=UTF-8"
+            "application\/json"
         ],
         "x-ratelimit-limit": [
             60
@@ -16,5 +16,14 @@
         ],
         "set-cookie": "set-cookie_ignore"
     },
-    "content": ""
+    "content": {
+        "data": {
+            "id": 3,
+            "name": "已删除",
+            "slug": "deleted",
+            "created_at": "2019-01-04 15:35:12",
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
+        }
+    }
 }

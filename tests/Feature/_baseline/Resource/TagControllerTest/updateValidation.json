@@ -1,5 +1,5 @@
 {
-    "status_code": 200,
+    "status_code": 422,
     "headers": {
         "cache-control": [
             "no-cache, private"
@@ -17,13 +17,11 @@
         "set-cookie": "set-cookie_ignore"
     },
     "content": {
-        "data": {
-            "id": 1,
-            "name": "Update",
-            "slug": "laravel",
-            "created_at": "2017-07-16 07:35:12",
-            "updated_at": "2019-01-01 00:00:00",
-            "deleted_at": null
+        "message": "The given data was invalid.",
+        "errors": {
+            "name": [
+                "分类名 不能为空。"
+            ]
         }
     }
 }
