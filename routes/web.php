@@ -19,7 +19,7 @@ Route::namespace('Home')->group(function () {
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
-    Route::post('search', 'IndexController@search');
+    Route::get('search', 'IndexController@search');
     // feed
     Route::get('feed', 'IndexController@feed');
     // 推荐博客

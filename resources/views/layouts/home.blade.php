@@ -80,8 +80,7 @@
         @yield('content')
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
             <div class="b-search">
-                <form class="form-inline" role="form" action="{{ url('search') }}" method="post">
-                    {{ csrf_field() }}
+                <form class="form-inline" role="form" action="{{ url('search') }}" method="get">
                     <input class="b-search-text" type="text" name="wd">
                     <input class="b-search-submit" type="submit" value="{{ __('Search') }}">
                 </form>
