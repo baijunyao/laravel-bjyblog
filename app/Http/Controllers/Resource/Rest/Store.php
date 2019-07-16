@@ -6,14 +6,15 @@ trait Store
 {
     public function store()
     {
-        $resource = $this->getResourceFQN();
+        $resourceName = $this->getResourceName();
 
-        if (file_exists(app_path("Http/Requests/$resource/Store.php"))) {
+        if (file_exists(app_path("Http/Requests/$resourceName/Store.php"))) {
             $this->formRequestValidation();
         }
 
+        $resourceFQN = $this->getResourceFQN();
         $model = $this->getModelFQN();
 
-        return new $resource((new $model)->create(request()->all()));
+        return new $resourceFQN((new $model)->create(request()->all()));
     }
 }

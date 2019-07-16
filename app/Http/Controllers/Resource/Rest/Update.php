@@ -6,16 +6,17 @@ trait Update
 {
     public function update()
     {
-        $resource = $this->getResourceFQN();
+        $resourceName = $this->getResourceName();
 
-        if (file_exists(app_path("Http/Requests/$resource/Update.php"))) {
+        if (file_exists(app_path("Http/Requests/$resourceName/Update.php"))) {
             $this->formRequestValidation();
         }
 
+        $resourceFQN = $this->getResourceFQN();
         $model = $this->getModelFQN();
         $currentModel = (new $model)->withTrashed()->find($this->getRouteId());
         $currentModel->update(request()->all());
 
-        return new $resource($currentModel);
+        return new $resourceFQN($currentModel);
     }
 }

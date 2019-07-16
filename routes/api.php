@@ -39,4 +39,9 @@ Route::namespace('Resource')->middleware('auth:api')->group(function () {
     Route::get('configs', 'ConfigController@index')->name('configs.index');
     Route::get('configs/{config}', 'ConfigController@show')->name('configs.show');
     Route::put('configs/{config}', 'ConfigController@update')->name('configs.update');
+
+    Route::apiResource('friendshipLinks', 'FriendshipLinkController');
+    Route::patch('friendshipLinks/{friendshipLink}/restore', 'FriendshipLinkController@restore')->name('friendshipLinks.restore');
+    Route::delete('friendshipLinks/{friendshipLink}/forceDelete', 'FriendshipLinkController@forceDelete')->name('friendshipLinks.forceDelete');
+
 });
