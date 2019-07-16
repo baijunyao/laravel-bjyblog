@@ -176,9 +176,7 @@ class IndexControllerTest extends TestCase
 
     public function testSearch()
     {
-        $this->call('POST', '/search', [
-            'wd' => '序言',
-        ])->assertStatus(200);
+        $this->get('/search?wd=laravel')->assertOk();
     }
 
     public function testFeed()
