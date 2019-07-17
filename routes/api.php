@@ -47,4 +47,8 @@ Route::namespace('Resource')->middleware('auth:api')->group(function () {
     Route::apiResource('gitProjects', 'GitProjectController');
     Route::patch('gitProjects/{gitProject}/restore', 'GitProjectController@restore')->name('gitProjects.restore');
     Route::delete('gitProjects/{gitProject}/forceDelete', 'GitProjectController@forceDelete')->name('gitProjects.forceDelete');
+
+    Route::apiResource('navs', 'NavController');
+    Route::patch('navs/{nav}/restore', 'NavController@restore')->name('navs.restore');
+    Route::delete('navs/{nav}/forceDelete', 'NavController@forceDelete')->name('navs.forceDelete');
 });
