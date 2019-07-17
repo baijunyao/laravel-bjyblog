@@ -1,12 +1,12 @@
 {
-    "status_code": 422,
+    "status_code": 200,
     "headers": {
         "cache-control": [
             "no-cache, private"
         ],
         "date": "date_ignore",
         "content-type": [
-            "application\/json"
+            "text\/html; charset=UTF-8"
         ],
         "x-ratelimit-limit": [
             60
@@ -16,15 +16,5 @@
         ],
         "set-cookie": "set-cookie_ignore"
     },
-    "content": {
-        "message": "The given data was invalid.",
-        "errors": {
-            "name": [
-                "名称 不能为空。"
-            ],
-            "url": [
-                "链接 不能为空。"
-            ]
-        }
-    }
+    "content": ""
 }

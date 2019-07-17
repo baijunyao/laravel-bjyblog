@@ -44,4 +44,7 @@ Route::namespace('Resource')->middleware('auth:api')->group(function () {
     Route::patch('friendshipLinks/{friendshipLink}/restore', 'FriendshipLinkController@restore')->name('friendshipLinks.restore');
     Route::delete('friendshipLinks/{friendshipLink}/forceDelete', 'FriendshipLinkController@forceDelete')->name('friendshipLinks.forceDelete');
 
+    Route::apiResource('gitProjects', 'GitProjectController');
+    Route::patch('gitProjects/{gitProject}/restore', 'GitProjectController@restore')->name('gitProjects.restore');
+    Route::delete('gitProjects/{gitProject}/forceDelete', 'GitProjectController@forceDelete')->name('gitProjects.forceDelete');
 });

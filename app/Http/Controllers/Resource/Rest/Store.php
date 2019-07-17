@@ -6,12 +6,7 @@ trait Store
 {
     public function store()
     {
-        $resourceName = $this->getResourceName();
-
-        if (file_exists(app_path("Http/Requests/$resourceName/Store.php"))) {
-            $this->formRequestValidation();
-        }
-
+        $this->formRequestValidation('Store');
         $resourceFQN = $this->getResourceFQN();
         $model = $this->getModelFQN();
 

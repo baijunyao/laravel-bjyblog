@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller as BaseController;
-use App\Http\Requests\Tag\Store as StoreRequest;
 use Illuminate\Routing\Redirector;
 
 class Controller extends BaseController
@@ -36,11 +35,14 @@ class Controller extends BaseController
         return $resource;
     }
 
-    protected function formRequestValidation()
+    protected function formRequestValidation($className)
     {
-        $app = app();
-        $request = StoreRequest::createFrom($app['request']);
-        $request->setContainer($app)->setRedirector($app->make(Redirector::class));
-        $request->validateResolved();
+        if (file_exists(app_path('Http/Requests/' . $this->getResourceName() . '/' . $className . '.php'))) {
+            $app = app();
+            $requestFQN = '\\App\\Http\\Requests\\' . $this->getResourceName() . '\\' . $className;
+            $request = $requestFQN::createFrom($app['request']);
+            $request->setContainer($app)->setRedirector($app->make(Redirector::class));
+            $request->validateResolved();
+        }
     }
 }

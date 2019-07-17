@@ -24,8 +24,9 @@
         "description": "content",
         "markdown": "content",
         "cover": "uploads\/article\/default.jpg",
-        "html": "<p>content<\/p>",
+        "is_top": 0,
         "slug": "title",
+        "html": "<p>content<\/p>\n",
         "updated_at": "2019-01-01 00:00:00",
         "created_at": "2019-01-01 00:00:00",
         "id": 3
