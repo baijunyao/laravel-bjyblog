@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Resource;
+namespace Tests\Feature\Resources;
 
 use Baijunyao\LaravelTestSupport\Rest\TestIndex;
 use Baijunyao\LaravelTestSupport\Rest\TestShow;

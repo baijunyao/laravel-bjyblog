@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Resource;
+namespace App\Http\Controllers\Resources;
 
-use App\Http\Controllers\Resource\Rest\Destroy;
-use App\Http\Controllers\Resource\Rest\ForceDelete;
-use App\Http\Controllers\Resource\Rest\Index;
-use App\Http\Controllers\Resource\Rest\Restore;
-use App\Http\Controllers\Resource\Rest\Show;
+use App\Http\Controllers\Resources\Rest\Destroy;
+use App\Http\Controllers\Resources\Rest\ForceDelete;
+use App\Http\Controllers\Resources\Rest\Index;
+use App\Http\Controllers\Resources\Rest\Restore;
+use App\Http\Controllers\Resources\Rest\Show;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use Baijunyao\LaravelUpload\Upload;

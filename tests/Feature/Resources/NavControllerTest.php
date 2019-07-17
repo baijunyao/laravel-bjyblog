@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Resource;
+namespace Tests\Feature\Resources;
 
 use Baijunyao\LaravelTestSupport\Rest\TestDestroy;
 use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
@@ -12,17 +12,18 @@ use Baijunyao\LaravelTestSupport\Rest\TestStoreValidation;
 use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
 use Baijunyao\LaravelTestSupport\Rest\TestUpdateValidation;
 
-class TagControllerTest extends TestCase
+class NavControllerTest extends TestCase
 {
     use TestIndex, TestShow, TestStore, TestStoreValidation, TestUpdate, TestUpdateValidation, TestDestroy, TestRestore, TestForceDelete;
 
-    protected $destroyId     = 2;
     protected $restoreId     = 3;
     protected $forceDeleteId = 3;
     protected $storeData     = [
-        'name' => 'Store',
+        'name' => '测试',
+        'url'  => 'test',
     ];
     protected $updateData = [
-        'name' => 'Update',
+        'name' => '编辑',
+        'url'  => 'update',
     ];
 }

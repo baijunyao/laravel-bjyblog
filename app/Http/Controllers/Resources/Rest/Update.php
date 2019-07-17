@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Resource\Rest;
+namespace App\Http\Controllers\Resources\Rest;
 
 trait Update
 {

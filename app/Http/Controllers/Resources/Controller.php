@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Resource;
+namespace App\Http\Controllers\Resources;
 
 use App\Http\Controllers\Controller as BaseController;
 use Illuminate\Routing\Redirector;

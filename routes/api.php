@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('Resource')->middleware('auth:api')->group(function () {
+Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::apiResource('categories', 'CategoryController');
     Route::patch('categories/{categorie}/restore', 'CategoryController@restore')->name('categories.restore');
     Route::delete('categories/{categorie}/forceDelete', 'CategoryController@forceDelete')->name('categories.forceDelete');

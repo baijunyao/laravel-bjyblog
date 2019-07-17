@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Resource;
+namespace Tests\Feature\Resources;
 
 use Baijunyao\LaravelTestSupport\Rest\TestDestroy;
 use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
