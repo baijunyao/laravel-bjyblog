@@ -90,38 +90,6 @@ class Comment extends Base
     }
 
     /**
-     * 获取指定条数的最新评论
-     *
-     * @param int $limit
-     *
-     * @return \Illuminate\Database\Eloquent\Collection|static[]
-     */
-    public function getNewData($limit = 17)
-    {
-        $data = $this->select('comments.id', 'comments.content', 'comments.created_at', 'ou.name', 'ou.avatar', 'a.title', 'a.slug', 'a.id as article_id')
-            ->join('articles as a', 'comments.article_id', 'a.id')
-            ->join('socialite_users as ou', 'ou.id', 'comments.socialite_user_id')
-            ->orderBy('comments.created_at', 'desc')
-            ->where('a.deleted_at', null)
-            ->where('ou.is_admin', '<>', 1)
-            ->limit($limit)
-            ->get();
-        foreach ($data as $k => $v) {
-            // 截取文章标题
-            $data[$k]->title = re_substr($v->title, 0, 20);
-            // 处理有表情时直接截取会把img表情截断的问题
-            $content = strip_tags($v->content);
-            if (mb_strlen($content) > 10) {
-                $data[$k]->content = re_substr($content, 0, 40);
-            } else {
-                $data[$k]->content = $v->content;
-            }
-        }
-
-        return $data;
-    }
-
-    /**
      * 通过文章id获取评论数据
      *
      * @param $article_id

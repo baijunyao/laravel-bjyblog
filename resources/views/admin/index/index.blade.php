@@ -94,17 +94,17 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @foreach($commentData as $k => $v)
+                    @foreach($latestComments as $comment)
                         <article class="media event">
                             <a class="pull-left">
-                                <img class="bjy-img" src="{{ url($v->avatar) }}" alt="">
+                                <img class="bjy-img" src="{{ asset($comment->socialiteUser->avatar) }}" alt="">
                             </a>
                             <div class="media-body">
-                                {{ $v->name }}
+                                {{ $comment->socialiteUser->name }}
                                 <p>
-                                    <a href="{{ url('article', [$v->article_id]) }}">{{ $v->title }}</a>
+                                    <a href="{{ $comment->article->url }}">{{ $comment->article->sub_title }}</a>
                                     <br>
-                                    {{ re_substr($v->content, 0, 14, '...') }}
+                                    {{ re_substr($comment->sub_content, 0, 10) }}
                                 </p>
                             </div>
                         </article>

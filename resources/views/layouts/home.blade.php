@@ -135,17 +135,17 @@
             <div class="b-comment-list">
                 <h4 class="b-title">{{ __('Recent Comments') }}</h4>
                 <div>
-                    @foreach($newComment as $v)
+                    @foreach($latestComments as $comment)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
-                            <img class="b-head-img bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($v->avatar) }}" alt="{{ $v->name }}">
+                            <img class="b-head-img bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($comment->socialiteUser->avatar) }}" alt="{{ $comment->socialiteUser->name }}">
                             <li class="b-nickname">
-                                {{ $v->name }}<span>{{ word_time($v->created_at) }}</span>
+                                {{ $comment->socialiteUser->name }}<span>{{ word_time($comment->created_at) }}</span>
                             </li>
                             <li class="b-nc-article">
-                                {{ __('Comment') }}<a href="{{ url('article', [$v->article_id, $v->slug]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->title }}</a>
+                                {{ __('Comment') }}<a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="_blank">{{ $comment->article->sub_title }}</a>
                             </li>
                             <li class="b-content">
-                                {!! $v->content !!}
+                                {!! $comment->sub_content !!}
                             </li>
                         </ul>
                     @endforeach

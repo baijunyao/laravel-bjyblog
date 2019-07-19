@@ -22,15 +22,13 @@ class IndexController extends Controller
             ->orderBy('updated_at', 'desc')
             ->limit(5)
             ->get();
-        // 最新的5条评论
-        $commentData = $commentModel->getNewData(5);
         $version     = [
             'system'    => PHP_OS,
             'webServer' => $_SERVER['SERVER_SOFTWARE'] ?? '',
             'php'       => PHP_VERSION,
             'mysql'     => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value,
         ];
-        $assign = compact('socialiteUserData', 'commentData', 'version');
+        $assign = compact('socialiteUserData', 'version');
 
         return view('admin.index.index', $assign);
     }
