@@ -27,7 +27,7 @@ class IndexController extends Controller
     public function index()
     {
         // 获取文章列表数据
-        $article = Article::select(
+        $articles = Article::select(
                 'id', 'category_id', 'title',
                 'slug', 'author', 'description',
                 'cover', 'is_top', 'created_at'
@@ -42,7 +42,7 @@ class IndexController extends Controller
         ];
         $assign = [
             'category_id' => 'index',
-            'article'     => $article,
+            'articles'     => $articles,
             'head'        => $head,
             'tagName'     => '',
         ];
@@ -64,8 +64,8 @@ class IndexController extends Controller
     public function article($id, Request $request, Comment $commentModel)
     {
         // 获取文章数据
-        $data = Article::with(['category', 'tags'])->find($id);
-        if ($data === null) {
+        $article = Article::with(['category', 'tags'])->find($id);
+        if ($article === null) {
             return abort(404);
         }
         // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
@@ -73,7 +73,7 @@ class IndexController extends Controller
         if (!Cache::has($ipAndId)) {
             cache([$ipAndId => ''], 1440);
             // 文章点击量+1
-            $data->increment('click');
+            $article->increment('click');
         }
 
         // 获取上一篇
@@ -93,8 +93,8 @@ class IndexController extends Controller
         // 获取评论
         $comment = $commentModel->getDataByArticleId($id);
         // p($comment);die;
-        $category_id = $data->category->id;
-        $assign      = compact('category_id', 'data', 'prev', 'next', 'comment');
+        $category_id = $article->category->id;
+        $assign      = compact('category_id', 'article', 'prev', 'next', 'comment');
 
         return view('home.index.article', $assign);
     }
@@ -116,15 +116,15 @@ class IndexController extends Controller
             return abort(404);
         }
         // 获取分类下的文章
-        $article = $category->articles()
+        $articles = $category->articles()
             ->orderBy('created_at', 'desc')
             ->with('tags')
             ->paginate(10);
         // 为了和首页共用 html ； 此处手动组合分类数据
-        if ($article->isNotEmpty()) {
-            $article->setCollection(
+        if ($articles->isNotEmpty()) {
+            $articles->setCollection(
                 collect(
-                    $article->items()
+                    $articles->items()
                 )->map(function ($v) use ($category) {
                     $v->category = $category;
 
@@ -140,7 +140,7 @@ class IndexController extends Controller
         ];
         $assign = [
             'category_id' => $id,
-            'article'     => $article,
+            'articles'     => $articles,
             'tagName'     => '',
             'title'       => $category->name,
             'head'        => $head,
@@ -165,7 +165,7 @@ class IndexController extends Controller
         }
         // TODO 不取 markdown 和 html 字段
         // 获取标签下的文章
-        $article = $tag->articles()
+        $articles = $tag->articles()
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);
@@ -176,7 +176,7 @@ class IndexController extends Controller
         ];
         $assign = [
             'category_id' => 'index',
-            'article'     => $article,
+            'articles'     => $articles,
             'tagName'     => $tag->name,
             'title'       => $tag->name,
             'head'        => $head,
@@ -283,7 +283,7 @@ class IndexController extends Controller
         $id = $articleModel->searchArticleGetId($wd);
 
         // 获取文章列表数据
-        $article = Article::select(
+        $articles = Article::select(
                 'id', 'category_id', 'title',
                 'author', 'description', 'cover',
                 'is_top', 'created_at'
@@ -299,7 +299,7 @@ class IndexController extends Controller
         ];
         $assign = [
             'category_id' => 'index',
-            'article'     => $article,
+            'articles'     => $articles,
             'tagName'     => '',
             'title'       => $wd,
             'head'        => $head,

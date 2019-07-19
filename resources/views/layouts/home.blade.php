@@ -45,7 +45,7 @@
                     <a href="/">{{ __('Home') }}</a>
                 </li>
                 @foreach($category as $v)
-                    <li class="b-nav-cname @if((request()->fullUrl() === $v->url)) b-nav-active @endif">
+                    <li class="b-nav-cname @if((request()->fullUrl() === $v->url) || (isset($article) && $article->category_id ===$v->id)) b-nav-active @endif">
                         <a href="{{ $v->url }}">{{ $v->name }}</a>
                     </li>
                 @endforeach
