@@ -50,7 +50,7 @@ class CommentObserver extends BaseObserver
             }
 
             // 给用户发送邮件通知
-            if ($comment->pid !== 0) {
+            if (intval($comment->pid) !== 0) {
                 $parent_user_id = Comment::where('id', $comment->pid)->value('socialite_user_id');
                 $parentData     = SocialiteUser::select('name', 'email')
                     ->where('id', $parent_user_id)
