@@ -102,7 +102,7 @@ class {$name}ControllerTest extends TestCase
 {
     use TestIndex, TestShow, TestStore, TestStoreValidation, TestUpdate, TestUpdateValidation, TestDestroy, TestRestore, TestForceDelete;
 
-    protected \$storeData     = [
+    protected \$storeData  = [
     ];
     protected \$updateData = [
     ];
