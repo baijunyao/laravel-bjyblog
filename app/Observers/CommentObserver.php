@@ -78,6 +78,6 @@ class CommentObserver extends BaseObserver
 
     protected function clearCache()
     {
-        Cache::forget('common:newComment');
+        Cache::forget('common:latestComments');
     }
 }

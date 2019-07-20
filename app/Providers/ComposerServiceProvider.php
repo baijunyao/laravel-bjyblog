@@ -131,13 +131,6 @@ class ComposerServiceProvider extends ServiceProvider
                     ->get();
             });
 
-            $newComment = Cache::remember('common:newComment', static::CACHE_EXPIRE, function () {
-                // 获取最新评论
-                $commentModel = new Comment();
-
-                return $commentModel->getNewData();
-            });
-
             $friendshipLink = Cache::remember('common:friendshipLink', static::CACHE_EXPIRE, function () {
                 // 获取友情链接
                 return FriendshipLink::select('name', 'url')
@@ -167,7 +160,34 @@ class ComposerServiceProvider extends ServiceProvider
             });
 
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'newComment', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients');
+            $assign = compact('category', 'tag', 'topArticle', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients');
+            $view->with($assign);
+        });
+
+        view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
+            $latestComments = Cache::remember('common:latestComments', static::CACHE_EXPIRE, function () {
+                return Comment::with(['article', 'socialiteUser'])
+                    ->whereHas('socialiteUser', function ($query) {
+                        $query->where('is_admin', 0);
+                    })
+                    ->has('article')
+                    ->orderBy('created_at', 'desc')
+                    ->limit(17)
+                    ->get()
+                    ->each(function ($comment) {
+                        $comment->sub_content = strip_tags($comment->content);
+
+                        if (mb_strlen($comment->sub_content) > 10) {
+                            $comment->sub_content = re_substr($comment->sub_content, 0, 40);
+                        }
+
+                        $comment->article->sub_title = re_substr($comment->article->title, 0, 20);
+
+                        return $comment;
+                    });
+            });
+
+            $assign = compact('latestComments');
             $view->with($assign);
         });
 

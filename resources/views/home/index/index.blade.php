@@ -24,7 +24,7 @@
             </div>
         @endif
         <!-- 循环文章列表开始 -->
-        @foreach($article as $k => $v)
+        @foreach($articles as $k => $v)
             <div class="row b-one-article">
                 <h3 class="col-xs-12 col-md-12 col-lg-12">
                     <a class="b-oa-title" href="{{ $v->url }}" target="_blank">{{ $v->title }}</a>
@@ -80,7 +80,7 @@
         <!-- 列表分页开始 -->
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12 b-page text-center">
-                {{ $article->appends(['wd' => request()->input('wd')])->links('vendor.pagination.bjypage') }}
+                {{ $articles->appends(['wd' => request()->input('wd')])->links('vendor.pagination.bjypage') }}
             </div>
         </div>
         <!-- 列表分页结束 -->

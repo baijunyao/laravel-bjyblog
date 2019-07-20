@@ -1,33 +1,33 @@
 @extends('layouts.home')
 
-@section('title', $data->title)
+@section('title', $article->title)
 
-@section('keywords', $data->keywords)
+@section('keywords', $article->keywords)
 
-@section('description', $data->description)
+@section('description', $article->description)
 
 @section('content')
     <!-- 左侧文章开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
         <div class="row b-article">
             @if(auth()->guard('admin')->check())
-                <a class="fa fa-edit b-edit-icon" href="{{ url('admin/article/edit', [$data->id]) }}"></a>
+                <a class="fa fa-edit b-edit-icon" href="{{ url('admin/article/edit', [$article->id]) }}"></a>
             @endif
-            <h1 class="col-xs-12 col-md-12 col-lg-12 b-title">{{ $data->title }}</h1>
+            <h1 class="col-xs-12 col-md-12 col-lg-12 b-title">{{ $article->title }}</h1>
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <ul class="row b-metadata">
-                    <li class="col-xs-5 col-md-2 col-lg-3"><i class="fa fa-user"></i> {{ $data->author }}</li>
-                    <li class="col-xs-7 col-md-3 col-lg-3"><i class="fa fa-calendar"></i> {{ $data->created_at }}</li>
-                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ $data->category->url }}">{{ $data->category->name }}</a>
+                    <li class="col-xs-5 col-md-2 col-lg-3"><i class="fa fa-user"></i> {{ $article->author }}</li>
+                    <li class="col-xs-7 col-md-3 col-lg-3"><i class="fa fa-calendar"></i> {{ $article->created_at }}</li>
+                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="{{ $article->category->url }}">{{ $article->category->name }}</a>
                     <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
-                        @foreach($data->tags as $tag)
+                        @foreach($article->tags as $tag)
                             <a class="b-tag-name" href="{{ $tag->url }}">{{ $tag->name }}</a>
                         @endforeach
                     </li>
                 </ul>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
-                <div class="js-content">{!! $data->html !!}</div>
+                <div class="js-content">{!! $article->html !!}</div>
                 <p class="b-h-20"></p>
                 <p class="b-copyright">
                     {!! htmlspecialchars_decode(config('bjyblog.copyright_word')) !!}
