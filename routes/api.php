@@ -55,4 +55,8 @@ Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::apiResource('notes', 'NoteController');
     Route::patch('notes/{note}/restore', 'NoteController@restore')->name('notes.restore');
     Route::delete('notes/{note}/forceDelete', 'NoteController@forceDelete')->name('notes.forceDelete');
+
+    Route::apiResource('sites', 'SiteController');
+    Route::patch('sites/{site}/restore', 'SiteController@restore')->name('sites.restore');
+    Route::delete('sites/{site}/forceDelete', 'SiteController@forceDelete')->name('sites.forceDelete');
 });
