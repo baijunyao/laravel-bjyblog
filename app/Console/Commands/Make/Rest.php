@@ -70,13 +70,10 @@ use App\Http\Controllers\Resources\Rest\Restore;
 use App\Http\Controllers\Resources\Rest\Show;
 use App\Http\Controllers\Resources\Rest\Store;
 use App\Http\Controllers\Resources\Rest\Update;
-use App\Models\Category;
 
 class {$name}Controller extends Controller
 {
     use Index, Show, Store, Update, Destroy, Restore, ForceDelete;
-
-    protected const MODEL = {$name}::class;
 }
 
 PHP;

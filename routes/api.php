@@ -51,4 +51,8 @@ Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::apiResource('navs', 'NavController');
     Route::patch('navs/{nav}/restore', 'NavController@restore')->name('navs.restore');
     Route::delete('navs/{nav}/forceDelete', 'NavController@forceDelete')->name('navs.forceDelete');
+
+    Route::apiResource('notes', 'NoteController');
+    Route::patch('notes/{note}/restore', 'NoteController@restore')->name('notes.restore');
+    Route::delete('notes/{note}/forceDelete', 'NoteController@forceDelete')->name('notes.forceDelete');
 });

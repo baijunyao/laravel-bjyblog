@@ -1,0 +1,28 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 1,
+            "content": "Update",
+            "created_at": "2017-07-18 07:35:12",
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
+        }
+    }
+}

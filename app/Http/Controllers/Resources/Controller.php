@@ -7,6 +7,8 @@ use Illuminate\Routing\Redirector;
 
 class Controller extends BaseController
 {
+    protected const MODEL = null;
+
     protected function getRouteId()
     {
         return current(request()->route()->parameters);
