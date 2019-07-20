@@ -41,10 +41,10 @@ class IndexController extends Controller
             'description' => config('bjyblog.head.description'),
         ];
         $assign = [
-            'category_id' => 'index',
+            'category_id'  => 'index',
             'articles'     => $articles,
-            'head'        => $head,
-            'tagName'     => '',
+            'head'         => $head,
+            'tagName'      => '',
         ];
 
         return view('home.index.index', $assign);
@@ -139,11 +139,11 @@ class IndexController extends Controller
             'description' => $category->description,
         ];
         $assign = [
-            'category_id' => $id,
+            'category_id'  => $id,
             'articles'     => $articles,
-            'tagName'     => '',
-            'title'       => $category->name,
-            'head'        => $head,
+            'tagName'      => '',
+            'title'        => $category->name,
+            'head'         => $head,
         ];
 
         return view('home.index.index', $assign);
@@ -175,11 +175,11 @@ class IndexController extends Controller
             'description' => '',
         ];
         $assign = [
-            'category_id' => 'index',
+            'category_id'  => 'index',
             'articles'     => $articles,
-            'tagName'     => $tag->name,
-            'title'       => $tag->name,
-            'head'        => $head,
+            'tagName'      => $tag->name,
+            'title'        => $tag->name,
+            'head'         => $head,
         ];
 
         return view('home.index.index', $assign);
@@ -298,11 +298,11 @@ class IndexController extends Controller
             'description' => '',
         ];
         $assign = [
-            'category_id' => 'index',
+            'category_id'  => 'index',
             'articles'     => $articles,
-            'tagName'     => '',
-            'title'       => $wd,
-            'head'        => $head,
+            'tagName'      => '',
+            'title'        => $wd,
+            'head'         => $head,
         ];
 
         // 增加 X-Robots-Tag 用于禁止搜搜引擎抓取搜索结果页面 防止利用搜索结果页生成恶意广告

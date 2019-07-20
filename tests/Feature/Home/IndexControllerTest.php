@@ -43,11 +43,11 @@ class IndexControllerTest extends TestCase
         Bus::fake();
 
         config([
-            'mail.host' => 'test',
-            'mail.username' => 'test',
-            'mail.password' => 'test',
-            'mail.from.address' => 'test',
-            'mail.from.name' => 'test',
+            'mail.host'                  => 'test',
+            'mail.username'              => 'test',
+            'mail.password'              => 'test',
+            'mail.from.address'          => 'test',
+            'mail.from.name'             => 'test',
             'bjyblog.notification_email' => 'test',
         ]);
 
@@ -86,11 +86,11 @@ class IndexControllerTest extends TestCase
         Bus::fake();
 
         config([
-            'mail.host' => '',
-            'mail.username' => '',
-            'mail.password' => '',
-            'mail.from.address' => 'test',
-            'mail.from.name' => 'test',
+            'mail.host'                  => '',
+            'mail.username'              => '',
+            'mail.password'              => '',
+            'mail.from.address'          => 'test',
+            'mail.from.name'             => 'test',
             'bjyblog.notification_email' => 'test',
         ]);
 
@@ -107,13 +107,13 @@ class IndexControllerTest extends TestCase
 
         $this->loginByUserId(1)
             ->post('/comment', $comment + [
-                    'content' => $content,
-                ])
+                'content' => $content,
+            ])
             ->assertStatus(200);
 
         $this->assertDatabaseHas('comments', $comment + [
-                'content' => (new Comment())->imageToUbb($content),
-            ]);
+            'content' => (new Comment())->imageToUbb($content),
+        ]);
 
         Bus::assertNotDispatched(SendCommentEmail::class, function ($job) {
             return $job->content['type'] === '评论';
