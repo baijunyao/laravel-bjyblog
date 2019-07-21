@@ -1,0 +1,30 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 2,
+            "name": "已删除",
+            "email": "deleted@test.com",
+            "email_verified_at": null,
+            "created_at": "2019-01-04 15:35:12",
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
+        }
+    }
+}

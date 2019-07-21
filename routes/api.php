@@ -65,4 +65,8 @@ Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::apiResource('socialiteUsers', 'SocialiteUserController');
     Route::patch('socialiteUsers/{socialiteUser}/restore', 'SocialiteUserController@restore')->name('socialiteUsers.restore');
     Route::delete('socialiteUsers/{socialiteUser}/forceDelete', 'SocialiteUserController@forceDelete')->name('socialiteUsers.forceDelete');
+
+    Route::apiResource('users', 'UserController');
+    Route::patch('users/{user}/restore', 'UserController@restore')->name('users.restore');
+    Route::delete('users/{user}/forceDelete', 'UserController@forceDelete')->name('users.forceDelete');
 });

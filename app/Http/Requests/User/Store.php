@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\SocialiteUser;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,6 +25,7 @@ class Store extends FormRequest
     {
         return [
             'name' => 'required',
+            'email' => 'required|email',
         ];
     }
 
@@ -37,6 +38,7 @@ class Store extends FormRequest
     {
         return [
             'name' => '昵称',
+            'email' => '邮箱',
         ];
     }
 }
