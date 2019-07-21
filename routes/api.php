@@ -61,4 +61,8 @@ Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::delete('sites/{site}/forceDelete', 'SiteController@forceDelete')->name('sites.forceDelete');
 
     Route::apiResource('socialiteClients', 'SocialiteClientController');
+
+    Route::apiResource('socialiteUsers', 'SocialiteUserController');
+    Route::patch('socialiteUsers/{socialiteUser}/restore', 'SocialiteUserController@restore')->name('socialiteUsers.restore');
+    Route::delete('socialiteUsers/{socialiteUser}/forceDelete', 'SocialiteUserController@forceDelete')->name('socialiteUsers.forceDelete');
 });
