@@ -20,7 +20,7 @@
         "baijunyao/laravel-plugin-manager": "^3.0",
         "baijunyao/laravel-print": "^3.0",
         "baijunyao/laravel-scout-elasticsearch": "^2.0",
-        "baijunyao/laravel-test-support": "^2.0",
+        "baijunyao/laravel-test-support": "^3.0",
         "baijunyao/laravel-upload": "^2.0",
         "composer/semver": "^1.4",
         "doctrine/dbal": "^2.5",
