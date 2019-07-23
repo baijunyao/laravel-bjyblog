@@ -17,6 +17,12 @@
 ## Documentation
 [English](https://baijunyao.com/docs/laravel-bjyblog/en) [中文文档](https://baijunyao.com/docs/laravel-bjyblog)  
 
+## Testing
+Run the tests with  
+```
+./vendor/bin/phpunit
+```
+
 ## Example
 - [白俊遥博客](https://baijunyao.com)  
 - [Sails博客](https://smile.sails.site)  
