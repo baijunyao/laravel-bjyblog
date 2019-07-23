@@ -15,6 +15,7 @@ class ApiControllerTest extends TestCase
             'password' => '123456',
         ]);
         $this->assertResponse($response, [], [
+            '/"expires_in":\d+/' => '"expires_in":"expires_in_ignore"',
             '/"access_token":".*"/U' => '"access_token":"access_token_ignore"',
             '/"refresh_token":".*"/U' => '"refresh_token":"refresh_token_ignore"'
         ]);

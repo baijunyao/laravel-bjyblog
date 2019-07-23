@@ -21,7 +21,7 @@
     },
     "content": {
         "token_type": "Bearer",
-        "expires_in": 31622400,
+        "expires_in": "expires_in_ignore",
         "access_token": "access_token_ignore",
         "refresh_token": "refresh_token_ignore"
     }
