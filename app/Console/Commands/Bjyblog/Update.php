@@ -48,22 +48,6 @@ class Update extends Command
             '--force' => true,
         ]);
 
-        // 填充 navs 表的默认数据
-        $navCount = Nav::select('id')->count();
-        if ($navCount === 0) {
-            Artisan::call('db:seed', [
-                '--class' => 'NavsTableSeeder',
-            ]);
-            $this->info('navs seed success');
-        }
-
-        // 升级 config 配置项的表数据
-        $configCount = Config::where('id', '>', 100)->count();
-        if ($configCount === 0) {
-            Artisan::call('seeder:upgradeConfig');
-            $this->info('upgrade config success');
-        }
-
         $console = Console::pluck('name');
 
         collect(File::files(app_path('Console/Commands/Upgrade')))->transform(function ($file) {
@@ -74,7 +58,6 @@ class Update extends Command
             $name = 'App\Console\Commands\Upgrade\\' . strtoupper(str_replace('.', '_', $version));
 
             if (!$console->contains($name)) {
-                dump($name);
                 $command = 'upgrade:' . $version;
                 Artisan::call($command);
                 Console::create([
