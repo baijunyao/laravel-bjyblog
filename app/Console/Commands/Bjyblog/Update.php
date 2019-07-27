@@ -2,9 +2,7 @@
 
 namespace App\Console\Commands\Bjyblog;
 
-use App\Models\Config;
 use App\Models\Console;
-use App\Models\Nav;
 use Artisan;
 use Composer\Semver\Comparator;
 use File;

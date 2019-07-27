@@ -17,26 +17,26 @@ class ConsolesTableSeeder extends Seeder
 
         \DB::table('consoles')->insert([
             [
-                'id' => 1,
-                'name' => 'App\Console\Commands\Upgrade\V5_5_4_1',
+                'id'         => 1,
+                'name'       => 'App\Console\Commands\Upgrade\V5_5_4_1',
                 'created_at' => '2018-09-27 22:26:00',
                 'updated_at' => '2018-09-27 22:26:00',
-                'deleted_at' => NULL,
+                'deleted_at' => null,
             ],
             [
-                'id' => 2,
-                'name' => 'App\Console\Commands\Upgrade\V5_5_4_3',
+                'id'         => 2,
+                'name'       => 'App\Console\Commands\Upgrade\V5_5_4_3',
                 'created_at' => '2018-09-27 22:26:00',
                 'updated_at' => '2018-09-27 22:26:00',
-                'deleted_at' => NULL,
+                'deleted_at' => null,
             ],
             [
-                'id' => 3,
-                'name' => 'App\Console\Commands\Upgrade\V5_5_6_0',
+                'id'         => 3,
+                'name'       => 'App\Console\Commands\Upgrade\V5_5_6_0',
                 'created_at' => '2018-09-28 10:26:00',
                 'updated_at' => '2018-09-28 10:26:00',
-                'deleted_at' => NULL,
-            ]
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

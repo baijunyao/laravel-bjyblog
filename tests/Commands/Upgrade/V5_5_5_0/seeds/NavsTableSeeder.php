@@ -15,21 +15,21 @@ class NavsTableSeeder extends Seeder
     {
         \DB::table('navs')->delete();
         \DB::table('navs')->insert([
-            0 =>[
-                'id' => 1,
-                'name' => '随言碎语',
-                'url' => 'chat',
+            0 => [
+                'id'         => 1,
+                'name'       => '随言碎语',
+                'url'        => 'chat',
                 'created_at' => '2018-08-04 12:41:26',
                 'updated_at' => '2018-08-04 12:41:26',
-                'deleted_at' => NULL,
+                'deleted_at' => null,
             ],
-            1 =>[
-                'id' => 2,
-                'name' => '开源项目',
-                'url' => 'git',
+            1 => [
+                'id'         => 2,
+                'name'       => '开源项目',
+                'url'        => 'git',
                 'created_at' => '2018-08-04 12:41:26',
                 'updated_at' => '2018-08-04 12:41:26',
-                'deleted_at' => NULL,
+                'deleted_at' => null,
             ],
         ]);
     }

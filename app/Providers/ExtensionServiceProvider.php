@@ -14,7 +14,6 @@ class ExtensionServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
     }
 
     /**

@@ -11,7 +11,7 @@ class TestMakeCommand extends BaseTestMakeCommand
     protected function getDefaultNamespace($rootNamespace)
     {
         if ($this->option('command')) {
-            return $rootNamespace.'\Commands';
+            return $rootNamespace . '\Commands';
         }
 
         return parent::getDefaultNamespace($rootNamespace);

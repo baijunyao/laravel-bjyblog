@@ -45,7 +45,7 @@ class V5_8_9_0 extends Command
         Console::whereIn('name', $names)->forceDelete();
 
         Console::where('name', 'App\Console\Commands\Upgrade\V5_5_4_1')->update([
-            'name' => 'App\Console\Commands\Upgrade\V5_5_5_0'
+            'name' => 'App\Console\Commands\Upgrade\V5_5_5_0',
         ]);
     }
 }

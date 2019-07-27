@@ -2,8 +2,8 @@
 
 namespace Tests\Commands\Upgrade\V5_5_5_0\Migrations;
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreatePasswordResetsTable extends Migration
 {

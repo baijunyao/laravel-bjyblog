@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands\Upgrade;
 
+use App\Models\Config;
 use App\Models\Console;
 use App\Models\Nav;
 use Artisan;
 use Illuminate\Console\Command;
-use App\Models\Config;
 
 class V5_5_5_0 extends Command
 {
@@ -43,13 +43,13 @@ class V5_5_5_0 extends Command
     {
         $names = [
             'App\Console\Commands\Upgrade\V5_5_4_1',
-            'App\Console\Commands\Upgrade\V5_5_4_3'
+            'App\Console\Commands\Upgrade\V5_5_4_3',
         ];
 
         if (Console::whereIn('name', $names)->count() !== 0) {
             return;
         }
-        
+
         if (Nav::select('id')->count() === 0) {
             Artisan::call('db:seed', [
                 '--class' => 'NavsTableSeeder',
@@ -189,7 +189,7 @@ class V5_5_5_0 extends Command
                     'name'  => 'bjyblog.qq_qun.article_id',
                     'value' => $config['QQ_QUN_ARTICLE_ID'],
                 ],
-        
+
                 [
                     'id'    => 151,
                     'name'  => 'bjyblog.qq_qun.number',
@@ -205,7 +205,7 @@ class V5_5_5_0 extends Command
                     'name'  => 'bjyblog.qq_qun.or_code',
                     'value' => $config['QQ_QUN_OR_CODE'],
                 ],
-        
+
                 [
                     'id'    => 154,
                     'name'  => 'email.driver',
@@ -217,12 +217,12 @@ class V5_5_5_0 extends Command
                     'value' => 465,
                 ],
             ];
-            
+
             foreach ($data as $k => $v) {
                 Config::firstOrCreate($v);
             }
         }
-    
+
         if (Config::where('id', 156)->count() === 0) {
             Config::firstOrCreate([
                 'id'    => 156,
@@ -230,14 +230,14 @@ class V5_5_5_0 extends Command
                 'value' => 'ssl',
             ]);
         }
-    
+
         $config = Config::where('name', 'like', 'email.%')->get();
         foreach ($config as $k => $v) {
             Config::where('id', $v->id)->update([
                 'name' => str_replace('email.', 'mail.', $v->name),
             ]);
         }
-    
+
         if (Config::where('id', 157)->count() === 0) {
             Config::firstOrCreate([
                 'id'    => 157,
