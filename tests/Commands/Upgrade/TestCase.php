@@ -2,6 +2,7 @@
 
 namespace Tests\Commands\Upgrade;
 
+use File;
 use Illuminate\Support\Str;
 
 abstract class TestCase extends \Tests\Commands\TestCase
@@ -28,9 +29,24 @@ abstract class TestCase extends \Tests\Commands\TestCase
             $migrationFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Migrations\\' . $className;
             (new $migrationFQCN)->up();
         }
-        
+
         // Seed
-        $seedFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Seeds\\DatabaseSeeder';
-        (new $seedFQCN)->run();
+        $file = collect(File::files(base_path('tests/Commands/Upgrade/' . $version[0] . '/seeds')))
+            ->transform(function ($v) {
+                return [
+                    'cTime'    => $v->getCTime(),
+                    'filename' => basename($v->getFilename(), '.php'),
+                ];
+            })
+            ->filter(function ($v) {
+                return $v['filename'] === 'DatabaseSeeder' ? false : true;
+            })
+            ->sortBy('cTime')
+            ->pluck('filename');
+
+        foreach ($file as $k => $v) {
+            $seedFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Seeds\\' . $v;
+            (new $seedFQCN)->run();
+        }
     }
 }

@@ -41,6 +41,15 @@ class V5_5_5_0 extends Command
      */
     public function handle()
     {
+        $names = [
+            'App\Console\Commands\Upgrade\V5_5_4_1',
+            'App\Console\Commands\Upgrade\V5_5_4_3'
+        ];
+
+        if (Console::whereIn('name', $names)->count() !== 0) {
+            return;
+        }
+        
         if (Nav::select('id')->count() === 0) {
             Artisan::call('db:seed', [
                 '--class' => 'NavsTableSeeder',
