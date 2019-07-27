@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Commands\Upgrade\V5_8_9_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class ConsolesTableSeeder extends Seeder
@@ -16,7 +18,14 @@ class ConsolesTableSeeder extends Seeder
         \DB::table('consoles')->insert([
             [
                 'id'         => 1,
-                'name'       => 'App\Console\Commands\Upgrade\V5_5_5_0',
+                'name'       => 'App\Console\Commands\Upgrade\V5_5_4_1',
+                'created_at' => '2018-09-27 22:26:00',
+                'updated_at' => '2018-09-27 22:26:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 2,
+                'name'       => 'App\Console\Commands\Upgrade\V5_5_4_3',
                 'created_at' => '2018-09-27 22:26:00',
                 'updated_at' => '2018-09-27 22:26:00',
                 'deleted_at' => null,
@@ -117,13 +126,6 @@ class ConsolesTableSeeder extends Seeder
                 'name'       => 'App\Console\Commands\Upgrade\V5_8_8_0',
                 'created_at' => '2019-07-01 22:28:00',
                 'updated_at' => '2019-07-01 22:28:00',
-                'deleted_at' => null,
-            ],
-            [
-                'id'         => 18,
-                'name'       => 'App\Console\Commands\Upgrade\V5_8_9_0',
-                'created_at' => '2019-07-27 14:28:00',
-                'updated_at' => '2019-07-27 14:28:00',
                 'deleted_at' => null,
             ],
         ]);

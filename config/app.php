@@ -221,7 +221,12 @@ return [
         /**
          * assign data
          */
-        App\Providers\ComposerServiceProvider::class
+        App\Providers\ComposerServiceProvider::class,
+
+        /**
+         * Extension
+         */
+        App\Providers\ExtensionServiceProvider::class,
 
     ],
 

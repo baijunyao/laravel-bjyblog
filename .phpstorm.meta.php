@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-07-20 07:59:05.
+    * Generated on 2019-07-27 14:56:45.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -121,7 +121,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
@@ -286,7 +286,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
@@ -451,7 +451,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
@@ -616,7 +616,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
@@ -781,7 +781,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
@@ -946,7 +946,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
@@ -1111,7 +1111,7 @@ namespace PHPSTORM_META {
         'command.serve' => \Illuminate\Foundation\Console\ServeCommand::class,
         'command.session.table' => \Illuminate\Session\Console\SessionTableCommand::class,
         'command.storage.link' => \Illuminate\Foundation\Console\StorageLinkCommand::class,
-        'command.test.make' => \Illuminate\Foundation\Console\TestMakeCommand::class,
+        'command.test.make' => \App\Extensions\Illuminate\Foundation\Console\TestMakeCommand::class,
         'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
         'command.up' => \Illuminate\Foundation\Console\UpCommand::class,
         'command.vendor.publish' => \Illuminate\Foundation\Console\VendorPublishCommand::class,
