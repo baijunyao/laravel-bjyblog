@@ -48,7 +48,6 @@
         "webuni/commonmark-table-extension": "^1.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.1",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
