@@ -1,0 +1,28 @@
+{
+    "status_code": 200,
+    "headers": {
+        "pragma": [
+            "no-cache"
+        ],
+        "cache-control": [
+            "no-store, private"
+        ],
+        "content-type": [
+            "application\/json; charset=UTF-8"
+        ],
+        "date": "date_ignore",
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "token_type": "Bearer",
+        "expires_in": "expires_in_ignore",
+        "access_token": "access_token_ignore",
+        "refresh_token": "refresh_token_ignore"
+    }
+}

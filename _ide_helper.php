@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.29 on 2019-07-30 19:10:37.
+ * Generated for Laravel 5.8.30 on 2019-07-30 22:18:51.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -8275,6 +8275,20 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Redis\RedisManager $instance */
                         $instance->setDriver($driver);
+        }
+        
+        /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return \Illuminate\Redis\RedisManager 
+         * @static 
+         */ 
+        public static function extend($driver, $callback)
+        {
+                        /** @var \Illuminate\Redis\RedisManager $instance */
+                        return $instance->extend($driver, $callback);
         }
          
     }

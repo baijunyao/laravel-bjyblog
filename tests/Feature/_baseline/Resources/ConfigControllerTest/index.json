@@ -1,0 +1,158 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": [
+            {
+                "id": 101,
+                "name": "app.name",
+                "value": "白俊遥博客",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 102,
+                "name": "bjyblog.head.keywords",
+                "value": "个人博客,博客模板,thinkphp,laravel博客,php博客,技术博客,白俊遥",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 103,
+                "name": "bjyblog.head.description",
+                "value": "白俊遥的php博客,个人技术博客,bjyblog,bjyadmin官方网站",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 107,
+                "name": "bjyblog.water.text",
+                "value": "baijunyao.com",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 109,
+                "name": "bjyblog.water.size",
+                "value": "15",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 110,
+                "name": "bjyblog.water.color",
+                "value": "#008CBA",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 117,
+                "name": "bjyblog.icp",
+                "value": "豫ICP备14009546号-3",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 118,
+                "name": "bjyblog.admin_email",
+                "value": "baijunyao@baijunyao.com",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 119,
+                "name": "bjyblog.copyright_word",
+                "value": "本文为白俊遥原创文章,转载无需和我联系,但请注明来自<a href=\"http:\/\/baijunyao.com\">白俊遥博客<\/a>http:\/\/baijunyao.com",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 123,
+                "name": "bjyblog.statistics",
+                "value": "",
+                "created_at": "2018-08-25 17:04:02",
+                "updated_at": "2018-08-25 17:04:02",
+                "deleted_at": null
+            },
+            {
+                "id": 125,
+                "name": "bjyblog.author",
+                "value": "白俊遥",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 128,
+                "name": "bjyblog.baidu_site_url",
+                "value": "",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 141,
+                "name": "bjyblog.alt_word",
+                "value": "白俊遥博客",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 142,
+                "name": "mail.host",
+                "value": "",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            },
+            {
+                "id": 143,
+                "name": "mail.username",
+                "value": "",
+                "created_at": "2018-08-22 21:03:01",
+                "updated_at": "2018-08-22 21:03:01",
+                "deleted_at": null
+            }
+        ],
+        "links": {
+            "first": "http:\/\/laravel-bjyblog.test\/api\/configs?page=1",
+            "last": "http:\/\/laravel-bjyblog.test\/api\/configs?page=3",
+            "prev": null,
+            "next": "http:\/\/laravel-bjyblog.test\/api\/configs?page=2"
+        },
+        "meta": {
+            "current_page": 1,
+            "from": 1,
+            "last_page": 3,
+            "path": "http:\/\/laravel-bjyblog.test\/api\/configs",
+            "per_page": 15,
+            "to": 15,
+            "total": 41
+        }
+    }
+}

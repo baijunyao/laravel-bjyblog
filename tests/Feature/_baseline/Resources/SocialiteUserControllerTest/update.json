@@ -1,0 +1,37 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 1,
+            "socialite_client_id": 2,
+            "name": "编辑",
+            "avatar": "\/uploads\/article\/default.jpg",
+            "openid": "",
+            "access_token": "",
+            "last_login_ip": "127.0.0.1",
+            "login_times": 2,
+            "email": "update@baijunyao.com",
+            "is_admin": 1,
+            "remember_token": null,
+            "created_at": "2017-07-24 07:35:12",
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
+        }
+    }
+}

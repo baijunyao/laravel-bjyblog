@@ -1,0 +1,30 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 1,
+            "name": "test",
+            "email": "test@test.com",
+            "email_verified_at": null,
+            "created_at": "2016-10-22 07:35:12",
+            "updated_at": "2016-10-22 07:35:12",
+            "deleted_at": null
+        }
+    }
+}

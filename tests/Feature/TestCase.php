@@ -52,6 +52,7 @@ abstract class TestCase extends \Tests\TestCase
     ];
     protected $urlPrefix          = '';
     protected $table              = '';
+    protected $showId             = 1;
     protected $editId             = 1;
     protected $updateId           = 1;
     protected $destroyId          = 1;

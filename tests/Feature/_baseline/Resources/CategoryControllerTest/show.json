@@ -1,0 +1,33 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 1,
+            "name": "php",
+            "slug": "php",
+            "keywords": "php",
+            "description": "php相关的文章",
+            "sort": 1,
+            "pid": 0,
+            "created_at": "2017-07-16 07:35:12",
+            "updated_at": "2016-07-16 07:35:12",
+            "deleted_at": null
+        }
+    }
+}

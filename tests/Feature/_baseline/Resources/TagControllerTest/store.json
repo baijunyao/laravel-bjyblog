@@ -1,0 +1,28 @@
+{
+    "status_code": 201,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "name": "Store",
+            "slug": "store",
+            "updated_at": "2019-01-01 00:00:00",
+            "created_at": "2019-01-01 00:00:00",
+            "id": 4
+        }
+    }
+}

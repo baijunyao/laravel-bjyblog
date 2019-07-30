@@ -1,0 +1,32 @@
+{
+    "status_code": 201,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "socialite_user_id": 1,
+            "name": "Store",
+            "description": "Store",
+            "url": "https:\/\/test.test",
+            "audit": 1,
+            "sort": 1,
+            "updated_at": "2019-01-01 00:00:00",
+            "created_at": "2019-01-01 00:00:00",
+            "id": 3
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "id": 1,
+        "category_id": 1,
+        "title": "updated title",
+        "slug": "laravel-series-tutorial-for-thinkphp-developers-1-preface",
+        "author": "updated baijunyao",
+        "markdown": "updated content",
+        "html": "<p>updated content<\/p>\n",
+        "description": "updated content",
+        "keywords": "updated keywords",
+        "cover": "\/uploads\/article\/5958ab4dd9db4.jpg",
+        "is_top": 1,
+        "click": 666,
+        "created_at": "2017-07-16 07:35:12",
+        "updated_at": "2019-01-01 00:00:00",
+        "deleted_at": null
+    }
+}
