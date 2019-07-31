@@ -139,7 +139,7 @@
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
                             <img class="b-head-img bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($comment->socialiteUser->avatar) }}" alt="{{ $comment->socialiteUser->name }}">
                             <li class="b-nickname">
-                                {{ $comment->socialiteUser->name }}<span>{{ word_time($comment->created_at) }}</span>
+                                {{ $comment->socialiteUser->name }}<span>{{ $comment->created_at->diffForHumans() }}</span>
                             </li>
                             <li class="b-nc-article">
                                 {{ __('Comment') }}<a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="_blank">{{ $comment->article->sub_title }}</a>

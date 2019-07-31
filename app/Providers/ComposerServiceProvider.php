@@ -190,8 +190,6 @@ class ComposerServiceProvider extends ServiceProvider
             $assign = compact('latestComments');
             $view->with($assign);
         });
-
-        app('translator')->setLocale($config->get('app.locale'));
     }
 
     /**
