@@ -175,9 +175,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
+        /**
+         * assign data
          */
+        App\Providers\ComposerServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -217,11 +218,6 @@ return [
          * Observe
          */
         App\Providers\ObserveServiceProvider::class,
-
-        /**
-         * assign data
-         */
-        App\Providers\ComposerServiceProvider::class,
 
         /**
          * Extension
