@@ -527,16 +527,16 @@
         },
         {
             "name": "baijunyao/laravel-test-support",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-test-support.git",
-                "reference": "ce7d45ae88a190493793884d3b8561b4d193f6af"
+                "reference": "066c9fb70fffe4eef49ce129856791fcbbfa111e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/ce7d45ae88a190493793884d3b8561b4d193f6af",
-                "reference": "ce7d45ae88a190493793884d3b8561b4d193f6af",
+                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/066c9fb70fffe4eef49ce129856791fcbbfa111e",
+                "reference": "066c9fb70fffe4eef49ce129856791fcbbfa111e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -571,7 +571,7 @@
                 "support",
                 "test"
             ],
-            "time": "2019-07-28T12:41:39+00:00"
+            "time": "2019-08-02T11:57:14+00:00"
         },
         {
             "name": "baijunyao/laravel-toastr",
