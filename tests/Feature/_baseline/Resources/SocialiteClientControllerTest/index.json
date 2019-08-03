@@ -1,0 +1,98 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": [
+            {
+                "id": 1,
+                "name": "qq",
+                "icon": "qq",
+                "client_id": "",
+                "client_secret": "",
+                "created_at": "2019-05-08 22:13:54",
+                "updated_at": "2019-05-08 22:13:54",
+                "deleted_at": null
+            },
+            {
+                "id": 2,
+                "name": "weibo",
+                "icon": "weibo",
+                "client_id": "",
+                "client_secret": "",
+                "created_at": "2019-05-08 22:13:54",
+                "updated_at": "2019-05-08 22:13:54",
+                "deleted_at": null
+            },
+            {
+                "id": 3,
+                "name": "github",
+                "icon": "github",
+                "client_id": "",
+                "client_secret": "",
+                "created_at": "2019-05-08 22:13:54",
+                "updated_at": "2019-05-08 22:13:54",
+                "deleted_at": null
+            },
+            {
+                "id": 4,
+                "name": "google",
+                "icon": "google",
+                "client_id": "",
+                "client_secret": "",
+                "created_at": "2019-05-14 23:26:38",
+                "updated_at": "2019-05-14 23:26:38",
+                "deleted_at": null
+            },
+            {
+                "id": 5,
+                "name": "facebook",
+                "icon": "facebook",
+                "client_id": "",
+                "client_secret": "",
+                "created_at": "2019-05-14 23:26:38",
+                "updated_at": "2019-05-14 23:26:38",
+                "deleted_at": null
+            },
+            {
+                "id": 6,
+                "name": "vkontakte",
+                "icon": "vk",
+                "client_id": "",
+                "client_secret": "",
+                "created_at": "2019-07-01 23:26:38",
+                "updated_at": "2019-07-01 23:26:38",
+                "deleted_at": null
+            }
+        ],
+        "links": {
+            "first": "http:\/\/laravel-bjyblog.test\/api\/socialiteClients?page=1",
+            "last": "http:\/\/laravel-bjyblog.test\/api\/socialiteClients?page=1",
+            "prev": null,
+            "next": null
+        },
+        "meta": {
+            "current_page": 1,
+            "from": 1,
+            "last_page": 1,
+            "path": "http:\/\/laravel-bjyblog.test\/api\/socialiteClients",
+            "per_page": 15,
+            "to": 6,
+            "total": 6
+        }
+    }
+}

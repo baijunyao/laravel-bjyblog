@@ -11,7 +11,6 @@ use App\Models\Config;
 use App\Models\Tag;
 use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
-use Markdown;
 
 class ArticleController extends Controller
 {
@@ -101,15 +100,9 @@ class ArticleController extends Controller
             }
         }
 
-        if (empty($data['cover'])) {
-            $firstImage    = $articleModel->getCover($data['markdown']);
-            $data['cover'] = $firstImage;
-        }
-
-        $data['html'] = Markdown::convertToHtml($data['markdown']);
-        $tag_ids      = $data['tag_ids'];
+        $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
-        $article             = Article::create($data);
+        $article = Article::create($data);
 
         if ($article) {
             // 给文章添加标签
@@ -150,12 +143,8 @@ class ArticleController extends Controller
      */
     public function update(Store $request, Article $articleModel, ArticleTag $articleTagModel, $id)
     {
-        $data           = $request->except('_token');
-        $data['is_top'] = $data['is_top'] ?? 0;
-        $markdown       = $articleModel->where('id', $id)->value('markdown');
-        preg_match_all('/!\[.*\]\((.*.[jpg|jpeg|png|gif]).*\)/i', $markdown, $images);
-        // 添加水印 并获取第一张图
-        $cover = $articleModel->getCover($data['markdown'], $images[1]);
+        $data = $request->except('_token');
+
         // 上传封面图
         if ($request->hasFile('cover')) {
             $result = Upload::file('cover', 'uploads/article');
@@ -163,24 +152,15 @@ class ArticleController extends Controller
                 $data['cover'] = $result['data'][0]['path'];
             }
         }
-        // 如果没有上传封面图；则使用第一张图片
-        if (empty($data['cover'])) {
-            $data['cover'] = $cover;
-        }
-        // 为文章批量添加标签
+
         $tag_ids = $data['tag_ids'];
-        // 把markdown转html
-        $data['html'] = Markdown::convertToHtml($data['markdown']);
-
         unset($data['tag_ids']);
-        // 先彻底删除此文章下的所有标签
-        ArticleTag::where('article_id', $id)->forceDelete();
+        $result = Article::find($id)->update($data);
 
-        $articleTagModel->addTagIds($id, $tag_ids);
-
-        $data['slug'] = str_slug($data['title'], '-');
-        // 编辑文章
-        Article::find($id)->update($data);
+        if ($result) {
+            ArticleTag::where('article_id', $id)->forceDelete();
+            $articleTagModel->addTagIds($id, $tag_ids);
+        }
 
         return redirect()->back();
     }

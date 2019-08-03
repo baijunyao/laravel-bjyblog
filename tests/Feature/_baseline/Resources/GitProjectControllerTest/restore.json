@@ -1,0 +1,30 @@
+{
+    "status_code": 200,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "date_ignore",
+        "content-type": [
+            "application\/json"
+        ],
+        "x-ratelimit-limit": [
+            60
+        ],
+        "x-ratelimit-remaining": [
+            59
+        ],
+        "set-cookie": "set-cookie_ignore"
+    },
+    "content": {
+        "data": {
+            "id": 9,
+            "sort": 9,
+            "type": 2,
+            "name": "deleted\/deleted",
+            "created_at": "2019-01-04 16:35:12",
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
+        }
+    }
+}

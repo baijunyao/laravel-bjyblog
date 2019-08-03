@@ -7,16 +7,11 @@ use Illuminate\Support\Str;
 
 abstract class TestCase extends \Tests\Commands\TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $tables = $this->app['db']->connection()->getDoctrineSchemaManager()->listTableNames();
-
-        foreach ($tables as $table) {
-            $this->app['db']->statement("DROP TABLE $table");
-        }
-
+        $this->dropAllTables();
         preg_match('/V(\d+_){3}\d+/', static::class, $version);
 
         // Migration
@@ -47,6 +42,24 @@ abstract class TestCase extends \Tests\Commands\TestCase
         foreach ($file as $k => $v) {
             $seedFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Seeds\\' . $v;
             (new $seedFQCN())->run();
+        }
+    }
+
+    protected function tearDown(): void
+    {
+        $this->dropAllTables();
+        $this->artisan('migrate');
+        $this->artisan('db:seed');
+
+        parent::tearDown();
+    }
+
+    public function dropAllTables()
+    {
+        $tables = $this->app['db']->connection()->getDoctrineSchemaManager()->listTableNames();
+
+        foreach ($tables as $table) {
+            $this->app['db']->statement("DROP TABLE $table");
         }
     }
 }

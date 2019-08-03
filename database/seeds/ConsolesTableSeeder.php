@@ -126,6 +126,13 @@ class ConsolesTableSeeder extends Seeder
                 'updated_at' => '2019-07-27 14:28:00',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 19,
+                'name'       => 'App\Console\Commands\Upgrade\V5_8_10_0',
+                'created_at' => '2019-08-02 22:01:00',
+                'updated_at' => '2019-08-02 22:01:00',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

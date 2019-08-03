@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\ArticleTag;
 use Cache;
+use Markdown;
 
 class ArticleObserver extends BaseObserver
 {
@@ -17,9 +18,19 @@ class ArticleObserver extends BaseObserver
             );
         }
 
+        if (empty($article->cover)) {
+            $article->cover = $article->getCover($article->markdown);
+        }
+
+        if (empty($article->is_top)) {
+            $article->is_top = 0;
+        }
+
         if ($article->isDirty('title') && empty($article->slug)) {
             $article->slug = generate_english_slug($article->title);
         }
+
+        $article->html = Markdown::convertToHtml($article->markdown);
     }
 
     public function deleted($article)
