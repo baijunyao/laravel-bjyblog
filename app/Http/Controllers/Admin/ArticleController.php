@@ -11,7 +11,6 @@ use App\Models\Config;
 use App\Models\Tag;
 use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
-use Markdown;
 
 class ArticleController extends Controller
 {

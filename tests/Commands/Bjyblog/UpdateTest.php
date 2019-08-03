@@ -3,8 +3,6 @@
 namespace Tests\Commands\Bjyblog;
 
 use App\Models\Console;
-use Artisan;
-use Composer\Semver\Comparator;
 use File;
 use Tests\TestCase;
 
@@ -19,7 +17,7 @@ class UpdateTest extends TestCase
         static::assertEquals($names->count(), Console::count());
         $names->each(function ($name) {
             $this->assertDatabaseHas('consoles', [
-                    'name' => $name
+                'name' => $name,
             ]);
         });
     }

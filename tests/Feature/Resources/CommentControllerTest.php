@@ -7,7 +7,6 @@ use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
 use Baijunyao\LaravelTestSupport\Rest\TestIndex;
 use Baijunyao\LaravelTestSupport\Rest\TestRestore;
 use Baijunyao\LaravelTestSupport\Rest\TestShow;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
 
 class CommentControllerTest extends TestCase
 {

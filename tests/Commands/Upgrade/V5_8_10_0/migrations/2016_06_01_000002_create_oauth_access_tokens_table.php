@@ -2,9 +2,8 @@
 
 namespace Tests\Commands\Upgrade\V5_8_10_0\Migrations;
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateOauthAccessTokensTable extends Migration
 {

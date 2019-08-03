@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 abstract class TestCase extends \Tests\Commands\TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -38,22 +38,13 @@ abstract class TestCase extends \Tests\Commands\TestCase
             })
             ->sortBy('cTime')
             ->pluck('filename');
-        
+
         foreach ($file as $k => $v) {
             $seedFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Seeds\\' . $v;
             (new $seedFQCN())->run();
         }
     }
-    
-    public function dropAllTables()
-    {
-        $tables = $this->app['db']->connection()->getDoctrineSchemaManager()->listTableNames();
-    
-        foreach ($tables as $table) {
-            $this->app['db']->statement("DROP TABLE $table");
-        }
-    }
-    
+
     protected function tearDown(): void
     {
         $this->dropAllTables();
@@ -61,5 +52,14 @@ abstract class TestCase extends \Tests\Commands\TestCase
         $this->artisan('db:seed');
 
         parent::tearDown();
+    }
+
+    public function dropAllTables()
+    {
+        $tables = $this->app['db']->connection()->getDoctrineSchemaManager()->listTableNames();
+
+        foreach ($tables as $table) {
+            $this->app['db']->statement("DROP TABLE $table");
+        }
     }
 }

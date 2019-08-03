@@ -10,8 +10,8 @@ class ConfigControllerTest extends TestCase
 {
     use TestIndex, TestShow, TestUpdate;
 
-    protected $showId = 101;
-    protected $updateId = 101;
+    protected $showId     = 101;
+    protected $updateId   = 101;
     protected $updateData = [
         'value' => 'Update',
     ];

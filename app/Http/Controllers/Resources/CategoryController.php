@@ -9,7 +9,6 @@ use Baijunyao\LaravelRestful\Restore;
 use Baijunyao\LaravelRestful\Show;
 use Baijunyao\LaravelRestful\Store;
 use Baijunyao\LaravelRestful\Update;
-use App\Models\Category;
 
 class CategoryController extends Controller
 {

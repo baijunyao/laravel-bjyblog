@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Resources;
 
+use App\Http\Requests\Article\Store;
+use App\Models\Article;
+use App\Models\ArticleTag;
 use Baijunyao\LaravelRestful\Destroy;
 use Baijunyao\LaravelRestful\ForceDelete;
 use Baijunyao\LaravelRestful\Index;
 use Baijunyao\LaravelRestful\Restore;
 use Baijunyao\LaravelRestful\Show;
-use App\Models\Article;
-use App\Models\ArticleTag;
-use App\Http\Requests\Article\Store;
 
 class ArticleController extends Controller
 {
@@ -43,5 +43,4 @@ class ArticleController extends Controller
 
         return response($article);
     }
-
 }

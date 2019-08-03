@@ -24,7 +24,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name'  => 'required',
             'email' => 'required|email',
         ];
     }
@@ -37,7 +37,7 @@ class Store extends FormRequest
     public function attributes()
     {
         return [
-            'name' => '昵称',
+            'name'  => '昵称',
             'email' => '邮箱',
         ];
     }

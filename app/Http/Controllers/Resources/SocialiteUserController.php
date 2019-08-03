@@ -7,7 +7,6 @@ use Baijunyao\LaravelRestful\ForceDelete;
 use Baijunyao\LaravelRestful\Index;
 use Baijunyao\LaravelRestful\Restore;
 use Baijunyao\LaravelRestful\Show;
-use Baijunyao\LaravelRestful\Store;
 use Baijunyao\LaravelRestful\Update;
 
 class SocialiteUserController extends Controller

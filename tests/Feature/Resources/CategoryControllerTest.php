@@ -15,12 +15,12 @@ class CategoryControllerTest extends TestCase
     use TestIndex, TestShow, TestStore, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
 
     protected $storeData     = [
-        'name' => 'Store',
-        'slug' => 'store',
-        'keywords' => 'keywords',
+        'name'        => 'Store',
+        'slug'        => 'store',
+        'keywords'    => 'keywords',
         'description' => 'description',
-        'sort' => 2,
-        'pid' => 1,
+        'sort'        => 2,
+        'pid'         => 1,
     ];
     protected $updateData = [
         'name' => 'Updated Name',

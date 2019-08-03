@@ -8,16 +8,16 @@ class ApiControllerTest extends TestCase
     {
         $this->assertGuest('api');
         $response = $this->post(route('passport.token'), [
-            'grant_type' => 'password',
-            'client_id' => 1,
-            'scope' => '',
+            'grant_type'  => 'password',
+            'client_id'   => 1,
+            'scope'       => '',
             'username'    => 'test@test.com',
-            'password' => '123456',
+            'password'    => '123456',
         ]);
         $this->assertResponse($response, [], [
-            '/"expires_in":\d+/' => '"expires_in":"expires_in_ignore"',
-            '/"access_token":".*"/U' => '"access_token":"access_token_ignore"',
-            '/"refresh_token":".*"/U' => '"refresh_token":"refresh_token_ignore"'
+            '/"expires_in":\d+/'      => '"expires_in":"expires_in_ignore"',
+            '/"access_token":".*"/U'  => '"access_token":"access_token_ignore"',
+            '/"refresh_token":".*"/U' => '"refresh_token":"refresh_token_ignore"',
         ]);
     }
 
@@ -27,11 +27,11 @@ class ApiControllerTest extends TestCase
 
         $this->assertResponse(
             $this->post(route('passport.token'), [
-                'grant_type' => 'password',
-                'client_id' => 1,
-                'scope' => '',
+                'grant_type'  => 'password',
+                'client_id'   => 1,
+                'scope'       => '',
                 'username'    => 'test@test.com',
-                'password' => '12345678',
+                'password'    => '12345678',
             ])
         );
     }

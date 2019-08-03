@@ -45,7 +45,7 @@ class Rest extends Command
             $resourceContent = <<<PHP
 <?php
 
-namespace App\Http\Resources;
+namespace App\\Http\\Resources;
 
 class {$name} extends Base
 {
@@ -61,15 +61,15 @@ PHP;
             $resourceControllerContent = <<<PHP
 <?php
 
-namespace App\Http\Controllers\Resources;
+namespace App\\Http\\Controllers\\Resources;
 
-use App\Http\Controllers\Resources\Rest\Destroy;
-use App\Http\Controllers\Resources\Rest\ForceDelete;
-use App\Http\Controllers\Resources\Rest\Index;
-use App\Http\Controllers\Resources\Rest\Restore;
-use App\Http\Controllers\Resources\Rest\Show;
-use App\Http\Controllers\Resources\Rest\Store;
-use App\Http\Controllers\Resources\Rest\Update;
+use App\\Http\\Controllers\\Resources\\Rest\\Destroy;
+use App\\Http\\Controllers\\Resources\\Rest\\ForceDelete;
+use App\\Http\\Controllers\\Resources\\Rest\\Index;
+use App\\Http\\Controllers\\Resources\\Rest\\Restore;
+use App\\Http\\Controllers\\Resources\\Rest\\Show;
+use App\\Http\\Controllers\\Resources\\Rest\\Store;
+use App\\Http\\Controllers\\Resources\\Rest\\Update;
 
 class {$name}Controller extends Controller
 {
@@ -86,17 +86,17 @@ PHP;
             $resourceTestContent = <<<PHP
 <?php
 
-namespace Tests\Feature\Resources;
+namespace Tests\\Feature\\Resources;
 
-use Baijunyao\LaravelTestSupport\Rest\TestDestroy;
-use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
-use Baijunyao\LaravelTestSupport\Rest\TestIndex;
-use Baijunyao\LaravelTestSupport\Rest\TestRestore;
-use Baijunyao\LaravelTestSupport\Rest\TestShow;
-use Baijunyao\LaravelTestSupport\Rest\TestStore;
-use Baijunyao\LaravelTestSupport\Rest\TestStoreValidation;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdateValidation;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestDestroy;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestForceDelete;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestIndex;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestRestore;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestShow;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestStore;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestStoreValidation;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestUpdate;
+use Baijunyao\\LaravelTestSupport\\Rest\\TestUpdateValidation;
 
 class {$name}ControllerTest extends TestCase
 {

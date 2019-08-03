@@ -7,7 +7,6 @@ use Baijunyao\LaravelRestful\ForceDelete;
 use Baijunyao\LaravelRestful\Index;
 use Baijunyao\LaravelRestful\Restore;
 use Baijunyao\LaravelRestful\Show;
-use App\Models\Comment;
 
 class CommentController extends Controller
 {
