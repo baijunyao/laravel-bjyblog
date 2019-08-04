@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.30 on 2019-08-03 17:30:37.
+ * Generated for Laravel 5.8.30 on 2019-08-04 23:28:14.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14846,33 +14846,6 @@ namespace Laravel\Socialite\Facades {
  
 }
 
-namespace GrahamCampbell\Markdown\Facades { 
-
-    /**
-     * This is the markdown facade class.
-     *
-     * @author Graham Campbell <graham@alt-three.com>
-     */ 
-    class Markdown {
-        
-        /**
-         * Converts CommonMark to HTML.
-         *
-         * @param string $commonMark
-         * @return string 
-         * @api 
-         * @static 
-         */ 
-        public static function convertToHtml($commonMark)
-        {
-                        /** @var \League\CommonMark\Converter $instance */
-                        return $instance->convertToHtml($commonMark);
-        }
-         
-    }
- 
-}
-
 namespace Appstract\LushHttp { 
 
     /**
@@ -18616,8 +18589,6 @@ namespace  {
     class Image extends \Intervention\Image\Facades\Image {}
 
     class Socialite extends \Laravel\Socialite\Facades\Socialite {}
-
-    class Markdown extends \GrahamCampbell\Markdown\Facades\Markdown {}
 
     class Lush extends \Appstract\LushHttp\LushFacade {}
 
