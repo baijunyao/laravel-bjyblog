@@ -41,5 +41,6 @@ return [
         'jssocials_config' => '',
         'sharejs_config' => ''
     ],
-    'logo_with_php_tag' => ''
+    'logo_with_php_tag' => '',
+    'cdn_domain' => ''
 ];

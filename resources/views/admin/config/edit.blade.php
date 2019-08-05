@@ -97,6 +97,12 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ __('CDN Domain') }}：</th>
+                <td>
+                    <input class="form-control" type="text" name="172" value="{{  $config['bjyblog.cdn_domain'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">

@@ -152,7 +152,7 @@
             "path": "http:\/\/laravel-bjyblog.test\/api\/configs",
             "per_page": 15,
             "to": 15,
-            "total": 41
+            "total": 42
         }
     }
 }

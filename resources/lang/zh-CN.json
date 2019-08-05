@@ -180,6 +180,7 @@
     "Statistics Code": "第三方统计代码",
     "Admin Email": "站长邮箱",
     "Notification Email": "用于接收通知的邮箱",
+    "CDN Domain": "CDN 域名",
 
     "Store Success": "添加成功",
     "Update Success": "修改成功",
