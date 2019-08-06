@@ -30,6 +30,11 @@ class Article extends Base
         return str_replace(["\r", "\n", "\r\n"], '', $value);
     }
 
+    public function getHtmlAttribute($value)
+    {
+        return str_replace('<img src="/uploads/article', '<img src="' . cdn_url('uploads/article'), $value);
+    }
+
     /**
      * 关联文章表
      *
