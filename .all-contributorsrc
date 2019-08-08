@@ -59,6 +59,18 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "baijunyao",
+      "name": "白俊遥",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/9360694?v=4",
+      "profile": "https://baijunyao.com",
+      "contributions": [
+        "code",
+        "translation",
+        "doc",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
