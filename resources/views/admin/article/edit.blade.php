@@ -43,6 +43,12 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ __('Slug') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="slug" value="{{ $article->slug }}">
+                </td>
+            </tr>
+            <tr>
                 <th>{{ __('Author') }}</th>
                 <td>
                     <input class="form-control" type="text" name="author" value="{{ $article->author }}">
