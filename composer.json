@@ -35,8 +35,10 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "laravelium/feed": "3.1.*",
+        "league/commonmark-ext-table": "^2.0",
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^2.0",
+        "overtrue/laravel-lang": "^3.0",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
         "socialiteproviders/facebook": "dev-master",
@@ -46,8 +48,7 @@
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.3",
         "stichoza/google-translate-php": "^4.0",
-        "vanry/laravel-scout-tntsearch": "^1.2",
-        "webuni/commonmark-table-extension": "^1.0"
+        "vanry/laravel-scout-tntsearch": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",

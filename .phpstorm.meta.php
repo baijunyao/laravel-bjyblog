@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-08-03 17:30:39.
+    * Generated on 2019-08-10 10:12:15.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -181,7 +181,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -360,7 +360,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -539,7 +539,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -718,7 +718,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -897,7 +897,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -1076,7 +1076,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
@@ -1255,7 +1255,7 @@ namespace PHPSTORM_META {
         'swift.mailer' => \Swift_Mailer::class,
         'swift.transport' => \Illuminate\Mail\TransportManager::class,
         'tntsearch.tokenizer' => \Vanry\Scout\TokenizerManager::class,
-        'translation.loader' => \Illuminate\Translation\FileLoader::class,
+        'translation.loader' => \Overtrue\LaravelLang\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'url' => \Illuminate\Routing\UrlGenerator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,

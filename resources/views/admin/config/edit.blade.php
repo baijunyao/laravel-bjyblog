@@ -12,8 +12,9 @@
                 <th>{{ __('Language') }}</th>
                 <td>
                     <select class="form-control" name="166">
-                        <option value="en" @if($config['app.locale'] === 'en') selected @endif>{{ __('English') }}</option> 
+                        <option value="en" @if($config['app.locale'] === 'en') selected @endif>{{ __('English') }}</option>
                         <option value="fr" @if($config['app.locale'] === 'fr') selected @endif>{{ __('French') }}</option>
+                        <option value="ru" @if($config['app.locale'] === 'ru') selected @endif>{{ __('Russian') }}</option>
                         <option value="zh-CN" @if($config['app.locale'] === 'zh-CN') selected @endif>{{ __('Chinese(Simplified)') }}</option>
                     </select>
                 </td>
@@ -93,6 +94,12 @@
                 <th>Sentry DSN：</th>
                 <td>
                     <input class="form-control" type="text" name="158" value="{{  $config['sentry.dsn'] }}" >
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('CDN Domain') }}：</th>
+                <td>
+                    <input class="form-control" type="text" name="172" value="{{  $config['bjyblog.cdn_domain'] }}" >
                 </td>
             </tr>
             <tr>

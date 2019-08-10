@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Stichoza\GoogleTranslate\GoogleTranslate;
@@ -337,5 +338,19 @@ if (!function_exists('generate_english_slug')) {
         }
 
         return Str::slug($content);
+    }
+}
+
+if (!function_exists('cdn_url')) {
+    /**
+     * Generate a url for the CDN.
+     *
+     * @param $path
+     *
+     * @return string
+     */
+    function cdn_url($path)
+    {
+        return URL::assetFrom(config('bjyblog.cdn_domain'), $path);
     }
 }
