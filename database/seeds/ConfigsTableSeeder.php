@@ -356,7 +356,7 @@ class ConfigsTableSeeder extends Seeder
                 'created_at' => '2019-08-05 22:15:00',
                 'updated_at' => '2019-08-05 22:15:00',
                 'deleted_at' => null,
-            ]
+            ],
         ]);
     }
 }
