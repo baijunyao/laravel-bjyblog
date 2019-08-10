@@ -5,11 +5,12 @@ namespace App\Models;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 class Base extends Model
 {
     // 软删除
-    use SoftDeletes;
+    use SoftDeletes, Cachable;
 
     /**
      * 禁止被批量赋值的字段

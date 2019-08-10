@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "311609cf719d6f6e7d8b1beca10afcb0",
+    "content-hash": "4aea741290a558162c1ef5a04b77acd3",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -1861,6 +1861,133 @@
                 "php"
             ],
             "time": "2017-11-22T10:02:12+00:00"
+        },
+        {
+            "name": "genealabs/laravel-model-caching",
+            "version": "0.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-model-caching.git",
+                "reference": "536316a8d542b1dd90dcf849a31fde3ee7b0fa1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-model-caching/zipball/536316a8d542b1dd90dcf849a31fde3ee7b0fa1c",
+                "reference": "536316a8d542b1dd90dcf849a31fde3ee7b0fa1c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "genealabs/laravel-pivot-events": "*",
+                "illuminate/cache": "5.8.*",
+                "illuminate/config": "5.8.*",
+                "illuminate/console": "5.8.*",
+                "illuminate/container": "5.8.*",
+                "illuminate/database": "5.8.*",
+                "illuminate/http": "5.8.*",
+                "illuminate/support": "5.8.*",
+                "php": "^7.1.3"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "*",
+                "mockery/mockery": "*",
+                "orchestra/database": "3.8.*",
+                "orchestra/testbench": "3.8.*",
+                "orchestra/testbench-browser-kit": "3.8.*",
+                "php-coveralls/php-coveralls": "*",
+                "phpmd/phpmd": "*",
+                "phpunit/phpunit": "^7.5",
+                "predis/predis": "*",
+                "sebastian/phpcpd": "*",
+                "symfony/thanks": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GeneaLabs\\LaravelModelCaching\\Providers\\Service"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelModelCaching\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com"
+                }
+            ],
+            "description": "Automatic caching for Eloquent models.",
+            "time": "2019-07-26T20:10:24+00:00"
+        },
+        {
+            "name": "genealabs/laravel-pivot-events",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-pivot-events.git",
+                "reference": "fddbf91bcbce4e7c5ed4332c94b15356b57b0339"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-pivot-events/zipball/fddbf91bcbce4e7c5ed4332c94b15356b57b0339",
+                "reference": "fddbf91bcbce4e7c5ed4332c94b15356b57b0339",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/database": ">5.5.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "2.*",
+                "orchestra/testbench": "3.*",
+                "symfony/thanks": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelPivotEvents\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com",
+                    "homepage": "https://genealabs.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package introduces new eloquent events for sync(), attach(), detach() or updateExistingPivot() methods on BelongsToMany relation.",
+            "homepage": "https://github.com/fico7489/laravel-pivot",
+            "keywords": [
+                "eloquent events",
+                "eloquent extra events",
+                "laravel BelongsToMany events",
+                "laravel pivot events",
+                "laravel sync events"
+            ],
+            "time": "2019-05-17T22:15:12+00:00"
         },
         {
             "name": "graham-campbell/markdown",
