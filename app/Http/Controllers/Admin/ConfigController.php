@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Config;
 use Artisan;
 use Baijunyao\LaravelUpload\Upload;
-use Cache;
 use Illuminate\Http\Request;
 
 class ConfigController extends Controller
@@ -20,7 +19,7 @@ class ConfigController extends Controller
      */
     public function edit()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.edit', $assign);
@@ -35,7 +34,7 @@ class ConfigController extends Controller
      */
     public function email()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.email', $assign);
@@ -50,7 +49,7 @@ class ConfigController extends Controller
      */
     public function socialite()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.socialite', $assign);
@@ -65,7 +64,7 @@ class ConfigController extends Controller
      */
     public function qqQun()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.qqQun', $assign);
@@ -80,7 +79,7 @@ class ConfigController extends Controller
      */
     public function backup()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.backup', $assign);
@@ -88,7 +87,7 @@ class ConfigController extends Controller
 
     public function seo()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.seo', $assign);
@@ -96,7 +95,7 @@ class ConfigController extends Controller
 
     public function socialShare()
     {
-        $config = cache('config');
+        $config = Config::all();
         $assign = compact('config');
 
         return view('admin.config.socialShare', $assign);
@@ -145,6 +144,7 @@ class ConfigController extends Controller
         Artisan::call('route:clear');
         Artisan::call('view:clear');
         Artisan::call('clear-compiled');
+        Artisan::call('modelCache:clear');
         flash_success('操作成功');
 
         return redirect()->back();
