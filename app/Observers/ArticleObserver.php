@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Models\ArticleTag;
-use Cache;
 use Markdown;
 
 class ArticleObserver extends BaseObserver
@@ -43,8 +42,6 @@ class ArticleObserver extends BaseObserver
             ArticleTag::where('article_id', $article->id)->delete();
             flash_success('删除成功');
         }
-
-        $this->clearCache();
     }
 
     public function restored($article)
@@ -52,17 +49,5 @@ class ArticleObserver extends BaseObserver
         // 恢复删除的文章后同步恢复关联表 article_tags 中的数据
         ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();
         flash_success('恢复成功');
-
-        $this->clearCache();
-    }
-
-    protected function clearCache()
-    {
-        // 更新热门推荐文章缓存
-        Cache::forget('common:topArticle');
-        // 更新标签统计缓存
-        Cache::forget('common:tag');
-        // 更新feed缓存
-        Cache::forget('feed:article');
     }
 }

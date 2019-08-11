@@ -3,8 +3,6 @@
 namespace App\Observers;
 
 use App\Models\Article;
-use Cache;
-use Str;
 
 class CategoryObserver extends BaseObserver
 {
@@ -21,10 +19,5 @@ class CategoryObserver extends BaseObserver
             flash_error('请先删除此分类下的文章');
             return false;
         }
-    }
-
-    protected function clearCache()
-    {
-        Cache::forget('common:category');
     }
 }
