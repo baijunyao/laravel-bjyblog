@@ -19,10 +19,7 @@ class ConfigController extends Controller
      */
     public function edit()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.edit', $assign);
+        return view('admin.config.edit');
     }
 
     /**
@@ -34,10 +31,7 @@ class ConfigController extends Controller
      */
     public function email()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.email', $assign);
+        return view('admin.config.email');
     }
 
     /**
@@ -49,10 +43,7 @@ class ConfigController extends Controller
      */
     public function socialite()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.socialite', $assign);
+        return view('admin.config.socialite');
     }
 
     /**
@@ -64,10 +55,7 @@ class ConfigController extends Controller
      */
     public function qqQun()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.qqQun', $assign);
+        return view('admin.config.qqQun');
     }
 
     /**
@@ -79,26 +67,17 @@ class ConfigController extends Controller
      */
     public function backup()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.backup', $assign);
+        return view('admin.config.backup');
     }
 
     public function seo()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.seo', $assign);
+        return view('admin.config.seo');
     }
 
     public function socialShare()
     {
-        $config = Config::all();
-        $assign = compact('config');
-
-        return view('admin.config.socialShare', $assign);
+        return view('admin.config.socialShare');
     }
 
     /**

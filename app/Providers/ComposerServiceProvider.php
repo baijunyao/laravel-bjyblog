@@ -153,6 +153,11 @@ class ComposerServiceProvider extends ServiceProvider
             $assign = compact('latestComments');
             $view->with($assign);
         });
+
+        view()->composer(['admin/config/*'], function ($view) use ($config) {
+            $assign = compact('config');
+            $view->with($assign);
+        });
     }
 
     /**
