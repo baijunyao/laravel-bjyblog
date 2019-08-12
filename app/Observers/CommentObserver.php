@@ -6,7 +6,6 @@ use App\Jobs\SendCommentEmail;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
-use Cache;
 
 class CommentObserver extends BaseObserver
 {
@@ -73,11 +72,5 @@ class CommentObserver extends BaseObserver
         }
 
         parent::created($comment);
-    }
-
-
-    protected function clearCache()
-    {
-        Cache::forget('common:latestComments');
     }
 }

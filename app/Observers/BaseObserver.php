@@ -7,7 +7,6 @@ class BaseObserver
     public function created($model)
     {
         flash_success(__('Store Success'));
-        $this->clearCache();
     }
 
     public function updated($model)
@@ -16,7 +15,6 @@ class BaseObserver
         if(! $model->isDirty('deleted_at')){
             flash_success(__('Update Success'));
         }
-        $this->clearCache();
     }
 
     public function deleted($model)
@@ -27,17 +25,10 @@ class BaseObserver
         } else {
             flash_success(__('Delete Success'));
         }
-
-        $this->clearCache();
     }
 
     public function restored($model)
     {
         flash_success(__('Restore Success'));
-        $this->clearCache();
-    }
-
-    protected function clearCache()
-    {
     }
 }

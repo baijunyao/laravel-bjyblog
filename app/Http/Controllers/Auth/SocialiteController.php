@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\SocialiteClient;
 use App\Models\SocialiteUser;
 use Auth;
-use Cache;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class SocialiteController extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->socialiteClients = cache('socialiteClients');
+        $this->socialiteClients = SocialiteClient::all();
         $service                = $request->route('service');
 
         // 因为发现有恶意访问回调地址的情况 此处限制允许使用的第三方登录方式
