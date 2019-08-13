@@ -6522,9 +6522,9 @@ prettier@^1.7.0:
   resolved "https://registry.npm.taobao.org/prettier/download/prettier-1.18.2.tgz#6823e7c5900017b4bd3acf46fe9ac4b4d7bda9ea"
   integrity sha1-aCPnxZAAF7S9Os9G/prEtNe9qeo=
 
-prismjs@^1.14.0:
+prismjs@^1.17.1:
   version "1.17.1"
-  resolved "https://registry.npm.taobao.org/prismjs/download/prismjs-1.17.1.tgz#e669fcbd4cdd873c35102881c33b14d0d68519be"
+  resolved "https://registry.npm.taobao.org/prismjs/download/prismjs-1.17.1.tgz?cache=0&sync_timestamp=1563761333392&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprismjs%2Fdownload%2Fprismjs-1.17.1.tgz#e669fcbd4cdd873c35102881c33b14d0d68519be"
   integrity sha1-5mn8vUzdhzw1ECiBwzsU0NaFGb4=
   optionalDependencies:
     clipboard "^2.0.0"
