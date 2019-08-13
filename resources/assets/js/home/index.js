@@ -91,23 +91,6 @@ $(function(){
     Pace.start()
 
     lazyload(document.querySelectorAll(".bjy-lazyload"));
-
-    // Article detail page
-    if($('.js-content').length !== 0) {
-        // 文章详情点击图片放大
-        $.each($('.js-content img'), function (k, v) {
-            $(v).wrap(function(){
-                return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
-            });
-        })
-
-        $('.js-content').html(editormd.emojiRenderer($('.js-content').html()));
-        $('.js-fluidbox').fluidbox();
-
-        $('#b-share-js').share(sharejsConfig);
-        $('#b-js-socials').jsSocials(jsSocialsConfig)
-    }
-
 })
 
 /**
