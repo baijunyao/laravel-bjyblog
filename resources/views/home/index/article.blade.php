@@ -148,9 +148,7 @@
 
 @section('js')
     <script>
-        // 添加行数
         $('pre').addClass('line-numbers');
-        // 新页面跳转
         $('.js-content a').attr('target', '_blank')
         translate = {
             pleaseLoginToComment: "{{ __('Please login to comment') }}",
@@ -159,6 +157,15 @@
             pleaseLogin: "{{ __('Please login') }}",
             reply: "{{ __('Reply') }}"
         }
+        $.each($('.js-content img'), function (k, v) {
+            $(v).wrap(function(){
+                return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
+            });
+        })
+        $('.js-content').html(editormd.emojiRenderer($('.js-content').html()));
+        $('.js-fluidbox').fluidbox();
+        $('#b-share-js').share(sharejsConfig);
+        $('#b-js-socials').jsSocials(jsSocialsConfig)
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
 @endsection
