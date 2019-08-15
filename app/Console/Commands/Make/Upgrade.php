@@ -55,6 +55,7 @@ class $versionString extends Command
 
 PHP;
             File::put($upgradeCommandFile, $upgradeCommandContent);
+            $this->info("Generate $upgradeCommandFile completed.");
         }
 
         $testPath = base_path("tests/Commands/Upgrade/$versionString/");
@@ -82,6 +83,7 @@ class CommandTest extends \\Tests\\Commands\\Upgrade\\TestCase
 
 PHP;
             File::put($testFile, $testContent);
+            $this->info("Generate $testFile completed.");
         }
 
         $databasePath = database_path();
@@ -116,6 +118,7 @@ PHP;
                     File::get($testMigrationFile->getPathname())
                 )
             );
+            $this->info("Generate " . $testMigrationFile->getFilename() . " completed.");
         }
 
         $testSeedFiles = File::files($testSeedPath);
@@ -133,6 +136,9 @@ PHP;
                     File::get($testSeedFile->getPathname())
                 )
             );
+            $this->info("Generate " . $testSeedFile->getFilename() . " completed.");
         }
+
+        shell_exec("composer dump-autoload");
     }
 }
