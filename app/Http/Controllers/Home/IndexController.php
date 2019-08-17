@@ -318,11 +318,9 @@ class IndexController extends Controller
     public function feed()
     {
         // 获取文章
-        $article = Cache::remember('feed:article', 10080, function () {
-            return Article::select('id', 'author', 'title', 'description', 'html', 'created_at')
-                ->latest()
-                ->get();
-        });
+        $article = Article::select('id', 'author', 'title', 'description', 'html', 'created_at')
+            ->latest()
+            ->get();
 
         $feed              = App::make('feed');
         $feed->title       = config('app.name');

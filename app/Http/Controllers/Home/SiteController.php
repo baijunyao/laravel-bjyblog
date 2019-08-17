@@ -7,7 +7,6 @@ use App\Http\Requests\Site\Store;
 use App\Models\Site;
 use App\Models\SocialiteUser;
 use App\Notifications\ApplySite;
-use Cache;
 use Illuminate\Http\Request;
 use Notification;
 
@@ -21,12 +20,10 @@ class SiteController extends Controller
     public function index()
     {
         // 获取文章
-        $site = Cache::remember('home:site', 10080, function () {
-            return Site::select('id', 'name', 'url', 'description')
-                ->where('audit', 1)
-                ->orderBy('sort')
-                ->get();
-        });
+        $site = Site::select('id', 'name', 'url', 'description')
+            ->where('audit', 1)
+            ->orderBy('sort')
+            ->get();
         $head = [
             'title'       => '推荐博客',
             'keywords'    => '推荐博客',

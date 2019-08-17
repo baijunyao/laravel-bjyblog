@@ -27,6 +27,7 @@
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.0",
         "fukuball/jieba-php": "~0.25",
+        "genealabs/laravel-model-caching": "^0.6.2",
         "graham-campbell/markdown": "^11.0",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",

@@ -1,6 +1,6 @@
 @extends('layouts.gentelella')
 
-@section('title', '登录')
+@section('title', __('Sign In'))
 
 @section('body')
 
@@ -14,7 +14,7 @@
                     <form action="{{ url('auth/admin/login') }}" method="post">
                         <input class="hidden" type="checkbox" name="remember" checked>
                         {{ csrf_field() }}
-                        <h1>管理后台</h1>
+                        <h1>Admin</h1>
                         <div>
                             <input type="text" class="form-control" placeholder="Email" required="" name="email" value="{{ old('email') }}">
                         </div>
@@ -22,7 +22,7 @@
                             <input type="password" class="form-control" placeholder="Password" required="" name="password">
                         </div>
                         <div>
-                            <button class="btn btn-default submit" type="submit">登录</button>
+                            <button class="btn btn-default submit" type="submit">{{ __('Sign In') }}</button>
                         </div>
 
                         <div class="clearfix"></div>

@@ -108,7 +108,6 @@
                         <p class="b-date">
                             {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">{{ __('Reply') }}</a>
                         </p>
-                        <foreach name="v['child']" item="n">
                         @foreach($v['child'] as $m => $n)
                             <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
                                 <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">

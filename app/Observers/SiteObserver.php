@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use Cache;
 use App\Events\SiteAudit;
 
 class SiteObserver extends BaseObserver
@@ -16,12 +15,5 @@ class SiteObserver extends BaseObserver
             }
             flash_success('修改成功');
         }
-
-        $this->clearCache();
-    }
-
-    protected function clearCache()
-    {
-        Cache::forget('home:site');
     }
 }
