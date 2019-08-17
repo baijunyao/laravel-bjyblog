@@ -118,7 +118,7 @@ PHP;
                     File::get($testMigrationFile->getPathname())
                 )
             );
-            $this->info("Generate " . $testMigrationFile->getFilename() . " completed.");
+            $this->info('Generate ' . $testMigrationFile->getFilename() . ' completed.');
         }
 
         $testSeedFiles = File::files($testSeedPath);
@@ -136,9 +136,9 @@ PHP;
                     File::get($testSeedFile->getPathname())
                 )
             );
-            $this->info("Generate " . $testSeedFile->getFilename() . " completed.");
+            $this->info('Generate ' . $testSeedFile->getFilename() . ' completed.');
         }
 
-        shell_exec("composer dump-autoload");
+        shell_exec('composer dump-autoload');
     }
 }

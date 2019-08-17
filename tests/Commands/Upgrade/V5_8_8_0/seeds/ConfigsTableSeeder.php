@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Commands\Upgrade\V5_8_8_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class ConfigsTableSeeder extends Seeder

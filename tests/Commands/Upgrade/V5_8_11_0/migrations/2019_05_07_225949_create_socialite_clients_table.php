@@ -1,9 +1,9 @@
 <?php
 
 namespace Tests\Commands\Upgrade\V5_8_11_0\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 class CreateSocialiteClientsTable extends Migration
 {

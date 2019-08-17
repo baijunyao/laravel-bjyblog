@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Commands\Upgrade\V5_8_8_0\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 

@@ -3,7 +3,6 @@
 namespace Tests\Commands\Upgrade\V5_8_8_0;
 
 use Artisan;
-use DB;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {

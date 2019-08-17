@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Commands\Upgrade\V5_8_11_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class SocialiteClientsTableSeeder extends Seeder
