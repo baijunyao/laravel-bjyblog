@@ -11,8 +11,6 @@ class ConsolesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('consoles')->truncate();
-
         \DB::table('consoles')->insert([
             [
                 'id'         => 1,

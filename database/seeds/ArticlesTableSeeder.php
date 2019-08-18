@@ -11,7 +11,6 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('articles')->truncate();
         $title = '写给 thinkphp 开发者的 laravel 系列教程 (一) 序言';
         DB::table('articles')->insert([
             [

@@ -11,7 +11,6 @@ class GitProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('git_projects')->truncate();
         DB::table('git_projects')->insert([
             [
                 'id'         => 1,

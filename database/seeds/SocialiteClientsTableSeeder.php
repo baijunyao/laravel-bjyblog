@@ -11,7 +11,6 @@ class SocialiteClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('socialite_clients')->truncate();
         DB::table('socialite_clients')->insert([
             [
                 'id'            => 1,
