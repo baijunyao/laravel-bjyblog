@@ -39,13 +39,13 @@ class V5_8_7_0 extends Command
      */
     public function handle()
     {
-        Schema::drop('notes');
+        Schema::dropIfExists('notes');
         Schema::rename('chats', 'notes');
 
-        $chat = Nav::where('url', 'chat')->first();
+        $nav = Nav::where('url', 'chat')->first();
 
-        if ($chat !== null) {
-            $chat->update([
+        if ($nav !== null) {
+            $nav->update([
                 'url' => 'note',
             ]);
         }

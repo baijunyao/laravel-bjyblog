@@ -39,8 +39,8 @@ class V5_8_6_0 extends Command
      */
     public function handle()
     {
-        Schema::drop('socialite_users');
-        Schema::drop('socialite_clients');
+        Schema::dropIfExists('socialite_users');
+        Schema::dropIfExists('socialite_clients');
 
         Schema::table('comments', function (Blueprint $table) {
             $table->renameColumn('oauth_user_id', 'socialite_user_id');
