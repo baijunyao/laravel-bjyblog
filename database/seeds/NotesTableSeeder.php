@@ -11,6 +11,7 @@ class NotesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('notes')->truncate();
         DB::table('notes')->insert([
             [
                 'id'         => 1,

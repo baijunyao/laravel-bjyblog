@@ -11,6 +11,7 @@ class FriendshipLinksTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('friendship_links')->truncate();
         DB::table('friendship_links')->insert([
             [
                 'id'         => 1,

@@ -11,6 +11,7 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('tags')->truncate();
         DB::table('tags')->insert([
             [
                 'id'         => 1,

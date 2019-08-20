@@ -11,6 +11,7 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('comments')->truncate();
         DB::table('comments')->insert([
             [
                 'id'                => 1,

@@ -11,6 +11,7 @@ class NavsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('navs')->truncate();
         DB::table('navs')->insert([
             [
                 'id'         => 1,
