@@ -979,6 +979,8 @@ a {
                 width: 100%;
                 line-height: 21px;
                 text-align: right;
+                word-break: keep-all;
+                word-wrap: break-word;
             }
         }
 
