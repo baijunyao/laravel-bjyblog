@@ -918,6 +918,8 @@ a {
                 .b-content-col {
                     .b-content {
                         overflow: hidden;
+                        word-break: keep-all;
+                        word-wrap: break-word;
 
                         .b-reply-name, .user-name {
                             color: #ee542a;
