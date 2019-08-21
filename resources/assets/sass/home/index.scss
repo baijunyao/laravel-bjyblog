@@ -562,6 +562,11 @@ a {
             }
         }
 
+        .b-des-read {
+            word-break: keep-all;
+            word-wrap: break-word;
+        }
+
         .b-style1 {
             img {
                 -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -670,6 +675,8 @@ a {
             }
 
             .js-content {
+                word-break: keep-all;
+                word-wrap: break-word;
                 ul li {
                     list-style: disc;
                     margin: 0 15px
