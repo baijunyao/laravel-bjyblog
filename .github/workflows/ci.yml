@@ -1,0 +1,36 @@
+name: CI
+
+on: [push]
+
+jobs:
+  phpunit:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: baijunyao/mysql
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:local
+      volumes:
+        - .:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Copy env
+        run: |
+          cp .env.actions .env
+      - name: Compose
+        uses: pxgamer/composer-action@master
+        with:
+          command: install --optimize-autoloader --prefer-dist
+      - name: Migrate and Seed
+        run: |
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
