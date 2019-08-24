@@ -2802,16 +2802,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.32",
+            "version": "v5.8.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ee16d719516dfd77ed6c9538000bca49ded284e2"
+                "reference": "58b81842cbdcfbbd8302790ac0f98119ea1c56e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ee16d719516dfd77ed6c9538000bca49ded284e2",
-                "reference": "ee16d719516dfd77ed6c9538000bca49ded284e2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/58b81842cbdcfbbd8302790ac0f98119ea1c56e5",
+                "reference": "58b81842cbdcfbbd8302790ac0f98119ea1c56e5",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2951,20 +2951,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-08-13T14:11:52+00:00"
+            "time": "2019-08-20T15:45:17+00:00"
         },
         {
             "name": "laravel/passport",
-            "version": "v7.3.5",
+            "version": "v7.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "57937b08dc8e444b4756782a5ba172b5ba54d4f5"
+                "reference": "4460bd1fb5d913d75e547caf02a5a19c6d77794d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/57937b08dc8e444b4756782a5ba172b5ba54d4f5",
-                "reference": "57937b08dc8e444b4756782a5ba172b5ba54d4f5",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/4460bd1fb5d913d75e547caf02a5a19c6d77794d",
+                "reference": "4460bd1fb5d913d75e547caf02a5a19c6d77794d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2981,6 +2981,7 @@
                 "illuminate/console": "~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "illuminate/container": "~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "illuminate/contracts": "~5.6.0|~5.7.0|~5.8.0|^6.0",
+                "illuminate/cookie": "~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "illuminate/encryption": "~5.6.0|~5.7.0|~5.8.0|^6.0",
                 "illuminate/http": "~5.6.0|~5.7.0|~5.8.0|^6.0",
@@ -3027,7 +3028,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2019-08-06T18:10:19+00:00"
+            "time": "2019-08-20T18:10:43+00:00"
         },
         {
             "name": "laravel/scout",
@@ -3574,16 +3575,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.53",
+            "version": "1.0.54",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "08e12b7628f035600634a5e76d95b5eb66cea674"
+                "reference": "c681ed22508947a941f113d6cf51bdcf4b84faf9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/08e12b7628f035600634a5e76d95b5eb66cea674",
-                "reference": "08e12b7628f035600634a5e76d95b5eb66cea674",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c681ed22508947a941f113d6cf51bdcf4b84faf9",
+                "reference": "c681ed22508947a941f113d6cf51bdcf4b84faf9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3660,7 +3661,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-06-18T20:09:29+00:00"
+            "time": "2019-08-23T21:50:05+00:00"
         },
         {
             "name": "league/html-to-markdown",
@@ -4163,16 +4164,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.23.0",
+            "version": "2.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "97a08830a22ce0b69549a4966773c0eae900468d"
+                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/97a08830a22ce0b69549a4966773c0eae900468d",
-                "reference": "97a08830a22ce0b69549a4966773c0eae900468d",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/767617a047e5b8b8b3b0b6023a2650847ed7df02",
+                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4232,7 +4233,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-08-12T17:19:41+00:00"
+            "time": "2019-08-17T13:57:34+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -7188,16 +7189,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "8e27e6c5fcf6f01fc2e5235dd14cc0b2b347d793"
+                "reference": "646f6ada8b89a08063e31f54ed6d260bd6879239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/8e27e6c5fcf6f01fc2e5235dd14cc0b2b347d793",
-                "reference": "8e27e6c5fcf6f01fc2e5235dd14cc0b2b347d793",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/646f6ada8b89a08063e31f54ed6d260bd6879239",
+                "reference": "646f6ada8b89a08063e31f54ed6d260bd6879239",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7232,12 +7233,12 @@
                 "phpstan/phpstan": "^0.10.3",
                 "phpstan/phpstan-phpunit": "^0.10",
                 "phpunit/phpunit": "^7.0",
-                "symfony/phpunit-bridge": "^4.1.6"
+                "symfony/phpunit-bridge": "^4.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -7269,20 +7270,20 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-06-13T11:27:23+00:00"
+            "time": "2019-08-22T07:37:30+00:00"
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "1e5f644b62ee73424ad8316e37b9a2dcf7290de8"
+                "reference": "86b4549d8c388c5237bcfdd2eb99673d4c645ff9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1e5f644b62ee73424ad8316e37b9a2dcf7290de8",
-                "reference": "1e5f644b62ee73424ad8316e37b9a2dcf7290de8",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/86b4549d8c388c5237bcfdd2eb99673d4c645ff9",
+                "reference": "86b4549d8c388c5237bcfdd2eb99673d4c645ff9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7343,7 +7344,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-07-04T10:36:53+00:00"
+            "time": "2019-08-23T07:11:58+00:00"
         },
         {
             "name": "socialiteproviders/facebook",
@@ -7621,16 +7622,16 @@
         },
         {
             "name": "spatie/db-dumper",
-            "version": "2.14.0",
+            "version": "2.14.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/db-dumper.git",
-                "reference": "eec21c55012b02fb8453c9929fa1c3150ca184ac"
+                "reference": "0ea605041373dce22cd0a387bca598050c7d033b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/eec21c55012b02fb8453c9929fa1c3150ca184ac",
-                "reference": "eec21c55012b02fb8453c9929fa1c3150ca184ac",
+                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/0ea605041373dce22cd0a387bca598050c7d033b",
+                "reference": "0ea605041373dce22cd0a387bca598050c7d033b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7640,7 +7641,7 @@
                 ]
             },
             "require": {
-                "php": "^7.1",
+                "php": "^7.2",
                 "symfony/process": "^4.2"
             },
             "require-dev": {
@@ -7659,9 +7660,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
+                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
+                    "homepage": "https://spatie.be"
                 }
             ],
             "description": "Dump databases",
@@ -7673,7 +7674,7 @@
                 "mysqldump",
                 "spatie"
             ],
-            "time": "2019-04-17T07:03:19+00:00"
+            "time": "2019-08-21T16:39:54+00:00"
         },
         {
             "name": "spatie/laravel-backup",
