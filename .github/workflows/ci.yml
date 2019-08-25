@@ -34,3 +34,17 @@ jobs:
       - name: Test
         run: |
           ./vendor/bin/phpunit
+      - name: Slack Success Notify
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"CEWJP77BP\",\"text\":\"PHPUnit Success\"}'
+      - name: Slack Failure Notify
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"CEWJP77BP\",\"text\":\"PHPUnit Failure\"}'
