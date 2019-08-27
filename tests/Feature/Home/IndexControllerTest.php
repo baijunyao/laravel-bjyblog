@@ -4,6 +4,7 @@ namespace Tests\Feature\Home;
 
 use App\Jobs\SendCommentEmail;
 use App\Models\Comment;
+use App\Models\SocialiteUser;
 use Bus;
 
 class IndexControllerTest extends TestCase
@@ -18,14 +19,29 @@ class IndexControllerTest extends TestCase
         $this->get('/article/1')->assertStatus(200);
     }
 
+    public function testArticleNotFound()
+    {
+        $this->get('/article/100')->assertNotFound();
+    }
+
     public function testCategory()
     {
         $this->get('/category/1')->assertStatus(200);
     }
 
+    public function testCategoryNotFound()
+    {
+        $this->get('/category/100')->assertNotFound();
+    }
+
     public function testTag()
     {
         $this->get('/tag/1')->assertStatus(200);
+    }
+
+    public function testTagNotFound()
+    {
+        $this->get('/tag/100')->assertNotFound();
     }
 
     public function testChat()
@@ -52,6 +68,7 @@ class IndexControllerTest extends TestCase
         ]);
 
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
+        $email   = 'comment@test.com';
         $comment = [
             'article_id' => 1,
             'pid'        => 1,
@@ -65,12 +82,15 @@ class IndexControllerTest extends TestCase
         $this->loginByUserId(1)
             ->post('/comment', $comment + [
                 'content' => $content,
+                'email'   => $email,
             ])
             ->assertStatus(200);
 
         $this->assertDatabaseHas('comments', $comment + [
             'content' => (new Comment())->imageToUbb($content),
         ]);
+
+        static::assertEquals($email, SocialiteUser::where('id', 1)->value('email'));
 
         Bus::assertDispatched(SendCommentEmail::class, function ($job) {
             return $job->content['type'] === '评论';
@@ -177,6 +197,13 @@ class IndexControllerTest extends TestCase
     public function testSearch()
     {
         $this->get('/search?wd=laravel')->assertOk();
+    }
+
+    public function testSearchForRobot()
+    {
+        $this->get('/search?wd=laravel', [
+            'user-agent' => 'Mozilla/5.0 (Linux;u;Android 4.2.2;zh-cn;) AppleWebKit/534.46 (KHTML,like Gecko) Version/5.1 Mobile Safari/10600.6.3 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+        ])->assertNotFound();
     }
 
     public function testFeed()
