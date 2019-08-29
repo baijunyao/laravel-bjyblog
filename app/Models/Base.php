@@ -43,32 +43,38 @@ class Base extends Model
         if (empty($multipleData)) {
             return false;
         }
+
         // 获取表名
         $tableName       = config('database.connections.mysql.prefix') . $this->getTable();
         $updateColumn    = array_keys($multipleData[0]);
         $referenceColumn = $updateColumn[0];
+
         unset($updateColumn[0]);
+
         $whereIn = '';
         // 组合sql语句
         $sql = 'UPDATE ' . $tableName . ' SET ';
+
         foreach ($updateColumn as $uColumn) {
             $sql .= $uColumn . ' = CASE ';
+
             foreach ($multipleData as $data) {
                 $sql .= 'WHEN ' . $referenceColumn . " = '" . $data[$referenceColumn] . "' THEN '" . $data[$uColumn] . "' ";
             }
+
             $sql .= 'ELSE ' . $uColumn . ' END, ';
         }
+
         foreach ($multipleData as $data) {
             $whereIn .= "'" . $data[$referenceColumn] . "', ";
         }
+
         $sql = rtrim($sql, ', ') . ' WHERE ' . $referenceColumn . ' IN (' . rtrim($whereIn, ', ') . ')';
+
         // 更新
         $result = DB::update(DB::raw($sql));
-        if ($result) {
-            flash_success('操作成功', $flash);
-        } else {
-            flash_error('操作失败', $flash);
-        }
+
+        $result ? flash_success('操作成功', $flash) : flash_error('操作失败', $flash);
 
         return $result;
     }
