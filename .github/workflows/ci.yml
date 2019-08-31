@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   phpunit:
@@ -18,15 +18,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Copy env
+      - name: Initial
         run: |
           cp .env.actions .env
-      - name: Compose
-        uses: pxgamer/composer-action@master
-        with:
-          command: install --optimize-autoloader --prefer-dist
-      - name: Migrate and Seed
-        run: |
+          composer install
           php artisan key:generate
           php artisan passport:keys
           php artisan migrate
@@ -34,3 +29,17 @@ jobs:
       - name: Test
         run: |
           ./vendor/bin/phpunit
+      - name: Slack Success Notify
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"CEWJP77BP\",\"text\":\"PHPUnit Success\"}'
+      - name: Slack Failure Notify
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"CEWJP77BP\",\"text\":\"PHPUnit Failure\"}'
