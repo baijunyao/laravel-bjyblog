@@ -11,6 +11,10 @@ services:
     volumes:
       - mysql:/var/lib/mysql
 
+  redis:
+    image: redis:5
+    container_name: laravel-bjyblog-redis
+
   nginx:
     image: baijunyao/nginx
     container_name: laravel-bjyblog-nginx
