@@ -13,7 +13,7 @@
 	$user = getenv('DEPLOY_USER');
 	$path = getenv('DEPLOY_PATH');
 	$branch = getenv('DEPLOY_BRANCH');
-	if ( substr($path, 0, 1) !== '/' ) throw new Exception('path 必须是绝对路径');
+	if ( substr($path, 0, 1) !== '/' ) throw new Exception('Must be an absolute path');
 	$path = rtrim($path, '/');
 @endsetup
 
