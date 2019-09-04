@@ -99,7 +99,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function sort(Request  $request, Category $categoryModel)
+    public function sort(Request $request, Category $categoryModel)
     {
         $data     = $request->except('_token');
         $sortData = [];
