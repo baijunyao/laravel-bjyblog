@@ -105,7 +105,7 @@ PHP;
                     "<?php\n",
                     ' Schema',
                 ], [
-                    "    ",
+                    '    ',
                     "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n",
                     ' \\Schema',
                 ],
@@ -125,7 +125,7 @@ PHP;
                     "<?php\n",
                     ' DB',
                 ], [
-                    "    ",
+                    '    ',
                     "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n",
                     ' \\DB',
                 ],
