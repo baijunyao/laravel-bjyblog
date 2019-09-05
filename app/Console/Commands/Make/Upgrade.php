@@ -101,10 +101,12 @@ PHP;
             File::put(
                 $testMigrationFile->getPathname(),
                 str_replace([
+                    "\t",
                     "<?php\n",
                     ' Schema',
                 ], [
-                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;",
+                    "    ",
+                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n",
                     ' \\Schema',
                 ],
                     File::get($testMigrationFile->getPathname())
@@ -119,10 +121,12 @@ PHP;
             File::put(
                 $testSeedFile->getPathname(),
                 str_replace([
+                    "\t",
                     "<?php\n",
                     ' DB',
                 ], [
-                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;",
+                    "    ",
+                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n",
                     ' \\DB',
                 ],
                     File::get($testSeedFile->getPathname())
