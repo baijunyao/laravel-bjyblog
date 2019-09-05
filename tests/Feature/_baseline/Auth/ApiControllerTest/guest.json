@@ -8,12 +8,6 @@
         "content-type": [
             "application\/json"
         ],
-        "x-ratelimit-limit": [
-            60
-        ],
-        "x-ratelimit-remaining": [
-            59
-        ],
         "set-cookie": "set-cookie_ignore"
     },
     "content": {
