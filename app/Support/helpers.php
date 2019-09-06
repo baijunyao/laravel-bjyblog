@@ -354,3 +354,22 @@ if (!function_exists('cdn_url')) {
         return URL::assetFrom(config('bjyblog.cdn_domain'), $path);
     }
 }
+
+if (!function_exists('database_table_exists')) {
+    /**
+     * Generate a url for the CDN.
+     *
+     * @param $table
+     *
+     * @return bool
+     */
+    function database_table_exists($table)
+    {
+        return ! empty(
+            DB::select(
+                "SHOW TABLES LIKE '" . DB::getTablePrefix() . $table . "'"
+            )
+        );
+
+    }
+}
