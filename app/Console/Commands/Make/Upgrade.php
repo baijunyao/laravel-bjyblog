@@ -88,16 +88,8 @@ PHP;
 
         $databasePath = database_path();
         File::deleteDirectory($databasePath, true);
-        $versions = explode($version, shell_exec('git tag --sort=-v:refname'));
 
-        $versions        = count($versions) === 2 ? $versions[1] : $versions[0];
-        $PreviousVersion = collect(explode("\n", trim($versions)))->filter(function ($version) {
-            $versionArray = explode('.', $version);
-
-            return isset($versionArray[3]) && $versionArray[3] === '0';
-        })->first();
-
-        shell_exec("git checkout $PreviousVersion -- $databasePath");
+        shell_exec("git checkout $version -- $databasePath");
         $testMigrationPath = $testPath . 'migrations';
         $testSeedPath      = $testPath . 'seeds';
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
@@ -109,10 +101,12 @@ PHP;
             File::put(
                 $testMigrationFile->getPathname(),
                 str_replace([
+                    "\t",
                     "<?php\n",
                     ' Schema',
                 ], [
-                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;",
+                    '    ',
+                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n",
                     ' \\Schema',
                 ],
                     File::get($testMigrationFile->getPathname())
@@ -127,10 +121,12 @@ PHP;
             File::put(
                 $testSeedFile->getPathname(),
                 str_replace([
+                    "\t",
                     "<?php\n",
                     ' DB',
                 ], [
-                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;",
+                    '    ',
+                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n",
                     ' \\DB',
                 ],
                     File::get($testSeedFile->getPathname())
