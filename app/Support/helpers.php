@@ -373,3 +373,20 @@ if (!function_exists('database_table_exists')) {
 
     }
 }
+
+if (!function_exists('column_in_database_table')) {
+    /**
+     * Generate a url for the CDN.
+     *
+     * @param $table
+     *
+     * @return bool
+     */
+    function column_in_database_table($table, $column)
+    {
+        $tablePrefix = DB::getTablePrefix();
+        $columns   = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}{$table}"))->pluck('Field');
+
+        return $columns->contains($column);
+    }
+}
