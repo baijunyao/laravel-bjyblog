@@ -6,7 +6,6 @@
 
 @section('content')
 
-
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
             <a href="{{ url('admin/site/index') }}">{{ __('Recommend Blog List') }}</a>

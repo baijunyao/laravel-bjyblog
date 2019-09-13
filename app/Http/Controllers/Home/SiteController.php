@@ -18,9 +18,9 @@ class SiteController extends Controller
             ->orderBy('sort')
             ->get();
         $head = [
-            'title'       => '推荐博客',
-            'keywords'    => '推荐博客',
-            'description' => '推荐博客',
+            'title'       => __('Recommend Blog'),
+            'keywords'    => __('Recommend Blog'),
+            'description' => __('Recommend Blog'),
         ];
         $assign = [
             'site'        => $site,

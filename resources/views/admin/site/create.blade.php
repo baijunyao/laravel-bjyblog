@@ -42,6 +42,13 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ __('Approve') }}</th>
+                <td>
+                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="audit" value="1" checked="checked"> &emsp;&emsp;
+                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="audit" value="0">
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">

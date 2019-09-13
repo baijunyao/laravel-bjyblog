@@ -108,7 +108,6 @@
                     {{ __('No') }} <input class="bjy-icheck" type="radio" name="is_top" value="0" @if($article->is_top === 0) checked @endif>
                 </td>
             </tr>
-
             <tr>
                 <th></th>
                 <td>
