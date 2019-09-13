@@ -42,26 +42,26 @@
                     <form class="form-horizontal" role="form" action="{{ url('site/store') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name" class="col-sm-2 control-label">{{ __('Site Name') }}</label>
-                            <div class="col-sm-10">
+                            <label for="name" class="col-sm-3 control-label">{{ __('Site Name') }}</label>
+                            <div class="col-sm-9">
                                 <input type="text" class="form-control" name="name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="url" class="col-sm-2 control-label">{{ __('URL') }}</label>
-                            <div class="col-sm-10">
+                            <label for="url" class="col-sm-3 control-label">{{ __('URL') }}</label>
+                            <div class="col-sm-9">
                                 <input type="text" class="form-control" name="url">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="description" class="col-sm-2 control-label">{{ __('Description') }}</label>
-                            <div class="col-sm-10">
+                            <label for="description" class="col-sm-3 control-label">{{ __('Description') }}</label>
+                            <div class="col-sm-9">
                                 <input type="text" class="form-control" name="description">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="col-sm-2 control-label">{{ __('Email') }}</label>
-                            <div class="col-sm-10">
+                            <label for="email" class="col-sm-3 control-label">{{ __('Email') }}</label>
+                            <div class="col-sm-9">
                                 <input type="text" class="form-control" name="email" placeholder="{{ __('Notification Email') }}">
                             </div>
                         </div>
