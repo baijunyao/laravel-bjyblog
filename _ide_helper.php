@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.35 on 2019-09-07 07:46:39.
+ * Generated for Laravel 5.8.35 on 2019-09-13 21:19:30.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15589,7 +15589,7 @@ namespace Laravelium\Feed {
      * Feed generator class for laravel-feed package.
      *
      * @author Roumen Damianoff <roumen@damianoff.com>
-     * @version 3.1
+     * @version 6.0.1
      * @link https://laravelium.com
      * @license http://opensource.org/licenses/mit-license.php MIT License
      */ 
