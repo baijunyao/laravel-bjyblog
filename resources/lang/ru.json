@@ -231,9 +231,9 @@
     "Please log in first.": "Пожалуйста сначала войдите",
     "Submitted successfully, waiting for approve.": "Отправлено успешно, ожидайте подтверждения",
 
-    "Success": "успех",
-    "Fail": "потерпеть поражение",
-    "Apply": "применять",
+    "Success": "Успешно",
+    "Fail": "Неудачно",
+    "Apply": "Применить",
     "URL": "URL",
     "Site Name": "Название сайта",
     "Please add a friendly link to this site": "Пожалуйста, добавьте дружественную ссылку на этот сайт"
