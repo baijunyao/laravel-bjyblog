@@ -129,4 +129,19 @@ class NavController extends Controller
 
         return redirect('admin/nav/index');
     }
+
+    public function sort(Request $request, Nav $navModel)
+    {
+        $data     = $request->except('_token');
+        $sortData = [];
+        foreach ($data as $k => $v) {
+            $sortData[] = [
+                'id'   => $k,
+                'sort' => $v,
+            ];
+        }
+        $navModel->updateBatch($sortData);
+
+        return redirect()->back();
+    }
 }
