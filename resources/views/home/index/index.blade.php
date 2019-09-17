@@ -53,7 +53,7 @@
                         <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs b-oa-thumbnail">
                             <figure class="b-oa-pic b-style1">
                                 <a href="{{ $v->url }}" target="_blank">
-                                    <img class="bjy-lazyload" src="{{ cdn_url('/images/home/loading.gif') }}" data-src="{{ config('bjyblog.cdn_domain') . $v->cover }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
+                                    <img class="bjy-lazyload" src="{{ cdn_url('/images/home/loading.gif') }}" data-src="{{ cdn_url($v->cover)  }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
                                 </a>
                                 <figcaption>
                                     <a href="{{ url('article', [$v->id]) }}" target="_blank"></a>
