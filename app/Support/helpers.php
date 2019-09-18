@@ -357,7 +357,7 @@ if (!function_exists('cdn_url')) {
 
 if (!function_exists('database_table_exists')) {
     /**
-     * Generate a url for the CDN.
+     * Is there a table in the database?
      *
      * @param $table
      *
@@ -365,27 +365,27 @@ if (!function_exists('database_table_exists')) {
      */
     function database_table_exists($table)
     {
-        return ! empty(
+        return !empty(
             DB::select(
                 "SHOW TABLES LIKE '" . DB::getTablePrefix() . $table . "'"
             )
         );
-
     }
 }
 
 if (!function_exists('column_in_database_table')) {
     /**
-     * Generate a url for the CDN.
+     * Is there a column in the database table?
      *
      * @param $table
+     * @param mixed $column
      *
      * @return bool
      */
     function column_in_database_table($table, $column)
     {
         $tablePrefix = DB::getTablePrefix();
-        $columns   = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}{$table}"))->pluck('Field');
+        $columns     = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}{$table}"))->pluck('Field');
 
         return $columns->contains($column);
     }
