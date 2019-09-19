@@ -86,14 +86,25 @@ PHP;
             $this->info("Generate $testFile completed.");
         }
 
-        $databasePath = database_path();
+        $databasePath = 'database/';
         File::deleteDirectory($databasePath, true);
 
-        shell_exec("git checkout $version -- $databasePath");
+        shell_exec("git checkout $version -- $databasePath/migrations");
         $testMigrationPath = $testPath . 'migrations';
-        $testSeedPath      = $testPath . 'seeds';
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
+
+        $versions        = explode($version, shell_exec('git tag --sort=-v:refname'));
+        $versions        = count($versions) === 2 ? $versions[1] : $versions[0];
+        $PreviousVersion = collect(explode("\n", trim($versions)))->filter(function ($version) {
+            $versionArray = explode('.', $version);
+
+            return isset($versionArray[3]) && $versionArray[3] === '0';
+        })->first();
+        shell_exec("git checkout $PreviousVersion -- $databasePath/seeds");
+        $testSeedPath = $testPath . 'seeds';
         File::moveDirectory(database_path('seeds'), $testSeedPath, true);
+
+        File::deleteDirectory($databasePath, true);
         shell_exec("git checkout develop -- $databasePath");
         $testMigrationFiles = File::files($testMigrationPath);
 
