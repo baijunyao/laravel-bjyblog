@@ -3,7 +3,7 @@
 namespace App\Console\Commands\Upgrade;
 
 use App\Models\Config;
-use App\Models\OauthClient;
+use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -45,7 +45,7 @@ class V5_8_2_0 extends Command
             120, 126, 133, 134, 139, 140,
         ])->get()->keyBy('id');
 
-        OauthClient::insert([
+        DB::table('oauth_clients')->insert([
             [
                 'id'            => 1,
                 'name'          => 'qq',
