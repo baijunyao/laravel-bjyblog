@@ -12,7 +12,7 @@ abstract class TestCase extends \Tests\Commands\TestCase
         parent::setUp();
 
         $this->dropAllTables();
-        preg_match('/V(\d+_){3}\d+/', static::class, $version);
+        preg_match('/V(\d+_){2,}\d+/', static::class, $version);
 
         // Migration
         $this->app['migration.repository']->createRepository();
