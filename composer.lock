@@ -472,16 +472,16 @@
         },
         {
             "name": "baijunyao/laravel-scout-elasticsearch",
-            "version": "v3.0.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-scout-elasticsearch.git",
-                "reference": "6dd687c3e8275a7dc636bd1cd5ae634008703bed"
+                "reference": "4d9de345d92f9a80e1e5213d17a40d62dc0a4525"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-scout-elasticsearch/zipball/6dd687c3e8275a7dc636bd1cd5ae634008703bed",
-                "reference": "6dd687c3e8275a7dc636bd1cd5ae634008703bed",
+                "url": "https://api.github.com/repos/baijunyao/laravel-scout-elasticsearch/zipball/4d9de345d92f9a80e1e5213d17a40d62dc0a4525",
+                "reference": "4d9de345d92f9a80e1e5213d17a40d62dc0a4525",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -523,7 +523,7 @@
                 "laravel",
                 "scout"
             ],
-            "time": "2019-09-11T14:24:59+00:00"
+            "time": "2019-09-24T14:56:05+00:00"
         },
         {
             "name": "baijunyao/laravel-test-support",
