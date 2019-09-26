@@ -76,10 +76,11 @@
     "ICP": "ICP",
     "Structure": "Структура",
 
-    "Branch": "Ветка",
+    "Framework Version": "Версия Framework",
+    "Blog Version": "Версия блога",
     "Project Author": "Автор проекта",
     "Theme Author": "Автор темы",
-    "Junyao Bai": "Цзюняо Бай",
+    "Junyao Bai": "Junyao Bai",
 
     "Counts": "Счетчики",
     "Article Counts": "Количество статей",
