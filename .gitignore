@@ -17,6 +17,7 @@ yarn-error.log
 phpunit.dusk.xml
 public/favicon.ico
 docs
+public/sitemap.xml
 public/baidu*
 public/google*
 public/fileauth*
