@@ -31,8 +31,10 @@
         "graham-campbell/markdown": "^11.0",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
+        "laravel/framework": "^6.0",
         "laravel/passport": "^7.3",
         "laravel/socialite": "^4.1",
+        "laravel/tinker": "^1.0",
         "laravelium/feed": "6.0.*",
         "league/commonmark-ext-table": "^2.0",
         "league/html-to-markdown": "^4.6",
@@ -44,9 +46,8 @@
         "socialiteproviders/vkontakte": "^4.0",
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.3",
-        "stichoza/google-translate-php": "^4.0",
-        "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0"
+        "spatie/laravel-sitemap": "^5.5",
+        "stichoza/google-translate-php": "^4.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.4",

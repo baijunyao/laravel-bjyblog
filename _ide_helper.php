@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.0.3 on 2019-09-21 00:04:45.
+ * Generated for Laravel 6.0.4 on 2019-09-29 00:02:09.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3406,6 +3406,35 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Get a lock instance.
+         *
+         * @param string $name
+         * @param int $seconds
+         * @param string|null $owner
+         * @return \Illuminate\Contracts\Cache\Lock 
+         * @static 
+         */ 
+        public static function lock($name, $seconds = 0, $owner = null)
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->lock($name, $seconds, $owner);
+        }
+        
+        /**
+         * Restore a lock instance using the owner identifier.
+         *
+         * @param string $name
+         * @param string $owner
+         * @return \Illuminate\Contracts\Cache\Lock 
+         * @static 
+         */ 
+        public static function restoreLock($name, $owner)
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->restoreLock($name, $owner);
+        }
+        
+        /**
          * Remove all items from the cache.
          *
          * @return bool 
@@ -3413,32 +3442,45 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function flush()
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->flush();
         }
         
         /**
-         * Get the Filesystem instance.
+         * Get the Redis connection instance.
          *
-         * @return \Illuminate\Filesystem\Filesystem 
+         * @return \Illuminate\Redis\Connections\Connection 
          * @static 
          */ 
-        public static function getFilesystem()
+        public static function connection()
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getFilesystem();
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->connection();
         }
         
         /**
-         * Get the working directory of the cache.
+         * Set the connection name to be used.
          *
-         * @return string 
+         * @param string $connection
+         * @return void 
          * @static 
          */ 
-        public static function getDirectory()
+        public static function setConnection($connection)
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getDirectory();
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        $instance->setConnection($connection);
+        }
+        
+        /**
+         * Get the Redis database instance.
+         *
+         * @return \Illuminate\Contracts\Redis\Factory 
+         * @static 
+         */ 
+        public static function getRedis()
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        return $instance->getRedis();
         }
         
         /**
@@ -3449,8 +3491,21 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+                        /** @var \Illuminate\Cache\RedisStore $instance */
                         return $instance->getPrefix();
+        }
+        
+        /**
+         * Set the cache key prefix.
+         *
+         * @param string $prefix
+         * @return void 
+         * @static 
+         */ 
+        public static function setPrefix($prefix)
+        {
+                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        $instance->setPrefix($prefix);
         }
          
     }
@@ -8211,6 +8266,8 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
+     * @see \Illuminate\Redis\RedisManager
+     * @see \Illuminate\Contracts\Redis\Factory
      */ 
     class Redis {
         
@@ -12987,7 +13044,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param string $path
          * @return resource|null The path resource or null on failure.
-         * @throws FileNotFoundException
+         * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
          * @static 
          */ 
         public static function readStream($path)
@@ -13004,7 +13061,7 @@ namespace Illuminate\Support\Facades {
          * @param array $options
          * @return bool 
          * @throws \InvalidArgumentException If $resource is not a file handle.
-         * @throws FileExistsException
+         * @throws \Illuminate\Contracts\Filesystem\FileExistsException
          * @static 
          */ 
         public static function writeStream($path, $resource, $options = array())
@@ -15104,6 +15161,17 @@ namespace Facade\Ignition\Facades {
          *
          * @static 
          */ 
+        public static function reportMessage($message, $logLevel, $callback = null)
+        {
+                        /** @var \Facade\FlareClient\Flare $instance */
+                        return $instance->reportMessage($message, $logLevel, $callback);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
         public static function sendTestReport($throwable)
         {
                         /** @var \Facade\FlareClient\Flare $instance */
@@ -15141,6 +15209,17 @@ namespace Facade\Ignition\Facades {
         {
                         /** @var \Facade\FlareClient\Flare $instance */
                         return $instance->createReport($throwable);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function createReportFromMessage($message, $logLevel)
+        {
+                        /** @var \Facade\FlareClient\Flare $instance */
+                        return $instance->createReportFromMessage($message, $logLevel);
         }
         
         /**
@@ -16020,7 +16099,9 @@ namespace Sentry\Laravel {
         /**
          * Returns the current global Hub.
          *
-         * @return self 
+         * @return \Sentry\State\HubInterface 
+         * @deprecated since version 2.2, to be removed in 3.0
+         * @see SentrySdk::getCurrentHub()
          * @static 
          */ 
         public static function getCurrent()
@@ -16031,8 +16112,10 @@ namespace Sentry\Laravel {
         /**
          * Sets the Hub as the current.
          *
-         * @param self $hub The Hub that will become the current one
-         * @return self 
+         * @param \Sentry\State\HubInterface $hub The Hub that will become the current one
+         * @return \Sentry\State\HubInterface 
+         * @deprecated since version 2.2, to be removed in 3.0
+         * @see SentrySdk::setCurrentHub()
          * @static 
          */ 
         public static function setCurrent($hub)
@@ -16686,6 +16769,43 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->getMacro($name);
+            }
+         
+            /**
+             * Checks if a macro is registered.
+             *
+             * @param string $name
+             * @return bool 
+             * @static 
+             */ 
+            public static function hasMacro($name)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->hasMacro($name);
+            }
+         
+            /**
+             * Get the given global macro by name.
+             *
+             * @param string $name
+             * @return \Closure 
+             * @static 
+             */ 
+            public static function getGlobalMacro($name)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::getGlobalMacro($name);
+            }
+         
+            /**
+             * Checks if a global macro is registered.
+             *
+             * @param string $name
+             * @return bool 
+             * @static 
+             */ 
+            public static function hasGlobalMacro($name)
+            {
+                                return \Illuminate\Database\Eloquent\Builder::hasGlobalMacro($name);
             }
          
             /**
@@ -17568,15 +17688,15 @@ namespace  {
             /**
              * Add a "where not null" clause to the query.
              *
-             * @param string $column
+             * @param string|array $columns
              * @param string $boolean
              * @return \Illuminate\Database\Query\Builder|static 
              * @static 
              */ 
-            public static function whereNotNull($column, $boolean = 'and')
+            public static function whereNotNull($columns, $boolean = 'and')
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->whereNotNull($column, $boolean);
+                                return $instance->whereNotNull($columns, $boolean);
             }
          
             /**
@@ -18799,18 +18919,6 @@ namespace  {
             }
          
             /**
-             * Checks if macro is registered.
-             *
-             * @param string $name
-             * @return bool 
-             * @static 
-             */ 
-            public static function hasMacro($name)
-            {
-                                return \Illuminate\Database\Query\Builder::hasMacro($name);
-            }
-         
-            /**
              * Dynamically handle calls to the class.
              *
              * @param string $method
@@ -18848,7 +18956,7 @@ namespace  {
 
     class Redirect extends \Illuminate\Support\Facades\Redirect {}
 
-    class Redis extends \Illuminate\Support\Facades\Redis {}
+    class RedisManager extends \Illuminate\Support\Facades\Redis {}
 
     class Request extends \Illuminate\Support\Facades\Request {}
 
