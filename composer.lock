@@ -90,16 +90,16 @@
         },
         {
             "name": "appstract/laravel-opcache",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appstract/laravel-opcache.git",
-                "reference": "411e67ab0575cc589a719ef6ad05cbd2086b6aac"
+                "reference": "53bc336668fe8000441916fd5db7953821479db5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/411e67ab0575cc589a719ef6ad05cbd2086b6aac",
-                "reference": "411e67ab0575cc589a719ef6ad05cbd2086b6aac",
+                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/53bc336668fe8000441916fd5db7953821479db5",
+                "reference": "53bc336668fe8000441916fd5db7953821479db5",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                 "laravel",
                 "php"
             ],
-            "time": "2019-06-22T21:56:09+00:00"
+            "time": "2019-09-29T20:28:48+00:00"
         },
         {
             "name": "appstract/lush-http",
