@@ -6679,16 +6679,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "83abfabb9695551e53431d0499c400b8d1612fc3"
+                "reference": "dd234ff068899e0ccd509dd7e39eaae1a9e704dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/83abfabb9695551e53431d0499c400b8d1612fc3",
-                "reference": "83abfabb9695551e53431d0499c400b8d1612fc3",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/dd234ff068899e0ccd509dd7e39eaae1a9e704dc",
+                "reference": "dd234ff068899e0ccd509dd7e39eaae1a9e704dc",
                 "shasum": ""
             },
             "require": {
@@ -6744,7 +6744,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-09-24T07:20:25+00:00"
+            "time": "2019-10-01T12:03:02+00:00"
         },
         {
             "name": "socialiteproviders/manager",
