@@ -1,0 +1,16 @@
+version: 1
+
+update_configs:
+  - package_manager: "php:composer"
+    directory: "/"
+    update_schedule: "live"
+    target_branch: "develop"
+    automerged_updates:
+      dependency_type: "production"
+      update_type: "all"
+  - package_manager: "javascript"
+    directory: "/"
+    update_schedule: "live"
+    automerged_updates:
+      dependency_type: "production"
+      update_type: "all"
