@@ -31,15 +31,15 @@ jobs:
           ./vendor/bin/phpunit
       - name: Slack Success Notify
         if: success()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
+        uses: baijunyao/action-slack-notify@master
         with:
-          args: '{\"channel\":\"CEWJP77BP\",\"text\":\"PHPUnit Success\"}'
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          status: success
+          channel: CEWJP77BP
       - name: Slack Failure Notify
         if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
+        uses: baijunyao/action-slack-notify@master
         with:
-          args: '{\"channel\":\"CEWJP77BP\",\"text\":\"PHPUnit Failure\"}'
+          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+          status: success
+          channel: CEWJP77BP

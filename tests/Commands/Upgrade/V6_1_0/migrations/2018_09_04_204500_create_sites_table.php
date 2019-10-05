@@ -4,7 +4,6 @@ namespace Tests\Commands\Upgrade\V6_1_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 class CreateSitesTable extends Migration
 {

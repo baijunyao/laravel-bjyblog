@@ -12,69 +12,38 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         DB::table('articles')->truncate();
-        $title = '写给 thinkphp 开发者的 laravel 系列教程 (一) 序言';
         DB::table('articles')->insert([
             [
                 'id'          => 1,
                 'category_id' => 1,
-                'title'       => $title,
-                'slug'        => 'laravel-series-tutorial-for-thinkphp-developers-1-preface',
+                'title'       => '欢迎使用 laravel-bjyblog',
+                'slug'        => 'welcome-to-laravel-bjyblog',
                 'author'      => '白俊遥',
-                'markdown'    => '终于；终于；终于；
-开始正式写 laravel 系列了；
-本系列教程主要面向的是多少懂点 thinkphp3.X 的开发者们；
-我把我从tp3转到laravel的历程转成一篇篇的文章教程；
-愿这一系列的文章；
-能成为童鞋们踏入laravel的引路人；
-
-如果还没下定决定要使用laravel；
-那么我上来就是一个连接；
-[关于 thinkphp 和 laravel 框架的选择](http://baijunyao.com/article/109)
-不是别人说好我也跟着说好的；
-而是我实实在在的使用过后；
-不断的发现 laravel 的优雅；
-真心喜欢；才这么推荐的；
-
-另外学习使用 laravel 不同于 thinkphp；
-thinkphp 的问题；百度一下基本都能解决；
-laravel 一定要有一把梯子来翻墙；
-google是必不可少的；
-现在体会不到没关系；
-咱边学边感受；
-最近一段时间大批的vpn被关停了；
-这里我推荐一款依然坚挺的；
-我一直在用的；
-也比较喜欢的`免费`翻墙软件；
-[推荐开发工具系列之 -- 翻墙软件 lantern](http://baijunyao.com/article/107)
-
-最后给童鞋们推荐比较不错的国内的laravel网站；
-[Laravel China 社区](https://laravel-china.org/)
-[Laravel 学院](http://laravelacademy.org/)
-[laravel速查表](https://cs.laravel-china.org/)
-
-种一棵树最好的时间是十年前；其次是现在；
-让我们开始吧；
-![laravel](/uploads/article/5958ab4dd9db4.jpg "laravel")',
-                'html'        => '<p>终于；终于；终于；<br>开始正式写 laravel 系列了；<br>本系列教程主要面向的是多少懂点 thinkphp3.X 的开发者们；<br>我把我从tp3转到laravel的历程转成一篇篇的文章教程；<br>愿这一系列的文章；<br>能成为童鞋们踏入laravel的引路人；</p><p>如果还没下定决定要使用laravel；<br>那么我上来就是一个连接；<br><a href="http://baijunyao.com/article/109">关于 thinkphp 和 laravel 框架的选择</a><br>不是别人说好我也跟着说好的；<br>而是我实实在在的使用过后；<br>不断的发现 laravel 的优雅；<br>真心喜欢；才这么推荐的；</p><p>另外学习使用 laravel 不同于 thinkphp；<br>thinkphp 的问题；百度一下基本都能解决；<br>laravel 一定要有一把梯子来翻墙；<br>google是必不可少的；<br>现在体会不到没关系；<br>咱边学边感受；<br>最近一段时间大批的vpn被关停了；<br>这里我推荐一款依然坚挺的；<br>我一直在用的；<br>也比较喜欢的<code>免费</code>翻墙软件；<br><a href="http://baijunyao.com/article/107">推荐开发工具系列之 -- 翻墙软件 lantern</a></p><p>最后给童鞋们推荐比较不错的国内的laravel网站；<br><a href="https://laravel-china.org/">Laravel China 社区</a><br><a href="http://laravelacademy.org/">Laravel 学院</a><br><a href="https://cs.laravel-china.org/">laravel速查表</a></p><p>种一棵树最好的时间是十年前；其次是现在；<br>让我们开始吧；<br><img src="/uploads/article/5958ab4dd9db4.jpg" alt="laravel" title="laravel"></p>',
-                'description' => '终于；终于；终于；
-开始正式写 laravel 系列了；
-本系列教程主要面向的是多少懂点 thinkphp3.X 的开发者们；
-我把我从tp3转到laravel的历程转成一篇篇的文章教程；
-愿这一系列的文章；
-能成为童鞋们踏入laravel的引路人；
-
-如果还没下定决定要使用laravel；
-那么我上来就是一个连接；
-
-不是别人说好我也跟着说好的；
-而是我实实在在的使用过后；...',
-                'keywords'   => 'laravel,thinkphp, 教程',
-                'cover'      => '/uploads/article/5958ab4dd9db4.jpg',
-                'is_top'     => 1,
-                'click'      => 666,
-                'created_at' => '2017-7-16 07:35:12',
-                'updated_at' => '2016-7-16 07:35:12',
-                'deleted_at' => null,
+                'markdown'    => '1. [切换语言](https://baijunyao.com/docs/laravel-bjyblog/其他配置.html) 
+![](/uploads/article/5d9829577d311.png)  
+2. [清空测试数据](https://baijunyao.com/docs/laravel-bjyblog/清空测试数据.html)  
+3. [升级版本](https://baijunyao.com/docs/laravel-bjyblog/升级版本.html)',
+                'html'        => '<ol>
+<li>
+<a href="https://baijunyao.com/docs/laravel-bjyblog/%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE.html">切换语言</a>
+<img src="/uploads/article/5d9829577d311.png" alt="" />
+</li>
+<li>
+<a href="https://baijunyao.com/docs/laravel-bjyblog/%E6%B8%85%E7%A9%BA%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html">清空测试数据</a>
+</li>
+<li>
+<a href="https://baijunyao.com/docs/laravel-bjyblog/%E5%8D%87%E7%BA%A7%E7%89%88%E6%9C%AC.html">升级版本</a>
+</li>
+</ol>
+',
+                'description' => '欢迎使用 laravel-bjyblog',
+                'keywords'    => 'laravel',
+                'cover'       => '/uploads/article/5d9829577d311.png',
+                'is_top'      => 1,
+                'click'       => 666,
+                'created_at'  => '2017-7-16 07:35:12',
+                'updated_at'  => '2016-7-16 07:35:12',
+                'deleted_at'  => null,
             ],
             [
                 'id'          => 2,
@@ -92,6 +61,38 @@ google是必不可少的；
                 'created_at'  => '2019-01-04 16:35:12',
                 'updated_at'  => '2019-01-04 16:35:12',
                 'deleted_at'  => '2019-01-04 16:35:12',
+            ],
+            [
+                'id'          => 3,
+                'category_id' => 1,
+                'title'       => 'Welcome to laravel-bjyblog',
+                'slug'        => 'welcome-to-laravel-bjyblog',
+                'author'      => 'baijunyao',
+                'markdown'    => '1. [Switch language](https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html) 
+![](/uploads/article/5d9829577d311.png)  
+2. [Clear test data](https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html)  
+3. [Upgrade version](https://baijunyao.com/docs/laravel-bjyblog/en/Upgrade.html)',
+                'html'        => '<ol>
+<li>
+<a href="https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html">Switch language</a>
+<img src="/uploads/article/5d9829577d311.png" alt="" />
+</li>
+<li>
+<a href="https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html">Clear test data</a>
+</li>
+<li>
+<a href="https://baijunyao.com/docs/laravel-bjyblog/en/Upgrade.html">Upgrade version</a>
+</li>
+</ol>
+',
+                'description' => 'welcome to laravel-bjyblog',
+                'keywords'    => 'laravel-bjyblog',
+                'cover'       => '/uploads/article/5958ab4dd9db4.jpg',
+                'is_top'      => 0,
+                'click'       => 333,
+                'created_at'  => '2019-10-05 14:35:12',
+                'updated_at'  => '2019-10-05 14:35:12',
+                'deleted_at'  => null,
             ],
         ]);
     }

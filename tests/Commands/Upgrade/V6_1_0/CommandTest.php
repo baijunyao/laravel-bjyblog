@@ -8,10 +8,10 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        $this->assertFileNotExists(public_path('sitemap.xml'));
+        static::assertFileNotExists(public_path('sitemap.xml'));
 
         Artisan::call('upgrade:v6.1.0');
 
-        $this->assertFileExists(public_path('sitemap.xml'));
+        static::assertFileExists(public_path('sitemap.xml'));
     }
 }
