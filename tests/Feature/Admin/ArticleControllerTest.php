@@ -133,7 +133,7 @@ class ArticleControllerTest extends TestCase
 
     public function testReplace()
     {
-        $search  = '教程';
+        $search  = '切换语言';
         $replace = '替换';
         $this->adminPost('replace', [
             'search'  => $search,
