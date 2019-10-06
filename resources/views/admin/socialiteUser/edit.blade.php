@@ -30,7 +30,8 @@
             <tr>
                 <th>{{ __('Is Administrator?') }}</th>
                 <td>
-                    <input type="checkbox" class="js-switch" name="is_admin" value="1" @if($data->is_admin == 1) checked @endif />
+                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="is_admin" value="1" @if($data->is_admin === 1) checked @endif> &emsp;&emsp;
+                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="is_admin" value="0" @if($data->is_admin === 0) checked @endif>
                 </td>
             </tr>
             <tr>
