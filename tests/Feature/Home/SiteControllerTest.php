@@ -13,7 +13,7 @@ class SiteControllerTest extends TestCase
     protected $table     = 'sites';
     protected $storeData = [
         'name'        => '新增',
-        'url'         => 'https://store.com',
+        'url'         => 'store.com',
         'description' => '用于测试',
         'email'       => 'test@test.com',
     ];
@@ -31,7 +31,7 @@ class SiteControllerTest extends TestCase
             ->assertStatus(200);
         $this->assertDatabaseHas($this->table, [
             'name'        => '新增',
-            'url'         => 'https://store.com',
+            'url'         => 'http://store.com',
             'description' => '用于测试',
         ]);
     }
