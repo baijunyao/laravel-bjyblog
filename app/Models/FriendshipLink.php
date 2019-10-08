@@ -28,11 +28,6 @@ class FriendshipLink extends Base
      */
     public function setUrlAttribute(string $value)
     {
-        // 如果没有http 则补上http
-        if (strpos($value, 'http') === false) {
-            $value = 'http://' . $value;
-        }
-
-        $this->attributes['url'] = strtolower(rtrim($value, '/'));
+        $this->attributes['url'] = format_url($value);
     }
 }

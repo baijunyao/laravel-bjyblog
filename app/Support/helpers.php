@@ -390,3 +390,21 @@ if (!function_exists('column_in_database_table')) {
         return $columns->contains($column);
     }
 }
+
+if (!function_exists('format_url')) {
+    /**
+     * Format URL
+     *
+     * @param $url
+     *
+     * @return string
+     */
+    function format_url($url)
+    {
+        if (preg_match('/^http(s)?:\/\//', $url) === 0) {
+            $url = 'http://' . $url;
+        }
+
+        return strtolower(rtrim($url, '/'));
+    }
+}
