@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.0.4 on 2019-10-05 23:20:04.
+ * Generated for Laravel 6.0.4 on 2019-10-12 19:40:56.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3406,35 +3406,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Get a lock instance.
-         *
-         * @param string $name
-         * @param int $seconds
-         * @param string|null $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function lock($name, $seconds = 0, $owner = null)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->lock($name, $seconds, $owner);
-        }
-        
-        /**
-         * Restore a lock instance using the owner identifier.
-         *
-         * @param string $name
-         * @param string $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function restoreLock($name, $owner)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->restoreLock($name, $owner);
-        }
-        
-        /**
          * Remove all items from the cache.
          *
          * @return bool 
@@ -3442,45 +3413,32 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function flush()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->flush();
         }
         
         /**
-         * Get the Redis connection instance.
+         * Get the Filesystem instance.
          *
-         * @return \Illuminate\Redis\Connections\Connection 
+         * @return \Illuminate\Filesystem\Filesystem 
          * @static 
          */ 
-        public static function connection()
+        public static function getFilesystem()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->connection();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getFilesystem();
         }
         
         /**
-         * Set the connection name to be used.
+         * Get the working directory of the cache.
          *
-         * @param string $connection
-         * @return void 
+         * @return string 
          * @static 
          */ 
-        public static function setConnection($connection)
+        public static function getDirectory()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        $instance->setConnection($connection);
-        }
-        
-        /**
-         * Get the Redis database instance.
-         *
-         * @return \Illuminate\Contracts\Redis\Factory 
-         * @static 
-         */ 
-        public static function getRedis()
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->getRedis();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getDirectory();
         }
         
         /**
@@ -3491,21 +3449,8 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->getPrefix();
-        }
-        
-        /**
-         * Set the cache key prefix.
-         *
-         * @param string $prefix
-         * @return void 
-         * @static 
-         */ 
-        public static function setPrefix($prefix)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        $instance->setPrefix($prefix);
         }
          
     }
