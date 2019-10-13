@@ -41,5 +41,5 @@ jobs:
         uses: baijunyao/action-slack-notify@master
         with:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
-          status: success
+          status: failure
           channel: CEWJP77BP
