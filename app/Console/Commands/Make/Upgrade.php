@@ -20,8 +20,8 @@ class Upgrade extends Command
         $version      = $this->argument('version');
         $versionUpper = strtoupper($version);
 
-        if (preg_match('/V(\d+\.){3}\d+/', $versionUpper) === 0) {
-            $this->error('Please enter the correct version number, for example v5.5.5.5.');
+        if (preg_match('/V(\d+\.){2}\d+/', $versionUpper) === 0) {
+            $this->error('Please enter the correct version number, for example v6.0.0');
 
             return;
         }
@@ -86,25 +86,19 @@ PHP;
             $this->info("Generate $testFile completed.");
         }
 
-        $databasePath = 'database/';
-        File::deleteDirectory($databasePath, true);
-
-        shell_exec("git checkout $version -- $databasePath/migrations");
+        // Migrations
+        $databasePath      = 'database/';
         $testMigrationPath = $testPath . 'migrations';
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
+        File::deleteDirectory($databasePath, true);
 
-        $versions        = explode($version, shell_exec('git tag --sort=-v:refname'));
-        $versions        = count($versions) === 2 ? $versions[1] : $versions[0];
-        $PreviousVersion = collect(explode("\n", trim($versions)))->filter(function ($version) {
-            $versionArray = explode('.', $version);
-
-            return isset($versionArray[3]) && $versionArray[3] === '0';
-        })->first();
+        // Seeds
+        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1'));
         shell_exec("git checkout $PreviousVersion -- $databasePath/seeds");
         $testSeedPath = $testPath . 'seeds';
         File::moveDirectory(database_path('seeds'), $testSeedPath, true);
-
         File::deleteDirectory($databasePath, true);
+
         shell_exec("git checkout develop -- $databasePath");
         $testMigrationFiles = File::files($testMigrationPath);
 
