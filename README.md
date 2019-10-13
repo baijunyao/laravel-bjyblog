@@ -74,6 +74,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://xtty.ru"><img src="https://avatars1.githubusercontent.com/u/253228?v=4" width="100px;" alt="Yuran"/><br /><sub><b>Yuran</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/issues?q=author%3Ayuri25" title="Bug reports">🐛</a> <a href="#translation-yuri25" title="Translation">🌍</a></td>
     <td align="center"><a href="https://baijunyao.com"><img src="https://avatars1.githubusercontent.com/u/9360694?v=4" width="100px;" alt="白俊遥"/><br /><sub><b>白俊遥</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=baijunyao" title="Code">💻</a> <a href="#translation-baijunyao" title="Translation">🌍</a> <a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=baijunyao" title="Documentation">📖</a> <a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=baijunyao" title="Tests">⚠️</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://tahsingokalp.com"><img src="https://avatars1.githubusercontent.com/u/3122047?v=4" width="100px;" alt="Tahsin Gökalp Şaan"/><br /><sub><b>Tahsin Gökalp Şaan</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=TahsinGokalp" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
