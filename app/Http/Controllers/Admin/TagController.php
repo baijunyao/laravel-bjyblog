@@ -41,12 +41,10 @@ class TagController extends Controller
      */
     public function store(Store $request)
     {
-        $id = Tag::create($request->only('name'));
+        $tag = Tag::create($request->only('name'));
 
         if ($request->ajax()) {
-            $data['id'] = $id;
-
-            return ajax_return(200, $data);
+            return response()->json($tag);
         }
 
         return redirect('admin/tag/index');
