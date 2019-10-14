@@ -177,7 +177,11 @@
                 success: function (response) {
                     var redioStr = response.name+'<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="'+response.id+'" checked="checked"> &emsp;';
                     $('.fa-plus-square').before(redioStr);
-                    icheckInit();
+                    $('.bjy-icheck').iCheck({
+                        checkboxClass: "icheckbox_minimal-blue",
+                        radioClass: "iradio_minimal-blue",
+                        increaseArea: "20%"
+                    });
                     $('#bjy-tag-modal').modal('hide');
                 },
                 error: function (response) {
