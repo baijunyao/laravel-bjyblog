@@ -35,7 +35,9 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/tag/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
+                        @if(is_null($v->deleted_at))
+                            <a href="{{ url('admin/tag/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
+                        @endif
                         @if(is_null($v->deleted_at))
                             <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                         @else
