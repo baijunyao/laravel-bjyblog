@@ -153,13 +153,14 @@ class IndexController extends Controller
      * 获取标签下的文章
      *
      * @param $id
+     * @update 2019年10月15日 11:27:03 by jason
      *
      * @return \Illuminate\Contracts\View\Factory
      */
     public function tag($id)
     {
-        // 获取标签
-        $tag = Tag::select('id', 'name')->where('id', $id)->first();
+        // 获取标签 以及关键字
+        $tag = Tag::select('id', 'name', 'keywords', 'description')->where('id', $id)->first();
         if ($tag === null) {
             return abort(404);
         }
@@ -171,8 +172,8 @@ class IndexController extends Controller
             ->paginate(10);
         $head = [
             'title'       => $tag->name,
-            'keywords'    => '',
-            'description' => '',
+            'keywords'    => $tag -> keywords ?? '',
+            'description' => $tag -> description ?? '',
         ];
         $assign = [
             'category_id'  => 'index',
