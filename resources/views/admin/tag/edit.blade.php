@@ -24,6 +24,18 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ __('Keywords') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="keywords" value="{{ $data['keywords'] }}">
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Description') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="description" value="{{ $data['description'] }}">
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
