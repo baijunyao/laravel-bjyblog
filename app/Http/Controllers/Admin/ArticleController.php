@@ -155,7 +155,7 @@ class ArticleController extends Controller
 
         $tag_ids = $data['tag_ids'];
         unset($data['tag_ids']);
-        $result = Article::find($id)->update($data);
+        $result = Article::withTrashed()->find($id)->update($data);
 
         if ($result) {
             ArticleTag::where('article_id', $id)->forceDelete();

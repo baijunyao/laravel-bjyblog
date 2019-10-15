@@ -57,9 +57,9 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, Tag $tagModel)
+    public function edit($id)
     {
-        $data   = $tagModel->find($id);
+        $data   = Tag::withTrashed()->find($id);
         $assign = compact('data');
 
         return view('admin.tag.edit', $assign);
@@ -75,7 +75,7 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Tag::find($id)->update($request->except('_token'));
+        Tag::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }

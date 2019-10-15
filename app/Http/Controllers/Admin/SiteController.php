@@ -75,7 +75,7 @@ class SiteController extends Controller
      */
     public function edit($id)
     {
-        $site   = Site::find($id);
+        $site   = Site::withTrashed()->find($id);
         $assign = compact('site');
 
         return view('admin.site.edit', $assign);
@@ -91,7 +91,7 @@ class SiteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Site::find($id)->update($request->except('_token'));
+        Site::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }

@@ -58,7 +58,7 @@ class NoteController extends Controller
      */
     public function edit($id)
     {
-        $data   = Note::find($id);
+        $data   = Note::withTrashed()->find($id);
         $assign = compact('data');
 
         return view('admin.note.edit', $assign);
@@ -74,7 +74,7 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Note::find($id)->update($request->except('_token'));
+        Note::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }

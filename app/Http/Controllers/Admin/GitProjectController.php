@@ -62,7 +62,7 @@ class GitProjectController extends Controller
      */
     public function edit($id)
     {
-        $data   = GitProject::find($id);
+        $data   = GitProject::withTrashed()->find($id);
         $assign = compact('data');
 
         return view('admin.gitProject.edit', $assign);
@@ -78,7 +78,7 @@ class GitProjectController extends Controller
      */
     public function update(Request $request, $id, GitProject $gitProjectModel)
     {
-        GitProject::find($id)->update($request->except('_token'));
+        GitProject::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }
