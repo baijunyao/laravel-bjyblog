@@ -161,9 +161,11 @@ class IndexController extends Controller
     {
         // 获取标签 以及关键字
         $tag = Tag::select('id', 'name', 'keywords', 'description')->where('id', $id)->first();
+
         if ($tag === null) {
             return abort(404);
         }
+
         // TODO 不取 markdown 和 html 字段
         // 获取标签下的文章
         $articles = $tag->articles()
@@ -172,8 +174,8 @@ class IndexController extends Controller
             ->paginate(10);
         $head = [
             'title'       => $tag->name,
-            'keywords'    => $tag -> keywords ?? '',
-            'description' => $tag -> description ?? '',
+            'keywords'    => $tag->keywords,
+            'description' => $tag->description,
         ];
         $assign = [
             'category_id'  => 'index',
