@@ -59,7 +59,7 @@ class FriendshipLinkController extends Controller
      */
     public function edit($id)
     {
-        $data   = FriendshipLink::find($id);
+        $data   = FriendshipLink::withTrashed()->find($id);
         $assign = compact('data');
 
         return view('admin.friendshipLink.edit', $assign);
@@ -81,7 +81,7 @@ class FriendshipLinkController extends Controller
             $friendshipLink['sort'] = null;
         }
 
-        FriendshipLink::find($id)->update($friendshipLink);
+        FriendshipLink::withTrashed()->find($id)->update($friendshipLink);
 
         return redirect()->back();
     }

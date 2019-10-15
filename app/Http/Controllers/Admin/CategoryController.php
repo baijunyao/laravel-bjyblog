@@ -56,7 +56,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $data   = Category::find($id);
+        $data   = Category::withTrashed()->find($id);
         $assign = compact('data');
 
         return view('admin.category.edit', $assign);
@@ -72,7 +72,7 @@ class CategoryController extends Controller
      */
     public function update(Update $request, $id)
     {
-        Category::find($id)->update($request->except('_token'));
+        Category::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }
