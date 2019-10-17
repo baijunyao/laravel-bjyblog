@@ -3,10 +3,18 @@
 namespace App\Observers;
 
 use App\Models\ArticleTag;
+use Artisan;
 use Markdown;
 
 class ArticleObserver extends BaseObserver
 {
+    public function created($model)
+    {
+        parent::created($model);
+
+        Artisan::queue('bjyblog:generateSitemap');
+    }
+
     public function saving($article)
     {
         if (empty($article->description)) {
@@ -39,6 +47,7 @@ class ArticleObserver extends BaseObserver
             ArticleTag::onlyTrashed()->where('article_id', $article->id)->forceDelete();
             flash_success('彻底删除成功');
         } else {
+            Artisan::queue('bjyblog:generateSitemap');
             ArticleTag::where('article_id', $article->id)->delete();
             flash_success('删除成功');
         }
