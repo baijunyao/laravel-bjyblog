@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $data   = User::find($id);
+        $data   = User::withTrashed()->find($id);
         $assign = compact('data');
 
         return view('admin.user.edit', $assign);
@@ -77,7 +77,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::find($id)->update($request->except('_token'));
+        User::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }

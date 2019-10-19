@@ -66,7 +66,7 @@ class NavController extends Controller
      */
     public function edit($id)
     {
-        $nav    = Nav::find($id);
+        $nav    = Nav::withTrashed()->find($id);
         $assign = compact('nav');
 
         return view('admin.nav.edit', $assign);
@@ -82,7 +82,7 @@ class NavController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Nav::find($id)->update($request->except('_token'));
+        Nav::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }

@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * Class Tag
  *
- * @property int    $id   标签主键
- * @property string $name 标签名
- * @property string $slug slug
+ * @property int    $id          标签主键
+ * @property string $name        标签名
+ * @property string $slug        slug
+ * @property string $keywords    标签关键词
+ * @property string $description 标签描述主要是 SEO
  *
  * @author  hanmeimei
  */

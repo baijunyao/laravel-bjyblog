@@ -206,6 +206,8 @@ return [
          */
         App\Providers\ExtensionServiceProvider::class,
 
+        Spatie\Sitemap\SitemapServiceProvider::class
+
     ],
 
     /*

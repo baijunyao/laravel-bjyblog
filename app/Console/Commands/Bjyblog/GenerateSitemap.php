@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Bjyblog;
 
 use Illuminate\Console\Command;
+use Psr\Http\Message\UriInterface;
 use Spatie\Sitemap\SitemapGenerator;
 
 class GenerateSitemap extends Command
@@ -41,6 +42,9 @@ class GenerateSitemap extends Command
         $this->info('Start generating the sitemap.xml file');
 
         SitemapGenerator::create(config('app.url'))
+            ->shouldCrawl(function (UriInterface $url) {
+                return strpos($url->getPath(), '/auth/oauth/redirectToProvider') === false;
+            })
             ->writeToFile(public_path('sitemap.xml'));
 
         $this->info('Generating the sitemap completed.');
