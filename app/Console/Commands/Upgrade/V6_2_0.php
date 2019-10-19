@@ -4,6 +4,7 @@ namespace App\Console\Commands\Upgrade;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class V6_2_0 extends Command
 {
