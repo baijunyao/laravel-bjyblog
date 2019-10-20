@@ -17,6 +17,6 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             )
         );
 
-        $this->assertDatabaseHasColumns('tag', ['keywords', 'description']);
+        $this->assertDatabaseHasColumns('tags', ['keywords', 'description']);
     }
 }
