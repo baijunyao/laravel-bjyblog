@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->integer('pid')->unsigned()->default(0)->comment('父级id');
             $table->integer('article_id')->unsigned()->comment('文章id');
             $table->text('content')->comment('内容');
-            $table->boolean('status')->comment('1:已审核 0：未审核');
+            $table->boolean('is_audited')->comment('是否已经通过审核');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int    $pid               父级id
  * @property int    $article_id        文章id
  * @property string $content           内容
- * @property bool   $status            1:已审核 0：未审核
+ * @property bool   $is_audited        是否已审核
  *
  * @author  hanmeimei
  */
