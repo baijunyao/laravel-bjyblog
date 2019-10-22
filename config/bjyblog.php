@@ -42,5 +42,6 @@ return [
         'sharejs_config' => ''
     ],
     'logo_with_php_tag' => '',
-    'cdn_domain' => ''
+    'cdn_domain' => '',
+    'comment_audit' => ''
 ];
