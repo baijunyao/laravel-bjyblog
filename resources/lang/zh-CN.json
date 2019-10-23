@@ -221,6 +221,7 @@
     "Upgrade": "升级",
 
     "Logo Style": "Logo 风格",
+    "Comment Audit": "审核评论",
     "Text with php tag": "带 PHP 标签",
     "Only text": "纯文本",
     "Need to add Socialite client first,": "需要先增加第三方登录配置，",

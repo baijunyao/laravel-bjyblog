@@ -221,6 +221,7 @@
     "Upgrade": "Обновление",
 
     "Logo Style": "Стиль лого",
+    "Comment Audit": "Как проводить аудит",
     "Text with php tag": "Текст с тегом php",
     "Only text": "Только текст",
     "Need to add Socialite client first,": "Сначала нужно добавить клиент Socialite",
