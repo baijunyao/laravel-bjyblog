@@ -22,8 +22,8 @@
             <tr>
                 <th>{{ __('Logo Style') }}：</th>
                 <td>
-                    {{ __('Text with php tag') }} <input class="bjy-icheck" type="radio" name="171" value="true" @if($config['bjyblog.logo_with_php_tag'] === "true") checked @endif> &emsp;&emsp;
-                    {{ __('Only text') }} <input class="bjy-icheck" type="radio" name="171" value="false" @if($config['bjyblog.logo_with_php_tag'] === "false") checked @endif>
+                    {{ __('Text with php tag') }} <input class="bjy-icheck" type="radio" name="171" value="true" @if(is_true($config['bjyblog.logo_with_php_tag'])) checked @endif> &emsp;&emsp;
+                    {{ __('Only text') }} <input class="bjy-icheck" type="radio" name="171" value="false" @if(is_false($config['bjyblog.logo_with_php_tag'])) checked @endif>
                 </td>
             </tr>
             @if($config['app.locale'] === 'zh-CN')

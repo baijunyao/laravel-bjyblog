@@ -11,8 +11,8 @@
             <tr>
                 <th>{{ __('Use Slug') }}：</th>
                 <td>
-                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="167" value="true" @if($config['bjyblog.seo.use_slug'] === "true") checked @endif> &emsp;&emsp;
-                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="167" value="false" @if($config['bjyblog.seo.use_slug'] === "false") checked @endif>
+                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="167" value="true" @if(is_true($config['bjyblog.seo.use_slug'])) checked @endif> &emsp;&emsp;
+                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="167" value="false" @if(is_false($config['bjyblog.seo.use_slug'])) checked @endif>
                 </td>
             </tr>
             <tr>
