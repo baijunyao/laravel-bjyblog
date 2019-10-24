@@ -134,6 +134,9 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
     Route::prefix('comment')->group(function () {
         // 评论列表
         Route::get('index', 'CommentController@index');
+        // 编辑评论
+        Route::get('edit/{id}', 'CommentController@edit');
+        Route::post('update/{id}', 'CommentController@update');
         // 删除评论
         Route::get('destroy/{id}', 'CommentController@destroy');
         // 恢复删除的评论

@@ -7,8 +7,9 @@ use Baijunyao\LaravelRestful\ForceDelete;
 use Baijunyao\LaravelRestful\Index;
 use Baijunyao\LaravelRestful\Restore;
 use Baijunyao\LaravelRestful\Show;
+use Baijunyao\LaravelRestful\Update;
 
 class CommentController extends Controller
 {
-    use Index, Show, Destroy, Restore, ForceDelete;
+    use Index, Show, Update, Destroy, Restore, ForceDelete;
 }

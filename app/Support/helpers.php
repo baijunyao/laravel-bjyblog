@@ -412,6 +412,7 @@ if (!function_exists('format_url')) {
 if (!function_exists('is_true')) {
     /**
      * @param $true 'true' true
+     *
      * @return bool
      */
     function is_true($true)
@@ -423,6 +424,7 @@ if (!function_exists('is_true')) {
 if (!function_exists('is_false')) {
     /**
      * @param $false 'false' false
+     *
      * @return bool
      */
     function is_false($false)

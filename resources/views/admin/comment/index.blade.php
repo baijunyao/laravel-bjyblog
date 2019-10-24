@@ -19,12 +19,13 @@
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="35%">{{ __('Content') }}</th>
-            <th width="25%">{{ __('Article') }}</th>
-            <th width="10%">{{ __('User') }}</th>
-            <th width="15%">{{ __('Date') }}</th>
-            <th width="5%">{{ __('Status') }}</th>
-            <th width="5%">{{ __('Handle') }}</th>
+            <th width="30%">{{ __('Content') }}</th>
+            <th width="20%">{{ __('Article') }}</th>
+            <th width="8%">{{ __('User') }}</th>
+            <th width="8%">{{ __('Date') }}</th>
+            <th width="6%">{{ __('Status') }}</th>
+            <th width="6%">{{ __('Audited') }}</th>
+            <th width="21%">{{ __('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
@@ -34,7 +35,7 @@
                     <a href="{{ url('article', [$v->article_id]) }}#comment-{{ $v->id }}" target="_blank">{{ $v->article->title }}</a>
                 </td>
                 <td>{{ $v->socialiteUser->name }}</td>
-                <td>{{ $v->created_at }}</td>
+                <td>{{ $v->created_at->format('Y-m-d') }}</td>
                 <td>
                     @if(is_null($v->deleted_at))
                         √
@@ -43,6 +44,14 @@
                     @endif
                 </td>
                 <td>
+                    @if($v->is_audited === 1)
+                        √
+                    @else
+                        ×
+                    @endif
+                </td>
+                <td>
+                    <a href="{{ url('admin/comment/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
                     @if(is_null($v->deleted_at))
                         <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                     @else
