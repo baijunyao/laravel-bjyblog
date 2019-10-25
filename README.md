@@ -77,6 +77,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://tahsingokalp.com"><img src="https://avatars1.githubusercontent.com/u/3122047?v=4" width="100px;" alt="Tahsin Gökalp Şaan"/><br /><sub><b>Tahsin Gökalp Şaan</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=TahsinGokalp" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/xyj2156"><img src="https://avatars3.githubusercontent.com/u/22341646?v=4" width="100px;" alt="阿杰"/><br /><sub><b>阿杰</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=xyj2156" title="Code">💻</a></td>
+    <td align="center"><a href="https://findcat.cn/"><img src="https://avatars1.githubusercontent.com/u/37197772?v=4" width="100px;" alt="梁桂锋"/><br /><sub><b>梁桂锋</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=liangguifeng" title="Code">💻</a></td>
   </tr>
 </table>
 
