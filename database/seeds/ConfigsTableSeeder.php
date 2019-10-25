@@ -365,6 +365,30 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2019-10-21 22:45:00',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 174,
+                'name'       => 'services.baidu.appid',
+                'value'      => '',
+                'created_at' => '2019-10-21 22:45:00',
+                'updated_at' => '2019-10-21 22:45:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 175,
+                'name'       => 'services.baidu.appkey',
+                'value'      => '',
+                'created_at' => '2019-10-21 22:45:00',
+                'updated_at' => '2019-10-21 22:45:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 176,
+                'name'       => 'services.baidu.secret',
+                'value'      => '',
+                'created_at' => '2019-10-21 22:45:00',
+                'updated_at' => '2019-10-21 22:45:00',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

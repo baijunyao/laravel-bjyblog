@@ -141,18 +141,18 @@
         ],
         "links": {
             "first": "http:\/\/laravel-bjyblog.test\/api\/configs?page=1",
-            "last": "http:\/\/laravel-bjyblog.test\/api\/configs?page=3",
+            "last": "http:\/\/laravel-bjyblog.test\/api\/configs?page=4",
             "prev": null,
             "next": "http:\/\/laravel-bjyblog.test\/api\/configs?page=2"
         },
         "meta": {
             "current_page": 1,
             "from": 1,
-            "last_page": 3,
+            "last_page": 4,
             "path": "http:\/\/laravel-bjyblog.test\/api\/configs",
             "per_page": 15,
             "to": 15,
-            "total": 43
+            "total": 46
         }
     }
 }
