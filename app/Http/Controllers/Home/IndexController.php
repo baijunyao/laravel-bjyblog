@@ -247,7 +247,7 @@ class IndexController extends Controller
         $id = Comment::create($request->only('article_id', 'content', 'pid') + [
             'socialite_user_id' => $userId,
             'type'              => 1,
-            'is_audited'        => 1,
+            'is_audited'        => is_true(config('bjyblog.comment_audit')) ? 0 : 1,
         ]);
 
         if (!$id) {

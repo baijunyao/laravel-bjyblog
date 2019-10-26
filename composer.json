@@ -16,6 +16,7 @@
         "php": "^7.2",
         "apollopy/flysystem-aliyun-oss": "^1.2",
         "appstract/laravel-opcache": "^3.0",
+        "baidu/aip-sdk": "^2.2",
         "baijunyao/laravel-flash": "^2.0",
         "baijunyao/laravel-plugin-manager": "^3.0",
         "baijunyao/laravel-print": "^3.0",
