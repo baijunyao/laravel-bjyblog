@@ -22,7 +22,6 @@
         "baijunyao/laravel-print": "^3.0",
         "baijunyao/laravel-restful": "^1.0",
         "baijunyao/laravel-scout-elasticsearch": "^3.0",
-        "baijunyao/laravel-test-support": "^4.0",
         "baijunyao/laravel-upload": "^2.0",
         "composer/semver": "^1.4",
         "doctrine/dbal": "^2.5",
@@ -51,11 +50,12 @@
         "stichoza/google-translate-php": "^4.0"
     },
     "require-dev": {
+        "baijunyao/laravel-test-support": "^4.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
+        "facade/ignition": "^1.4",
         "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.14",
-        "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "itsgoingd/clockwork": "^4.0",
         "laravel/dusk": "^5.0",
@@ -66,7 +66,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.2"
+        }
     },
     "extra": {
         "laravel": {
