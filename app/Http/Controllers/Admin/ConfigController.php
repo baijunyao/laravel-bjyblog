@@ -80,6 +80,11 @@ class ConfigController extends Controller
         return view('admin.config.socialShare');
     }
 
+    public function commentAudit()
+    {
+        return view('admin.config.commentAudit');
+    }
+
     /**
      * Update the specified resource in storage.
      *

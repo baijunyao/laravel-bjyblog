@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "15f7e8f294ca3276511bd5e9cf2b2886",
+    "content-hash": "be9f041bf116da05d665a2360ca091e5",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -231,6 +231,56 @@
                 "php"
             ],
             "time": "2019-05-28T15:08:43+00:00"
+        },
+        {
+            "name": "baidu/aip-sdk",
+            "version": "2.2.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Baidu-AIP/php-sdk.git",
+                "reference": "17c7a72411d0fa5e31adb1cd08d1a07e179ffdea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Baidu-AIP/php-sdk/zipball/17c7a72411d0fa5e31adb1cd08d1a07e179ffdea",
+                "reference": "17c7a72411d0fa5e31adb1cd08d1a07e179ffdea",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/AipBase.php",
+                    "AipBodyAnalysis.php",
+                    "AipContentCensor.php",
+                    "AipFace.php",
+                    "AipImageClassify.php",
+                    "AipImageSearch.php",
+                    "AipKg.php",
+                    "AipNlp.php",
+                    "AipOcr.php",
+                    "AipSpeech.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "baidu"
+                }
+            ],
+            "description": "baidu pulic ai php sdk",
+            "time": "2019-01-25T08:29:48+00:00"
         },
         {
             "name": "baijunyao/laravel-flash",

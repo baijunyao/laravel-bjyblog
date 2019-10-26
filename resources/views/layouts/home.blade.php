@@ -21,7 +21,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @if(config('bjyblog.logo_with_php_tag') === "true")
+            @if(is_true(config('bjyblog.logo_with_php_tag')))
                 <a class="navbar-brand" href="/">
                     <div class="hidden-xs b-nav-background"></div>
                     <ul class="b-logo-code">

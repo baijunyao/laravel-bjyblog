@@ -134,6 +134,9 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
     Route::prefix('comment')->group(function () {
         // 评论列表
         Route::get('index', 'CommentController@index');
+        // 编辑评论
+        Route::get('edit/{id}', 'CommentController@edit');
+        Route::post('update/{id}', 'CommentController@update');
         // 删除评论
         Route::get('destroy/{id}', 'CommentController@destroy');
         // 恢复删除的评论
@@ -243,6 +246,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('email', 'ConfigController@email');
         // 编辑 socialite 配置页面
         Route::get('socialite', 'ConfigController@socialite');
+        // Comment Audit
+        Route::get('commentAudit', 'ConfigController@commentAudit');
         // 编辑 qq 群配置页面
         Route::get('qqQun', 'ConfigController@qqQun');
         // 编辑备份配置页面

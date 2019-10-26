@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int    $pid               父级id
  * @property int    $article_id        文章id
  * @property string $content           内容
- * @property bool   $status            1:已审核 0：未审核
+ * @property bool   $is_audited        是否已审核
  *
  * @author  hanmeimei
  */
@@ -116,15 +116,14 @@ class Comment extends Base
      */
     public function getDataByArticleId($article_id)
     {
-        $map = [
-            'comments.article_id' => $article_id,
-            'comments.pid'        => 0,
-        ];
-
         // 关联第三方用户表获取一级评论
         $data = $this->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
             ->join('socialite_users as ou', 'comments.socialite_user_id', 'ou.id')
-            ->where($map)
+            ->where('comments.article_id', $article_id)
+            ->where('comments.pid', 0)
+            ->when(is_true(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('comments.is_audited', 1);
+            })
             ->orderBy('created_at', 'desc')
             ->get()
             ->toArray();
@@ -169,14 +168,13 @@ class Comment extends Base
     // 递归获取树状结构
     public function getTree($data)
     {
-        $map = [
-            'pid' => $data['id'],
-        ];
-
         $child = $this
             ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
             ->join('socialite_users as ou', 'comments.socialite_user_id', 'ou.id', 'ou.is_admin')
-            ->where($map)
+            ->where('comments.pid', $data['id'])
+            ->when(is_true(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('comments.is_audited', 1);
+            })
             ->orderBy('created_at', 'desc')
             ->get()
             ->toArray();

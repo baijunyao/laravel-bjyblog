@@ -44,6 +44,12 @@ return [
         ],
     ],
 
+    'baidu' => [
+        'appid' => env('BAIDU_APPID'),
+        'appkey' => env('BAIDU_APPKEY'),
+        'secret' => env('BAIDU_SECRET')
+    ],
+
     'weibo' => [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_SECRET'),

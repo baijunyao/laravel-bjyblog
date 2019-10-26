@@ -25,6 +25,7 @@ Route::namespace('Resources')->middleware('auth:api')->group(function () {
 
     Route::get('comments', 'CommentController@index')->name('comments.index');
     Route::get('comments/{comment}', 'CommentController@show')->name('comments.show');
+    Route::put('comments/{comment}', 'CommentController@update')->name('comments.update');
     Route::delete('comments/{comment}/destroy', 'CommentController@destroy')->name('comments.destroy');
     Route::patch('comments/{comment}/restore', 'CommentController@restore')->name('comments.restore');
     Route::delete('comments/{comment}/forceDelete', 'CommentController@forceDelete')->name('comments.forceDelete');
