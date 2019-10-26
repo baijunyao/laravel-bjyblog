@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use AipImageCensor;
 use App\Jobs\SendCommentEmail;
 use App\Models\Article;
 use App\Models\Comment;
@@ -9,8 +10,27 @@ use App\Models\SocialiteUser;
 
 class CommentObserver extends BaseObserver
 {
+    public function creating($comment)
+    {
+        $baiduConfig = [
+            config('services.baidu.appid'),
+            config('services.baidu.appkey'),
+            config('services.baidu.secret'),
+        ];
+
+        if (is_true(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3) {
+            $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
+            $result = $baiduClient->antiSpam($comment->content);
+
+            // spam=0 audited
+            $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
+        }
+    }
+
     public function created($comment)
     {
+        parent::created($comment);
+
         $emailConfig = [
             config('mail.host'),
             config('mail.username'),
@@ -70,7 +90,5 @@ class CommentObserver extends BaseObserver
                 }
             }
         }
-
-        parent::created($comment);
     }
 }

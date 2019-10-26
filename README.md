@@ -47,7 +47,8 @@ Run the tests with
 - [Houxin's blog](https://www.wku8.com)
 - [史大坨博客](https://www.shidatuos.cn)
 - [Sails博客](https://sails.site)
-- [Snail's Blog](https://www.snail-c.cn)  
+- [Snail's Blog](https://www.snail-c.cn)
+- [阿杰博客](https://www.x-ac.cn)  
 Welcome to submit a PR or tell me to include your blog
 
 ## Links

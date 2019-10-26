@@ -6,12 +6,18 @@ use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestForceDelete;
 use Tests\Feature\Admin\CURD\TestIndex;
 use Tests\Feature\Admin\CURD\TestRestore;
+use Tests\Feature\Admin\CURD\TestUpdate;
 
 class CommentControllerTest extends TestCase
 {
-    use TestIndex, TestDestroy, TestRestore, TestForceDelete;
+    use TestIndex, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
     protected $urlPrefix = 'admin/comment/';
     protected $table     = 'comments';
+
+    protected $updateData = [
+        'content'    => 'Updated Content',
+        'is_audited' => 0,
+    ];
 
     public function testReplaceView()
     {

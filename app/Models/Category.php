@@ -29,7 +29,7 @@ class Category extends Base
     {
         $parameters = [$this->id];
 
-        if (config('bjyblog.seo.use_slug') === 'true') {
+        if (is_true(config('bjyblog.seo.use_slug'))) {
             $parameters[] = $this->slug;
         }
 

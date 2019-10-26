@@ -408,3 +408,27 @@ if (!function_exists('format_url')) {
         return strtolower(rtrim($url, '/'));
     }
 }
+
+if (!function_exists('is_true')) {
+    /**
+     * @param $true 'true' true
+     *
+     * @return bool
+     */
+    function is_true($true)
+    {
+        return filter_var($true, FILTER_VALIDATE_BOOLEAN) === true;
+    }
+}
+
+if (!function_exists('is_false')) {
+    /**
+     * @param $false 'false' false
+     *
+     * @return bool
+     */
+    function is_false($false)
+    {
+        return filter_var($false, FILTER_VALIDATE_BOOLEAN) === false;
+    }
+}

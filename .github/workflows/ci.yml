@@ -29,17 +29,10 @@ jobs:
       - name: Test
         run: |
           ./vendor/bin/phpunit
-      - name: Slack Success Notify
-        if: success()
+      - name: Slack Notify
         uses: baijunyao/action-slack-notify@master
         with:
-          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
-          status: success
           channel: CEWJP77BP
-      - name: Slack Failure Notify
-        if: failure()
-        uses: baijunyao/action-slack-notify@master
-        with:
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
-          status: failure
-          channel: CEWJP77BP
+          github_context: ${{ toJson(github) }}
+          job_context: ${{ toJson(job) }}

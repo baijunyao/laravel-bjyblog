@@ -220,6 +220,7 @@
     "Upgrade": "Améliorer",
 
     "Logo Style": "Style de logo",
+    "Comment Audit": "Comment Audit",
     "Text with php tag": "Texte avec balise php",
     "Only text": "Seulement du texte",
     "Need to add Socialite client first.": "Besoin d'ajouter le client Socialite en premier.",
@@ -237,5 +238,7 @@
     "Apply": "Appliquer",
     "URL": "URL",
     "Site Name": "Nom du site",
-    "Please add a friendly link to this site": "S'il vous plaît ajouter un lien amical à ce site"
+    "Please add a friendly link to this site": "S'il vous plaît ajouter un lien amical à ce site",
+
+    "Audited": "Audité"
 }

@@ -221,6 +221,7 @@
     "Upgrade": "升级",
 
     "Logo Style": "Logo 风格",
+    "Comment Audit": "审核评论",
     "Text with php tag": "带 PHP 标签",
     "Only text": "纯文本",
     "Need to add Socialite client first,": "需要先增加第三方登录配置，",
@@ -238,5 +239,7 @@
     "Apply": "申请",
     "URL": "链接",
     "Site Name": "网站名",
-    "Please add a friendly link to this site": "请添加本站的友情链接"
+    "Please add a friendly link to this site": "请添加本站的友情链接",
+
+    "Audited": "已审核"
 }

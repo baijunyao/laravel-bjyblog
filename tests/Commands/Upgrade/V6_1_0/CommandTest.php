@@ -3,15 +3,20 @@
 namespace Tests\Commands\Upgrade\V6_1_0;
 
 use Artisan;
+use File;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        static::assertFileNotExists(public_path('sitemap.xml'));
+        $sitemapPath = public_path('sitemap.xml');
+
+        File::delete($sitemapPath);
+
+        static::assertFileNotExists($sitemapPath);
 
         Artisan::call('upgrade:v6.1.0');
 
-        static::assertFileExists(public_path('sitemap.xml'));
+        static::assertFileExists($sitemapPath);
     }
 }
