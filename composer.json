@@ -46,7 +46,6 @@
         "socialiteproviders/vkontakte": "^4.0",
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.3",
-        "spatie/laravel-sitemap": "^5.5",
         "stichoza/google-translate-php": "^4.0"
     },
     "require-dev": {
