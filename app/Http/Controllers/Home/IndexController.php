@@ -244,17 +244,13 @@ class IndexController extends Controller
         }
 
         // 存储评论
-        $id = Comment::create($request->only('article_id', 'content', 'pid') + [
+        $comment = Comment::create($request->only('article_id', 'content', 'pid') + [
             'socialite_user_id' => $userId,
             'type'              => 1,
             'is_audited'        => is_true(config('bjyblog.comment_audit')) ? 0 : 1,
         ]);
 
-        if (!$id) {
-            return ajax_return(500);
-        }
-
-        return ajax_return(200, ['id' => $id]);
+        return response()->json(['id' => $comment->id]);
     }
 
     /**
