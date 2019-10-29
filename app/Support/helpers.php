@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -38,35 +37,6 @@ if (!function_exists('send_email')) {
         }
 
         return $data;
-    }
-}
-
-if (!function_exists('get_uid')) {
-    /**
-     * 返回登录的用户id
-     *
-     * @return mixed 用户id
-     */
-    function get_uid()
-    {
-        return Auth::id();
-    }
-}
-
-if (!function_exists('save_to_file')) {
-    /**
-     * 将数组已json格式写入文件
-     *
-     * @param string $fileName 文件名
-     * @param array  $data     数组
-     */
-    function save_to_file($fileName = 'test', $data = [])
-    {
-        $path = storage_path('tmp' . DIRECTORY_SEPARATOR);
-        is_dir($path) || mkdir($path);
-        $fileName = str_replace('.php', '', $fileName);
-        $fileName = $path . $fileName . '_' . date('Y-m-d_H-i-s', time()) . '.php';
-        file_put_contents($fileName, json_encode($data));
     }
 }
 
@@ -118,67 +88,6 @@ if (!function_exists('add_text_water')) {
     }
 }
 
-if (!function_exists('word_time')) {
-    /**
-     * 把日期或者时间戳转为距离现在的时间
-     *
-     * @param $time
-     *
-     * @return bool|string
-     */
-    function word_time($time)
-    {
-        // 如果是日期格式的时间;则先转为时间戳
-        if (!is_int($time)) {
-            $time = strtotime($time);
-        }
-        $int = time() - $time;
-        if ($int <= 2) {
-            $str = sprintf('刚刚', $int);
-        } elseif ($int < 60) {
-            $str = sprintf('%d秒前', $int);
-        } elseif ($int < 3600) {
-            $str = sprintf('%d分钟前', floor($int / 60));
-        } elseif ($int < 86400) {
-            $str = sprintf('%d小时前', floor($int / 3600));
-        } elseif ($int < 1728000) {
-            $str = sprintf('%d天前', floor($int / 86400));
-        } else {
-            $str = date('Y-m-d H:i:s', $time);
-        }
-
-        return $str;
-    }
-}
-
-if (!function_exists('strip_html_tags')) {
-    /**
-     * 删除指定标签
-     *
-     * @param array  $tags    删除的标签  数组形式
-     * @param string $str     html字符串
-     * @param bool   $content true保留标签的内容text
-     *
-     * @return mixed
-     */
-    function strip_html_tags($tags, $str, $content = true)
-    {
-        $html = [];
-        // 是否保留标签内的text字符
-        if ($content) {
-            foreach ($tags as $tag) {
-                $html[] = '/(<' . $tag . '.*?>(.|\n)*?<\/' . $tag . '>)/is';
-            }
-        } else {
-            foreach ($tags as $tag) {
-                $html[] = '/(<(?:\\/' . $tag . '|' . $tag . ')[^>]*>)/is';
-            }
-        }
-
-        return preg_replace($html, '', $str);
-    }
-}
-
 if (!function_exists('curl_get_contents')) {
     /**
      * 使用curl获取远程数据
@@ -201,38 +110,6 @@ if (!function_exists('curl_get_contents')) {
         curl_close($ch);
 
         return $r;
-    }
-}
-
-if (!function_exists('redis')) {
-    /**
-     * redis的便捷操作方法
-     *
-     * @param $key
-     * @param null $value
-     * @param null $expire
-     *
-     * @return bool|string
-     */
-    function redis($key = null, $value = null, $expire = null)
-    {
-        if ($key === null) {
-            return app('redis');
-        }
-
-        if ($value === null) {
-            $content = Redis::get($key);
-            if ($content === null) {
-                return null;
-            }
-
-            return $content === null ? null : unserialize($content);
-        }
-
-        Redis::set($key, serialize($value));
-        if ($expire !== null) {
-            Redis::expire($key, $expire);
-        }
     }
 }
 
