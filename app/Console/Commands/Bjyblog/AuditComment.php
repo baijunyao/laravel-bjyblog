@@ -52,31 +52,31 @@ class AuditComment extends Command
 
             $count = 0;
             foreach ($comments as $comment) {
+                /** @var \App\Models\Comment $comment */
+
                 if ($comment->is_audited === 0) {
                     continue;
                 }
 
                 $count++;
 
-                $result = $baiduClient->antiSpam($comment->content);
+                $content = $comment->getOriginal('content');
+                $result = $baiduClient->antiSpam($content);
 
                 if (!isset($result['result']['spam'])) {
-                    $this->error('error');
-                    dump($result);
-
-                    continue;
-                }
-
-                $comment->timestamps = false;
-                $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
-                $comment->save();
-
-                $message = 'id:' . $comment->id . ' is_audited:' . $comment->is_audited . ' content:' . $comment->content;
-
-                if ($comment->is_audited === 1) {
-                    $this->info($message);
+                    $this->error('error: '. json_encode($result));
                 } else {
-                    $this->error($message);
+                    $comment->timestamps = false;
+                    $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
+                    $comment->save();
+
+                    $message = 'id:' . $comment->id . ' is_audited:' . $comment->is_audited . ' content:' . $content;
+
+                    if ($comment->is_audited === 1) {
+                        $this->info($message);
+                    } else {
+                        $this->error($message);
+                    }
                 }
 
                 if ($count === 5) {
