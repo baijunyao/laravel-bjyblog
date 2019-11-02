@@ -26,7 +26,7 @@ class IndexController extends Controller
             'system'    => PHP_OS,
             'webServer' => $_SERVER['SERVER_SOFTWARE'] ?? '',
             'php'       => PHP_VERSION,
-            'mysql'     => DB::select('SHOW VARIABLES LIKE "version"')[0]->Value,
+            'mysql'     => DB::connection()->getPdo()->query('SELECT VERSION();')->fetchColumn(),
         ];
         $assign = compact('socialiteUserData', 'version');
 

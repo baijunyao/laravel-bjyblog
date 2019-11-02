@@ -31,6 +31,7 @@ jobs:
           ./vendor/bin/phpunit
       - name: Slack Notify
         uses: baijunyao/action-slack-notify@master
+        if: always()
         with:
           channel: CEWJP77BP
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}

@@ -50,9 +50,9 @@ class SiteController extends Controller
             Notification::route('mail', config('bjyblog.notification_email'))
                 ->notify(new ApplySite());
 
-            return ajax_return(200, '提交成功');
+            return response()->json();
         } else {
-            return ajax_return(400, '提交失败');
+            return response()->json('', 500);
         }
     }
 }

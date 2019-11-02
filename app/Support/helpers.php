@@ -1,75 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-
-if (!function_exists('ajax_return')) {
-    /**
-     * ajax返回数据
-     *
-     * @param string $data        需要返回的数据
-     * @param int    $status_code
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    function ajax_return($status_code = 200, $data = '')
-    {
-        //如果如果是错误 返回错误信息
-        if ($status_code != 200) {
-            //增加status_code
-            $data = ['status_code' => $status_code, 'message' => $data];
-
-            return response()->json($data, $status_code);
-        }
-        //如果是对象 先转成数组
-        if (is_object($data)) {
-            $data = $data->toArray();
-        }
-        if (!function_exists('to_string')) {
-            /**
-             * 将数组递归转字符串
-             *
-             * @param array $arr 需要转的数组
-             *
-             * @return array 转换后的数组
-             */
-            function to_string($arr)
-            {
-                // app 禁止使用和为了统一字段做的判断
-                $reserved_words = [];
-                foreach ($arr as $k => $v) {
-                    //如果是对象先转数组
-                    if (is_object($v)) {
-                        $v = $v->toArray();
-                    }
-                    //如果是数组；则递归转字符串
-                    if (is_array($v)) {
-                        $arr[$k] = to_string($v);
-                    } else {
-                        //判断是否有移动端禁止使用的字段
-                        in_array($k, $reserved_words, true) && die('不允许使用【' . $k . '】这个键名 —— 此提示是helper.php 中的ajaxReturn函数返回的');
-                        //转成字符串类型
-                        $arr[$k] = strval($v);
-                    }
-                }
-
-                return $arr;
-            }
-        }
-
-        //判断是否有返回的数据
-        if (is_array($data)) {
-            //先把所有字段都转成字符串类型
-            $data = to_string($data);
-        }
-
-        return response()->json($data, $status_code);
-    }
-}
 
 if (!function_exists('send_email')) {
     /**
@@ -102,35 +37,6 @@ if (!function_exists('send_email')) {
         }
 
         return $data;
-    }
-}
-
-if (!function_exists('get_uid')) {
-    /**
-     * 返回登录的用户id
-     *
-     * @return mixed 用户id
-     */
-    function get_uid()
-    {
-        return Auth::id();
-    }
-}
-
-if (!function_exists('save_to_file')) {
-    /**
-     * 将数组已json格式写入文件
-     *
-     * @param string $fileName 文件名
-     * @param array  $data     数组
-     */
-    function save_to_file($fileName = 'test', $data = [])
-    {
-        $path = storage_path('tmp' . DIRECTORY_SEPARATOR);
-        is_dir($path) || mkdir($path);
-        $fileName = str_replace('.php', '', $fileName);
-        $fileName = $path . $fileName . '_' . date('Y-m-d_H-i-s', time()) . '.php';
-        file_put_contents($fileName, json_encode($data));
     }
 }
 
@@ -182,67 +88,6 @@ if (!function_exists('add_text_water')) {
     }
 }
 
-if (!function_exists('word_time')) {
-    /**
-     * 把日期或者时间戳转为距离现在的时间
-     *
-     * @param $time
-     *
-     * @return bool|string
-     */
-    function word_time($time)
-    {
-        // 如果是日期格式的时间;则先转为时间戳
-        if (!is_int($time)) {
-            $time = strtotime($time);
-        }
-        $int = time() - $time;
-        if ($int <= 2) {
-            $str = sprintf('刚刚', $int);
-        } elseif ($int < 60) {
-            $str = sprintf('%d秒前', $int);
-        } elseif ($int < 3600) {
-            $str = sprintf('%d分钟前', floor($int / 60));
-        } elseif ($int < 86400) {
-            $str = sprintf('%d小时前', floor($int / 3600));
-        } elseif ($int < 1728000) {
-            $str = sprintf('%d天前', floor($int / 86400));
-        } else {
-            $str = date('Y-m-d H:i:s', $time);
-        }
-
-        return $str;
-    }
-}
-
-if (!function_exists('strip_html_tags')) {
-    /**
-     * 删除指定标签
-     *
-     * @param array  $tags    删除的标签  数组形式
-     * @param string $str     html字符串
-     * @param bool   $content true保留标签的内容text
-     *
-     * @return mixed
-     */
-    function strip_html_tags($tags, $str, $content = true)
-    {
-        $html = [];
-        // 是否保留标签内的text字符
-        if ($content) {
-            foreach ($tags as $tag) {
-                $html[] = '/(<' . $tag . '.*?>(.|\n)*?<\/' . $tag . '>)/is';
-            }
-        } else {
-            foreach ($tags as $tag) {
-                $html[] = '/(<(?:\\/' . $tag . '|' . $tag . ')[^>]*>)/is';
-            }
-        }
-
-        return preg_replace($html, '', $str);
-    }
-}
-
 if (!function_exists('curl_get_contents')) {
     /**
      * 使用curl获取远程数据
@@ -265,38 +110,6 @@ if (!function_exists('curl_get_contents')) {
         curl_close($ch);
 
         return $r;
-    }
-}
-
-if (!function_exists('redis')) {
-    /**
-     * redis的便捷操作方法
-     *
-     * @param $key
-     * @param null $value
-     * @param null $expire
-     *
-     * @return bool|string
-     */
-    function redis($key = null, $value = null, $expire = null)
-    {
-        if ($key === null) {
-            return app('redis');
-        }
-
-        if ($value === null) {
-            $content = Redis::get($key);
-            if ($content === null) {
-                return null;
-            }
-
-            return $content === null ? null : unserialize($content);
-        }
-
-        Redis::set($key, serialize($value));
-        if ($expire !== null) {
-            Redis::expire($key, $expire);
-        }
     }
 }
 

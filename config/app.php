@@ -205,9 +205,6 @@ return [
          * Extension
          */
         App\Providers\ExtensionServiceProvider::class,
-
-        Spatie\Sitemap\SitemapServiceProvider::class
-
     ],
 
     /*
