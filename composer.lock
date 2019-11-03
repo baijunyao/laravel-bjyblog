@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ad1b03bc8708e346b2a0e3e25fd24e5",
+    "content-hash": "b30f4390f83106ecc25d86036e68fe7d",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -522,16 +522,16 @@
         },
         {
             "name": "baijunyao/laravel-scout-elasticsearch",
-            "version": "v3.0.1",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-scout-elasticsearch.git",
-                "reference": "4d9de345d92f9a80e1e5213d17a40d62dc0a4525"
+                "reference": "632d0c345225f1700dc5c95986b8a451eefc7134"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-scout-elasticsearch/zipball/4d9de345d92f9a80e1e5213d17a40d62dc0a4525",
-                "reference": "4d9de345d92f9a80e1e5213d17a40d62dc0a4525",
+                "url": "https://api.github.com/repos/baijunyao/laravel-scout-elasticsearch/zipball/632d0c345225f1700dc5c95986b8a451eefc7134",
+                "reference": "632d0c345225f1700dc5c95986b8a451eefc7134",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -573,7 +573,7 @@
                 "laravel",
                 "scout"
             ],
-            "time": "2019-09-24T14:56:05+00:00"
+            "time": "2019-10-31T14:10:16+00:00"
         },
         {
             "name": "baijunyao/laravel-toastr",
