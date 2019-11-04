@@ -29,7 +29,7 @@ class Upgrade extends Command
         $versionString      = str_replace('.', '_', $versionUpper);
         $upgradeCommandFile = app_path('Console/Commands/Upgrade/') . $versionString . '.php';
 
-        if (!File::exists($upgradeCommandFile)) {
+        if (File::missing($upgradeCommandFile)) {
             $upgradeCommandContent = <<<PHP
 <?php
 
@@ -61,11 +61,11 @@ PHP;
         $testPath = base_path("tests/Commands/Upgrade/$versionString/");
         $testFile = $testPath . 'CommandTest.php';
 
-        if (!File::exists($testPath)) {
+        if (File::missing($testPath)) {
             File::makeDirectory($testPath);
         }
 
-        if (!File::exists($testFile)) {
+        if (File::missing($testFile)) {
             $testContent = <<<PHP
 <?php
 
