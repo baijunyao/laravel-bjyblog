@@ -128,8 +128,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'category_id' => [
+            'required' => 'Veuillez sélectionner une catégorie.',
+        ],
+        'tag_ids' => [
+            'required' => 'Veuillez sélectionner des tags.',
+        ],
+        'markdown' => [
+            'required' => "S'il vous plaît entrer le contenu.",
         ],
     ],
 
@@ -174,5 +180,9 @@ return [
         'time'                  => 'heure',
         'available'             => 'disponible',
         'size'                  => 'taille',
+
+        'author'                => 'auteur',
+        'keywords'              => 'mots clés',
+        'url'                   => 'url',
     ],
 ];

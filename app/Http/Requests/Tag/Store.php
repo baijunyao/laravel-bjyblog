@@ -27,16 +27,4 @@ class Store extends FormRequest
             'name' => 'required|unique:tags',
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name' => '分类名',
-        ];
-    }
 }

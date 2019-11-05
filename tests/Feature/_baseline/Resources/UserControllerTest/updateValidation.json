@@ -20,7 +20,7 @@
         "message": "The given data was invalid.",
         "errors": {
             "name": [
-                "昵称 不能为空。"
+                "名称 不能为空。"
             ],
             "email": [
                 "邮箱 不能为空。"

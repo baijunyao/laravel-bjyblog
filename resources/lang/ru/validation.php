@@ -137,8 +137,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'category_id' => [
+            'required' => 'Пожалуйста, выберите категорию',
+        ],
+        'tag_ids' => [
+            'required' => 'Пожалуйста, выберите несколько тегов',
+        ],
+        'markdown' => [
+            'required' => 'Пожалуйста, введите содержание',
         ],
     ],
 
@@ -189,5 +195,9 @@ return [
         'time'                  => 'Время',
         'available'             => 'Доступно',
         'size'                  => 'Размер',
+
+        'author'                => 'автор',
+        'keywords'              => 'ключевые слова',
+        'url'                   => 'URL',
     ],
 ];

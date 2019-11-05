@@ -27,16 +27,4 @@ class Store extends FormRequest
             'name' => 'required|unique:friendship_links,name,' . $this->route()->id,
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name' => '项目',
-        ];
-    }
 }

@@ -27,16 +27,4 @@ class Store extends FormRequest
             'content' => 'required',
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'content' => '内容',
-        ];
-    }
 }

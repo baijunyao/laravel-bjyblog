@@ -28,17 +28,4 @@ class Store extends FormRequest
             'email' => 'required|email',
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name'  => '昵称',
-            'email' => '邮箱',
-        ];
-    }
 }

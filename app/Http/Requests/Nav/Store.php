@@ -28,17 +28,4 @@ class Store extends FormRequest
             'url'  => 'required',
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name' => '菜单名',
-            'url'  => '链接',
-        ];
-    }
 }

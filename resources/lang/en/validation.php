@@ -129,8 +129,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'category_id' => [
+            'required' => 'Please select a category.',
+        ],
+        'tag_ids' => [
+            'required' => 'Please select some tags.',
+        ],
+        'markdown' => [
+            'required' => 'Please enter the content.',
         ],
     ],
 

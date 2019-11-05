@@ -29,18 +29,4 @@ class Update extends FormRequest
             'description' => 'required',
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name'        => '分类名',
-            'keywords'    => '关键字',
-            'description' => '描述',
-        ];
-    }
 }

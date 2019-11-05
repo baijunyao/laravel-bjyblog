@@ -20,7 +20,7 @@
         "message": "The given data was invalid.",
         "errors": {
             "keywords": [
-                "关键字 不能为空。"
+                "关键词 不能为空。"
             ],
             "description": [
                 "描述 不能为空。"

@@ -128,8 +128,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'category_id' => [
+            'required' => '请选择分类',
+        ],
+        'tag_ids' => [
+            'required' => '请选择标签',
+        ],
+        'markdown' => [
+            'required' => '请输入内容',
         ],
     ],
 
@@ -174,5 +180,9 @@ return [
         'time'                  => '时间',
         'available'             => '可用的',
         'size'                  => '大小',
+
+        'author'                => '作者',
+        'keywords'              => '关键词',
+        'url'                   => '链接',
     ],
 ];
