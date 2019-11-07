@@ -13,6 +13,8 @@ use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Artisan;
 use DB;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use HyperDown\Parser;
 use Illuminate\Console\Command;
 use League\HTMLToMarkdown\HtmlConverter;
@@ -251,10 +253,22 @@ class FromThinkPHPBjyBlog extends Command
     public function avatar(SocialiteUser $socialiteUserModel)
     {
         $data = $socialiteUserModel->select('id', 'avatar')->get();
+
+        // 下载最新的头像到本地
+        $client = new Client();
+
         foreach ($data as $k => $v) {
             if (strpos($v->avatar, 'http') !== false) {
                 $avatarPath = 'uploads/avatar/' . $v->id . '.jpg';
-                file_put_contents(public_path($avatarPath), curl_get_contents($v->avatar));
+
+                try {
+                    $client->request('GET', $v->avatar, [
+                        'sink' => public_path($avatarPath),
+                    ]);
+                } catch (ClientException $e) {
+                    copy(public_path('uploads/avatar/default.jpg'), public_path($avatarPath));
+                }
+
                 SocialiteUser::where('id', $v->id)->update([
                     'avatar' => '/' . $avatarPath,
                 ]);
