@@ -20,7 +20,7 @@
         "message": "The given data was invalid.",
         "errors": {
             "name": [
-                "菜单名 不能为空。"
+                "名称 不能为空。"
             ],
             "url": [
                 "链接 不能为空。"

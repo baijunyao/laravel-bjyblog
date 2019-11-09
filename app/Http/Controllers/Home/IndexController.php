@@ -64,10 +64,8 @@ class IndexController extends Controller
     public function article($id, Request $request, Comment $commentModel)
     {
         // 获取文章数据
-        $article = Article::with(['category', 'tags'])->find($id);
-        if ($article === null) {
-            return abort(404);
-        }
+        $article = Article::with(['category', 'tags'])->findOrFail($id);
+
         // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
         $ipAndId = 'articleRequestList' . $request->ip() . ':' . $id;
         if (!Cache::has($ipAndId)) {
@@ -109,12 +107,8 @@ class IndexController extends Controller
     public function category($id)
     {
         // 获取分类数据
-        $category = Category::select('id', 'name', 'keywords', 'description')
-            ->where('id', $id)
-            ->first();
-        if ($category === null) {
-            return abort(404);
-        }
+        $category = Category::select('id', 'name', 'keywords', 'description')->findOrFail($id);
+
         // 获取分类下的文章
         $articles = $category->articles()
             ->orderBy('created_at', 'desc')
@@ -160,11 +154,7 @@ class IndexController extends Controller
     public function tag($id)
     {
         // 获取标签 以及关键字
-        $tag = Tag::select('id', 'name', 'keywords', 'description')->where('id', $id)->first();
-
-        if ($tag === null) {
-            return abort(404);
-        }
+        $tag = Tag::select('id', 'name', 'keywords', 'description')->findOrFail($id);
 
         // TODO 不取 markdown 和 html 字段
         // 获取标签下的文章

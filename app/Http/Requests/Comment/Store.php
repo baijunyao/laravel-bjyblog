@@ -30,18 +30,4 @@ class Store extends FormRequest
             'content'    => ['required', new Comment()],
         ];
     }
-
-    /**
-     * 定义字段名中文
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'article_id' => '文章id',
-            'pid'        => '父级id',
-            'content'    => '内容',
-        ];
-    }
 }
