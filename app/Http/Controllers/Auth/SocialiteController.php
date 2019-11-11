@@ -18,8 +18,6 @@ class SocialiteController extends Controller
 
     /**
      * SocialiteController constructor.
-     *
-     * @param Request $request
      */
     public function __construct(Request $request)
     {
@@ -35,7 +33,6 @@ class SocialiteController extends Controller
     /**
      * oauth跳转
      *
-     * @param Request $request
      * @param $service
      *
      * @return mixed
@@ -54,8 +51,6 @@ class SocialiteController extends Controller
     /**
      * 获取用户资料并登录
      *
-     * @param Request       $request
-     * @param SocialiteUser $socialiteUserModel
      * @param $service
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

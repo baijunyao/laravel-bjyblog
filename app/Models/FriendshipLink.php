@@ -22,8 +22,6 @@ class FriendshipLink extends Base
     /**
      * 给url添加 http 或者删除 /
      *
-     * @param string $value
-     *
      * @author hanmeimei
      */
     public function setUrlAttribute(string $value)

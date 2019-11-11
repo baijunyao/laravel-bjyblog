@@ -174,7 +174,7 @@ class ConsolesTableSeeder extends Seeder
                 'created_at' => '2019-11-09 10:35:00',
                 'updated_at' => '2019-11-09 10:35:00',
                 'deleted_at' => null,
-            ]
+            ],
         ]);
     }
 }

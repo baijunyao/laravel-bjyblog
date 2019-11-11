@@ -42,10 +42,9 @@ class SendCommentEmail implements ShouldQueue
     /**
      * SendCommentEmail constructor.
      *
-     * @param       $email
-     * @param       $name
-     * @param       $subject
-     * @param array $content
+     * @param $email
+     * @param $name
+     * @param $subject
      */
     public function __construct($email, $name, $subject, array $content)
     {

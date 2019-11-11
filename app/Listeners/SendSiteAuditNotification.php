@@ -21,8 +21,6 @@ class SendSiteAuditNotification
     /**
      * Handle the event.
      *
-     * @param SiteAudit $event
-     *
      * @return void
      */
     public function handle(SiteAudit $event)

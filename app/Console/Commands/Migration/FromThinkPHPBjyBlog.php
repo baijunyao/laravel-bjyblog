@@ -247,8 +247,6 @@ class FromThinkPHPBjyBlog extends Command
 
     /**
      * 把用户的头像保存到本地
-     *
-     * @param SocialiteUser $socialiteUserModel
      */
     public function avatar(SocialiteUser $socialiteUserModel)
     {

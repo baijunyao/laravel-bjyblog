@@ -84,7 +84,6 @@ class ArticleController extends Controller
     /**
      * 添加文章
      *
-     * @param Store   $request
      * @param Article $article
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -134,9 +133,6 @@ class ArticleController extends Controller
     /**
      * 编辑文章
      *
-     * @param Store      $request
-     * @param Article    $articleModel
-     * @param ArticleTag $articleTagModel
      * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -169,7 +165,6 @@ class ArticleController extends Controller
      * 删除文章
      *
      * @param $id
-     * @param Article $articleModel
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -183,8 +178,7 @@ class ArticleController extends Controller
     /**
      * 恢复删除的文章
      *
-     * @param         $id
-     * @param Article $articleModel
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -198,9 +192,7 @@ class ArticleController extends Controller
     /**
      * 彻底删除文章
      *
-     * @param            $id
-     * @param Article    $articleModel
-     * @param ArticleTag $articleTagModel
+     * @param $id
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -223,9 +215,6 @@ class ArticleController extends Controller
 
     /**
      * 批量替换功能
-     *
-     * @param Request $request
-     * @param Article $articleModel
      *
      * @return \Illuminate\Http\RedirectResponse
      */
