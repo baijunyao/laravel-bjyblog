@@ -33,7 +33,7 @@ jobs:
         run: |
           ./vendor/bin/phpunit
       - name: Slack Notify
-        uses: baijunyao/action-slack-notify@master
+        uses: baijunyao/action-slack-notify@v2.0.0
         if: always()
         with:
           channel: CEWJP77BP
