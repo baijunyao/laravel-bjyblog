@@ -53,9 +53,7 @@ class IndexController extends Controller
     /**
      * 文章详情
      *
-     * @param         $id
-     * @param Request $request
-     * @param Comment $commentModel
+     * @param $id
      *
      * @throws \Exception
      *
@@ -213,10 +211,6 @@ class IndexController extends Controller
     /**
      * 文章评论
      *
-     * @param Store         $request
-     * @param Comment       $commentModel
-     * @param SocialiteUser $socialiteUserModel
-     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function comment(Store $request, Comment $commentModel, SocialiteUser $socialiteUserModel)
@@ -255,8 +249,6 @@ class IndexController extends Controller
 
     /**
      * 搜索文章
-     *
-     * @param Request $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

@@ -131,6 +131,9 @@ class ComposerServiceProvider extends ServiceProvider
 
         view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
             $latestComments = Comment::with(['article', 'socialiteUser'])
+                ->when(is_true(config('bjyblog.comment_audit')), function ($query) {
+                    return $query->where('is_audited', 1);
+                })
                 ->whereHas('socialiteUser', function ($query) {
                     $query->where('is_admin', 0);
                 })

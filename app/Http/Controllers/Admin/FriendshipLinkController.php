@@ -89,9 +89,6 @@ class FriendshipLinkController extends Controller
     /**
      * 排序
      *
-     * @param Request        $request
-     * @param FriendshipLink $friendshipLinkModel
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sort(Request $request, FriendshipLink $friendshipLinkModel)

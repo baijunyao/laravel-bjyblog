@@ -121,8 +121,6 @@ class Article extends Base
     /**
      * 搜索文章获取文章id
      *
-     * @param string $wd
-     *
      * @return Collection
      */
     public function searchArticleGetId(string $wd)

@@ -94,9 +94,6 @@ class CategoryController extends Controller
     /**
      * 分类排序
      *
-     * @param Request  $request
-     * @param Category $categoryModel
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function sort(Request $request, Category $categoryModel)

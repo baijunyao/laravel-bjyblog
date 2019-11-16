@@ -26,11 +26,14 @@ jobs:
           php artisan passport:keys
           php artisan migrate
           php artisan db:seed
+      - name: Code Style
+        run: |
+          ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots
       - name: Test
         run: |
           ./vendor/bin/phpunit
       - name: Slack Notify
-        uses: baijunyao/action-slack-notify@master
+        uses: baijunyao/action-slack-notify@v2.0.0
         if: always()
         with:
           channel: CEWJP77BP

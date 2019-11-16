@@ -50,10 +50,14 @@ class AuditComment extends Command
 
             $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
 
+            $bar = $this->output->createProgressBar($comments->count());
+            $bar->start();
             $count = 0;
-            foreach ($comments as $comment) {
-                /** @var \App\Models\Comment $comment */
 
+            foreach ($comments as $comment) {
+                $bar->advance();
+
+                /** @var \App\Models\Comment $comment */
                 if ($comment->is_audited === 0) {
                     continue;
                 }
@@ -61,10 +65,10 @@ class AuditComment extends Command
                 $count++;
 
                 $content = $comment->getOriginal('content');
-                $result = $baiduClient->antiSpam($content);
+                $result  = $baiduClient->antiSpam($content);
 
                 if (!isset($result['result']['spam'])) {
-                    $this->error('error: '. json_encode($result));
+                    $this->error('error: ' . json_encode($result));
                 } else {
                     $comment->timestamps = false;
                     $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
@@ -84,6 +88,8 @@ class AuditComment extends Command
                     $count = 0;
                 }
             }
+
+            $bar->finish();
         } else {
             $this->error('请先配置百度的 key ');
         }

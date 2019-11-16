@@ -15,9 +15,6 @@ class ArticleTag extends Base
     /**
      * 为文章批量插入标签
      *
-     * @param int   $article_id
-     * @param array $tag_ids
-     *
      * @return bool
      *
      * @author hanmeimei

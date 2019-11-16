@@ -71,8 +71,7 @@ class GitProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -85,9 +84,6 @@ class GitProjectController extends Controller
 
     /**
      * 排序
-     *
-     * @param Request    $request
-     * @param GitProject $gitProjectModel
      *
      * @return \Illuminate\Http\RedirectResponse
      */
