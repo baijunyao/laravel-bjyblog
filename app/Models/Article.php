@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
+use Str;
 
 /**
  * Class Article
@@ -155,7 +156,7 @@ class Article extends Base
     {
         $parameters = [$this->id];
 
-        if (is_true(config('bjyblog.seo.use_slug'))) {
+        if (Str::isTrue(config('bjyblog.seo.use_slug'))) {
             $parameters[] = $this->slug;
         }
 

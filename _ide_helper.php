@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.5.1 on 2019-11-16 12:32:21.
+ * Generated for Laravel 6.5.1 on 2019-11-18 21:43:52.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -14795,6 +14795,26 @@ namespace Illuminate\Support {
      *
      */ 
     class Str {
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isFalse($false)
+        {
+                        return \Illuminate\Support\Str::isFalse($false);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isTrue($true)
+        {
+                        return \Illuminate\Support\Str::isTrue($true);
+        }
          
     }
  

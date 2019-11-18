@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b30f4390f83106ecc25d86036e68fe7d",
+    "content-hash": "ccd93e8475b0f036b0f2d0118e495fa2",
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -574,6 +574,67 @@
                 "scout"
             ],
             "time": "2019-10-31T14:10:16+00:00"
+        },
+        {
+            "name": "baijunyao/laravel-support",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baijunyao/laravel-support.git",
+                "reference": "c457cbf6c53c0cffea66cfeca8ba982e825c335c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baijunyao/laravel-support/zipball/c457cbf6c53c0cffea66cfeca8ba982e825c335c",
+                "reference": "c457cbf6c53c0cffea66cfeca8ba982e825c335c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/support": "^5.5|^6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "nunomaduro/larastan": "^0.4.3",
+                "orchestra/testbench": "^4.3",
+                "phpstan/phpstan": "^0.11.19",
+                "phpunit/phpunit": "^8.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Baijunyao\\LaravelSupport\\SupportServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Baijunyao\\LaravelSupport\\": "src/",
+                    "Baijunyao\\LaravelSupport\\Tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "baijunyao",
+                    "email": "baijunyao@baijunyao.com"
+                }
+            ],
+            "description": "Laravel Support",
+            "keywords": [
+                "laravel",
+                "support"
+            ],
+            "time": "2019-11-18T11:58:33+00:00"
         },
         {
             "name": "baijunyao/laravel-toastr",

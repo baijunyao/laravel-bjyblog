@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Str;
+
 /**
  * Class Category
  *
@@ -29,7 +31,7 @@ class Category extends Base
     {
         $parameters = [$this->id];
 
-        if (is_true(config('bjyblog.seo.use_slug'))) {
+        if (Str::isTrue(config('bjyblog.seo.use_slug'))) {
             $parameters[] = $this->slug;
         }
 

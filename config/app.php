@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Baijunyao\LaravelSupport\SupportServiceProvider::class,
+
         /**
          * assign data
          */
