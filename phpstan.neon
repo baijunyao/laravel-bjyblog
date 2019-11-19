@@ -1,0 +1,19 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+    level: 1
+    paths:
+        - app
+        - config
+        - routes
+    ignoreErrors:
+        - '#Static call to instance method Illuminate\\Support\\Str::isTrue\(\)#'
+        - '#Static call to instance method Illuminate\\Support\\Str::isFalse\(\)#'
+        - '#Static method App\\Models\\\w+::select\(\) invoked with.*#'
+        - '#Method App\\Models\\\w+::select\(\) invoked with.*#'
+        -
+            message: '#Undefined variable: \$this#'
+            path: %currentWorkingDirectory%/routes/console.php
+        -
+            message: '#Using \$this outside a class#'
+            path: %currentWorkingDirectory%/routes/console.php

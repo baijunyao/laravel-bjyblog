@@ -40,6 +40,7 @@
         "league/commonmark-ext-table": "^2.0",
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^3.0",
+        "nunomaduro/larastan": "^0.4.3",
         "overtrue/laravel-lang": "^3.0",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
@@ -99,6 +100,7 @@
     "prefer-stable": true,
     "scripts": {
         "phpcs": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan analyse --ansi",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

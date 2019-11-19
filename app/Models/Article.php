@@ -66,11 +66,6 @@ class Article extends Base
         return str_replace('<img src="/uploads/article', '<img src="' . cdn_url('uploads/article'), $value);
     }
 
-    /**
-     * 关联文章表
-     *
-     * @return belongsTo
-     */
     public function category()
     {
         return $this->belongsTo(Category::class);

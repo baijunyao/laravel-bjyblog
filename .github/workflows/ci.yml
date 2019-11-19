@@ -29,6 +29,9 @@ jobs:
       - name: Code Style
         run: |
           ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots
+      - name: PHPStan
+        run: |
+          ./vendor/bin/phpstan analyse --ansi
       - name: Test
         run: |
           ./vendor/bin/phpunit
