@@ -10,9 +10,13 @@
 </p>
 
 
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog?ref=badge_large)
+
 ## Introduction
 
-![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)  
+![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog?ref=badge_shield)
+ 
 
 ## Documentation
 [English](https://baijunyao.com/docs/laravel-bjyblog/en) [中文文档](https://baijunyao.com/docs/laravel-bjyblog)  
