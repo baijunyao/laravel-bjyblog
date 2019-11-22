@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Exception;
 use Illuminate\Contracts\Routing\UrlGenerator;
-use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
