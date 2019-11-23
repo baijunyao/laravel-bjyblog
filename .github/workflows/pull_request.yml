@@ -1,6 +1,6 @@
 name: CI
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   phpunit:
@@ -29,14 +29,9 @@ jobs:
       - name: Code Style
         run: |
           ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots
+      - name: PHPStan
+        run: |
+          ./vendor/bin/phpstan analyse --ansi
       - name: Test
         run: |
           ./vendor/bin/phpunit
-      - name: Slack Notify
-        uses: baijunyao/action-slack-notify@v2.0.0
-        if: always()
-        with:
-          channel: CEWJP77BP
-          slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
-          github_context: ${{ toJson(github) }}
-          job_context: ${{ toJson(job) }}

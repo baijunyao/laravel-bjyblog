@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Str;
 
 /**
  * Class Comment
@@ -121,7 +122,7 @@ class Comment extends Base
             ->join('socialite_users as ou', 'comments.socialite_user_id', 'ou.id')
             ->where('comments.article_id', $article_id)
             ->where('comments.pid', 0)
-            ->when(is_true(config('bjyblog.comment_audit')), function ($query) {
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                 return $query->where('comments.is_audited', 1);
             })
             ->orderBy('created_at', 'desc')
@@ -172,7 +173,7 @@ class Comment extends Base
             ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
             ->join('socialite_users as ou', 'comments.socialite_user_id', 'ou.id', 'ou.is_admin')
             ->where('comments.pid', $data['id'])
-            ->when(is_true(config('bjyblog.comment_audit')), function ($query) {
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                 return $query->where('comments.is_audited', 1);
             })
             ->orderBy('created_at', 'desc')

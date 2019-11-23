@@ -14,16 +14,4 @@ class HelpersTest extends TestCase
         static::assertEquals('https://baijunyao.com', format_url('https://BaiJunYao.com'));
         static::assertEquals('https://baijunyao.com', format_url('https://baijunyao.com/'));
     }
-
-    public function testIsTrue()
-    {
-        static::assertTrue(is_true('true'));
-        static::assertTrue(is_true(true));
-    }
-
-    public function testIsFalse()
-    {
-        static::assertTrue(is_false('false'));
-        static::assertTrue(is_false(false));
-    }
 }

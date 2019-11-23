@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Str;
 
 /**
  * Class Tag
@@ -37,7 +38,7 @@ class Tag extends Base
     {
         $parameters = [$this->id];
 
-        if (is_true(config('bjyblog.seo.use_slug'))) {
+        if (Str::isTrue(config('bjyblog.seo.use_slug'))) {
             $parameters[] = $this->slug;
         }
 

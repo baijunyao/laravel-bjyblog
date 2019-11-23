@@ -15,9 +15,9 @@ use Artisan;
 use DB;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use HyperDown\Parser;
 use Illuminate\Console\Command;
 use League\HTMLToMarkdown\HtmlConverter;
+use Markdown;
 
 class FromThinkPHPBjyBlog extends Command
 {
@@ -83,7 +83,6 @@ class FromThinkPHPBjyBlog extends Command
 
         // 从旧系统中迁移文章
         $htmlConverter = new HtmlConverter();
-        $parser        = new Parser();
         $data          = DB::connection('old')
             ->table('article')
             ->get()
@@ -112,7 +111,7 @@ class FromThinkPHPBjyBlog extends Command
             }
             $markdown = str_replace($arr[0], $tmp, $markdown);
             // markdown 转html
-            $html    = $parser->makeHtml($markdown);
+            $html    = Markdown::convertToHtml($markdown);
             $html    = html_entity_decode($html);
             $html    = str_replace(['<code class="', '\\\\'], ['<code class="lang-', '\\'], $html);
             $article = [

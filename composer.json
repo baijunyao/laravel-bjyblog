@@ -22,6 +22,7 @@
         "baijunyao/laravel-print": "^3.0",
         "baijunyao/laravel-restful": "^1.0",
         "baijunyao/laravel-scout-elasticsearch": "^5.0",
+        "baijunyao/laravel-support": "^1.0",
         "baijunyao/laravel-upload": "^2.0",
         "composer/semver": "^1.4",
         "doctrine/dbal": "^2.5",
@@ -39,6 +40,7 @@
         "league/commonmark-ext-table": "^2.0",
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^3.0",
+        "nunomaduro/larastan": "^0.4.3",
         "overtrue/laravel-lang": "^3.0",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^1.0",
@@ -98,6 +100,7 @@
     "prefer-stable": true,
     "scripts": {
         "phpcs": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan analyse --ansi",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

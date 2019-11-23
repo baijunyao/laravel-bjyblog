@@ -14,6 +14,7 @@ use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Cache;
 use Illuminate\Http\Request;
+use Str;
 
 class IndexController extends Controller
 {
@@ -231,7 +232,7 @@ class IndexController extends Controller
         $comment = Comment::create($request->only('article_id', 'content', 'pid') + [
             'socialite_user_id' => $userId,
             'type'              => 1,
-            'is_audited'        => is_true(config('bjyblog.comment_audit')) ? 0 : 1,
+            'is_audited'        => Str::isTrue(config('bjyblog.comment_audit')) ? 0 : 1,
         ]);
 
         return response()->json(['id' => $comment->id]);

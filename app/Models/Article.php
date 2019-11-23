@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Exception;
 use Illuminate\Contracts\Routing\UrlGenerator;
-use Illuminate\Database\Eloquent\Relations\belongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
+use Str;
 
 /**
  * Class Article
@@ -65,11 +65,6 @@ class Article extends Base
         return str_replace('<img src="/uploads/article', '<img src="' . cdn_url('uploads/article'), $value);
     }
 
-    /**
-     * 关联文章表
-     *
-     * @return belongsTo
-     */
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -155,7 +150,7 @@ class Article extends Base
     {
         $parameters = [$this->id];
 
-        if (is_true(config('bjyblog.seo.use_slug'))) {
+        if (Str::isTrue(config('bjyblog.seo.use_slug'))) {
             $parameters[] = $this->slug;
         }
 

@@ -7,6 +7,7 @@ use App\Jobs\SendCommentEmail;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
+use Str;
 
 class CommentObserver extends BaseObserver
 {
@@ -18,7 +19,7 @@ class CommentObserver extends BaseObserver
             config('services.baidu.secret'),
         ];
 
-        if (is_true(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3) {
+        if (Str::isTrue(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3) {
             $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
             $result = $baiduClient->antiSpam($comment->content);
 

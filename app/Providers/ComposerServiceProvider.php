@@ -17,6 +17,7 @@ use Artisan;
 use Cache;
 use Exception;
 use Illuminate\Support\ServiceProvider;
+use Str;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -131,7 +132,7 @@ class ComposerServiceProvider extends ServiceProvider
 
         view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
             $latestComments = Comment::with(['article', 'socialiteUser'])
-                ->when(is_true(config('bjyblog.comment_audit')), function ($query) {
+                ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                     return $query->where('is_audited', 1);
                 })
                 ->whereHas('socialiteUser', function ($query) {
