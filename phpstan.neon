@@ -7,8 +7,7 @@ parameters:
         - config
         - routes
     ignoreErrors:
-        - '#Static call to instance method Illuminate\\Support\\Str::isTrue\(\)#'
-        - '#Static call to instance method Illuminate\\Support\\Str::isFalse\(\)#'
+        - '#Static call to instance method Illuminate\\Support\\Str::is(True|False|JsonArray|JsonObject)\(\)#'
         - '#Static method App\\Models\\\w+::select\(\) invoked with.*#'
         - '#Method App\\Models\\\w+::select\(\) invoked with.*#'
         -

@@ -577,16 +577,16 @@
         },
         {
             "name": "baijunyao/laravel-support",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-support.git",
-                "reference": "c457cbf6c53c0cffea66cfeca8ba982e825c335c"
+                "reference": "f55d840ed955403fe3575061de9cb814e1189690"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-support/zipball/c457cbf6c53c0cffea66cfeca8ba982e825c335c",
-                "reference": "c457cbf6c53c0cffea66cfeca8ba982e825c335c",
+                "url": "https://api.github.com/repos/baijunyao/laravel-support/zipball/f55d840ed955403fe3575061de9cb814e1189690",
+                "reference": "f55d840ed955403fe3575061de9cb814e1189690",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -634,7 +634,7 @@
                 "laravel",
                 "support"
             ],
-            "time": "2019-11-18T11:58:33+00:00"
+            "time": "2019-11-22T12:54:01+00:00"
         },
         {
             "name": "baijunyao/laravel-toastr",
@@ -9735,16 +9735,16 @@
     "packages-dev": [
         {
             "name": "baijunyao/laravel-test-support",
-            "version": "v4.1.0",
+            "version": "v4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-test-support.git",
-                "reference": "b992eccad9b506804a26d8d7e8cc0e9f682e7013"
+                "reference": "de2d90769987e55ae43130a68dd9f548e03784b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/b992eccad9b506804a26d8d7e8cc0e9f682e7013",
-                "reference": "b992eccad9b506804a26d8d7e8cc0e9f682e7013",
+                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/de2d90769987e55ae43130a68dd9f548e03784b1",
+                "reference": "de2d90769987e55ae43130a68dd9f548e03784b1",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -9754,6 +9754,7 @@
                 ]
             },
             "require": {
+                "baijunyao/laravel-support": "^1.0",
                 "illuminate/support": "^5.5|^6.0",
                 "phpunit/phpunit": "^7.0|^8.0"
             },
@@ -9779,7 +9780,7 @@
                 "support",
                 "test"
             ],
-            "time": "2019-10-22T11:54:52+00:00"
+            "time": "2019-11-24T12:16:44+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",

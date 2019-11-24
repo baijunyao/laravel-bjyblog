@@ -88,22 +88,6 @@ if (!function_exists('add_text_water')) {
     }
 }
 
-if (!function_exists('is_json')) {
-    /**
-     * 判断字符串是否是json
-     *
-     * @param $json
-     *
-     * @return bool
-     */
-    function is_json($json)
-    {
-        json_decode($json);
-
-        return json_last_error() == JSON_ERROR_NONE;
-    }
-}
-
 if (!function_exists('generate_english_slug')) {
     /**
      * Generate English slug
