@@ -75,6 +75,11 @@ class ConfigController extends Controller
         return view('admin.config.seo');
     }
 
+    public function search()
+    {
+        return view('admin.config.search');
+    }
+
     public function socialShare()
     {
         return view('admin.config.socialShare');
