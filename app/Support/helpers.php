@@ -180,3 +180,24 @@ if (!function_exists('format_url')) {
         return strtolower(rtrim($url, '/'));
     }
 }
+
+if (!function_exists('mail_is_configured')) {
+    /**
+     * Check mail config
+     */
+    function mail_is_configured()
+    {
+        $mailConfig = [
+            config('mail.driver'),
+            config('mail.encryption'),
+            config('mail.port'),
+            config('mail.host'),
+            config('mail.username'),
+            config('mail.password'),
+            config('mail.from.address'),
+            config('mail.from.name'),
+        ];
+
+        return count(array_filter($mailConfig)) === 8;
+    }
+}
