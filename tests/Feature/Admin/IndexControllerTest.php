@@ -20,4 +20,10 @@ class IndexControllerTest extends TestCase
         $response = $this->get('admin/index/index');
         $response->assertRedirect('admin/login/index');
     }
+
+    public function testLoginUserForTest()
+    {
+        $response = $this->adminGet('admin/index/loginUserForTest');
+        $response->assertRedirect('admin/index/index');
+    }
 }

@@ -66,6 +66,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('index', 'IndexController@index');
         // 更新系统
         Route::get('upgrade', 'IndexController@upgrade');
+        // For local testing only
+        Route::get('loginUserForTest', 'IndexController@loginUserForTest');
     });
 
     // 文章管理

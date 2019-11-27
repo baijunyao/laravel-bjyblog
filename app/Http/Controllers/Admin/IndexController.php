@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
+use Auth;
 use Composer\Semver\Comparator;
 use DB;
 
@@ -52,5 +54,18 @@ class IndexController extends Controller
 
             return redirect(url('admin/index/index'));
         }
+    }
+
+    public function loginUserForTest()
+    {
+        if (!App::environment('local')) {
+            flash_error('For local testing only.');
+
+            return redirect(url('admin/index/index'));
+        }
+
+        Auth::guard('socialite')->loginUsingId(1);
+
+        return redirect(url('/'));
     }
 }
