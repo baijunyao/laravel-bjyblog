@@ -2,10 +2,11 @@
 
 namespace Tests\Feature\Home;
 
-use App\Jobs\SendCommentEmail;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
-use Bus;
+use App\Notifications\Comment as CommentNotification;
+use Illuminate\Notifications\AnonymousNotifiable;
+use Illuminate\Support\Facades\Notification;
 
 class IndexControllerTest extends TestCase
 {
@@ -56,16 +57,8 @@ class IndexControllerTest extends TestCase
 
     public function testComment()
     {
-        Bus::fake();
-
-        config([
-            'mail.host'                  => 'test',
-            'mail.username'              => 'test',
-            'mail.password'              => 'test',
-            'mail.from.address'          => 'test',
-            'mail.from.name'             => 'test',
-            'bjyblog.notification_email' => 'test',
-        ]);
+        Notification::fake();
+        $this->setupEmail();
 
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
         $email   = 'comment@test.com';
@@ -92,27 +85,12 @@ class IndexControllerTest extends TestCase
 
         static::assertEquals($email, SocialiteUser::where('id', 1)->value('email'));
 
-        Bus::assertDispatched(SendCommentEmail::class, function ($job) {
-            return $job->content['type'] === '评论';
-        });
-
-        Bus::assertDispatched(SendCommentEmail::class, function ($job) {
-            return $job->content['type'] === '回复';
-        });
+        Notification::assertSentTo(new AnonymousNotifiable(), CommentNotification::class);
     }
 
     public function testCommentNoMailConfigured()
     {
-        Bus::fake();
-
-        config([
-            'mail.host'                  => '',
-            'mail.username'              => '',
-            'mail.password'              => '',
-            'mail.from.address'          => 'test',
-            'mail.from.name'             => 'test',
-            'bjyblog.notification_email' => 'test',
-        ]);
+        Notification::fake();
 
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
         $comment = [
@@ -135,13 +113,7 @@ class IndexControllerTest extends TestCase
             'content' => (new Comment())->imageToUbb($content),
         ]);
 
-        Bus::assertNotDispatched(SendCommentEmail::class, function ($job) {
-            return $job->content['type'] === '评论';
-        });
-
-        Bus::assertNotDispatched(SendCommentEmail::class, function ($job) {
-            return $job->content['type'] === '回复';
-        });
+        Notification::assertNotSentTo(new AnonymousNotifiable(), CommentNotification::class);
     }
 
     public function testCommentEmptyContent()
