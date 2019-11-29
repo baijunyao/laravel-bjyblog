@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ApplySite extends Notification implements ShouldQueue
+class SiteApply extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -29,9 +29,7 @@ class ApplySite extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        // 只在外网生产环境下发送邮件通知
-        // if (env('APP_ENV') == 'local') {
-        if (env('APP_ENV') == 'production') {
+        if (mail_is_configured()) {
             return ['mail'];
         }
     }

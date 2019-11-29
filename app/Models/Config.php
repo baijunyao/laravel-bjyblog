@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Str;
+
 /**
  * Class Config
  *
@@ -22,7 +24,7 @@ class Config extends Base
      */
     public function getValueAttribute($value)
     {
-        if (is_json($value) && mb_substr($value, 0, 1) === '[') {
+        if (Str::isJsonArray($value)) {
             return json_decode($value, true);
         }
 

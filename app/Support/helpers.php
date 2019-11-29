@@ -1,44 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-
-if (!function_exists('send_email')) {
-    /**
-     * 发送邮件函数
-     *
-     * @param $email            收件人邮箱  如果群发 则传入数组
-     * @param $name             收件人名称
-     * @param $subject          标题
-     * @param array  $data     邮件模板中用的变量 示例：['name'=>'帅白','phone'=>'110']
-     * @param string $template 邮件模板
-     *
-     * @return array 发送状态
-     */
-    function send_email($email, $name, $subject, $data = [], $template = 'emails.test')
-    {
-        Mail::send($template, $data, function ($message) use ($email, $name, $subject) {
-            //如果是数组；则群发邮件
-            if (is_array($email)) {
-                foreach ($email as $k => $v) {
-                    $message->to($v, $name)->subject($subject);
-                }
-            } else {
-                $message->to($email, $name)->subject($subject);
-            }
-        });
-        if (count(Mail::failures()) > 0) {
-            $data = ['status_code' => 500, 'message' => '邮件发送失败'];
-        } else {
-            $data = ['status_code' => 200, 'message' => '邮件发送成功'];
-        }
-
-        return $data;
-    }
-}
 
 if (!function_exists('re_substr')) {
     /**
@@ -85,22 +50,6 @@ if (!function_exists('add_text_water')) {
             });
             $image->save($file);
         }
-    }
-}
-
-if (!function_exists('is_json')) {
-    /**
-     * 判断字符串是否是json
-     *
-     * @param $json
-     *
-     * @return bool
-     */
-    function is_json($json)
-    {
-        json_decode($json);
-
-        return json_last_error() == JSON_ERROR_NONE;
     }
 }
 
@@ -194,5 +143,26 @@ if (!function_exists('format_url')) {
         }
 
         return strtolower(rtrim($url, '/'));
+    }
+}
+
+if (!function_exists('mail_is_configured')) {
+    /**
+     * Check mail config
+     */
+    function mail_is_configured()
+    {
+        $mailConfig = [
+            config('mail.driver'),
+            config('mail.encryption'),
+            config('mail.port'),
+            config('mail.host'),
+            config('mail.username'),
+            config('mail.password'),
+            config('mail.from.address'),
+            config('mail.from.name'),
+        ];
+
+        return count(array_filter($mailConfig)) === 8;
     }
 }

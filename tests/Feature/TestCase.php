@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Config;
 use App\Models\SocialiteUser;
 use App\Models\User;
 use Exception;
@@ -72,5 +73,18 @@ abstract class TestCase extends \Tests\TestCase
         }
 
         return $this->actingAs($user, $guard);
+    }
+
+    public function setupEmail()
+    {
+        $mailConfigs = [
+            'mail.host'         => 'host',
+            'mail.username'     => 'username',
+            'mail.password'     => 'password',
+            'mail.from.address' => 'from.address',
+            'mail.from.name'    => 'from.name',
+        ];
+
+        config($mailConfigs);
     }
 }

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.5.2 on 2019-11-23 17:28:33.
+ * Generated for Laravel 6.6.0 on 2019-11-30 01:10:40.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -10530,7 +10530,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Create a new response for a given view.
          *
-         * @param string $view
+         * @param string|array $view
          * @param array $data
          * @param int $status
          * @param array $headers
@@ -10771,6 +10771,20 @@ namespace Illuminate\Support\Facades {
      * @see \Illuminate\Routing\Router
      */ 
     class Route {
+        
+        /**
+         * Register a new HEAD route with the router.
+         *
+         * @param string $uri
+         * @param \Closure|array|string|callable|null $action
+         * @return \Illuminate\Routing\Route 
+         * @static 
+         */ 
+        public static function head($uri, $action = null)
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        return $instance->head($uri, $action);
+        }
         
         /**
          * Register a new GET route with the router.
@@ -14819,6 +14833,36 @@ namespace Illuminate\Support {
         public static function isFalse($false)
         {
                         return \Illuminate\Support\Str::isFalse($false);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isJsonArray($json)
+        {
+                        return \Illuminate\Support\Str::isJsonArray($json);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isJsonObject($json)
+        {
+                        return \Illuminate\Support\Str::isJsonObject($json);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function isNull($null)
+        {
+                        return \Illuminate\Support\Str::isNull($null);
         }
         
         /**

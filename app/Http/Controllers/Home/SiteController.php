@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Store;
 use App\Models\Site;
 use App\Models\SocialiteUser;
-use App\Notifications\ApplySite;
+use App\Notifications\SiteApply;
 use Notification;
 
 class SiteController extends Controller
@@ -48,7 +48,7 @@ class SiteController extends Controller
             ]);
 
             Notification::route('mail', config('bjyblog.notification_email'))
-                ->notify(new ApplySite());
+                ->notify(new SiteApply());
 
             return response()->json();
         } else {
