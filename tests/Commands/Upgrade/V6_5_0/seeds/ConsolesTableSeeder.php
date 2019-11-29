@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Commands\Upgrade\V6_5_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class ConsolesTableSeeder extends Seeder
@@ -171,13 +173,6 @@ class ConsolesTableSeeder extends Seeder
             [
                 'id'         => 25,
                 'name'       => 'App\Console\Commands\Upgrade\V6_4_0',
-                'created_at' => '2019-11-09 10:35:00',
-                'updated_at' => '2019-11-09 10:35:00',
-                'deleted_at' => null,
-            ],
-            [
-                'id'         => 26,
-                'name'       => 'App\Console\Commands\Upgrade\V6_5_0',
                 'created_at' => '2019-11-09 10:35:00',
                 'updated_at' => '2019-11-09 10:35:00',
                 'deleted_at' => null,
