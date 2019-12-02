@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Resources;
 
-use Baijunyao\LaravelRestful\Index;
-use Baijunyao\LaravelRestful\Show;
-use Baijunyao\LaravelRestful\Update;
+use Baijunyao\LaravelRestful\Traits\Index;
+use Baijunyao\LaravelRestful\Traits\Show;
+use Baijunyao\LaravelRestful\Traits\Update;
 
 class ConfigController extends Controller
 {

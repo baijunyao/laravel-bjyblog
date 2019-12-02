@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Resources;
 
-use Baijunyao\LaravelRestful\Destroy;
-use Baijunyao\LaravelRestful\ForceDelete;
-use Baijunyao\LaravelRestful\Index;
-use Baijunyao\LaravelRestful\Restore;
-use Baijunyao\LaravelRestful\Show;
-use Baijunyao\LaravelRestful\Update;
+use Baijunyao\LaravelRestful\Traits\Destroy;
+use Baijunyao\LaravelRestful\Traits\ForceDelete;
+use Baijunyao\LaravelRestful\Traits\Index;
+use Baijunyao\LaravelRestful\Traits\Restore;
+use Baijunyao\LaravelRestful\Traits\Show;
+use Baijunyao\LaravelRestful\Traits\Update;
 
 class SocialiteUserController extends Controller
 {

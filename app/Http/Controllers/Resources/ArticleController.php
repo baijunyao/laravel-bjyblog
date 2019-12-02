@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Resources;
 use App\Http\Requests\Article\Store;
 use App\Models\Article;
 use App\Models\ArticleTag;
-use Baijunyao\LaravelRestful\Destroy;
-use Baijunyao\LaravelRestful\ForceDelete;
-use Baijunyao\LaravelRestful\Index;
-use Baijunyao\LaravelRestful\Restore;
-use Baijunyao\LaravelRestful\Show;
+use Baijunyao\LaravelRestful\Traits\Destroy;
+use Baijunyao\LaravelRestful\Traits\ForceDelete;
+use Baijunyao\LaravelRestful\Traits\Index;
+use Baijunyao\LaravelRestful\Traits\Restore;
+use Baijunyao\LaravelRestful\Traits\Show;
 
 class ArticleController extends Controller
 {
