@@ -2513,6 +2513,11 @@ emoji-regex@^7.0.1:
   resolved "https://registry.npm.taobao.org/emoji-regex/download/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
   integrity sha1-kzoEBShgyF6DwSJHnEdIqOTHIVY=
 
+emojify.js@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/emojify.js/download/emojify.js-1.1.0.tgz#079fff223307c9007f570785e8e4935d5c398beb"
+  integrity sha1-B5//IjMHyQB/VweF6OSTXVw5i+s=
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/emojis-list/download/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
