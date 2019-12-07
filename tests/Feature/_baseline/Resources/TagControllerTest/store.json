@@ -18,11 +18,14 @@
     },
     "content": {
         "data": {
+            "id": 4,
             "name": "Store",
             "slug": "store",
-            "updated_at": "2019-01-01 00:00:00",
+            "keywords": "",
+            "description": "",
             "created_at": "2019-01-01 00:00:00",
-            "id": 4
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
         }
     }
 }

@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\SocialiteClient;
 use App\Models\SocialiteUser;
 use Auth;
+use Exception;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Socialite;
 use URL;
@@ -116,7 +116,7 @@ class SocialiteController extends Controller
             $client->request('GET', $user->avatar, [
                 'sink' => $avatarPath,
             ]);
-        } catch (ClientException $e) {
+        } catch (Exception $e) {
             // 如果下载失败；则使用默认图片
             copy(public_path('uploads/avatar/default.jpg'), $avatarPath);
         }

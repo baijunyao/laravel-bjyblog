@@ -42,8 +42,6 @@ require('pace/pace');
 
 require('fluidbox/dist/js/jquery.fluidbox.min');
 
-require('./home/emojiRenderer');
-
 require('./home/index');
 
 require('./home/comment');
@@ -56,3 +54,6 @@ require('jssocials/dist/jssocials.min');
 require('social-share.js/dist/js/jquery.share.min');
 
 require('lazyload/lazyload');
+
+emojify = require('emojify.js');
+emojify.setConfig({img_dir : '/images/emojis'});

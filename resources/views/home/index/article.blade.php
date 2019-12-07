@@ -161,7 +161,7 @@
                 return "<a class='js-fluidbox' href='"+$(v).attr('src')+"'></a>"
             });
         })
-        $('.js-content').html(editormd.emojiRenderer($('.js-content').html()));
+        emojify.run(document.querySelector('.js-content'));
         $('.js-fluidbox').fluidbox();
         $('#b-share-js').share(sharejsConfig);
         $('#b-js-socials').jsSocials(jsSocialsConfig)

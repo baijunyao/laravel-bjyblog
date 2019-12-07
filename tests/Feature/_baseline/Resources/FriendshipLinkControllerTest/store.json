@@ -18,12 +18,13 @@
     },
     "content": {
         "data": {
+            "id": 3,
             "name": "Store",
             "url": "https:\/\/store.com",
             "sort": 3,
-            "updated_at": "2019-01-01 00:00:00",
             "created_at": "2019-01-01 00:00:00",
-            "id": 3
+            "updated_at": "2019-01-01 00:00:00",
+            "deleted_at": null
         }
     }
 }
