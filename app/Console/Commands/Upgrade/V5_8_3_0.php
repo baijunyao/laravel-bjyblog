@@ -40,12 +40,12 @@ class V5_8_3_0 extends Command
      */
     public function handle()
     {
-        Schema::table('oauth_clients', function (Blueprint $table) {
+        Schema::table('socialite_clients', function (Blueprint $table) {
             $table->dropColumn('client_id_config');
             $table->dropColumn('client_secret_config');
         });
 
-        DB::table('oauth_clients')->insert([
+        DB::table('socialite_clients')->insert([
             [
                 'id'            => 4,
                 'name'          => 'google',

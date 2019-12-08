@@ -2,6 +2,7 @@
 
 namespace Tests\Commands\Upgrade;
 
+use DB;
 use File;
 use Illuminate\Support\Str;
 
@@ -20,9 +21,14 @@ abstract class TestCase extends \Tests\Commands\TestCase
         $files    = $migrator->getMigrationFiles(base_path('tests/Commands/Upgrade/' . $version[0] . '/migrations'));
 
         foreach ($files as $file) {
-            $className     = Str::studly(implode('_', array_slice(explode('_', $migrator->getMigrationName($file)), 4)));
+            $migrationName = $migrator->getMigrationName($file);
+            $className     = Str::studly(implode('_', array_slice(explode('_', $migrationName), 4)));
             $migrationFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Migrations\\' . $className;
             (new $migrationFQCN())->up();
+            DB::table('migrations')->insert([
+                'migration' => $migrationName,
+                'batch'     => 1,
+            ]);
         }
 
         // Seed

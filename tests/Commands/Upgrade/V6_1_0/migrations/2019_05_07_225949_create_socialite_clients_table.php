@@ -14,15 +14,17 @@ class CreateSocialiteClientsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('socialite_clients', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->default('');
-            $table->string('icon')->default('');
-            $table->string('client_id')->default('');
-            $table->string('client_secret')->default('');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!database_table_exists('socialite_clients')) {
+            \Schema::create('socialite_clients', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name')->default('');
+                $table->string('icon')->default('');
+                $table->string('client_id')->default('');
+                $table->string('client_secret')->default('');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
     }
 
     /**
