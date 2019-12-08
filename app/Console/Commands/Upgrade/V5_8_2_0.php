@@ -41,11 +41,25 @@ class V5_8_2_0 extends Command
      */
     public function handle()
     {
+        if (DB::table('socialite_clients')->count() === 0) {
+            Schema::drop('socialite_clients');
+            Schema::create('socialite_clients', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name')->default('');
+                $table->string('client_id')->default('');
+                $table->string('client_secret')->default('');
+                $table->string('client_id_config')->default('');
+                $table->string('client_secret_config')->default('');
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
+
         $configs = Config::whereIn('id', [
             120, 126, 133, 134, 139, 140,
         ])->get()->keyBy('id');
 
-        DB::table('oauth_clients')->insert([
+        DB::table('socialite_clients')->insert([
             [
                 'id'            => 1,
                 'name'          => 'qq',
