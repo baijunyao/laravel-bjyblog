@@ -153,7 +153,7 @@ return [
     |
     */
 
-    'domain' => parse_url(env('APP_URL'))['host'] ?? null,
+    'domain' => env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
