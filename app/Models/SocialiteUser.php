@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Overtrue\LaravelFollow\Traits\CanLike;
 
 /**
  * Class SocialiteUser
@@ -23,6 +24,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class SocialiteUser extends UserBase
 {
+    use CanLike;
+
     /**
      * @return BelongsTo
      *

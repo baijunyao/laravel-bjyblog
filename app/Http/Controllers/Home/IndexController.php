@@ -88,10 +88,20 @@ class IndexController extends Controller
             ->first();
 
         // 获取评论
-        $comment = $commentModel->getDataByArticleId($id);
-        // p($comment);die;
+        $comment     = $commentModel->getDataByArticleId($id);
         $category_id = $article->category->id;
-        $assign      = compact('category_id', 'article', 'prev', 'next', 'comment');
+
+        // Like
+        $user = auth()->guard('socialite')->user();
+
+        if ($user === null) {
+            $is_liked = false;
+        } else {
+            $is_liked = $user->hasLiked($article);
+        }
+
+        $likes       = $article->likers()->get();
+        $assign      = compact('category_id', 'article', 'prev', 'next', 'comment', 'is_liked', 'likes');
 
         return view('home.index.article', $assign);
     }

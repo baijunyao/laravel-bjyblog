@@ -28,7 +28,7 @@ return [
     /*
      * Foreign key of users table.
      */
-    'users_table_foreign_key' => 'user_id',
+    'users_table_foreign_key' => 'socialite_user_id',
 
     /*
      * Table name of followable relations.
