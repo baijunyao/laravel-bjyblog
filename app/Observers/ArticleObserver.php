@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\ArticleTag;
 use Artisan;
 use Markdown;
+use Str;
 
 class ArticleObserver extends BaseObserver
 {
@@ -18,11 +19,17 @@ class ArticleObserver extends BaseObserver
     public function saving($article)
     {
         if (empty($article->description)) {
-            $article->description = preg_replace(
+            $content = preg_replace(
                 ['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'],
                 '',
                 $article->markdown
             );
+
+            if (config('app.locale') === 'zh-CN') {
+                $article->description = Str::substr($content, 0, 200);
+            } else {
+                $article->description = Str::words($content, 30, '');
+            }
         }
 
         if (empty($article->cover)) {
