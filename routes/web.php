@@ -14,8 +14,6 @@ Route::namespace('Home')->group(function () {
     Route::get('git', 'IndexController@git');
     // 文章详情
     Route::get('article/{id}/{slug?}', 'IndexController@article');
-    // 文章评论
-    Route::post('comment', 'IndexController@comment')->middleware('auth.socialite');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
@@ -26,6 +24,13 @@ Route::namespace('Home')->group(function () {
     Route::prefix('site')->group(function () {
         Route::get('/', 'SiteController@index');
         Route::post('store', 'SiteController@store')->middleware('auth.socialite', 'clean.xss');
+    });
+    Route::middleware('auth.socialite')->group(function () {
+        Route::post('comment', 'IndexController@comment');
+        Route::prefix('like')->group(function () {
+            Route::post('store', 'LikeController@store');
+            Route::delete('destroy', 'LikeController@destroy');
+        });
     });
 });
 

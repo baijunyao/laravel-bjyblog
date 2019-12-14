@@ -976,6 +976,42 @@ a {
 
     /* 文章内容结束 */
 
+    .b-like {
+        margin-top: 10px;
+        padding: 10px;
+        background: #fff;
+        font-size: 16px;
+        box-shadow: 0px 1px 2px 0px #E2E2E2;
+        position: relative;
+        .b-thumbs-up {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            i {
+                cursor: pointer;
+                font-size: 30px;
+            }
+        }
+
+        .b-liked {
+            color: #0B94C1;;
+        }
+
+        .b-head-img {
+            margin-top: 5px;
+            margin-right: 9px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            float: left;
+            img{
+                width: 35px;
+                height: 35px;
+            }
+        }
+    }
+
     /* 文章评论开始 */
     .b-comment {
         margin-top: 10px;
