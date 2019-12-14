@@ -57,7 +57,7 @@
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
                 @if(auth()->guard('socialite')->check())
-                    <li class="b-user-info">
+                    <li class="b-user-info" data-user-id="{{ auth()->guard('socialite')->user()->id }}">
                         <span><img class="b-head_img" src="{{ auth()->guard('socialite')->user()->avatar }}" alt="{{ auth()->guard('socialite')->user()->name }}" title="{{ auth()->guard('socialite')->user()->name }}" /></span>
                         <span class="b-nickname">{{ auth()->guard('socialite')->user()->name }}</span>
                         <span><a href="{{ url('auth/socialite/logout') }}">{{ __('Sign out') }}</a></span>
@@ -225,6 +225,8 @@
 <script>
     // 定义评论url
     ajaxCommentUrl = "{{ url('comment') }}";
+    ajaxLikeUrl = "{{ url('like/store') }}";
+    ajaxUnLikeUrl = "{{ url('like/destroy') }}";
     checkLogin = "{{ url('checkLogin') }}";
     titleName = '{{ config('app.name') }}';
     jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};

@@ -65,6 +65,23 @@
             var userEmail='{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->email : '' }}';
             tuzkiNumber=1;
         </script>
+        <div class="row b-like">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <ul class="row">
+                    <div class="col-xs-2 col-md-1 col-lg-1 b-thumbs-up">
+                        <i class="fa fa-thumbs-up b-liked @if($is_liked === false) hidden @endif" data-article-id="{{ $article->id }}"></i>
+                        <i class="fa fa-thumbs-o-up @if($is_liked === true) hidden @endif" data-article-id="{{ $article->id }}"></i>
+                    </div>
+                    <ul class="col-xs-10 col-md-11 col-lg-11 js-like-box">
+                        @foreach($likes as $like)
+                            <li class="b-head-img js-like-{{ $like->id }}">
+                                <img src="{{ cdn_url($like->avatar) }}" alt="{{ $like->name }}">
+                            </li>
+                        @endforeach
+                    </ul>
+                </ul>
+            </div>
+        </div>
         <div class="row b-comment">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
                 <img class="b-head-img" src="@if(auth()->guard('socialite')->check()){{ auth()->guard('socialite')->user()->avatar }}@else{{ asset('images/home/default_head_img.gif') }}@endif" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">

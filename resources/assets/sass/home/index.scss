@@ -567,7 +567,7 @@ a {
         }
 
         .b-des-read {
-            word-break: keep-all;
+            word-break: break-word;
             word-wrap: break-word;
         }
 
@@ -861,6 +861,8 @@ a {
             padding-top: 20px;
             padding-bottom: 20px;
             text-align: center;
+            word-break: break-word;
+            word-wrap: break-word;
         }
 
         .b-metadata {
@@ -917,7 +919,7 @@ a {
             }
 
             .js-content {
-                word-break: keep-all;
+                word-break: break-word;
                 word-wrap: break-word;
                 ul li {
                     list-style: disc;
@@ -973,6 +975,42 @@ a {
     }
 
     /* 文章内容结束 */
+
+    .b-like {
+        margin-top: 10px;
+        padding: 10px;
+        background: #fff;
+        font-size: 16px;
+        box-shadow: 0px 1px 2px 0px #E2E2E2;
+        position: relative;
+        .b-thumbs-up {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            i {
+                cursor: pointer;
+                font-size: 30px;
+            }
+        }
+
+        .b-liked {
+            color: #0B94C1;;
+        }
+
+        .b-head-img {
+            margin-top: 5px;
+            margin-right: 9px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            float: left;
+            img{
+                width: 35px;
+                height: 35px;
+            }
+        }
+    }
 
     /* 文章评论开始 */
     .b-comment {
@@ -1160,7 +1198,7 @@ a {
                 .b-content-col {
                     .b-content {
                         overflow: hidden;
-                        word-break: keep-all;
+                        word-break: break-word;
                         word-wrap: break-word;
 
                         .b-reply-name, .user-name {

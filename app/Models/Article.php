@@ -7,6 +7,7 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
+use Overtrue\LaravelFollow\Traits\CanBeLiked;
 use Str;
 
 /**
@@ -29,7 +30,7 @@ use Str;
  */
 class Article extends Base
 {
-    use Searchable;
+    use Searchable, CanBeLiked;
 
     /**
      * Get the indexable data array for the model.

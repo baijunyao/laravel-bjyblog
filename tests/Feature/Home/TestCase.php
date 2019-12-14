@@ -13,4 +13,9 @@ abstract class TestCase extends \Tests\Feature\TestCase
     {
         return $this->loginByUserId(static::SOCIALITE_USER_ID, 'socialite')->post($this->urlPrefix . $uri, $data, $headers);
     }
+
+    protected function UserDelete($uri, array $data = [], array $headers = [])
+    {
+        return $this->loginByUserId(static::SOCIALITE_USER_ID, 'socialite')->delete($this->urlPrefix . $uri, $data, $headers);
+    }
 }

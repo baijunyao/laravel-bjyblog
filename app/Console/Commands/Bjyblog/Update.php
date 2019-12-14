@@ -72,6 +72,8 @@ class Update extends Command
         Artisan::call('clear-compiled');
         Artisan::call('queue:restart');
 
-        shell_exec('composer dump-autoload');
+        if (!app()->runningUnitTests()) {
+            shell_exec('composer dump-autoload');
+        }
     }
 }

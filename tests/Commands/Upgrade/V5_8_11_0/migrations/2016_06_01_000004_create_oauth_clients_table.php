@@ -14,6 +14,10 @@ class CreateOauthClientsTable extends Migration
      */
     public function up()
     {
+        if (database_table_exists('oauth_clients')) {
+            \Schema::rename('oauth_clients', 'socialite_clients');
+        }
+
         \Schema::create('oauth_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index()->nullable();

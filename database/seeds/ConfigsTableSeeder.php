@@ -453,6 +453,14 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2019-11-19 22:45:00',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 185,
+                'name'       => 'session.domain',
+                'value'      => '',
+                'created_at' => '2019-12-14 10:49:00',
+                'updated_at' => '2019-12-14 10:49:00',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

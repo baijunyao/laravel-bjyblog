@@ -86,6 +86,29 @@ PHP;
             $this->info("Generate $testFile completed.");
         }
 
+        $testUpgradeFile = $testPath . 'UpgradeTest.php';
+
+        if (File::missing($testUpgradeFile)) {
+            $testUpgradeContent = <<<PHP
+<?php
+
+namespace Tests\\Commands\\Upgrade\\$versionString;
+
+use Artisan;
+
+class UpgradeTest extends \\Tests\\Commands\\Upgrade\\TestCase
+{
+    public function testUpgrade()
+    {
+        \$this->artisan('bjyblog:update')->assertExitCode(0);
+    }
+}
+
+PHP;
+            File::put($testUpgradeFile, $testUpgradeContent);
+            $this->info("Generate $testUpgradeFile completed.");
+        }
+
         // Migrations
         $databasePath      = 'database/';
         $testMigrationPath = $testPath . 'migrations';
