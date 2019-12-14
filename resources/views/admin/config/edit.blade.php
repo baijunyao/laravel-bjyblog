@@ -103,6 +103,12 @@
                 </td>
             </tr>
             <tr>
+                <th>Cookie Domain：</th>
+                <td>
+                    <input class="form-control" type="text" name="185" value="{{  $config['session.domain'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
