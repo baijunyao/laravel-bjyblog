@@ -14,6 +14,7 @@
     "type": "project",
     "require": {
         "php": "^7.2",
+        "algolia/algoliasearch-client-php": "^2.5",
         "apollopy/flysystem-aliyun-oss": "^1.2",
         "appstract/laravel-opcache": "^3.0",
         "baidu/aip-sdk": "^2.2",
