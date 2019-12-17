@@ -2,6 +2,9 @@
 
 namespace Tests\Feature\Admin;
 
+use App\Models\SocialiteUser;
+use App\Notifications\SiteAudit;
+use Notification;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestEdit;
@@ -27,8 +30,10 @@ class SiteControllerTest extends TestCase
 
     public function testUpdate()
     {
+        Notification::fake();
+
         $site = [
-            'socialite_user_id' => 2,
+            'socialite_user_id' => 1,
             'name'              => '编辑',
             'description'       => '编辑',
             'url'               => 'https://update.com',
@@ -40,5 +45,7 @@ class SiteControllerTest extends TestCase
             ->assertSessionHasAll(static::UPDATE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $this->updateData);
+
+        Notification::assertSentTo(SocialiteUser::find(1), SiteAudit::class);
     }
 }
