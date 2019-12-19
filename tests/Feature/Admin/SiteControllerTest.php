@@ -31,6 +31,7 @@ class SiteControllerTest extends TestCase
     public function testUpdate()
     {
         Notification::fake();
+        $this->setupEmail();
 
         $site = [
             'socialite_user_id' => 1,

@@ -47,17 +47,4 @@ class SiteAudit extends Notification implements ShouldQueue
             ->line(__('The recommended blog has been approved.'))
             ->action(__('Click for details.'), url('site'));
     }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param mixed $notifiable
-     *
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-        ];
-    }
 }

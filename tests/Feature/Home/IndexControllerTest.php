@@ -67,11 +67,6 @@ class IndexControllerTest extends TestCase
             'pid'        => 1,
         ];
 
-        /** For @see \App\Observers\CommentObserver::created() */
-        config([
-            'bjyblog.notification_email' => 'test@test.com',
-        ]);
-
         $this->loginByUserId(1)
             ->post('/comment', $comment + [
                 'content' => $content,

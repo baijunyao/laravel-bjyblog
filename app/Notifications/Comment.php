@@ -75,17 +75,4 @@ class Comment extends Notification
             ->line(new HtmlString($this->comment->content))
             ->action(__('Click for details.'), $this->article->url . '#comment-' . $this->comment->id);
     }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param mixed $notifiable
-     *
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-        ];
-    }
 }
