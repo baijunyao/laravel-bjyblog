@@ -104,7 +104,7 @@
                                 <p>
                                     <a href="{{ $comment->article->url }}">{{ $comment->article->sub_title }}</a>
                                     <br>
-                                    {{ re_substr($comment->sub_content, 0, 10) }}
+                                    {{ Str::substr($comment->sub_content, 0, 10) }}
                                 </p>
                             </div>
                         </article>

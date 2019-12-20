@@ -6,6 +6,7 @@ use App\Models\Article;
 use Illuminate\Http\UploadedFile;
 use Mockery;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use Str;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
 use Tests\Feature\Admin\CURD\TestForceDelete;
@@ -48,7 +49,7 @@ class ArticleControllerTest extends TestCase
         ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $commonColumn + [
-            'description' => re_substr($commonColumn['markdown'], 0, 200, true),
+            'description' => Str::substr($commonColumn['markdown'], 0, 200, true),
         ]);
 
         $this->assertDatabaseHas('article_tags', [
@@ -179,7 +180,7 @@ class ArticleControllerTest extends TestCase
         ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $commonColumn + [
-            'description' => re_substr($commonColumn['markdown'], 0, 200, true),
+            'description' => Str::substr($commonColumn['markdown'], 0, 200, true),
             'slug'        => 'title-slug',
         ]);
 
@@ -214,7 +215,7 @@ class ArticleControllerTest extends TestCase
         ] + $commonColumn)->assertSessionHasAll(static::STORE_SUCCESS_MESSAGE);
 
         $this->assertDatabaseHas($this->table, $commonColumn + [
-            'description' => re_substr($commonColumn['markdown'], 0, 200, true),
+            'description' => Str::substr($commonColumn['markdown'], 0, 200, true),
             'slug'        => 'test-title',
         ]);
 

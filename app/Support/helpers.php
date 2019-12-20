@@ -5,27 +5,6 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
-if (!function_exists('re_substr')) {
-    /**
-     * 字符串截取，支持中文和其他编码
-     *
-     * @param string $str     需要转换的字符串
-     * @param int    $start   开始位置
-     * @param string $length  截取长度
-     * @param bool   $suffix  截断显示字符
-     * @param string $charset 编码格式
-     *
-     * @return string
-     */
-    function re_substr($str, $start, $length, $suffix = true, $charset = 'utf-8')
-    {
-        $slice = mb_substr($str, $start, $length, $charset);
-        $omit  = mb_strlen($str) >= $length ? '...' : '';
-
-        return $suffix ? $slice . $omit : $slice;
-    }
-}
-
 if (!function_exists('add_text_water')) {
     /**
      * 给图片添加文字水印
