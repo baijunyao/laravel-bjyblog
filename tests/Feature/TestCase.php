@@ -78,11 +78,12 @@ abstract class TestCase extends \Tests\TestCase
     public function setupEmail()
     {
         $mailConfigs = [
-            'mail.host'         => 'host',
-            'mail.username'     => 'username',
-            'mail.password'     => 'password',
-            'mail.from.address' => 'from.address',
-            'mail.from.name'    => 'from.name',
+            'mail.host'                  => 'host',
+            'mail.username'              => 'username',
+            'mail.password'              => 'password',
+            'mail.from.address'          => 'from.address',
+            'mail.from.name'             => 'from.name',
+            'bjyblog.notification_email' => 'test@test.com',
         ];
 
         config($mailConfigs);

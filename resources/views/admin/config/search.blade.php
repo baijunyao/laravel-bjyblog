@@ -11,6 +11,7 @@
             <tr>
                 <th>{{ __('Driver') }}：</th>
                 <td>
+                    {{ __('Algolia') }} <input class="bjy-icheck" type="radio" name="177" value="algolia" @if($config['scout.driver'] === 'algolia') checked @endif> &emsp;&emsp;
                     {{ __('Elasticsearch') }} <input class="bjy-icheck" type="radio" name="177" value="elasticsearch" @if($config['scout.driver'] === 'elasticsearch') checked @endif> &emsp;&emsp;
                     {{ __('SQL') }} <input class="bjy-icheck" type="radio" name="177" value="null" @if(Str::isNull($config['scout.driver'])) checked @endif>
                 </td>
@@ -55,6 +56,18 @@
                 <th>{{ __('Elasticsearch analyzer') }}</th>
                 <td>
                     <input class="form-control" type="text" name="184" value="{{  $config['scout.elasticsearch.analyzer'] }}">
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Algolia id') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="186" value="{{  $config['scout.algolia.id'] }}">
+                </td>
+            </tr>
+            <tr>
+                <th>{{ __('Algolia secret') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="187" value="{{  $config['scout.algolia.secret'] }}">
                 </td>
             </tr>
             <tr>

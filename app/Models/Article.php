@@ -122,7 +122,7 @@ class Article extends Base
     public function searchArticleGetId(string $wd)
     {
         // 如果 SCOUT_DRIVER 为 null 则使用 sql 搜索
-        if (env('SCOUT_DRIVER') === null) {
+        if (Str::isNull(config('scout.driver'))) {
             return self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")
                 ->orWhere('markdown', 'like', "%$wd%")
@@ -131,7 +131,7 @@ class Article extends Base
 
         // 如果全文搜索出错则降级使用 sql like
         try {
-            $id = self::search($wd)->keys();
+            $id = self::search($wd);
         } catch (Exception $e) {
             $id = self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")

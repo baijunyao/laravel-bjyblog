@@ -146,10 +146,10 @@ class ComposerServiceProvider extends ServiceProvider
                     $comment->sub_content = strip_tags($comment->content);
 
                     if (mb_strlen($comment->sub_content) > 10) {
-                        $comment->sub_content = re_substr($comment->sub_content, 0, 40);
+                        $comment->sub_content = Str::substr($comment->sub_content, 0, 40);
                     }
 
-                    $comment->article->sub_title = re_substr($comment->article->title, 0, 20);
+                    $comment->article->sub_title = Str::substr($comment->article->title, 0, 20);
 
                     return $comment;
                 });

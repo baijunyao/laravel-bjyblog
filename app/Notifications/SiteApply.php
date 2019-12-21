@@ -47,17 +47,4 @@ class SiteApply extends Notification implements ShouldQueue
             ->line(__('Someone applied for a recommendation blog.'))
             ->action(__('Click for details.'), url('admin/site/index'));
     }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param mixed $notifiable
-     *
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-        ];
-    }
 }

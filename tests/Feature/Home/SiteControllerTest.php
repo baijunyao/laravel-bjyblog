@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Home;
 
+use App\Notifications\SiteApply;
+use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Facades\Notification;
 use Tests\Feature\Admin\CURD\TestStore;
 
@@ -27,6 +29,8 @@ class SiteControllerTest extends TestCase
     public function testStore()
     {
         Notification::fake();
+        $this->setupEmail();
+
         $this->UserPost('store', $this->storeData)
             ->assertStatus(200);
         $this->assertDatabaseHas($this->table, [
@@ -34,5 +38,7 @@ class SiteControllerTest extends TestCase
             'url'         => 'http://store.com',
             'description' => '用于测试',
         ]);
+
+        Notification::assertSentTo(new AnonymousNotifiable(), SiteApply::class);
     }
 }

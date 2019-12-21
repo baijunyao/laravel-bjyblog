@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Events\SiteAudit;
+use App\Notifications\SiteAudit;
 
 class SiteObserver extends BaseObserver
 {
@@ -10,9 +10,11 @@ class SiteObserver extends BaseObserver
     {
         // restore() triggering both restored() and updated()
         if(! $site->isDirty('deleted_at')){
-            if ($site->isDirty('audit') && $site->audit === 1) {
-                event(new SiteAudit($site->id));
+            // $site->audit is string
+            if ($site->isDirty('audit') && intval($site->audit) === 1) {
+                $site->socialiteUser->notify(new SiteAudit());
             }
+
             flash_success('修改成功');
         }
     }

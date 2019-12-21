@@ -461,6 +461,22 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2019-12-14 10:49:00',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 186,
+                'name'       => 'scout.algolia.id',
+                'value'      => '',
+                'created_at' => '2019-12-16 22:45:00',
+                'updated_at' => '2019-12-16 22:45:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 187,
+                'name'       => 'scout.algolia.secret',
+                'value'      => '',
+                'created_at' => '2019-12-16 10:49:00',
+                'updated_at' => '2019-12-16 10:49:00',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }
