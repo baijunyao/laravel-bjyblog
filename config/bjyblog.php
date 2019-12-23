@@ -43,5 +43,16 @@ return [
     ],
     'logo_with_php_tag' => '',
     'cdn_domain' => '',
-    'comment_audit' => ''
+    'comment_audit' => '',
+    'social_links' => [
+        'github' => '',
+        'gitlab' => '',
+        'gitee' => '',
+        'twitter' => '',
+        'facebook' => '',
+        'vkontakte' => '',
+        'zhihu' => '',
+        'weibo' => '',
+        'upyun' => '',
+    ],
 ];

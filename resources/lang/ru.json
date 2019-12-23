@@ -158,9 +158,10 @@
     "Email From Address": "Электронная почта с адреса",
 
     "Social Share": "Поделиться в соцсетях",
+    "Social Links": "Социальные ссылки",
     "Select Plugin": "Выбор плагина",
-    "jsSocials Config": "jsSocials Config",
-    "ShareJs Config": "ShareJs Config",
+    "jsSocials Config": "jsSocials конфиг",
+    "ShareJs Config": "ShareJs конфиг",
 
     "Other Config": "Другие настройки",
     "Language": "Язык",

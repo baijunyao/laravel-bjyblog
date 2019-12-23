@@ -85,6 +85,11 @@ class ConfigController extends Controller
         return view('admin.config.socialShare');
     }
 
+    public function socialLinks()
+    {
+        return view('admin.config.socialLinks');
+    }
+
     public function commentAudit()
     {
         return view('admin.config.commentAudit');
