@@ -125,8 +125,10 @@ class ComposerServiceProvider extends ServiceProvider
                 return !empty($socialiteClient->client_id) && !empty($socialiteClient->client_secret);
             });
 
+            $homeFootColNumber = array_filter(config('bjyblog.social_links')) === [] ? 4 : 3;
+
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients');
+            $assign = compact('category', 'tag', 'topArticle', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients', 'homeFootColNumber');
             $view->with($assign);
         });
 
