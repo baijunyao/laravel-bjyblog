@@ -36,7 +36,7 @@
     <script src="{{ asset('statics/js/jquery.githubRepoWidget.min.js') }}"></script>
     <script type="text/javascript">
         $(function(){
-            $('.osc_git_box a,.github-widget a').attr('target','_blank');
+            $('.osc_git_box a,.github-widget a').attr('target', "{{ config('bjyblog.link_target') }}");
         })
     </script>
 @endsection

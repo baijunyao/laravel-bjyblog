@@ -165,7 +165,7 @@
 @section('js')
     <script>
         $('pre').addClass('line-numbers');
-        $('.js-content a').attr('target', '_blank')
+        $('.js-content a').attr('target', "{{ config('bjyblog.link_target') }}")
         translate = {
             pleaseLoginToComment: "{{ __('Please login to comment') }}",
             pleaseLoginToReply: "{{ __('Please login to reply') }}",

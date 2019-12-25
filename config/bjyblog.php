@@ -55,4 +55,5 @@ return [
         'weibo' => '',
         'upyun' => '',
     ],
+    'link_target' => '',
 ];
