@@ -263,6 +263,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('seo', 'ConfigController@seo');
         // Social Share
         Route::get('socialShare', 'ConfigController@socialShare');
+        // Social Links
+        Route::get('socialLinks', 'ConfigController@socialLinks');
         // Search
         Route::get('search', 'ConfigController@search');
         // 编辑配置

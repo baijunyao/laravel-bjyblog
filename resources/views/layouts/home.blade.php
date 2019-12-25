@@ -167,10 +167,10 @@
 <footer id="b-foot">
     <div class="container">
         <div class="row b-content">
-            <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Rights') }}</dt>
                 <dd>{{ __("Licenses") }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
-                <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
+                <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }}</dd>
                 @if(!empty(config('bjyblog.admin_email')))
                     <dd>{{ __('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
                 @endif
@@ -179,7 +179,7 @@
                 @endif
             </dl>
 
-            <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Structure') }}</dt>
                 <dd>{{ __('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a></dd>
                 <dd>{{ __('Blog Version') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</a></dd>
@@ -189,13 +189,26 @@
                 <dd>{{ __('Theme Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
             </dl>
 
-            <dl class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Counts') }}</dt>
                 <dd>{{ __('Article Counts') }}：{{ $articleCount }}</dd>
                 <dd>{{ __('Comment Counts') }}：{{ $commentCount }}</dd>
                 <dd>{{ __('User Counts') }}：{{ $socialiteUserCount }}</dd>
                 <dd>{{ __('Note Counts') }}：{{ $chatCount }}</dd>
             </dl>
+
+            @if($homeFootColNumber === 3)
+                <dl class="col-xs-12 col-sm-12 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }} b-social">
+                    <dt>{{ __('Social') }}</dt>
+                    <dd class="b-small-logo">
+                        @foreach(config('bjyblog.social_links') as $name => $link)
+                            @if($link !== '')
+                                <a href="{{ $link }}" target="_blank"><img src="{{ url("images/home/social-$name.png") }}" alt="{{ $name }}"></a>
+                            @endif
+                        @endforeach
+                    </dd>
+                </dl>
+            @endif
         </div>
     </div>
     <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>
