@@ -142,7 +142,7 @@
                                 {{ $comment->socialiteUser->name }}<span>{{ $comment->created_at->diffForHumans() }}</span>
                             </li>
                             <li class="b-nc-article">
-                                {{ __('Comment') }}<a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="{{ config('bjyblog.link_target') }}">{{ $comment->article->sub_title }}</a>
+                                {{ __('Comment') }} <a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="{{ config('bjyblog.link_target') }}">{{ $comment->article->sub_title }}</a>
                             </li>
                             <li class="b-content">
                                 {!! $comment->sub_content !!}
