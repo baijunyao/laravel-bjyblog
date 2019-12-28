@@ -158,6 +158,7 @@
     "Email From Address": "发件人邮箱",
 
     "Social Share": "社会化分享",
+    "Social Links": "社会化链接",
     "Select Plugin": "选择插件",
     "jsSocials Config": "jsSocials 配置项",
     "ShareJs Config": "ShareJs 配置项",
@@ -183,6 +184,9 @@
     "Admin Email": "站长邮箱",
     "Notification Email": "用于接收通知的邮箱",
     "CDN Domain": "CDN 域名",
+    "Link Target": "链接打开方式",
+    "New Tab": "新标签",
+    "Current Tab": "当前标签",
 
     "Store Success": "添加成功",
     "Update Success": "修改成功",

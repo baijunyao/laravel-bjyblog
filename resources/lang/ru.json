@@ -158,9 +158,10 @@
     "Email From Address": "Электронная почта с адреса",
 
     "Social Share": "Поделиться в соцсетях",
+    "Social Links": "Социальные ссылки",
     "Select Plugin": "Выбор плагина",
-    "jsSocials Config": "jsSocials Config",
-    "ShareJs Config": "ShareJs Config",
+    "jsSocials Config": "jsSocials конфиг",
+    "ShareJs Config": "ShareJs конфиг",
 
     "Other Config": "Другие настройки",
     "Language": "Язык",
@@ -183,6 +184,9 @@
     "Admin Email": "Email администратора",
     "Notification Email": "Email уведомлений",
     "CDN Domain": "CDN домен",
+    "Link Target": "Цель ссылки",
+    "New Tab": "новая вкладка",
+    "Current Tab": "Текущая вкладка",
 
     "Store Success": "Успешно сохранено",
     "Update Success": "Успешно обновлено",

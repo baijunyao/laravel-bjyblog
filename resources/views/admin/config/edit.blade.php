@@ -109,6 +109,13 @@
                 </td>
             </tr>
             <tr>
+                <th>Link Target：</th>
+                <td>
+                    {{ __('New Tab') }} <input class="bjy-icheck" type="radio" name="193" value="true" @if($config['bjyblog.link_target'] === '_blank') checked @endif> &emsp;&emsp;
+                    {{ __('Current Tab') }} <input class="bjy-icheck" type="radio" name="193" value="false" @if($config['bjyblog.link_target'] === '_self') checked @endif>
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">

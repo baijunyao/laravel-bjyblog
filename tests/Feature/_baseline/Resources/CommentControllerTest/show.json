@@ -19,12 +19,16 @@
     "content": {
         "data": {
             "id": 1,
-            "socialite_user_id": 1,
-            "type": 1,
-            "pid": 0,
-            "article_id": 1,
             "content": "评论的内容",
             "is_audited": 1,
+            "socialite_user": {
+                "id": 1,
+                "name": "白俊遥"
+            },
+            "article": {
+                "id": 1,
+                "title": "欢迎使用 laravel-bjyblog"
+            },
             "created_at": "2017-07-16 07:35:12",
             "updated_at": "2016-07-16 07:35:12",
             "deleted_at": null

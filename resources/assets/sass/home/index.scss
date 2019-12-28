@@ -1506,6 +1506,18 @@ a {
         }
     }
 
+    .b-social {
+        dd {
+            margin-top: 5px;
+            height: 100%;
+            text-align: center;
+            img {
+                margin: 5px;
+                height: 50px;
+            }
+        }
+    }
+
     .go-top {
         width: 30px;
         height: 30px;

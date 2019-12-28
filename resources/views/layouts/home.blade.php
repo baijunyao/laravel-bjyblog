@@ -104,7 +104,7 @@
                             </p>
                             <p class="b-qun-article">
                                 @if(!empty($qqQunArticle['id']))
-                                    <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="_blank">{{ $qqQunArticle['title'] }}</a>
+                                    <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="{{ config('bjyblog.link_target') }}">{{ $qqQunArticle['title'] }}</a>
                                 @endif
                             </p>
                         </li>
@@ -128,7 +128,7 @@
                 <h4 class="b-title">{{ __('Top Articles') }}</h4>
                 <p class="b-recommend-p">
                     @foreach($topArticle as $v)
-                        <a class="b-recommend-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                        <a class="b-recommend-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
                     @endforeach
                 </p>
             </div>
@@ -142,7 +142,7 @@
                                 {{ $comment->socialiteUser->name }}<span>{{ $comment->created_at->diffForHumans() }}</span>
                             </li>
                             <li class="b-nc-article">
-                                {{ __('Comment') }}<a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="_blank">{{ $comment->article->sub_title }}</a>
+                                {{ __('Comment') }} <a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="{{ config('bjyblog.link_target') }}">{{ $comment->article->sub_title }}</a>
                             </li>
                             <li class="b-content">
                                 {!! $comment->sub_content !!}
@@ -155,7 +155,7 @@
                 <h4 class="b-title">{{ __('Links') }}</h4>
                 <p>
                     @foreach($friendshipLink as $v)
-                        <a class="b-link-a" href="{{ $v->url }}" target="_blank"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
+                        <a class="b-link-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
                     @endforeach
                         <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> {{ __('More') }} </a>
                 </p>
@@ -167,10 +167,10 @@
 <footer id="b-foot">
     <div class="container">
         <div class="row b-content">
-            <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Rights') }}</dt>
                 <dd>{{ __("Licenses") }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by-nc/4.0/deed.zh">CC BY-NC 4.0</a></dd>
-                <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }} {{ parse_url(config('app.url'))['host'] }}</dd>
+                <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }}</dd>
                 @if(!empty(config('bjyblog.admin_email')))
                     <dd>{{ __('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
                 @endif
@@ -179,23 +179,36 @@
                 @endif
             </dl>
 
-            <dl class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Structure') }}</dt>
-                <dd>{{ __('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a></dd>
-                <dd>{{ __('Blog Version') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</a></dd>
-                <dd>{{ __('Framework Version') }}：<a rel="nofollow"  href="https://github.com/laravel/framework" target="_blank">laravel-v{{ \Illuminate\Foundation\Application::VERSION }}</a></dd>
+                <dd>{{ __('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">laravel-bjyblog</a></dd>
+                <dd>{{ __('Blog Version') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</a></dd>
+                <dd>{{ __('Framework Version') }}：<a rel="nofollow"  href="https://github.com/laravel/framework" target="{{ config('bjyblog.link_target') }}">laravel-v{{ \Illuminate\Foundation\Application::VERSION }}</a></dd>
                 <dd>{{ __('Project Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
                 <dd>{{ __('Theme Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/blog-theme-blueberry">blog-theme-blueberry</a></dd>
                 <dd>{{ __('Theme Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
             </dl>
 
-            <dl class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Counts') }}</dt>
                 <dd>{{ __('Article Counts') }}：{{ $articleCount }}</dd>
                 <dd>{{ __('Comment Counts') }}：{{ $commentCount }}</dd>
                 <dd>{{ __('User Counts') }}：{{ $socialiteUserCount }}</dd>
                 <dd>{{ __('Note Counts') }}：{{ $chatCount }}</dd>
             </dl>
+
+            @if($homeFootColNumber === 3)
+                <dl class="col-xs-12 col-sm-12 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }} b-social">
+                    <dt>{{ __('Social') }}</dt>
+                    <dd class="b-small-logo">
+                        @foreach(config('bjyblog.social_links') as $name => $link)
+                            @if($link !== '')
+                                <a href="{{ $link }}" target="{{ config('bjyblog.link_target') }}"><img src="{{ url("images/home/social-$name.png") }}" alt="{{ $name }}"></a>
+                            @endif
+                        @endforeach
+                    </dd>
+                </dl>
+            @endif
         </div>
     </div>
     <a class="go-top fa fa-angle-up animated jello" href="javascript:;"></a>

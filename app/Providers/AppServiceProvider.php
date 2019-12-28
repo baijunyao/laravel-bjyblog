@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
         $local = config('app.locale');
         app('translator')->setLocale($local);
         Carbon::setLocale($local);
+
+        Carbon::serializeUsing(function (Carbon $timestamp) {
+            return $timestamp->format('Y-m-d H:i:s');
+        });
     }
 
     /**

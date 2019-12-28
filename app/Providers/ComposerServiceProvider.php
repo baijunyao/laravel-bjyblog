@@ -125,8 +125,10 @@ class ComposerServiceProvider extends ServiceProvider
                 return !empty($socialiteClient->client_id) && !empty($socialiteClient->client_secret);
             });
 
+            $homeFootColNumber = array_filter(config('bjyblog.social_links')) === [] ? 4 : 3;
+
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients');
+            $assign = compact('category', 'tag', 'topArticle', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients', 'homeFootColNumber');
             $view->with($assign);
         });
 
@@ -146,10 +148,18 @@ class ComposerServiceProvider extends ServiceProvider
                     $comment->sub_content = strip_tags($comment->content);
 
                     if (mb_strlen($comment->sub_content) > 10) {
-                        $comment->sub_content = Str::substr($comment->sub_content, 0, 40);
+                        if (config('app.locale') === 'zh-CN') {
+                            $comment->sub_content = Str::substr($comment->sub_content, 0, 40);
+                        } else {
+                            $comment->sub_content = Str::words($comment->sub_content, 10, '');
+                        }
                     }
 
-                    $comment->article->sub_title = Str::substr($comment->article->title, 0, 20);
+                    if (config('app.locale') === 'zh-CN') {
+                        $comment->article->sub_title = Str::substr($comment->article->title, 0, 20);
+                    } else {
+                        $comment->article->sub_title = Str::words($comment->article->title, 5, '');
+                    }
 
                     return $comment;
                 });

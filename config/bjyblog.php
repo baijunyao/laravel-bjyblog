@@ -2,7 +2,7 @@
 
 return [
     // 博客版本
-    'version' => 'v6.7.0',
+    'version' => 'v6.8.0',
     'branch' => env('DEPLOY_BRANCH', 'master'),
     /**
      * 以下配置项会在 @see \App\Providers\ComposerServiceProvider::boot() 中被覆盖
@@ -43,5 +43,17 @@ return [
     ],
     'logo_with_php_tag' => '',
     'cdn_domain' => '',
-    'comment_audit' => ''
+    'comment_audit' => '',
+    'social_links' => [
+        'github' => '',
+        'gitlab' => '',
+        'gitee' => '',
+        'twitter' => '',
+        'facebook' => '',
+        'vkontakte' => '',
+        'zhihu' => '',
+        'weibo' => '',
+        'upyun' => '',
+    ],
+    'link_target' => '',
 ];
