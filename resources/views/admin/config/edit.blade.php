@@ -109,10 +109,10 @@
                 </td>
             </tr>
             <tr>
-                <th>Link Target：</th>
+                <th>{{ __('Link Target') }}：</th>
                 <td>
-                    {{ __('New Tab') }} <input class="bjy-icheck" type="radio" name="193" value="true" @if($config['bjyblog.link_target'] === '_blank') checked @endif> &emsp;&emsp;
-                    {{ __('Current Tab') }} <input class="bjy-icheck" type="radio" name="193" value="false" @if($config['bjyblog.link_target'] === '_self') checked @endif>
+                    {{ __('New Tab') }} <input class="bjy-icheck" type="radio" name="193" value="_blank" @if($config['bjyblog.link_target'] === '_blank') checked @endif> &emsp;&emsp;
+                    {{ __('Current Tab') }} <input class="bjy-icheck" type="radio" name="193" value="_self" @if($config['bjyblog.link_target'] === '_self') checked @endif>
                 </td>
             </tr>
             <tr>
