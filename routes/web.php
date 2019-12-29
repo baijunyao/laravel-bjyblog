@@ -5,15 +5,15 @@ Route::namespace('Home')->group(function () {
     // 首页
     Route::get('/', 'IndexController@index');
     // 分类
-    Route::get('category/{id}/{slug?}', 'IndexController@category');
+    Route::get('category/{category}/{slug?}', 'IndexController@category');
     // 标签
-    Route::get('tag/{id}/{slug?}', 'IndexController@tag');
+    Route::get('tag/{tag}/{slug?}', 'IndexController@tag');
     // 随言碎语
     Route::get('note', 'IndexController@note')->name('note');
     // 开源项目
     Route::get('git', 'IndexController@git');
     // 文章详情
-    Route::get('article/{id}/{slug?}', 'IndexController@article');
+    Route::get('article/{article}/{slug?}', 'IndexController@article');
     // 检测是否登录
     Route::get('checkLogin', 'IndexController@checkLogin');
     // 搜索文章
