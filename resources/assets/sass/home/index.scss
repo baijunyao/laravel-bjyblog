@@ -470,6 +470,13 @@ a {
 #b-content {
     position: relative;
 
+    .b-breadcrumb {
+        padding: 0;
+        .breadcrumb {
+            background-color: #fff;
+        }
+    }
+
     .b-tag-title {
         margin-bottom: 10px;
         background: #fff;

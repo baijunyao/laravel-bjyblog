@@ -9,6 +9,11 @@
 @section('content')
     <!-- 左侧列表开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8 b-chat">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                {{ Breadcrumbs::render() }}
+            </div>
+        </div>
         <div class="b-chat-left">
             @foreach($notes as $k => $v)
                 @if($k%2 == 0)

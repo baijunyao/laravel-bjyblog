@@ -9,6 +9,12 @@
 @section('content')
     <!-- 左侧列表开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                {{ Breadcrumbs::render() }}
+            </div>
+        </div>
+
         @if(!empty($tagName))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">

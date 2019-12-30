@@ -6,4 +6,4 @@ Route::get('auth/oauth/handleProviderCallback/{service}', 'RedirectController@ha
 Route::get('auth/oauth/logout', 'RedirectController@logout');
 
 // chat to note
-Route::get('chat', 'RedirectController@note');
+Route::get('chat', 'RedirectController@note')->name('home.chat');
