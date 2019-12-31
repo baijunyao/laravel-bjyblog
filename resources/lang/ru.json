@@ -184,9 +184,9 @@
     "Admin Email": "Email администратора",
     "Notification Email": "Email уведомлений",
     "CDN Domain": "CDN домен",
-    "Link Target": "Цель ссылки",
-    "New Tab": "новая вкладка",
-    "Current Tab": "Текущая вкладка",
+    "Link Target": "Открывать ссылки",
+    "New Tab": "В новой вкладке",
+    "Current Tab": "В текущей вкладке",
 
     "Store Success": "Успешно сохранено",
     "Update Success": "Успешно обновлено",
