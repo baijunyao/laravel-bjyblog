@@ -9,11 +9,13 @@
 @section('content')
     <!-- 左侧文章开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
-                {{ Breadcrumbs::render() }}
+        @if(Str::isTrue(config('bjyblog.breadcrumb')))
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                    {{ Breadcrumbs::render() }}
+                </div>
             </div>
-        </div>
+        @endif
 
         <div class="row b-article">
             @if(auth()->guard('admin')->check())

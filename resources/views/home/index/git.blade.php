@@ -20,11 +20,13 @@
 @section('content')
     {{--左侧开源项目开始--}}
     <div class="col-xs-12 col-md-12 col-lg-8 b-chat">
-        <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
-                {{ Breadcrumbs::render() }}
+        @if(Str::isTrue(config('bjyblog.breadcrumb')))
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                    {{ Breadcrumbs::render() }}
+                </div>
             </div>
-        </div>
+        @endif
         @foreach($gitProject as $v)
             @if($v->type == 1)
                 <div class="github-widget" data-repo="{{ $v->name }}"></div>

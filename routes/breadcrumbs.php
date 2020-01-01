@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Tag;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator;
-use App\Models\Category;
 
 Breadcrumbs::for('home.index', function (BreadcrumbsGenerator $trail) {
     $trail->push('Home', url('/'));
