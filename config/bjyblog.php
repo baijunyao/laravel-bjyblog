@@ -56,4 +56,5 @@ return [
         'upyun' => '',
     ],
     'link_target' => '',
+    'breadcrumb' => '',
 ];

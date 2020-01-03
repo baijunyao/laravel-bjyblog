@@ -25,6 +25,6 @@ class RedirectController extends Controller
 
     public function note()
     {
-        return redirect()->route('note');
+        return redirect()->route('home.note');
     }
 }
