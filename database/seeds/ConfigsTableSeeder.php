@@ -525,6 +525,14 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2019-12-25 23:06:00',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 194,
+                'name'       => 'bjyblog.breadcrumb',
+                'value'      => 'true',
+                'created_at' => '2020-01-01 01:01:01',
+                'updated_at' => '2020-01-01 01:01:01',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

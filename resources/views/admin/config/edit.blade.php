@@ -116,6 +116,13 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ __('Breadcrumb') }}：</th>
+                <td>
+                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="194" value="true" @if(Str::isTrue($config['bjyblog.breadcrumb'])) checked @endif> &emsp;&emsp;
+                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="194" value="false" @if(Str::isFalse($config['bjyblog.breadcrumb'])) checked @endif>
+                </td>
+            </tr>
+            <tr>
                 <th></th>
                 <td>
                     <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">

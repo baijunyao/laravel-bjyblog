@@ -19,14 +19,25 @@
 
 @section('content')
     {{--左侧开源项目开始--}}
-    <div class="col-xs-12 col-md-12 col-lg-8 b-chat">
-        @foreach($gitProject as $v)
-            @if($v->type == 1)
-                <div class="github-widget" data-repo="{{ $v->name }}"></div>
-            @elseif($v->type == 2)
-                <script src='//gitee.com/{{ $v->name }}/widget_preview'></script>
-            @endif
-        @endforeach
+    <div class="col-xs-12 col-md-12 col-lg-8">
+        @if(Str::isTrue(config('bjyblog.breadcrumb')))
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                    {{ Breadcrumbs::render() }}
+                </div>
+            </div>
+        @endif
+        <div class="row b-chat">
+            <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                @foreach($gitProject as $v)
+                    @if($v->type == 1)
+                        <div class="github-widget" data-repo="{{ $v->name }}"></div>
+                    @elseif($v->type == 2)
+                        <script src='//gitee.com/{{ $v->name }}/widget_preview'></script>
+                    @endif
+                @endforeach
+            </div>
+        </div>
     </div>
     {{--左侧开源项目结束--}}
 @endsection

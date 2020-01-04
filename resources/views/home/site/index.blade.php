@@ -8,6 +8,13 @@
 
 @section('content')
     <div class="col-xs-12 col-md-12 col-lg-8">
+        @if(Str::isTrue(config('bjyblog.breadcrumb')))
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                    {{ Breadcrumbs::render() }}
+                </div>
+            </div>
+        @endif
         <div class="row" id="b-content-site">
             @foreach($site as $k => $v)
                 <div class="col-xs-12 col-md-4 col-lg-4 b-site">

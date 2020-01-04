@@ -26,6 +26,7 @@
         "baijunyao/laravel-support": "^1.0",
         "baijunyao/laravel-upload": "^2.0",
         "composer/semver": "^1.4",
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.0",
         "fukuball/jieba-php": "~0.25",

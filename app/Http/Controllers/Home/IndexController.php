@@ -51,22 +51,10 @@ class IndexController extends Controller
         return view('home.index.index', $assign);
     }
 
-    /**
-     * 文章详情
-     *
-     * @param $id
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
-     */
-    public function article($id, Request $request, Comment $commentModel)
+    public function article(Article $article, Request $request, Comment $commentModel)
     {
-        // 获取文章数据
-        $article = Article::with(['category', 'tags'])->findOrFail($id);
-
         // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
-        $ipAndId = 'articleRequestList' . $request->ip() . ':' . $id;
+        $ipAndId = 'articleRequestList' . $request->ip() . ':' . $article->id;
         if (!Cache::has($ipAndId)) {
             cache([$ipAndId => ''], 1440);
             // 文章点击量+1
@@ -76,19 +64,19 @@ class IndexController extends Controller
         // 获取上一篇
         $prev = Article::select('id', 'title', 'slug')
             ->orderBy('created_at', 'desc')
-            ->where('id', '<', $id)
+            ->where('id', '<', $article->id)
             ->limit(1)
             ->first();
 
         // 获取下一篇
         $next = Article::select('id', 'title', 'slug')
             ->orderBy('created_at', 'asc')
-            ->where('id', '>', $id)
+            ->where('id', '>', $article->id)
             ->limit(1)
             ->first();
 
         // 获取评论
-        $comment     = $commentModel->getDataByArticleId($id);
+        $comment     = $commentModel->getDataByArticleId($article->id);
         $category_id = $article->category->id;
 
         // Like
@@ -106,18 +94,8 @@ class IndexController extends Controller
         return view('home.index.article', $assign);
     }
 
-    /**
-     * 获取分类下的文章
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
-     */
-    public function category($id)
+    public function category(Category $category)
     {
-        // 获取分类数据
-        $category = Category::select('id', 'name', 'keywords', 'description')->findOrFail($id);
-
         // 获取分类下的文章
         $articles = $category->articles()
             ->orderBy('created_at', 'desc')
@@ -142,7 +120,7 @@ class IndexController extends Controller
             'description' => $category->description,
         ];
         $assign = [
-            'category_id'  => $id,
+            'category_id'  => $category->id,
             'articles'     => $articles,
             'tagName'      => '',
             'title'        => $category->name,
@@ -152,20 +130,8 @@ class IndexController extends Controller
         return view('home.index.index', $assign);
     }
 
-    /**
-     * 获取标签下的文章
-     *
-     * @param $id
-     * @update 2019年10月15日 11:27:03 by jason
-     *
-     * @return \Illuminate\Contracts\View\Factory
-     */
-    public function tag($id)
+    public function tag(Tag $tag)
     {
-        // 获取标签 以及关键字
-        $tag = Tag::select('id', 'name', 'keywords', 'description')->findOrFail($id);
-
-        // TODO 不取 markdown 和 html 字段
         // 获取标签下的文章
         $articles = $tag->articles()
             ->orderBy('created_at', 'desc')

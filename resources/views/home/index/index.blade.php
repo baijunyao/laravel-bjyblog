@@ -9,14 +9,23 @@
 @section('content')
     <!-- 左侧列表开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
-        @if(!empty($tagName))
+        @if(Str::isTrue(config('bjyblog.breadcrumb')))
+            <div class="row">
+                <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
+                    {{ Breadcrumbs::render() }}
+                </div>
+            </div>
+        @endif
+
+        @if(Str::isFalse(config('bjyblog.breadcrumb')) && !empty($tagName))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">
                     <h2>{!! __('others.article_with_tag', ['tag' => $tagName]) !!}</h2>
                 </div>
             </div>
         @endif
-        @if(request()->has('wd'))
+
+        @if(Str::isFalse(config('bjyblog.breadcrumb')) && request()->has('wd'))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">
                     <h2>{!! __('others.search_article', ['word' => clean(request()->input('wd'))]) !!}</h2>
