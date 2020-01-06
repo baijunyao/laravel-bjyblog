@@ -104,7 +104,7 @@
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" aid="{{ request()->id }}" pid="0">
+                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" aid="{{ $article->id }}" pid="0">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -131,7 +131,7 @@
                             <span class="b-user-name">{{ $v['name'] }}</span>：{!! $v['content'] !!}
                         </p>
                         <p class="b-date">
-                            {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">{{ __('Reply') }}</a>
+                            {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ $article->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">{{ __('Reply') }}</a>
                         </p>
                         @foreach($v['child'] as $m => $n)
                             <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
@@ -148,7 +148,7 @@
                                         <span class="b-user-name">{{ $n['reply_name'] }}</span>：{!! $n['content'] !!}
                                     </li>
                                     <li class="b-date">
-                                        {{ $n['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ request()->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}">{{ __('Reply') }}</a>
+                                        {{ $n['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ $article->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}">{{ __('Reply') }}</a>
                                     </li>
                                     <li class="b-clear-float"></li>
                                 </ul>
