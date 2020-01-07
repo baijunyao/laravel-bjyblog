@@ -349,7 +349,8 @@ a {
                 padding-left: 18px;
                 display: block;
                 position: relative;
-
+                word-break: break-word;
+                word-wrap: break-word;
                 .fa {
                     position: absolute;
                     left: 0;
@@ -435,7 +436,8 @@ a {
             .b-nc-article {
                 font-size: 13px;
                 color: #999;
-
+                word-break: break-word;
+                word-wrap: break-word;
                 a {
                     color: #555;
 
@@ -448,7 +450,8 @@ a {
             .b-content {
                 color: #999;
                 font-size: 12px;
-
+                word-break: break-word;
+                word-wrap: break-word;
                 img {
                     width: 20px;
                     height: 20px;
