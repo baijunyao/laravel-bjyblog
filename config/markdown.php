@@ -43,6 +43,7 @@ return [
 
     'extensions' => [
         League\CommonMark\Ext\Table\TableExtension::class,
+        League\CommonMark\Ext\Strikethrough\StrikethroughExtension::class,
     ],
 
     /*
