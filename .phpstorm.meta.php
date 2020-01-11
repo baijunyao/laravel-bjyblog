@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2019-12-28 16:18:38.
+    * Generated on 2020-01-11 11:59:36.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -44,8 +44,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -237,8 +235,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -430,8 +426,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -623,8 +617,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -816,8 +808,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -1009,8 +999,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -1202,8 +1190,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,
@@ -1395,8 +1381,6 @@ namespace PHPSTORM_META {
         'League\OAuth2\Server\ResourceServer' => \League\OAuth2\Server\ResourceServer::class,
         'NunoMaduro\Collision\Contracts\Adapters\Phpunit\Listener' => \NunoMaduro\Collision\Adapters\Phpunit\Listener::class,
         'NunoMaduro\Collision\Contracts\Provider' => \NunoMaduro\Collision\Provider::class,
-        'Psr\Http\Message\ResponseInterface' => \Zend\Diactoros\Response::class,
-        'Psr\Http\Message\ServerRequestInterface' => \Zend\Diactoros\ServerRequest::class,
         'Sentry\ClientBuilderInterface' => \Sentry\ClientBuilder::class,
         'SocialiteProviders\Manager\Contracts\Helpers\ConfigRetrieverInterface' => \SocialiteProviders\Manager\Helpers\ConfigRetriever::class,
         'Spatie\Backup\Helpers\ConsoleOutput' => \Spatie\Backup\Helpers\ConsoleOutput::class,

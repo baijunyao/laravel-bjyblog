@@ -19,16 +19,15 @@
     "content": {
         "data": {
             "id": 1,
-            "socialite_client_id": 1,
             "name": "白俊遥",
-            "avatar": "\/uploads\/article\/default.jpg",
-            "openid": "1",
-            "access_token": "",
-            "last_login_ip": "127.0.0.1",
-            "login_times": 1,
             "email": "baijunyao@baijunyao.com",
+            "avatar": "\/uploads\/article\/default.jpg",
             "is_admin": 0,
-            "remember_token": null,
+            "socialite_client": {
+                "id": 1,
+                "name": "qq",
+                "icon": "qq"
+            },
             "created_at": "2017-07-24 07:35:12",
             "updated_at": "2017-07-24 07:35:12",
             "deleted_at": null
