@@ -46,10 +46,13 @@ class CommentObserver extends BaseObserver
             }
 
             // Here `$comment->pid` is string
-            if (intval($comment->pid) !== 0 && $socialiteUser->id !== $comment->socialite_user_id) {
-                // Send email to socialite user
-                Notification::route('mail', Comment::find($comment->pid)->socialiteUser->email)
-                    ->notify(new CommentNotification($socialiteUser, $article, $comment));
+            if (intval($comment->pid) !== 0) {
+                $parentComment = Comment::find($comment->pid);
+
+                if ($socialiteUser->id !== $parentComment->socialite_user_id) {
+                    // Send email to socialite user
+                    $parentComment->socialiteUser->notify(new CommentNotification($socialiteUser, $article, $comment));
+                }
             }
         }
     }
