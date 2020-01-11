@@ -40,4 +40,22 @@ class HelpersTest extends TestCase
         config($mailConfig);
         static::assertFalse(mail_is_configured());
     }
+
+    public function testGetImagePathsFromHtml()
+    {
+        $html = <<<'HTML'
+<ol>
+    <li>
+        <img src="/uploads/article/5d9829577d311.png" alt="" />
+    </li>
+    <li>
+        <img src="/uploads/article/5d9829577d312.png" alt="" />
+    </li>
+</ol>
+HTML;
+        static::assertSame(get_image_paths_from_html($html), [
+            '/uploads/article/5d9829577d311.png',
+            '/uploads/article/5d9829577d312.png',
+        ]);
+    }
 }

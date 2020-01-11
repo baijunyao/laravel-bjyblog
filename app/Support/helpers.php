@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use PHPHtmlParser\Dom;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
 if (!function_exists('add_text_water')) {
@@ -143,5 +144,32 @@ if (!function_exists('mail_is_configured')) {
         ];
 
         return count(array_filter($mailConfig)) === 8;
+    }
+}
+
+if (!function_exists('get_image_paths_from_html')) {
+    /**
+     * @param $html
+     *
+     * @throws \PHPHtmlParser\Exceptions\ChildNotFoundException
+     * @throws \PHPHtmlParser\Exceptions\CircularException
+     * @throws \PHPHtmlParser\Exceptions\NotLoadedException
+     * @throws \PHPHtmlParser\Exceptions\StrictException
+     *
+     * @return array
+     */
+    function get_image_paths_from_html($html)
+    {
+        $dom = new Dom();
+        $dom->loadStr($html);
+        /** @var \PHPHtmlParser\Dom\HtmlNode[] $image_tags */
+        $image_tags  = $dom->find('img');
+        $image_paths = [];
+
+        foreach ($image_tags as $image_tag) {
+            $image_paths[] = $image_tag->getAttribute('src');
+        }
+
+        return $image_paths;
     }
 }
