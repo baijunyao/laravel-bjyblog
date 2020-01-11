@@ -100,7 +100,7 @@ class SocialiteController extends Controller
                 'last_login_ip'                => $request->getClientIp(),
                 'login_times'                  => 1,
                 'is_admin'                     => 0,
-                'email'                        => '',
+                'email'                        => (string) $user->email,
             ])->id;
 
             // 更新头像
