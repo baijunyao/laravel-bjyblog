@@ -123,7 +123,7 @@ class FromThinkPHPBjyBlog extends Command
                 'html'        => $html,
                 'description' => $v->description,
                 'keywords'    => $v->keywords,
-                'cover'       => $articleModel->getCover($markdown),
+                'cover'       => get_image_paths_from_html($html)[0] ?? '/uploads/article/default.jpg',
                 'is_top'      => $v->is_top,
                 'click'       => $v->click,
             ];

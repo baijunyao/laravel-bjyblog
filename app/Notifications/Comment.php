@@ -17,22 +17,22 @@ class Comment extends Notification
     /**
      * @var string
      */
-    private $subject;
+    public $subject;
 
     /**
      * @var \App\Models\SocialiteUser
      */
-    private $socialiteUser;
+    public $socialiteUser;
 
     /**
      * @var \App\Models\Article
      */
-    private $article;
+    public $article;
 
     /**
      * @var \App\Models\Comment
      */
-    private $comment;
+    public $comment;
 
     public function __construct(SocialiteUser $socialiteUser, Article $article, CommentModel $comment)
     {

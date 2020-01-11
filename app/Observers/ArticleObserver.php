@@ -32,10 +32,6 @@ class ArticleObserver extends BaseObserver
             }
         }
 
-        if (empty($article->cover)) {
-            $article->cover = $article->getCover($article->markdown);
-        }
-
         if (empty($article->is_top)) {
             $article->is_top = 0;
         }
@@ -45,6 +41,20 @@ class ArticleObserver extends BaseObserver
         }
 
         $article->html = Markdown::convertToHtml($article->markdown);
+        $image_paths = get_image_paths_from_html($article->html);
+
+        foreach ($image_paths as $image_path) {
+            $image_path = public_path($image_path);
+
+            if (file_exists($image_path)) {
+                add_text_water($image_path, config('bjyblog.water.text'));
+            }
+        }
+
+        if (empty($article->cover)) {
+            $article->cover = $image_paths[0] ?? '/uploads/article/default.jpg';
+        }
+
     }
 
     public function deleted($article)
