@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcf24c7a0e77c8b863bb40de2dec112c",
+    "content-hash": "a6ac9fb8c42bb014092e383e58706854",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -84,16 +84,16 @@
         },
         {
             "name": "aliyuncs/oss-sdk-php",
-            "version": "v2.2.4",
+            "version": "v2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aliyun/aliyun-oss-php-sdk.git",
-                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e"
+                "reference": "053d7ba9e798e4c09b9c5c1edab153d25ea9643a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aliyun/aliyun-oss-php-sdk/zipball/0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e",
-                "reference": "0b9b85b6c5c38cfc4ef3b0205a5a62d1e36acf2e",
+                "url": "https://api.github.com/repos/aliyun/aliyun-oss-php-sdk/zipball/053d7ba9e798e4c09b9c5c1edab153d25ea9643a",
+                "reference": "053d7ba9e798e4c09b9c5c1edab153d25ea9643a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -127,54 +127,7 @@
             ],
             "description": "Aliyun OSS SDK for PHP",
             "homepage": "http://www.aliyun.com/product/oss/",
-            "time": "2017-04-25T09:15:12+00:00"
-        },
-        {
-            "name": "apollopy/flysystem-aliyun-oss",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/apollopy/flysystem-aliyun-oss.git",
-                "reference": "984879bd38a48db05a4d78142df4c6ad9318f0fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/apollopy/flysystem-aliyun-oss/zipball/984879bd38a48db05a4d78142df4c6ad9318f0fa",
-                "reference": "984879bd38a48db05a4d78142df4c6ad9318f0fa",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "aliyuncs/oss-sdk-php": "~2.2.1",
-                "league/flysystem": "~1.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ApolloPY\\Flysystem\\AliyunOss\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ApolloPY",
-                    "email": "ApolloPY@Gmail.com"
-                }
-            ],
-            "description": "This is a Flysystem adapter for the Aliyun OSS ~2.0.4",
-            "time": "2017-01-10T04:32:54+00:00"
+            "time": "2019-11-15T11:05:42+00:00"
         },
         {
             "name": "appstract/laravel-opcache",
@@ -2920,6 +2873,113 @@
                 "psr-7"
             ],
             "time": "2018-07-31T19:32:56+00:00"
+        },
+        {
+            "name": "iidestiny/flysystem-oss",
+            "version": "1.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iiDestiny/flysystem-oss.git",
+                "reference": "3a35575c9479553156c1855184b47ddfb3c46bdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iiDestiny/flysystem-oss/zipball/3a35575c9479553156c1855184b47ddfb3c46bdb",
+                "reference": "3a35575c9479553156c1855184b47ddfb3c46bdb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "aliyuncs/oss-sdk-php": "^2.3",
+                "ext-json": "*",
+                "league/flysystem": "^1.0",
+                "nesbot/carbon": "^1.24.1 || ^2.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^6.5",
+                "symfony/var-dumper": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Iidestiny\\Flysystem\\Oss\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "iidestiny",
+                    "email": "iidestiny@vip.qq.com"
+                }
+            ],
+            "description": "Flysystem adapter for the Oss storage.",
+            "keywords": [
+                "alioss",
+                "laravel",
+                "oss",
+                "阿里oss"
+            ],
+            "time": "2019-10-16T06:01:19+00:00"
+        },
+        {
+            "name": "iidestiny/laravel-filesystem-oss",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iiDestiny/laravel-filesystem-oss.git",
+                "reference": "ee503770ade592f249098696aefc8890c32b722d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iiDestiny/laravel-filesystem-oss/zipball/ee503770ade592f249098696aefc8890c32b722d",
+                "reference": "ee503770ade592f249098696aefc8890c32b722d",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "iidestiny/flysystem-oss": "^1.0",
+                "php": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Iidestiny\\LaravelFilesystemOss\\OssStorageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Iidestiny\\LaravelFilesystemOss\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "iidestiny",
+                    "email": "iidestiny@vip.qq.com"
+                }
+            ],
+            "description": "Oss storage filesystem for Laravel.",
+            "time": "2019-04-29T09:26:14+00:00"
         },
         {
             "name": "intervention/image",

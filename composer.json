@@ -15,7 +15,6 @@
     "require": {
         "php": "^7.2",
         "algolia/algoliasearch-client-php": "^2.5",
-        "apollopy/flysystem-aliyun-oss": "^1.2",
         "appstract/laravel-opcache": "^3.0",
         "baidu/aip-sdk": "^2.2",
         "baijunyao/laravel-flash": "^2.0",
@@ -32,6 +31,7 @@
         "fukuball/jieba-php": "~0.25",
         "genealabs/laravel-model-caching": "^0.7",
         "graham-campbell/markdown": "^11.0",
+        "iidestiny/laravel-filesystem-oss": "^1.2",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
         "laravel/framework": "^6.0",
