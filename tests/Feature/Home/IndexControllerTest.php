@@ -91,15 +91,15 @@ class IndexControllerTest extends TestCase
         $this->setupEmail();
 
         Comment::where('id', 1)->update([
-            'socialite_user_id' => 2
+            'socialite_user_id' => 2,
         ]);
         $socialiteUser1 = SocialiteUser::withTrashed()->find(1);
         $socialiteUser1->update([
-            'is_admin' => 1
+            'is_admin' => 1,
         ]);
         $socialiteUser2 = SocialiteUser::withTrashed()->find(2);
         $socialiteUser2->update([
-            'deleted_at' => null
+            'deleted_at' => null,
         ]);
 
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
@@ -111,9 +111,9 @@ class IndexControllerTest extends TestCase
 
         $this->loginByUserId($socialiteUser1->id)
             ->post('/comment', $comment + [
-                    'content' => $content,
-                    'email'   => $email,
-                ])
+                'content' => $content,
+                'email'   => $email,
+            ])
             ->assertStatus(200);
 
         $this->assertDatabaseHas('comments', $comment + [

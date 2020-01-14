@@ -15,6 +15,8 @@ before_script:
   - php artisan db:seed
 
 script:
+  - vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --dry-run --diff
+  - vendor/bin/phpstan analyse --ansi
   - vendor/bin/phpunit
 
 services:
