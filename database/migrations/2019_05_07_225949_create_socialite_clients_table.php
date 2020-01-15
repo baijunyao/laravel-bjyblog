@@ -13,7 +13,7 @@ class CreateSocialiteClientsTable extends Migration
      */
     public function up()
     {
-        if (!database_table_exists('socialite_clients')) {
+        if (!Schema::hasTable('socialite_clients')) {
             Schema::create('socialite_clients', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name')->default('');
