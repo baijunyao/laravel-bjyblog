@@ -72,24 +72,6 @@ if (!function_exists('cdn_url')) {
     }
 }
 
-if (!function_exists('column_in_database_table')) {
-    /**
-     * Is there a column in the database table?
-     *
-     * @param $table
-     * @param mixed $column
-     *
-     * @return bool
-     */
-    function column_in_database_table($table, $column)
-    {
-        $tablePrefix = DB::getTablePrefix();
-        $columns     = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}{$table}"))->pluck('Field');
-
-        return $columns->contains($column);
-    }
-}
-
 if (!function_exists('format_url')) {
     /**
      * Format URL
