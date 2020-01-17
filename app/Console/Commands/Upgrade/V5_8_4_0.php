@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands\Upgrade;
 
-use App\Models\Article;
 use App\Models\Category;
 use App\Models\Config;
 use App\Models\Tag;
+use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -55,8 +55,8 @@ class V5_8_4_0 extends Command
             $table->string('slug')->default('')->after('name')->comment('slug');
         });
 
-        Article::withTrashed()->get()->map(function ($article) {
-            $article->update([
+        DB::table('articles')->get()->map(function ($article) {
+            DB::table('articles')->where('id', $article->id)->update([
                 'slug' => generate_english_slug($article->title),
             ]);
         });
