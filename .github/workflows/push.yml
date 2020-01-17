@@ -28,7 +28,7 @@ jobs:
           php artisan db:seed
       - name: Code Style
         run: |
-          ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots
+          ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --dry-run --diff
       - name: PHPStan
         run: |
           ./vendor/bin/phpstan analyse --ansi

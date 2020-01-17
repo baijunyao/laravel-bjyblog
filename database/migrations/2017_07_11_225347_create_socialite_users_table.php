@@ -12,7 +12,7 @@ class CreateSocialiteUsersTable extends Migration
      */
     public function up()
     {
-        if (!database_table_exists('oauth_users') && !database_table_exists('socialite_users')) {
+        if (!Schema::hasTable('oauth_users') && !Schema::hasTable('socialite_users')) {
             Schema::create('socialite_users', function (Blueprint $table) {
                 $table->increments('id')->comment('主键id');
                 $table->boolean('socialite_client_id')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');

@@ -39,7 +39,7 @@ class V5_5_8_0 extends Command
      */
     public function handle()
     {
-        if (!column_in_database_table('oauth_users', 'remember_token')) {
+        if (!Schema::hasColumn('oauth_users', 'remember_token')) {
             Schema::table('oauth_users', function (Blueprint $table) {
                 $table->string('remember_token', 100)
                     ->after('is_admin')

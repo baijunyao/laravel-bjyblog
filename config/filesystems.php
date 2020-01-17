@@ -63,13 +63,15 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
+
         'oss' => [
-            'driver'     => 'oss',
-            'access_id'  => env('OSS_ACCESS_ID','your id'),
-            'access_key' => env('OSS_ACCESS_KEY','your key'),
-            'bucket'     => env('OSS_BUCKET','your bucket'),
-            'endpoint'   => env('OSS_ENDPOINT','your endpoint'),
-            'prefix'     => env('OSS_PREFIX', ''), // optional
+            'driver' => 'oss',
+            'root' => '',
+            'access_key' => env('OSS_ACCESS_KEY'),
+            'secret_key' => env('OSS_SECRET_KEY'),
+            'endpoint'   => env('OSS_ENDPOINT'),
+            'bucket'     => env('OSS_BUCKET'),
+            'isCName'    => env('OSS_IS_CNAME', false),
         ],
     ],
 

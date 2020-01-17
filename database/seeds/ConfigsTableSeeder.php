@@ -248,7 +248,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 160,
-                'name'       => 'filesystems.disks.oss.access_id',
+                'name'       => 'filesystems.disks.oss.access_key',
                 'value'      => '',
                 'created_at' => '2018-12-04 22:29:52',
                 'updated_at' => '2018-12-04 22:29:52',
@@ -256,7 +256,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 161,
-                'name'       => 'filesystems.disks.oss.access_key',
+                'name'       => 'filesystems.disks.oss.secret_key',
                 'value'      => '',
                 'created_at' => '2018-12-04 22:29:52',
                 'updated_at' => '2018-12-04 22:29:52',

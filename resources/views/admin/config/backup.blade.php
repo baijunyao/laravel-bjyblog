@@ -31,13 +31,13 @@
             <tr>
                 <th>{{ __('Aliyun') }} AccessKeyID：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="160" value="{{ $config['filesystems.disks.oss.access_id'] }}" >
+                    <input class="form-control modal-sm" type="text" name="160" value="{{ $config['filesystems.disks.oss.access_key'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Aliyun') }} AccessKeySecret：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="161" value="{{ $config['filesystems.disks.oss.access_key'] }}" >
+                    <input class="form-control modal-sm" type="text" name="161" value="{{ $config['filesystems.disks.oss.secret_key'] }}" >
                 </td>
             </tr>
             <tr>

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.10.1 on 2020-01-11 11:59:34.
+ * Generated for Laravel 6.11.0 on 2020-01-17 23:48:19.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4078,20 +4078,6 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Bind values to their parameters in the given statement.
-         *
-         * @param \PDOStatement $statement
-         * @param array $bindings
-         * @return void 
-         * @static 
-         */ 
-        public static function bindValues($statement, $bindings)
-        {
-                        /** @var \Illuminate\Database\MySqlConnection $instance */
-                        $instance->bindValues($statement, $bindings);
-        }
-        
-        /**
          * Set the query grammar to the default implementation.
          *
          * @return void 
@@ -4322,6 +4308,21 @@ namespace Illuminate\Support\Facades {
             //Method inherited from \Illuminate\Database\Connection            
                         /** @var \Illuminate\Database\MySqlConnection $instance */
                         return $instance->pretend($callback);
+        }
+        
+        /**
+         * Bind values to their parameters in the given statement.
+         *
+         * @param \PDOStatement $statement
+         * @param array $bindings
+         * @return void 
+         * @static 
+         */ 
+        public static function bindValues($statement, $bindings)
+        {
+            //Method inherited from \Illuminate\Database\Connection            
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->bindValues($statement, $bindings);
         }
         
         /**
@@ -16713,6 +16714,22 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->where($column, $operator, $value, $boolean);
+            }
+         
+            /**
+             * Add a basic where clause to the query, and return the first result.
+             *
+             * @param \Closure|string|array $column
+             * @param mixed $operator
+             * @param mixed $value
+             * @param string $boolean
+             * @return \Illuminate\Database\Eloquent\Model|static 
+             * @static 
+             */ 
+            public static function firstWhere($column, $operator = null, $value = null, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->firstWhere($column, $operator, $value, $boolean);
             }
          
             /**

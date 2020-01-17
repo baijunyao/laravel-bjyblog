@@ -14,7 +14,7 @@ class CreateOauthClientsTable extends Migration
      */
     public function up()
     {
-        if (database_table_exists('oauth_clients')) {
+        if (\Schema::hasTable('oauth_clients')) {
             \Schema::rename('oauth_clients', 'socialite_clients');
         }
 
