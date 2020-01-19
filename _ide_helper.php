@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.11.0 on 2020-01-17 23:48:19.
+ * Generated for Laravel 6.11.0 on 2020-01-20 15:54:58.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15224,6 +15224,18 @@ namespace Appstract\LushHttp {
  
 }
 
+namespace Awssat\Visits { 
+
+    /**
+     * 
+     *
+     */ 
+    class Visits {
+         
+    }
+ 
+}
+
 namespace DaveJamesMiller\Breadcrumbs\Facades { 
 
     /**
@@ -19470,6 +19482,8 @@ namespace  {
     class Markdown extends \GrahamCampbell\Markdown\Facades\Markdown {}
 
     class Lush extends \Appstract\LushHttp\LushFacade {}
+
+    class Visits extends \Awssat\Visits\Visits {}
 
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
 

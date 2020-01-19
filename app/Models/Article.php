@@ -124,4 +124,9 @@ class Article extends Base
 
         return url('article', $parameters);
     }
+
+    public function visits()
+    {
+        return visits($this);
+    }
 }
