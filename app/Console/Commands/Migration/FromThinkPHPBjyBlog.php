@@ -114,7 +114,8 @@ class FromThinkPHPBjyBlog extends Command
             $html    = Markdown::convertToHtml($markdown);
             $html    = html_entity_decode($html);
             $html    = str_replace(['<code class="', '\\\\'], ['<code class="lang-', '\\'], $html);
-            $article = [
+
+            $article = $articleModel->create([
                 'id'          => $v->aid,
                 'category_id' => $v->cid,
                 'title'       => $v->title,
@@ -125,13 +126,13 @@ class FromThinkPHPBjyBlog extends Command
                 'keywords'    => $v->keywords,
                 'cover'       => get_image_paths_from_html($html)[0] ?? '/uploads/article/default.jpg',
                 'is_top'      => $v->is_top,
-                'click'       => $v->click,
-            ];
-            $articleModel->create($article);
+            ]);
 
-            Article::where('id', $v->aid)->update([
+            $article->update([
                 'created_at' => date('Y-m-d H:i:s', $v->addtime),
             ]);
+
+            $article->visits()->increment($v->click);
         }
 
         // 从旧系统中迁移文章标签中间表
