@@ -598,16 +598,16 @@
         },
         {
             "name": "baijunyao/laravel-restful",
-            "version": "v2.0.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-restful.git",
-                "reference": "ed0f0f95a18e7822e4ec068e289627657d23aa1d"
+                "reference": "5b9f4394d32a9ac3c21cbf0f2509e404d40b52fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/ed0f0f95a18e7822e4ec068e289627657d23aa1d",
-                "reference": "ed0f0f95a18e7822e4ec068e289627657d23aa1d",
+                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/5b9f4394d32a9ac3c21cbf0f2509e404d40b52fa",
+                "reference": "5b9f4394d32a9ac3c21cbf0f2509e404d40b52fa",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -641,7 +641,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2019-12-02T13:14:59+00:00"
+            "time": "2020-01-22T12:54:25+00:00"
         },
         {
             "name": "baijunyao/laravel-scout-elasticsearch",
@@ -2795,6 +2795,7 @@
                 }
             ],
             "description": "Provides a simple API and specification that abstracts away the details of HTTP into a single PHP function.",
+            "abandoned": true,
             "time": "2018-07-31T13:22:33+00:00"
         },
         {
