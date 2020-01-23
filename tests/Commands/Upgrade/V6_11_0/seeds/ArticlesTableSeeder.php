@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Commands\Upgrade\V6_11_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class ArticlesTableSeeder extends Seeder
@@ -11,8 +13,8 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('articles')->truncate();
-        DB::table('articles')->insert([
+        \DB::table('articles')->truncate();
+        \DB::table('articles')->insert([
             [
                 'id'          => 1,
                 'category_id' => 1,
@@ -40,6 +42,7 @@ class ArticlesTableSeeder extends Seeder
                 'keywords'    => 'laravel',
                 'cover'       => '/uploads/article/5d9829577d311.png',
                 'is_top'      => 1,
+                'click'       => 666,
                 'created_at'  => '2017-7-16 07:35:12',
                 'updated_at'  => '2016-7-16 07:35:12',
                 'deleted_at'  => null,
@@ -56,6 +59,7 @@ class ArticlesTableSeeder extends Seeder
                 'keywords'    => 'test',
                 'cover'       => '/uploads/article/5d9829577d311.png',
                 'is_top'      => 0,
+                'click'       => 222,
                 'created_at'  => '2019-01-04 16:35:12',
                 'updated_at'  => '2019-01-04 16:35:12',
                 'deleted_at'  => '2019-01-04 16:35:12',
@@ -87,6 +91,7 @@ class ArticlesTableSeeder extends Seeder
                 'keywords'    => 'laravel-bjyblog',
                 'cover'       => '/uploads/article/5d9829577d311.png',
                 'is_top'      => 0,
+                'click'       => 333,
                 'created_at'  => '2019-10-05 14:35:12',
                 'updated_at'  => '2019-10-05 14:35:12',
                 'deleted_at'  => null,

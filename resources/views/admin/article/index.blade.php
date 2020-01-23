@@ -32,7 +32,7 @@
                 <td>
                     <a href="{{ url('article', [$v->id]) }}" target="_blank">{{ $v->title }}</a>
                 </td>
-                <td>{{ $v->click }}</td>
+                <td>{{ $v->visits()->count() }}</td>
                 <td>
                     @if(is_null($v->deleted_at))
                         √
