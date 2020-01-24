@@ -39,7 +39,7 @@ use Illuminate\\Console\\Command;
 
 class $versionString extends Command
 {
-    protected \$signature = 'upgrade:$version';
+    protected \$signature   = 'upgrade:$version';
     protected \$description = 'Upgrade to $version';
 
     public function __construct()
@@ -109,20 +109,24 @@ PHP;
             $this->info("Generate $testUpgradeFile completed.");
         }
 
+        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1'));
+
         // Migrations
         $databasePath      = 'database/';
         $testMigrationPath = $testPath . 'migrations';
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
         File::deleteDirectory($databasePath, true);
+        shell_exec("git checkout $PreviousVersion -- $databasePath/migrations");
+        File::copyDirectory(database_path('migrations'), $testMigrationPath, true);
+        File::deleteDirectory($databasePath, true);
 
         // Seeds
-        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1'));
         shell_exec("git checkout $PreviousVersion -- $databasePath/seeds");
         $testSeedPath = $testPath . 'seeds';
         File::moveDirectory(database_path('seeds'), $testSeedPath, true);
         File::deleteDirectory($databasePath, true);
 
-        shell_exec("git checkout develop -- $databasePath");
+        shell_exec("git checkout HEAD -- $databasePath");
         $testMigrationFiles = File::files($testMigrationPath);
 
         foreach ($testMigrationFiles as $testMigrationFile) {
@@ -131,11 +135,11 @@ PHP;
                 str_replace([
                     "\t",
                     "<?php\n",
-                    ' Schema',
+                    'Schema::',
                 ], [
                     '    ',
                     "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n",
-                    ' \\Schema',
+                    '\\Schema::',
                 ],
                     File::get($testMigrationFile->getPathname())
                 )
