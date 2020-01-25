@@ -16,6 +16,7 @@
         "php": "^7.2",
         "algolia/algoliasearch-client-php": "^2.5",
         "appstract/laravel-opcache": "^3.0",
+        "awssat/laravel-visits": "^2.2",
         "baidu/aip-sdk": "^2.2",
         "baijunyao/laravel-flash": "^2.0",
         "baijunyao/laravel-plugin-manager": "^3.0",

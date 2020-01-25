@@ -9,4 +9,6 @@ use Baijunyao\LaravelRestful\Traits\Update;
 class ConfigController extends Controller
 {
     use Index, Show, Update;
+
+    protected const PER_PAGE = 1000;
 }
