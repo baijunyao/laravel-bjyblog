@@ -203,7 +203,7 @@
                     <dd class="b-small-logo">
                         @foreach(config('bjyblog.social_links') as $name => $link)
                             @if($link !== '')
-                                <a href="{{ $link }}" target="{{ config('bjyblog.link_target') }}"><img src="{{ url("images/home/social-$name.png") }}" alt="{{ $name }}"></a>
+                                <a rel="nofollow" href="{{ $link }}" target="{{ config('bjyblog.link_target') }}"><img src="{{ url("images/home/social-$name.png") }}" alt="{{ $name }}"></a>
                             @endif
                         @endforeach
                     </dd>
