@@ -102,6 +102,11 @@ class ArticleControllerTest extends TestCase
             'description' => 'update',
             'markdown'    => 'update',
         ]);
+
+        $this->assertDatabaseHas('article_histories', [
+            'article_id' => $this->updateId,
+            'markdown'   => 'update',
+        ]);
     }
 
     public function testUpdateDescriptionNotEmpty()

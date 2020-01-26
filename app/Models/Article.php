@@ -80,6 +80,11 @@ class Article extends Base
         return $this->belongsToMany(Tag::class, 'article_tags');
     }
 
+    public function article_histories()
+    {
+        return $this->hasMany(ArticleHistory::class);
+    }
+
     /**
      * 搜索文章获取文章id
      *
