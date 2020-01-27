@@ -529,6 +529,14 @@
                 "created_at": "2020-01-01 01:01:01",
                 "updated_at": "2020-01-01 01:01:01",
                 "deleted_at": null
+            },
+            {
+                "id": 195,
+                "name": "app.timezone",
+                "value": "PRC",
+                "created_at": "2020-01-27 01:01:01",
+                "updated_at": "2020-01-27 01:01:01",
+                "deleted_at": null
             }
         ],
         "links": {
@@ -543,8 +551,8 @@
             "last_page": 1,
             "path": "http:\/\/laravel-bjyblog.test\/api\/configs",
             "per_page": 1000,
-            "to": 64,
-            "total": 64
+            "to": 65,
+            "total": 65
         }
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Commands\Upgrade\V6_12_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class ConfigsTableSeeder extends Seeder
@@ -531,14 +533,6 @@ class ConfigsTableSeeder extends Seeder
                 'value'      => 'true',
                 'created_at' => '2020-01-01 01:01:01',
                 'updated_at' => '2020-01-01 01:01:01',
-                'deleted_at' => null,
-            ],
-            [
-                'id'         => 195,
-                'name'       => 'app.timezone',
-                'value'      => 'PRC',
-                'created_at' => '2020-01-27 01:01:01',
-                'updated_at' => '2020-01-27 01:01:01',
                 'deleted_at' => null,
             ],
         ]);
