@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class GitProjectsTableSeeder extends Seeder
+class OpenSourcesTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file
@@ -11,8 +11,8 @@ class GitProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('git_projects')->truncate();
-        DB::table('git_projects')->insert([
+        DB::table('open_sources')->truncate();
+        DB::table('open_sources')->insert([
             [
                 'id'         => 1,
                 'sort'       => 1,

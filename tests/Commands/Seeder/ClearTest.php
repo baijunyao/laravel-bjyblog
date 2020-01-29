@@ -7,8 +7,8 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\FriendshipLink;
-use App\Models\GitProject;
 use App\Models\Note;
+use App\Models\OpenSource;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Artisan;
@@ -32,7 +32,7 @@ class ClearTest extends TestCase
         static::assertEquals(0, Comment::count());
         static::assertEquals(0, SocialiteUser::count());
         static::assertEquals(0, Tag::count());
-        static::assertEquals(0, GitProject::count());
+        static::assertEquals(0, OpenSource::count());
         static::assertEquals(0, FriendshipLink::count());
     }
 }

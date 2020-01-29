@@ -52,7 +52,7 @@ class IndexControllerTest extends TestCase
 
     public function testGit()
     {
-        $this->get('/git')->assertStatus(200);
+        $this->get('/openSource')->assertStatus(200);
     }
 
     public function testComment()

@@ -2,6 +2,6 @@
 
 namespace App\Http\Resources;
 
-class GitProject extends Base
+class OpenSource extends Base
 {
 }

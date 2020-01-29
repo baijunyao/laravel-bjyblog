@@ -7,9 +7,9 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
 use App\Models\FriendshipLink;
-use App\Models\GitProject;
 use App\Models\Nav;
 use App\Models\Note;
+use App\Models\OpenSource;
 use App\Models\SocialiteClient;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
@@ -72,10 +72,10 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         // 开源项目数据
-        view()->composer(['layouts/home', 'home/index/git'], function ($view) {
-            $gitProject = GitProject::select('name', 'type')->orderBy('sort')->get();
+        view()->composer(['layouts/home', 'home/index/openSource'], function ($view) {
+            $openSource = OpenSource::select('name', 'type')->orderBy('sort')->get();
             // 分配数据
-            $assign = compact('gitProject');
+            $assign = compact('openSource');
             $view->with($assign);
         });
 

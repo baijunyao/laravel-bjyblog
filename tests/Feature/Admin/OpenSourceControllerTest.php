@@ -11,11 +11,11 @@ use Tests\Feature\Admin\CURD\TestRestore;
 use Tests\Feature\Admin\CURD\TestStore;
 use Tests\Feature\Admin\CURD\TestUpdate;
 
-class GitProjectControllerTest extends TestCase
+class OpenSourceControllerTest extends TestCase
 {
     use TestIndex, TestCreate, TestStore, TestEdit, TestUpdate, TestDestroy, TestRestore, TestForceDelete;
-    protected $urlPrefix     = 'admin/gitProject/';
-    protected $table         = 'git_projects';
+    protected $urlPrefix     = 'admin/openSource/';
+    protected $table         = 'open_sources';
     protected $restoreId     = 9;
     protected $forceDeleteId = 9;
     protected $storeData     = [

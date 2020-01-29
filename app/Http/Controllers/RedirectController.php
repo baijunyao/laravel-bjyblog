@@ -27,4 +27,9 @@ class RedirectController extends Controller
     {
         return redirect()->route('home.note');
     }
+
+    public function openSource()
+    {
+        return redirect()->route('home.openSource');
+    }
 }

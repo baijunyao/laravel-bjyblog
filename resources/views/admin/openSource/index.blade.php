@@ -8,13 +8,13 @@
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source List') }}</a>
+            <a href="{{ url('admin/openSource/index') }}">{{ __('Open Source List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/gitProject/create') }}">{{ __('Add Open Source') }}</a>
+            <a href="{{ url('admin/openSource/create') }}">{{ __('Add Open Source') }}</a>
         </li>
     </ul>
-    <form action="{{ url('admin/gitProject/sort') }}" method="post">
+    <form action="{{ url('admin/openSource/sort') }}" method="post">
         {{ csrf_field() }}
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
@@ -32,7 +32,7 @@
                         <input class="form-control" type="text" name="{{ $v->id }}" value="{{ $v->sort }}">
                     </td>
                     <td>{{ $v->name }}</td>
-                    <td>{{ $gitProjectType[$v->type] }}</td>
+                    <td>{{ $openSourceType[$v->type] }}</td>
                     <td>
                         @if(is_null($v->deleted_at))
                             √
@@ -41,13 +41,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/gitProject/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
+                        <a href="{{ url('admin/openSource/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/gitProject/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
+                            <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/openSource/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
                         @else
-                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/gitProject/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
+                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/openSource/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
                             |
-                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/gitProject/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
+                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/openSource/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
                         @endif
                     </td>
                 </tr>

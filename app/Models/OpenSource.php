@@ -3,7 +3,7 @@
 namespace App\Models;
 
 /**
- * Class GitProject
+ * Class OpenSource
  *
  * @property int    $id   项目主键
  * @property int    $sort 排序
@@ -12,6 +12,6 @@ namespace App\Models;
  *
  * @author  hanmeimei
  */
-class GitProject extends Base
+class OpenSource extends Base
 {
 }

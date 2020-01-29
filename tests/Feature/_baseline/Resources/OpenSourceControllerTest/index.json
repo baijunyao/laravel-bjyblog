@@ -101,8 +101,8 @@
             }
         ],
         "links": {
-            "first": "http:\/\/laravel-bjyblog.test\/api\/gitProjects?page=1",
-            "last": "http:\/\/laravel-bjyblog.test\/api\/gitProjects?page=1",
+            "first": "http:\/\/laravel-bjyblog.test\/api\/openSources?page=1",
+            "last": "http:\/\/laravel-bjyblog.test\/api\/openSources?page=1",
             "prev": null,
             "next": null
         },
@@ -110,7 +110,7 @@
             "current_page": 1,
             "from": 1,
             "last_page": 1,
-            "path": "http:\/\/laravel-bjyblog.test\/api\/gitProjects",
+            "path": "http:\/\/laravel-bjyblog.test\/api\/openSources",
             "per_page": 15,
             "to": 9,
             "total": 9

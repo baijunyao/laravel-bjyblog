@@ -7,8 +7,8 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\FriendshipLink;
-use App\Models\GitProject;
 use App\Models\Note;
+use App\Models\OpenSource;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
 use Artisan;
@@ -54,7 +54,7 @@ class Clear extends Command
         Comment::truncate();
         SocialiteUser::truncate();
         Tag::truncate();
-        GitProject::truncate();
+        OpenSource::truncate();
         FriendshipLink::truncate();
 
         Artisan::call('cache:clear');

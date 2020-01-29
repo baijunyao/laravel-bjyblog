@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\GitProject;
+namespace App\Http\Requests\OpenSource;
 
 use Illuminate\Foundation\Http\FormRequest;
 

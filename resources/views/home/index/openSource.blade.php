@@ -29,7 +29,7 @@
         @endif
         <div class="row b-chat">
             <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
-                @foreach($gitProject as $v)
+                @foreach($openSource as $v)
                     @if($v->type == 1)
                         <div class="github-widget" data-repo="{{ $v->name }}"></div>
                     @elseif($v->type == 2)

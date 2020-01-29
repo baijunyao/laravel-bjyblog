@@ -12,7 +12,7 @@ use Baijunyao\LaravelTestSupport\Rest\TestStoreValidation;
 use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
 use Baijunyao\LaravelTestSupport\Rest\TestUpdateValidation;
 
-class GitProjectControllerTest extends TestCase
+class OpenSourceControllerTest extends TestCase
 {
     use TestIndex, TestShow, TestStore, TestStoreValidation, TestUpdate, TestUpdateValidation, TestDestroy, TestRestore, TestForceDelete;
 

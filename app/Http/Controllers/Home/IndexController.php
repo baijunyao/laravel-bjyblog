@@ -151,14 +151,14 @@ class IndexController extends Controller
         return view('home.index.note', $assign);
     }
 
-    public function git()
+    public function openSource()
     {
         $assign = [
-            'category_id' => 'git',
+            'category_id' => 'openSource',
             'title'       => '开源项目',
         ];
 
-        return view('home.index.git', $assign);
+        return view('home.index.openSource', $assign);
     }
 
     public function comment(Store $request, Comment $commentModel, SocialiteUser $socialiteUserModel)

@@ -10,7 +10,7 @@ use Baijunyao\LaravelRestful\Traits\Show;
 use Baijunyao\LaravelRestful\Traits\Store;
 use Baijunyao\LaravelRestful\Traits\Update;
 
-class GitProjectController extends Controller
+class OpenSourceController extends Controller
 {
     use Index, Show, Store, Update, Destroy, Restore, ForceDelete;
 }
