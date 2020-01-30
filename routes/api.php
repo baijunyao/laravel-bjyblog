@@ -33,6 +33,7 @@ Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::get('configs', 'ConfigController@index')->name('configs.index');
     Route::get('configs/{config}', 'ConfigController@show')->name('configs.show');
     Route::put('configs/{config}', 'ConfigController@update')->name('configs.update');
+    Route::post('configs/uploadQqQunOrCode', 'ConfigController@uploadQqQunOrCode')->name('configs.uploadQqQunOrCode');
 
     Route::apiResource('friendshipLinks', 'FriendshipLinkController');
     Route::patch('friendshipLinks/{friendshipLink}/restore', 'FriendshipLinkController@restore')->name('friendshipLinks.restore');
