@@ -3,9 +3,6 @@
 namespace App\Models;
 
 use Exception;
-use Illuminate\Contracts\Routing\UrlGenerator;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Collection;
 use Laravel\Scout\Searchable;
 use Overtrue\LaravelFollow\Traits\CanBeLiked;
 use Str;
@@ -31,35 +28,16 @@ class Article extends Base
 {
     use Searchable, CanBeLiked;
 
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array
-     */
     public function toSearchableArray()
     {
         return $this->only('id', 'title', 'keywords', 'description', 'markdown');
     }
 
-    /**
-     * 过滤描述中的换行。
-     *
-     * @param string $value
-     *
-     * @return string
-     */
     public function getDescriptionAttribute($value)
     {
         return str_replace(["\r", "\n", "\r\n"], '', $value);
     }
 
-    /**
-     * @param $value
-     *
-     * @return mixed
-     *
-     * @author hanmeimei
-     */
     public function getHtmlAttribute($value)
     {
         return str_replace('<img src="/uploads/article', '<img src="' . cdn_url('uploads/article'), $value);
@@ -70,11 +48,6 @@ class Article extends Base
         return $this->belongsTo(Category::class);
     }
 
-    /**
-     * 关联标签表
-     *
-     * @return BelongsToMany
-     */
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'article_tags');
@@ -85,11 +58,6 @@ class Article extends Base
         return $this->hasMany(ArticleHistory::class);
     }
 
-    /**
-     * 搜索文章获取文章id
-     *
-     * @return Collection
-     */
     public function searchArticleGetId(string $wd)
     {
         // 如果 SCOUT_DRIVER 为 null 则使用 sql 搜索
@@ -113,11 +81,6 @@ class Article extends Base
         return $id;
     }
 
-    /**
-     * @return UrlGenerator|string
-     *
-     * @author hanmeimei
-     */
     public function getUrlAttribute()
     {
         $parameters = [$this->id];

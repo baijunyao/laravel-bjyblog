@@ -16,9 +16,6 @@ class SocialiteController extends Controller
 {
     private $socialiteClients;
 
-    /**
-     * SocialiteController constructor.
-     */
     public function __construct(Request $request)
     {
         $this->socialiteClients = SocialiteClient::all();
@@ -30,13 +27,6 @@ class SocialiteController extends Controller
         }
     }
 
-    /**
-     * oauth跳转
-     *
-     * @param $service
-     *
-     * @return mixed
-     */
     public function redirectToProvider(Request $request, $service)
     {
         // 记录登录前的url
@@ -48,13 +38,6 @@ class SocialiteController extends Controller
         return Socialite::driver($service)->redirect();
     }
 
-    /**
-     * 获取用户资料并登录
-     *
-     * @param $service
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function handleProviderCallback(Request $request, SocialiteUser $socialiteUserModel, $service)
     {
         if (!$request->has('code')) {
@@ -126,11 +109,6 @@ class SocialiteController extends Controller
         return redirect(session('targetUrl', url('/')));
     }
 
-    /**
-     * 退出登录
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function logout()
     {
         Auth::guard('socialite')->logout();

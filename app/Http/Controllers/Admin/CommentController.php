@@ -8,13 +8,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    /**
-     * 评论列表
-     *
-     * @param Comment $commentModel
-     *
-     * @return mixed
-     */
     public function index(Request $request)
     {
         $wd   = $request->input('wd');
@@ -37,13 +30,6 @@ class CommentController extends Controller
         return view('admin.comment.index', $assign);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $comment = Comment::withTrashed()->find($id);
@@ -52,13 +38,6 @@ class CommentController extends Controller
         return view('admin.comment.edit', $assign);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         Comment::withTrashed()->find($id)->update($request->except('_token'));
@@ -66,41 +45,20 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id, Comment $commentModel)
+    public function destroy($id)
     {
         Comment::destroy($id);
 
         return redirect()->back();
     }
 
-    /**
-     * 恢复删除的评论
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function restore($id, Comment $commentModel)
+    public function restore($id)
     {
         Comment::onlyTrashed()->find($id)->restore();
 
         return redirect()->back();
     }
 
-    /**
-     * 彻底删除评论
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function forceDelete($id)
     {
         Comment::onlyTrashed()->find($id)->forceDelete();
@@ -108,22 +66,12 @@ class CommentController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * 批量替换功能视图
-     *
-     * @return \Illuminate\View\View
-     */
     public function replaceView()
     {
         return view('admin.comment.replaceView');
     }
 
-    /**
-     * 批量替换功能
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function replace(Request $request, Comment $commentModel)
+    public function replace(Request $request)
     {
         $search = $request->input('search');
         $data   = Comment::select('id', 'content')
