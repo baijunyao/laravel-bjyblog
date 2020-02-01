@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Str;
 
 /**
@@ -23,55 +22,26 @@ class Comment extends Base
     // 用于递归
     private $child = [];
 
-    /**
-     * content 访问器 把 ubb格式的表情转为html标签
-     *
-     * @param $value
-     *
-     * @return mixed
-     */
     public function getContentAttribute($value)
     {
         return $this->ubbToImage($value);
     }
 
-    /**
-     * @param $value
-     *
-     * @author hanmeimei
-     */
     public function setContentAttribute($value)
     {
         $this->attributes['content'] = $this->imageToUbb($value);
     }
 
-    /**
-     * 关联文章
-     *
-     * @return BelongsTo
-     */
     public function article()
     {
         return $this->belongsTo(Article::class)->withDefault();
     }
 
-    /**
-     * 关联第三方用户
-     *
-     * @return BelongsTo
-     */
     public function socialiteUser()
     {
         return $this->belongsTo(SocialiteUser::class)->withDefault();
     }
 
-    /**
-     * ubb格式的表情转为html标签
-     *
-     * @param $content
-     *
-     * @return mixed
-     */
     public function ubbToImage($content)
     {
         $ubb   = ['[Kiss]', '[Love]', '[Yeah]', '[啊！]', '[背扭]', '[顶]', '[抖胸]', '[88]', '[汗]', '[瞌睡]', '[鲁拉]', '[拍砖]', '[揉脸]', '[生日快乐]', '[摊手]', '[睡觉]', '[瘫坐]', '[无聊]', '[星星闪]', '[旋转]', '[也不行]', '[郁闷]', '[正Music]', '[抓墙]', '[撞墙至死]', '[歪头]', '[戳眼]', '[飘过]', '[互相拍砖]', '[砍死你]', '[扔桌子]', '[少林寺]', '[什么？]', '[转头]', '[我爱牛奶]', '[我踢]', '[摇晃]', '[晕厥]', '[在笼子里]', '[震荡]'];
@@ -86,13 +56,6 @@ class Comment extends Base
         return str_replace($ubb, $image, $content);
     }
 
-    /**
-     * img格式的表情转为ubb格式
-     *
-     * @param $content
-     *
-     * @return mixed|string
-     */
     public function imageToUbb($content)
     {
         $content = html_entity_decode(htmlspecialchars_decode($content));
@@ -108,13 +71,6 @@ class Comment extends Base
         return clean(strip_tags($content));
     }
 
-    /**
-     * 通过文章id获取评论数据
-     *
-     * @param $article_id
-     *
-     * @return mixed
-     */
     public function getDataByArticleId($article_id)
     {
         // 关联第三方用户表获取一级评论

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\ArticleHistory;
 use App\Models\ArticleTag;
 use Artisan;
 use Markdown;
@@ -55,6 +56,19 @@ class ArticleObserver extends BaseObserver
             $article->cover = $image_paths[0] ?? '/uploads/article/default.jpg';
         }
 
+    }
+
+    public function updated($article)
+    {
+        parent::updated($article);
+
+        // restore() triggering both restored() and updated()
+        if(! $article->isDirty('deleted_at') && $article->isDirty('markdown')){
+            ArticleHistory::create([
+                'article_id' => $article->id,
+                'markdown'   => $article->markdown
+            ]);
+        }
     }
 
     public function deleted($article)

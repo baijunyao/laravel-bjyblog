@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App;
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use App\Models\SocialiteUser;
 use Auth;
 use Composer\Semver\Comparator;
@@ -12,12 +11,7 @@ use DB;
 
 class IndexController extends Controller
 {
-    /**
-     * 后台首页
-     *
-     * @return mixed
-     */
-    public function index(Comment $commentModel)
+    public function index()
     {
         // 最新登录的5个用户
         $socialiteUserData = SocialiteUser::select('name', 'avatar', 'login_times', 'updated_at')
@@ -35,11 +29,6 @@ class IndexController extends Controller
         return view('admin.index.index', $assign);
     }
 
-    /**
-     * 更新代码
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function upgrade()
     {
         $data = file_get_contents('https://gitee.com/baijunyao/laravel-bjyblog/raw/master/config/bjyblog.php');

@@ -9,11 +9,6 @@ use Illuminate\Http\Request;
 
 class NavController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $nav    = Nav::withTrashed()->get();
@@ -22,23 +17,11 @@ class NavController extends Controller
         return view('admin.nav.index', $assign);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.nav.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(Store $request)
     {
         Nav::create($request->except('_token'));
@@ -46,24 +29,6 @@ class NavController extends Controller
         return redirect(url('admin/nav/index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $nav    = Nav::withTrashed()->find($id);
@@ -72,13 +37,6 @@ class NavController extends Controller
         return view('admin.nav.edit', $assign);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         Nav::withTrashed()->find($id)->update($request->except('_token'));
@@ -86,13 +44,6 @@ class NavController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Nav::destroy($id);
@@ -100,13 +51,6 @@ class NavController extends Controller
         return redirect('admin/nav/index');
     }
 
-    /**
-     * 恢复删除的菜单
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function restore($id)
     {
         Nav::onlyTrashed()->find($id)->restore();
@@ -114,14 +58,6 @@ class NavController extends Controller
         return redirect('admin/nav/index');
     }
 
-    /**
-     * 彻底删除菜单
-     *
-     * @param     $id
-     * @param Nav $navModel
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function forceDelete($id)
     {
         Nav::onlyTrashed()->find($id)->forceDelete();

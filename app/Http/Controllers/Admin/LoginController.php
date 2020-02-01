@@ -8,11 +8,6 @@ use Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * 登录页面
-     *
-     * @return mixed
-     */
     public function index(SocialiteUser $socialiteUserModel)
     {
         // 获取是否有第三方用户被设置为管理员
@@ -25,11 +20,6 @@ class LoginController extends Controller
         }
     }
 
-    /**
-     * 退出登录
-     *
-     * @return mixed
-     */
     public function logout()
     {
         Auth::guard('admin')->logout();

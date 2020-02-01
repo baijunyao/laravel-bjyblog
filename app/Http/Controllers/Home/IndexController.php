@@ -17,13 +17,6 @@ use Str;
 
 class IndexController extends Controller
 {
-    /**
-     * 首页
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function index()
     {
         // 获取文章列表数据
@@ -72,13 +65,13 @@ class IndexController extends Controller
         $comment     = $commentModel->getDataByArticleId($article->id);
         $category_id = $article->category->id;
 
-        // Like
-        $user = auth()->guard('socialite')->user();
+        /** @var \App\Models\SocialiteUser $socialiteUser */
+        $socialiteUser = auth()->guard('socialite')->user();
 
-        if ($user === null) {
+        if ($socialiteUser === null) {
             $is_liked = false;
         } else {
-            $is_liked = $user->hasLiked($article);
+            $is_liked = $socialiteUser->hasLiked($article);
         }
 
         $likes       = $article->likers()->get();
@@ -146,11 +139,6 @@ class IndexController extends Controller
         return view('home.index.index', $assign);
     }
 
-    /**
-     * 随言碎语
-     *
-     * @return mixed
-     */
     public function note()
     {
         $notes   = Note::orderBy('created_at', 'desc')->get();
@@ -163,11 +151,6 @@ class IndexController extends Controller
         return view('home.index.note', $assign);
     }
 
-    /**
-     * 开源项目
-     *
-     * @return mixed
-     */
     public function git()
     {
         $assign = [
@@ -178,11 +161,6 @@ class IndexController extends Controller
         return view('home.index.git', $assign);
     }
 
-    /**
-     * 文章评论
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function comment(Store $request, Comment $commentModel, SocialiteUser $socialiteUserModel)
     {
         // 获取用户id
@@ -207,9 +185,6 @@ class IndexController extends Controller
         return response()->json(['id' => $comment->id]);
     }
 
-    /**
-     * 检测是否登录
-     */
     public function checkLogin()
     {
         return response()->json([
@@ -217,11 +192,6 @@ class IndexController extends Controller
         ]);
     }
 
-    /**
-     * 搜索文章
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function search(Request $request, Article $articleModel)
     {
         // 禁止蜘蛛抓取搜索页
@@ -261,11 +231,6 @@ class IndexController extends Controller
             ->header('X-Robots-Tag', 'noindex');
     }
 
-    /**
-     * feed
-     *
-     * @return \Illuminate\Support\Facades\View
-     */
     public function feed()
     {
         // 获取文章

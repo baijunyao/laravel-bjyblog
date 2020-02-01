@@ -10,15 +10,10 @@ use Illuminate\Http\Request;
 
 class GitProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $data = GitProject::orderBy('sort')
-            ->withTrashed()
+        $data = GitProject::withTrashed()
+            ->orderBy('sort')
             ->get();
         $gitProjectType = [
             1 => 'github',
@@ -29,23 +24,11 @@ class GitProjectController extends Controller
         return view('admin.gitProject.index', $assign);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.gitProject.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(Store $request)
     {
         GitProject::create($request->except('_token'));
@@ -53,13 +36,6 @@ class GitProjectController extends Controller
         return redirect('admin/gitProject/index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data   = GitProject::withTrashed()->find($id);
@@ -68,25 +44,13 @@ class GitProjectController extends Controller
         return view('admin.gitProject.edit', $assign);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id, GitProject $gitProjectModel)
+    public function update(Request $request, $id)
     {
         GitProject::withTrashed()->find($id)->update($request->except('_token'));
 
         return redirect()->back();
     }
 
-    /**
-     * 排序
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function sort(Request $request, GitProject $gitProjectModel)
     {
         $data     = $request->except('_token');
@@ -106,13 +70,6 @@ class GitProjectController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         GitProject::destroy($id);
@@ -120,14 +77,6 @@ class GitProjectController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * 恢复删除的开源项目
-     *
-     * @param            $id
-     * @param GitProject $gitProjectModel
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function restore($id)
     {
         GitProject::onlyTrashed()->find($id)->restore();
@@ -135,13 +84,6 @@ class GitProjectController extends Controller
         return redirect('admin/gitProject/index');
     }
 
-    /**
-     * 彻底删除开源项目
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function forceDelete($id)
     {
         GitProject::onlyTrashed()->find($id)->forceDelete();

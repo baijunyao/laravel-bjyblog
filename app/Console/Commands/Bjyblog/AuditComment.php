@@ -46,7 +46,9 @@ class AuditComment extends Command
         ];
 
         if (count(array_filter($baiduConfig)) === 3) {
-            $comments = Comment::select('id', 'content', 'is_audited')->withTrashed()->get();
+            $comments = Comment::withTrashed()
+                ->select('id', 'content', 'is_audited')
+                ->get();
 
             $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
 

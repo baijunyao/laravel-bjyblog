@@ -11,38 +11,21 @@ use Illuminate\Http\Request;
 
 class FriendshipLinkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $data = FriendshipLink::orderBy(DB::raw('sort is null,sort'))
-            ->withTrashed()
+        $data = FriendshipLink::withTrashed()
+            ->orderBy(DB::raw('sort is null,sort'))
             ->get();
         $assign = compact('data');
 
         return view('admin.friendshipLink.index', $assign);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.friendshipLink.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function store(Store $request)
     {
         FriendshipLink::create($request->except('_token'));
@@ -50,13 +33,6 @@ class FriendshipLinkController extends Controller
         return redirect('admin/friendshipLink/index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data   = FriendshipLink::withTrashed()->find($id);
@@ -65,14 +41,6 @@ class FriendshipLinkController extends Controller
         return view('admin.friendshipLink.edit', $assign);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function update(Store $request, $id)
     {
         $friendshipLink = $request->except('_token');
@@ -86,11 +54,6 @@ class FriendshipLinkController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * 排序
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function sort(Request $request, FriendshipLink $friendshipLinkModel)
     {
         $data     = $request->except('_token');
@@ -110,13 +73,6 @@ class FriendshipLinkController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         FriendshipLink::destroy($id);
@@ -124,13 +80,6 @@ class FriendshipLinkController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * 恢复删除的友情链接
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function restore($id)
     {
         FriendshipLink::onlyTrashed()->find($id)->restore();
@@ -138,13 +87,6 @@ class FriendshipLinkController extends Controller
         return redirect('admin/friendshipLink/index');
     }
 
-    /**
-     * 彻底删除友情链接
-     *
-     * @param $id
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
     public function forceDelete($id)
     {
         FriendshipLink::onlyTrashed()->find($id)->forceDelete();

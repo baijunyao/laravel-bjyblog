@@ -10,8 +10,8 @@ if (!function_exists('add_text_water')) {
     /**
      * 给图片添加文字水印
      *
-     * @param $file
-     * @param $text
+     * @param string $file
+     * @param string $text
      * @param string $color
      *
      * @return mixed
@@ -37,7 +37,7 @@ if (!function_exists('generate_english_slug')) {
     /**
      * Generate English slug
      *
-     * @param $content
+     * @param string $content
      *
      * @throws ErrorException
      *
@@ -62,7 +62,7 @@ if (!function_exists('cdn_url')) {
     /**
      * Generate a url for the CDN.
      *
-     * @param $path
+     * @param string $path
      *
      * @return string
      */
@@ -76,7 +76,7 @@ if (!function_exists('format_url')) {
     /**
      * Format URL
      *
-     * @param $url
+     * @param string $url
      *
      * @return string
      */
@@ -112,16 +112,6 @@ if (!function_exists('mail_is_configured')) {
 }
 
 if (!function_exists('get_image_paths_from_html')) {
-    /**
-     * @param $html
-     *
-     * @throws \PHPHtmlParser\Exceptions\ChildNotFoundException
-     * @throws \PHPHtmlParser\Exceptions\CircularException
-     * @throws \PHPHtmlParser\Exceptions\NotLoadedException
-     * @throws \PHPHtmlParser\Exceptions\StrictException
-     *
-     * @return array
-     */
     function get_image_paths_from_html($html)
     {
         $dom = new Dom();

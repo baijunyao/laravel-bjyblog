@@ -10,61 +10,26 @@ use Illuminate\Http\Request;
 
 class ConfigController extends Controller
 {
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit()
     {
         return view('admin.config.edit');
     }
 
-    /**
-     * 邮箱设置
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function email()
     {
         return view('admin.config.email');
     }
 
-    /**
-     * 第三方登录设置
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function socialite()
     {
         return view('admin.config.socialite');
     }
 
-    /**
-     * QQ群设置
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function qqQun()
     {
         return view('admin.config.qqQun');
     }
 
-    /**
-     * 备份
-     *
-     * @throws \Exception
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function backup()
     {
         return view('admin.config.backup');
@@ -95,14 +60,7 @@ class ConfigController extends Controller
         return view('admin.config.commentAudit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Config $configModel)
+    public function update(Request $request)
     {
         $configs = $request->except('_token');
 
@@ -125,11 +83,6 @@ class ConfigController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * 清空各种缓存
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function clear()
     {
         Artisan::call('cache:clear');
