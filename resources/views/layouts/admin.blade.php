@@ -84,7 +84,7 @@
                                         <li><a href="{{ url('admin/config/email') }}">{{ __('Email') }}</a></li>
                                         <li><a href="{{ url('admin/socialiteClient/index') }}">{{ __('Socialite') }}</a></li>
                                         <li><a href="{{ url('admin/config/commentAudit') }}">{{ __('Comment Audit') }}</a></li>
-                                        <li><a href="{{ url('admin/gitProject/index') }}">{{ __('Open Source') }}</a></li>
+                                        <li><a href="{{ url('admin/openSource/index') }}">{{ __('Open Source') }}</a></li>
                                         @if(config('app.locale') === 'zh-CN')
                                             <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
                                         @endif

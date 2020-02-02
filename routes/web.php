@@ -11,7 +11,7 @@ Route::namespace('Home')->name('home.')->group(function () {
     // 随言碎语
     Route::get('note', 'IndexController@note')->name('note');
     // 开源项目
-    Route::get('git', 'IndexController@git')->name('git');
+    Route::get('openSource', 'IndexController@openSource')->name('openSource');
     // 文章详情
     Route::get('article/{article}/{slug?}', 'IndexController@article')->name('article');
     // 检测是否登录
@@ -274,23 +274,23 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
     });
 
     // 开源项目管理
-    Route::prefix('gitProject')->group(function () {
+    Route::prefix('openSource')->group(function () {
         // 开源项目列表
-        Route::get('index', 'GitProjectController@index');
+        Route::get('index', 'OpenSourceController@index');
         // 添加开源项目
-        Route::get('create', 'GitProjectController@create');
-        Route::post('store', 'GitProjectController@store');
+        Route::get('create', 'OpenSourceController@create');
+        Route::post('store', 'OpenSourceController@store');
         // 编辑开源项目
-        Route::get('edit/{id}', 'GitProjectController@edit');
-        Route::post('update/{id}', 'GitProjectController@update');
+        Route::get('edit/{id}', 'OpenSourceController@edit');
+        Route::post('update/{id}', 'OpenSourceController@update');
         // 排序
-        Route::post('sort', 'GitProjectController@sort');
+        Route::post('sort', 'OpenSourceController@sort');
         // 删除开源项目
-        Route::get('destroy/{id}', 'GitProjectController@destroy');
+        Route::get('destroy/{id}', 'OpenSourceController@destroy');
         // 恢复删除的开源项目
-        Route::get('restore/{id}', 'GitProjectController@restore');
+        Route::get('restore/{id}', 'OpenSourceController@restore');
         // 彻底删除开源项目
-        Route::get('forceDelete/{id}', 'GitProjectController@forceDelete');
+        Route::get('forceDelete/{id}', 'OpenSourceController@forceDelete');
     });
 
     // 菜单管理

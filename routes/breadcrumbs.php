@@ -29,9 +29,9 @@ Breadcrumbs::for('home.chat', function (BreadcrumbsGenerator $trail) {
     $trail->push(__('Note'), route('home.note'));
 });
 
-Breadcrumbs::for('home.git', function (BreadcrumbsGenerator $trail) {
+Breadcrumbs::for('home.openSource', function (BreadcrumbsGenerator $trail) {
     $trail->parent('home.index');
-    $trail->push(__('Git'), route('home.git'));
+    $trail->push(__('Open Source'), route('home.openSource'));
 });
 
 Breadcrumbs::for('home.search', function (BreadcrumbsGenerator $trail) {
