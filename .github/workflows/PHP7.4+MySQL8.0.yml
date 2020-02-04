@@ -1,4 +1,4 @@
-name: CI
+name: PHP7.4+MySQL8.0
 
 on: [push]
 
@@ -7,12 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     services:
       mysql:
-        image: baijunyao/mysql
+        image: baijunyao/mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: laravel_bjyblog
           MYSQL_DATABASE: laravel_bjyblog
     container:
-      image: baijunyao/php:local
+      image: baijunyao/php:7.4-local
       volumes:
         - .:/app
     steps:
