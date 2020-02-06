@@ -83,6 +83,13 @@ class IndexControllerTest extends TestCase
         Notification::assertSentTo(new AnonymousNotifiable(), CommentNotification::class, function (CommentNotification $notification) {
             return $notification->subject === '白俊遥 评论 欢迎使用 laravel-bjyblog';
         });
+
+        $this->loginByUserId(1)
+            ->post('/comment', $comment + [
+                'content' => $content,
+                'email'   => $email,
+            ])
+            ->assertStatus(302);
     }
 
     public function testReplyComment()
