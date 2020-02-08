@@ -261,7 +261,7 @@ namespace App\Models{
 
 namespace App\Models{
     /**
-     * App\Models\GitProject
+     * App\Models\OpenSource
      *
      * @property int                             $id         项目主键
      * @property int                             $sort       排序
@@ -271,19 +271,19 @@ namespace App\Models{
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $deleted_at
      *
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject newModelQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject newQuery()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject query()
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereCreatedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereDeletedAt($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource newModelQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource newQuery()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource query()
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereDeletedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereId($value)
      * @method static \Illuminate\Database\Eloquent\Builder|\Baijunyao\LaravelModel\Models\BaseModel whereMap($map)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereSort($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereType($value)
-     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\GitProject whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereName($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereSort($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereType($value)
+     * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\OpenSource whereUpdatedAt($value)
      */
-    class GitProject extends \Eloquent
+    class OpenSource extends \Eloquent
     {
     }
 }

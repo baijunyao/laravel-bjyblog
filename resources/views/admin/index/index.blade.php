@@ -90,7 +90,7 @@
         <div class="col-md-4">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>{{ __('Last Comments') }} <small>top5</small></h2>
+                    <h2>{{ __('Recent Comments') }} <small>top5</small></h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
