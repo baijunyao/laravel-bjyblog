@@ -7,10 +7,10 @@ use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Schema;
 
-class V6_11_0 extends Command
+class V6_14_0 extends Command
 {
-    protected $signature   = 'upgrade:v6.11.0';
-    protected $description = 'Upgrade to v6.11.0';
+    protected $signature   = 'upgrade:v6.14.0';
+    protected $description = 'Upgrade to v6.14.0';
 
     public function __construct()
     {
@@ -19,15 +19,19 @@ class V6_11_0 extends Command
 
     public function handle()
     {
+        Schema::table('articles', function (Blueprint $table) {
+            $table->integer('views')->after('is_top');
+        });
+
         $articles = Article::withTrashed()->get();
 
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
-            $article->visits()->increment($article->click);
+            $article->update([
+                'views' => $article->visits()->count(),
+            ]);
         }
 
-        Schema::table('articles', function (Blueprint $table) {
-            $table->dropColumn('click');
-        });
+        Schema::drop('visits');
     }
 }
