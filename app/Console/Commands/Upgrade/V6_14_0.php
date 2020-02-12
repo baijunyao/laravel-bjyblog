@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Upgrade;
 
 use App\Models\Article;
+use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Schema;
@@ -25,10 +26,14 @@ class V6_14_0 extends Command
 
         $articles = Article::withTrashed()->get();
 
+        $views = DB::table('visits')
+            ->where('primary_key', 'visits:articles_visits')
+            ->pluck('score', 'id');
+
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
             $article->update([
-                'views' => $article->visits()->count(),
+                'views' => $views[$article->id],
             ]);
         }
 

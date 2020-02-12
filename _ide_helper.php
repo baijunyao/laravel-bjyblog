@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.14.0 on 2020-02-08 09:14:38.
+ * Generated for Laravel 6.14.0 on 2020-02-11 20:43:38.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15401,18 +15401,6 @@ namespace Appstract\LushHttp {
  
 }
 
-namespace Awssat\Visits { 
-
-    /**
-     * 
-     *
-     */ 
-    class Visits {
-         
-    }
- 
-}
-
 namespace DaveJamesMiller\Breadcrumbs\Facades { 
 
     /**
@@ -16764,95 +16752,6 @@ namespace Sentry\Laravel {
         {
                         /** @var \Sentry\State\Hub $instance */
                         return $instance->getIntegration($className);
-        }
-         
-    }
- 
-}
-
-namespace Torann\GeoIP\Facades { 
-
-    /**
-     * 
-     *
-     */ 
-    class GeoIP {
-        
-        /**
-         * Get the location from the provided IP.
-         *
-         * @param string $ip
-         * @return \Torann\GeoIP\Location 
-         * @static 
-         */ 
-        public static function getLocation($ip = null)
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getLocation($ip);
-        }
-        
-        /**
-         * Get the currency code from ISO.
-         *
-         * @param string $iso
-         * @return string 
-         * @static 
-         */ 
-        public static function getCurrency($iso)
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getCurrency($iso);
-        }
-        
-        /**
-         * Get service instance.
-         *
-         * @return \Torann\GeoIP\Contracts\ServiceInterface 
-         * @throws Exception
-         * @static 
-         */ 
-        public static function getService()
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getService();
-        }
-        
-        /**
-         * Get cache instance.
-         *
-         * @return \Torann\GeoIP\Cache 
-         * @static 
-         */ 
-        public static function getCache()
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getCache();
-        }
-        
-        /**
-         * Get the client IP address.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getClientIP()
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->getClientIP();
-        }
-        
-        /**
-         * Get configuration value.
-         *
-         * @param string $key
-         * @param mixed $default
-         * @return mixed 
-         * @static 
-         */ 
-        public static function config($key, $default = null)
-        {
-                        /** @var \Torann\GeoIP\GeoIP $instance */
-                        return $instance->config($key, $default);
         }
          
     }
@@ -19749,8 +19648,6 @@ namespace  {
 
     class Lush extends \Appstract\LushHttp\LushFacade {}
 
-    class Visits extends \Awssat\Visits\Visits {}
-
     class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
@@ -19762,8 +19659,6 @@ namespace  {
     class Purifier extends \Mews\Purifier\Facades\Purifier {}
 
     class Sentry extends \Sentry\Laravel\Facade {}
-
-    class GeoIP extends \Torann\GeoIP\Facades\GeoIP {}
  
 }
 

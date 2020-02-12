@@ -21,6 +21,7 @@ use Str;
  * @property string $keywords    关键词
  * @property string $cover       封面图
  * @property bool   $is_top      是否置顶 1是 0否
+ * @property int    $views       点击数
  *
  * @author  hanmeimei
  */
@@ -90,10 +91,5 @@ class Article extends Base
         }
 
         return url('article', $parameters);
-    }
-
-    public function visits()
-    {
-        return visits($this);
     }
 }
