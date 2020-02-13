@@ -19,7 +19,7 @@ class CreateVisitsTable extends Migration
             $table->string('primary_key');
             $table->string('secondary_key')->nullable();
             $table->unsignedBigInteger('score');
-            $table->json('list')->nullable();
+            $table->text('list');
             $table->timestamp('expired_at')->nullable();
             $table->timestamps();
             $table->unique(['primary_key', 'secondary_key']);

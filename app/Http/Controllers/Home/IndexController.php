@@ -12,6 +12,7 @@ use App\Models\Comment;
 use App\Models\Note;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
+use Cache;
 use Illuminate\Http\Request;
 use Str;
 
@@ -45,7 +46,13 @@ class IndexController extends Controller
 
     public function article(Article $article, Request $request, Comment $commentModel)
     {
-        $article->visits()->increment();
+        // 同一个用户访问同一篇文章每天只增加1个访问量  使用 ip+id 作为 key 判别
+        $ipAndId = 'articleRequestList' . $request->ip() . ':' . $article->id;
+        if (!Cache::has($ipAndId)) {
+            cache([$ipAndId => ''], 1440);
+            // 文章点击量+1
+            $article->increment('views');
+        }
 
         // 获取上一篇
         $prev = Article::select('id', 'title', 'slug')
