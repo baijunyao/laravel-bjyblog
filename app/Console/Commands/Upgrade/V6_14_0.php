@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands\Upgrade;
 
-use App\Models\Article;
 use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,20 +19,21 @@ class V6_14_0 extends Command
 
     public function handle()
     {
-        Schema::table('articles', function (Blueprint $table) {
-            $table->integer('views')->after('is_top');
-        });
+        if (!Schema::hasColumn('articles', 'views')) {
+            Schema::table('articles', function (Blueprint $table) {
+                $table->integer('views')->after('is_top');
+            });
+        }
 
-        $articles = Article::withTrashed()->get();
+        $articles = DB::table('articles')->get();
 
         $views = DB::table('visits')
             ->where('primary_key', 'visits:articles_visits')
             ->pluck('score', 'id');
 
         foreach ($articles as $article) {
-            /** @var \App\Models\Article $article */
-            $article->update([
-                'views' => $views[$article->id],
+            DB::table('articles')->where('id', $article->id)->update([
+                'views' => $views[$article->id] ?? 0,
             ]);
         }
 
