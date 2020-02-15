@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Upgrade;
 
 use App\Models\Article;
+use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Schema;
@@ -19,12 +20,24 @@ class V6_11_0 extends Command
 
     public function handle()
     {
+        if (!Schema::hasTable('visits')) {
+            Schema::create('visits', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->string('primary_key');
+                $table->string('secondary_key');
+                $table->unsignedBigInteger('score');
+            });
+        }
+
         $articles = Article::withTrashed()->get();
 
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
-            dump($article->id . ':' . $article->click);
-            $article->visits()->increment($article->click);
+            DB::table('visits')->insertOrIgnore([
+                'primary_key'   => 'visits:articles_visits',
+                'secondary_key' => $article->id,
+                'score'         => $article->click,
+            ]);
         }
 
         Schema::table('articles', function (Blueprint $table) {
