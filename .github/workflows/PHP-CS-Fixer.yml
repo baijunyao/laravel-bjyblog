@@ -1,16 +1,10 @@
-name: PHP7.4+MySQL5.7
+name: PHP-CS-Fixer
 
 on: [push]
 
 jobs:
   phpunit:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: laravel_bjyblog
-          MYSQL_DATABASE: laravel_bjyblog
     container:
       image: baijunyao/php:7.4-local
       volumes:
@@ -22,13 +16,9 @@ jobs:
         run: |
           cp .env.actions .env
           composer install
-          php artisan key:generate
-          php artisan passport:keys
-          php artisan migrate
-          php artisan db:seed
-      - name: Test
+      - name: PHP CS Fixer
         run: |
-          ./vendor/bin/phpunit
+          ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --dry-run --diff
       - name: Slack Notify
         uses: baijunyao/action-slack-notify@v2.1.0
         if: always()
