@@ -29,7 +29,7 @@ class V6_14_0 extends Command
 
         $views = DB::table('visits')
             ->where('primary_key', 'visits:articles_visits')
-            ->pluck('score', 'id');
+            ->pluck('score', 'secondary_key');
 
         foreach ($articles as $article) {
             DB::table('articles')->where('id', $article->id)->update([
