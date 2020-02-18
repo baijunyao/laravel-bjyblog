@@ -45,12 +45,12 @@ class Comment implements Rule
         $userId  = auth()->guard('socialite')->user()->id;
         $isAdmin = auth()->guard('socialite')->user()->is_admin;
 
-        /** @var \Illuminate\Support\Carbon $lastCommentDate */
+        /** @var \Illuminate\Support\Carbon|null $lastCommentDate */
         $lastCommentDate = $commentModel->where('socialite_user_id', $userId)
             ->orderBy('created_at', 'desc')
             ->value('created_at');
 
-        if ($isAdmin !== 1 && $lastCommentDate->diffInMinutes() === 0) {
+        if ($isAdmin !== 1 && $lastCommentDate !== null && $lastCommentDate->diffInMinutes() === 0) {
             $this->message = '评论太过频繁,请稍后再试.';
 
             return false;
