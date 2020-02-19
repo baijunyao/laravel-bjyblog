@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Commands\Upgrade\V5_8_10_0\Migrations;
 
 namespace Tests\Commands\Upgrade\V5_8_10_0\Migrations;

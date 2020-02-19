@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Browser\Home;
 
 use Laravel\Dusk\Browser;

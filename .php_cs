@@ -66,7 +66,6 @@ return PhpCsFixer\Config::create()
         'short_scalar_cast' => true,
         'string_line_ending' => true,
         'yoda_style' => false,
-        'declare_strict_types' => false,
         'void_return' => false,
         'single_trait_insert_per_statement' => false
     ])

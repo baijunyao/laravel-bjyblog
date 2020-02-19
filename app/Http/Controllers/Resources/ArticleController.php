@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Resources;
 
 use App\Http\Requests\Article\Store;
@@ -38,7 +40,7 @@ class ArticleController extends Controller
 
         if ($result) {
             ArticleTag::where('article_id', $request->route('article'))->forceDelete();
-            $articleTag->addTagIds($request->route('article'), $request->input('tag_ids'));
+            $articleTag->addTagIds((int) $request->route('article'), $request->input('tag_ids'));
         }
 
         return response($article);
