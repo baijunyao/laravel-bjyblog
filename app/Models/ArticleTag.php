@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 /**
@@ -12,13 +14,6 @@ namespace App\Models;
  */
 class ArticleTag extends Base
 {
-    /**
-     * 为文章批量插入标签
-     *
-     * @return bool
-     *
-     * @author hanmeimei
-     */
     public function addTagIds(int $article_id, array $tag_ids)
     {
         // 组合批量插入的数据
