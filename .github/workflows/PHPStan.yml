@@ -20,7 +20,7 @@ jobs:
         run: |
           ./vendor/bin/phpstan analyse --ansi
       - name: Slack Notify
-        uses: baijunyao/action-slack-notify@v2.1.0
+        uses: baijunyao/action-slack-notify@v2.2.0
         if: always()
         with:
           channel: CEWJP77BP
