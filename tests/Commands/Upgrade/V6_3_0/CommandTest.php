@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_3_0;
 
 use Artisan;
+use Schema;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
@@ -12,7 +13,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
     {
         Artisan::call('upgrade:v6.3.0');
 
-        $this->assertDatabaseHasColumns('comments', ['is_audited']);
+        static::assertTrue(Schema::hasColumn('comments', 'is_audited'));
 
         $configs = [
             [
