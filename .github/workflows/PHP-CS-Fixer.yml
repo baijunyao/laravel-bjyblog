@@ -20,7 +20,7 @@ jobs:
         run: |
           ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --dry-run --diff
       - name: Slack Notify
-        uses: baijunyao/action-slack-notify@v2.1.0
+        uses: baijunyao/action-slack-notify@v2.2.0
         if: always()
         with:
           channel: CEWJP77BP
