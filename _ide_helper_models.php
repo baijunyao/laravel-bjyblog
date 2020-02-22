@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // @formatter:off
 /**
  * A helper file for your Eloquent Models

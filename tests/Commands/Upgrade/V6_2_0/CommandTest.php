@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Commands\Upgrade\V6_2_0;
 
 use Artisan;
+use Schema;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
@@ -17,6 +20,6 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             )
         );
 
-        $this->assertDatabaseHasColumns('tags', ['keywords', 'description']);
+        static::assertTrue(Schema::hasColumns('tags', ['keywords', 'description']));
     }
 }

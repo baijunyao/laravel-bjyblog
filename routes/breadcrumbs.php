@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Tag;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Commands\Upgrade\V5_8_4_0;
 
 use Artisan;

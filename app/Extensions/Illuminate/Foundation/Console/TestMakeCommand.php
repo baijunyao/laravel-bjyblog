@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Extensions\Illuminate\Foundation\Console;
 
 use Illuminate\Foundation\Console\TestMakeCommand as BaseTestMakeCommand;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Commands\Upgrade\V6_4_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 // Home 模块
 Route::namespace('Home')->name('home.')->group(function () {
     // 首页

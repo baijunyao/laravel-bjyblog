@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Commands\Upgrade\V5_5_5_0\Seeds;
 
 use Illuminate\Database\Seeder;
