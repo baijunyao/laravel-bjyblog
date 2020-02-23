@@ -121,7 +121,7 @@ class ArticleController extends Controller
 
         if ($result) {
             ArticleTag::where('article_id', $id)->forceDelete();
-            $articleTagModel->addTagIds($id, $tag_ids);
+            $articleTagModel->addTagIds((int) $id, $tag_ids);
         }
 
         return redirect()->back();
