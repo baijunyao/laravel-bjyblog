@@ -4,31 +4,23 @@ declare(strict_types=1);
 
 // Home 模块
 Route::namespace('Home')->name('home.')->group(function () {
-    // 首页
-    Route::get('/', 'IndexController@index')->name('index');
-    // 分类
-    Route::get('category/{category}/{slug?}', 'IndexController@category')->name('category');
-    // 标签
-    Route::get('tag/{tag}/{slug?}', 'IndexController@tag')->name('tag');
-    // 随言碎语
-    Route::get('note', 'IndexController@note')->name('note');
-    // 开源项目
-    Route::get('openSource', 'IndexController@openSource')->name('openSource');
-    // 文章详情
-    Route::get('article/{article}/{slug?}', 'IndexController@article')->name('article');
-    // 检测是否登录
+    Route::name('article.')->group(function () {
+        Route::get('/', 'ArticleController@index')->name('index');
+        Route::get('article/{article}/{slug?}', 'ArticleController@show')->name('show');
+        Route::get('search', 'ArticleController@search')->name('search');
+    });
+    Route::get('category/{category}/{slug?}', 'CategoryController@show')->name('category.show');
+    Route::get('tag/{tag}/{slug?}', 'TagController@show')->name('tag.show');
+    Route::get('note', 'NoteController@index')->name('note.index');
+    Route::get('openSource', 'OpenSourceController@index')->name('openSource.index');
     Route::get('checkLogin', 'IndexController@checkLogin')->name('checkLogin');
-    // 搜索文章
-    Route::get('search', 'IndexController@search')->name('search');
-    // feed
     Route::get('feed', 'IndexController@feed')->name('feed');
-    // 推荐博客
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/', 'SiteController@index')->name('index');
         Route::post('store', 'SiteController@store')->middleware('auth.socialite', 'clean.xss')->name('store');
     });
     Route::middleware('auth.socialite')->group(function () {
-        Route::post('comment', 'IndexController@comment')->name('comment.store');
+        Route::post('comment', 'CommentController@store')->name('comment.store');
         Route::prefix('like')->name('like.')->group(function () {
             Route::post('store', 'LikeController@store')->name('store');
             Route::delete('destroy', 'LikeController@destroy')->name('destroy');
