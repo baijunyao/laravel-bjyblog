@@ -12,7 +12,7 @@ class OpenSourceController extends Controller
     {
         $assign = [
             'category_id' => 'openSource',
-            'title'       => '开源项目',
+            'title'       => __('Open Source'),
         ];
 
         return view('home.index.openSource', $assign);
