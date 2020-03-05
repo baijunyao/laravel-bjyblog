@@ -14,7 +14,7 @@ Route::namespace('Home')->name('home.')->group(function () {
     Route::get('note', 'NoteController@index')->name('note.index');
     Route::get('openSource', 'OpenSourceController@index')->name('openSource.index');
     Route::get('checkLogin', 'IndexController@checkLogin')->name('checkLogin');
-    Route::get('feed', 'IndexController@feed')->name('feed');
+    Route::get('feed', 'FeedController@index')->name('feed.index');
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/', 'SiteController@index')->name('index');
         Route::post('store', 'SiteController@store')->middleware('auth.socialite', 'clean.xss')->name('store');
