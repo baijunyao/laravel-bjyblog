@@ -8,18 +8,10 @@ use App;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 
-class IndexController extends Controller
+class FeedController extends Controller
 {
-    public function checkLogin()
+    public function index()
     {
-        return response()->json([
-            'status' => (int) auth()->guard('socialite')->check(),
-        ]);
-    }
-
-    public function feed()
-    {
-        // 获取文章
         $article = Article::select('id', 'author', 'title', 'description', 'html', 'created_at')
             ->latest()
             ->get();

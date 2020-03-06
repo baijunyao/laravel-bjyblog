@@ -88,7 +88,6 @@
 
 @section('js')
     <script>
-        checkLogin = "{{ url('checkLogin') }}";
         storeSite = "{{ url('site/store') }}";
     </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>

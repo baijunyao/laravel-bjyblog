@@ -240,7 +240,7 @@
     ajaxCommentUrl = "{{ url('comment') }}";
     ajaxLikeUrl = "{{ url('like/store') }}";
     ajaxUnLikeUrl = "{{ url('like/destroy') }}";
-    checkLogin = "{{ url('checkLogin') }}";
+    socialiteUserShowUrl = "{{ url('socialiteUser/me') }}";
     titleName = '{{ config('app.name') }}';
     jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
     sharejsConfig = {!! config('bjyblog.social_share.sharejs_config') !!};

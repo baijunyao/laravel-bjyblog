@@ -27,4 +27,9 @@ class RedirectControllerTest extends TestCase
     {
         $this->get('chat')->assertRedirect('note');
     }
+
+    public function testOpenSource()
+    {
+        $this->get('git')->assertRedirect('openSource');
+    }
 }

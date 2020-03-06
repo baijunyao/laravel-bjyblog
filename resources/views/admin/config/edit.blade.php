@@ -20,6 +20,12 @@
                 </td>
             </tr>
             <tr>
+                <th>{{ __('Timezone') }}</th>
+                <td>
+                    <input class="form-control" type="text" name="195" value="{{  $config['app.timezone'] }}" >
+                </td>
+            </tr>
+            <tr>
                 <th>{{ __('Logo Style') }}：</th>
                 <td>
                     {{ __('Text with php tag') }} <input class="bjy-icheck" type="radio" name="171" value="true" @if(Str::isTrue($config['bjyblog.logo_with_php_tag'])) checked @endif> &emsp;&emsp;
