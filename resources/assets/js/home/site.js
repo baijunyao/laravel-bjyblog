@@ -1,16 +1,19 @@
 $(function () {
     $('.js-add-site').click(function () {
-        $.get(checkLogin, function(data) {
-            if(data.status === 1){
+        $.ajax({
+            type: 'GET',
+            url: socialiteUserShowUrl,
+            success: (data, status) => {
                 $('#b-modal-site').modal('show');
-            }else{
+            },
+            error: response => {
                 layer.msg(pleaseLogInFirst, {
                     icon: 5,
                     time: 2000
                 })
                 $('#b-modal-login').modal('show');
             }
-        }, 'json');
+        });
     })
 
     $('.b-s-submit').click(function () {
