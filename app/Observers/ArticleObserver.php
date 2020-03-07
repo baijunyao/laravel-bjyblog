@@ -47,7 +47,7 @@ class ArticleObserver extends BaseObserver
         foreach ($image_paths as $image_path) {
             $image_path = public_path($image_path);
 
-            if (file_exists($image_path)) {
+            if (function_exists('imagettfbbox') && file_exists($image_path)) {
                 add_text_water($image_path, config('bjyblog.water.text'));
             }
         }
