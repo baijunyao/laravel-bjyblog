@@ -35,10 +35,13 @@ class V6_11_0 extends Command
 
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
+            /** @var int $clicks */
+            $clicks = $article->click;
+
             DB::table('visits')->insertOrIgnore([
                 'primary_key'   => 'visits:articles_visits',
                 'secondary_key' => $article->id,
-                'score'         => $article->click,
+                'score'         => $clicks,
             ]);
         }
 

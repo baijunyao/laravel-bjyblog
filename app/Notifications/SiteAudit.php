@@ -34,6 +34,8 @@ class SiteAudit extends Notification implements ShouldQueue
         if (mail_is_configured()) {
             return ['mail'];
         }
+
+        return [];
     }
 
     /**

@@ -45,7 +45,8 @@ class ArticleController extends Controller
         $ipAndId = 'articleRequestList' . $request->ip() . ':' . $article->id;
 
         if (!Cache::has($ipAndId)) {
-            cache([$ipAndId => ''], 1440);
+            // TODO
+            Cache::put($ipAndId, '', 1400);
             $article->increment('views');
         }
 

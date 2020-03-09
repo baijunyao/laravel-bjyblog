@@ -12,7 +12,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Env::getFactory()->create()->set('SESSION_DOMAIN', '.laravel-bjyblog.test');
+        Env::getRepository()->set('SESSION_DOMAIN', '.laravel-bjyblog.test');
 
         Artisan::call('upgrade:v6.6.0');
 
