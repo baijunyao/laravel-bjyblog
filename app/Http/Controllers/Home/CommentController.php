@@ -14,17 +14,18 @@ class CommentController extends Controller
 {
     public function store(Store $request, Comment $commentModel, SocialiteUser $socialiteUserModel)
     {
-        $userId = auth()->guard('socialite')->user()->id;
-        $email  = $request->input('email', '');
+        /** @var \App\Models\SocialiteUser $socialiteUser */
+        $socialiteUser = auth()->guard('socialite')->user();
+        $email         = $request->input('email', '');
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
-            SocialiteUser::where('id', $userId)->update([
+            SocialiteUser::where('id', $socialiteUser->id)->update([
                 'email' => $email,
             ]);
         }
 
         $comment = Comment::create($request->only('article_id', 'content', 'pid') + [
-            'socialite_user_id' => $userId,
+            'socialite_user_id' => $socialiteUser->id,
             'type'              => 1,
             'is_audited'        => Str::isTrue(config('bjyblog.comment_audit')) ? 0 : 1,
         ]);

@@ -17,7 +17,7 @@ use Overtrue\LaravelFollow\Traits\CanLike;
  * @property string $openid              第三方用户id
  * @property string $access_token        access_token token
  * @property string $last_login_ip       最后登录ip
- * @property string $login_times         登录次数
+ * @property int    $login_times         登录次数
  * @property string $email               邮箱
  * @property string $is_admin            是否是admin
  * @property string $remember_token

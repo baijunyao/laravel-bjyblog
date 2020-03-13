@@ -99,12 +99,12 @@ if (!function_exists('mail_is_configured')) {
     function mail_is_configured()
     {
         $mailConfig = [
-            config('mail.driver'),
-            config('mail.encryption'),
-            config('mail.port'),
-            config('mail.host'),
-            config('mail.username'),
-            config('mail.password'),
+            config('mail.default'),
+            config('mail.mailers.smtp.encryption'),
+            config('mail.mailers.smtp.port'),
+            config('mail.mailers.smtp.host'),
+            config('mail.mailers.smtp.username'),
+            config('mail.mailers.smtp.password'),
             config('mail.from.address'),
             config('mail.from.name'),
         ];

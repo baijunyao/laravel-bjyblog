@@ -86,8 +86,7 @@ class ArticleObserver extends BaseObserver
 
     public function restored($article)
     {
-        // 恢复删除的文章后同步恢复关联表 article_tags 中的数据
-        ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();
+        ArticleTag::query()->onlyTrashed()->where('article_id', $article->id)->restore();
         flash_success('恢复成功');
     }
 }

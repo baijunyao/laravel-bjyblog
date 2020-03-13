@@ -36,8 +36,9 @@ class CommentObserver extends BaseObserver
         parent::created($comment);
 
         if (mail_is_configured()) {
+            /** @var \App\Models\SocialiteUser $socialiteUser */
             $socialiteUser = auth()->guard('socialite')->user();
-            $article = Article::withTrashed()->find($comment->article_id);
+            $article       = Article::withTrashed()->find($comment->article_id);
 
             // Send email to admin
             if ($socialiteUser->is_admin === 0) {
