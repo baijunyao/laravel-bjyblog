@@ -11,37 +11,37 @@
             <tr>
                 <th>{{ __('Email Driver') }}</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="154" value="{{  $config['mail.driver'] }}" >
+                    {{ $config['mail.default'] }}
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Email Encryption') }}</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="156" value="{{  $config['mail.encryption'] }}" >
+                    <input class="form-control modal-sm" type="text" name="156" value="{{  $config['mail.mailers.smtp.encryption'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Email Port') }}</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="155" value="{{  $config['mail.port'] }}" >
+                    <input class="form-control modal-sm" type="text" name="155" value="{{  $config['mail.mailers.smtp.port'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Email Host') }}</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="142" value="{{  $config['mail.host'] }}" >
+                    <input class="form-control modal-sm" type="text" name="142" value="{{  $config['mail.mailers.smtp.host'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Email Username') }}</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="143" value="{{  $config['mail.username'] }}" >
+                    <input class="form-control modal-sm" type="text" name="143" value="{{  $config['mail.mailers.smtp.username'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Email Password') }}</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="144" value="{{  $config['mail.password'] }}" >
+                    <input class="form-control modal-sm" type="text" name="144" value="{{  $config['mail.mailers.smtp.password'] }}" >
                 </td>
             </tr>
             <tr>

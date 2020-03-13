@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests\Commands\Upgrade\V7_0_0\Seeds;
+
 use Illuminate\Database\Seeder;
 
 class ConfigsTableSeeder extends Seeder
@@ -122,7 +124,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 142,
-                'name'       => 'mail.mailers.smtp.host',
+                'name'       => 'mail.host',
                 'value'      => '',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -130,7 +132,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 143,
-                'name'       => 'mail.mailers.smtp.username',
+                'name'       => 'mail.username',
                 'value'      => '',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -138,7 +140,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 144,
-                'name'       => 'mail.mailers.smtp.password',
+                'name'       => 'mail.password',
                 'value'      => '',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -202,7 +204,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 154,
-                'name'       => 'mail.default',
+                'name'       => 'mail.driver',
                 'value'      => 'smtp',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -210,7 +212,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 155,
-                'name'       => 'mail.mailers.smtp.port',
+                'name'       => 'mail.port',
                 'value'      => '465',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -218,7 +220,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 156,
-                'name'       => 'mail.mailers.smtp.encryption',
+                'name'       => 'mail.encryption',
                 'value'      => 'ssl',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
