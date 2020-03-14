@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use DateTimeInterface;
 use DB;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ */
 class Base extends Model
 {
     // 软删除
@@ -79,5 +85,15 @@ class Base extends Model
         $result ? flash_success('操作成功', $flash) : flash_error('操作失败', $flash);
 
         return $result;
+    }
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

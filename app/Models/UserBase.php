@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -18,4 +19,14 @@ class UserBase extends Model implements AuthenticatableContract, AuthorizableCon
     use Authenticatable, Authorizable, Notifiable, HasApiTokens, SoftDeletes;
 
     protected $guarded = [];
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 }

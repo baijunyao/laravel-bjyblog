@@ -36,16 +36,17 @@ class SiteController extends Controller
 
     public function store(Store $request)
     {
-        $socialiteUserId = auth()->guard('socialite')->user()->id;
+        /** @var \App\Models\SocialiteUser $socialiteUser */
+        $socialiteUser = auth()->guard('socialite')->user();
 
         $siteData                      = $request->only('name', 'url', 'description');
-        $siteData['socialite_user_id'] = $socialiteUserId;
+        $siteData['socialite_user_id'] = $socialiteUser->id;
         $sort                          = Site::orderBy('sort', 'desc')->value('sort');
         $siteData['sort']              = (int) $sort + 1;
         $result                        = Site::create($siteData);
 
         if ($result) {
-            SocialiteUser::where('id', $socialiteUserId)->update([
+            SocialiteUser::where('id', $socialiteUser->id)->update([
                 'email' => $request->input('email'),
             ]);
 

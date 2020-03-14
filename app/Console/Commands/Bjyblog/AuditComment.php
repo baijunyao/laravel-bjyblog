@@ -68,7 +68,7 @@ class AuditComment extends Command
 
                 $count++;
 
-                $content = $comment->getOriginal('content');
+                $content = $comment->getRawOriginal('content');
                 $result  = $baiduClient->antiSpam($content);
 
                 if (!isset($result['result']['spam'])) {

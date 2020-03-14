@@ -61,6 +61,8 @@ class Comment extends Notification
         if (mail_is_configured()) {
             return ['mail'];
         }
+
+        return [];
     }
 
     /**

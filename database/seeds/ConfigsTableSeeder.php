@@ -122,7 +122,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 142,
-                'name'       => 'mail.host',
+                'name'       => 'mail.mailers.smtp.host',
                 'value'      => '',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -130,7 +130,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 143,
-                'name'       => 'mail.username',
+                'name'       => 'mail.mailers.smtp.username',
                 'value'      => '',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -138,7 +138,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 144,
-                'name'       => 'mail.password',
+                'name'       => 'mail.mailers.smtp.password',
                 'value'      => '',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -202,7 +202,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 154,
-                'name'       => 'mail.driver',
+                'name'       => 'mail.default',
                 'value'      => 'smtp',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -210,7 +210,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 155,
-                'name'       => 'mail.port',
+                'name'       => 'mail.mailers.smtp.port',
                 'value'      => '465',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
@@ -218,7 +218,7 @@ class ConfigsTableSeeder extends Seeder
             ],
             [
                 'id'         => 156,
-                'name'       => 'mail.encryption',
+                'name'       => 'mail.mailers.smtp.encryption',
                 'value'      => 'ssl',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',

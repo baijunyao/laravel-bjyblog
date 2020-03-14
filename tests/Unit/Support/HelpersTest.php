@@ -20,14 +20,14 @@ class HelpersTest extends TestCase
     public function testMailIsConfigured()
     {
         $mailConfig = [
-            'mail.driver'       => 'smtp',
-            'mail.encryption'   => 'ssl',
-            'mail.port'         => '465',
-            'mail.host'         => 'smtp.mailtrap.io',
-            'mail.username'     => 'd2d524433',
-            'mail.password'     => 'd2d524455',
-            'mail.from.address' => 'Baijunyao Blog',
-            'mail.from.name'    => 'd2d524466@inbox.mailtrap.io',
+            'mail.default'                 => 'smtp',
+            'mail.mailers.smtp.encryption' => 'ssl',
+            'mail.mailers.smtp.port'       => '465',
+            'mail.mailers.smtp.host'       => 'smtp.mailtrap.io',
+            'mail.mailers.smtp.username'   => 'd2d524433',
+            'mail.mailers.smtp.password'   => 'd2d524455',
+            'mail.from.address'            => 'Baijunyao Blog',
+            'mail.from.name'               => 'd2d524466@inbox.mailtrap.io',
         ];
         config($mailConfig);
         static::assertTrue(mail_is_configured());

@@ -48,32 +48,36 @@ class SocialiteController extends Controller
 
         // 定义各种第三方登录的type对应的数字
         $type = $this->socialiteClients->pluck('id', 'name');
-        // 获取用户资料
+
+        /** @var \Laravel\Socialite\Two\User $user */
         $user = Socialite::driver($service)->user();
+
         // 查找此用户是否已经登录过
         $countMap = [
             'socialite_client_id'   => $type[$service],
             'openid'                => $user->id,
         ];
-        $oldUserData = $socialiteUserModel->select('id', 'login_times', 'is_admin', 'email')
+
+        $socialiteUser = SocialiteUser::query()->select('id', 'login_times', 'is_admin', 'email')
             ->where($countMap)
             ->first();
+
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         $name = $user->nickname ?? $user->name;
 
-        if ($oldUserData) {
-            $userId  = $oldUserData->id;
+        if ($socialiteUser) {
+            $userId  = $socialiteUser->id;
 
             // 更新数据
             SocialiteUser::where('id', $userId)->update([
                 'name'          => $name,
                 'access_token'  => $user->token,
                 'last_login_ip' => $request->getClientIp(),
-                'login_times'   => $oldUserData->login_times + 1,
+                'login_times'   => $socialiteUser->login_times + 1,
             ]);
 
             // 如果是管理员；则自动登录后台
-            if ($oldUserData->is_admin) {
+            if ($socialiteUser->is_admin) {
                 Auth::guard('admin')->loginUsingId(1, true);
             }
         } else {
