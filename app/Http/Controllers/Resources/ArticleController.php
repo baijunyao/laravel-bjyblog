@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Resources;
 
 use App\Http\Requests\Article\Store;
+use App\Http\Resources\Article as ArticleResource;
 use App\Models\Article;
 use App\Models\ArticleTag;
 use Baijunyao\LaravelRestful\Traits\Destroy;
@@ -27,7 +28,7 @@ class ArticleController extends Controller
             $articleTag->addTagIds($article->id, $request->input('tag_ids'));
         }
 
-        return response($article);
+        return new ArticleResource($article);
     }
 
     public function update(Store $request, ArticleTag $articleTag)
@@ -43,6 +44,6 @@ class ArticleController extends Controller
             $articleTag->addTagIds((int) $request->route('article'), $request->input('tag_ids'));
         }
 
-        return response($article);
+        return new ArticleResource($article);
     }
 }
