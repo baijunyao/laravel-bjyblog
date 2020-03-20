@@ -12,6 +12,7 @@ use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Socialite;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use URL;
 
 class SocialiteController extends Controller
@@ -23,9 +24,8 @@ class SocialiteController extends Controller
         $this->socialiteClients = SocialiteClient::all();
         $service                = $request->route('service');
 
-        // 因为发现有恶意访问回调地址的情况 此处限制允许使用的第三方登录方式
         if (!empty($service) && !$this->socialiteClients->pluck('name')->contains($service)) {
-            return abort(404);
+            throw new AccessDeniedHttpException('Disallowed socialite client.');
         }
     }
 
@@ -49,8 +49,14 @@ class SocialiteController extends Controller
         // 定义各种第三方登录的type对应的数字
         $type = $this->socialiteClients->pluck('id', 'name');
 
-        /** @var \Laravel\Socialite\Two\User $user */
-        $user = Socialite::driver($service)->user();
+        try {
+            /** @var \Laravel\Socialite\Two\User $user */
+            $user = Socialite::driver($service)->user();
+        } catch (Exception $e) {
+            app('sentry')->captureException($e);
+
+            return redirect('/');
+        }
 
         // 查找此用户是否已经登录过
         $countMap = [

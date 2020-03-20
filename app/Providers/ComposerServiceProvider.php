@@ -41,7 +41,7 @@ class ComposerServiceProvider extends ServiceProvider
             // 获取配置项
             $config = Config::where('id', '>', 100)->pluck('value', 'name');
         } catch (Exception $exception) {
-            return true;
+            return;
         }
 
         /**
@@ -53,7 +53,7 @@ class ComposerServiceProvider extends ServiceProvider
         if ($config->isEmpty()) {
             Artisan::call('modelCache:clear');
 
-            return true;
+            return;
         }
 
         // 动态替换 /config 目录下的配置项
@@ -63,7 +63,7 @@ class ComposerServiceProvider extends ServiceProvider
             // Get socialite clients
             $socialiteClients = SocialiteClient::all();
         } catch (Exception $exception) {
-            return true;
+            return;
         }
 
         $socialiteClients->map(function ($socialiteClient) {
