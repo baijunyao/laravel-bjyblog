@@ -1,19 +1,32 @@
-version: "3.3"
+version: "3.7"
 services:
+  traefik:
+    image: traefik:v2.1
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   mysql:
     image: baijunyao/mysql:8.0
     container_name: laravel-bjyblog-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=laravel_bjyblog
       - MYSQL_DATABASE=laravel_bjyblog
-      - MYSQL_USER=laravel-bjyblog
+      - MYSQL_USER=root
       - MYSQL_PASSWORD=laravel_bjyblog
     volumes:
       - mysql:/var/lib/mysql
+    labels:
+      - traefik.enable=false
 
   redis:
     image: redis:5
     container_name: laravel-bjyblog-redis
+    labels:
+      - traefik.enable=false
 
   nginx:
     image: baijunyao/nginx:1.7
@@ -21,15 +34,24 @@ services:
     volumes:
       - .:/app
       - ./docker/nginx/laravel-bjyblog.conf:/etc/nginx/conf.d/laravel-bjyblog.conf
-    ports:
-      - "8082:80"
+    labels:
+      - traefik.port=80
+      - "traefik.http.routers.laravel-bjyblog-nginx.rule=Host(`laravel-bjyblog.test`)"
+    environment:
+      FASTCGI_PASS: php:9000
+      DOCUMENT_ROOT: /app/public
 
   php:
-    image: baijunyao/php:7.4:${APP_ENV}
+    image: baijunyao/php:7.4-${APP_ENV}
     container_name: laravel-bjyblog-php
     tty: true
     volumes:
       - .:/app
+    environment:
+      REDIS_HOST: redis
+      DB_HOST: mysql
+    labels:
+      - traefik.enable=false
 
 volumes:
   mysql:
