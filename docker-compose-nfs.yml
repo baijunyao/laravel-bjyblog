@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  traefik:
+    image: traefik:v2.1
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  nginx:
+    image: baijunyao/nginx:1.7
+    container_name: laravel-bjyblog-nginx
+    volumes:
+      - .:/app
+      - ./docker/nginx/laravel-bjyblog.conf:/etc/nginx/conf.d/laravel-bjyblog.conf
+    labels:
+      - traefik.port=80
+      - "traefik.http.routers.laravel-bjyblog-nginx.rule=Host(`laravel-bjyblog.test`)"
+    environment:
+      FASTCGI_PASS: php:9000
+      DOCUMENT_ROOT: /app/public
+
+  php:
+    image: baijunyao/php:7.4-${APP_ENV}
+    container_name: laravel-bjyblog-php
+    tty: true
+    volumes:
+      - "nfsmount:/app"
+    environment:
+      REDIS_HOST: docker.for.mac.host.internal
+      DB_HOST: docker.for.mac.host.internal
+    labels:
+      - traefik.enable=false
+
+volumes:
+  nfsmount:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":/System/Volumes/Data/${PWD}"
