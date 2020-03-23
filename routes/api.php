@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+// Auth
+Route::namespace('Auth')->prefix('auth')->as('auth.')->group(function () {
+    Route::prefix('passport')->as('passport.')->middleware('auth:api')->group(function () {
+        Route::post('logout', 'PassportController@logout')->name('logout');
+    });
+});
+
+// Resources
 Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::apiResource('categories', 'CategoryController');
     Route::patch('categories/{categorie}/restore', 'CategoryController@restore')->name('categories.restore');
