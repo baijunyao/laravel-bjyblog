@@ -19,9 +19,9 @@ class SocialiteUserController extends Controller
     public function show($id)
     {
         if ($id === 'me') {
-            $socialiteUser = SocialiteUser::where('is_admin', 1)->first();
+            $socialiteUser = SocialiteUser::where('is_admin', 1)->firstOrFail();
         } else {
-            $socialiteUser = SocialiteUser::find($id);
+            $socialiteUser = SocialiteUser::findorFail($id);
         }
 
         return new SocialiteUserResource($socialiteUser);
