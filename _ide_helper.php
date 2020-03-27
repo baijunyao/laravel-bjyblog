@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 7.2.1 on 2020-03-21 01:24:04.
+ * Generated for Laravel 7.3.0 on 2020-03-28 00:31:54.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16790,13 +16790,14 @@ namespace Mews\Purifier\Facades {
          *
          * @param $dirty
          * @param null $config
+         * @param \Closure|null $postCreateConfigHook
          * @return mixed 
          * @static 
          */ 
-        public static function clean($dirty, $config = null)
+        public static function clean($dirty, $config = null, $postCreateConfigHook = null)
         {
                         /** @var \Mews\Purifier\Purifier $instance */
-                        return $instance->clean($dirty, $config);
+                        return $instance->clean($dirty, $config, $postCreateConfigHook);
         }
         
         /**

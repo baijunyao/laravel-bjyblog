@@ -94,11 +94,12 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        $article          = Article::withTrashed()->find($id);
-        $article->tag_ids = ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray();
-        $category         = Category::all();
-        $tag              = Tag::all();
-        $assign           = compact('article', 'category', 'tag');
+        $category = Category::all();
+        $tag      = Tag::all();
+        $article  = Article::withTrashed()->find($id);
+        $article->setAttribute('tag_ids', ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray());
+
+        $assign = compact('article', 'category', 'tag');
 
         return view('admin.article.edit', $assign);
     }
