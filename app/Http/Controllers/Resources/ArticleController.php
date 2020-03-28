@@ -21,7 +21,7 @@ class ArticleController extends Controller
     public function store(Store $request, ArticleTag $articleTag)
     {
         $article = Article::create(
-            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown')
+            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')
         );
 
         if ($article) {
@@ -36,7 +36,7 @@ class ArticleController extends Controller
         $article = Article::find($request->route('article'));
 
         $result = $article->update(
-            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown')
+            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')
         );
 
         if ($result) {

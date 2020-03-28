@@ -75,7 +75,7 @@ class AuditComment extends Command
                     $this->error('error: ' . json_encode($result));
                 } else {
                     $comment->timestamps = false;
-                    $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
+                    $comment->setAttribute('is_audited', $result['result']['spam'] === 0 ? 1 : 0);
                     $comment->save();
 
                     $message = 'id:' . $comment->id . ' is_audited:' . $comment->is_audited . ' content:' . $content;

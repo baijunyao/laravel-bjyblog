@@ -86,7 +86,7 @@ class ArticleObserver extends BaseObserver
 
     public function restored($article)
     {
-        ArticleTag::query()->onlyTrashed()->where('article_id', $article->id)->restore();
+        ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();
         flash_success('恢复成功');
     }
 }
