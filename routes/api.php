@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth
 Route::namespace('Auth')->prefix('auth')->as('auth.')->group(function () {
     Route::prefix('passport')->as('passport.')->middleware('auth:api')->group(function () {
         Route::post('logout', 'PassportController@logout')->name('logout');
     });
 });
 
-// Resources
+Route::prefix('dashboard')->as('dashboard.')->middleware('auth:api')->group(function () {
+    Route::get('analysis', 'DashboardController@analysis')->name('analysis');
+});
+
 Route::namespace('Resources')->middleware('auth:api')->group(function () {
     Route::apiResource('categories', 'CategoryController');
     Route::patch('categories/{categorie}/restore', 'CategoryController@restore')->name('categories.restore');

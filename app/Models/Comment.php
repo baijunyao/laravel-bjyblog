@@ -168,4 +168,38 @@ class Comment extends Base
             }
         }
     }
+
+    public function getLatestComments($number)
+    {
+        return $this->with(['article', 'socialiteUser'])
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('is_audited', 1);
+            })
+            ->whereHas('socialiteUser', function ($query) {
+                $query->where('is_admin', 0);
+            })
+            ->has('article')
+            ->orderBy('created_at', 'desc')
+            ->limit($number)
+            ->get()
+            ->each(function ($comment) {
+                $comment->sub_content = strip_tags($comment->content);
+
+                if (mb_strlen($comment->sub_content) > 10) {
+                    if (config('app.locale') === 'zh-CN') {
+                        $comment->sub_content = Str::substr($comment->sub_content, 0, 40);
+                    } else {
+                        $comment->sub_content = Str::words($comment->sub_content, 10, '');
+                    }
+                }
+
+                if (config('app.locale') === 'zh-CN') {
+                    $comment->article->sub_title = Str::substr($comment->article->title, 0, 20);
+                } else {
+                    $comment->article->sub_title = Str::words($comment->article->title, 5, '');
+                }
+
+                return $comment;
+            });
+    }
 }
