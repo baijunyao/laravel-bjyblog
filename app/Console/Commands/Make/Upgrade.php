@@ -135,12 +135,10 @@ PHP;
             File::put(
                 $testMigrationFile->getPathname(),
                 str_replace([
-                    "\t",
-                    "<?php\n",
+                    "declare(strict_types=1);\n\n",
                     'Schema::',
                 ], [
-                    '    ',
-                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n",
+                    "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n\n",
                     '\\Schema::',
                 ],
                     File::get($testMigrationFile->getPathname())
@@ -155,12 +153,10 @@ PHP;
             File::put(
                 $testSeedFile->getPathname(),
                 str_replace([
-                    "\t",
-                    "<?php\n",
+                    "declare(strict_types=1);\n\n",
                     ' DB',
                 ], [
-                    '    ',
-                    "<?php\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n",
+                    "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n\n",
                     ' \\DB',
                 ],
                     File::get($testSeedFile->getPathname())
