@@ -261,6 +261,8 @@ Route::namespace('Admin')->prefix('admin')->middleware('admin.auth')->group(func
         Route::get('socialLinks', 'ConfigController@socialLinks');
         // Search
         Route::get('search', 'ConfigController@search');
+        // Licenses
+        Route::get('licenses', 'ConfigController@licenses');
         // 编辑配置
         Route::post('update', 'ConfigController@update');
         // 清空各种缓存

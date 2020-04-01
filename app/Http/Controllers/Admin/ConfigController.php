@@ -62,6 +62,11 @@ class ConfigController extends Controller
         return view('admin.config.commentAudit');
     }
 
+    public function licenses()
+    {
+        return view('admin.config.licenses');
+    }
+
     public function update(Request $request)
     {
         $configs = $request->except('_token');

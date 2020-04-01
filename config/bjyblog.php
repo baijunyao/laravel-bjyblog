@@ -57,4 +57,9 @@ return [
     ],
     'link_target' => '',
     'breadcrumb' => '',
+    'licenses' => [
+        'allow_adaptation' => '',
+        'allow_commercial' => '',
+        'language' => '',
+    ],
 ];
