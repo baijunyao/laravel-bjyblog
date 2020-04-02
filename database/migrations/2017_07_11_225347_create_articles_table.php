@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id')->comment('文章表主键');
-            $table->boolean('category_id')->default(0)->comment('分类id');
+            $table->unsignedTinyInteger('category_id')->default(0)->comment('分类id');
             $table->string('title')->default('')->comment('标题');
             $table->string('slug')->default('')->comment('slug');
             $table->string('author')->default('')->comment('作者');
@@ -25,7 +25,7 @@ class CreateArticlesTable extends Migration
             $table->string('description')->default('')->comment('描述');
             $table->string('keywords')->default('')->comment('关键词');
             $table->string('cover')->default('')->comment('封面图');
-            $table->boolean('is_top')->default(0)->comment('是否置顶 1是 0否');
+            $table->unsignedTinyInteger('is_top')->default(0)->comment('是否置顶 1是 0否');
             $table->integer('views')->unsigned()->default(0);
             $table->timestamps();
             $table->softDeletes();

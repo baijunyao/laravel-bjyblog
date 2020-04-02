@@ -14,8 +14,8 @@ use Str;
  * @property string                          $slug        slug
  * @property string                          $keywords    关键词
  * @property string                          $description 描述
- * @property bool                            $sort        排序
- * @property bool                            $pid         排序
+ * @property int                             $sort        排序
+ * @property int                             $pid         排序
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at

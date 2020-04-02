@@ -65,7 +65,7 @@ class ArticleController extends Controller
         $comment     = $commentModel->getDataByArticleId($article->id);
         $category_id = $article->category->id;
 
-        /** @var \App\Models\SocialiteUser $socialiteUser */
+        /** @var \App\Models\SocialiteUser|null $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
 
         if ($socialiteUser === null) {

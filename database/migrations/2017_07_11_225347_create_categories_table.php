@@ -20,8 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->string('slug')->default('')->comment('slug');
             $table->string('keywords')->default('')->comment('关键词');
             $table->string('description')->default('')->comment('描述');
-            $table->boolean('sort')->default(0)->comment('排序');
-            $table->boolean('pid')->default(0)->comment('父级栏目id');
+            $table->unsignedTinyInteger('sort')->default(0)->comment('排序');
+            $table->unsignedTinyInteger('pid')->default(0)->comment('父级栏目id');
             $table->timestamps();
             $table->softDeletes();
         });

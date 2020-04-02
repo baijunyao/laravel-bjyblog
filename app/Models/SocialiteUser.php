@@ -11,7 +11,7 @@ use Overtrue\LaravelFollow\Traits\CanLike;
  * Class SocialiteUser
  *
  * @property int                             $id                  主键id
- * @property bool                            $socialite_client_id 类型 1：QQ  2：新浪微博 3：github
+ * @property int                             $socialite_client_id 类型 1：QQ  2：新浪微博 3：github
  * @property string                          $name                第三方昵称
  * @property string                          $avatar              头像
  * @property string                          $openid              第三方用户id
@@ -19,7 +19,7 @@ use Overtrue\LaravelFollow\Traits\CanLike;
  * @property string                          $last_login_ip       最后登录ip
  * @property int                             $login_times         登录次数
  * @property string                          $email               邮箱
- * @property string                          $is_admin            是否是admin
+ * @property int                             $is_admin            是否是admin
  * @property string                          $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

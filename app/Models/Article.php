@@ -13,7 +13,7 @@ use Str;
  * Class Article
  *
  * @property int                             $id          文章表主键
- * @property bool                            $category_id 分类id
+ * @property int                             $category_id 分类id
  * @property string                          $title       标题
  * @property string                          $slug        slug
  * @property string                          $author      作者
@@ -22,7 +22,7 @@ use Str;
  * @property string                          $description 描述
  * @property string                          $keywords    关键词
  * @property string                          $cover       封面图
- * @property bool                            $is_top      是否置顶 1是 0否
+ * @property int                             $is_top      是否置顶 1是 0否
  * @property int                             $views       点击数
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

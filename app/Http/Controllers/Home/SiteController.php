@@ -43,19 +43,15 @@ class SiteController extends Controller
         $siteData['socialite_user_id'] = $socialiteUser->id;
         $sort                          = Site::orderBy('sort', 'desc')->value('sort');
         $siteData['sort']              = (int) $sort + 1;
-        $result                        = Site::create($siteData);
+        $newSite                       = Site::create($siteData);
 
-        if ($result) {
-            SocialiteUser::where('id', $socialiteUser->id)->update([
-                'email' => $request->input('email'),
-            ]);
+        SocialiteUser::where('id', $socialiteUser->id)->update([
+            'email' => $request->input('email'),
+        ]);
 
-            Notification::route('mail', config('bjyblog.notification_email'))
-                ->notify(new SiteApply());
+        Notification::route('mail', config('bjyblog.notification_email'))
+            ->notify(new SiteApply());
 
-            return response()->json();
-        } else {
-            return response()->json('', 500);
-        }
+        return response()->json($newSite);
     }
 }

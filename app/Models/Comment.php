@@ -11,7 +11,7 @@ use Str;
  *
  * @property int                             $id                主键id
  * @property int                             $socialite_user_id 评论用户id
- * @property bool                            $type              1：文章评论
+ * @property int                             $type              1：文章评论
  * @property int                             $pid               父级id
  * @property int                             $article_id        文章id
  * @property string                          $content           内容
@@ -127,16 +127,18 @@ class Comment extends Base
                     return ($prev < $next) ? -1 : 1;
                 });
 
-                foreach ($child as $m => $n) {
-                    $pid = $n['pid'] ?? 0;
+                if ($child !== []) {
+                    foreach ($child as $m => $n) {
+                        $pid = $n['pid'] ?? 0;
 
-                    // 获取被评论人id
-                    $replyUserId = $this->where('id', $pid)->pluck('socialite_user_id');
+                        // 获取被评论人id
+                        $replyUserId = $this->where('id', $pid)->pluck('socialite_user_id');
 
-                    // 获取被评论人昵称
-                    $child[$m]['reply_name'] = SocialiteUser::where([
-                        'id' => $replyUserId,
-                    ])->value('name');
+                        // 获取被评论人昵称
+                        $child[$m]['reply_name'] = SocialiteUser::where([
+                            'id' => $replyUserId,
+                        ])->value('name');
+                    }
                 }
             }
 

@@ -25,9 +25,9 @@ class CreateOauthClientsTable extends Migration
             $table->string('name');
             $table->string('secret', 100);
             $table->text('redirect');
-            $table->boolean('personal_access_client');
-            $table->boolean('password_client');
-            $table->boolean('revoked');
+            $table->unsignedTinyInteger('personal_access_client');
+            $table->unsignedTinyInteger('password_client');
+            $table->unsignedTinyInteger('revoked');
             $table->timestamps();
         });
     }

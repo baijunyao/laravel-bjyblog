@@ -10,7 +10,7 @@ namespace App\Models;
  * @property int                             $id         主键ID
  * @property string                          $name       链接名
  * @property string                          $url        链接地址
- * @property bool                            $sort       排序
+ * @property int                             $sort       排序
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
