@@ -8,7 +8,7 @@ use Intervention\Image\Facades\Image;
 use PHPHtmlParser\Dom;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
-if (!function_exists('add_text_water')) {
+if (!function_exists('watermark')) {
     /**
      * 给图片添加文字水印
      *
@@ -18,7 +18,7 @@ if (!function_exists('add_text_water')) {
      *
      * @return mixed
      */
-    function add_text_water($file, $text, $color = '#0B94C1')
+    function watermark($file, $text, $color = '#0B94C1')
     {
         $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
         if ($extension !== 'gif') {
