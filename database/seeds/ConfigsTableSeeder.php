@@ -543,6 +543,30 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2020-01-27 01:01:01',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 196,
+                'name'       => 'bjyblog.licenses.allow_adaptation',
+                'value'      => '-nd',
+                'created_at' => '2020-03-31 23:06:00',
+                'updated_at' => '2020-03-31 23:06:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 197,
+                'name'       => 'bjyblog.licenses.allow_commercial',
+                'value'      => '-nc',
+                'created_at' => '2020-03-31 23:06:00',
+                'updated_at' => '2020-03-31 23:06:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 198,
+                'name'       => 'bjyblog.licenses.language',
+                'value'      => 'en',
+                'created_at' => '2020-03-31 01:06:00',
+                'updated_at' => '2020-03-31 01:06:00',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }

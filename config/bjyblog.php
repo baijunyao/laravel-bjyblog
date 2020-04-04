@@ -2,7 +2,7 @@
 
 return [
     // 博客版本
-    'version' => 'v7.0.2',
+    'version' => 'v8.0.0',
     'branch' => env('DEPLOY_BRANCH', 'master'),
     /**
      * 以下配置项会在 @see \App\Providers\ComposerServiceProvider::boot() 中被覆盖
@@ -57,4 +57,9 @@ return [
     ],
     'link_target' => '',
     'breadcrumb' => '',
+    'licenses' => [
+        'allow_adaptation' => '',
+        'allow_commercial' => '',
+        'language' => '',
+    ],
 ];

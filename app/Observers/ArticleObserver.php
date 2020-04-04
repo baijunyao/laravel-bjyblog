@@ -48,7 +48,7 @@ class ArticleObserver extends BaseObserver
             $image_path = public_path($image_path);
 
             if (function_exists('imagettfbbox') && file_exists($image_path)) {
-                add_text_water($image_path, config('bjyblog.water.text'));
+                watermark($image_path, config('bjyblog.water.text'));
             }
         }
 

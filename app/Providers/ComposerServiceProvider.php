@@ -19,7 +19,6 @@ use Artisan;
 use Cache;
 use Exception;
 use Illuminate\Support\ServiceProvider;
-use Str;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -135,36 +134,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
-            $latestComments = Comment::with(['article', 'socialiteUser'])
-                ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
-                    return $query->where('is_audited', 1);
-                })
-                ->whereHas('socialiteUser', function ($query) {
-                    $query->where('is_admin', 0);
-                })
-                ->has('article')
-                ->orderBy('created_at', 'desc')
-                ->limit(17)
-                ->get()
-                ->each(function ($comment) {
-                    $comment->sub_content = strip_tags($comment->content);
-
-                    if (mb_strlen($comment->sub_content) > 10) {
-                        if (config('app.locale') === 'zh-CN') {
-                            $comment->sub_content = Str::substr($comment->sub_content, 0, 40);
-                        } else {
-                            $comment->sub_content = Str::words($comment->sub_content, 10, '');
-                        }
-                    }
-
-                    if (config('app.locale') === 'zh-CN') {
-                        $comment->article->sub_title = Str::substr($comment->article->title, 0, 20);
-                    } else {
-                        $comment->article->sub_title = Str::words($comment->article->title, 5, '');
-                    }
-
-                    return $comment;
-                });
+            $latestComments = (new Comment())->getLatestComments(17);
 
             $assign = compact('latestComments');
             $view->with($assign);

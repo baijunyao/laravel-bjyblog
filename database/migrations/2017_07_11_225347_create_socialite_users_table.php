@@ -17,7 +17,7 @@ class CreateSocialiteUsersTable extends Migration
         if (!Schema::hasTable('oauth_users') && !Schema::hasTable('socialite_users')) {
             Schema::create('socialite_users', function (Blueprint $table) {
                 $table->increments('id')->comment('主键id');
-                $table->boolean('socialite_client_id')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');
+                $table->unsignedTinyInteger('socialite_client_id')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');
                 $table->string('name', 30)->default('')->comment('第三方昵称');
                 $table->string('avatar')->default('')->comment('头像');
                 $table->string('openid', 40)->default('')->comment('第三方用户id');
@@ -25,7 +25,7 @@ class CreateSocialiteUsersTable extends Migration
                 $table->string('last_login_ip', 16)->default('')->comment('最后登录ip');
                 $table->integer('login_times')->unsigned()->default(0)->comment('登录次数');
                 $table->string('email')->default('')->comment('邮箱');
-                $table->boolean('is_admin')->default(0)->comment('是否是admin');
+                $table->unsignedTinyInteger('is_admin')->default(0)->comment('是否是admin');
                 $table->rememberToken();
                 $table->timestamps();
                 $table->softDeletes();

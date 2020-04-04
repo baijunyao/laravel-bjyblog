@@ -11,7 +11,7 @@ use Str;
  *
  * @property int                             $id                主键id
  * @property int                             $socialite_user_id 评论用户id
- * @property bool                            $type              1：文章评论
+ * @property int                             $type              1：文章评论
  * @property int                             $pid               父级id
  * @property int                             $article_id        文章id
  * @property string                          $content           内容
@@ -127,16 +127,18 @@ class Comment extends Base
                     return ($prev < $next) ? -1 : 1;
                 });
 
-                foreach ($child as $m => $n) {
-                    $pid = $n['pid'] ?? 0;
+                if ($child !== []) {
+                    foreach ($child as $m => $n) {
+                        $pid = $n['pid'] ?? 0;
 
-                    // 获取被评论人id
-                    $replyUserId = $this->where('id', $pid)->pluck('socialite_user_id');
+                        // 获取被评论人id
+                        $replyUserId = $this->where('id', $pid)->pluck('socialite_user_id');
 
-                    // 获取被评论人昵称
-                    $child[$m]['reply_name'] = SocialiteUser::where([
-                        'id' => $replyUserId,
-                    ])->value('name');
+                        // 获取被评论人昵称
+                        $child[$m]['reply_name'] = SocialiteUser::where([
+                            'id' => $replyUserId,
+                        ])->value('name');
+                    }
                 }
             }
 
@@ -167,5 +169,39 @@ class Comment extends Base
                 $this->getTree($v);
             }
         }
+    }
+
+    public function getLatestComments($number)
+    {
+        return $this->with(['article', 'socialiteUser'])
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('is_audited', 1);
+            })
+            ->whereHas('socialiteUser', function ($query) {
+                $query->where('is_admin', 0);
+            })
+            ->has('article')
+            ->orderBy('created_at', 'desc')
+            ->limit($number)
+            ->get()
+            ->each(function ($comment) {
+                $comment->sub_content = strip_tags($comment->content);
+
+                if (mb_strlen($comment->sub_content) > 10) {
+                    if (config('app.locale') === 'zh-CN') {
+                        $comment->sub_content = Str::substr($comment->sub_content, 0, 40);
+                    } else {
+                        $comment->sub_content = Str::words($comment->sub_content, 10, '');
+                    }
+                }
+
+                if (config('app.locale') === 'zh-CN') {
+                    $comment->article->sub_title = Str::substr($comment->article->title, 0, 20);
+                } else {
+                    $comment->article->sub_title = Str::words($comment->article->title, 5, '');
+                }
+
+                return $comment;
+            });
     }
 }

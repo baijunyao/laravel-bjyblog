@@ -83,11 +83,8 @@ class ArticleController extends Controller
         unset($data['tag_ids']);
         $article = Article::create($data);
 
-        if ($article) {
-            // 给文章添加标签
-            $articleTag = new ArticleTag();
-            $articleTag->addTagIds($article->id, $tag_ids);
-        }
+        $articleTag = new ArticleTag();
+        $articleTag->addTagIds($article->id, $tag_ids);
 
         return redirect('admin/article/index');
     }

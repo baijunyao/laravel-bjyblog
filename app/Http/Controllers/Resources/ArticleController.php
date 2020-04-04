@@ -24,9 +24,7 @@ class ArticleController extends Controller
             $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')
         );
 
-        if ($article) {
-            $articleTag->addTagIds($article->id, $request->input('tag_ids'));
-        }
+        $articleTag->addTagIds($article->id, $request->input('tag_ids'));
 
         return new ArticleResource($article);
     }
