@@ -19,7 +19,7 @@ class CommentObserver extends BaseObserver
             config('services.baidu.secret'),
         ];
 
-        if (Str::isTrue(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3) {
+        if (Str::isTrue(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3 && strpos($comment->content, '赞赏') === false) {
             $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
             $result = $baiduClient->antiSpam($comment->content);
 
