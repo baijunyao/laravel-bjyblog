@@ -26,8 +26,8 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:friendship_links,name,' . $this->route()->id,
-            'url'  => 'required|unique:friendship_links,url,' . $this->route()->id,
+            'name' => 'required|unique:friendship_links,name',
+            'url'  => 'required|unique:friendship_links,url',
         ];
     }
 }

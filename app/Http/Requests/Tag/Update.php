@@ -6,4 +6,10 @@ namespace App\Http\Requests\Tag;
 
 class Update extends Store
 {
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+        ];
+    }
 }
