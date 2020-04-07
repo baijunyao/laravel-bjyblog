@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Artisan;
 use DateTimeInterface;
 use DB;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
@@ -97,6 +98,10 @@ class Base extends Model
         $result = DB::update(DB::raw($sql));
 
         $result ? flash_success('操作成功', $flash) : flash_error('操作失败', $flash);
+
+        Artisan::call('modelCache:clear', [
+            '--model' => static::class,
+        ]);
 
         return $result;
     }
