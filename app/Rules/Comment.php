@@ -60,7 +60,7 @@ class Comment implements Rule
 
         $count = $commentModel
             ->where('socialite_user_id', $socialiteUser->id)
-            ->whereDate('created_at', Date::today())
+            ->whereDate('created_at', '=', Date::today())
             ->count();
 
         if ($socialiteUser->is_admin !== 1 && $count > 10) {

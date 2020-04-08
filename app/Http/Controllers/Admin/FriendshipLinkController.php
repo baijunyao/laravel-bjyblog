@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FriendshipLink\Store;
 use App\Models\FriendshipLink;
 use Cache;
-use DB;
 use Illuminate\Http\Request;
 
 class FriendshipLinkController extends Controller
@@ -16,7 +15,7 @@ class FriendshipLinkController extends Controller
     public function index()
     {
         $data = FriendshipLink::withTrashed()
-            ->orderBy(DB::raw('sort is null,sort'))
+            ->orderByRaw('sort is null,sort')
             ->get();
         $assign = compact('data');
 

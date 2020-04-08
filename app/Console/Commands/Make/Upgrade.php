@@ -119,7 +119,7 @@ PHP;
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
         File::deleteDirectory($databasePath, true);
         shell_exec("git checkout $PreviousVersion -- $databasePath/migrations");
-        File::copyDirectory(database_path('migrations'), $testMigrationPath, true);
+        File::copyDirectory(database_path('migrations'), $testMigrationPath);
         File::deleteDirectory($databasePath, true);
 
         // Seeds
