@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d77bc238ec99fe2693b9d0aaaf1538a4",
+    "content-hash": "9759b5892ace20281408df4addf21563",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -3879,27 +3879,33 @@
         },
         {
             "name": "laravelium/feed",
-            "version": "dev-master",
+            "version": "v7.0.1",
             "source": {
                 "type": "git",
-                "url": "https://gitlab.com/baijunyao/Feed.git",
-                "reference": "573dac9fbfa11d971fa0cdf4a87afa1750795f96"
+                "url": "https://gitlab.com/Laravelium/Feed.git",
+                "reference": "e7f108f49abec3a3c836636a5c8fb1d3b8d3d1d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/baijunyao%2FFeed/repository/archive.zip?sha=573dac9fbfa11d971fa0cdf4a87afa1750795f96",
-                "reference": "573dac9fbfa11d971fa0cdf4a87afa1750795f96",
-                "shasum": ""
+                "url": "https://gitlab.com/api/v4/projects/Laravelium%2FFeed/repository/archive.zip?sha=e7f108f49abec3a3c836636a5c8fb1d3b8d3d1d7",
+                "reference": "e7f108f49abec3a3c836636a5c8fb1d3b8d3d1d7",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
             },
             "require": {
-                "illuminate/filesystem": "^6.0 || ^7.0",
-                "illuminate/support": "^6.0 || ^7.0",
+                "illuminate/filesystem": "^7.0",
+                "illuminate/support": "^7.0",
                 "php": ">=7.2.5"
             },
             "require-dev": {
-                "laravel/framework": "^6.0 || ^7.0",
+                "laravel/framework": "^7.0",
                 "orchestra/testbench-core": "^5.0",
-                "phpunit/phpunit": "^7.5 || ^8.0"
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -3917,15 +3923,16 @@
                     "Laravelium\\Feed": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Roumen Damianoff",
-                    "email": "roumen@damianoff.com",
-                    "role": "Developer",
-                    "homepage": "https://damianoff.com"
+                    "name": "Rumen Damyanov",
+                    "email": "r@alfamatter.com",
+                    "homepage": "https://darumen.com",
+                    "role": "Developer"
                 }
             ],
             "description": "Laravelium Feed package for Laravel.",
@@ -3938,12 +3945,7 @@
                 "laravelium",
                 "rss"
             ],
-            "support": {
-                "issues": "https://gitlab.com/Laravelium/Feed/issues",
-                "source": "https://gitlab.com/Laravelium/Feed",
-                "wiki": "https://gitlab.com/Laravelium/Feed/wikis/home"
-            },
-            "time": "2020-03-11T11:53:53+00:00"
+            "time": "2020-03-28T12:53:42+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -4165,6 +4167,7 @@
                 "strikeout",
                 "strikethrough"
             ],
+            "abandoned": "league/commonmark",
             "time": "2019-06-29T11:34:00+00:00"
         },
         {
@@ -4236,6 +4239,7 @@
                 "markdown",
                 "table"
             ],
+            "abandoned": "league/commonmark",
             "time": "2019-09-26T13:28:33+00:00"
         },
         {
@@ -13342,9 +13346,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laravelium/feed": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
