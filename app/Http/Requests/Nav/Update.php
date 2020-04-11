@@ -6,4 +6,11 @@ namespace App\Http\Requests\Nav;
 
 class Update extends Store
 {
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+            'url'  => 'required',
+        ];
+    }
 }

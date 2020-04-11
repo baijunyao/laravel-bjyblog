@@ -26,7 +26,7 @@ class Update extends FormRequest
     public function rules()
     {
         return [
-            'name'        => 'required|unique:categories,name,' . $this->route()->id,
+            'name'        => 'required',
             'keywords'    => 'required',
             'description' => 'required',
         ];

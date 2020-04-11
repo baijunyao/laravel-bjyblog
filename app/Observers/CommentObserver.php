@@ -19,7 +19,7 @@ class CommentObserver extends BaseObserver
             config('services.baidu.secret'),
         ];
 
-        if (Str::isTrue(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3) {
+        if (Str::isTrue(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3 && strpos($comment->content, '赞赏') === false) {
             $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
             $result = $baiduClient->antiSpam($comment->content);
 
@@ -38,7 +38,9 @@ class CommentObserver extends BaseObserver
         if (mail_is_configured()) {
             /** @var \App\Models\SocialiteUser $socialiteUser */
             $socialiteUser = auth()->guard('socialite')->user();
-            $article       = Article::withTrashed()->find($comment->article_id);
+
+            /** @var \App\Models\Article $article */
+            $article       = Article::withTrashed()->where('id', $comment->article_id)->firstOrFail();
 
             // Send email to admin
             if ($socialiteUser->is_admin === 0) {

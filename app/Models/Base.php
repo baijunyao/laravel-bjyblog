@@ -95,7 +95,7 @@ class Base extends Model
         $sql = rtrim($sql, ', ') . ' WHERE ' . $referenceColumn . ' IN (' . rtrim($whereIn, ', ') . ')';
 
         // 更新
-        $result = DB::update(DB::raw($sql));
+        $result = DB::update($sql);
 
         $result ? flash_success('操作成功', $flash) : flash_error('操作失败', $flash);
 
