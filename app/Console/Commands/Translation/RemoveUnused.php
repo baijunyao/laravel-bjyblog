@@ -71,7 +71,7 @@ class RemoveUnused extends Command
         foreach ($languages as $language => $content) {
             ksort($content);
 
-            File::put(resource_path("lang/{$language}.json"), json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            File::put(resource_path("lang/{$language}.json"), json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
     }
 }

@@ -169,7 +169,7 @@
         <div class="row b-content">
             <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
                 <dt>{{ __('Rights') }}</dt>
-                <dd>{{ __("Licenses") }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by{{ config('bjyblog.licenses.allow_commercial') . config('bjyblog.licenses.allow_adaptation') }}/4.0/deed.{{ config('bjyblog.licenses.language') }}" target="{{ config('bjyblog.link_target') }}">CC BY-NC 4.0</a></dd>
+                <dd>{{ __('Licenses') }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by{{ config('bjyblog.licenses.allow_commercial') . config('bjyblog.licenses.allow_adaptation') }}/4.0/deed.{{ config('bjyblog.licenses.language') }}" target="{{ config('bjyblog.link_target') }}">CC BY-NC 4.0</a></dd>
                 <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }}</dd>
                 @if(!empty(config('bjyblog.admin_email')))
                     <dd>{{ __('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
@@ -229,7 +229,7 @@
                 @endforeach
 
                 @if($socialiteClients->isEmpty())
-                    {{ __('Need to add socialite client first,') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ __('Click to go.') }}</a>
+                    {{ __('Need to add socialite client first.') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ __('Click to go') }}</a>
                 @endif
             </div>
         </div>
