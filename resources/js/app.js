@@ -27,6 +27,8 @@ require('prismjs/components/prism-typescript')
 require('prismjs/components/prism-yaml')
 require('prismjs/components/prism-bash')
 require('prismjs/components/prism-diff')
+require('prismjs/components/prism-go')
+require('prismjs/components/prism-python')
 
 require('prismjs/plugins/line-numbers/prism-line-numbers')
 require('prismjs/plugins/toolbar/prism-toolbar')

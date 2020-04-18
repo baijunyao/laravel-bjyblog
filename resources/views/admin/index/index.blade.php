@@ -30,6 +30,10 @@
 @endsection
 
 @section('content')
+    <div class="alert alert-warning alert-dismissible text-center">
+        {{ __('Welcome to use the new admin dashboard') }}.
+        <a href="{{ url('ant/#/ant/user/login') }}">{{ __('Click login') }}</a>
+    </div>
 
     <div class="row top_tiles">
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
