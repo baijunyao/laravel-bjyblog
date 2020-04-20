@@ -166,11 +166,10 @@ class FromThinkPHPBjyBlog extends Command
             $commentModel->insert([
                 'id'                => $v->cmtid,
                 'socialite_user_id' => $v->ouid,
-                'type'              => $v->type,
-                'pid'               => $v->pid,
+                'parent_id'         => $v->pid,
                 'article_id'        => $v->aid,
                 'content'           => $content,
-                'status'            => $v->status,
+                'is_audited'        => $v->status,
                 'created_at'        => date('Y-m-d H:i:s', $v->date),
                 'updated_at'        => date('Y-m-d H:i:s', $v->date),
             ]);

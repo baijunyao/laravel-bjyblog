@@ -28,7 +28,7 @@ class Store extends FormRequest
     {
         return [
             'article_id' => 'required|integer',
-            'pid'        => 'required|integer',
+            'parent_id'  => 'required|integer',
             'content'    => ['required', new Comment()],
         ];
     }

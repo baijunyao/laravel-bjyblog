@@ -21,7 +21,7 @@ class CommentControllerTest extends TestCase
         $email   = 'comment@test.com';
         $comment = [
             'article_id' => 1,
-            'pid'        => 0,
+            'parent_id'  => 0,
         ];
 
         $this->loginByUserId(1)
@@ -31,8 +31,10 @@ class CommentControllerTest extends TestCase
             ])
             ->assertStatus(200);
 
-        $this->assertDatabaseHas('comments', $comment + [
-            'content' => (new Comment())->imageToUbb($content),
+        $this->assertDatabaseHas('comments', [
+            'article_id' => 1,
+            'parent_id'  => null,
+            'content'    => (new Comment())->imageToUbb($content),
         ]);
 
         static::assertEquals($email, SocialiteUser::where('id', 1)->value('email'));
@@ -70,7 +72,7 @@ class CommentControllerTest extends TestCase
         $email   = 'comment@test.com';
         $comment = [
             'article_id' => 1,
-            'pid'        => 1,
+            'parent_id'  => 1,
         ];
 
         $this->loginByUserId($socialiteUser1->id)
@@ -96,7 +98,7 @@ class CommentControllerTest extends TestCase
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
         $comment = [
             'article_id' => 1,
-            'pid'        => 1,
+            'parent_id'  => 1,
         ];
 
         /** For @see \App\Observers\CommentObserver::created() */
@@ -121,7 +123,7 @@ class CommentControllerTest extends TestCase
     {
         $comment = [
             'article_id' => 1,
-            'pid'        => 0,
+            'parent_id'  => 0,
             'content'    => '',
         ];
         $this->loginByUserId(1)
@@ -133,7 +135,7 @@ class CommentControllerTest extends TestCase
     {
         $comment = [
             'article_id' => 1,
-            'pid'        => 0,
+            'parent_id'  => 0,
             'content'    => 'test',
         ];
         $this->loginByUserId(1)
@@ -145,7 +147,7 @@ class CommentControllerTest extends TestCase
     {
         $comment = [
             'article_id' => 1,
-            'pid'        => 0,
+            'parent_id'  => 0,
             'content'    => '评论666',
         ];
         $this->post('/comment', $comment)->assertStatus(401);

@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use Cache;
 use Illuminate\Http\Request;
+use Str;
 
 class ArticleController extends Controller
 {
@@ -62,7 +63,19 @@ class ArticleController extends Controller
             ->limit(1)
             ->first();
 
-        $comment     = $commentModel->getDataByArticleId($article->id);
+        $comments = Comment::where('article_id', $article->id)
+            ->with('socialiteUser', 'parentComment', 'parentComment.socialiteUser')
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('is_audited', 1);
+            })
+            ->whereNull('parent_id')
+            ->latest()
+            ->get();
+
+        foreach ($comments as $comment) {
+            $comment->children = $comment->descendants;
+        }
+
         $category_id = $article->category->id;
 
         /** @var \App\Models\SocialiteUser|null $socialiteUser */
@@ -75,7 +88,7 @@ class ArticleController extends Controller
         }
 
         $likes       = $article->likers()->get();
-        $assign      = compact('category_id', 'article', 'prev', 'next', 'comment', 'is_liked', 'likes');
+        $assign      = compact('category_id', 'article', 'prev', 'next', 'comments', 'is_liked', 'likes');
 
         return view('home.index.article', $assign);
     }
