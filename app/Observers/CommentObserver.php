@@ -13,18 +13,27 @@ class CommentObserver extends BaseObserver
 {
     public function creating($comment)
     {
-        $baiduConfig = [
-            config('services.baidu.appid'),
-            config('services.baidu.appkey'),
-            config('services.baidu.secret'),
-        ];
+        /** @var \App\Models\SocialiteUser $socialiteUser */
+        $socialiteUser = auth()->guard('socialite')->user();
 
-        if (Str::isTrue(config('bjyblog.comment_audit')) && count(array_filter($baiduConfig)) === 3 && strpos($comment->content, '赞赏') === false) {
-            $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
-            $result = $baiduClient->antiSpam($comment->content);
+        if (Str::isFalse(config('bjyblog.comment_audit')) || $socialiteUser->is_admin === 1 || Str::contains($comment->content, '赞赏')) {
+            $comment->is_audited = 1;
+        } else {
+            $baiduConfig = [
+                config('services.baidu.appid'),
+                config('services.baidu.appkey'),
+                config('services.baidu.secret'),
+            ];
 
-            // spam=0 audited
-            $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
+            if (count(array_filter($baiduConfig)) === 3) {
+                $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
+                $result = $baiduClient->antiSpam($comment->content);
+
+                // spam=0 audited
+                $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
+            } else {
+                $comment->is_audited = 0;
+            }
         }
     }
 

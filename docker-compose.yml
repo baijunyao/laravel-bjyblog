@@ -53,5 +53,11 @@ services:
     labels:
       - traefik.enable=false
 
+  elasticsearch:
+    image: baijunyao/elasticsearch:7.6
+    container_name: laravel-bjyblog-elasticsearch
+    environment:
+      - discovery.type=single-node
+
 volumes:
   mysql:

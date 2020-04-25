@@ -104,7 +104,7 @@ class Article extends Base
 
         // 如果全文搜索出错则降级使用 sql like
         try {
-            $id = self::search($wd);
+            $id = self::search($wd)->keys();
         } catch (Exception $e) {
             $id = self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")
