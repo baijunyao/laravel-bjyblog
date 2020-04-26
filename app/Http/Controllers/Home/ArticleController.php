@@ -63,17 +63,31 @@ class ArticleController extends Controller
             ->limit(1)
             ->first();
 
-        $comments = Comment::where('article_id', $article->id)
+        $commentFlatTree = Comment::where('article_id', $article->id)
             ->with('socialiteUser', 'parentComment', 'parentComment.socialiteUser')
             ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                 return $query->where('is_audited', 1);
             })
-            ->whereNull('parent_id')
-            ->latest()
-            ->get();
+            ->withDepth()
+            ->get()
+            ->toFlatTree();
 
-        foreach ($comments as $comment) {
-            $comment->children = $comment->descendants;
+        $parentComments = $commentFlatTree->whereNull('parent_id')
+            ->sortByDesc('created_at')
+            ->values();
+
+        $childrenComments = $commentFlatTree->whereNotNull('parent_id')->values();
+
+        $comments = collect([]);
+
+        foreach ($parentComments as $parentComment) {
+            $comments->push($parentComment);
+
+            foreach ($childrenComments as $childrenComment) {
+                if ($childrenComment->isDescendantOf($parentComment)) {
+                    $comments->push($childrenComment);
+                }
+            }
         }
 
         $category_id = $article->category->id;

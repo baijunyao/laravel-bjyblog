@@ -104,7 +104,7 @@
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" aid="{{ $article->id }}" parent_id="0">
+                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" article_id="{{ $article->id }}" parent_id="0" depth="0">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -119,7 +119,15 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">
             @foreach($comments as $comment)
-                <div id="comment-{{ $comment->id }}" class="row b-user b-parent">
+                @if(!$loop->first && $comment->depth === 0)
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="b-border"></div>
+                        </div>
+                    </div>
+                @endif
+
+                <div id="comment-{{ $comment->id }}" class="row b-user b-depth-padding-{{ $comment->depth }} @if($comment->depth === 0) b-parent @endif">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
                         <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($comment->socialiteUser->avatar) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                         @if($comment->socialiteUser->is_admin === 1)
@@ -131,37 +139,27 @@
                             <span class="b-user-name">{{ $comment->socialiteUser->name }}</span>：{!! $comment->content !!}
                         </p>
                         <p class="b-date">
-                            {{ $comment->created_at }} <a class="js-reply" href="javascript:;" aid="{{ $article->id }}" parent_id="{{ $comment->id }}" username="{{ $comment->socialiteUser->name }}">{{ __('Reply') }}</a>
+                            {{ $comment->created_at }}
+                            <a class="js-reply"
+                               href="javascript:;"
+                               article_id="{{ $article->id }}"
+                               parent_id="{{ $comment->parent_id }}"
+                               comment_id="{{ $comment->id }}"
+                               username="{{ $comment->socialiteUser->name }}"
+                               depth="{{ $comment->depth }}"
+                            >{{ __('Reply') }}</a>
                         </p>
-                        @foreach($comment->children as $reply)
-                            <div id="comment-{{ $reply->id }}" class="row b-user b-child">
-                                <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                    <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($reply->socialiteUser->avatar) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
-                                    @if($reply->socialiteUser->is_admin === 1)
-                                        <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('app.name') }}">
-                                    @endif
-                                </div>
-                                <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
-                                    <li class="b-content">
-                                        <span class="b-reply-name">{{ $reply->socialiteUser->name }}</span>
-                                        <span class="b-reply">{{ __('Reply') }}</span>
-                                        <span class="b-user-name">{{ $reply->parentComment->socialiteUser->name }}</span>：{!! $reply->content !!}
-                                    </li>
-                                    <li class="b-date">
-                                        {{ $reply->created_at }} <a class="js-reply" href="javascript:;" aid="{{ $article->id }}" parent_id="{{ $reply->id }}" username="{{ $reply->parentComment->socialiteUser->name }}">{{ __('Reply') }}</a>
-                                    </li>
-                                    <li class="b-clear-float"></li>
-                                </ul>
-                            </div>
-                        @endforeach
                         <div class="b-clear-float"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="b-border"></div>
+
+                @if($loop->last && $comment->depth === 0)
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="b-border"></div>
+                        </div>
                     </div>
-                </div>
+                @endif
             @endforeach
             </div>
         </div>
