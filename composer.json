@@ -36,6 +36,7 @@
         "iidestiny/laravel-filesystem-oss": "^1.2",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
+        "kalnoy/nestedset": "^5.0",
         "laravel/framework": "^7.0",
         "laravel/passport": "^8.0",
         "laravel/socialite": "^4.1",
