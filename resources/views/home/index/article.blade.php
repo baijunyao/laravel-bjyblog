@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                         <p class="b-content">
-                            <span class="b-user-name">{{ $comment->socialiteUser->name }}</span>：{!! $comment->content !!}
+                            <span class="b-user-name">{{ $comment->socialiteUser->name }} <i class="fa fa-{{ $comment->socialiteUser->socialiteClient->icon }}"></i></span>：{!! $comment->content !!}
                         </p>
                         <p class="b-date">
                             {{ $comment->created_at }}

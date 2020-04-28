@@ -139,7 +139,7 @@
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
                             <img class="b-head-img bjy-lazyload" src="{{ cdn_url('uploads/avatar/default.jpg') }}" data-src="{{ cdn_url($comment->socialiteUser->avatar) }}" alt="{{ $comment->socialiteUser->name }}">
                             <li class="b-nickname">
-                                {{ $comment->socialiteUser->name }}<span>{{ $comment->created_at->diffForHumans() }}</span>
+                                {{ $comment->socialiteUser->name }} <i class="fa fa-{{ $comment->socialiteUser->socialiteClient->icon }}"></i> <span>{{ $comment->created_at->diffForHumans() }}</span>
                             </li>
                             <li class="b-nc-article">
                                 {{ __('Comment') }} <a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="{{ config('bjyblog.link_target') }}">{{ $comment->article->sub_title }}</a>

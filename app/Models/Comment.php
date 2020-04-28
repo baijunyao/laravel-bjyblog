@@ -102,7 +102,7 @@ class Comment extends Base
 
     public function getLatestComments($number)
     {
-        return $this->with(['article', 'socialiteUser'])
+        return $this->with(['article', 'socialiteUser', 'socialiteUser.socialiteClient'])
             ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                 return $query->where('is_audited', 1);
             })

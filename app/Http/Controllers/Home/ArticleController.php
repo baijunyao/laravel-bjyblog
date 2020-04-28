@@ -64,7 +64,7 @@ class ArticleController extends Controller
             ->first();
 
         $commentFlatTree = Comment::where('article_id', $article->id)
-            ->with('socialiteUser', 'parentComment', 'parentComment.socialiteUser')
+            ->with('socialiteUser', 'socialiteUser.socialiteClient', 'parentComment', 'parentComment.socialiteUser')
             ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                 return $query->where('is_audited', 1);
             })
