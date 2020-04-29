@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Upgrade;
 
-use App\Models\Article;
 use App\Models\Comment;
 use DB;
 use Illuminate\Console\Command;
@@ -64,7 +63,10 @@ class V9_0_0 extends Command
 
         $this->info('Migration comments');
         $this->call('cache:clear');
-        $article_ids = Article::withTrashed()->pluck('id');
+        $article_ids = DB::table('comment_backups')
+            ->orderBy('article_id')
+            ->groupBy('article_id')
+            ->pluck('article_id');
 
         $bar = $this->output->createProgressBar($article_ids->count());
         $bar->start();
