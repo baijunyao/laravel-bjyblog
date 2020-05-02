@@ -50,7 +50,7 @@ class SocialiteControllerTest extends TestCase
         static::assertEquals($url, url('auth/socialite/redirectToProvider/vkontakte'));
 
         $response      = $this->get($url)->assertStatus(302);
-        $redirect      = 'https://oauth.vk.com/authorize?client_id=&redirect_uri=http%3A%2F%2Flaravel-bjyblog.test%2Fauth%2Foauth%2FhandleProviderCallback%2Fvkontakte&scope=email&response_type=code&state=';
+        $redirect      = 'https://oauth.vk.com/authorize?client_id=&redirect_uri=http%3A%2F%2Flaravel-bjyblog.test%2Fauth%2Foauth%2FhandleProviderCallback%2Fvkontakte&scope=email&response_type=code';
         static::assertStringStartsWith($redirect, $response->headers->get('location'));
     }
 
