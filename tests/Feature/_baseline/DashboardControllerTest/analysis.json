@@ -39,11 +39,12 @@
             {
                 "id": 1,
                 "socialite_user_id": 1,
-                "type": 1,
-                "pid": 0,
                 "article_id": 1,
                 "content": "评论的内容",
                 "is_audited": 1,
+                "_lft": 1,
+                "_rgt": 2,
+                "parent_id": 0,
                 "created_at": "2017-07-16 07:35:12",
                 "updated_at": "2016-07-16 07:35:12",
                 "deleted_at": null,
@@ -80,7 +81,17 @@
                     "remember_token": null,
                     "created_at": "2017-07-24 07:35:12",
                     "updated_at": "2017-07-24 07:35:12",
-                    "deleted_at": null
+                    "deleted_at": null,
+                    "socialite_client": {
+                        "id": 1,
+                        "name": "qq",
+                        "icon": "qq",
+                        "client_id": "",
+                        "client_secret": "",
+                        "created_at": "2019-05-08 22:13:54",
+                        "updated_at": "2019-05-08 22:13:54",
+                        "deleted_at": null
+                    }
                 }
             }
         ],

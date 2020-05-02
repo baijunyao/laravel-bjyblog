@@ -104,7 +104,7 @@
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" aid="{{ $article->id }}" pid="0">
+                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" article_id="{{ $article->id }}" parent_id="0" depth="0">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -114,54 +114,52 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-title">
                 <ul class="row">
                     <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{ __('latest comments') }}</li>
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">{!! __('others.comment_count', ['count' => count($comment)]) !!}</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">{!! __('others.comment_count', ['count' => count($comments)]) !!}</li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">
-            @foreach($comment as $k => $v)
-                <div id="comment-{{ $v['id'] }}" class="row b-user b-parent">
+            @foreach($comments as $comment)
+                @if(!$loop->first && $comment->depth === 0)
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="b-border"></div>
+                        </div>
+                    </div>
+                @endif
+
+                <div id="comment-{{ $comment->id }}" class="row b-user b-depth-padding-{{ $comment->depth }} @if($comment->depth === 0) b-parent @endif">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                        <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($v['avatar']) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
-                        @if($v['is_admin'] == 1)
+                        <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($comment->socialiteUser->avatar) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+                        @if($comment->socialiteUser->is_admin === 1)
                             <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('app.name') }}">
                         @endif
                     </div>
                     <div class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col b-cc-first">
                         <p class="b-content">
-                            <span class="b-user-name">{{ $v['name'] }}</span>：{!! $v['content'] !!}
+                            <span class="b-user-name">{{ $comment->socialiteUser->name }} <i class="fa fa-{{ $comment->socialiteUser->socialiteClient->icon }}"></i></span>：{!! $comment->content !!}
                         </p>
                         <p class="b-date">
-                            {{ $v['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ $article->id }}" pid="{{ $v['id'] }}" username="{{ $v['name'] }}">{{ __('Reply') }}</a>
+                            {{ $comment->created_at }}
+                            <a class="js-reply"
+                               href="javascript:;"
+                               article_id="{{ $article->id }}"
+                               parent_id="{{ $comment->parent_id }}"
+                               comment_id="{{ $comment->id }}"
+                               username="{{ $comment->socialiteUser->name }}"
+                               depth="{{ $comment->depth }}"
+                            >{{ __('Reply') }}</a>
                         </p>
-                        @foreach($v['child'] as $m => $n)
-                            <div id="comment-{{ $n['id'] }}" class="row b-user b-child">
-                                <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                                    <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($n['avatar']) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
-                                    @if($n['is_admin'] == 1)
-                                        <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('app.name') }}">
-                                    @endif
-                                </div>
-                                <ul class="col-xs-10 col-sm-11 col-md-11 col-lg-11 b-content-col">
-                                    <li class="b-content">
-                                        <span class="b-reply-name">{{ $n['name'] }}</span>
-                                        <span class="b-reply">{{ __('Reply') }}</span>
-                                        <span class="b-user-name">{{ $n['reply_name'] }}</span>：{!! $n['content'] !!}
-                                    </li>
-                                    <li class="b-date">
-                                        {{ $n['created_at'] }} <a class="js-reply" href="javascript:;" aid="{{ $article->id }}" pid="{{ $n['id'] }}" username="{{ $n['reply_name'] }}">{{ __('Reply') }}</a>
-                                    </li>
-                                    <li class="b-clear-float"></li>
-                                </ul>
-                            </div>
-                        @endforeach
                         <div class="b-clear-float"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="b-border"></div>
+
+                @if($loop->last && $comment->depth === 0)
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="b-border"></div>
+                        </div>
                     </div>
-                </div>
+                @endif
             @endforeach
             </div>
         </div>

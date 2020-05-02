@@ -10,6 +10,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use Cache;
 use Illuminate\Http\Request;
+use Str;
 
 class ArticleController extends Controller
 {
@@ -62,7 +63,33 @@ class ArticleController extends Controller
             ->limit(1)
             ->first();
 
-        $comment     = $commentModel->getDataByArticleId($article->id);
+        $commentFlatTree = Comment::where('article_id', $article->id)
+            ->with('socialiteUser', 'socialiteUser.socialiteClient', 'parentComment', 'parentComment.socialiteUser')
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('is_audited', 1);
+            })
+            ->withDepth()
+            ->get()
+            ->toFlatTree();
+
+        $parentComments = $commentFlatTree->whereNull('parent_id')
+            ->sortByDesc('created_at')
+            ->values();
+
+        $childrenComments = $commentFlatTree->whereNotNull('parent_id')->values();
+
+        $comments = collect([]);
+
+        foreach ($parentComments as $parentComment) {
+            $comments->push($parentComment);
+
+            foreach ($childrenComments as $childrenComment) {
+                if ($childrenComment->isDescendantOf($parentComment)) {
+                    $comments->push($childrenComment);
+                }
+            }
+        }
+
         $category_id = $article->category->id;
 
         /** @var \App\Models\SocialiteUser|null $socialiteUser */
@@ -75,7 +102,7 @@ class ArticleController extends Controller
         }
 
         $likes       = $article->likers()->get();
-        $assign      = compact('category_id', 'article', 'prev', 'next', 'comment', 'is_liked', 'likes');
+        $assign      = compact('category_id', 'article', 'prev', 'next', 'comments', 'is_liked', 'likes');
 
         return view('home.index.article', $assign);
     }

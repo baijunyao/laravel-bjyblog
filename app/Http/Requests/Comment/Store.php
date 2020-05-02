@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Comment;
 
+use App;
 use App\Rules\Comment;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,10 +27,15 @@ class Store extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'article_id' => 'required|integer',
-            'pid'        => 'required|integer',
-            'content'    => ['required', new Comment()],
+            'parent_id'  => 'integer',
         ];
+
+        if (!App::isLocal()) {
+            $rules['content'] = ['required', new Comment()];
+        }
+
+        return $rules;
     }
 }
