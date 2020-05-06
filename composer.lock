@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "32ac097e15e3fd5759d34d0ade020da5",
+    "content-hash": "4ee4b464a60aceb688e9b8fc0087eb8a",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -567,16 +567,16 @@
         },
         {
             "name": "baijunyao/laravel-restful",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-restful.git",
-                "reference": "0e025f3dd5e7b5afaf09906ebc6e4acffcd9573f"
+                "reference": "1e5cf4f325a2b711cc8467d436e33c80c83e3f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/0e025f3dd5e7b5afaf09906ebc6e4acffcd9573f",
-                "reference": "0e025f3dd5e7b5afaf09906ebc6e4acffcd9573f",
+                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/1e5cf4f325a2b711cc8467d436e33c80c83e3f96",
+                "reference": "1e5cf4f325a2b711cc8467d436e33c80c83e3f96",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -610,7 +610,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2020-03-09T13:33:50+00:00"
+            "time": "2020-05-05T14:47:11+00:00"
         },
         {
             "name": "baijunyao/laravel-scout-elasticsearch",

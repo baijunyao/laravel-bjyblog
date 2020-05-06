@@ -15,4 +15,7 @@ use Baijunyao\LaravelRestful\Traits\Update;
 class NoteController extends Controller
 {
     use Index, Show, Store, Update, Destroy, Restore, ForceDelete;
+
+    protected const ORDER_BY_COLUMN    = 'created_at';
+    protected const ORDER_BY_DIRECTION = 'desc';
 }
