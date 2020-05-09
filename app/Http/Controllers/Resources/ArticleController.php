@@ -18,6 +18,9 @@ class ArticleController extends Controller
 {
     use Index, Show, Destroy, Restore, ForceDelete;
 
+    protected const ORDER_BY_COLUMN    = 'created_at';
+    protected const ORDER_BY_DIRECTION = 'desc';
+
     public function store(Store $request, ArticleTag $articleTag)
     {
         $article = Article::create(

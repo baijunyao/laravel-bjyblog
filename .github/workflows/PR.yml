@@ -1,0 +1,402 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    container:
+      image: baijunyao/php:7.4-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+      - name: PHP CS Fixer
+        run: |
+          ./vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --dry-run --diff
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    container:
+      image: baijunyao/php:7.4-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+      - name: PHPStan
+        run: |
+          ./vendor/bin/phpstan analyse --ansi
+
+  php_7_2_mysql_5_6:
+    name: PHP7.2+MySQL5.6
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.6
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.2-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_2_mysql_5_7:
+    name: PHP7.2+MySQL5.7
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.2-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_2_mysql_8_0:
+    name: PHP7.2+MySQL8.0
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: baijunyao/mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.2-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_3_mysql_5_6:
+    name: PHP7.3+MySQL5.6
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.6
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.3-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_3_mysql_5_7:
+    name: PHP7.3+MySQL5.7
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.3-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_3_mysql_8_0:
+    name: PHP7.3+MySQL8.0
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: baijunyao/mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.3-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_4_mysql_5_6:
+    name: PHP7.4+MySQL5.6
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.6
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.4-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_4_mysql_5_7:
+    name: PHP7.4+MySQL5.7
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.4-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit
+
+  php_7_4_mysql_8_0:
+    name: PHP7.4+MySQL8.0
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: baijunyao/mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: laravel_bjyblog
+          MYSQL_DATABASE: laravel_bjyblog
+    container:
+      image: baijunyao/php:7.4-local
+      volumes:
+        - /__w/laravel-bjyblog/laravel-bjyblog:/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - name: Initial
+        run: |
+          cp .env.actions .env
+          composer install
+          php artisan key:generate
+          php artisan passport:keys
+          php artisan migrate
+          php artisan db:seed
+      - name: Test
+        run: |
+          ./vendor/bin/phpunit

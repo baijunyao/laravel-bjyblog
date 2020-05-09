@@ -114,12 +114,9 @@
             <div class="b-tags">
                 <h4 class="b-title">{{ __('Hot Tags') }}</h4>
                 <ul class="b-all-tname">
-                    <?php $tag_i = 0; ?>
                     @foreach($tag as $v)
-                        <?php $tag_i++; ?>
-                        <?php $tag_i=$tag_i==5?1:$tag_i; ?>
                         <li class="b-tname">
-                            <a class="tstyle-{{ $tag_i }}" href="{{ $v->url }}">{{ $v->name }} ({{ $v->articles_count }})</a>
+                            <a class="b-tag-style-{{ $loop->index%4 }}" href="{{ $v->url }}">{{ $v->name }} ({{ $v->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>
