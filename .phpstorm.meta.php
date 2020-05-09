@@ -5,7 +5,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2020-04-18 08:35:11.
+    * Generated on 2020-05-09 19:08:12.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -83,6 +83,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -279,6 +280,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -475,6 +477,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -671,6 +674,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -867,6 +871,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -1063,6 +1068,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -1259,6 +1265,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
@@ -1455,6 +1462,7 @@ namespace PHPSTORM_META {
         'command.cache.clear' => \Illuminate\Cache\Console\ClearCommand::class,
         'command.cache.forget' => \Illuminate\Cache\Console\ForgetCommand::class,
         'command.cache.table' => \Illuminate\Cache\Console\CacheTableCommand::class,
+        'command.cast.make' => \Illuminate\Foundation\Console\CastMakeCommand::class,
         'command.channel.make' => \Illuminate\Foundation\Console\ChannelMakeCommand::class,
         'command.clear-compiled' => \Illuminate\Foundation\Console\ClearCompiledCommand::class,
         'command.component.make' => \Illuminate\Foundation\Console\ComponentMakeCommand::class,
