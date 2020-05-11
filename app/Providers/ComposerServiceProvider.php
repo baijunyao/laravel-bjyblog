@@ -73,7 +73,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         // 开源项目数据
-        view()->composer(['layouts/home', 'home/index/openSource'], function ($view) {
+        view()->composer(['*/layouts/home', '*/home/index/openSource'], function ($view) {
             $openSource = OpenSource::select('name', 'type')->orderBy('sort')->get();
             // 分配数据
             $assign = compact('openSource');
@@ -81,7 +81,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         // 获取各种统计
-        view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
+        view()->composer(['*/layouts/home', 'admin/index/index'], function ($view) {
             $articleCount = Article::count('id');
             $commentCount = Comment::count('id');
             $chatCount = Note::count('id');
@@ -97,7 +97,7 @@ class ComposerServiceProvider extends ServiceProvider
         });
 
         //分配前台通用的数据
-        view()->composer('layouts/home', function ($view) use ($socialiteClients) {
+        view()->composer('*/layouts/home', function ($view) use ($socialiteClients) {
             $category = Category::select('id', 'name', 'slug')->orderBy('sort')->get();
             $tag = Tag::has('articles')->withCount('articles')->get();
 
@@ -133,7 +133,7 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
-        view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
+        view()->composer(['*/layouts/home', 'admin/index/index'], function ($view) {
             $latestComments = (new Comment())->getLatestComments(17);
 
             $assign = compact('latestComments');

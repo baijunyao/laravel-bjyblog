@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Home;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Like\Store;
 use App\Models\Article;
 
