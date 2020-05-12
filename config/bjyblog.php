@@ -62,4 +62,5 @@ return [
         'allow_commercial' => '',
         'language' => '',
     ],
+    'theme' => '',
 ];
