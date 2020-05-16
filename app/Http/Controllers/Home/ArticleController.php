@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Home;
 
 use Agent;
-use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Comment;
 use Cache;
