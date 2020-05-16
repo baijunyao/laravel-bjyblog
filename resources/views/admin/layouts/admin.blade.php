@@ -1,4 +1,4 @@
-@extends('layouts.gentelella')
+@extends('admin.layouts.gentelella')
 
 @section('body')
 

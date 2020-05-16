@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('admin.layouts.admin')
 
 @section('title', __('Comment List'))
 
@@ -65,6 +65,6 @@
         @endforeach
     </table>
     <div class="text-center">
-        {{ $data->links('vendor.pagination.bjypage') }}
+        {{ $data->links('admin.vendor.pagination.bjypage') }}
     </div>
 @endsection

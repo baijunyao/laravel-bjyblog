@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Home;
 
 use App;
-use App\Http\Controllers\Controller;
 use App\Models\Article;
 
 class FeedController extends Controller
@@ -25,6 +24,7 @@ class FeedController extends Controller
         $feed->pubdate     = $article->first()->created_at;
         $feed->lang        = config('app.locale');
         $feed->ctype       = 'application/xml';
+        $feed->setCustomView('feed.atom');
 
         foreach ($article as $v) {
             $feed->add($v->title, $v->author, url('article', $v->id), $v->created_at, $v->description);
