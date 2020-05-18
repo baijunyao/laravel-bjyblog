@@ -8,34 +8,88 @@ use Agent;
 use App\Models\Article;
 use App\Models\Comment;
 use Cache;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use RuntimeException;
 use Str;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::select(
-            'id', 'category_id', 'title',
-            'slug', 'author', 'description',
-            'cover', 'is_top', 'created_at'
-        )
-            ->orderBy('created_at', 'desc')
-            ->with(['category', 'tags'])
-            ->paginate(10);
+        $head = config('bjyblog.head');
 
-        $head = [
-            'title'       => config('bjyblog.head.title'),
-            'keywords'    => config('bjyblog.head.keywords'),
-            'description' => config('bjyblog.head.description'),
-        ];
+        if (config('bjyblog.theme') === 'blueberry') {
+            $articles = Article::select(
+                'id', 'category_id', 'title',
+                'slug', 'author', 'description',
+                'cover', 'is_top', 'created_at'
+            )
+                ->orderBy('created_at', 'desc')
+                ->with(['category', 'tags'])
+                ->paginate(10);
 
-        $assign = [
-            'category_id'  => 'index',
-            'articles'     => $articles,
-            'head'         => $head,
-            'tagName'      => '',
-        ];
+            $assign = [
+                'category_id'  => 'index',
+                'articles'     => $articles,
+                'head'         => $head,
+                'tagName'      => '',
+            ];
+        } elseif (config('bjyblog.theme') === 'github') {
+            $pinnedArticles = Article::where('is_top', 1)
+                ->with('category', 'tags')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $year = Carbon::createFromFormat('Y', $request->input('year', now()->year));
+
+            // $articlesByYear   = Article::whereYear('created_at', $year)->get();
+            // $firstArticleYear = Article::orderByDesc('created_at')->value('created_at');
+
+            $articlesCount = Article::selectRaw('COUNT(*) AS count, DATE(created_at) as date')
+                ->groupBy('date')
+                ->get()
+                ->keyBy('date')
+                ->toArray();
+
+            $allDaysOfTheYear = CarbonPeriod::create($year->firstOfYear()->format('Y-m-d'), $year->endOfYear()->format('Y-m-d'));
+
+            $calendarGraph = [];
+            $x             = 14;
+
+            foreach ($allDaysOfTheYear as $key => $date) {
+                /** @var \Carbon\Carbon $date */
+                $dateString = $date->format('Y-m-d');
+                $count      = $articlesCount[$dateString]['count'] ?? 0;
+
+                if ($date->month === 12 && $date->weekOfYear === 1) {
+                    $calendarGraph[53][] = [
+                        'x'     => $x,
+                        'y'     => $date->dayOfWeek * 13,
+                        'date'  => $dateString,
+                        'count' => $count,
+                    ];
+                } else {
+                    $weekOfYear = $date->dayOfWeek === 0 ? $date->weekOfYear + 1 : $date->weekOfYear;
+
+                    $calendarGraph[$weekOfYear][] = [
+                        'x'     => $x,
+                        'y'     => $date->dayOfWeek * 13,
+                        'date'  => $dateString,
+                        'count' => $count,
+                    ];
+                }
+
+                if ($date->dayOfWeekIso === 7) {
+                    $x--;
+                }
+            }
+
+            $assign = compact('pinnedArticles', 'calendarGraph', 'head');
+        } else {
+            throw new RuntimeException('Unsupported theme.');
+        }
 
         return view('home.index.index', $assign);
     }
