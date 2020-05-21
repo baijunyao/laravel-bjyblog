@@ -19,7 +19,6 @@ use Artisan;
 use Cache;
 use Exception;
 use Illuminate\Support\ServiceProvider;
-use RuntimeException;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -85,7 +84,7 @@ class ComposerServiceProvider extends ServiceProvider
                 $this->assignGithubThemeData();
                 break;
             default:
-                throw new RuntimeException('Unsupported theme.');
+                $this->assignBlueberryThemeData();
         }
     }
 
