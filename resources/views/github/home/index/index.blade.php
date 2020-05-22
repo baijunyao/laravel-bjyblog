@@ -608,7 +608,7 @@ All GitHub
 
 
                                             <h2 class="f4 text-normal mb-2">
-                                                1,049 contributions
+                                                {{ $yearArticles->count() }} contributions
                                                 in the last year
                                             </h2>
 
@@ -626,8 +626,8 @@ All GitHub
                                                             @foreach($calendarGraph as $calendars)
                                                                 <g transform="translate({{ $loop->index * 14 }}, 0)">
                                                                     @foreach($calendars as $calendar)
-                                                                        <rect class="day" width="10" height="10" x="{{ $calendar['x'] }}" y="0"
-                                                                          fill="#c6e48b" data-count="{{ $calendar['count'] }}"
+                                                                        <rect class="day" width="10" height="10" x="{{ $calendar['x'] }}" y="{{ $calendar['y'] }}"
+                                                                          fill="{{ $calendar['fill'] }}" data-count="{{ $calendar['count'] }}"
                                                                           data-date="{{ $calendar['date'] }}"></rect>
                                                                     @endforeach
                                                                 </g>
@@ -778,14 +778,16 @@ All GitHub
                                             data-original-top="74px"
                                             style="position: static; top: 74px !important; left: 1525.33px; width: 122.656px;">
                                             <ul class="filter-list small">
-                                                <li>
-                                                    <a id="year-link-2020"
-                                                       class="js-year-link filter-item px-3 mb-2 py-2 selected "
-                                                       aria-label="Contribution activity in 2020"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2020-05-01&amp;to=2020-05-14">2020</a>
-                                                </li>
+                                                @while ($yearOfFirstArticle < now()->year)
+                                                    <p>{{ $yearOfFirstArticle }}</p>
+                                                    <li>
+                                                        <a id="year-link-{{ $yearOfFirstArticle }}"
+                                                           class="js-year-link filter-item px-3 mb-2 py-2 selected "
+                                                           aria-label="Contribution activity in {{ $yearOfFirstArticle }}" href="{{ url('/') . '?' }}">2020</a>
+                                                    </li>
+                                                    {{ $yearOfFirstArticle++ }}
+                                                @endwhile
+
                                                 <li>
                                                     <a id="year-link-2019" class="js-year-link filter-item px-3 mb-2 py-2 "
                                                        aria-label="Contribution activity in 2019"

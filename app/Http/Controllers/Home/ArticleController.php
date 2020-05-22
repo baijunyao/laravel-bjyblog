@@ -44,8 +44,8 @@ class ArticleController extends Controller
 
             $year = Carbon::createFromFormat('Y', $request->input('year', now()->year));
 
-            // $articlesByYear   = Article::whereYear('created_at', $year)->get();
-            // $firstArticleYear = Article::orderByDesc('created_at')->value('created_at');
+            $yearArticles       = Article::whereYear('created_at', '=', $year)->get();
+            $yearOfFirstArticle = Article::orderByDesc('created_at')->value('created_at')->year ?? now()->year;
 
             $articlesCount = Article::selectRaw('COUNT(*) AS count, DATE(created_at) as date')
                 ->groupBy('date')
@@ -78,6 +78,7 @@ class ArticleController extends Controller
                         'y'     => $date->dayOfWeek * 13,
                         'date'  => $dateString,
                         'count' => $count,
+                        'fill'  => $count === 0 ? '#ebedf0' : '#c6e48b',
                     ];
                 }
 
@@ -86,7 +87,7 @@ class ArticleController extends Controller
                 }
             }
 
-            $assign = compact('pinnedArticles', 'calendarGraph', 'head');
+            $assign = compact('yearArticles', 'pinnedArticles', 'yearOfFirstArticle', 'calendarGraph', 'head');
         } else {
             throw new RuntimeException('Unsupported theme.');
         }
