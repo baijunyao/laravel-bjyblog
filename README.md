@@ -1,6 +1,7 @@
 <h1 align="center">laravel-bjyblog</h1>
 <p align="center">
     <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/baijunyao/laravel-bjyblog.svg"/></a>
+    <a href="https://github.com/baijunyao/laravel-bjyblog/actions?query=branch%3Amaster"><img alt="Build Status" src="https://github.com/baijunyao/laravel-bjyblog/workflows/CI/badge.svg?branch=master"/></a>
     <a href="https://travis-ci.com/baijunyao/laravel-bjyblog"><img alt="Build Status" src="https://travis-ci.com/baijunyao/laravel-bjyblog.svg?branch=master"/></a>
     <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog?ref=badge_shield"><img alt="FOSSA Status" src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog.svg?type=shield"/></a>
     <a href="https://github.com/baijunyao/laravel-bjyblog"><img alt="License" src="https://img.shields.io/github/license/baijunyao/laravel-bjyblog.svg"/></a>
