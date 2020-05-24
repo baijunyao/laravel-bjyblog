@@ -9,8 +9,6 @@
 @section('content')
 
     <div class="position-relative js-header-wrapper ">
-        <a href="#start-of-content" class="px-2 py-4 bg-blue text-white show-on-focus js-skip-to-content">Skip to
-            content</a>
         <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
             <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
         </span>
@@ -18,7 +16,7 @@
         <header class="Header-old header-logged-out js-details-container Details position-relative f4 py-2" role="banner">
             <div class="container-xl d-lg-flex flex-items-center p-responsive">
                 <div class="d-flex flex-justify-between flex-items-center">
-                    <a class="mr-4" href="https://github.com/" aria-label="Homepage"
+                    <a class="mr-4" href="https://github.com/baijunyao" aria-label="Homepage"
                        data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
                         <svg height="32" class="octicon octicon-mark-github text-white" viewBox="0 0 16 16" version="1.1"
                              width="32" aria-hidden="true">
@@ -28,15 +26,7 @@
                     </a>
 
                     <div class="d-lg-none css-truncate css-truncate-target width-fit p-2"></div>
-
                     <div class="d-flex flex-items-center">
-                        <a href="/join?ref_cta=Sign+up&amp;ref_loc=header+logged+out&amp;ref_page=%2F%3Cuser-name%3E&amp;source=header"
-                           class="d-inline-block d-lg-none f5 text-white no-underline border border-gray-dark rounded-2 px-2 py-1 mr-3 mr-sm-5"
-                           data-hydro-click="{&quot;event_type&quot;:&quot;authentication.click&quot;,&quot;payload&quot;:{&quot;location_in_page&quot;:&quot;site header&quot;,&quot;repository_id&quot;:null,&quot;auth_type&quot;:&quot;SIGN_UP&quot;,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;,&quot;user_id&quot;:null}}"
-                           data-hydro-click-hmac="4069c0e7aaf6488e4a84cb5ddd7c13e3a6044f9a3d3b43f4faf2dde6b237d141"
-                           data-ga-click="Sign up, click to sign up for account, ref_page:/baijunyao;ref_cta:Sign up;ref_loc:header logged out">
-                            Sign&nbsp;up
-                        </a>
                         <button class="btn-link d-lg-none mt-1 js-details-target" type="button"
                                 aria-label="Toggle navigation" aria-expanded="false">
                             <svg height="24" class="octicon octicon-three-bars text-white" viewBox="0 0 12 16" version="1.1"
@@ -319,8 +309,6 @@ All GitHub
     <div id="start-of-content" class="show-on-focus"></div>
 
     <div id="js-flash-container">
-
-
         <template class="js-flash-template">
             <div class="flash flash-full  js-flash-template-container">
                 <div class=" px-2">
@@ -331,9 +319,7 @@ All GitHub
                                   d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path>
                         </svg>
                     </button>
-
                     <div class="js-flash-template-message"></div>
-
                 </div>
             </div>
         </template>
@@ -361,10 +347,10 @@ All GitHub
                     <div class="clearfix">
                         <div class="float-left col-3 col-md-12 pr-3 pr-md-0">
                             <a itemprop="image" class="u-photo d-block position-relative" aria-hidden="true"
-                               href="https://avatars0.githubusercontent.com/u/9360694?s=400&amp;u=7c4503ac0541f894741d32bc1d7cbddd811b5b0e&amp;v=4"><img
+                               href="{{ url('images/theme/github/avatar.jpeg') }}"><img
                                     alt="" width="260" height="260"
                                     class="avatar width-full height-full avatar-before-user-status"
-                                    src="https://avatars0.githubusercontent.com/u/9360694?s=460&amp;u=7c4503ac0541f894741d32bc1d7cbddd811b5b0e&amp;v=4"></a>
+                                    src="{{ url('images/theme/github/avatar.jpeg') }}"></a>
                         </div>
 
                         <div
@@ -380,7 +366,6 @@ All GitHub
                             </h1>
                         </div>
                     </div>
-
 
                     <div class="d-none d-md-block">
                         <div class="js-profile-editable-area">
@@ -410,22 +395,14 @@ All GitHub
 
                     <div class="border-top py-3 clearfix hide-sm hide-md">
                         <h2 class="mb-1 h4">Organizations</h2>
-                        <a aria-label="apachecn" itemprop="follows" class="avatar-group-item"
-                           data-hovercard-type="organization" data-hovercard-url="/orgs/apachecn/hovercard"
-                           data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;MEMBER_ORGANIZATION_AVATAR&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                           data-hydro-click-hmac="35c12cfc449e756c51dd50c7d3a8fcc54e57a09c086cb16eaceebae6367bd559"
-                           href="/apachecn">
-                            <img alt="@apachecn" width="32" height="32"
-                                 src="https://avatars3.githubusercontent.com/u/24802038?s=60&amp;v=4" class="avatar ">
-                        </a>
-                        <a aria-label="cloudnativeto" itemprop="follows" class="avatar-group-item"
-                           data-hovercard-type="organization" data-hovercard-url="/orgs/cloudnativeto/hovercard"
-                           data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;MEMBER_ORGANIZATION_AVATAR&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                           data-hydro-click-hmac="35c12cfc449e756c51dd50c7d3a8fcc54e57a09c086cb16eaceebae6367bd559"
-                           href="/cloudnativeto">
-                            <img alt="@cloudnativeto" width="32" height="32"
-                                 src="https://avatars0.githubusercontent.com/u/60545556?s=60&amp;v=4" class="avatar ">
-                        </a>
+                        @foreach(config('bjyblog.social_links') as $name => $link)
+                            @if($link !== '' && $name !== 'upyun')
+                                <a aria-label="{{ $name }}" itemprop="follows" class="avatar-group-item" href="{{ $link }}" target="{{ config('bjyblog.link_target') }}">
+                                    <img alt="{{ $name }}" width="32" height="32"
+                                         src="{{ url("images/home/social-$name.png") }}" class="avatar ">
+                                </a>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
 
@@ -601,17 +578,12 @@ All GitHub
 
                             <div class="d-flex">
                                 <div class="col-12 col-lg-10">
-
                                     <div class="js-yearly-contributions">
-
                                         <div class="position-relative">
-
-
                                             <h2 class="f4 text-normal mb-2">
                                                 {{ $yearArticles->count() }} contributions
-                                                in the last year
+                                                in the {{ $selectedYear->year }}
                                             </h2>
-
                                             <div class="border border-gray-dark py-2 graph-before-activity-overview">
                                                 <div
                                                     class="js-calendar-graph mx-3 d-flex flex-column flex-items-end flex-xl-items-center overflow-hidden pt-1 is-graph-loading graph-canvas calendar-graph height-full text-center"
@@ -619,10 +591,8 @@ All GitHub
                                                     data-url="/baijunyao" data-from="2019-05-12 00:00:00 UTC"
                                                     data-to="2020-05-14 23:59:59 UTC" data-org="">
 
-                                                    <svg width="722" height="112" class="js-calendar-graph-svg">
-                                                        <g transform="translate(10, 20)"
-                                                           data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_CALENDAR_SQUARE&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                           data-hydro-click-hmac="27f23b54472660a309b010547a04c53562a8aaa40e1b5dfbb68fc31e1b6cb3c2">
+                                                    <svg width="722" height="112">
+                                                        <g transform="translate(10, 20)">
                                                             @foreach($calendarGraph as $calendars)
                                                                 <g transform="translate({{ $loop->index * 14 }}, 0)">
                                                                     @foreach($calendars as $calendar)
@@ -707,7 +677,7 @@ All GitHub
                                         <div class="contribution-activity-listing float-left col-12 ">
                                             <div class="profile-timeline discussion-timeline width-full pb-4">
                                                 <h3 class="profile-timeline-month-heading bg-white d-inline-block h6 pr-2 py-1">
-                                                    <span class="text-gray">Last year</span>
+                                                    <span class="text-gray">{{ $selectedYear->year }}</span>
                                                 </h3>
                                                 <div class="profile-rollup-wrapper py-4 pl-4 position-relative ml-3 js-details-container Details open">
                                                 <span class="discussion-item-icon">
@@ -717,11 +687,9 @@ All GitHub
                                                     </svg>
                                                 </span>
                                                     <button type="button" class="btn-link f4 muted-link no-underline lh-condensed width-full js-details-target " aria-expanded="false">
-                                                        <span class="float-left ws-normal text-left">Created 2 articles</span>
+                                                        <span class="float-left ws-normal text-left">Created {{ $yearArticles->count() }} articles</span>
                                                         <span class="d-inline-block float-right">
-                                                        <span class="profile-rollup-toggle-closed float-right" aria_label="Collapse"
-                                                              data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;TIMELINE_REPO_ROLLUP_COLLAPSE&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                              data-hydro-click-hmac="6c47a4a02b7f09bcbbf60cb6836b34cd200dfc315aa708aa52d33898e1e670d5">
+                                                        <span class="profile-rollup-toggle-closed float-right" aria_label="Collapse">
                                                             <svg class="octicon octicon-fold" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true">
                                                                 <path fill-rule="evenodd" d="M7 9l3 3H8v3H6v-3H4l3-3zm3-6H8V0H6v3H4l3 3 3-3zm4 2c0-.55-.45-1-1-1h-2.5l-1 1h3l-2 2h-7l-2-2h3l-1-1H1c-.55 0-1 .45-1 1l2.5 2.5L0 10c0 .55.45 1 1 1h2.5l1-1h-3l2-2h7l2 2h-3l1 1H13c.55 0 1-.45 1-1l-2.5-2.5L14 5z"></path>
                                                             </svg>
@@ -729,42 +697,25 @@ All GitHub
                                                     </span>
                                                     </button>
                                                     <ul class="profile-rollup-content mt-1" data-repository-hovercards-enabled="">
-                                                        <li class="d-block mt-1 py-1">
-                                                        <span class="css-truncate">
-                                                            <span class="profile-rollup-icon">
-                                                                <svg class="octicon octicon-repo-forked v-align-middle text-gray-light mr-1" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true">
-                                                                    <path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
-                                                                </svg>
-                                                            </span>
-                                                            <a class="mr-2" href="/baijunyao/cloudnative.to">baijunyao/cloudnative.to</a>
-                                                        </span>
-                                                            <time title="This contribution was made on May 13" class="float-right f6 text-gray-light pt-1">
-                                                                May 13
-                                                            </time>
-                                                        </li>
+                                                        @foreach($yearArticles as $article)
+                                                            <li class="d-block mt-1 py-1">
+                                                                <span class="css-truncate">
+                                                                    <span class="profile-rollup-icon">
+                                                                        <svg class="octicon octicon-repo-forked v-align-middle text-gray-light mr-1" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true">
+                                                                            <path fill-rule="evenodd" d="M8 1a1.993 1.993 0 00-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 002 1a1.993 1.993 0 00-1 3.72V6.5l3 3v1.78A1.993 1.993 0 005 15a1.993 1.993 0 001-3.72V9.5l3-3V4.72A1.993 1.993 0 008 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path>
+                                                                        </svg>
+                                                                    </span>
+                                                                    <a class="mr-2" href="{{ $article->url }}">{{ $article->title }}</a>
+                                                                </span>
+                                                                <time title="This contribution was made on May 13" class="float-right f6 text-gray-light pt-1">
+                                                                    {{ $article->created_at->format('M j') }}
+                                                                </time>
+                                                            </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <!-- '"` --><!-- </textarea></xmp> -->
-                                        <form class="ajax-pagination-form js-ajax-pagination js-show-more-timeline-form "
-                                              data-title="baijunyao (白俊遥) / April 2020" data-year="2020"
-                                              data-url="/baijunyao?tab=overview&amp;from=2020-04-01&amp;to=2020-04-30"
-                                              data-from="2020-05-01" data-to="2020-05-14"
-                                              action="/baijunyao?tab=overview&amp;from=2020-04-01&amp;to=2020-04-30&amp;include_header=no"
-                                              accept-charset="UTF-8" method="get">
-
-                                            <img class="contribution-activity-spinner col-10 next" alt=""
-                                                 src="https://github.githubassets.com/images/spinners/octocat-spinner-128.gif">
-
-                                            <button name="button" type="submit"
-                                                    class="ajax-pagination-btn btn btn-outline border-gray-dark width-full f6 mt-0 py-2 contribution-activity-show-more "
-                                                    data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;TIMELINE_SHOW_MORE&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                    data-hydro-click-hmac="dbeb7054bd5fcb82a8c9d6e5a9d1e1b4f8ecc50c906521da6dcdafe03c4310e4"
-                                                    data-disable-with="Loading...">Show more activity
-                                            </button>
-                                        </form>
                                     </div>
                                 </div>
                                 <div id="year-list-container" class="col-12 col-lg-2 pl-5 hide-sm hide-md hide-lg">
@@ -778,72 +729,20 @@ All GitHub
                                             data-original-top="74px"
                                             style="position: static; top: 74px !important; left: 1525.33px; width: 122.656px;">
                                             <ul class="filter-list small">
-                                                @while ($yearOfFirstArticle < now()->year)
-                                                    <p>{{ $yearOfFirstArticle }}</p>
+                                                @foreach($calendarGraphYears as $calendarGraphYear)
                                                     <li>
-                                                        <a id="year-link-{{ $yearOfFirstArticle }}"
-                                                           class="js-year-link filter-item px-3 mb-2 py-2 selected "
-                                                           aria-label="Contribution activity in {{ $yearOfFirstArticle }}" href="{{ url('/') . '?' }}">2020</a>
+                                                        <a id="year-link-{{ $calendarGraphYear }}" class="filter-item px-3 mb-2 py-2 @if($selectedYear->year === $calendarGraphYear) selected @endif" aria-label="Contribution activity in {{ $calendarGraphYear }}" href="{{ url('/') . '?year=' . $calendarGraphYear }}">{{ $calendarGraphYear }}</a>
                                                     </li>
-                                                    {{ $yearOfFirstArticle++ }}
-                                                @endwhile
-
-                                                <li>
-                                                    <a id="year-link-2019" class="js-year-link filter-item px-3 mb-2 py-2 "
-                                                       aria-label="Contribution activity in 2019"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2019-12-01&amp;to=2019-12-31">2019</a>
-                                                </li>
-                                                <li>
-                                                    <a id="year-link-2018" class="js-year-link filter-item px-3 mb-2 py-2 "
-                                                       aria-label="Contribution activity in 2018"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2018-12-01&amp;to=2018-12-31">2018</a>
-                                                </li>
-                                                <li>
-                                                    <a id="year-link-2017" class="js-year-link filter-item px-3 mb-2 py-2 "
-                                                       aria-label="Contribution activity in 2017"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2017-12-01&amp;to=2017-12-31">2017</a>
-                                                </li>
-                                                <li>
-                                                    <a id="year-link-2016" class="js-year-link filter-item px-3 mb-2 py-2 "
-                                                       aria-label="Contribution activity in 2016"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2016-12-01&amp;to=2016-12-31">2016</a>
-                                                </li>
-                                                <li>
-                                                    <a id="year-link-2015" class="js-year-link filter-item px-3 mb-2 py-2 "
-                                                       aria-label="Contribution activity in 2015"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2015-12-01&amp;to=2015-12-31">2015</a>
-                                                </li>
-                                                <li>
-                                                    <a id="year-link-2014" class="js-year-link filter-item px-3 mb-2 py-2 "
-                                                       aria-label="Contribution activity in 2014"
-                                                       data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;CONTRIBUTION_YEAR_LINK&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                                                       data-hydro-click-hmac="a0cdf62e310985ed78f48690011355c137c0c3c9fc869485e213e2366c447279"
-                                                       href="/baijunyao?tab=overview&amp;from=2014-12-01&amp;to=2014-12-31">2014</a>
-                                                </li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
             </div>
-
         </main>
     </div>
 
@@ -853,14 +752,14 @@ All GitHub
             <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
                 <li class="mr-3 mr-lg-0">© 2020 GitHub, Inc.</li>
                 <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to terms, text:terms"
-                                            href="https://github.com/site/terms">Terms</a></li>
+                                            href="">Terms</a></li>
                 <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to privacy, text:privacy"
-                                            href="https://github.com/site/privacy">Privacy</a></li>
+                                            href="">Privacy</a></li>
                 <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to security, text:security"
-                                            href="https://github.com/security">Security</a></li>
-                <li class="mr-3 mr-lg-0"><a href="https://githubstatus.com/"
+                                            href="">Security</a></li>
+                <li class="mr-3 mr-lg-0"><a href=""
                                             data-ga-click="Footer, go to status, text:status">Status</a></li>
-                <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com">Help</a></li>
+                <li><a data-ga-click="Footer, go to help, text:help" href="">Help</a></li>
 
             </ul>
 
@@ -874,16 +773,16 @@ All GitHub
             </a>
             <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
                 <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to contact, text:contact"
-                                            href="https://github.com/contact">Contact GitHub</a></li>
-                <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing"
+                                            href="">Contact GitHub</a></li>
+                <li class="mr-3 mr-lg-0"><a href=""
                                             data-ga-click="Footer, go to Pricing, text:Pricing">Pricing</a></li>
-                <li class="mr-3 mr-lg-0"><a href="https://developer.github.com" data-ga-click="Footer, go to api, text:api">API</a>
+                <li class="mr-3 mr-lg-0"><a href="" data-ga-click="Footer, go to api, text:api">API</a>
                 </li>
-                <li class="mr-3 mr-lg-0"><a href="https://training.github.com"
+                <li class="mr-3 mr-lg-0"><a href=""
                                             data-ga-click="Footer, go to training, text:training">Training</a></li>
-                <li class="mr-3 mr-lg-0"><a href="https://github.blog"
+                <li class="mr-3 mr-lg-0"><a href=""
                                             data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
-                <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+                <li><a data-ga-click="Footer, go to about, text:about" href="">About</a></li>
             </ul>
         </div>
         <div class="d-flex flex-justify-center pb-6">
