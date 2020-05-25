@@ -15,4 +15,6 @@ use Baijunyao\LaravelRestful\Traits\Update;
 class CategoryController extends Controller
 {
     use Index, Show, Store, Update, Destroy, Restore, ForceDelete;
+
+    protected const PER_PAGE = 1000;
 }
