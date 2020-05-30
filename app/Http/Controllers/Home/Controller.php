@@ -13,7 +13,8 @@ class Controller extends BaseController
     public function __construct()
     {
         app()->extend(BaseViewFactory::class, function ($view, $app) {
-            return new ExtendViewFactory($app['view.engine.resolver'], $app['view.finder'], $app['events']);
+            /** @var \Illuminate\View\Factory $view */
+            return new ExtendViewFactory($view->getEngineResolver(), $view->getFinder(), $view->getDispatcher());
         });
     }
 }

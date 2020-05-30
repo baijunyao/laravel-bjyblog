@@ -11,8 +11,7 @@ class Factory extends BaseFactory
 {
     public function make($view, $data = [], $mergeData = [])
     {
-        $view = Str::contains($view, 'breadcrumbs') || Str::startsWith($view, config('bjyblog.theme') . '.') ? $view : config('bjyblog.theme') . '.' . $view;
-        $view = str_replace('errors::', 'errors.', $view);
+        $view = Str::contains($view, '::') || Str::startsWith($view, config('bjyblog.theme') . '.') ? $view : config('bjyblog.theme') . '.' . $view;
 
         return parent::make($view, $data, $mergeData);
     }
