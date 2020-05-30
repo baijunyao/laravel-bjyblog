@@ -15,4 +15,6 @@ use Baijunyao\LaravelRestful\Traits\Update;
 class TagController extends Controller
 {
     use Index, Show, Store, Update, Destroy, Restore, ForceDelete;
+
+    protected const PER_PAGE = 1000;
 }
