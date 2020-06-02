@@ -7,10 +7,32 @@ namespace App\Http\Controllers\Home;
 use App\Http\Requests\Comment\Store;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
+use Illuminate\Http\Request;
 use Str;
 
 class CommentController extends Controller
 {
+    public function index(Request $request)
+    {
+        $article_id = $request->route('article');
+
+        $comments = Comment::where('article_id', $article_id)
+            ->whereNull('parent_id')
+            ->with('socialiteUser')
+            ->get();
+
+        $assign = [
+            'comments' => $comments,
+            'head'     => [
+                'title'       => 'Comment',
+                'keywords'    => '',
+                'description' => '',
+            ],
+        ];
+
+        return view('home.comment.index', $assign);
+    }
+
     public function store(Store $request)
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
