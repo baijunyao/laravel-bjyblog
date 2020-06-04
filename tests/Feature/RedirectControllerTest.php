@@ -32,4 +32,9 @@ class RedirectControllerTest extends TestCase
     {
         $this->get('git')->assertRedirect('openSource');
     }
+
+    public function testLogin()
+    {
+        $this->get('login')->assertRedirect('auth/socialite/redirectToProvider/github');
+    }
 }

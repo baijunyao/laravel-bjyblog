@@ -9,3 +9,5 @@ Route::get('auth/oauth/logout', 'RedirectController@logout');
 
 Route::get('chat', 'RedirectController@note')->name('home.chat');
 Route::get('git', 'RedirectController@openSource')->name('home.git');
+
+Route::get('login', 'RedirectController@login')->name('login');
