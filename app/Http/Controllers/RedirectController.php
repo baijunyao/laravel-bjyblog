@@ -34,4 +34,9 @@ class RedirectController extends Controller
     {
         return redirect()->route('home.openSource.index');
     }
+
+    public function login()
+    {
+        return redirect()->route('auth.socialite.redirectToProvider', ['github']);
+    }
 }
