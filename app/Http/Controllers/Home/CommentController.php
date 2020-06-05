@@ -33,6 +33,29 @@ class CommentController extends Controller
         return view('home.comment.index', $assign);
     }
 
+    public function show(Request $request, $id)
+    {
+        $comments = Comment::where('id', $id)
+            ->orWhere('parent_id', $id)
+            ->with('socialiteUser')
+            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
+                return $query->where('is_audited', 1);
+            })
+            ->get()
+            ->toFlatTree();
+
+        $assign = [
+            'comments' => $comments,
+            'head'     => [
+                'title'       => 'Comment',
+                'keywords'    => '',
+                'description' => '',
+            ],
+        ];
+
+        return view('home.comment.show', $assign);
+    }
+
     public function store(Store $request)
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
