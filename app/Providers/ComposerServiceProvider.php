@@ -76,6 +76,13 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
+        // 开源项目数据
+        view()->composer(['blueberry/home/index/openSource', 'github/home/index/openSource'], function ($view) {
+            $openSources = OpenSource::select('name', 'type')->orderBy('sort')->get();
+
+            $view->with(compact('openSources'));
+        });
+
         switch (config('bjyblog.theme')) {
             case 'blueberry':
                 $this->assignBlueberryThemeData();
@@ -111,14 +118,6 @@ class ComposerServiceProvider extends ServiceProvider
                 'services.' . $socialiteClient->name . '.client_id'     => $socialiteClient->client_id,
                 'services.' . $socialiteClient->name . '.client_secret' => $socialiteClient->client_secret,
             ]);
-        });
-
-        // 开源项目数据
-        view()->composer(['blueberry/layouts/home', 'blueberry/home/index/openSource'], function ($view) {
-            $openSource = OpenSource::select('name', 'type')->orderBy('sort')->get();
-            // 分配数据
-            $assign = compact('openSource');
-            $view->with($assign);
         });
 
         // 获取各种统计

@@ -11,6 +11,11 @@ class OpenSourceController extends Controller
         $assign = [
             'category_id' => 'openSource',
             'title'       => __('Open Source'),
+            'head'        => [
+                'title'       => 'Open Source',
+                'keywords'    => '',
+                'description' => '',
+            ],
         ];
 
         return view('home.index.openSource', $assign);

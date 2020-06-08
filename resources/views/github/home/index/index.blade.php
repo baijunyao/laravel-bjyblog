@@ -132,16 +132,10 @@
                     <div class="UnderlineNav width-full user-profile-nav js-sticky top-0" data-original-top="0px"
                          style="position: static; top: 0px !important; left: 720px; width: 928px;">
                         <nav class="UnderlineNav-body" data-pjax="" aria-label="User profile">
-                            <a aria-current="page" class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected "
-                               data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;TAB_OVERVIEW&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                               data-hydro-click-hmac="a9a7f35540d986738e7ac72355d6c9ea5b01c9c032336a05f7e32959bc42bd05"
-                               href="/baijunyao">
+                            <a aria-current="page" class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected " href="href="{{ url('/') }}"">
                                 Overview
                             </a>
-                            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 "
-                               data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;TAB_REPOSITORIES&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                               data-hydro-click-hmac="e7f95b1fb793606e452b95f68cd3edb93158f43c5c99f485d8a2f779f4ddc931"
-                               href="/baijunyao?tab=repositories">
+                            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="{{ url('openSource') }}">
                                 Repositories
                                 <span class="Counter hide-lg hide-md hide-sm">
         89
