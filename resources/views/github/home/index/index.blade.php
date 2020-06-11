@@ -168,10 +168,7 @@
     3k
 </span>
                             </a>
-                            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 "
-                               data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:9360694,&quot;target&quot;:&quot;TAB_FOLLOWERS&quot;,&quot;user_id&quot;:null,&quot;originating_url&quot;:&quot;https://github.com/baijunyao&quot;}}"
-                               data-hydro-click-hmac="713e7160a95181f9c3639ca51b04b5c9a31a4091be6516a9514140002464aa08"
-                               href="/baijunyao?tab=followers">
+                            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="{{ route('home.socialiteUser.index') }}">
                                 Followers
                                 <span class="Counter hide-lg hide-md hide-sm">
     535
