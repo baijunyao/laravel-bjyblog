@@ -16,6 +16,7 @@ Route::namespace('Home')->name('home.')->group(function () {
     Route::get('note', 'NoteController@index')->name('note.index');
     Route::get('openSource', 'OpenSourceController@index')->name('openSource.index');
     Route::get('socialiteUser', 'SocialiteUserController@index')->name('socialiteUser.index');
+    Route::get('friendshipLink', 'FriendshipLinkController@index')->name('friendshipLink.index');
     Route::get('feed', 'FeedController@index')->name('feed.index');
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/', 'SiteController@index')->name('index');
