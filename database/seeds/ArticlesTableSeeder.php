@@ -21,14 +21,14 @@ class ArticlesTableSeeder extends Seeder
                 'title'       => '欢迎使用 laravel-bjyblog',
                 'slug'        => 'welcome-to-laravel-bjyblog',
                 'author'      => '白俊遥',
-                'markdown'    => '1. [切换语言](https://baijunyao.com/docs/laravel-bjyblog/其他配置.html) 
-![](/uploads/article/5d9829577d311.png)  
-2. [清空测试数据](https://baijunyao.com/docs/laravel-bjyblog/清空测试数据.html)  
+                'markdown'    => '1. [切换语言](https://baijunyao.com/docs/laravel-bjyblog/其他配置.html)
+![](/images/default/article.png)
+2. [清空测试数据](https://baijunyao.com/docs/laravel-bjyblog/清空测试数据.html)
 3. [升级版本](https://baijunyao.com/docs/laravel-bjyblog/升级版本.html)',
                 'html'        => '<ol>
 <li>
 <a href="https://baijunyao.com/docs/laravel-bjyblog/%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE.html">切换语言</a>
-<img src="/uploads/article/5d9829577d311.png" alt="" />
+<img src="/images/default/article.png" alt="" />
 </li>
 <li>
 <a href="https://baijunyao.com/docs/laravel-bjyblog/%E6%B8%85%E7%A9%BA%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html">清空测试数据</a>
@@ -40,7 +40,7 @@ class ArticlesTableSeeder extends Seeder
 ',
                 'description' => '欢迎使用 laravel-bjyblog',
                 'keywords'    => 'laravel',
-                'cover'       => '/uploads/article/5d9829577d311.png',
+                'cover'       => '/images/default/article.png',
                 'is_top'      => 1,
                 'views'       => 666,
                 'created_at'  => '2017-7-16 07:35:12',
@@ -57,7 +57,7 @@ class ArticlesTableSeeder extends Seeder
                 'html'        => '内容',
                 'description' => '描述',
                 'keywords'    => 'test',
-                'cover'       => '/uploads/article/5d9829577d311.png',
+                'cover'       => '/images/default/article.png',
                 'is_top'      => 0,
                 'views'       => 222,
                 'created_at'  => '2019-01-04 16:35:12',
@@ -70,14 +70,14 @@ class ArticlesTableSeeder extends Seeder
                 'title'       => 'Welcome to laravel-bjyblog',
                 'slug'        => 'welcome-to-laravel-bjyblog',
                 'author'      => 'baijunyao',
-                'markdown'    => '1. [Switch language](https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html) 
-![](/uploads/article/5d9829577d311.png)  
-2. [Clear test data](https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html)  
+                'markdown'    => '1. [Switch language](https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html)
+![](/images/default/article.png)
+2. [Clear test data](https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html)
 3. [Upgrade version](https://baijunyao.com/docs/laravel-bjyblog/en/Upgrade.html)',
                 'html'        => '<ol>
 <li>
 <a href="https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html">Switch language</a>
-<img src="/uploads/article/5d9829577d311.png" alt="" />
+<img src="/images/default/article.png" alt="" />
 </li>
 <li>
 <a href="https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html">Clear test data</a>
@@ -89,7 +89,7 @@ class ArticlesTableSeeder extends Seeder
 ',
                 'description' => 'welcome to laravel-bjyblog',
                 'keywords'    => 'laravel-bjyblog',
-                'cover'       => '/uploads/article/5d9829577d311.png',
+                'cover'       => '/images/default/article.png',
                 'is_top'      => 0,
                 'views'       => 333,
                 'created_at'  => '2019-10-05 14:35:12',

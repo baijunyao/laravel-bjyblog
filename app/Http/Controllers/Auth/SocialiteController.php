@@ -113,7 +113,7 @@ class SocialiteController extends Controller
             ]);
         } catch (Exception $e) {
             // 如果下载失败；则使用默认图片
-            copy(public_path('uploads/avatar/default.jpg'), $avatarPath);
+            copy(public_path('images/default/avatar.jpg'), $avatarPath);
         }
 
         Auth::guard('socialite')->loginUsingId($userId, true);

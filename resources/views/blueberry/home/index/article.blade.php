@@ -129,7 +129,7 @@
 
                 <div id="comment-{{ $comment->id }}" class="row b-user b-depth-padding-{{ $comment->depth }} @if($comment->depth === 0) b-parent @endif">
                     <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 b-pic-col">
-                        <img class="b-user-pic bjy-lazyload" src="{{ asset('uploads/avatar/default.jpg') }}" data-src="{{ asset($comment->socialiteUser->avatar) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+                        <img class="b-user-pic bjy-lazyload" src="{{ asset('images/default/avatar.jpg') }}" data-src="{{ asset($comment->socialiteUser->avatar) }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                         @if($comment->socialiteUser->is_admin === 1)
                             <img class="b-crown" src="{{ asset('images/home/crown.png') }}" alt="{{ config('app.name') }}">
                         @endif

@@ -15,7 +15,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
+                            <img src="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->avatar : asset('images/default/avatar.jpg') }}" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>{{ __('Admin Welcome') }}</span>

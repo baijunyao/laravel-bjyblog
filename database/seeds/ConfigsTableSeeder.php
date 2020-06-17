@@ -195,7 +195,7 @@ class ConfigsTableSeeder extends Seeder
             [
                 'id'         => 153,
                 'name'       => 'bjyblog.qq_qun.or_code',
-                'value'      => '/uploads/images/default.png',
+                'value'      => '/images/default/qr_code.png',
                 'created_at' => '2018-08-22 21:03:01',
                 'updated_at' => '2018-08-22 21:03:01',
                 'deleted_at' => null,
