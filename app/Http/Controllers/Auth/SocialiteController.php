@@ -9,6 +9,7 @@ use App\Models\SocialiteClient;
 use App\Models\SocialiteUser;
 use Auth;
 use Exception;
+use File;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Socialite;
@@ -104,7 +105,8 @@ class SocialiteController extends Controller
             ]);
         }
 
-        $avatarPath = public_path('uploads/avatar/' . $userId . '.jpg');
+        $avatarPath = storage_path('app/public/uploads/avatar/' . $userId . '.jpg');
+
         try {
             // 下载最新的头像到本地
             $client = new Client();
@@ -113,7 +115,12 @@ class SocialiteController extends Controller
             ]);
         } catch (Exception $e) {
             // 如果下载失败；则使用默认图片
-            copy(public_path('images/default/avatar.jpg'), $avatarPath);
+
+            if (!File::isDirectory(storage_path('app/public/uploads/avatar'))) {
+                File::makeDirectory(storage_path('app/public/uploads/avatar'), 0755, true);
+            }
+
+            File::copy(public_path('images/default/avatar.jpg'), $avatarPath);
         }
 
         Auth::guard('socialite')->loginUsingId($userId, true);

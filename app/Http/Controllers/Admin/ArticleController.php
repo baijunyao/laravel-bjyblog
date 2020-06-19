@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Models\Config;
 use App\Models\Tag;
 use Baijunyao\LaravelUpload\Upload;
+use DB;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -153,24 +154,27 @@ class ArticleController extends Controller
 
     public function replace(Request $request)
     {
-        $search  = $request->input('search');
-        $replace = $request->input('replace');
-        $data    = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
+        $search   = $request->input('search');
+        $replace  = $request->input('replace');
+        $articles = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
             ->where('title', 'like', "%$search%")
             ->orWhere('keywords', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%")
             ->orWhere('markdown', 'like', "%$search%")
             ->orWhere('html', 'like', "%$search%")
             ->get();
-        foreach ($data as $k => $v) {
-            Article::find($v->id)->update([
-                'title'       => str_replace($search, $replace, $v->title),
-                'keywords'    => str_replace($search, $replace, $v->keywords),
-                'description' => str_replace($search, $replace, $v->description),
-                'markdown'    => str_replace($search, $replace, $v->markdown),
-                'html'        => str_replace($search, $replace, $v->html),
+
+        foreach ($articles as $article) {
+            DB::table('articles')->where('id', $article->id)->update([
+                'title'       => str_replace($search, $replace, $article->title),
+                'keywords'    => str_replace($search, $replace, $article->keywords),
+                'description' => str_replace($search, $replace, $article->description),
+                'markdown'    => str_replace($search, $replace, $article->markdown),
+                'html'        => str_replace($search, $replace, $article->html),
             ]);
         }
+
+        flash_success(__('Update Success'));
 
         return redirect()->back();
     }
