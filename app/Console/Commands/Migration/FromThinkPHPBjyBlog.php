@@ -264,7 +264,7 @@ class FromThinkPHPBjyBlog extends Command
                         'sink' => public_path($avatarPath),
                     ]);
                 } catch (ClientException $e) {
-                    copy(public_path('uploads/avatar/default.jpg'), public_path($avatarPath));
+                    copy(public_path('images/default/avatar.jpg'), public_path($avatarPath));
                 }
 
                 SocialiteUser::where('id', $v->id)->update([

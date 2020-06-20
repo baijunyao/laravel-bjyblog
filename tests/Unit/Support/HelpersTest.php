@@ -48,7 +48,7 @@ class HelpersTest extends TestCase
         $html = <<<'HTML'
 <ol>
     <li>
-        <img src="/uploads/article/5d9829577d311.png" alt="" />
+        <img src="/images/default/article.png" alt="" />
     </li>
     <li>
         <img src="/uploads/article/5d9829577d312.png" alt="" />
@@ -56,7 +56,7 @@ class HelpersTest extends TestCase
 </ol>
 HTML;
         static::assertSame(get_image_paths_from_html($html), [
-            '/uploads/article/5d9829577d311.png',
+            '/images/default/article.png',
             '/uploads/article/5d9829577d312.png',
         ]);
     }

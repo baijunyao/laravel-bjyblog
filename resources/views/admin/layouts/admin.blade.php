@@ -15,7 +15,7 @@
                     <!-- menu profile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->avatar : asset('uploads/avatar/default.jpg') }}" class="img-circle profile_img">
+                            <img src="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->avatar : asset('images/default/avatar.jpg') }}" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>{{ __('Admin Welcome') }}</span>
@@ -89,6 +89,7 @@
                                             <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
                                         @endif
                                         <li><a href="{{ url('admin/config/backup') }}">{{ __('Backup') }}</a></li>
+                                        <li><a href="{{ url('admin/config/upload') }}">{{ __('Upload') }}</a></li>
                                         <li><a href="{{ url('admin/config/seo') }}">{{ __('SEO') }}</a></li>
                                         <li><a href="{{ url('admin/config/socialShare') }}">{{ __('Social Share') }}</a></li>
                                         <li><a href="{{ url('admin/config/socialLinks') }}">{{ __('Social Links') }}</a></li>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f758c59f2a1905c85d59bb906948ce0",
+    "content-hash": "80d26f650b0b7457bd544e3fa0c1fd12",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -781,45 +781,6 @@
             "time": "2018-08-13T07:37:01+00:00"
         },
         {
-            "name": "baijunyao/laravel-upload",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/baijunyao/laravel-upload.git",
-                "reference": "c62e3e5651f7e445cc284ced8a7f74278a4af73f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-upload/zipball/c62e3e5651f7e445cc284ced8a7f74278a4af73f",
-                "reference": "c62e3e5651f7e445cc284ced8a7f74278a4af73f",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Baijunyao\\LaravelUpload\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "baijunyao",
-                    "email": "baijunyao@baijunyao.com"
-                }
-            ],
-            "description": "upload",
-            "time": "2018-07-26T03:45:38+00:00"
-        },
-        {
             "name": "brick/math",
             "version": "0.8.15",
             "source": {
@@ -868,6 +829,12 @@
                 "bignum",
                 "brick",
                 "math"
+            ],
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/brick/math",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-15T15:59:35+00:00"
         },
@@ -2517,6 +2484,20 @@
                 "laravel",
                 "markdown"
             ],
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/GrahamJCampbell",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/graham-campbell/markdown",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-04-14T14:11:12+00:00"
         },
         {
@@ -4077,7 +4058,7 @@
                 "laravelium",
                 "rss"
             ],
-            "time": "2020-03-28T12:53:42+00:00"
+            "time": "2020-03-28T10:53:42+00:00"
         },
         {
             "name": "lcobucci/jwt",
@@ -5428,6 +5409,12 @@
                 "laravel",
                 "locale",
                 "overtrue"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/overtrue",
+                    "type": "patreon"
+                }
             ],
             "time": "2020-03-06T02:39:28+00:00"
         },
@@ -11116,6 +11103,12 @@
                 "flare",
                 "reporting"
             ],
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/spatie",
+                    "type": "patreon"
+                }
+            ],
             "time": "2020-03-02T15:52:04+00:00"
         },
         {
@@ -11357,6 +11350,12 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
+            "funding": [
+                {
+                    "url": "https://github.com/keradus",
+                    "type": "github"
+                }
+            ],
             "time": "2020-04-15T18:51:10+00:00"
         },
         {
@@ -12985,6 +12984,12 @@
                 "highlight.js",
                 "highlight.php",
                 "syntax"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/allejo",
+                    "type": "github"
+                }
             ],
             "time": "2020-03-02T05:59:21+00:00"
         },
