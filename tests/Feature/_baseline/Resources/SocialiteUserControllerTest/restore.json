@@ -21,7 +21,7 @@
             "id": 2,
             "name": "已删除",
             "email": "deleted@baijunyao.com",
-            "avatar": "\/uploads\/article\/default.jpg",
+            "avatar": "\/images\/default\/avatar.jpg",
             "is_admin": 0,
             "socialite_client": {
                 "id": 1,

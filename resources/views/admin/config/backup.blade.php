@@ -13,7 +13,7 @@
                 <td>
                     <input class="bjy-icheck" type="checkbox" name="164[]" value="local" @if(in_array('local', $config['backup.backup.destination.disks'])) checked  @endif>{{ __('Local') }}
                     &emsp;
-                    <input class="bjy-icheck" type="checkbox" name="164[]" value="oss" @if(in_array('oss', $config['backup.backup.destination.disks'])) checked  @endif>{{ __('Aliyun') }} OSS
+                    <input class="bjy-icheck" type="checkbox" name="164[]" value="oss_backups" @if(in_array('oss_backups', $config['backup.backup.destination.disks'])) checked  @endif>{{ __('Aliyun') }} OSS
                 </td>
             </tr>
             <tr>
@@ -31,25 +31,25 @@
             <tr>
                 <th>{{ __('Aliyun') }} AccessKeyID：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="160" value="{{ $config['filesystems.disks.oss.access_key'] }}" >
+                    <input class="form-control modal-sm" type="text" name="160" value="{{ $config['filesystems.disks.oss_backups.access_key'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Aliyun') }} AccessKeySecret：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="161" value="{{ $config['filesystems.disks.oss.secret_key'] }}" >
+                    <input class="form-control modal-sm" type="text" name="161" value="{{ $config['filesystems.disks.oss_backups.secret_key'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Aliyun') }} BUCKET：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="162" value="{{ $config['filesystems.disks.oss.bucket'] }}" >
+                    <input class="form-control modal-sm" type="text" name="162" value="{{ $config['filesystems.disks.oss_backups.bucket'] }}" >
                 </td>
             </tr>
             <tr>
                 <th>{{ __('Aliyun') }} ENDPOINT：</th>
                 <td>
-                    <input class="form-control modal-sm" type="text" name="163" value="{{ $config['filesystems.disks.oss.endpoint'] }}" >
+                    <input class="form-control modal-sm" type="text" name="163" value="{{ $config['filesystems.disks.oss_backups.endpoint'] }}" >
                 </td>
             </tr>
             <tr>

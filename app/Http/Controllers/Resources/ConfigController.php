@@ -8,7 +8,6 @@ use App\Http\Requests\Config\QqQunOrCode;
 use Baijunyao\LaravelRestful\Traits\Index;
 use Baijunyao\LaravelRestful\Traits\Show;
 use Baijunyao\LaravelRestful\Traits\Update;
-use Baijunyao\LaravelUpload\Upload;
 
 class ConfigController extends Controller
 {
@@ -18,11 +17,16 @@ class ConfigController extends Controller
 
     public function uploadQqQunOrCode(QqQunOrCode $request)
     {
-        $file = Upload::file('file', 'uploads/images', [], false);
-        $path = $file['status_code'] === 200 ? $file['data'][0]['path'] : '';
+        $result = [
+            'success' => 1,
+            'message' => 'success',
+            'url'     => '',
+        ];
 
-        return response()->json([
-            'url' => $path,
-        ]);
+        foreach (config('bjyblog.upload_disks') as $disk) {
+            $result['url'] = $request->file('file')->store('uploads/images', $disk);
+        }
+
+        return response()->json($result);
     }
 }

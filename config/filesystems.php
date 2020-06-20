@@ -64,14 +64,24 @@ return [
             'url' => env('AWS_URL'),
         ],
 
-        'oss' => [
+        'oss_backups' => [
             'driver' => 'oss',
             'root' => '',
-            'access_key' => env('OSS_ACCESS_KEY'),
-            'secret_key' => env('OSS_SECRET_KEY'),
-            'endpoint'   => env('OSS_ENDPOINT'),
-            'bucket'     => env('OSS_BUCKET'),
-            'isCName'    => env('OSS_IS_CNAME', false),
+            'access_key' => '',
+            'secret_key' => '',
+            'endpoint' => '',
+            'bucket' => '',
+            'isCName' => false,
+        ],
+
+        'oss_uploads' => [
+            'driver' => 'oss',
+            'root' => '',
+            'access_key' => '',
+            'secret_key' => '',
+            'endpoint' => '',
+            'bucket' => '',
+            'isCName' => false,
         ],
     ],
 
@@ -87,7 +97,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('uploads') => storage_path('app/public/uploads'),
     ],
 
 ];

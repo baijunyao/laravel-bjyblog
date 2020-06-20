@@ -11,8 +11,9 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Config;
 use App\Models\Tag;
-use Baijunyao\LaravelUpload\Upload;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 
 class ArticleController extends Controller
 {
@@ -48,40 +49,34 @@ class ArticleController extends Controller
         return view('admin.article.create', $assign);
     }
 
-    public function uploadImage()
+    public function uploadImage(Request $request)
     {
-        $result = Upload::image('editormd-image-file', 'uploads/article');
-        if ($result['status_code'] === 200) {
-            $data = [
-                'success' => 1,
-                'message' => $result['message'],
-                'url'     => $result['data'][0]['path'],
-            ];
-        } else {
-            $data = [
-                'success' => 0,
-                'message' => $result['message'],
-                'url'     => '',
-            ];
+        $result = [
+            'success' => 1,
+            'message' => 'success',
+            'url'     => '',
+        ];
+
+        foreach (config('bjyblog.upload_disks') as $disk) {
+            $result['url'] = $request->file('editormd-image-file')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
         }
 
-        return response()->json($data);
+        return response()->json($result);
     }
 
     public function store(Store $request)
     {
-        $data = $request->except('_token');
+        $article = $request->except('_token');
 
         if ($request->hasFile('cover')) {
-            $result = Upload::file('cover', 'uploads/article');
-            if ($result['status_code'] === 200) {
-                $data['cover'] = $result['data'][0]['path'];
+            foreach (config('bjyblog.upload_disks') as $disk) {
+                $article['cover'] = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
             }
         }
 
-        $tag_ids = $data['tag_ids'];
-        unset($data['tag_ids']);
-        $article = Article::create($data);
+        $tag_ids = $article['tag_ids'];
+        unset($article['tag_ids']);
+        $article = Article::create($article);
 
         $articleTag = new ArticleTag();
         $articleTag->addTagIds($article->id, $tag_ids);
@@ -96,26 +91,23 @@ class ArticleController extends Controller
         $article  = Article::withTrashed()->find($id);
         $article->setAttribute('tag_ids', ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray());
 
-        $assign = compact('article', 'category', 'tag');
-
-        return view('admin.article.edit', $assign);
+        return view('admin.article.edit', compact('article', 'category', 'tag'));
     }
 
     public function update(Store $request, ArticleTag $articleTagModel, $id)
     {
-        $data = $request->except('_token');
+        $article = $request->except('_token');
 
         // 上传封面图
         if ($request->hasFile('cover')) {
-            $result = Upload::file('cover', 'uploads/article');
-            if ($result['status_code'] === 200) {
-                $data['cover'] = $result['data'][0]['path'];
+            foreach (config('bjyblog.upload_disks') as $disk) {
+                $article['cover'] = '/' . $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
             }
         }
 
-        $tag_ids = $data['tag_ids'];
-        unset($data['tag_ids']);
-        $result = Article::withTrashed()->find($id)->update($data);
+        $tag_ids = $article['tag_ids'];
+        unset($article['tag_ids']);
+        $result = Article::withTrashed()->find($id)->update($article);
 
         if ($result) {
             ArticleTag::where('article_id', $id)->forceDelete();
@@ -153,24 +145,27 @@ class ArticleController extends Controller
 
     public function replace(Request $request)
     {
-        $search  = $request->input('search');
-        $replace = $request->input('replace');
-        $data    = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
+        $search   = $request->input('search');
+        $replace  = $request->input('replace');
+        $articles = Article::select('id', 'title', 'keywords', 'description', 'markdown', 'html')
             ->where('title', 'like', "%$search%")
             ->orWhere('keywords', 'like', "%$search%")
             ->orWhere('description', 'like', "%$search%")
             ->orWhere('markdown', 'like', "%$search%")
             ->orWhere('html', 'like', "%$search%")
             ->get();
-        foreach ($data as $k => $v) {
-            Article::find($v->id)->update([
-                'title'       => str_replace($search, $replace, $v->title),
-                'keywords'    => str_replace($search, $replace, $v->keywords),
-                'description' => str_replace($search, $replace, $v->description),
-                'markdown'    => str_replace($search, $replace, $v->markdown),
-                'html'        => str_replace($search, $replace, $v->html),
+
+        foreach ($articles as $article) {
+            DB::table('articles')->where('id', $article->id)->update([
+                'title'       => str_replace($search, $replace, $article->title),
+                'keywords'    => str_replace($search, $replace, $article->keywords),
+                'description' => str_replace($search, $replace, $article->description),
+                'markdown'    => str_replace($search, $replace, $article->markdown),
+                'html'        => str_replace($search, $replace, $article->html),
             ]);
         }
+
+        flash_success(__('Update Success'));
 
         return redirect()->back();
     }

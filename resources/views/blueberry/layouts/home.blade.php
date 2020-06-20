@@ -134,7 +134,7 @@
                 <div>
                     @foreach($latestComments as $comment)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
-                            <img class="b-head-img bjy-lazyload" src="{{ cdn_url('uploads/avatar/default.jpg') }}" data-src="{{ cdn_url($comment->socialiteUser->avatar) }}" alt="{{ $comment->socialiteUser->name }}">
+                            <img class="b-head-img bjy-lazyload" src="{{ cdn_url('images/default/avatar.jpg') }}" data-src="{{ cdn_url($comment->socialiteUser->avatar) }}" alt="{{ $comment->socialiteUser->name }}">
                             <li class="b-nickname">
                                 {{ $comment->socialiteUser->name }} <i class="fa fa-{{ $comment->socialiteUser->socialiteClient->icon }}"></i> <span>{{ $comment->created_at->diffForHumans() }}</span>
                             </li>

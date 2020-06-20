@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.15.0 on 2020-06-13 00:14:08.
+ * Generated for Laravel 7.16.1 on 2020-06-20 23:16:12.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16448,7 +16448,7 @@ namespace Jenssegers\Agent\Facades {
          * Get the browser name.
          *
          * @param string|null $userAgent
-         * @return string 
+         * @return string|bool 
          * @static 
          */ 
         public static function browser($userAgent = null)
@@ -16461,7 +16461,7 @@ namespace Jenssegers\Agent\Facades {
          * Get the platform name.
          *
          * @param string|null $userAgent
-         * @return string 
+         * @return string|bool 
          * @static 
          */ 
         public static function platform($userAgent = null)
@@ -16474,7 +16474,7 @@ namespace Jenssegers\Agent\Facades {
          * Get the device name.
          *
          * @param string|null $userAgent
-         * @return string 
+         * @return string|bool 
          * @static 
          */ 
         public static function device($userAgent = null)
@@ -16535,6 +16535,20 @@ namespace Jenssegers\Agent\Facades {
         {
                         /** @var \Jenssegers\Agent\Agent $instance */
                         return $instance->isRobot($userAgent);
+        }
+        
+        /**
+         * Get the device type
+         *
+         * @param null $userAgent
+         * @param null $httpHeaders
+         * @return string 
+         * @static 
+         */ 
+        public static function deviceType($userAgent = null, $httpHeaders = null)
+        {
+                        /** @var \Jenssegers\Agent\Agent $instance */
+                        return $instance->deviceType($userAgent, $httpHeaders);
         }
         
         /**
@@ -17932,7 +17946,7 @@ namespace  {
             }
          
             /**
-             * Execute a callback over each item while chunking by id.
+             * Execute a callback over each item while chunking by ID.
              *
              * @param callable $callback
              * @param int $count
