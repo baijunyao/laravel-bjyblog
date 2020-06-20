@@ -89,6 +89,7 @@
                                             <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
                                         @endif
                                         <li><a href="{{ url('admin/config/backup') }}">{{ __('Backup') }}</a></li>
+                                        <li><a href="{{ url('admin/config/upload') }}">{{ __('Upload') }}</a></li>
                                         <li><a href="{{ url('admin/config/seo') }}">{{ __('SEO') }}</a></li>
                                         <li><a href="{{ url('admin/config/socialShare') }}">{{ __('Social Share') }}</a></li>
                                         <li><a href="{{ url('admin/config/socialLinks') }}">{{ __('Social Links') }}</a></li>

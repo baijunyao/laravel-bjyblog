@@ -51,13 +51,17 @@ class ArticleController extends Controller
 
     public function uploadImage(Request $request)
     {
-        $imagePath = $request->file('editormd-image-file')->store('uploads/article/' . Date::now()->format('Ymd'), 'public');
-
-        return response()->json([
+        $result = [
             'success' => 1,
             'message' => 'success',
-            'url'     => '/' . $imagePath,
-        ]);
+            'url'     => '',
+        ];
+
+        foreach (config('bjyblog.upload_disks') as $disk) {
+            $result['url'] = $request->file('editormd-image-file')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+        }
+
+        return response()->json($result);
     }
 
     public function store(Store $request)
@@ -65,8 +69,9 @@ class ArticleController extends Controller
         $article = $request->except('_token');
 
         if ($request->hasFile('cover')) {
-            $imagePath        = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), 'public');
-            $article['cover'] = '/' . $imagePath;
+            foreach (config('bjyblog.upload_disks') as $disk) {
+                $article['cover'] = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+            }
         }
 
         $tag_ids = $article['tag_ids'];
@@ -95,8 +100,9 @@ class ArticleController extends Controller
 
         // 上传封面图
         if ($request->hasFile('cover')) {
-            $imagePath        = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), 'public');
-            $article['cover'] = '/' . $imagePath;
+            foreach (config('bjyblog.upload_disks') as $disk) {
+                $article['cover'] = '/' . $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+            }
         }
 
         $tag_ids = $article['tag_ids'];

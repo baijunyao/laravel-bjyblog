@@ -17,10 +17,16 @@ class ConfigController extends Controller
 
     public function uploadQqQunOrCode(QqQunOrCode $request)
     {
-        $imagePath = $request->file('file')->store('uploads/images', 'public');
+        $result = [
+            'success' => 1,
+            'message' => 'success',
+            'url'     => '',
+        ];
 
-        return response()->json([
-            'url' => $imagePath,
-        ]);
+        foreach (config('bjyblog.upload_disks') as $disk) {
+            $result['url'] = $request->file('file')->store('uploads/images', $disk);
+        }
+
+        return response()->json($result);
     }
 }

@@ -11,12 +11,16 @@ class ArticleCoverController extends Controller
 {
     public function store(Store $request)
     {
-        $imagePath = $request->file('cover')->store('uploads/article' . Date::now()->format('Ymd'), 'public');
-
-        return response()->json([
+        $result = [
             'success' => 1,
             'message' => 'success',
-            'url'     => '/' . $imagePath,
-        ]);
+            'url'     => '',
+        ];
+
+        foreach (config('bjyblog.upload_disks') as $disk) {
+            $result['url'] = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+        }
+
+        return response()->json($result);
     }
 }

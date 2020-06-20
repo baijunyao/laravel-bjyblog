@@ -36,6 +36,11 @@ class ConfigController extends Controller
         return view('admin.config.backup');
     }
 
+    public function upload()
+    {
+        return view('admin.config.upload');
+    }
+
     public function seo()
     {
         return view('admin.config.seo');
@@ -71,8 +76,9 @@ class ConfigController extends Controller
         $configs = $request->except('_token');
 
         if ($request->hasFile('153')) {
-            $imagePath      = $request->file('153')->store('uploads/images', 'public');
-            $configs['153'] = '/' . $imagePath;
+            foreach (config('bjyblog.upload_disks') as $disk) {
+                $configs['153'] = '/' . $request->file('153')->store('uploads/images', $disk);
+            }
         }
 
         if (isset($configs['165']) && empty($configs['164'])) {

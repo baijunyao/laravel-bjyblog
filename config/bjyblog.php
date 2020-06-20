@@ -63,4 +63,5 @@ return [
         'language' => '',
     ],
     'theme' => '',
+    'upload_disks' => '',
 ];
