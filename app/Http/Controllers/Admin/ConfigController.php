@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Config;
 use Artisan;
-use Baijunyao\LaravelUpload\Upload;
 use Illuminate\Http\Request;
 
 class ConfigController extends Controller
@@ -72,9 +71,8 @@ class ConfigController extends Controller
         $configs = $request->except('_token');
 
         if ($request->hasFile('153')) {
-            $file           = Upload::file('153', 'uploads/images', [], false);
-            $result         = $file['status_code'] === 200 ? $file['data'][0]['path'] : '';
-            $configs['153'] = $result;
+            $imagePath      = $request->file('153')->store('uploads/images', 'public');
+            $configs['153'] = '/' . $imagePath;
         }
 
         if (isset($configs['165']) && empty($configs['164'])) {

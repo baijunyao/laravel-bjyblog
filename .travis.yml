@@ -14,6 +14,7 @@ before_script:
   - php artisan passport:keys
   - php artisan migrate
   - php artisan db:seed
+  - php artisan storage:link --relative
 
 script:
   - vendor/bin/php-cs-fixer fix --verbose --show-progress=dots --dry-run --diff

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Upgrade;
 
+use Artisan;
 use File;
 use Illuminate\Console\Command;
 
@@ -26,7 +27,7 @@ class V11_0_0 extends Command
         if (File::isDirectory(public_path('uploads')) && !is_link(public_path('uploads'))) {
             File::moveDirectory(public_path('uploads'), storage_path('app/public/uploads'), true);
 
-            $this->call('storage:link');
+            Artisan::call('storage:link --relative');
         }
     }
 }
