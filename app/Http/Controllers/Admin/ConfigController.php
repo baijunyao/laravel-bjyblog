@@ -81,6 +81,12 @@ class ConfigController extends Controller
             }
         }
 
+        if (isset($configs['204']) && empty($configs['204'])) {
+            flash_error(__('At least one disk must be set up for uploading files'));
+
+            return redirect()->back();
+        }
+
         if (isset($configs['165']) && empty($configs['164'])) {
             $configs['164'] = [];
         }
