@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Config\Update;
 use App\Models\Config;
 use Artisan;
-use Illuminate\Http\Request;
 
 class ConfigController extends Controller
 {
@@ -71,7 +71,7 @@ class ConfigController extends Controller
         return view('admin.config.licenses');
     }
 
-    public function update(Request $request)
+    public function update(Update $request)
     {
         $configs = $request->except('_token');
 
@@ -79,12 +79,6 @@ class ConfigController extends Controller
             foreach (config('bjyblog.upload_disks') as $disk) {
                 $configs['153'] = '/' . $request->file('153')->store('uploads/images', $disk);
             }
-        }
-
-        if (isset($configs['204']) && empty($configs['204'])) {
-            flash_error(__('At least one disk must be set up for uploading files'));
-
-            return redirect()->back();
         }
 
         if (isset($configs['165']) && empty($configs['164'])) {
