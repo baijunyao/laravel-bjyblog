@@ -45,9 +45,7 @@ class ArticleObserver extends BaseObserver
         $image_paths = get_image_paths_from_html($article->html);
 
         foreach ($image_paths as $image_path) {
-            $image_path = public_path($image_path);
-
-            if (function_exists('imagettfbbox') && file_exists($image_path)) {
+            if (function_exists('imagettfbbox') && file_exists(public_path($image_path))) {
                 watermark($image_path, config('bjyblog.water.text'));
             }
         }

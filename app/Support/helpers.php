@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -12,7 +13,7 @@ if (!function_exists('watermark')) {
     /**
      * 给图片添加文字水印
      *
-     * @param string $file
+     * @param string $file  e.g. /images/default/article.png
      * @param string $text
      * @param string $color
      *
@@ -20,9 +21,11 @@ if (!function_exists('watermark')) {
      */
     function watermark($file, $text, $color = '#0B94C1')
     {
-        $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        $localFile = public_path($file);
+        $extension = strtolower(pathinfo($localFile, PATHINFO_EXTENSION));
+
         if ($extension !== 'gif') {
-            $image = Image::make($file);
+            $image = Image::make($localFile);
             $image->text($text, $image->width() - 20, $image->height() - 30, function ($font) use ($color) {
                 $font->file(public_path('fonts/msyh.ttf'));
                 $font->size(15);
@@ -30,7 +33,11 @@ if (!function_exists('watermark')) {
                 $font->align('right');
                 $font->valign('bottom');
             });
-            $image->save($file);
+            $image->save($localFile);
+
+            if (in_array('oss_uploads', config('bjyblog.upload_disks'))) {
+                Storage::disk('oss_uploads')->put($file, file_get_contents($localFile));
+            }
         }
     }
 }
