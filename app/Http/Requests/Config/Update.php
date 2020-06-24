@@ -40,6 +40,20 @@ class Update extends FormRequest
             if ($this->has('204') && !in_array('public', $this->input('204'))) {
                 $validator->errors()->add('204', __('Local drive must be checked'));
             }
+
+            if ($this->has('204') && in_array('oss_uploads', $this->input('204')) && !$this->isJson()) {
+                foreach ([
+                    '200' => 'AccessKeyID',
+                    '201' => 'AccessKeySecret',
+                    '202' => 'BUCKET',
+                    '203' => 'ENDPOINT',
+                ] as $id => $description) {
+                    /** @var string $id */
+                    if ($this->input($id, '') === '') {
+                        $validator->errors()->add($id, $description . ': ' . __('The content can not be empty'));
+                    }
+                }
+            }
         });
     }
 }
