@@ -21,12 +21,14 @@ class V11_0_0 extends Command
 
     public function handle()
     {
-        if (File::isDirectory(storage_path('app/public/uploads'))) {
-            File::moveDirectory(storage_path('app/public/uploads'), storage_path('app/public/uploads.bak'));
-        }
-
         if (File::isDirectory(public_path('uploads')) && !is_link(public_path('uploads'))) {
+            File::moveDirectory(storage_path('app/public/uploads'), storage_path('app/public/uploads.bak'));
             File::moveDirectory(public_path('uploads'), storage_path('app/public/uploads'), true);
+            File::copy(storage_path('app/public/uploads.bak/.gitignore'), storage_path('app/public/uploads/.gitignore'));
+
+            if (File::allFiles(storage_path('app/public/uploads.bak')) === []) {
+                File::deleteDirectory(storage_path('app/public/uploads.bak'));
+            }
 
             Artisan::call('storage:link --relative');
         }
@@ -47,6 +49,12 @@ class V11_0_0 extends Command
         DB::table('configs')->where('id', 164)->update([
             'value' => str_replace('"oss"', '"oss_backups"', DB::table('configs')->where('id', 164)->value('value')),
         ]);
+
+        if (DB::table('configs')->where('id', 153)->value('value') === '/uploads/images/default.png') {
+            DB::table('configs')->where('id', 153)->update([
+                'value' => '/images/default/qr_code.png',
+            ]);
+        }
 
         DB::table('configs')->insertOrIgnore([
             [
