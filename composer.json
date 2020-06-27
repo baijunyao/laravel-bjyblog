@@ -55,7 +55,8 @@
         "socialiteproviders/vkontakte": "^4.0",
         "socialiteproviders/weibo": "^3.0",
         "spatie/laravel-backup": "^6.3",
-        "stichoza/google-translate-php": "^4.0"
+        "stichoza/google-translate-php": "^4.0",
+        "symfony/filesystem": "^5.1"
     },
     "require-dev": {
         "baijunyao/laravel-test-support": "^4.2",
