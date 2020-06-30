@@ -32,30 +32,7 @@ class Upgrade extends Command
         $upgradeCommandFile = app_path('Console/Commands/Upgrade/') . $versionString . '.php';
 
         if (File::missing($upgradeCommandFile)) {
-            $upgradeCommandContent = <<<PHP
-<?php
-
-namespace App\\Console\\Commands\\Upgrade;
-
-use Illuminate\\Console\\Command;
-
-class $versionString extends Command
-{
-    protected \$signature   = 'upgrade:$version';
-    protected \$description = 'Upgrade to $version';
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function handle()
-    {
-
-    }
-}
-
-PHP;
+            $upgradeCommandContent = str_replace(['ClassName', 'version'], [$versionString, $version], File::get(app_path('Console/Commands/Make/stubs/upgrade-command.stub')));
             File::put($upgradeCommandFile, $upgradeCommandContent);
             $this->info("Generate $upgradeCommandFile completed.");
         }
@@ -68,22 +45,7 @@ PHP;
         }
 
         if (File::missing($testFile)) {
-            $testContent = <<<PHP
-<?php
-
-namespace Tests\\Commands\\Upgrade\\$versionString;
-
-use Artisan;
-
-class CommandTest extends \\Tests\\Commands\\Upgrade\\TestCase
-{
-    public function testCommand()
-    {
-        Artisan::call('upgrade:$version');
-    }
-}
-
-PHP;
+            $testContent = str_replace(['VersionString', 'version'], [$versionString, $version], File::get(app_path('Console/Commands/Make/stubs/command-test.stub')));
             File::put($testFile, $testContent);
             $this->info("Generate $testFile completed.");
         }
@@ -91,22 +53,7 @@ PHP;
         $testUpgradeFile = $testPath . 'UpgradeTest.php';
 
         if (File::missing($testUpgradeFile)) {
-            $testUpgradeContent = <<<PHP
-<?php
-
-namespace Tests\\Commands\\Upgrade\\$versionString;
-
-use Artisan;
-
-class UpgradeTest extends \\Tests\\Commands\\Upgrade\\TestCase
-{
-    public function testUpgrade()
-    {
-        \$this->artisan('bjyblog:update')->assertExitCode(0);
-    }
-}
-
-PHP;
+            $testUpgradeContent = str_replace('VersionString', $versionString, File::get(app_path('Console/Commands/Make/stubs/upgrade-test.stub')));
             File::put($testUpgradeFile, $testUpgradeContent);
             $this->info("Generate $testUpgradeFile completed.");
         }
