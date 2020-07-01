@@ -13,7 +13,6 @@ use App\Models\Note;
 use App\Models\OpenSource;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
-use Artisan;
 use Tests\TestCase;
 
 class ClearTest extends TestCase
@@ -25,7 +24,7 @@ class ClearTest extends TestCase
      */
     public function testCommand()
     {
-        Artisan::call('seeder:clear');
+        $this->artisan('seeder:clear');
 
         static::assertEquals(0, ArticleTag::count());
         static::assertEquals(0, Article::count());

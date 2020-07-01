@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_13_0;
 
-use Artisan;
 use Illuminate\Support\Facades\Schema;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -20,7 +19,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             'url' => 'openSource',
         ]);
 
-        Artisan::call('upgrade:v6.13.0');
+        $this->artisan('upgrade:v6.13.0');
 
         static::assertFalse(Schema::hasTable('git_projects'));
         static::assertTrue(Schema::hasTable('open_sources'));

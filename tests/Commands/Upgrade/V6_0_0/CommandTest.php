@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_0_0;
 
-use Artisan;
-
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Artisan::call('upgrade:v6.0.0');
+        $this->artisan('upgrade:v6.0.0');
 
         $this->assertDatabaseHas('migrations', [
             'migration' => '2019_08_19_000000_create_failed_jobs_table',

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V5_8_6_0;
 
-use Artisan;
 use DB;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -22,7 +21,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
         static::assertNotTrue($siteColumns->contains('socialite_user_id'));
         static::assertNotTrue($oauthUserColumns->contains('socialite_client_id'));
 
-        Artisan::call('upgrade:v5.8.6.0');
+        $this->artisan('upgrade:v5.8.6.0');
 
         $commentColumns        = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}comments"))->pluck('Field');
         $siteColumns           = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}sites"))->pluck('Field');

@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_2_0;
 
-use Artisan;
 use Schema;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Artisan::call('upgrade:v6.2.0');
+        $this->artisan('upgrade:v6.2.0');
 
         static::assertFalse(
             strpos(

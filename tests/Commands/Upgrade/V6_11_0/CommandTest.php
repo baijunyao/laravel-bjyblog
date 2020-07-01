@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_11_0;
 
-use Artisan;
 use DB;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Artisan::call('upgrade:v6.11.0');
+        $this->artisan('upgrade:v6.11.0');
 
         $visits = DB::table('visits')
             ->where('primary_key', 'visits:articles_visits')

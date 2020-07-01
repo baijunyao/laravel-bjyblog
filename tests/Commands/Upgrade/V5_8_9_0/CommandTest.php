@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_8_9_0;
 
 use App\Models\Console;
-use Illuminate\Support\Facades\Artisan;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Artisan::call('upgrade:v5.8.9.0');
+        $this->artisan('upgrade:v5.8.9.0');
 
         $names = [
             'App\Console\Commands\Upgrade\V5_5_4_1',

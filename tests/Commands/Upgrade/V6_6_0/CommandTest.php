@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_6_0;
 
 use App\Models\Config;
-use Artisan;
 use Illuminate\Support\Env;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -14,7 +13,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
     {
         Env::getRepository()->set('SESSION_DOMAIN', '.laravel-bjyblog.test');
 
-        Artisan::call('upgrade:v6.6.0');
+        $this->artisan('upgrade:v6.6.0');
 
         static::assertSame(env('SESSION_DOMAIN'), Config::where('id', 185)->value('value'));
     }

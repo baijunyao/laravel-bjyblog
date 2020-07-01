@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_8_0;
 
-use Artisan;
-
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Artisan::call('upgrade:v6.8.0');
+        $this->artisan('upgrade:v6.8.0');
 
         $configs = [
             [

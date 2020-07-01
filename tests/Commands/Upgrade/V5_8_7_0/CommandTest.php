@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V5_8_7_0;
 
-use Artisan;
 use DB;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -18,7 +17,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
         static::assertNotEmpty(DB::select($chatSql));
         static::assertEmpty(DB::select($noteSql));
 
-        Artisan::call('upgrade:v5.8.7.0');
+        $this->artisan('upgrade:v5.8.7.0');
 
         static::assertNotEmpty(DB::select($noteSql));
         static::assertEmpty(DB::select($chatSql));
