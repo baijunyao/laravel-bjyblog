@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V9_0_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOpenSourcesTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateOpenSourcesTable extends Migration
      */
     public function up()
     {
-        \Schema::create('open_sources', function (Blueprint $table) {
+        Schema::create('open_sources', function (Blueprint $table) {
             $table->increments('id')->comment('项目主键');
             $table->tinyInteger('sort')->default(1)->comment('排序');
             $table->tinyInteger('type')->default(1)->comment('1:github 2:gitee');
@@ -33,6 +34,6 @@ class CreateOpenSourcesTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('open_sources');
+        Schema::dropIfExists('open_sources');
     }
 }

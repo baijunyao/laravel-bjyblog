@@ -17,7 +17,7 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        \Schema::create('sites', function (Blueprint $table) {
+        Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('socialite_user_id')->unsigned()->default(0)->comment('第三方用户id');
             $table->string('name')->default('')->comment('网站名');

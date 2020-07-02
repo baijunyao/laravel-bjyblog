@@ -17,7 +17,7 @@ class CreateNavsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('navs', function (Blueprint $table) {
+        Schema::create('navs', function (Blueprint $table) {
             $table->increments('id')->comment('菜单主键');
             $table->tinyInteger('sort')->default(1)->comment('排序');
             $table->string('name')->default('')->comment('菜单名');

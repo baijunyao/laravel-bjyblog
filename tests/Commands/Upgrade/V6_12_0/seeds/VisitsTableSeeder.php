@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_12_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class VisitsTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class VisitsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('visits')->truncate();
+        DB::table('visits')->truncate();
 
-        \DB::table('visits')->insert([
+        DB::table('visits')->insert([
             [
                 'id'             => 1,
                 'primary_key'    => 'visits:articles_visits',

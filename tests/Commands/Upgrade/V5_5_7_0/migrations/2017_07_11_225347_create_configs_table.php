@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V5_5_7_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateConfigsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateConfigsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('configs', function (Blueprint $table) {
+        Schema::create('configs', function (Blueprint $table) {
             $table->increments('id')->comment('主键');
             $table->string('name', 100)->default('')->comment('配置项键名');
             $table->text('value')->nullable()->comment('配置项键值 1表示开启 0 关闭');
@@ -32,6 +33,6 @@ class CreateConfigsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('configs');
+        Schema::dropIfExists('configs');
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_8_11_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ConsolesTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class ConsolesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('consoles')->truncate();
+        DB::table('consoles')->truncate();
 
-        \DB::table('consoles')->insert([
+        DB::table('consoles')->insert([
             [
                 'id'         => 1,
                 'name'       => 'App\Console\Commands\Upgrade\V5_5_5_0',

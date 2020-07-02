@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V5_8_8_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateArticlesTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        \Schema::create('articles', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->increments('id')->comment('文章表主键');
             $table->boolean('category_id')->default(0)->comment('分类id');
             $table->string('title')->default('')->comment('标题');
@@ -41,6 +42,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('articles');
+        Schema::dropIfExists('articles');
     }
 }

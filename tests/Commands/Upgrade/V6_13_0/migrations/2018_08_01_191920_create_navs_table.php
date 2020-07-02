@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_13_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateNavsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateNavsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('navs', function (Blueprint $table) {
+        Schema::create('navs', function (Blueprint $table) {
             $table->increments('id')->comment('菜单主键');
             $table->tinyInteger('sort')->default(1)->comment('排序');
             $table->string('name')->default('')->comment('菜单名');
@@ -33,6 +34,6 @@ class CreateNavsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('navs');
+        Schema::dropIfExists('navs');
     }
 }

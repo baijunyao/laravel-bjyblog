@@ -15,6 +15,7 @@ namespace Tests\Commands\Upgrade\V8_0_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLaravelFollowTables extends Migration
 {
@@ -23,7 +24,7 @@ class CreateLaravelFollowTables extends Migration
      */
     public function up()
     {
-        \Schema::create(config('follow.followable_table', 'followables'), function (Blueprint $table) {
+        Schema::create(config('follow.followable_table', 'followables'), function (Blueprint $table) {
             $table->unsignedBigInteger(config('follow.users_table_foreign_key', 'user_id'));
             $table->unsignedInteger('followable_id');
             $table->string('followable_type')->index();
@@ -38,6 +39,6 @@ class CreateLaravelFollowTables extends Migration
      */
     public function down()
     {
-        \Schema::drop(config('follow.followable_table', 'followables'));
+        Schema::drop(config('follow.followable_table', 'followables'));
     }
 }

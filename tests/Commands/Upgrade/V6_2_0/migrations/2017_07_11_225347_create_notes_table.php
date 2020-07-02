@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_2_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateNotesTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        \Schema::create('notes', function (Blueprint $table) {
+        Schema::create('notes', function (Blueprint $table) {
             $table->increments('id')->comment('主键id');
             $table->text('content')->comment('内容');
             $table->timestamps();
@@ -31,6 +32,6 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('notes');
+        Schema::dropIfExists('notes');
     }
 }

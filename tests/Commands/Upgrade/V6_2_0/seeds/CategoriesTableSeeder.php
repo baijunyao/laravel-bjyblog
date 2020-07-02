@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_2_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('categories')->truncate();
-        \DB::table('categories')->insert([
+        DB::table('categories')->truncate();
+        DB::table('categories')->insert([
             [
                 'id'          => 1,
                 'name'        => 'php',

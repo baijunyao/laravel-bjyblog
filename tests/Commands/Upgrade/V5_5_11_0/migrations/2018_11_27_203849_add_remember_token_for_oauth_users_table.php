@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V5_5_11_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddRememberTokenForOauthUsersTable extends Migration
 {
@@ -16,7 +17,7 @@ class AddRememberTokenForOauthUsersTable extends Migration
      */
     public function up()
     {
-        \Schema::table('oauth_users', function (Blueprint $table) {
+        Schema::table('oauth_users', function (Blueprint $table) {
             $table->string('remember_token', 100)
                 ->after('is_admin')
                 ->nullable();
@@ -30,7 +31,7 @@ class AddRememberTokenForOauthUsersTable extends Migration
      */
     public function down()
     {
-        \Schema::table('oauth_users', function (Blueprint $table) {
+        Schema::table('oauth_users', function (Blueprint $table) {
             $table->dropColumn('remember_token');
         });
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_6_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SocialiteClientsTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class SocialiteClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('socialite_clients')->truncate();
-        \DB::table('socialite_clients')->insert([
+        DB::table('socialite_clients')->truncate();
+        DB::table('socialite_clients')->insert([
             [
                 'id'            => 1,
                 'name'          => 'qq',

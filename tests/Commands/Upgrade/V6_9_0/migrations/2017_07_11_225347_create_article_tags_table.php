@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_9_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateArticleTagsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateArticleTagsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('article_tags', function (Blueprint $table) {
+        Schema::create('article_tags', function (Blueprint $table) {
             $table->integer('article_id')->unsigned()->default(0)->comment('文章id');
             $table->integer('tag_id')->unsigned()->default(0)->comment('标签id');
             $table->timestamps();
@@ -31,6 +32,6 @@ class CreateArticleTagsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('article_tags');
+        Schema::dropIfExists('article_tags');
     }
 }

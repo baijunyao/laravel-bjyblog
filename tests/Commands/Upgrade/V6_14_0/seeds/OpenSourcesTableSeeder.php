@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_14_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class OpenSourcesTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class OpenSourcesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('open_sources')->truncate();
-        \DB::table('open_sources')->insert([
+        DB::table('open_sources')->truncate();
+        DB::table('open_sources')->insert([
             [
                 'id'         => 1,
                 'sort'       => 1,

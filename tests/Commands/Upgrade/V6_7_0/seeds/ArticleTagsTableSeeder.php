@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_7_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ArticleTagsTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class ArticleTagsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('article_tags')->truncate();
-        \DB::table('article_tags')->insert([
+        DB::table('article_tags')->truncate();
+        DB::table('article_tags')->insert([
             [
                 'article_id' => 1,
                 'tag_id'     => 1,

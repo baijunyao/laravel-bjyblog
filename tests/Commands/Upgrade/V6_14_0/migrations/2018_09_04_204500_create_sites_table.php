@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_14_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSitesTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateSitesTable extends Migration
      */
     public function up()
     {
-        \Schema::create('sites', function (Blueprint $table) {
+        Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('socialite_user_id')->unsigned()->default(0)->comment('第三方用户id');
             $table->string('name')->default('')->comment('网站名');
@@ -36,6 +37,6 @@ class CreateSitesTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('sites');
+        Schema::dropIfExists('sites');
     }
 }

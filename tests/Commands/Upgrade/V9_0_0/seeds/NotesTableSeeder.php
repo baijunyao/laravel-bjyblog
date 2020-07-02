@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V9_0_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class NotesTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class NotesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('notes')->truncate();
-        \DB::table('notes')->insert([
+        DB::table('notes')->truncate();
+        DB::table('notes')->insert([
             [
                 'id'         => 1,
                 'content'    => '技术这东西；懂的越多；不懂的就越多；',
