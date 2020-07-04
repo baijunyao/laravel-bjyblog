@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_8_1_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SitesTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class SitesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('sites')->truncate();
-        \DB::table('sites')->insert([
+        DB::table('sites')->truncate();
+        DB::table('sites')->insert([
             [
                 'id'            => 1,
                 'oauth_user_id' => 1,

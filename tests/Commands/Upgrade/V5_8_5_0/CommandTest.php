@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V5_8_5_0;
 
-use Artisan;
-
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
@@ -56,7 +54,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             $this->assertDatabaseMissing('configs', $config);
         }
 
-        Artisan::call('upgrade:v5.8.5.0');
+        $this->artisan('upgrade:v5.8.5.0');
 
         foreach ($configs as $config) {
             $this->assertDatabaseHas('configs', $config);

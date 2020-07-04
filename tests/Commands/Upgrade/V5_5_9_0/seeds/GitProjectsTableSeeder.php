@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_5_9_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class GitProjectsTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class GitProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('git_projects')->delete();
+        DB::table('git_projects')->delete();
 
-        \DB::table('git_projects')->insert([
+        DB::table('git_projects')->insert([
             0 => [
                 'id'         => 1,
                 'sort'       => 1,

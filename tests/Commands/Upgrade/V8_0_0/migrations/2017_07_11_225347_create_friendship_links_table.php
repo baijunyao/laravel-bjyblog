@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V8_0_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateFriendshipLinksTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateFriendshipLinksTable extends Migration
      */
     public function up()
     {
-        \Schema::create('friendship_links', function (Blueprint $table) {
+        Schema::create('friendship_links', function (Blueprint $table) {
             $table->increments('id')->comment('主键id');
             $table->string('name', 50)->default('')->comment('链接名');
             $table->string('url')->default('')->comment('链接地址');
@@ -33,6 +34,6 @@ class CreateFriendshipLinksTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('friendship_links');
+        Schema::dropIfExists('friendship_links');
     }
 }

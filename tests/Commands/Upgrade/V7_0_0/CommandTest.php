@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V7_0_0;
 
-use Artisan;
 use DB;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -24,7 +23,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             static::assertSame($name, DB::table('configs')->where('id', $id)->value('name'));
         }
 
-        Artisan::call('upgrade:v7.0.0');
+        $this->artisan('upgrade:v7.0.0');
 
         $configNameById = [
             142 => 'mail.mailers.smtp.host',

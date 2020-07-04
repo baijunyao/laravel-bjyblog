@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_5_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -15,17 +16,17 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('articles')->truncate();
-        \DB::table('articles')->insert([
+        DB::table('articles')->truncate();
+        DB::table('articles')->insert([
             [
                 'id'          => 1,
                 'category_id' => 1,
                 'title'       => '欢迎使用 laravel-bjyblog',
                 'slug'        => 'welcome-to-laravel-bjyblog',
                 'author'      => '白俊遥',
-                'markdown'    => '1. [切换语言](https://baijunyao.com/docs/laravel-bjyblog/其他配置.html) 
-![](/uploads/article/5d9829577d311.png)  
-2. [清空测试数据](https://baijunyao.com/docs/laravel-bjyblog/清空测试数据.html)  
+                'markdown'    => '1. [切换语言](https://baijunyao.com/docs/laravel-bjyblog/其他配置.html)
+![](/uploads/article/5d9829577d311.png)
+2. [清空测试数据](https://baijunyao.com/docs/laravel-bjyblog/清空测试数据.html)
 3. [升级版本](https://baijunyao.com/docs/laravel-bjyblog/升级版本.html)',
                 'html'        => '<ol>
 <li>
@@ -72,9 +73,9 @@ class ArticlesTableSeeder extends Seeder
                 'title'       => 'Welcome to laravel-bjyblog',
                 'slug'        => 'welcome-to-laravel-bjyblog',
                 'author'      => 'baijunyao',
-                'markdown'    => '1. [Switch language](https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html) 
-![](/uploads/article/5d9829577d311.png)  
-2. [Clear test data](https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html)  
+                'markdown'    => '1. [Switch language](https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html)
+![](/uploads/article/5d9829577d311.png)
+2. [Clear test data](https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html)
 3. [Upgrade version](https://baijunyao.com/docs/laravel-bjyblog/en/Upgrade.html)',
                 'html'        => '<ol>
 <li>

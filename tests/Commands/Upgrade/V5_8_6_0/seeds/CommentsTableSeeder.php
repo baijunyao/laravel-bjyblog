@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_8_6_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CommentsTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('comments')->truncate();
-        \DB::table('comments')->insert([
+        DB::table('comments')->truncate();
+        DB::table('comments')->insert([
             [
                 'id'            => 1,
                 'oauth_user_id' => 1,

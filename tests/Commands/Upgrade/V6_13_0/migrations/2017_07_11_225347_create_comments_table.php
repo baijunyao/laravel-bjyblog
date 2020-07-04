@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_13_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCommentsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('comments', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id')->comment('主键id');
             $table->integer('socialite_user_id')->unsigned()->default(0)->comment('评论用户id 关联socialite_user表的id');
             $table->boolean('type')->default(1)->comment('1：文章评论');
@@ -36,6 +37,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('comments');
+        Schema::dropIfExists('comments');
     }
 }

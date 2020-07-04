@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_12_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class OauthClientsTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class OauthClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('oauth_clients')->truncate();
-        \DB::table('oauth_clients')->insert([
+        DB::table('oauth_clients')->truncate();
+        DB::table('oauth_clients')->insert([
             [
                 'id'                     => 1,
                 'user_id'                => null,

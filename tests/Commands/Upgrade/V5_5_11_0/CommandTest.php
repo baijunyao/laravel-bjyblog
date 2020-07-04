@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_5_11_0;
 
 use App\Models\Config;
-use Artisan;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
@@ -19,7 +18,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             'name' => 'app.name',
         ]);
 
-        Artisan::call('upgrade:v5.5.11.0');
+        $this->artisan('upgrade:v5.5.11.0');
 
         $this->assertDatabaseMissing('configs', [
             'name' => 'bjyblog.web_name',

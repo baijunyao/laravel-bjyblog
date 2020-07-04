@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_6_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSocialiteUsersTable extends Migration
 {
@@ -16,8 +17,8 @@ class CreateSocialiteUsersTable extends Migration
      */
     public function up()
     {
-        if (!\Schema::hasTable('oauth_users') && !\Schema::hasTable('socialite_users')) {
-            \Schema::create('socialite_users', function (Blueprint $table) {
+        if (!Schema::hasTable('oauth_users') && !Schema::hasTable('socialite_users')) {
+            Schema::create('socialite_users', function (Blueprint $table) {
                 $table->increments('id')->comment('主键id');
                 $table->boolean('socialite_client_id')->default(1)->comment('类型 1：QQ  2：新浪微博 3：github');
                 $table->string('name', 30)->default('')->comment('第三方昵称');
@@ -42,6 +43,6 @@ class CreateSocialiteUsersTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('socialite_users');
+        Schema::dropIfExists('socialite_users');
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V5_8_4_0;
 
-use Artisan;
 use DB;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -33,7 +32,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
 
         $this->assertDatabaseMissing('configs', $config);
 
-        Artisan::call('upgrade:v5.8.4.0');
+        $this->artisan('upgrade:v5.8.4.0');
 
         foreach ($tables as $table) {
             $columns = collect(DB::select("SHOW COLUMNS FROM {$tablePrefix}{$table}"))->pluck('Field');

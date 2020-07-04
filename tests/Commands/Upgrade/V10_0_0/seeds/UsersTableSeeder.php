@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V10_0_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('users')->truncate();
+        DB::table('users')->truncate();
 
-        \DB::table('users')->insert([
+        DB::table('users')->insert([
             [
                 'id'             => 1,
                 'name'           => 'test',

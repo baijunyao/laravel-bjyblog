@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_5_9_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class NavsTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class NavsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('navs')->delete();
-        \DB::table('navs')->insert([
+        DB::table('navs')->delete();
+        DB::table('navs')->insert([
             0 => [
                 'id'         => 1,
                 'name'       => '随言碎语',

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_5_9_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ConfigsTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class ConfigsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('configs')->delete();
+        DB::table('configs')->delete();
 
-        \DB::table('configs')->insert([
+        DB::table('configs')->insert([
             0 => [
                 'id'         => 1,
                 'name'       => 'WEB_NAME',

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_0_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('articles')->truncate();
+        DB::table('articles')->truncate();
         $title = '写给 thinkphp 开发者的 laravel 系列教程 (一) 序言';
-        \DB::table('articles')->insert([
+        DB::table('articles')->insert([
             [
                 'id'          => 1,
                 'category_id' => 1,

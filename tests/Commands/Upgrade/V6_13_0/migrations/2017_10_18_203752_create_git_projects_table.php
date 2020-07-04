@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V6_13_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateGitProjectsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateGitProjectsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('git_projects', function (Blueprint $table) {
+        Schema::create('git_projects', function (Blueprint $table) {
             $table->increments('id')->comment('项目主键');
             $table->tinyInteger('sort')->default(1)->comment('排序');
             $table->tinyInteger('type')->default(1)->comment('1:github 2:gitee');
@@ -33,6 +34,6 @@ class CreateGitProjectsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('git_projects');
+        Schema::dropIfExists('git_projects');
     }
 }

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V9_0_0;
 
-use Artisan;
 use DB;
 use Schema;
 
@@ -14,7 +13,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
     {
         static::assertFalse(Schema::hasTable('comment_backups'));
 
-        Artisan::call('upgrade:v9.0.0');
+        $this->artisan('upgrade:v9.0.0');
 
         static::assertTrue(Schema::hasTable('comment_backups'));
 

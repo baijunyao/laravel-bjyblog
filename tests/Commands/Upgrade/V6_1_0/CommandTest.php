@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_1_0;
 
-use Artisan;
 use File;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
@@ -17,7 +16,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
 
         static::assertFileNotExists($sitemapPath);
 
-        Artisan::call('upgrade:v6.1.0');
+        $this->artisan('upgrade:v6.1.0');
 
         static::assertFileExists($sitemapPath);
     }

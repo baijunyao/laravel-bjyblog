@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V6_14_0;
 
 use App\Models\Article;
-use Artisan;
 use DB;
 use Schema;
 
@@ -20,7 +19,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
             ->where('secondary_key', 1)
             ->value('score');
 
-        Artisan::call('upgrade:v6.14.0');
+        $this->artisan('upgrade:v6.14.0');
 
         static::assertFalse(Schema::hasTable('visits'));
         static::assertTrue(Schema::hasColumn('articles', 'views'));

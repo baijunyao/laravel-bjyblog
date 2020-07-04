@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade\V5_5_8_0\Seeds;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TagsTableSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('tags')->delete();
-        \DB::table('tags')->insert([
+        DB::table('tags')->delete();
+        DB::table('tags')->insert([
             0 => [
                 'id'         => 1,
                 'name'       => 'laravel',

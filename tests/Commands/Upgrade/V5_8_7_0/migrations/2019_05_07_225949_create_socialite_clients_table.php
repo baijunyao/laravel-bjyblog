@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V5_8_7_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSocialiteClientsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateSocialiteClientsTable extends Migration
      */
     public function up()
     {
-        \Schema::create('socialite_clients', function (Blueprint $table) {
+        Schema::create('socialite_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('');
             $table->string('client_id')->default('');
@@ -33,6 +34,6 @@ class CreateSocialiteClientsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('socialite_clients');
+        Schema::dropIfExists('socialite_clients');
     }
 }

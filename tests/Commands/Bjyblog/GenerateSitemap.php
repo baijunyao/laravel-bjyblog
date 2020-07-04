@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Bjyblog;
 
-use Artisan;
 use File;
 use Tests\TestCase;
 
@@ -23,7 +22,7 @@ class GenerateSitemap extends TestCase
 
         static::assertFileNotExists($sitemapPath);
 
-        Artisan::call('bjyblog:generateSitemap');
+        $this->artisan('bjyblog:generateSitemap');
 
         static::assertFileExists($sitemapPath);
         static::assertEquals(File::get(base_path('tests/Commands/_baseline/Bjyblog/GenerateSitemap/sitemap.xml')), File::get($sitemapPath));

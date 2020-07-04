@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V10_0_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateArticleHistoriesTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateArticleHistoriesTable extends Migration
      */
     public function up()
     {
-        \Schema::create('article_histories', function (Blueprint $table) {
+        Schema::create('article_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('article_id');
             $table->mediumText('markdown');
@@ -32,6 +33,6 @@ class CreateArticleHistoriesTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('article_histories');
+        Schema::dropIfExists('article_histories');
     }
 }

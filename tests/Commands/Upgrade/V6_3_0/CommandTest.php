@@ -4,14 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Commands\Upgrade\V6_3_0;
 
-use Artisan;
 use Schema;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
     public function testCommand()
     {
-        Artisan::call('upgrade:v6.3.0');
+        $this->artisan('upgrade:v6.3.0');
 
         static::assertTrue(Schema::hasColumn('comments', 'is_audited'));
 

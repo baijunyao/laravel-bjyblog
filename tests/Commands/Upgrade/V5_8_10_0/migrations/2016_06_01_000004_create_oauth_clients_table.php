@@ -6,6 +6,7 @@ namespace Tests\Commands\Upgrade\V5_8_10_0\Migrations;
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateOauthClientsTable extends Migration
 {
@@ -16,11 +17,11 @@ class CreateOauthClientsTable extends Migration
      */
     public function up()
     {
-        if (\Schema::hasTable('oauth_clients')) {
-            \Schema::rename('oauth_clients', 'socialite_clients');
+        if (Schema::hasTable('oauth_clients')) {
+            Schema::rename('oauth_clients', 'socialite_clients');
         }
 
-        \Schema::create('oauth_clients', function (Blueprint $table) {
+        Schema::create('oauth_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index()->nullable();
             $table->string('name');
@@ -40,6 +41,6 @@ class CreateOauthClientsTable extends Migration
      */
     public function down()
     {
-        \Schema::dropIfExists('oauth_clients');
+        Schema::dropIfExists('oauth_clients');
     }
 }

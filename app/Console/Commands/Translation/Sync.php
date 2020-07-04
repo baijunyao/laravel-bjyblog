@@ -60,5 +60,7 @@ class Sync extends Command
 
             File::put(resource_path("lang/{$lang}.json"), json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
+
+        $this->call('translation:remove-unused');
     }
 }
