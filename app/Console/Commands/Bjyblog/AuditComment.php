@@ -15,7 +15,7 @@ class AuditComment extends Command
      *
      * @var string
      */
-    protected $signature = 'bjyblog/AuditComment';
+    protected $signature = 'bjyblog:audit-comment';
 
     /**
      * The console command description.

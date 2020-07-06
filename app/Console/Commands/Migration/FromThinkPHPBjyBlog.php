@@ -28,7 +28,7 @@ class FromThinkPHPBjyBlog extends Command
      *
      * @var string
      */
-    protected $signature = 'migration:fromThinkPHPBjyBlog';
+    protected $signature = 'migration:from-thinkphp-bjyblog';
 
     /**
      * The console command description.
