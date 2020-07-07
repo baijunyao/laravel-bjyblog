@@ -23,16 +23,6 @@ class V5_5_6_0 extends Command
     protected $description = 'Command description';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

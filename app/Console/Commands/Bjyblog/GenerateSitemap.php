@@ -29,16 +29,6 @@ class GenerateSitemap extends Command
     protected $description = 'Generating the sitemap';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

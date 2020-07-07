@@ -38,16 +38,6 @@ class FromThinkPHPBjyBlog extends Command
     protected $description = 'Command description';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * 从 thinkphp-bjyblog 迁移数据
      */
     public function handle()

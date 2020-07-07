@@ -26,16 +26,6 @@ class V5_8_8_0 extends Command
     protected $description = 'upgrade to v5.8.8.0';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed

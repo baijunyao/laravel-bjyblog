@@ -24,16 +24,6 @@ class V6_0_0 extends Command
     protected $description = 'upgrade to v6.0.0';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
