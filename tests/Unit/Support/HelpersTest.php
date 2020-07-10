@@ -4,10 +4,27 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Support;
 
+use Illuminate\Http\UploadedFile;
+use Storage;
 use Tests\TestCase;
 
 class HelpersTest extends TestCase
 {
+    public function testWatermark()
+    {
+        config([
+            'bjyblog.upload_disks' => ['public', 'oss_uploads'],
+        ]);
+
+        Storage::fake('oss_uploads');
+
+        Storage::disk('public')->putFileAs('/uploads', UploadedFile::fake()->image('for_watermark.jpg'), 'for_watermark.jpg');
+
+        watermark('/uploads/for_watermark.jpg', 'test');
+
+        static::assertFileExists(storage_path('app/public/uploads/for_watermark.jpg'));
+    }
+
     public function testFormatUrl()
     {
         static::assertEquals('http://baijunyao.com', format_url('baijunyao.com'));
