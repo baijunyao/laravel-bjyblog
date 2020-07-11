@@ -19,7 +19,7 @@ class GenerateSitemap extends Command
      *
      * @var string
      */
-    protected $signature = 'bjyblog:generateSitemap';
+    protected $signature = 'bjyblog:generate-sitemap';
 
     /**
      * The console command description.
@@ -27,16 +27,6 @@ class GenerateSitemap extends Command
      * @var string
      */
     protected $description = 'Generating the sitemap';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.

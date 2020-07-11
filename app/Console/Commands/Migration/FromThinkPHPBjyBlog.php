@@ -28,7 +28,7 @@ class FromThinkPHPBjyBlog extends Command
      *
      * @var string
      */
-    protected $signature = 'migration:fromThinkPHPBjyBlog';
+    protected $signature = 'migration:from-thinkphp-bjyblog';
 
     /**
      * The console command description.
@@ -36,16 +36,6 @@ class FromThinkPHPBjyBlog extends Command
      * @var string
      */
     protected $description = 'Command description';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * 从 thinkphp-bjyblog 迁移数据

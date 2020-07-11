@@ -11,7 +11,7 @@ class TagObserver extends BaseObserver
     {
         parent::created($model);
 
-        Artisan::queue('bjyblog:generateSitemap');
+        Artisan::queue('bjyblog:generate-sitemap');
     }
 
     public function saving($category)
@@ -34,7 +34,7 @@ class TagObserver extends BaseObserver
         parent::deleted($model);
 
         if (! $model->isForceDeleting()) {
-            Artisan::queue('bjyblog:generateSitemap');
+            Artisan::queue('bjyblog:generate-sitemap');
         }
     }
 }

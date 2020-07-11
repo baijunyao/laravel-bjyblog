@@ -18,6 +18,6 @@ class V6_1_0 extends Command
 
     public function handle()
     {
-        $this->call('bjyblog:generateSitemap');
+        $this->call('bjyblog:generate-sitemap');
     }
 }

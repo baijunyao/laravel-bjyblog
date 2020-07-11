@@ -14,7 +14,7 @@ class ArticleObserver extends BaseObserver
     {
         parent::created($model);
 
-        Artisan::queue('bjyblog:generateSitemap');
+        Artisan::queue('bjyblog:generate-sitemap');
     }
 
     public function saving($article)
@@ -76,7 +76,7 @@ class ArticleObserver extends BaseObserver
             ArticleTag::onlyTrashed()->where('article_id', $article->id)->forceDelete();
             flash_success('彻底删除成功');
         } else {
-            Artisan::queue('bjyblog:generateSitemap');
+            Artisan::queue('bjyblog:generate-sitemap');
             ArticleTag::where('article_id', $article->id)->delete();
             flash_success('删除成功');
         }

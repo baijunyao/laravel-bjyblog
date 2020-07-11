@@ -15,7 +15,7 @@ class AuditComment extends Command
      *
      * @var string
      */
-    protected $signature = 'bjyblog/AuditComment';
+    protected $signature = 'bjyblog:audit-comment';
 
     /**
      * The console command description.
@@ -23,16 +23,6 @@ class AuditComment extends Command
      * @var string
      */
     protected $description = 'Audit Comment';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.
