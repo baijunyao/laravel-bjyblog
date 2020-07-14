@@ -119,6 +119,27 @@ class CommentControllerTest extends TestCase
         Notification::assertNotSentTo(new AnonymousNotifiable(), CommentNotification::class);
     }
 
+    public function testStoreBaiduSdkNoConfiguration()
+    {
+        config([
+            'bjyblog.comment_audit' => true,
+        ]);
+
+        $comment = [
+            'article_id' => 1,
+            'parent_id'  => 0,
+            'content'    => 'no audited comment',
+        ];
+        $this->loginByUserId(1)
+            ->post('/comment', $comment)
+            ->assertStatus(200);
+
+        static::assertDatabaseHas('comments', [
+            'content'    => 'no audited comment',
+            'is_audited' => 0,
+        ]);
+    }
+
     public function testStoreEmptyContent()
     {
         $comment = [
