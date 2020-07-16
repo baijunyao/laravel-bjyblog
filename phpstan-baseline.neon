@@ -1,0 +1,2302 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$string of method Illuminate\\\\Console\\\\Command\\:\\:error\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/AuditComment.php
+
+		-
+			message: "#^Cannot call method format\\(\\) on Carbon\\\\Carbon\\|null\\.$#"
+			count: 4
+			path: app/Console/Commands/Bjyblog/GenerateSitemap.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Bjyblog\\\\GenerateSitemap\\:\\:generateUrl\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/GenerateSitemap.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Bjyblog\\\\GenerateSitemap\\:\\:generateUrl\\(\\) has parameter \\$lastmod with no typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/GenerateSitemap.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Bjyblog\\\\GenerateSitemap\\:\\:generateUrl\\(\\) has parameter \\$loc with no typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/GenerateSitemap.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtoupper expects string, array\\|string given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/Update.php
+
+		-
+			message: "#^Part \\$name \\(array\\|string\\|null\\) of encapsed string cannot be cast to string\\.$#"
+			count: 6
+			path: app/Console/Commands/Make/Rest.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Make\\\\Upgrade\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Make/Upgrade.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function strtoupper expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Console/Commands/Make/Upgrade.php
+
+		-
+			message: "#^Parameter \\#1 \\$str of function trim expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Console/Commands/Make/Upgrade.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Migration\\\\FromThinkPHPBjyBlog\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Migration\\\\FromThinkPHPBjyBlog\\:\\:avatar\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of method Stichoza\\\\GoogleTranslate\\\\GoogleTranslate\\:\\:translate\\(\\) expects string, int\\|string given\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/Sync.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V10_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V10_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V11_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V11_0_0.php
+
+		-
+			message: "#^Cannot access property \\$value on App\\\\Models\\\\Config\\|null\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_5_5_0.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_5_6_0.php
+
+		-
+			message: "#^Cannot access property \\$value on App\\\\Models\\\\Config\\|null\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_8_1_0.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Config\\|null\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_8_1_0.php
+
+		-
+			message: "#^Cannot access property \\$value on App\\\\Models\\\\Config\\|null\\.$#"
+			count: 6
+			path: app/Console/Commands/Upgrade/V5_8_2_0.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_10_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_10_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_11_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_11_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_12_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_12_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_13_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_13_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_14_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_14_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_1_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_1_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_2_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_2_0.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_2_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_3_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_3_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_4_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_4_0.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_4_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_5_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_5_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_6_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_6_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_7_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_7_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_8_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_8_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_9_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V6_9_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V7_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V7_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V8_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V8_0_0.php
+
+		-
+			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children has no typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getDataByArticleId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getDataByArticleId\\(\\) has parameter \\$article_id with no typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) has parameter \\$comment with no typehint specified\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Property App\\\\Console\\\\Kernel\\:\\:\\$commands type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Console/Kernel.php
+
+		-
+			message: "#^Property App\\\\Exceptions\\\\Handler\\:\\:\\$dontReport type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: "#^Property App\\\\Exceptions\\\\Handler\\:\\:\\$dontFlash type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Exceptions/Handler.php
+
+		-
+			message: "#^Method App\\\\Extensions\\\\Illuminate\\\\View\\\\Factory\\:\\:make\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Extensions/Illuminate/View/Factory.php
+
+		-
+			message: "#^Method App\\\\Extensions\\\\Illuminate\\\\View\\\\Factory\\:\\:make\\(\\) has parameter \\$mergeData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Extensions/Illuminate/View/Factory.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:uploadImage\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			count: 3
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Cannot call method setAttribute\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:replaceView\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:replace\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of function flash_success expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:replaceView\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:replace\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Comment\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:email\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:socialite\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:qqQun\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:backup\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:upload\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:seo\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:search\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:socialShare\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:socialLinks\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:commentAudit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:licenses\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Config\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ConfigController\\:\\:clear\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\IndexController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/IndexController.php
+
+		-
+			message: "#^Cannot call method fetchColumn\\(\\) on PDOStatement\\|false\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/IndexController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\IndexController\\:\\:upgrade\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/IndexController.php
+
+		-
+			message: "#^Parameter \\#2 \\$subject of function preg_match expects string, string\\|false given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/IndexController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\IndexController\\:\\:loginUserForTest\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/IndexController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\LoginController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/LoginController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\LoginController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/LoginController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NavController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteClientController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteClientController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteClientController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteClientController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteClientController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteClientController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteClientController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteClientController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteClientController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteClientController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\SocialiteClient\\|array\\<App\\\\Models\\\\SocialiteClient\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteClientController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteUserController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteUserController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteUserController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteUserController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SocialiteUserController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteUserController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\SocialiteUser\\|array\\<App\\\\Models\\\\SocialiteUser\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\UserBase\\|array\\<App\\\\Models\\\\UserBase\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\UserBase\\|array\\<App\\\\Models\\\\UserBase\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\UserBase\\|array\\<App\\\\Models\\\\UserBase\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\PassportController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/PassportController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\RegisterController\\:\\:validator\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/RegisterController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\RegisterController\\:\\:create\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/RegisterController.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:\\$socialiteClients has no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:redirectToProvider\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:redirectToProvider\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\DashboardController\\:\\:analysis\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Cannot call method fetchColumn\\(\\) on PDOStatement\\|false\\.$#"
+			count: 1
+			path: app/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\ArticleController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/ArticleController.php
+
+		-
+			message: "#^Cannot call method format\\(\\) on Carbon\\\\CarbonInterface\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\ArticleController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\ArticleController\\:\\:search\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CategoryController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CategoryController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CommentController.php
+
+		-
+			message: "#^Cannot call method children\\(\\) on App\\\\Models\\\\Comment\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CommentController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\FeedController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Cannot access property \\$created_at on App\\\\Models\\\\Article\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\FriendshipLinkController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FriendshipLinkController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\LikeController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/LikeController.php
+
+		-
+			message: "#^Parameter \\#1 \\$targets of method App\\\\Models\\\\SocialiteUser\\:\\:like\\(\\) expects array\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int, App\\\\Models\\\\Article\\|array\\<App\\\\Models\\\\Article\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/LikeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\LikeController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/LikeController.php
+
+		-
+			message: "#^Parameter \\#1 \\$targets of method App\\\\Models\\\\SocialiteUser\\:\\:unlike\\(\\) expects array\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int, App\\\\Models\\\\Article\\|array\\<App\\\\Models\\\\Article\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/LikeController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\NoteController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/NoteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\OpenSourceController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/OpenSourceController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SiteController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SiteController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/SiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SocialiteUserController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SocialiteUserController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SocialiteUserController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/SocialiteUserController.php
+
+		-
+			message: "#^Cannot call method only\\(\\) on Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\TagController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/TagController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:authOauthRedirectToProvider\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:authOauthRedirectToProvider\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:handleProviderCallback\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:handleProviderCallback\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:note\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:openSource\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:login\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/RedirectController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleController.php
+
+		-
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Article\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleCoverController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleCoverController.php
+
+		-
+			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleCoverController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ConfigController\\:\\:uploadQqQunOrCode\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ConfigController.php
+
+		-
+			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ConfigController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\SocialiteUserController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\SocialiteUserController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/SocialiteUserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\UserController\\:\\:show\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/UserController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\UserController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/UserController.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Kernel\\:\\:\\$middleware type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Kernel\\:\\:\\$middlewareGroups type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Kernel\\:\\:\\$routeMiddleware type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Kernel.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\CheckForMaintenanceMode\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/CheckForMaintenanceMode.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\EncryptCookies\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/EncryptCookies.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\TrimStrings\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/TrimStrings.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\TrustProxies\\:\\:\\$proxies type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/TrustProxies.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\VerifyCsrfToken\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/VerifyCsrfToken.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Article\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Article/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\ArticleCover\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/ArticleCover/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Category\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Category/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Category\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Category/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Comment\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Comment/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Config\\\\QqQunOrCode\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Config/QqQunOrCode.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Config\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Config/Update.php
+
+		-
+			message: "#^Binary operation \"\\.\" between string and array\\|string\\|null results in an error\\.$#"
+			count: 1
+			path: app/Http/Requests/Config/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\FriendshipLink\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/FriendshipLink/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\FriendshipLink\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/FriendshipLink/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Like\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Like/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Nav\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Nav/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Nav\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Nav/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Note\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Note/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\OpenSource\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/OpenSource/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\OpenSource\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/OpenSource/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Site\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Site/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Site\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Site/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\SocialiteUser\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/SocialiteUser/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Tag\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Tag/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Tag\\\\Update\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/Tag/Update.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\User\\\\Store\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Requests/User/Store.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Resources\\\\Article\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Resources/Article.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Resources\\\\Comment\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Resources/Comment.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Resources\\\\SocialiteUser\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Resources/SocialiteUser.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:toSearchableArray\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getDescriptionAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getDescriptionAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getHtmlAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getHtmlAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:category\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:tags\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:article_histories\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:searchArticleGetId\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getUrlAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\ArticleHistory\\:\\:article\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/ArticleHistory.php
+
+		-
+			message: "#^Method App\\\\Models\\\\ArticleTag\\:\\:addTagIds\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/ArticleTag.php
+
+		-
+			message: "#^Method App\\\\Models\\\\ArticleTag\\:\\:addTagIds\\(\\) has parameter \\$tag_ids with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Models/ArticleTag.php
+
+		-
+			message: "#^Property App\\\\Models\\\\Base\\:\\:\\$guarded type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Models/Base.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Base\\:\\:updateBatch\\(\\) has parameter \\$multipleData with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Models/Base.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Category\\:\\:articles\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Category.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Category\\:\\:getUrlAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Category.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:getContentAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:getContentAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:setContentAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:setContentAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:article\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:socialiteUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:parentComment\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:ubbToImage\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:ubbToImage\\(\\) has parameter \\$content with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:imageToUbb\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:imageToUbb\\(\\) has parameter \\$content with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:getLatestComments\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:getLatestComments\\(\\) has parameter \\$number with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Config\\:\\:getValueAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Config.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Config\\:\\:getValueAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Config.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Config\\:\\:setValueAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Config.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Config\\:\\:setValueAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Config.php
+
+		-
+			message: "#^Method App\\\\Models\\\\FriendshipLink\\:\\:setSortAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/FriendshipLink.php
+
+		-
+			message: "#^Method App\\\\Models\\\\FriendshipLink\\:\\:setSortAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/FriendshipLink.php
+
+		-
+			message: "#^Method App\\\\Models\\\\FriendshipLink\\:\\:setUrlAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/FriendshipLink.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Site\\:\\:socialiteUser\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Site.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Site\\:\\:setUrlAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/Site.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Site\\:\\:setUrlAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/Site.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$hidden has no typehint specified\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$casts has no typehint specified\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:setPasswordAttribute\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:setPasswordAttribute\\(\\) has parameter \\$password with no typehint specified\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\UserBase\\:\\:\\$guarded has no typehint specified\\.$#"
+			count: 1
+			path: app/Models/UserBase.php
+
+		-
+			message: "#^Binary operation \"\\.\" between string and array\\|string\\|null results in an error\\.$#"
+			count: 2
+			path: app/Notifications/Comment.php
+
+		-
+			message: "#^Method App\\\\Notifications\\\\Comment\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Notifications/Comment.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of method Illuminate\\\\Notifications\\\\Messages\\\\SimpleMessage\\:\\:action\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Notifications/Comment.php
+
+		-
+			message: "#^Method App\\\\Notifications\\\\SiteApply\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Notifications/SiteApply.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of method Illuminate\\\\Notifications\\\\Messages\\\\SimpleMessage\\:\\:action\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Notifications/SiteApply.php
+
+		-
+			message: "#^Method App\\\\Notifications\\\\SiteAudit\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Notifications/SiteAudit.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of method Illuminate\\\\Notifications\\\\Messages\\\\SimpleMessage\\:\\:action\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Notifications/SiteAudit.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:saving\\(\\) has parameter \\$article with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of static method Illuminate\\\\Support\\\\Str\\:\\:substr\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of static method Illuminate\\\\Support\\\\Str\\:\\:words\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:updated\\(\\) has parameter \\$article with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:deleted\\(\\) has parameter \\$article with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:restored\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:restored\\(\\) has parameter \\$article with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of function flash_success expects string, array\\|string\\|null given\\.$#"
+			count: 5
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:updated\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:restored\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:restored\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/BaseObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:saving\\(\\) has parameter \\$category with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleting\\(\\) has parameter \\$category with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CategoryObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:creating\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CommentObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:creating\\(\\) has parameter \\$comment with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CommentObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CommentObserver.php
+
+		-
+			message: "#^Cannot access property \\$socialite_user_id on App\\\\Models\\\\Comment\\|null\\.$#"
+			count: 1
+			path: app/Observers/CommentObserver.php
+
+		-
+			message: "#^Cannot access property \\$socialiteUser on App\\\\Models\\\\Comment\\|null\\.$#"
+			count: 1
+			path: app/Observers/CommentObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ConfigObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ConfigObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\ConfigObserver\\:\\:updated\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ConfigObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/NavObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/NavObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/NavObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/NavObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\SiteObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/SiteObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\SiteObserver\\:\\:updated\\(\\) has parameter \\$site with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/SiteObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:saving\\(\\) has parameter \\$category with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleting\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleting\\(\\) has parameter \\$tag with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Property App\\\\Providers\\\\AuthServiceProvider\\:\\:\\$policies type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Providers/AuthServiceProvider.php
+
+		-
+			message: "#^Method App\\\\Providers\\\\ComposerServiceProvider\\:\\:assignBlueberryThemeData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Providers/ComposerServiceProvider.php
+
+		-
+			message: "#^Method App\\\\Providers\\\\ComposerServiceProvider\\:\\:getCountData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Providers/ComposerServiceProvider.php
+
+		-
+			message: "#^Method App\\\\Providers\\\\ComposerServiceProvider\\:\\:assignGithubThemeData\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Providers/ComposerServiceProvider.php
+
+		-
+			message: "#^Property App\\\\Providers\\\\EventServiceProvider\\:\\:\\$listen has no typehint specified\\.$#"
+			count: 1
+			path: app/Providers/EventServiceProvider.php
+
+		-
+			message: "#^Method App\\\\Providers\\\\ObserveServiceProvider\\:\\:boot\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Providers/ObserveServiceProvider.php
+
+		-
+			message: "#^Property App\\\\Rules\\\\Comment\\:\\:\\$message has no typehint specified\\.$#"
+			count: 1
+			path: app/Rules/Comment.php
+
+		-
+			message: "#^Parameter \\#2 \\$contents of method Illuminate\\\\Contracts\\\\Filesystem\\\\Filesystem\\:\\:put\\(\\) expects resource\\|string, string\\|false given\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Function mail_is_configured\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Function get_image_paths_from_html\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Function get_image_paths_from_html\\(\\) has parameter \\$html with no typehint specified\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of method DaveJamesMiller\\\\Breadcrumbs\\\\BreadcrumbsGenerator\\:\\:push\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 5
+			path: routes/breadcrumbs.php
+
+		-
+			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"
+			count: 1
+			path: routes/web.php
+
