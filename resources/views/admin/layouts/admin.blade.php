@@ -18,7 +18,7 @@
                             <img src="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->avatar : asset('images/default/avatar.jpg') }}" class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
-                            <span>{{ __('Admin Welcome') }}</span>
+                            <span>{{ translate('Admin Welcome') }}</span>
                             <h2>{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->name : auth()->guard('admin')->user()->name }}</h2>
                         </div>
                     </div>
@@ -32,71 +32,71 @@
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a><i class="fa fa-book"></i> {{ __('Article') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-book"></i> {{ translate('Article') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/article/index') }}">{{ __('List') }}</a></li>
-                                        <li><a href="{{ url('admin/article/replaceView') }}">{{ __('Batch Replace') }}</a></li>
+                                        <li><a href="{{ url('admin/article/index') }}">{{ translate('List') }}</a></li>
+                                        <li><a href="{{ url('admin/article/replaceView') }}">{{ translate('Batch Replace') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-th"></i> {{ __('Category & Nav') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-th"></i> {{ translate('Category & Nav') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/category/index') }}">{{ __('Category') }}</a></li>
-                                        <li><a href="{{ url('admin/nav/index') }}">{{ __('Nav') }}</a></li>
+                                        <li><a href="{{ url('admin/category/index') }}">{{ translate('Category') }}</a></li>
+                                        <li><a href="{{ url('admin/nav/index') }}">{{ translate('Nav') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-tags"></i> {{ __('Tag') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-tags"></i> {{ translate('Tag') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/tag/index') }}">{{ __('List') }}</a></li>
+                                        <li><a href="{{ url('admin/tag/index') }}">{{ translate('List') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-comments"></i> {{ __('Comment') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-comments"></i> {{ translate('Comment') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/comment/index') }}">{{ __('List') }}</a></li>
-                                        <li><a href="{{ url('admin/comment/replaceView') }}">{{ __('Batch Replace') }}</a></li>
+                                        <li><a href="{{ url('admin/comment/index') }}">{{ translate('List') }}</a></li>
+                                        <li><a href="{{ url('admin/comment/replaceView') }}">{{ translate('Batch Replace') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-users"></i> {{ __('User') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-users"></i> {{ translate('User') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/user/index') }}">{{ __('Administrator') }}</a></li>
-                                        <li><a href="{{ url('admin/socialiteUser/index') }}">{{ __('Socialite User') }}</a></li>
+                                        <li><a href="{{ url('admin/user/index') }}">{{ translate('Administrator') }}</a></li>
+                                        <li><a href="{{ url('admin/socialiteUser/index') }}">{{ translate('Socialite User') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-link"></i> {{ __('Link') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-link"></i> {{ translate('Link') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/friendshipLink/index') }}">{{ __('Link') }}</a></li>
-                                        <li><a href="{{ url('admin/site/index') }}">{{ __('Recommend Blog') }}</a></li>
+                                        <li><a href="{{ url('admin/friendshipLink/index') }}">{{ translate('Link') }}</a></li>
+                                        <li><a href="{{ url('admin/site/index') }}">{{ translate('Recommend Blog') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-commenting"></i> {{ __('Note') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-commenting"></i> {{ translate('Note') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/note/index') }}">{{ __('List') }}</a></li>
+                                        <li><a href="{{ url('admin/note/index') }}">{{ translate('List') }}</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a><i class="fa fa-cogs"></i> {{ __('Setting') }} <span class="fa fa-chevron-down"></span></a>
+                                    <a><i class="fa fa-cogs"></i> {{ translate('Setting') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/config/email') }}">{{ __('Email') }}</a></li>
-                                        <li><a href="{{ url('admin/socialiteClient/index') }}">{{ __('Socialite') }}</a></li>
-                                        <li><a href="{{ url('admin/config/commentAudit') }}">{{ __('Comment Audit') }}</a></li>
-                                        <li><a href="{{ url('admin/openSource/index') }}">{{ __('Open Source') }}</a></li>
+                                        <li><a href="{{ url('admin/config/email') }}">{{ translate('Email') }}</a></li>
+                                        <li><a href="{{ url('admin/socialiteClient/index') }}">{{ translate('Socialite') }}</a></li>
+                                        <li><a href="{{ url('admin/config/commentAudit') }}">{{ translate('Comment Audit') }}</a></li>
+                                        <li><a href="{{ url('admin/openSource/index') }}">{{ translate('Open Source') }}</a></li>
                                         @if(config('app.locale') === 'zh-CN')
                                             <li><a href="{{ url('admin/config/qqQun') }}">QQ群</a></li>
                                         @endif
-                                        <li><a href="{{ url('admin/config/backup') }}">{{ __('Backup') }}</a></li>
-                                        <li><a href="{{ url('admin/config/upload') }}">{{ __('Upload') }}</a></li>
-                                        <li><a href="{{ url('admin/config/seo') }}">{{ __('SEO') }}</a></li>
-                                        <li><a href="{{ url('admin/config/socialShare') }}">{{ __('Social Share') }}</a></li>
-                                        <li><a href="{{ url('admin/config/socialLinks') }}">{{ __('Social Links') }}</a></li>
-                                        <li><a href="{{ url('admin/config/search') }}">{{ __('Search') }}</a></li>
-                                        <li><a href="{{ url('admin/config/licenses') }}">{{ __('Licenses') }}</a></li>
-                                        <li><a href="{{ url('admin/config/edit') }}">{{ __('Other Setting') }}</a></li>
-                                        <li><a href="{{ url('admin/config/clear') }}">{{ __('Clear Cache') }}</a></li>
+                                        <li><a href="{{ url('admin/config/backup') }}">{{ translate('Backup') }}</a></li>
+                                        <li><a href="{{ url('admin/config/upload') }}">{{ translate('Upload') }}</a></li>
+                                        <li><a href="{{ url('admin/config/seo') }}">{{ translate('SEO') }}</a></li>
+                                        <li><a href="{{ url('admin/config/socialShare') }}">{{ translate('Social Share') }}</a></li>
+                                        <li><a href="{{ url('admin/config/socialLinks') }}">{{ translate('Social Links') }}</a></li>
+                                        <li><a href="{{ url('admin/config/search') }}">{{ translate('Search') }}</a></li>
+                                        <li><a href="{{ url('admin/config/licenses') }}">{{ translate('Licenses') }}</a></li>
+                                        <li><a href="{{ url('admin/config/edit') }}">{{ translate('Other Setting') }}</a></li>
+                                        <li><a href="{{ url('admin/config/clear') }}">{{ translate('Clear Cache') }}</a></li>
                                     </ul>
                                 </li>
                             </ul>

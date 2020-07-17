@@ -1,22 +1,22 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Socialite User'))
+@section('title', translate('Socialite User'))
 
-@section('nav', __('Socialite User'))
+@section('nav', translate('Socialite User'))
 
 @section('content')
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>id</th>
-            <th>{{ __('User Name') }}</th>
-            <th>{{ __('Socialite Client Name') }}</th>
-            <th>{{ __('Email') }}</th>
-            <th>{{ __('Login times') }}</th>
-            <th>{{ __('Is Administrator?') }}?</th>
+            <th>{{ translate('User Name') }}</th>
+            <th>{{ translate('Socialite Client Name') }}</th>
+            <th>{{ translate('Email') }}</th>
+            <th>{{ translate('Login times') }}</th>
+            <th>{{ translate('Is Administrator?') }}?</th>
             <th>ip</th>
-            <th>{{ __('Last login') }}</th>
-            <th>{{ __('First login') }}</th>
-            <th>{{ __('Handle') }}</th>
+            <th>{{ translate('Last login') }}</th>
+            <th>{{ translate('First login') }}</th>
+            <th>{{ translate('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
@@ -39,7 +39,7 @@
                 </td>
                 <td>{{ $v->updated_at }}</td>
                 <td>{{ $v->created_at }}</td>
-                <td><a href="{{ url('admin/socialiteUser/edit', [$v->id]) }}">{{ __('Edit') }}</a></td>
+                <td><a href="{{ url('admin/socialiteUser/edit', [$v->id]) }}">{{ translate('Edit') }}</a></td>
             </tr>
         @endforeach
     </table>

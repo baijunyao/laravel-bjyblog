@@ -1,17 +1,17 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Tag List'))
+@section('title', translate('Tag List'))
 
-@section('nav', __('Tag List'))
+@section('nav', translate('Tag List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/tag/index') }}">{{ __('Tag List') }}</a>
+            <a href="{{ url('admin/tag/index') }}">{{ translate('Tag List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/tag/create') }}">{{ __('Add Tag') }}</a>
+            <a href="{{ url('admin/tag/create') }}">{{ translate('Add Tag') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/tag/sort') }}" method="post">
@@ -19,9 +19,9 @@
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th>id</th>
-                <th>{{ __('Tag Name') }}</th>
-                <td>{{ __('Status') }}</td>
-                <th>{{ __('Handle') }}</th>
+                <th>{{ translate('Tag Name') }}</th>
+                <td>{{ translate('Status') }}</td>
+                <th>{{ translate('Handle') }}</th>
             </tr>
             @foreach($data as $v)
                 <tr>
@@ -35,13 +35,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/tag/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
+                        <a href="{{ url('admin/tag/edit', [$v->id]) }}">{{ translate('Edit') }}</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('{{ __('Delete') }}?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
+                            <a href="javascript:if(confirm('{{ translate('Delete') }}?')) location='{{ url('admin/tag/destroy', [$v->id]) }}'">{{ translate('Delete') }}</a>
                         @else
-                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/tag/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
+                            <a href="javascript:if(confirm('{{ translate('Restore') }}?'))location.href='{{ url('admin/tag/restore', [$v->id]) }}'">{{ translate('Restore') }}</a>
                             |
-                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/tag/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
+                            <a href="javascript:if(confirm('{{ translate('Force Delete') }}?'))location.href='{{ url('admin/tag/forceDelete', [$v->id]) }}'">{{ translate('Force Delete') }}</a>
                         @endif
                     </td>
                 </tr>

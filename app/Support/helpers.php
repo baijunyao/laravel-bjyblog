@@ -136,3 +136,25 @@ if (!function_exists('get_image_paths_from_html')) {
         return $image_paths;
     }
 }
+
+if (!function_exists('translate')) {
+    /**
+     * Translate the given message, only return string (for PHPStan).
+     *
+     * @param string|null          $key
+     * @param array<string,string> $replace
+     * @param string|null          $locale
+     *
+     * @return string
+     */
+    function translate($key = null, $replace = [], $locale = null)
+    {
+        $result = __($key, $replace, $locale);
+
+        if (is_array($result)) {
+            throw new InvalidArgumentException('Only supports string translation, if you need to return an array, please use the __() method');
+        }
+
+        return $result ?? '';
+    }
+}

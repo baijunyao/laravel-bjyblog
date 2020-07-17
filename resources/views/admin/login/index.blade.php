@@ -1,6 +1,6 @@
 @extends('admin.layouts.gentelella')
 
-@section('title', __('Sign In'))
+@section('title', translate('Sign In'))
 
 @section('body')
 
@@ -22,7 +22,7 @@
                             <input type="password" class="form-control" placeholder="Password" required="" name="password">
                         </div>
                         <div>
-                            <button class="btn btn-default submit" type="submit">{{ __('Sign In') }}</button>
+                            <button class="btn btn-default submit" type="submit">{{ translate('Sign In') }}</button>
                         </div>
 
                         <div class="clearfix"></div>

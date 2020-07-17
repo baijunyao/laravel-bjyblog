@@ -38,7 +38,7 @@ class Update extends FormRequest
     {
         $validator->after(function ($validator) {
             if ($this->has('204') && !in_array('public', $this->input('204'))) {
-                $validator->errors()->add('204', __('Local drive must be checked'));
+                $validator->errors()->add('204', translate('Local drive must be checked'));
             }
 
             if ($this->has('204') && in_array('oss_uploads', $this->input('204')) && !$this->isJson()) {
@@ -50,7 +50,7 @@ class Update extends FormRequest
                 ] as $id => $description) {
                     /** @var string $id */
                     if ($this->input($id, '') === '') {
-                        $validator->errors()->add($id, $description . ': ' . __('The content can not be empty'));
+                        $validator->errors()->add($id, $description . ': ' . translate('The content can not be empty'));
                     }
                 }
             }

@@ -1,6 +1,6 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Add Article'))
+@section('title', translate('Add Article'))
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('statics/editormd/css/editormd.min.css') }}">
@@ -11,27 +11,27 @@
     </style>
 @endsection
 
-@section('nav', __('Add Article'))
+@section('nav', translate('Add Article'))
 
 @section('content')
 
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/article/index') }}">{{ __('Article List') }}</a>
+            <a href="{{ url('admin/article/index') }}">{{ translate('Article List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/article/create') }}">{{ __('Add Article') }}</a>
+            <a href="{{ url('admin/article/create') }}">{{ translate('Add Article') }}</a>
         </li>
     </ul>
     <form class="form-horizontal " action="{{ url('admin/article/store') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th width="7%">{{ __('Category') }}</th>
+                <th width="7%">{{ translate('Category') }}</th>
                 <td>
                     <select class="form-control" name="category_id">
-                        <option value="">{{ __('Select Category') }}</option>
+                        <option value="">{{ translate('Select Category') }}</option>
                         @foreach($category as $v)
                             <option value="{{ $v->id }}" @if(old('category_id')) selected="selected" @endif>{{ $v->name }}</option>
                         @endforeach
@@ -39,25 +39,25 @@
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Title') }}</th>
+                <th>{{ translate('Title') }}</th>
                 <td>
                     <input class="form-control" type="text" name="title" value="{{ old('title') }}">
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Author') }}</th>
+                <th>{{ translate('Author') }}</th>
                 <td>
                     <input class="form-control" type="text" name="author" value="@if(empty(old('author'))){{ $author }}@else{{ old('author') }}@endif">
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Keywords') }}</th>
+                <th>{{ translate('Keywords') }}</th>
                 <td>
-                    <input class="form-control" type="text" placeholder="{{ __('Separated by commas') }}" name="keywords" value="{{ old('keywords') }}">
+                    <input class="form-control" type="text" placeholder="{{ translate('Separated by commas') }}" name="keywords" value="{{ old('keywords') }}">
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Tag') }}</th>
+                <th>{{ translate('Tag') }}</th>
                 <td>
                     @foreach($tag as $v)
                         {{ $v['name'] }}<input class="bjy-icheck" type="checkbox" name="tag_ids[]" value="{{ $v['id'] }}" @if(in_array($v['id'], old('tag_ids', []))) checked="checked" @endif> &emsp;
@@ -66,7 +66,7 @@
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Cover') }}</th>
+                <th>{{ translate('Cover') }}</th>
                 <td>
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 220px; height: 150px;">
@@ -74,23 +74,23 @@
                         </div>
                         <div>
                             <span class="btn btn-default btn-file">
-                                <span class="fileinput-new">{{ __('Select Image') }}</span>
-                                <span class="fileinput-exists">{{ __('Change') }}</span>
+                                <span class="fileinput-new">{{ translate('Select Image') }}</span>
+                                <span class="fileinput-exists">{{ translate('Change') }}</span>
                                 <input type="file" name="cover">
                             </span>
-                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ __('Delete') }}</a>
+                            <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">{{ translate('Delete') }}</a>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Description') }}</th>
+                <th>{{ translate('Description') }}</th>
                 <td>
-                    <textarea class="form-control modal-sm" name="description" rows="7" placeholder="{{ __('If it is empty, intercept the first 300 words of the article content.') }}">{{ old('description') }}</textarea>
+                    <textarea class="form-control modal-sm" name="description" rows="7" placeholder="{{ translate('If it is empty, intercept the first 300 words of the article content.') }}">{{ old('description') }}</textarea>
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Content') }}</th>
+                <th>{{ translate('Content') }}</th>
                 <td>
                     <div id="bjy-content">
                         <textarea name="markdown">{{ old('markdown') }}</textarea>
@@ -98,17 +98,17 @@
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Topping') }}</th>
+                <th>{{ translate('Topping') }}</th>
                 <td>
-                    {{ __('Yes') }} <input class="bjy-icheck" type="radio" name="is_top" value="1"> &emsp;&emsp;
-                    {{ __('No') }} <input class="bjy-icheck" type="radio" name="is_top" value="0" checked="checked">
+                    {{ translate('Yes') }} <input class="bjy-icheck" type="radio" name="is_top" value="1"> &emsp;&emsp;
+                    {{ translate('No') }} <input class="bjy-icheck" type="radio" name="is_top" value="0" checked="checked">
                 </td>
             </tr>
 
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
+                    <input class="btn btn-success" type="submit" value="{{ translate('Submit') }}">
                 </td>
             </tr>
         </table>
@@ -120,12 +120,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">{{ __('Add Tag') }}</h4>
+                    <h4 class="modal-title" id="myModalLabel">{{ translate('Add Tag') }}</h4>
                 </div>
                 <div class="modal-body text-center">
                     <form class="form-inline" role="form">
-                        <input class="form-control bjy-tag-name" type="text" placeholder="{{ __('Name') }}">
-                        <button type="button" class="btn btn-success js-add-tag">{{ __('Submit') }}</button>
+                        <input class="form-control bjy-tag-name" type="text" placeholder="{{ translate('Name') }}">
+                        <button type="button" class="btn btn-success js-add-tag">{{ translate('Submit') }}</button>
                     </form>
                 </div>
             </div>
@@ -154,7 +154,7 @@
                 //atLink    : false,    // disable @link
                 //emailLink : false,    // disable email address auto link
                 todoList  : true,
-                placeholder: "{{ __('Enter article content') }}",
+                placeholder: "{{ translate('Enter article content') }}",
                 toolbarAutoFixed: false,
                 path      : '{{ asset('/statics/editormd/lib') }}/',
                 emoji: true,

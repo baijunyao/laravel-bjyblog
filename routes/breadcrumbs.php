@@ -23,22 +23,22 @@ Breadcrumbs::for('home.tag.show', function (BreadcrumbsGenerator $trail, Tag $ta
 
 Breadcrumbs::for('home.note.index', function (BreadcrumbsGenerator $trail) {
     $trail->parent('home.article.index');
-    $trail->push(__('Note'), route('home.note.index'));
+    $trail->push(translate('Note'), route('home.note.index'));
 });
 
 Breadcrumbs::for('home.chat.index', function (BreadcrumbsGenerator $trail) {
     $trail->parent('home.article.index');
-    $trail->push(__('Note'), route('home.note.index'));
+    $trail->push(translate('Note'), route('home.note.index'));
 });
 
 Breadcrumbs::for('home.openSource.index', function (BreadcrumbsGenerator $trail) {
     $trail->parent('home.article.index');
-    $trail->push(__('Open Source'), route('home.openSource.index'));
+    $trail->push(translate('Open Source'), route('home.openSource.index'));
 });
 
 Breadcrumbs::for('home.site.index', function (BreadcrumbsGenerator $trail) {
     $trail->parent('home.article.index');
-    $trail->push(__('Site'), route('home.site.index'));
+    $trail->push(translate('Site'), route('home.site.index'));
 });
 
 Breadcrumbs::for('home.article.show', function (BreadcrumbsGenerator $trail, Article $article) {
@@ -48,5 +48,5 @@ Breadcrumbs::for('home.article.show', function (BreadcrumbsGenerator $trail, Art
 
 Breadcrumbs::for('home.article.search', function (BreadcrumbsGenerator $trail) {
     $trail->parent('home.article.index');
-    $trail->push(__('Search'), route('home.article.search'));
+    $trail->push(translate('Search'), route('home.article.search'));
 });

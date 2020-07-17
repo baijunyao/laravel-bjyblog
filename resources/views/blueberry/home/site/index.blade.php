@@ -42,34 +42,34 @@
                 <div class="col-xs-12 col-md-12 col-lg-12">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title b-ta-center" id="myModalLabel">{{ __('Apply') }} <span class="b-hint">({{ __('Please add a friendly link to this site') }})</span></h4>
+                        <h4 class="modal-title b-ta-center" id="myModalLabel">{{ translate('Apply') }} <span class="b-hint">({{ translate('Please add a friendly link to this site') }})</span></h4>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-12 col-lg-12 b-submit-site">
                     <form class="form-horizontal" role="form" action="{{ url('site/store') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name" class="col-sm-3 control-label">{{ __('Site Name') }}</label>
+                            <label for="name" class="col-sm-3 control-label">{{ translate('Site Name') }}</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="url" class="col-sm-3 control-label">{{ __('URL') }}</label>
+                            <label for="url" class="col-sm-3 control-label">{{ translate('URL') }}</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="url">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="description" class="col-sm-3 control-label">{{ __('Description') }}</label>
+                            <label for="description" class="col-sm-3 control-label">{{ translate('Description') }}</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="description">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="email" class="col-sm-3 control-label">{{ __('Email') }}</label>
+                            <label for="email" class="col-sm-3 control-label">{{ translate('Email') }}</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="email" placeholder="{{ __('Notification Email') }}">
+                                <input type="text" class="form-control" name="email" placeholder="{{ translate('Notification Email') }}">
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@
                 </div>
                 <div class="col-xs-12 col-md-12 col-lg-12">
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary center-block b-s-submit">{{ __('Submit') }}</button>
+                        <button type="button" class="btn btn-primary center-block b-s-submit">{{ translate('Submit') }}</button>
                     </div>
                 </div>
             </div>

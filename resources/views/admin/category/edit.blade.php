@@ -1,16 +1,16 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Edit Category'))
+@section('title', translate('Edit Category'))
 
-@section('nav', __('Edit Category'))
+@section('nav', translate('Edit Category'))
 
 @section('content')
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li>
-            <a href="{{ url('admin/category/index') }}">{{ __('Category List') }}</a>
+            <a href="{{ url('admin/category/index') }}">{{ translate('Category List') }}</a>
         </li>
         <li class="active">
-            <a href="{{ url('admin/category/create') }}">{{ __('Edit Category') }}</a>
+            <a href="{{ url('admin/category/create') }}">{{ translate('Edit Category') }}</a>
         </li>
     </ul>
 
@@ -18,25 +18,25 @@
         {{ csrf_field() }}
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <th>{{ __('Category Name') }}</th>
+                <th>{{ translate('Category Name') }}</th>
                 <td>
                     <input class="form-control" type="text" name="name" value="{{ $data['name'] }}">
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Keywords') }}</th>
+                <th>{{ translate('Keywords') }}</th>
                 <td>
                     <input class="form-control" type="text" name="keywords" value="{{ $data['keywords'] }}">
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Description') }}</th>
+                <th>{{ translate('Description') }}</th>
                 <td>
                     <input class="form-control" type="text" name="description" value="{{ $data['description'] }}">
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Sort') }}</th>
+                <th>{{ translate('Sort') }}</th>
                 <td>
                     <input class="form-control" type="text" name="sort" value="{{ $data['sort'] }}">
                 </td>
@@ -44,7 +44,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
+                    <input class="btn btn-success" type="submit" value="{{ translate('Submit') }}">
                 </td>
             </tr>
         </table>

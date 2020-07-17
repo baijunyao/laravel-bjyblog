@@ -48,7 +48,7 @@ class SiteAudit extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->line(__('The recommended blog has been approved.'))
-            ->action(__('Click for details.'), url('site'));
+            ->line(translate('The recommended blog has been approved.'))
+            ->action(translate('Click for details.'), url('site'));
     }
 }

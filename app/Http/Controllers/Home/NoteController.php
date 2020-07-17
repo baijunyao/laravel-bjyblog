@@ -14,7 +14,7 @@ class NoteController extends Controller
         $assign  = [
             'category_id'  => 'note',
             'notes'        => $notes,
-            'title'        => __('Note'),
+            'title'        => translate('Note'),
         ];
 
         return view('home.index.note', $assign);

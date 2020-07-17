@@ -1,29 +1,29 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Article List'))
+@section('title', translate('Article List'))
 
-@section('nav', __('Article List'))
+@section('nav', translate('Article List'))
 
 @section('content')
 
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/article/index') }}">{{ __('Article List') }}</a>
+            <a href="{{ url('admin/article/index') }}">{{ translate('Article List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/article/create') }}">{{ __('Add Article') }}</a>
+            <a href="{{ url('admin/article/create') }}">{{ translate('Add Article') }}</a>
         </li>
     </ul>
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th>Id</th>
-            <th>{{ __('Category') }}</th>
-            <th>{{ __('Title') }}</th>
-            <th>{{ __('Click Counts') }}</th>
-            <th>{{ __('Status') }}</th>
-            <th>{{ __('Created_at') }}</th>
-            <th>{{ __('Handle') }}</th>
+            <th>{{ translate('Category') }}</th>
+            <th>{{ translate('Title') }}</th>
+            <th>{{ translate('Click Counts') }}</th>
+            <th>{{ translate('Status') }}</th>
+            <th>{{ translate('Created_at') }}</th>
+            <th>{{ translate('Handle') }}</th>
         </tr>
         @foreach($article as $k => $v)
             <tr>
@@ -42,14 +42,14 @@
                 </td>
                 <td>{{ $v->created_at }}</td>
                 <td>
-                    <a href="{{ url('admin/article/edit', [$v->id]) }}">{{ __('Edit') }}</a>
+                    <a href="{{ url('admin/article/edit', [$v->id]) }}">{{ translate('Edit') }}</a>
                     |
                     @if($v->trashed())
-                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/article/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
+                        <a href="javascript:if(confirm('{{ translate('Restore') }}?'))location.href='{{ url('admin/article/restore', [$v->id]) }}'">{{ translate('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/article/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
+                        <a href="javascript:if(confirm('{{ translate('Force Delete') }}?'))location.href='{{ url('admin/article/forceDelete', [$v->id]) }}'">{{ translate('Force Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
+                        <a href="javascript:if(confirm('{{ translate('Delete') }}?'))location.href='{{ url('admin/article/destroy', [$v->id]) }}'">{{ translate('Delete') }}</a>
                     @endif
                 </td>
             </tr>
