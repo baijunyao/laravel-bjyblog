@@ -1,17 +1,17 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Category List'))
+@section('title', translate('Category List'))
 
-@section('nav', __('Category List'))
+@section('nav', translate('Category List'))
 
 @section('content')
 
     <ul id="myTab" class="nav nav-tabs bar_tabs">
         <li class="active">
-            <a href="{{ url('admin/category/index') }}">{{ __('Category List') }}</a>
+            <a href="{{ url('admin/category/index') }}">{{ translate('Category List') }}</a>
         </li>
         <li>
-            <a href="{{ url('admin/category/create') }}">{{ __('Add Category') }}</a>
+            <a href="{{ url('admin/category/create') }}">{{ translate('Add Category') }}</a>
         </li>
     </ul>
     <form action="{{ url('admin/category/sort') }}" method="post">
@@ -19,12 +19,12 @@
         <table class="table table-bordered table-striped table-hover table-condensed">
             <tr>
                 <th>Id</th>
-                <th>{{ __('Sort') }}</th>
-                <th>{{ __('Category Name') }}</th>
-                <th>{{ __('Keywords') }}</th>
-                <th>{{ __('Description') }}</th>
-                <th>{{ __('Status') }}</th>
-                <th>{{ __('Handle') }}</th>
+                <th>{{ translate('Sort') }}</th>
+                <th>{{ translate('Category Name') }}</th>
+                <th>{{ translate('Keywords') }}</th>
+                <th>{{ translate('Description') }}</th>
+                <th>{{ translate('Status') }}</th>
+                <th>{{ translate('Handle') }}</th>
             </tr>
             @foreach($data as $v)
                 <tr>
@@ -43,13 +43,13 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ url('admin/category/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
+                        <a href="{{ url('admin/category/edit', [$v->id]) }}">{{ translate('Edit') }}</a> |
                         @if(is_null($v->deleted_at))
-                            <a href="javascript:if(confirm('{{ __('Delete') }}')) location='{{ url('admin/category/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
+                            <a href="javascript:if(confirm('{{ translate('Delete') }}')) location='{{ url('admin/category/destroy', [$v->id]) }}'">{{ translate('Delete') }}</a>
                         @else
-                            <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/category/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
+                            <a href="javascript:if(confirm('{{ translate('Restore') }}?'))location.href='{{ url('admin/category/restore', [$v->id]) }}'">{{ translate('Restore') }}</a>
                             |
-                            <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/category/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
+                            <a href="javascript:if(confirm('{{ translate('Force Delete') }}?'))location.href='{{ url('admin/category/forceDelete', [$v->id]) }}'">{{ translate('Force Delete') }}</a>
                         @endif
                     </td>
                 </tr>
@@ -57,7 +57,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input class="btn btn-success" type="submit" value="{{ __('Sort') }}">
+                    <input class="btn btn-success" type="submit" value="{{ translate('Sort') }}">
                 </td>
                 <td></td>
                 <td></td>

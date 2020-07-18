@@ -49,7 +49,7 @@ class RemoveUnused extends Command
         }
 
         foreach ($languages['zh-CN'] as $key => $value) {
-            if (!Str::contains($allFileContents, "__('$key')")) {
+            if (!Str::contains($allFileContents, "translate('$key')")) {
                 foreach ($languages as $language => $content) {
                     unset($languages[$language][$key]);
                 }

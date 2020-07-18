@@ -1,8 +1,8 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Social Links'))
+@section('title', translate('Social Links'))
 
-@section('nav', __('Social Links'))
+@section('nav', translate('Social Links'))
 
 @section('content')
     <form class="form-inline" enctype="multipart/form-data" action="{{ url('admin/config/update') }}" method="post">
@@ -41,7 +41,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
+                    <input class="btn btn-success" type="submit" value="{{ translate('Submit') }}">
                 </td>
             </tr>
         </table>

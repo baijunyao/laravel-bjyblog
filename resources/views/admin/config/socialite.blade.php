@@ -1,8 +1,8 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Socialite Config'))
+@section('title', translate('Socialite Config'))
 
-@section('nav', __('Socialite Config'))
+@section('nav', translate('Socialite Config'))
 
 @section('content')
     <form class="form-inline" enctype="multipart/form-data" action="{{ url('admin/config/update') }}" method="post">
@@ -21,13 +21,13 @@
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Weibo') }} API KEY：</th>
+                <th>{{ translate('Weibo') }} API KEY：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="133" value="{{  $config['services.weibo.client_id'] }}" >
                 </td>
             </tr>
             <tr>
-                <th>{{ __('Weibo') }} SECRET：</th>
+                <th>{{ translate('Weibo') }} SECRET：</th>
                 <td>
                     <input class="form-control modal-sm" type="text" name="134" value="{{  $config['services.weibo.client_secret'] }}" >
                 </td>
@@ -47,7 +47,7 @@
             <tr>
                 <th></th>
                 <td>
-                    <input class="btn btn-success" type="submit" value="{{ __('Submit') }}">
+                    <input class="btn btn-success" type="submit" value="{{ translate('Submit') }}">
                 </td>
             </tr>
         </table>

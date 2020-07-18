@@ -10,7 +10,7 @@ class OpenSourceController extends Controller
     {
         $assign = [
             'category_id' => 'openSource',
-            'title'       => __('Open Source'),
+            'title'       => translate('Open Source'),
             'head'        => [
                 'title'       => 'Open Source',
                 'keywords'    => '',

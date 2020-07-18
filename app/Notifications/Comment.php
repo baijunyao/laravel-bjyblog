@@ -39,9 +39,9 @@ class Comment extends Notification
     public function __construct(SocialiteUser $socialiteUser, Article $article, CommentModel $comment)
     {
         if (intval($comment->parent_id) === 0) {
-            $this->subject = $socialiteUser->name . ' ' . __('Comment') . ' ' . $article->title;
+            $this->subject = $socialiteUser->name . ' ' . translate('Comment') . ' ' . $article->title;
         } else {
-            $this->subject = $socialiteUser->name . ' ' . __('Reply') . ' ' . $article->title;
+            $this->subject = $socialiteUser->name . ' ' . translate('Reply') . ' ' . $article->title;
         }
 
         $this->socialiteUser = $socialiteUser;
@@ -77,6 +77,6 @@ class Comment extends Notification
         return (new MailMessage())
             ->subject($this->subject)
             ->line(new HtmlString($this->comment->content))
-            ->action(__('Click for details.'), $this->article->url . '#comment-' . $this->comment->id);
+            ->action(translate('Click for details.'), $this->article->url . '#comment-' . $this->comment->id);
     }
 }

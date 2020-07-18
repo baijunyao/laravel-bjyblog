@@ -77,4 +77,13 @@ HTML;
             '/uploads/article/5d9829577d312.png',
         ]);
     }
+
+    public function testTranslate()
+    {
+        static::expectException('InvalidArgumentException');
+
+        static::assertSame(translate('Article'), '文章');
+
+        translate('validation.between');
+    }
 }

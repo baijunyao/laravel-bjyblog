@@ -85,7 +85,7 @@ class AuditComment extends Command
 
             $bar->finish();
         } else {
-            $this->error('请先配置百度的 key ');
+            $this->error(translate('Please add Baidu key first'));
         }
     }
 }

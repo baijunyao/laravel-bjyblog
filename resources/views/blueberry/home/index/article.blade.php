@@ -49,18 +49,18 @@
                 </div>
                 <ul class="b-prev-next">
                     <li class="b-prev">
-                         {{ __('Previous Article') }}：
+                         {{ translate('Previous Article') }}：
                         @if(is_null($prev))
-                            <span>{{ __('No More Article') }}</span>
+                            <span>{{ translate('No More Article') }}</span>
                         @else
                             <a href="{{ $prev->url }}">{{ $prev->title }}</a>
                         @endif
 
                     </li>
                     <li class="b-next">
-                        {{ __('Next Article') }}：
+                        {{ translate('Next Article') }}：
                         @if(is_null($next))
-                            <span>{{ __('No More Article') }}</span>
+                            <span>{{ translate('No More Article') }}</span>
                         @else
                             <a href="{{ $next->url }}">{{ $next->title }}</a>
                         @endif
@@ -94,17 +94,17 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-box">
                 <img class="b-head-img" src="@if(auth()->guard('socialite')->check()){{ auth()->guard('socialite')->user()->avatar }}@else{{ asset('images/home/default_head_img.gif') }}@endif" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                 <div class="b-box-textarea">
-                    <div class="b-box-content js-hint" @if(auth()->guard('socialite')->check())contenteditable="true" @endif>{{ __('Please login to comment') }}</div>
+                    <div class="b-box-content js-hint" @if(auth()->guard('socialite')->check())contenteditable="true" @endif>{{ translate('Please login to comment') }}</div>
                     <ul class="b-emote-submit">
                         <li class="b-emote">
                             <i class="fa fa-smile-o js-get-tuzki"></i>
-                            <input class="form-control b-email" type="text" name="email" placeholder="{{ __('Email for notifications') }}" value="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->email : '' }}">
+                            <input class="form-control b-email" type="text" name="email" placeholder="{{ translate('Email for notifications') }}" value="{{ auth()->guard('socialite')->check() ? auth()->guard('socialite')->user()->email : '' }}">
                             <div class="b-tuzki">
 
                             </div>
                         </li>
                         <li class="b-submit-button">
-                            <input class="js-comment-btn" type="button" value="{{ __('Submit') }}" article_id="{{ $article->id }}" parent_id="0" depth="0">
+                            <input class="js-comment-btn" type="button" value="{{ translate('Submit') }}" article_id="{{ $article->id }}" parent_id="0" depth="0">
                         </li>
                         <li class="b-clear-float"></li>
                     </ul>
@@ -113,8 +113,8 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-comment-title">
                 <ul class="row">
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{ __('latest comments') }}</li>
-                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">{!! __('others.comment_count', ['count' => count($comments)]) !!}</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{ translate('latest comments') }}</li>
+                    <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">{!! translate('others.comment_count', ['count' => count($comments)]) !!}</li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 b-user-comment">
@@ -147,7 +147,7 @@
                                comment_id="{{ $comment->id }}"
                                username="{{ $comment->socialiteUser->name }}"
                                depth="{{ $comment->depth }}"
-                            >{{ __('Reply') }}</a>
+                            >{{ translate('Reply') }}</a>
                         </p>
                         <div class="b-clear-float"></div>
                     </div>
@@ -173,11 +173,11 @@
         $('pre').addClass('line-numbers');
         $('.js-content a').attr('target', "{{ config('bjyblog.link_target') }}")
         translate = {
-            pleaseLoginToComment: "{{ __('Please login to comment') }}",
-            pleaseLoginToReply: "{{ __('Please login to reply') }}",
-            emailForNotifications: "{{ __('Email for notifications') }}",
-            pleaseLogin: "{{ __('Please login') }}",
-            reply: "{{ __('Reply') }}"
+            pleaseLoginToComment: "{{ translate('Please login to comment') }}",
+            pleaseLoginToReply: "{{ translate('Please login to reply') }}",
+            emailForNotifications: "{{ translate('Email for notifications') }}",
+            pleaseLogin: "{{ translate('Please login') }}",
+            reply: "{{ translate('Reply') }}"
         }
         $.each($('.js-content img'), function (k, v) {
             $(v).wrap(function(){

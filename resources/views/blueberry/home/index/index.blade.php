@@ -20,7 +20,7 @@
         @if(Str::isFalse(config('bjyblog.breadcrumb')) && !empty($tagName))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">
-                    <h2>{!! __('others.article_with_tag', ['tag' => $tagName]) !!}</h2>
+                    <h2>{!! translate('others.article_with_tag', ['tag' => $tagName]) !!}</h2>
                 </div>
             </div>
         @endif
@@ -28,7 +28,7 @@
         @if(Str::isFalse(config('bjyblog.breadcrumb')) && request()->has('wd'))
             <div class="row b-tag-title">
                 <div class="col-xs-12 col-md-12 col-lg-12">
-                    <h2>{!! __('others.search_article', ['word' => clean(request()->input('wd'))]) !!}</h2>
+                    <h2>{!! translate('others.search_article', ['word' => clean(request()->input('wd'))]) !!}</h2>
                 </div>
             </div>
         @endif
@@ -81,7 +81,7 @@
                         <!-- 文章描述结束 -->
                     </div>
                 </div>
-                <a class=" b-readall" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}">{{ __('Read More') }}</a>
+                <a class=" b-readall" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}">{{ translate('Read More') }}</a>
             </div>
         @endforeach
         <!-- 循环文章列表结束 -->

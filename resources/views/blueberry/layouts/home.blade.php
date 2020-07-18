@@ -42,7 +42,7 @@
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
                 <li class="b-nav-cname  @if(request()->path() === '/') b-nav-active @endif">
-                    <a href="/">{{ __('Home') }}</a>
+                    <a href="/">{{ translate('Home') }}</a>
                 </li>
                 @foreach($category as $v)
                     <li class="b-nav-cname @if((request()->fullUrl() === $v->url) || (isset($article) && $article->category_id ===$v->id)) b-nav-active @endif">
@@ -60,12 +60,12 @@
                     <li class="b-user-info" data-user-id="{{ auth()->guard('socialite')->user()->id }}">
                         <span><img class="b-head_img" src="{{ auth()->guard('socialite')->user()->avatar }}" alt="{{ auth()->guard('socialite')->user()->name }}" title="{{ auth()->guard('socialite')->user()->name }}" /></span>
                         <span class="b-nickname">{{ auth()->guard('socialite')->user()->name }}</span>
-                        <span><a href="{{ url('auth/socialite/logout') }}">{{ __('Sign out') }}</a></span>
+                        <span><a href="{{ url('auth/socialite/logout') }}">{{ translate('Sign out') }}</a></span>
                     </li>
                 @else
                     <li class="b-nav-cname b-nav-login">
                         <div class="hidden-xs b-login-mobile"></div>
-                        <a class="js-login-btn" href="javascript:;">{{ __('Sign In') }}</a>
+                        <a class="js-login-btn" href="javascript:;">{{ translate('Sign In') }}</a>
                     </li>
                 @endif
             </ul>
@@ -82,7 +82,7 @@
             <div class="b-search">
                 <form class="form-inline" role="form" action="{{ url('search') }}" method="get">
                     <input class="b-search-text" type="text" name="wd">
-                    <input class="b-search-submit" type="submit" value="{{ __('Search') }}">
+                    <input class="b-search-submit" type="submit" value="{{ translate('Search') }}">
                 </form>
             </div>
             @if(!empty(config('bjyblog.qq_qun.number')) && config('app.locale') === 'zh-CN')
@@ -112,7 +112,7 @@
                 </div>
             @endif
             <div class="b-tags">
-                <h4 class="b-title">{{ __('Hot Tags') }}</h4>
+                <h4 class="b-title">{{ translate('Hot Tags') }}</h4>
                 <ul class="b-all-tname">
                     @foreach($tag as $v)
                         <li class="b-tname">
@@ -122,7 +122,7 @@
                 </ul>
             </div>
             <div class="b-recommend">
-                <h4 class="b-title">{{ __('Top Articles') }}</h4>
+                <h4 class="b-title">{{ translate('Top Articles') }}</h4>
                 <p class="b-recommend-p">
                     @foreach($topArticle as $v)
                         <a class="b-recommend-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
@@ -130,7 +130,7 @@
                 </p>
             </div>
             <div class="b-comment-list">
-                <h4 class="b-title">{{ __('Recent Comments') }}</h4>
+                <h4 class="b-title">{{ translate('Recent Comments') }}</h4>
                 <div>
                     @foreach($latestComments as $comment)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
@@ -139,7 +139,7 @@
                                 {{ $comment->socialiteUser->name }} <i class="fa fa-{{ $comment->socialiteUser->socialiteClient->icon }}"></i> <span>{{ $comment->created_at->diffForHumans() }}</span>
                             </li>
                             <li class="b-nc-article">
-                                {{ __('Comment') }} <a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="{{ config('bjyblog.link_target') }}">{{ $comment->article->sub_title }}</a>
+                                {{ translate('Comment') }} <a href="{{ $comment->article->url }}#comment-{{ $comment->id }}" target="{{ config('bjyblog.link_target') }}">{{ $comment->article->sub_title }}</a>
                             </li>
                             <li class="b-content">
                                 {!! $comment->sub_content !!}
@@ -149,12 +149,12 @@
                 </div>
             </div>
             <div class="b-link">
-                <h4 class="b-title">{{ __('Links') }}</h4>
+                <h4 class="b-title">{{ translate('Links') }}</h4>
                 <p>
                     @foreach($friendshipLink as $v)
                         <a class="b-link-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
                     @endforeach
-                        <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> {{ __('More') }} </a>
+                        <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> {{ translate('More') }} </a>
                 </p>
             </div>
         </div>
@@ -165,38 +165,38 @@
     <div class="container">
         <div class="row b-content">
             <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
-                <dt>{{ __('Rights') }}</dt>
-                <dd>{{ __('Licenses') }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by{{ config('bjyblog.licenses.allow_commercial') . config('bjyblog.licenses.allow_adaptation') }}/4.0/deed.{{ config('bjyblog.licenses.language') }}" target="{{ config('bjyblog.link_target') }}">CC BY-NC 4.0</a></dd>
-                <dd>{{ __('Copyright') }}：© 2014-{{ date('Y') }}</dd>
+                <dt>{{ translate('Rights') }}</dt>
+                <dd>{{ translate('Licenses') }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by{{ config('bjyblog.licenses.allow_commercial') . config('bjyblog.licenses.allow_adaptation') }}/4.0/deed.{{ config('bjyblog.licenses.language') }}" target="{{ config('bjyblog.link_target') }}">CC BY-NC 4.0</a></dd>
+                <dd>{{ translate('Copyright') }}：© 2014-{{ date('Y') }}</dd>
                 @if(!empty(config('bjyblog.admin_email')))
-                    <dd>{{ __('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
+                    <dd>{{ translate('Contact Email') }}：<a href="mailto:{!! config('bjyblog.admin_email') !!}">{!! config('bjyblog.admin_email') !!}</a></dd>
                 @endif
                 @if(!empty(config('bjyblog.icp')) && config('app.locale') === 'zh-CN')
-                    <dd>{{ __('ICP') }}：<a rel="nofollow" href="http://www.beian.miit.gov.cn" target="{{ config('bjyblog.link_target') }}">{{ config('bjyblog.icp') }}</a></dd>
+                    <dd>{{ translate('ICP') }}：<a rel="nofollow" href="http://www.beian.miit.gov.cn" target="{{ config('bjyblog.link_target') }}">{{ config('bjyblog.icp') }}</a></dd>
                 @endif
             </dl>
 
             <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
-                <dt>{{ __('Structure') }}</dt>
-                <dd>{{ __('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">laravel-bjyblog</a></dd>
-                <dd>{{ __('Blog Version') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</a></dd>
-                <dd>{{ __('Framework Version') }}：<a rel="nofollow"  href="https://github.com/laravel/framework" target="{{ config('bjyblog.link_target') }}">laravel-v{{ \Illuminate\Foundation\Application::VERSION }}</a></dd>
-                <dd>{{ __('Project Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
-                <dd>{{ __('Theme Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/blog-theme-blueberry">blog-theme-blueberry</a></dd>
-                <dd>{{ __('Theme Author') }}：<a href="https://baijunyao.com">{{ __('Junyao Bai') }}</a></dd>
+                <dt>{{ translate('Structure') }}</dt>
+                <dd>{{ translate('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">laravel-bjyblog</a></dd>
+                <dd>{{ translate('Blog Version') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</a></dd>
+                <dd>{{ translate('Framework Version') }}：<a rel="nofollow"  href="https://github.com/laravel/framework" target="{{ config('bjyblog.link_target') }}">laravel-v{{ \Illuminate\Foundation\Application::VERSION }}</a></dd>
+                <dd>{{ translate('Project Author') }}：<a href="https://baijunyao.com">{{ translate('Junyao Bai') }}</a></dd>
+                <dd>{{ translate('Theme Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/blog-theme-blueberry">blog-theme-blueberry</a></dd>
+                <dd>{{ translate('Theme Author') }}：<a href="https://baijunyao.com">{{ translate('Junyao Bai') }}</a></dd>
             </dl>
 
             <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
-                <dt>{{ __('Counts') }}</dt>
-                <dd>{{ __('Article Counts') }}：{{ $articleCount }}</dd>
-                <dd>{{ __('Comment Counts') }}：{{ $commentCount }}</dd>
-                <dd>{{ __('User Counts') }}：{{ $socialiteUserCount }}</dd>
-                <dd>{{ __('Note Counts') }}：{{ $chatCount }}</dd>
+                <dt>{{ translate('Counts') }}</dt>
+                <dd>{{ translate('Article Counts') }}：{{ $articleCount }}</dd>
+                <dd>{{ translate('Comment Counts') }}：{{ $commentCount }}</dd>
+                <dd>{{ translate('User Counts') }}：{{ $socialiteUserCount }}</dd>
+                <dd>{{ translate('Note Counts') }}：{{ $chatCount }}</dd>
             </dl>
 
             @if($homeFootColNumber === 3)
                 <dl class="col-xs-12 col-sm-12 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }} b-social">
-                    <dt>{{ __('Social') }}</dt>
+                    <dt>{{ translate('Social') }}</dt>
                     <dd class="b-small-logo">
                         @foreach(config('bjyblog.social_links') as $name => $link)
                             @if($link !== '')
@@ -217,7 +217,7 @@
             <div class="col-xs-12 col-md-12 col-lg-12">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title b-ta-center" id="myModalLabel">{{ __('Without registration, you can log in with the account below.') }}</h4>
+                    <h4 class="modal-title b-ta-center" id="myModalLabel">{{ translate('Without registration, you can log in with the account below.') }}</h4>
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
@@ -226,7 +226,7 @@
                 @endforeach
 
                 @if($socialiteClients->isEmpty())
-                    {{ __('Need to add socialite client first.') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ __('Click to go') }}</a>
+                    {{ translate('Need to add socialite client first.') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ translate('Click to go') }}</a>
                 @endif
             </div>
         </div>
@@ -241,8 +241,8 @@
     titleName = '{{ config('app.name') }}';
     jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
     sharejsConfig = {!! config('bjyblog.social_share.sharejs_config') !!};
-    pleaseLogInFirst = '{{ __('Please log in first.') }}';
-    submittedSuccessfullyWaitingForApprove = '{{ __('Submitted successfully, waiting for approve.') }}';
+    pleaseLogInFirst = '{{ translate('Please log in first.') }}';
+    submittedSuccessfullyWaitingForApprove = '{{ translate('Submitted successfully, waiting for approve.') }}';
 </script>
 <script src="{{ mix('js/app.js') }}"></script>
 {!! htmlspecialchars_decode(config('bjyblog.statistics')) !!}

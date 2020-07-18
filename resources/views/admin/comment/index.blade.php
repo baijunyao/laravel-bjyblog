@@ -1,8 +1,8 @@
 @extends('admin.layouts.admin')
 
-@section('title', __('Comment List'))
+@section('title', translate('Comment List'))
 
-@section('nav', __('Comment List'))
+@section('nav', translate('Comment List'))
 
 @section('css')
     <style>
@@ -19,13 +19,13 @@
     <table class="table table-striped table-bordered table-hover">
         <tr>
             <th width="5%">id</th>
-            <th width="30%">{{ __('Content') }}</th>
-            <th width="20%">{{ __('Article') }}</th>
-            <th width="8%">{{ __('User') }}</th>
-            <th width="8%">{{ __('Date') }}</th>
-            <th width="6%">{{ __('Status') }}</th>
-            <th width="6%">{{ __('Audited') }}</th>
-            <th width="21%">{{ __('Handle') }}</th>
+            <th width="30%">{{ translate('Content') }}</th>
+            <th width="20%">{{ translate('Article') }}</th>
+            <th width="8%">{{ translate('User') }}</th>
+            <th width="8%">{{ translate('Date') }}</th>
+            <th width="6%">{{ translate('Status') }}</th>
+            <th width="6%">{{ translate('Audited') }}</th>
+            <th width="21%">{{ translate('Handle') }}</th>
         </tr>
         @foreach($data as $k => $v)
             <tr>
@@ -51,13 +51,13 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ url('admin/comment/edit', [$v->id]) }}">{{ __('Edit') }}</a> |
+                    <a href="{{ url('admin/comment/edit', [$v->id]) }}">{{ translate('Edit') }}</a> |
                     @if(is_null($v->deleted_at))
-                        <a href="javascript:if(confirm('{{ __('Delete') }}?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">{{ __('Delete') }}</a>
+                        <a href="javascript:if(confirm('{{ translate('Delete') }}?'))location.href='{{ url('admin/comment/destroy', [$v->id]) }}'">{{ translate('Delete') }}</a>
                     @else
-                        <a href="javascript:if(confirm('{{ __('Restore') }}?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">{{ __('Restore') }}</a>
+                        <a href="javascript:if(confirm('{{ translate('Restore') }}?'))location.href='{{ url('admin/comment/restore', [$v->id]) }}'">{{ translate('Restore') }}</a>
                         |
-                        <a href="javascript:if(confirm('{{ __('Force Delete') }}?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">{{ __('Force Delete') }}</a>
+                        <a href="javascript:if(confirm('{{ translate('Force Delete') }}?'))location.href='{{ url('admin/comment/forceDelete', [$v->id]) }}'">{{ translate('Force Delete') }}</a>
                     @endif
 
                 </td>

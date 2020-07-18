@@ -48,7 +48,7 @@ class SiteApply extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->line(__('Someone applied for a recommendation blog.'))
-            ->action(__('Click for details.'), url('admin/site/index'));
+            ->line(translate('Someone applied for a recommendation blog.'))
+            ->action(translate('Click for details.'), url('admin/site/index'));
     }
 }
