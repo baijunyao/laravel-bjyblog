@@ -92,6 +92,10 @@ class V9_0_0 extends Command
             }
         }
 
+        DB::table('comments')->where('parent_id', 0)->update([
+            'parent_id' => null,
+        ]);
+
         $bar->finish();
     }
 
