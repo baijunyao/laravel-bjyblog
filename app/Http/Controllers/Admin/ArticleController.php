@@ -58,7 +58,7 @@ class ArticleController extends Controller
         ];
 
         foreach (config('bjyblog.upload_disks') as $disk) {
-            $result['url'] = $request->file('editormd-image-file')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+            $result['url'] = '/' . $request->file('editormd-image-file')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
         }
 
         return response()->json($result);
@@ -70,7 +70,7 @@ class ArticleController extends Controller
 
         if ($request->hasFile('cover')) {
             foreach (config('bjyblog.upload_disks') as $disk) {
-                $article['cover'] = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+                $article['cover'] = '/' . $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
             }
         }
 
