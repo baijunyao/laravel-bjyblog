@@ -18,7 +18,7 @@ class ArticleCoverController extends Controller
         ];
 
         foreach (config('bjyblog.upload_disks') as $disk) {
-            $result['url'] = $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+            $result['url'] = '/' . $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
         }
 
         return response()->json($result);
