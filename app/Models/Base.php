@@ -32,42 +32,34 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Base extends Model
 {
-    // 软删除
     use SoftDeletes, Cachable;
 
     /**
-     * 禁止被批量赋值的字段
-     *
-     * @var array
+     * @var array<int,string>
      */
     protected $guarded = [];
 
     /**
-     * 批量更新的方法
-     * 示例参数
+     * @param array<int,array<string,mixed>> $multipleData
+     *
+     * e.g.
      * $multipleData = [
-     *    [
-     *        'name' => 'name 1' ,
-     *        'date' => 'date 1'
+     *     [
+     *         'id' => 1 ,
+     *         'name' => 'baijunyao'
      *     ],
      *     [
-     *        'name' => 'name 2' ,
-     *        'date' => 'date 2'
-     *      ]
-     *   ]
-     *
-     * @param array $multipleData
-     * @param bool  $flash        是否需要成功或者失败的提示
-     *
-     * @return bool|int
+     *         'id' => 2 ,
+     *         'name' => 'Junyao Bai'
+     *     ]
+     * ]
      */
-    public function updateBatch($multipleData = [], $flash = true)
+    public function updateBatch(array $multipleData = []): int
     {
         if (empty($multipleData)) {
-            return false;
+            return 0;
         }
 
-        // 获取表名
         $tableName       = config('database.connections.mysql.prefix') . $this->getTable();
         $updateColumn    = array_keys($multipleData[0]);
         $referenceColumn = $updateColumn[0];
@@ -75,8 +67,7 @@ class Base extends Model
         unset($updateColumn[0]);
 
         $whereIn = '';
-        // 组合sql语句
-        $sql = 'UPDATE ' . $tableName . ' SET ';
+        $sql     = 'UPDATE ' . $tableName . ' SET ';
 
         foreach ($updateColumn as $uColumn) {
             $sql .= $uColumn . ' = CASE ';
@@ -94,10 +85,7 @@ class Base extends Model
 
         $sql = rtrim($sql, ', ') . ' WHERE ' . $referenceColumn . ' IN (' . rtrim($whereIn, ', ') . ')';
 
-        // 更新
         $result = DB::update($sql);
-
-        $result ? flash_success('操作成功', $flash) : flash_error('操作失败', $flash);
 
         Artisan::call('modelCache:clear', [
             '--model' => static::class,
