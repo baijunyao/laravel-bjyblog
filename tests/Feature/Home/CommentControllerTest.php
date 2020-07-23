@@ -7,8 +7,11 @@ namespace Tests\Feature\Home;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
 use App\Notifications\Comment as CommentNotification;
+use DB;
 use Illuminate\Notifications\AnonymousNotifiable;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Notification;
+use Str;
 
 class CommentControllerTest extends TestCase
 {
@@ -172,5 +175,34 @@ class CommentControllerTest extends TestCase
             'content'    => '评论666',
         ];
         $this->post('/comment', $comment)->assertStatus(401);
+    }
+
+    public function testCommentsRestricted()
+    {
+        for ($i = 0; $i < 10; $i++) {
+            $comment = [
+                'article_id' => 1,
+                'parent_id'  => 0,
+                'content'    => Str::random(),
+            ];
+
+            $this->loginByUserId(1)
+                ->post('/comment', $comment)
+                ->assertOk();
+
+            DB::table('comments')->update([
+                'created_at' => Date::now()->addMinutes(10),
+            ]);
+        }
+
+        $comment = [
+            'article_id' => 1,
+            'parent_id'  => 0,
+            'content'    => Str::random(),
+        ];
+
+        $this->loginByUserId(1)
+            ->post('/comment', $comment)
+            ->assertStatus(302);
     }
 }
