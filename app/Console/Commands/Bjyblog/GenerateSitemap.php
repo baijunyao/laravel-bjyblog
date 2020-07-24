@@ -8,9 +8,11 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Nav;
 use App\Models\Tag;
+use Carbon\CarbonInterface;
 use DateTime;
 use File;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Date;
 
 class GenerateSitemap extends Command
 {
@@ -54,22 +56,22 @@ class GenerateSitemap extends Command
         $url = '';
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
-            $url .= $this->generateUrl(url('article', $article->id), $article->updated_at->format(DateTime::ATOM));
+            $url .= $this->generateUrl(url('article', $article->id), $article->updated_at);
         }
 
         foreach ($categories as $category) {
             /** @var \App\Models\Category $category */
-            $url .= $this->generateUrl(url('category', $category->id), $category->updated_at->format(DateTime::ATOM));
+            $url .= $this->generateUrl(url('category', $category->id), $category->updated_at);
         }
 
         foreach ($tags as $tag) {
             /** @var \App\Models\Tag $tag */
-            $url .= $this->generateUrl(url('tag', $tag->id), $tag->updated_at->format(DateTime::ATOM));
+            $url .= $this->generateUrl(url('tag', $tag->id), $tag->updated_at);
         }
 
         foreach ($navs as $nav) {
             /** @var \App\Models\Nav $nav */
-            $url .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at->format(DateTime::ATOM));
+            $url .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at);
         }
 
         $url = rtrim($url);
@@ -87,12 +89,14 @@ XML;
         $this->info('Path: ' . public_path('sitemap.xml'));
     }
 
-    public function generateUrl($loc, $lastmod)
+    private function generateUrl(string $url, ?CarbonInterface $carbo): string
     {
+        $date = $carbo === null ? Date::now()->format(DateTime::ATOM) : $carbo->format(DateTime::ATOM);
+
         return <<<XML
     <url>
-        <loc>$loc</loc>
-        <lastmod>$lastmod</lastmod>
+        <loc>$url</loc>
+        <lastmod>$date</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
