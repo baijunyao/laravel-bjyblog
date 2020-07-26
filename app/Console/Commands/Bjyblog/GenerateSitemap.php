@@ -53,37 +53,29 @@ class GenerateSitemap extends Command
             ->latest('updated_at')
             ->get();
 
-        $url = '';
+        $urlBlock = '';
+
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
-            $url .= $this->generateUrl(url('article', $article->id), $article->updated_at);
+            $urlBlock .= $this->generateUrl(url('article', $article->id), $article->updated_at);
         }
 
         foreach ($categories as $category) {
             /** @var \App\Models\Category $category */
-            $url .= $this->generateUrl(url('category', $category->id), $category->updated_at);
+            $urlBlock .= $this->generateUrl(url('category', $category->id), $category->updated_at);
         }
 
         foreach ($tags as $tag) {
             /** @var \App\Models\Tag $tag */
-            $url .= $this->generateUrl(url('tag', $tag->id), $tag->updated_at);
+            $urlBlock .= $this->generateUrl(url('tag', $tag->id), $tag->updated_at);
         }
 
         foreach ($navs as $nav) {
             /** @var \App\Models\Nav $nav */
-            $url .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at);
+            $urlBlock .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at);
         }
 
-        $url = rtrim($url);
-
-        $xml = <<<XML
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-$url
-</urlset>
-XML;
-
-        File::put(public_path('sitemap.xml'), $xml);
+        File::put(public_path('sitemap.xml'), str_replace('{urlBlock}', $urlBlock, rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap.stub')))));
 
         $this->info('Generating the sitemap completed.');
         $this->info('Path: ' . public_path('sitemap.xml'));
@@ -93,14 +85,6 @@ XML;
     {
         $date = $carbo === null ? Date::now()->format(DateTime::ATOM) : $carbo->format(DateTime::ATOM);
 
-        return <<<XML
-    <url>
-        <loc>$url</loc>
-        <lastmod>$date</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-XML;
+        return str_replace(['{url}', '{date}'], [$url, $date], rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap-url.stub'))));
     }
 }
