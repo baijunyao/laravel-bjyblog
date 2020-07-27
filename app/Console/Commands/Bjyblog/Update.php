@@ -44,7 +44,7 @@ class Update extends Command
             return strtolower(str_replace('_', '.', basename($file->getFilename(), '.php')));
         })->sort(function ($prev, $next) {
             return Comparator::greaterThan($prev, $next);
-        })->each(function ($version) use ($console) {
+        })->each(function (string $version) use ($console) {
             $name = 'App\Console\Commands\Upgrade\\' . strtoupper(str_replace('.', '_', $version));
 
             if (!$console->contains($name)) {

@@ -19,6 +19,7 @@ class Upgrade extends Command
 
     public function handle()
     {
+        /** @var string $version */
         $version      = $this->argument('version');
         $versionUpper = strtoupper($version);
 
@@ -58,7 +59,7 @@ class Upgrade extends Command
             $this->info("Generate $testUpgradeFile completed.");
         }
 
-        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1'));
+        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1') ?? '');
 
         // Migrations
         $databasePath      = 'database/';
