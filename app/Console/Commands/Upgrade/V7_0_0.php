@@ -17,7 +17,7 @@ class V7_0_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         $configNameById = [
             142 => 'mail.mailers.smtp.host',
@@ -33,5 +33,7 @@ class V7_0_0 extends Command
                 'name' => $name,
             ]);
         }
+
+        return 0;
     }
 }

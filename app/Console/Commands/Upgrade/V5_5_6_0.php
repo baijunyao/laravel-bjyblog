@@ -22,15 +22,12 @@ class V5_5_6_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $envContent = file_get_contents(base_path('.env'));
         $env        = str_replace('BLOG_BRANCH', 'DEPLOY_BRANCH', $envContent);
         file_put_contents(base_path('.env'), $env);
+
+        return 0;
     }
 }

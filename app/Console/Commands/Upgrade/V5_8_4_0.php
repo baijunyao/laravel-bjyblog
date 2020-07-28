@@ -28,12 +28,7 @@ class V5_8_4_0 extends Command
      */
     protected $description = 'upgrade to v5.8.4.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->string('slug')->default('')->after('title')->comment('slug');
@@ -73,5 +68,7 @@ class V5_8_4_0 extends Command
             'updated_at' => '2019-05-19 19:43:00',
             'deleted_at' => null,
         ]);
+
+        return 0;
     }
 }

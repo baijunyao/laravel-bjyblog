@@ -17,7 +17,7 @@ class Upgrade extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         /** @var string $version */
         $version      = $this->argument('version');
@@ -26,7 +26,7 @@ class Upgrade extends Command
         if (preg_match('/V(\d+\.){2}\d+/', $versionUpper) === 0) {
             $this->error('Please enter the correct version number, for example v6.0.0');
 
-            return;
+            return 1;
         }
 
         $versionString      = str_replace('.', '_', $versionUpper);
@@ -114,5 +114,7 @@ class Upgrade extends Command
         }
 
         shell_exec('composer dump-autoload');
+
+        return 0;
     }
 }

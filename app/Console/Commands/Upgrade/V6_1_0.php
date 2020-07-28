@@ -16,8 +16,10 @@ class V6_1_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         $this->call('bjyblog:generate-sitemap');
+
+        return 0;
     }
 }

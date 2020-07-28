@@ -23,12 +23,7 @@ class V5_8_5_0 extends Command
      */
     protected $description = 'upgrade to v5.8.5.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Config::insert([
             [
@@ -71,5 +66,7 @@ class V5_8_5_0 extends Command
                 'deleted_at' => null,
             ],
         ]);
+
+        return 0;
     }
 }

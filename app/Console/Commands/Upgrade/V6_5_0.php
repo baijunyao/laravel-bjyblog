@@ -17,7 +17,7 @@ class V6_5_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         $scoutDriver = env('SCOUT_DRIVER') === null ? 'null' : env('SCOUT_DRIVER');
 
@@ -87,5 +87,7 @@ class V6_5_0 extends Command
                 'deleted_at' => null,
             ],
         ]);
+
+        return 0;
     }
 }

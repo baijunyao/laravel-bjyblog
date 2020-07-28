@@ -26,12 +26,7 @@ class V5_8_2_0 extends Command
      */
     protected $description = 'upgrade to v5.8.2.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         if (DB::table('socialite_clients')->count() === 0) {
             Schema::drop('socialite_clients');
@@ -88,5 +83,7 @@ class V5_8_2_0 extends Command
         Schema::table('oauth_users', function (Blueprint $table) {
             $table->renameColumn('type', 'oauth_client_id');
         });
+
+        return 0;
     }
 }

@@ -23,12 +23,7 @@ class V6_0_0 extends Command
      */
     protected $description = 'upgrade to v6.0.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         DB::table('migrations')->insert([
             'migration' => '2019_08_19_000000_create_failed_jobs_table',
@@ -38,5 +33,7 @@ class V6_0_0 extends Command
         $envContent = file_get_contents(base_path('.env'));
         $env        = str_replace('SCOUT_DRIVER=tntsearch', 'SCOUT_DRIVER=null', $envContent);
         file_put_contents(base_path('.env'), $env);
+
+        return 0;
     }
 }

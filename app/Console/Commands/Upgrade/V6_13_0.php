@@ -18,7 +18,7 @@ class V6_13_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         Schema::dropIfExists('open_sources');
         Schema::rename('git_projects', 'open_sources');
@@ -26,5 +26,7 @@ class V6_13_0 extends Command
         DB::table('navs')->where('url', 'git')->update([
             'url' => 'openSource',
         ]);
+
+        return 0;
     }
 }

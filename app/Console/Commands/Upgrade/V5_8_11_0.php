@@ -23,12 +23,7 @@ class V5_8_11_0 extends Command
      */
     protected $description = 'upgrade to v5.8.11.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         DB::table('configs')->insert([
             'id'         => 172,
@@ -38,5 +33,7 @@ class V5_8_11_0 extends Command
             'updated_at' => '2019-08-05 22:15:00',
             'deleted_at' => null,
         ]);
+
+        return 0;
     }
 }

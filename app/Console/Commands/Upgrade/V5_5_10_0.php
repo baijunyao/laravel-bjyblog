@@ -23,12 +23,7 @@ class V5_5_10_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $id = Console::whereIn('id', [5, 6])->pluck('id');
 
@@ -52,5 +47,7 @@ class V5_5_10_0 extends Command
             ]);
         }
         $this->info('Upgrade to v5.5.10.0 version completed');
+
+        return 0;
     }
 }

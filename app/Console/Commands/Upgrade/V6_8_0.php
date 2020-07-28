@@ -17,7 +17,7 @@ class V6_8_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         Config::insert([
             [
@@ -69,5 +69,7 @@ class V6_8_0 extends Command
                 'deleted_at' => null,
             ],
         ]);
+
+        return 0;
     }
 }

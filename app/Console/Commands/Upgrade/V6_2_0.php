@@ -18,7 +18,7 @@ class V6_2_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         $envContent = file_get_contents(base_path('.env'));
         $env        = str_replace('QUEUE_DRIVER', 'QUEUE_CONNECTION', $envContent);
@@ -28,5 +28,7 @@ class V6_2_0 extends Command
             $table->string('keywords')->default('')->after('slug');
             $table->string('description')->default('')->after('keywords');
         });
+
+        return 0;
     }
 }

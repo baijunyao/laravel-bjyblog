@@ -23,12 +23,7 @@ class SyncToOss extends Command
      */
     protected $description = 'Sync files to OSS';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $localFilePaths = Storage::disk('public')->allFiles('uploads');
 
@@ -49,5 +44,7 @@ class SyncToOss extends Command
                 $this->info('Uploaded file: ' . $localFilePath);
             }
         }
+
+        return 0;
     }
 }

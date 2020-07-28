@@ -32,12 +32,7 @@ class Clear extends Command
      */
     protected $description = 'Clear seeder data';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         ArticleTag::truncate();
         Article::truncate();
@@ -55,5 +50,7 @@ class Clear extends Command
         Artisan::call('view:clear');
         Artisan::call('queue:restart');
         $this->info('successfully');
+
+        return 0;
     }
 }

@@ -23,12 +23,7 @@ class V5_5_11_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $webName = Config::where('name', 'bjyblog.web_name')->first();
 
@@ -50,5 +45,7 @@ class V5_5_11_0 extends Command
         Config::onlyTrashed()->where('id', '<', 101)->forceDelete();
 
         $this->info('Upgrade to v5.5.11.0 version completed');
+
+        return 0;
     }
 }

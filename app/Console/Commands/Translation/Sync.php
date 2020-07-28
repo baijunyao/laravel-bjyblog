@@ -24,12 +24,7 @@ class Sync extends Command
      */
     protected $description = 'Sync translation';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $langs = ['fr', 'ru'];
 
@@ -52,5 +47,7 @@ class Sync extends Command
         }
 
         $this->call('translation:remove-unused');
+
+        return 0;
     }
 }

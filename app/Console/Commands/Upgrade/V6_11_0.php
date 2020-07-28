@@ -20,7 +20,7 @@ class V6_11_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         if (!Schema::hasTable('visits')) {
             Schema::create('visits', function (Blueprint $table) {
@@ -45,5 +45,7 @@ class V6_11_0 extends Command
         Schema::table('articles', function (Blueprint $table) {
             $table->dropColumn('click');
         });
+
+        return 0;
     }
 }

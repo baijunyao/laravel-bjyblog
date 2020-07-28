@@ -19,7 +19,7 @@ class V11_0_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         if (File::isDirectory(public_path('uploads')) && !is_link(public_path('uploads'))) {
             File::moveDirectory(storage_path('app/public/uploads'), storage_path('app/public/uploads.bak'));
@@ -98,5 +98,7 @@ class V11_0_0 extends Command
                 'deleted_at' => null,
             ],
         ]);
+
+        return 0;
     }
 }

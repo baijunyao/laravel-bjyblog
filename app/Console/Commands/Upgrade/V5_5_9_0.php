@@ -24,12 +24,7 @@ class V5_5_9_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $configModel = new Config();
         $count       = $configModel->where('id', '>', 159)->count();
@@ -76,5 +71,7 @@ class V5_5_9_0 extends Command
             Artisan::call('config:clear');
         }
         $this->info('Upgrade to v5.5.9.0 version completed');
+
+        return 0;
     }
 }

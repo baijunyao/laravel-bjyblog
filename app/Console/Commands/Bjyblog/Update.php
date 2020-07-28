@@ -26,12 +26,7 @@ class Update extends Command
      */
     protected $description = 'blog update';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         // 运行迁移
         Artisan::call('migrate', [
@@ -67,5 +62,7 @@ class Update extends Command
         if (!app()->runningUnitTests()) {
             shell_exec('composer dump-autoload');
         }
+
+        return 0;
     }
 }

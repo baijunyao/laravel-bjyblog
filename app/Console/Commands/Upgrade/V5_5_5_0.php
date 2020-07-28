@@ -26,12 +26,7 @@ class V5_5_5_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $names = [
             'App\Console\Commands\Upgrade\V5_5_4_1',
@@ -39,7 +34,7 @@ class V5_5_5_0 extends Command
         ];
 
         if (Console::whereIn('name', $names)->count() !== 0) {
-            return;
+            return 0;
         }
 
         if (Nav::select('id')->count() === 0) {
@@ -237,5 +232,7 @@ class V5_5_5_0 extends Command
                 'value' => $config->where('id', 143)->first()->value,
             ]);
         }
+
+        return 0;
     }
 }

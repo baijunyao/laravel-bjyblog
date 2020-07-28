@@ -17,7 +17,7 @@ class V8_0_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         DB::table('configs')->insert([
             [
@@ -45,5 +45,7 @@ class V8_0_0 extends Command
                 'deleted_at' => null,
             ],
         ]);
+
+        return 0;
     }
 }

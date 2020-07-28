@@ -30,12 +30,7 @@ class GenerateSitemap extends Command
      */
     protected $description = 'Generating the sitemap';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $articles = Article::select('id', 'updated_at')
             ->latest('updated_at')
@@ -79,6 +74,8 @@ class GenerateSitemap extends Command
 
         $this->info('Generating the sitemap completed.');
         $this->info('Path: ' . public_path('sitemap.xml'));
+
+        return 0;
     }
 
     private function generateUrl(string $url, ?CarbonInterface $carbo): string
