@@ -84,10 +84,8 @@ class Upgrade extends Command
                 $testMigrationFile->getPathname(),
                 str_replace([
                     "declare(strict_types=1);\n\n",
-                    'Schema::',
                 ], [
                     "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n\n",
-                    '\\Schema::',
                 ],
                     File::get($testMigrationFile->getPathname())
                 )
@@ -102,10 +100,8 @@ class Upgrade extends Command
                 $testSeedFile->getPathname(),
                 str_replace([
                     "declare(strict_types=1);\n\n",
-                    ' DB',
                 ], [
                     "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n\n",
-                    ' \\DB',
                 ],
                     File::get($testSeedFile->getPathname())
                 )

@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Commands\Upgrade\VersionString;
 
 class CommandTest extends \Tests\Commands\Upgrade\TestCase
 {
-    public function testCommand() {
+    public function testCommand()
+    {
         $this->artisan('upgrade:version');
     }
 }
