@@ -19,7 +19,7 @@ class V6_3_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->renameColumn('status', 'is_audited');
@@ -59,5 +59,7 @@ class V6_3_0 extends Command
                 'deleted_at' => null,
             ],
         ]);
+
+        return 0;
     }
 }

@@ -17,15 +17,16 @@ class Upgrade extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
+        /** @var string $version */
         $version      = $this->argument('version');
         $versionUpper = strtoupper($version);
 
         if (preg_match('/V(\d+\.){2}\d+/', $versionUpper) === 0) {
             $this->error('Please enter the correct version number, for example v6.0.0');
 
-            return;
+            return 1;
         }
 
         $versionString      = str_replace('.', '_', $versionUpper);
@@ -58,7 +59,7 @@ class Upgrade extends Command
             $this->info("Generate $testUpgradeFile completed.");
         }
 
-        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1'));
+        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1') ?? '');
 
         // Migrations
         $databasePath      = 'database/';
@@ -83,10 +84,8 @@ class Upgrade extends Command
                 $testMigrationFile->getPathname(),
                 str_replace([
                     "declare(strict_types=1);\n\n",
-                    'Schema::',
                 ], [
                     "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n\n",
-                    '\\Schema::',
                 ],
                     File::get($testMigrationFile->getPathname())
                 )
@@ -101,10 +100,8 @@ class Upgrade extends Command
                 $testSeedFile->getPathname(),
                 str_replace([
                     "declare(strict_types=1);\n\n",
-                    ' DB',
                 ], [
                     "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n\n",
-                    ' \\DB',
                 ],
                     File::get($testSeedFile->getPathname())
                 )
@@ -113,5 +110,7 @@ class Upgrade extends Command
         }
 
         shell_exec('composer dump-autoload');
+
+        return 0;
     }
 }

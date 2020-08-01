@@ -23,12 +23,7 @@ class V5_8_10_0 extends Command
      */
     protected $description = 'upgrade to v5.8.10.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         DB::table('oauth_clients')->insert([
             'id'                     => 1,
@@ -44,5 +39,7 @@ class V5_8_10_0 extends Command
         ]);
 
         $this->call('passport:keys');
+
+        return 0;
     }
 }

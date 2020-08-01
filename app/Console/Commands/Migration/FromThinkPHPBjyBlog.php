@@ -37,10 +37,7 @@ class FromThinkPHPBjyBlog extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * 从 thinkphp-bjyblog 迁移数据
-     */
-    public function handle()
+    public function handle(): int
     {
         $articleModel        = new Article();
         $commentModel        = new Comment();
@@ -233,6 +230,8 @@ class FromThinkPHPBjyBlog extends Command
         $this->info('从旧系统迁移数据完成');
         // 迁移完成创建锁文件
         file_put_contents(storage_path('lock/migration.lock'), '');
+
+        return 0;
     }
 
     /**

@@ -17,7 +17,7 @@ class V6_6_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         $session_domain_confing = [
             'id'         => 185,
@@ -34,5 +34,7 @@ class V6_6_0 extends Command
         }
 
         Config::create($session_domain_confing);
+
+        return 0;
     }
 }

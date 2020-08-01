@@ -23,12 +23,7 @@ class V5_8_1_0 extends Command
      */
     protected $description = 'upgrade to v5.8.1.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $disks = Config::where('id', 164)->first();
 
@@ -37,5 +32,7 @@ class V5_8_1_0 extends Command
                 'value' => [],
             ]);
         }
+
+        return 0;
     }
 }

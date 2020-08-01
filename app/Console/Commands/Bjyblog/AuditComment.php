@@ -24,12 +24,7 @@ class AuditComment extends Command
      */
     protected $description = 'Audit Comment';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $baiduConfig = [
             config('services.baidu.appid'),
@@ -87,5 +82,7 @@ class AuditComment extends Command
         } else {
             $this->error(translate('Please add Baidu key first'));
         }
+
+        return 0;
     }
 }

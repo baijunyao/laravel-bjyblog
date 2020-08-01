@@ -24,12 +24,7 @@ class V5_8_6_0 extends Command
      */
     protected $description = 'upgrade to v5.8.6.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->renameColumn('oauth_user_id', 'socialite_user_id');
@@ -42,5 +37,7 @@ class V5_8_6_0 extends Command
         });
 
         Schema::rename('oauth_users', 'socialite_users');
+
+        return 0;
     }
 }

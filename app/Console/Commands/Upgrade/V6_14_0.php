@@ -19,7 +19,7 @@ class V6_14_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         if (!Schema::hasColumn('articles', 'views')) {
             Schema::table('articles', function (Blueprint $table) {
@@ -40,5 +40,7 @@ class V6_14_0 extends Command
         }
 
         Schema::drop('visits');
+
+        return 0;
     }
 }

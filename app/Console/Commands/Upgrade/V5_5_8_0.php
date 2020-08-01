@@ -24,12 +24,7 @@ class V5_5_8_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         if (!Schema::hasColumn('oauth_users', 'remember_token')) {
             Schema::table('oauth_users', function (Blueprint $table) {
@@ -38,5 +33,7 @@ class V5_5_8_0 extends Command
                     ->nullable();
             });
         }
+
+        return 0;
     }
 }

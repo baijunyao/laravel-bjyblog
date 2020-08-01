@@ -24,12 +24,7 @@ class V5_5_7_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Config::create([
             'id'    => '158',
@@ -37,5 +32,7 @@ class V5_5_7_0 extends Command
             'value' => '',
         ]);
         $this->info('finish');
+
+        return 0;
     }
 }

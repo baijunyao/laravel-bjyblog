@@ -25,12 +25,7 @@ class V5_8_3_0 extends Command
      */
     protected $description = 'upgrade to v5.8.3.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Schema::table('socialite_clients', function (Blueprint $table) {
             $table->dropColumn('client_id_config');
@@ -57,5 +52,7 @@ class V5_8_3_0 extends Command
                 'deleted_at'    => null,
             ],
         ]);
+
+        return 0;
     }
 }

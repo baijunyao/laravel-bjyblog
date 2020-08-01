@@ -17,7 +17,7 @@ class V6_10_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         Config::where('id', 160)->update([
             'name' => 'filesystems.disks.oss.access_key',
@@ -26,5 +26,7 @@ class V6_10_0 extends Command
         Config::where('id', 161)->update([
             'name' => 'filesystems.disks.oss.secret_key',
         ]);
+
+        return 0;
     }
 }

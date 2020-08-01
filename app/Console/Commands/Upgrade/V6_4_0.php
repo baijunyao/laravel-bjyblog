@@ -16,10 +16,12 @@ class V6_4_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         $envContent = file_get_contents(base_path('.env'));
         $env        = str_replace('ELASTICSEARCH_HOSTS', 'ELASTICSEARCH_HOST', $envContent);
         file_put_contents(base_path('.env'), $env);
+
+        return 0;
     }
 }

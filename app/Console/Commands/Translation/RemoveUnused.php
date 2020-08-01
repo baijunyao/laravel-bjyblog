@@ -24,12 +24,7 @@ class RemoveUnused extends Command
      */
     protected $description = 'Remove unused translation';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $languages = [
             'zh-CN' => [],
@@ -63,5 +58,7 @@ class RemoveUnused extends Command
 
             File::put(resource_path("lang/{$language}.json"), json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
+
+        return 0;
     }
 }

@@ -24,12 +24,7 @@ class V5_8_7_0 extends Command
      */
     protected $description = 'upgrade to v5.8.7.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Schema::dropIfExists('notes');
         Schema::rename('chats', 'notes');
@@ -41,5 +36,7 @@ class V5_8_7_0 extends Command
                 'url' => 'note',
             ]);
         }
+
+        return 0;
     }
 }

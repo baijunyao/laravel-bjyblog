@@ -25,12 +25,7 @@ class V5_8_8_0 extends Command
      */
     protected $description = 'upgrade to v5.8.8.0';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         Schema::table('socialite_clients', function (Blueprint $table) {
             $table->string('icon')->default('')->after('name');
@@ -52,5 +47,7 @@ class V5_8_8_0 extends Command
             'updated_at'    => '2019-07-01 23:26:38',
             'deleted_at'    => null,
         ]);
+
+        return 0;
     }
 }

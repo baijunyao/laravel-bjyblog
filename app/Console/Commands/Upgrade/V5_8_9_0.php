@@ -23,12 +23,7 @@ class V5_8_9_0 extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         $names = [
             'App\Console\Commands\Upgrade\V5_5_4_3',
@@ -39,5 +34,7 @@ class V5_8_9_0 extends Command
         Console::where('name', 'App\Console\Commands\Upgrade\V5_5_4_1')->update([
             'name' => 'App\Console\Commands\Upgrade\V5_5_5_0',
         ]);
+
+        return 0;
     }
 }

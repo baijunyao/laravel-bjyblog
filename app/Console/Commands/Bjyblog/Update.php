@@ -26,12 +26,7 @@ class Update extends Command
      */
     protected $description = 'blog update';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         // 运行迁移
         Artisan::call('migrate', [
@@ -44,7 +39,7 @@ class Update extends Command
             return strtolower(str_replace('_', '.', basename($file->getFilename(), '.php')));
         })->sort(function ($prev, $next) {
             return Comparator::greaterThan($prev, $next);
-        })->each(function ($version) use ($console) {
+        })->each(function (string $version) use ($console) {
             $name = 'App\Console\Commands\Upgrade\\' . strtoupper(str_replace('.', '_', $version));
 
             if (!$console->contains($name)) {
@@ -67,5 +62,7 @@ class Update extends Command
         if (!app()->runningUnitTests()) {
             shell_exec('composer dump-autoload');
         }
+
+        return 0;
     }
 }

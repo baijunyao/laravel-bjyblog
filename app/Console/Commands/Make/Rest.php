@@ -23,12 +23,7 @@ class Rest extends Command
      */
     protected $description = 'Command description';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handle()
+    public function handle(): int
     {
         /** @var string $name */
         $name         = $this->argument('name');
@@ -49,5 +44,7 @@ class Rest extends Command
         if (!File::exists($resourceTestPath)) {
             File::put($resourceTestPath, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource-controller-test.stub'))));
         }
+
+        return 0;
     }
 }

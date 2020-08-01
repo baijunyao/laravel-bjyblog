@@ -22,7 +22,7 @@ class V9_0_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         if (!Schema::hasTable('comment_backups')) {
             Schema::rename('comments', 'comment_backups');
@@ -97,6 +97,8 @@ class V9_0_0 extends Command
         ]);
 
         $bar->finish();
+
+        return 0;
     }
 
     private function getDataByArticleId($article_id)

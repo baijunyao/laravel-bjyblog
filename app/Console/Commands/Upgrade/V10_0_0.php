@@ -17,7 +17,7 @@ class V10_0_0 extends Command
         parent::__construct();
     }
 
-    public function handle()
+    public function handle(): int
     {
         DB::table('configs')->insertOrIgnore([
             'id'         => 199,
@@ -27,5 +27,7 @@ class V10_0_0 extends Command
             'updated_at' => '2020-05-12 23:06:00',
             'deleted_at' => null,
         ]);
+
+        return 0;
     }
 }
