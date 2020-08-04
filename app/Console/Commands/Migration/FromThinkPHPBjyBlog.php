@@ -237,7 +237,7 @@ class FromThinkPHPBjyBlog extends Command
     /**
      * 把用户的头像保存到本地
      */
-    public function avatar(SocialiteUser $socialiteUserModel)
+    public function avatar(SocialiteUser $socialiteUserModel): void
     {
         $data = $socialiteUserModel->select('id', 'avatar')->get();
 

@@ -1,41 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Part \\$name \\(array\\|string\\|null\\) of encapsed string cannot be cast to string\\.$#"
-			count: 6
-			path: app/Console/Commands/Make/Rest.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Make\\\\Upgrade\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Make/Upgrade.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Migration\\\\FromThinkPHPBjyBlog\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Migration\\\\FromThinkPHPBjyBlog\\:\\:avatar\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of method Stichoza\\\\GoogleTranslate\\\\GoogleTranslate\\:\\:translate\\(\\) expects string, int\\|string given\\.$#"
-			count: 1
-			path: app/Console/Commands/Translation/Sync.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V10_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V10_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V11_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V11_0_0.php
-
-		-
 			message: "#^Cannot access property \\$value on App\\\\Models\\\\Config\\|null\\.$#"
 			count: 1
 			path: app/Console/Commands/Upgrade/V5_5_5_0.php
@@ -66,102 +31,17 @@ parameters:
 			path: app/Console/Commands/Upgrade/V6_0_0.php
 
 		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_10_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_10_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_11_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_11_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_12_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_12_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_13_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_13_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_14_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_14_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_1_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_1_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_2_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Console/Commands/Upgrade/V6_2_0.php
 
 		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
-			path: app/Console/Commands/Upgrade/V6_2_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_3_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_3_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_4_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
 			path: app/Console/Commands/Upgrade/V6_4_0.php
-
-		-
-			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_4_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_5_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_5_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_6_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_6_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_7_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_7_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_8_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_8_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V6_9_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V6_9_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V7_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V7_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V8_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V8_0_0.php
 
 		-
 			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children has no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:handle\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Console/Commands/Upgrade/V9_0_0.php
 
@@ -1734,16 +1614,6 @@ parameters:
 			message: "#^Method App\\\\Models\\\\ArticleTag\\:\\:addTagIds\\(\\) has parameter \\$tag_ids with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Models/ArticleTag.php
-
-		-
-			message: "#^Property App\\\\Models\\\\Base\\:\\:\\$guarded type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/Base.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Base\\:\\:updateBatch\\(\\) has parameter \\$multipleData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/Base.php
 
 		-
 			message: "#^Method App\\\\Models\\\\Category\\:\\:articles\\(\\) has no return typehint specified\\.$#"
