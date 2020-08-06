@@ -7,7 +7,7 @@ namespace Tests\Commands\Bjyblog;
 use File;
 use Tests\TestCase;
 
-class GenerateSitemap extends TestCase
+class GenerateSitemapTest extends TestCase
 {
     /**
      * A basic feature test example.
