@@ -34,7 +34,7 @@
     "lazyload": "^2.0.0-rc.2",
     "node-sass": "^4.11.0",
     "pace": "github:hubspot/pace#v1.0.2",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.21.0",
     "social-share.js": "github:overtrue/share.js",
     "tailwindcss": "^1.4.6"
   }
