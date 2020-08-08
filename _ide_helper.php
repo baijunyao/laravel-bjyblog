@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.22.4 on 2020-08-01 23:35:27.
+ * Generated for Laravel 7.24.0 on 2020-08-08 08:13:22.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -8059,6 +8059,11 @@ namespace Illuminate\Support\Facades {
      *
      * @method static mixed reset(array $credentials, \Closure $callback)
      * @method static string sendResetLink(array $credentials)
+     * @method static \Illuminate\Contracts\Auth\CanResetPassword getUser(array $credentials)
+     * @method static string createToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
+     * @method static void deleteToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
+     * @method static bool tokenExists(\Illuminate\Contracts\Auth\CanResetPassword $user, string $token)
+     * @method static \Illuminate\Auth\Passwords\TokenRepositoryInterface getRepository()
      * @see \Illuminate\Auth\Passwords\PasswordBroker
      */ 
     class Password {
@@ -10864,6 +10869,19 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Http\Request $instance */
                         return $instance->filled($key);
+        }
+        
+        /**
+         * Determine if the request contains an empty value for an input item.
+         *
+         * @param string|array $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function isNotFilled($key)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->isNotFilled($key);
         }
         
         /**
@@ -18890,6 +18908,22 @@ namespace  {
             }
          
             /**
+             * Add a where between statement using columns to the query.
+             *
+             * @param string $column
+             * @param array $values
+             * @param string $boolean
+             * @param bool $not
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function whereBetweenColumns($column, $values, $boolean = 'and', $not = false)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->whereBetweenColumns($column, $values, $boolean, $not);
+            }
+         
+            /**
              * Add an or where between statement to the query.
              *
              * @param string $column
@@ -18901,6 +18935,20 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orWhereBetween($column, $values);
+            }
+         
+            /**
+             * Add an or where between statement using columns to the query.
+             *
+             * @param string $column
+             * @param array $values
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function orWhereBetweenColumns($column, $values)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->orWhereBetweenColumns($column, $values);
             }
          
             /**
@@ -18919,6 +18967,21 @@ namespace  {
             }
          
             /**
+             * Add a where not between statement using columns to the query.
+             *
+             * @param string $column
+             * @param array $values
+             * @param string $boolean
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function whereNotBetweenColumns($column, $values, $boolean = 'and')
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->whereNotBetweenColumns($column, $values, $boolean);
+            }
+         
+            /**
              * Add an or where not between statement to the query.
              *
              * @param string $column
@@ -18930,6 +18993,20 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->orWhereNotBetween($column, $values);
+            }
+         
+            /**
+             * Add an or where not between statement using columns to the query.
+             *
+             * @param string $column
+             * @param array $values
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function orWhereNotBetweenColumns($column, $values)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->orWhereNotBetweenColumns($column, $values);
             }
          
             /**
