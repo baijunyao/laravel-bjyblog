@@ -34,22 +34,24 @@ class Clear extends Command
 
     public function handle(): int
     {
-        ArticleTag::truncate();
-        Article::truncate();
-        Category::truncate();
-        Note::truncate();
-        Comment::truncate();
-        SocialiteUser::truncate();
-        Tag::truncate();
-        OpenSource::truncate();
-        FriendshipLink::truncate();
+        if ($this->confirm(translate('Are you sure you want to clear the data?'))) {
+            ArticleTag::truncate();
+            Article::truncate();
+            Category::truncate();
+            Note::truncate();
+            Comment::truncate();
+            SocialiteUser::truncate();
+            Tag::truncate();
+            OpenSource::truncate();
+            FriendshipLink::truncate();
 
-        Artisan::call('cache:clear');
-        Artisan::call('config:clear');
-        Artisan::call('route:clear');
-        Artisan::call('view:clear');
-        Artisan::call('queue:restart');
-        $this->info('successfully');
+            Artisan::call('cache:clear');
+            Artisan::call('config:clear');
+            Artisan::call('route:clear');
+            Artisan::call('view:clear');
+            Artisan::call('queue:restart');
+            $this->info('successfully');
+        }
 
         return 0;
     }

@@ -24,7 +24,9 @@ class ClearTest extends TestCase
      */
     public function testCommand()
     {
-        $this->artisan('seeder:clear');
+        $this->artisan('seeder:clear')
+            ->expectsConfirmation(translate('Are you sure you want to clear the data?'), 'yes')
+            ->assertExitCode(0);
 
         static::assertEquals(0, ArticleTag::count());
         static::assertEquals(0, Article::count());

@@ -70,7 +70,7 @@ class GenerateSitemap extends Command
             $urlBlock .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at);
         }
 
-        File::put(public_path('sitemap.xml'), str_replace('{urlBlock}', $urlBlock, rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap.stub')))));
+        File::put(public_path('sitemap.xml'), str_replace('{urlBlock}', rtrim($urlBlock), rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap.stub')))));
 
         $this->info('Generating the sitemap completed.');
         $this->info('Path: ' . public_path('sitemap.xml'));
@@ -82,6 +82,6 @@ class GenerateSitemap extends Command
     {
         $date = $carbo === null ? Date::now()->format(DateTime::ATOM) : $carbo->format(DateTime::ATOM);
 
-        return str_replace(['{url}', '{date}'], [$url, $date], rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap-url.stub'))));
+        return str_replace(['{url}', '{date}'], [$url, $date], File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap-url.stub')));
     }
 }
