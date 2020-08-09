@@ -14,8 +14,10 @@ class Migrator extends BaseMigrator
         $name  = $this->getMigrationName($file);
         $class = Str::studly(implode('_', array_slice(explode('_', $name), 4)));
 
+        preg_match('/V(\d+_)*\d+/', $file, $version);
+
         if (Str::contains($file, 'tests/Commands/Upgrade')) {
-            $class = '\Tests\Commands\Upgrade\\' . explode('/', $file)[5] . '\Migrations\\' . $class;
+            $class = '\Tests\Commands\Upgrade\\' . $version[0] . '\Migrations\\' . $class;
         }
 
         return new $class();
