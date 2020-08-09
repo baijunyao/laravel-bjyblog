@@ -17,6 +17,7 @@
                         <h1>Admin</h1>
                         <div>
                             <input type="text" class="form-control" placeholder="Email" required="" name="email" value="{{ old('email') }}">
+                            <p id="invalid-email" style="color:red;text-align:left;text-shadow:0px 0px 0px" hidden><span>*</span>Invalid email format</p>
                         </div>
                         <div>
                             <input type="password" class="form-control" placeholder="Password" required="" name="password">
