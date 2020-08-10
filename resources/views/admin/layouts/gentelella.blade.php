@@ -22,22 +22,6 @@
             }
         });
     })
-
-    
-    // validate email format
-    $('input[name="email"]').on("input", function () {
-
-        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        var inputValue = $('input[name="email"]').val();
-
-        if (inputValue.match(mailformat) || inputValue == "") {
-            $("#invalid-email").hide();
-            $("button").prop("disabled", false);
-        } else {
-            $("#invalid-email").show();
-            $("button").prop("disabled", true);
-        }
-    });
 </script>
 @yield('js')
 </body>
