@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot access property \\$value on App\\\\Models\\\\Config\\|null\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V5_5_5_0.php
-
-		-
 			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, string\\|false given\\.$#"
 			count: 1
 			path: app/Console/Commands/Upgrade/V5_5_6_0.php
