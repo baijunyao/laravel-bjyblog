@@ -10,26 +10,14 @@ use Illuminate\Console\Command;
 
 class V5_5_9_0 extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'upgrade:v5.5.9.0';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $description = 'Upgrade to v5.5.9.0';
 
     public function handle(): int
     {
-        $configModel = new Config();
-        $count       = $configModel->where('id', '>', 159)->count();
-        if ($count === 0) {
-            $data = [
+        if (Config::where('id', '>', 159)->count() === 0) {
+            $configs = [
                 [
                     'id'    => 159,
                     'name'  => 'database.connections.mysql.dump.dump_binary_path',
@@ -66,10 +54,12 @@ class V5_5_9_0 extends Command
                     'value' => '',
                 ],
             ];
-            $configModel->insert($data);
+
+            Config::insert($configs);
             Artisan::call('cache:clear');
             Artisan::call('config:clear');
         }
+
         $this->info('Upgrade to v5.5.9.0 version completed');
 
         return 0;

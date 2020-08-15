@@ -2,6 +2,14 @@
 
 @section('title', translate('Sign In'))
 
+@section('css')
+    <style>
+        .login_content {
+            text-shadow: none;
+        }
+    </style>
+@endsection
+
 @section('body')
 
     <div>
@@ -17,7 +25,7 @@
                         <h1>Admin</h1>
                         <div>
                             <input type="text" class="form-control" placeholder="Email" required="" name="email" value="{{ old('email') }}">
-                            <p id="invalid-email" style="color:red;text-align:left;text-shadow:0px 0px 0px" hidden><span>*</span>Invalid email format</p>
+                            <p id="invalid-email" class="text-danger text-left" hidden><span>*</span>{{ translate('Invalid email format') }}</p>
                         </div>
                         <div>
                             <input type="password" class="form-control" placeholder="Password" required="" name="password">
@@ -40,5 +48,25 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('js')
+
+    <script>
+        // validate email format
+        $('input[name="email"]').on('input', function () {
+            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var inputValue = $('input[name="email"]').val();
+
+            if (mailformat.test(inputValue) || inputValue === '') {
+                $('#invalid-email').hide();
+                $('button').prop('disabled', false);
+            } else {
+                $('#invalid-email').show();
+                $('button').prop('disabled', true);
+            }
+        });
+    </script>
 
 @endsection
