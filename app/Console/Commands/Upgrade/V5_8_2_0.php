@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands\Upgrade;
 
 use App\Models\Config;
+use Artisan;
 use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
@@ -28,6 +29,10 @@ class V5_8_2_0 extends Command
 
     public function handle(): int
     {
+        Artisan::call('migrate', [
+            '--force' => true,
+        ]);
+
         if (DB::table('socialite_clients')->count() === 0) {
             Schema::drop('socialite_clients');
             Schema::create('socialite_clients', function (Blueprint $table) {
