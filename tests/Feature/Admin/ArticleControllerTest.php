@@ -11,13 +11,14 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 use Str;
 use Tests\Feature\Admin\CURD\TestCreate;
 use Tests\Feature\Admin\CURD\TestDestroy;
+use Tests\Feature\Admin\CURD\TestEdit;
 use Tests\Feature\Admin\CURD\TestForceDelete;
 use Tests\Feature\Admin\CURD\TestIndex;
 use Tests\Feature\Admin\CURD\TestRestore;
 
 class ArticleControllerTest extends TestCase
 {
-    use TestIndex, TestCreate, TestDestroy, TestRestore, TestForceDelete;
+    use TestIndex, TestCreate, TestEdit, TestDestroy, TestRestore, TestForceDelete;
 
     protected $urlPrefix = 'admin/article/';
     protected $table     = 'articles';
