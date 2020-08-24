@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Upgrade;
 
+use Artisan;
 use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
@@ -27,6 +28,10 @@ class V5_8_3_0 extends Command
 
     public function handle(): int
     {
+        Artisan::call('migrate', [
+            '--force' => true,
+        ]);
+
         Schema::table('socialite_clients', function (Blueprint $table) {
             $table->dropColumn('client_id_config');
             $table->dropColumn('client_secret_config');
