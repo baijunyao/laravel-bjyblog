@@ -7,12 +7,12 @@ namespace Tests\Feature\Resources;
 use Baijunyao\LaravelTestSupport\Rest\TestStore;
 use Illuminate\Http\UploadedFile;
 
-class ArticleCoverControllerTest extends TestCase
+class ArticleImageControllerTest extends TestCase
 {
     public function testStore()
     {
         $file     = UploadedFile::fake()->image('article.jpg');
-        $response = $this->call('POST', route($this->getRoute() . '.store'), [], [], ['cover' => $file]);
+        $response = $this->call('POST', route($this->getRoute() . '.store'), [], [], ['image' => $file]);
 
         $content = json_decode($response->getContent(), true);
 

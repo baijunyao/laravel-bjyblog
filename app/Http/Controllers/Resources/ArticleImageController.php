@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Resources;
 use App\Http\Requests\ArticleCover\Store;
 use Illuminate\Support\Facades\Date;
 
-class ArticleCoverController extends Controller
+class ArticleImageController extends Controller
 {
     public function store(Store $request)
     {
@@ -18,7 +18,7 @@ class ArticleCoverController extends Controller
         ];
 
         foreach (config('bjyblog.upload_disks') as $disk) {
-            $result['url'] = '/' . $request->file('cover')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+            $result['url'] = '/' . $request->file('image')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
         }
 
         return response()->json($result);
