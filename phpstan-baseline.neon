@@ -1341,14 +1341,14 @@ parameters:
 			path: app/Http/Controllers/Resources/ArticleController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleCoverController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleImageController\\:\\:store\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Resources/ArticleCoverController.php
+			path: app/Http/Controllers/Resources/ArticleImageController.php
 
 		-
 			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
-			path: app/Http/Controllers/Resources/ArticleCoverController.php
+			path: app/Http/Controllers/Resources/ArticleImageController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ConfigController\\:\\:uploadQqQunOrCode\\(\\) has no return typehint specified\\.$#"

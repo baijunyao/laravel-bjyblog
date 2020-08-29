@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Tests\Commands\Upgrade;
 
 use DB;
-use File;
 use Illuminate\Support\Str;
+use Mockery;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 abstract class TestCase extends \Tests\Commands\TestCase
 {
@@ -15,51 +16,21 @@ abstract class TestCase extends \Tests\Commands\TestCase
         parent::setUp();
 
         $this->dropAllTables();
+
         preg_match('/V(\d+_){2,}\d+/', static::class, $version);
 
-        // Migration
-        $this->app['migration.repository']->createRepository();
-        $migrator = app('migrator');
-        $files    = $migrator->getMigrationFiles(base_path('tests/Commands/Upgrade/' . $version[0] . '/migrations'));
+        $sqls = explode(';', file_get_contents(base_path("tests/Commands/Upgrade/{$version[0]}/database.sql")));
 
-        foreach ($files as $file) {
-            $migrationName = $migrator->getMigrationName($file);
-            $className     = Str::studly(implode('_', array_slice(explode('_', $migrationName), 4)));
-            $migrationFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Migrations\\' . $className;
-            (new $migrationFQCN())->up();
-            DB::table('migrations')->insert([
-                'migration' => $migrationName,
-                'batch'     => 1,
-            ]);
+        foreach ($sqls as $sql) {
+            if (Str::startsWith(trim($sql), ['--', '/*', 'LOCK', 'SET', 'UNLOCK', 'COMMIT'])) {
+                continue;
+            }
+
+            DB::statement($sql);
         }
 
-        // Seed
-        $file = collect(File::files(base_path('tests/Commands/Upgrade/' . $version[0] . '/seeds')))
-            ->transform(function ($v) {
-                return [
-                    'cTime'    => $v->getCTime(),
-                    'filename' => basename($v->getFilename(), '.php'),
-                ];
-            })
-            ->filter(function ($v) {
-                return $v['filename'] === 'DatabaseSeeder' ? false : true;
-            })
-            ->sortBy('cTime')
-            ->pluck('filename');
-
-        foreach ($file as $k => $v) {
-            $seedFQCN = '\\Tests\\Commands\\Upgrade\\' . $version[0] . '\\Seeds\\' . $v;
-            (new $seedFQCN())->run();
-        }
-    }
-
-    protected function tearDown(): void
-    {
-        $this->dropAllTables();
-        $this->artisan('migrate');
-        $this->artisan('db:seed');
-
-        parent::tearDown();
+        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andReturn('Mockery Slug');
     }
 
     public function dropAllTables()

@@ -26,7 +26,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'cover' => 'required|image',
+            'image' => 'required|image',
         ];
     }
 }
