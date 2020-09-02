@@ -32,7 +32,6 @@
         "genealabs/laravel-model-caching": "^0.8",
         "graham-campbell/markdown": "^11.0",
         "guzzlehttp/guzzle": "^6.3",
-        "ifsnop/mysqldump-php": "^2.9",
         "iidestiny/laravel-filesystem-oss": "^1.2",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
