@@ -97,6 +97,9 @@
             "database/seeds",
             "database/factories"
         ],
+        "exclude-from-classmap": [
+            "tests/Commands/Upgrade/databases"
+        ],
         "files": [
             "app/Support/helpers.php"
         ]
