@@ -29,6 +29,8 @@ class Upgrade extends Command
             return 1;
         }
 
+        // region app/Console/Commands/Upgrade/{version}.php
+        // e.g. V12_0_0
         $versionString      = str_replace('.', '_', $versionUpper);
         $upgradeCommandFile = app_path('Console/Commands/Upgrade/') . $versionString . '.php';
 
@@ -37,6 +39,10 @@ class Upgrade extends Command
             File::put($upgradeCommandFile, $upgradeCommandContent);
             $this->info("Generate $upgradeCommandFile completed.");
         }
+
+        // endregion
+
+        // region tests/Commands/Upgrade/{version}
 
         $testPath = base_path("tests/Commands/Upgrade/$versionString/");
         $testFile = $testPath . 'CommandTest.php';
@@ -59,11 +65,21 @@ class Upgrade extends Command
             $this->info("Generate $testUpgradeFile completed.");
         }
 
+        // endregion
+
         $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1') ?? '');
+
+        // region tests/Commands/Upgrade/databases/{version}
+
+        $testDatabasePath = base_path("tests/Commands/Upgrade/databases/$versionString/");
+
+        if (File::missing($testDatabasePath)) {
+            File::makeDirectory($testDatabasePath);
+        }
 
         // Migrations
         $databasePath      = 'database/';
-        $testMigrationPath = $testPath . 'migrations';
+        $testMigrationPath = $testDatabasePath . 'migrations';
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
         File::deleteDirectory($databasePath, true);
         shell_exec("git checkout $PreviousVersion -- $databasePath/migrations");
@@ -72,7 +88,7 @@ class Upgrade extends Command
 
         // Seeds
         shell_exec("git checkout $PreviousVersion -- $databasePath/seeds");
-        $testSeedPath = $testPath . 'seeds';
+        $testSeedPath = $testDatabasePath . 'seeds';
         File::moveDirectory(database_path('seeds'), $testSeedPath, true);
         File::deleteDirectory($databasePath, true);
 
@@ -85,7 +101,7 @@ class Upgrade extends Command
                 str_replace([
                     "declare(strict_types=1);\n\n",
                 ], [
-                    "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Migrations;\n\n",
+                    "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\Databases\\$versionString\\Migrations;\n\n",
                 ],
                     File::get($testMigrationFile->getPathname())
                 )
@@ -101,13 +117,15 @@ class Upgrade extends Command
                 str_replace([
                     "declare(strict_types=1);\n\n",
                 ], [
-                    "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\$versionString\\Seeds;\n\n",
+                    "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\Databases\\$versionString\\Seeds;\n\n",
                 ],
                     File::get($testSeedFile->getPathname())
                 )
             );
             $this->info('Generate ' . $testSeedFile->getFilename() . ' completed.');
         }
+
+        // endregion
 
         shell_exec('composer dump-autoload');
 
