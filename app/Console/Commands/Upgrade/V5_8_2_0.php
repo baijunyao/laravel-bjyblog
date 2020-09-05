@@ -49,45 +49,50 @@ class V5_8_2_0 extends Command
 
         $configs = Config::whereIn('id', [
             120, 126, 133, 134, 139, 140,
-        ])->get()->keyBy('id');
+        ])->get();
 
-        DB::table('socialite_clients')->insert([
-            [
-                'id'            => 1,
-                'name'          => 'qq',
-                'client_id'     => $configs->get(120)->value,
-                'client_secret' => $configs->get(126)->value,
-                'created_at'    => '2019-05-08 22:13:54',
-                'updated_at'    => '2019-05-08 22:13:54',
-                'deleted_at'    => null,
-            ],
-            [
-                'id'            => 2,
-                'name'          => 'weibo',
-                'client_id'     => $configs->get(133)->value,
-                'client_secret' => $configs->get(134)->value,
-                'created_at'    => '2019-05-08 22:13:54',
-                'updated_at'    => '2019-05-08 22:13:54',
-                'deleted_at'    => null,
-            ],
-            [
-                'id'            => 3,
-                'name'          => 'github',
-                'client_id'     => $configs->get(139)->value,
-                'client_secret' => $configs->get(140)->value,
-                'created_at'    => '2019-05-08 22:13:54',
-                'updated_at'    => '2019-05-08 22:13:54',
-                'deleted_at'    => null,
-            ],
-        ]);
+        if ($configs->isNotEmpty()) {
+            $value_by_id = $configs->pluck('value', 'id');
+            DB::table('socialite_clients')->insert([
+                [
+                    'id'            => 1,
+                    'name'          => 'qq',
+                    'client_id'     => $value_by_id[120],
+                    'client_secret' => $value_by_id[126],
+                    'created_at'    => '2019-05-08 22:13:54',
+                    'updated_at'    => '2019-05-08 22:13:54',
+                    'deleted_at'    => null,
+                ],
+                [
+                    'id'            => 2,
+                    'name'          => 'weibo',
+                    'client_id'     => $value_by_id[133],
+                    'client_secret' => $value_by_id[134],
+                    'created_at'    => '2019-05-08 22:13:54',
+                    'updated_at'    => '2019-05-08 22:13:54',
+                    'deleted_at'    => null,
+                ],
+                [
+                    'id'            => 3,
+                    'name'          => 'github',
+                    'client_id'     => $value_by_id[139],
+                    'client_secret' => $value_by_id[140],
+                    'created_at'    => '2019-05-08 22:13:54',
+                    'updated_at'    => '2019-05-08 22:13:54',
+                    'deleted_at'    => null,
+                ],
+            ]);
 
-        $configs->each(function ($config) {
-            $config->forceDelete();
-        });
+            $configs->each(function ($config) {
+                $config->forceDelete();
+            });
+        }
 
-        Schema::table('oauth_users', function (Blueprint $table) {
-            $table->renameColumn('type', 'oauth_client_id');
-        });
+        if (!Schema::hasColumn('oauth_users', 'oauth_client_id')) {
+            Schema::table('oauth_users', function (Blueprint $table) {
+                $table->renameColumn('type', 'oauth_client_id');
+            });
+        }
 
         return 0;
     }

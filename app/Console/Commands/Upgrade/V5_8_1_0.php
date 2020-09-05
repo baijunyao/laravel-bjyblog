@@ -27,7 +27,7 @@ class V5_8_1_0 extends Command
     {
         $disks = Config::where('id', 164)->first();
 
-        if ($disks->value === '') {
+        if ($disks !== null && $disks->value === '') {
             $disks->update([
                 'value' => [],
             ]);
