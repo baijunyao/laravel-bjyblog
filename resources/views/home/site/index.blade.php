@@ -1,4 +1,4 @@
-@extends('blueberry.layouts.home')
+@extends('layouts.home')
 
 @section('title', $head['title'])
 

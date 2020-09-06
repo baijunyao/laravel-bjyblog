@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('layouts.admin')
 
 @section('title', translate('Article List'))
 
@@ -56,7 +56,7 @@
         @endforeach
     </table>
     <div class="text-center">
-        {{ $article->links('admin.vendor.pagination.bjypage') }}
+        {{ $article->links('vendor.pagination.bjypage') }}
     </div>
 
 @endsection

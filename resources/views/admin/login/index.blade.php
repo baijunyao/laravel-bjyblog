@@ -1,4 +1,4 @@
-@extends('admin.layouts.gentelella')
+@extends('layouts.gentelella')
 
 @section('title', translate('Sign In'))
 
