@@ -8,55 +8,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\Store;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
-use Illuminate\Http\Request;
 use Str;
 
 class CommentController extends Controller
 {
-    public function index(Request $request)
-    {
-        $article_id = $request->route('article');
-
-        $comments = Comment::where('article_id', $article_id)
-            ->whereNull('parent_id')
-            ->with('socialiteUser')
-            ->get();
-
-        $assign = [
-            'comments' => $comments,
-            'head'     => [
-                'title'       => 'Comment',
-                'keywords'    => '',
-                'description' => '',
-            ],
-        ];
-
-        return view('home.comment.index', $assign);
-    }
-
-    public function show(Request $request, $id)
-    {
-        $comments = Comment::where('id', $id)
-            ->orWhere('parent_id', $id)
-            ->with('socialiteUser')
-            ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
-                return $query->where('is_audited', 1);
-            })
-            ->get()
-            ->toFlatTree();
-
-        $assign = [
-            'comments' => $comments,
-            'head'     => [
-                'title'       => 'Comment',
-                'keywords'    => '',
-                'description' => '',
-            ],
-        ];
-
-        return view('home.comment.show', $assign);
-    }
-
     public function store(Store $request)
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
