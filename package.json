@@ -35,7 +35,6 @@
     "node-sass": "^4.11.0",
     "pace": "github:hubspot/pace#v1.0.2",
     "prismjs": "^1.17.1",
-    "social-share.js": "github:overtrue/share.js",
-    "tailwindcss": "^1.4.6"
+    "social-share.js": "github:overtrue/share.js"
   }
 }

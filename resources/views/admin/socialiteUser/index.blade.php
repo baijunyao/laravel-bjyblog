@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin')
+@extends('layouts.admin')
 
 @section('title', translate('Socialite User'))
 
@@ -44,6 +44,6 @@
         @endforeach
     </table>
     <div class="text-center">
-        {{ $data->links('admin.vendor.pagination.bjypage') }}
+        {{ $data->links('vendor.pagination.bjypage') }}
     </div>
 @endsection

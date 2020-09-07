@@ -58,54 +58,6 @@ class ComposerServiceProvider extends ServiceProvider
         // 动态替换 /config 目录下的配置项
         config($config->toArray());
 
-        view()->composer(['admin/config/*'], function ($view) use ($config) {
-            $assign = compact('config');
-            $view->with($assign);
-        });
-
-        view()->composer(['admin/index/index'], function ($view) {
-            $assign = $this->getCountData();
-
-            $view->with($assign);
-        });
-
-        view()->composer(['admin/index/index'], function ($view) {
-            $latestComments = (new Comment())->getLatestComments(5);
-
-            $assign = compact('latestComments');
-            $view->with($assign);
-        });
-
-        // 开源项目数据
-        view()->composer(['blueberry/home/index/openSource', 'github/home/index/openSource'], function ($view) {
-            $openSources = OpenSource::select('name', 'type')->orderBy('sort')->get();
-
-            $view->with(compact('openSources'));
-        });
-
-        switch (config('bjyblog.theme')) {
-            case 'blueberry':
-                $this->assignBlueberryThemeData();
-                break;
-            case 'github':
-                $this->assignGithubThemeData();
-                break;
-            default:
-                $this->assignBlueberryThemeData();
-        }
-    }
-
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-    }
-
-    private function assignBlueberryThemeData()
-    {
         try {
             // Get socialite clients
             $socialiteClients = SocialiteClient::all();
@@ -120,15 +72,32 @@ class ComposerServiceProvider extends ServiceProvider
             ]);
         });
 
-        // 获取各种统计
-        view()->composer(['blueberry/layouts/home'], function ($view) {
-            $assign = $this->getCountData();
+        // 开源项目数据
+        view()->composer(['layouts/home', 'home/index/openSource'], function ($view) {
+            $openSources = OpenSource::select('name', 'type')->orderBy('sort')->get();
+            // 分配数据
+            $assign = compact('openSources');
+            $view->with($assign);
+        });
 
+        // 获取各种统计
+        view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
+            $articleCount = Article::count('id');
+            $commentCount = Comment::count('id');
+            $chatCount = Note::count('id');
+
+            /* SocialiteUser model not use @see \GeneaLabs\LaravelModelCaching\Traits\Cachable */
+            $socialiteUserCount = Cache::remember('count:socialiteUser', static::CACHE_EXPIRE, function () {
+                return SocialiteUser::count('id');
+            });
+
+            // 分配数据
+            $assign = compact('articleCount', 'commentCount', 'chatCount', 'socialiteUserCount');
             $view->with($assign);
         });
 
         //分配前台通用的数据
-        view()->composer('blueberry/layouts/home', function ($view) use ($socialiteClients) {
+        view()->composer('layouts/home', function ($view) use ($socialiteClients) {
             $category = Category::select('id', 'name', 'slug')->orderBy('sort')->get();
             $tag = Tag::has('articles')->withCount('articles')->get();
 
@@ -164,44 +133,25 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
-        view()->composer(['blueberry/layouts/home'], function ($view) {
+        view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
             $latestComments = (new Comment())->getLatestComments(17);
 
             $assign = compact('latestComments');
             $view->with($assign);
         });
-    }
 
-    private function getCountData()
-    {
-        $articleCount = Article::count('id');
-        $commentCount = Comment::count('id');
-        $chatCount    = Note::count('id');
-
-        /* SocialiteUser model not use @see \GeneaLabs\LaravelModelCaching\Traits\Cachable */
-        $socialiteUserCount = Cache::remember('count:socialiteUser', static::CACHE_EXPIRE, function () {
-            return SocialiteUser::count('id');
-        });
-
-        return compact('articleCount', 'commentCount', 'chatCount', 'socialiteUserCount');
-    }
-
-    private function assignGithubThemeData()
-    {
-        view()->composer('github/layouts/home', function ($view) {
-            $categories = Category::orderBy('sort')->get();
-            $tags = Tag::has('articles')->withCount('articles')->get();
-
-            $lastYearArticles = Article::where('created_at', '>', now()->subYear())
-                ->latest()
-                ->get();
-
-            $navs = Nav::select('name', 'url')
-                ->orderBy('sort')
-                ->get();
-
-            $assign = compact('categories', 'navs', 'tags', 'lastYearArticles');
+        view()->composer(['admin/config/*'], function ($view) use ($config) {
+            $assign = compact('config');
             $view->with($assign);
         });
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
     }
 }
