@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Console\Commands\Upgrade;
 
 use DB;
+use File;
 use Illuminate\Console\Command;
 
 class V6_0_0 extends Command
@@ -30,9 +31,9 @@ class V6_0_0 extends Command
             'batch'     => 1,
         ]);
 
-        $envContent = file_get_contents(base_path('.env'));
-        $env        = str_replace('SCOUT_DRIVER=tntsearch', 'SCOUT_DRIVER=null', $envContent);
-        file_put_contents(base_path('.env'), $env);
+        $envPath = base_path('.env');
+
+        File::put($envPath, str_replace('SCOUT_DRIVER=tntsearch', 'SCOUT_DRIVER=null', File::get($envPath)));
 
         return 0;
     }
