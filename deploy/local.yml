@@ -8,7 +8,9 @@ metadata:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: blog-pv
+  name: code-pv
+  labels:
+    pv: code-pv
 spec:
   storageClassName: manual
   capacity:
@@ -23,7 +25,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: blog-pvc
+  name: code-pvc
   namespace: blog
 spec:
   storageClassName: manual
@@ -32,6 +34,135 @@ spec:
   resources:
     requests:
       storage: 5Gi
+  selector:
+    matchLabels:
+      pv: code-pv
+
+---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+  labels:
+    pv: mysql-pv
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/lib/mysql"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: blog
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  selector:
+    matchLabels:
+      pv: mysql-pv
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:6.0
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+  namespace: blog
+  labels:
+    app: redis
+spec:
+  ports:
+    - port: 6379
+      protocol: TCP
+      targetPort: 6379
+  selector:
+    app: redis
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: baijunyao/mysql:8.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: laravel_bjyblog
+            - name: MYSQL_DATABASE
+              value: laravel_bjyblog
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_PASSWORD
+              value: laravel_bjyblog
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-pvc
+      volumes:
+        - name: mysql-pvc
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: blog
+  labels:
+    app: mysql
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    app: mysql
 
 ---
 
@@ -55,11 +186,11 @@ spec:
           image: baijunyao/php:7.4-local
           volumeMounts:
             - mountPath: /app
-              name: blog-pvc
+              name: code-pvc
       volumes:
-        - name: blog-pvc
+        - name: code-pvc
           persistentVolumeClaim:
-            claimName: blog-pvc
+            claimName: code-pvc
 
 ---
 
@@ -123,9 +254,9 @@ spec:
         app: nginx
     spec:
       volumes:
-        - name: blog-pvc
+        - name: code-pvc
           persistentVolumeClaim:
-            claimName: blog-pvc
+            claimName: code-pvc
         - name: config
           configMap:
             name: nginx-config
@@ -136,7 +267,7 @@ spec:
         - name: nginx
           image: baijunyao/nginx:1.7
           volumeMounts:
-            - name: blog-pvc
+            - name: code-pvc
               mountPath: /app
             - name: config
               mountPath: /etc/nginx/conf.d
