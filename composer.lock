@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e0b0096c8d80253a254b611636552c2",
+    "content-hash": "95d05635e40dc2f4fec7c237836241ea",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2448,16 +2448,16 @@
         },
         {
             "name": "graham-campbell/markdown",
-            "version": "v11.2.1",
+            "version": "v13.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-Markdown.git",
-                "reference": "7ead48c43098b562707a30650843d4279786b0d9"
+                "reference": "d25b873e5c5870edc4de7d980808f1a8e092a9c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Markdown/zipball/7ead48c43098b562707a30650843d4279786b0d9",
-                "reference": "7ead48c43098b562707a30650843d4279786b0d9",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Markdown/zipball/d25b873e5c5870edc4de7d980808f1a8e092a9c7",
+                "reference": "d25b873e5c5870edc4de7d980808f1a8e092a9c7",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2467,23 +2467,21 @@
                 ]
             },
             "require": {
-                "illuminate/contracts": "^5.5|^6.0|^7.0",
-                "illuminate/support": "^5.5|^6.0|^7.0",
-                "illuminate/view": "^5.5|^6.0|^7.0",
-                "league/commonmark": "^1.3",
-                "php": "^7.1.3"
+                "illuminate/contracts": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/filesystem": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/view": "^6.0 || ^7.0 || ^8.0",
+                "league/commonmark": "^1.5",
+                "php": "^7.2.5 || ^8.0"
             },
             "require-dev": {
-                "graham-campbell/analyzer": "^2.4",
+                "graham-campbell/analyzer": "^3.0",
                 "graham-campbell/testbench": "^5.4",
                 "mockery/mockery": "^1.3.1",
-                "phpunit/phpunit": "^6.5|^7.0|^8.0"
+                "phpunit/phpunit": "^8.5.8 || ^9.3.7"
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "11.2-dev"
-                },
                 "laravel": {
                     "providers": [
                         "GrahamCampbell\\Markdown\\MarkdownServiceProvider"
@@ -2523,15 +2521,11 @@
                     "type": "github"
                 },
                 {
-                    "url": "https://www.patreon.com/GrahamJCampbell",
-                    "type": "patreon"
-                },
-                {
                     "url": "https://tidelift.com/funding/github/packagist/graham-campbell/markdown",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-14T14:11:12+00:00"
+            "time": "2020-08-22T14:18:21+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -4275,152 +4269,6 @@
                 }
             ],
             "time": "2020-08-18T01:19:12+00:00"
-        },
-        {
-            "name": "league/commonmark-ext-strikethrough",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark-ext-strikethrough.git",
-                "reference": "1a7d8f3a519da0b3cf2e965273615d4dba9d22e1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-strikethrough/zipball/1a7d8f3a519da0b3cf2e965273615d4dba9d22e1",
-                "reference": "1a7d8f3a519da0b3cf2e965273615d4dba9d22e1",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "league/commonmark": "^1.3",
-                "php": "^7.1"
-            },
-            "replace": {
-                "uafrica/commonmark-ext": ">=0.1.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.5"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\CommonMark\\Ext\\Strikethrough\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com"
-                },
-                {
-                    "name": "Johan Meiring",
-                    "email": "johan@uafrica.com"
-                }
-            ],
-            "description": "Strikethrough support for the PHP League's CommonMark Markdown parser",
-            "homepage": "https://github.com/thephpleague/commonmark-ext-strikethrough",
-            "keywords": [
-                "commonmark",
-                "extension",
-                "markdown",
-                "strikeout",
-                "strikethrough"
-            ],
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/colinodell",
-                    "type": "patreon"
-                }
-            ],
-            "abandoned": "league/commonmark",
-            "time": "2020-04-04T15:34:30+00:00"
-        },
-        {
-            "name": "league/commonmark-ext-table",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/commonmark-ext-table.git",
-                "reference": "3228888ea69636e855efcf6636ff8e6316933fe7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark-ext-table/zipball/3228888ea69636e855efcf6636ff8e6316933fe7",
-                "reference": "3228888ea69636e855efcf6636ff8e6316933fe7",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "league/commonmark": "~0.19.3|^1.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "phpstan/phpstan": "~0.11",
-                "phpunit/phpunit": "^7.0|^8.0",
-                "symfony/var-dumper": "^4.0",
-                "vimeo/psalm": "^3.0"
-            },
-            "type": "commonmark-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\CommonMark\\Ext\\Table\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Martin Hasoň",
-                    "email": "martin.hason@gmail.com"
-                },
-                {
-                    "name": "Webuni s.r.o.",
-                    "homepage": "https://www.webuni.cz"
-                },
-                {
-                    "name": "Colin O'Dell",
-                    "email": "colinodell@gmail.com",
-                    "homepage": "https://www.colinodell.com"
-                }
-            ],
-            "description": "Table extension for league/commonmark",
-            "homepage": "https://github.com/thephpleague/commonmark-ext-table",
-            "keywords": [
-                "commonmark",
-                "extension",
-                "markdown",
-                "table"
-            ],
-            "abandoned": "league/commonmark",
-            "time": "2019-09-26T13:28:33+00:00"
         },
         {
             "name": "league/event",

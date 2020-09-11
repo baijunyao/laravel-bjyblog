@@ -14464,6 +14464,16 @@
      */ 
         class Markdown {
                     /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getEnvironment()
+        {
+                        /** @var \League\CommonMark\CommonMarkConverter $instance */
+                        return $instance->getEnvironment();
+        }
+                    /**
          * Converts CommonMark to HTML.
          *
          * @param string $commonMark
@@ -14473,8 +14483,8 @@
          * @static 
          */ 
         public static function convertToHtml($commonMark)
-        {
-                        /** @var \League\CommonMark\Converter $instance */
+        {            //Method inherited from \League\CommonMark\Converter         
+                        /** @var \League\CommonMark\CommonMarkConverter $instance */
                         return $instance->convertToHtml($commonMark);
         }
          
