@@ -1999,7 +1999,7 @@ namespace PHPSTORM_META {
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
         ]));
-    override(\Psr\Container\ContainerInterface::get, map([
+    override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
             'Asm89\Stack\CorsService' => \Asm89\Stack\CorsService::class,
             'DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator' => \DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
