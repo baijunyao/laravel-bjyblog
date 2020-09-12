@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 7.27.0.
+ * Generated for Laravel 7.28.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -2842,6 +2842,8 @@
             /**
      * 
      *
+     * @method static \Illuminate\Contracts\Cache\Lock lock(string $name, int $seconds = 0, mixed $owner = null)
+     * @method static \Illuminate\Contracts\Cache\Lock restoreLock(string $name, string $owner)
      * @see \Illuminate\Cache\CacheManager
      * @see \Illuminate\Cache\Repository
      */ 
@@ -3399,33 +3401,6 @@
                         return $instance->macroCall($method, $parameters);
         }
                     /**
-         * Get a lock instance.
-         *
-         * @param string $name
-         * @param int $seconds
-         * @param string|null $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function lock($name, $seconds = 0, $owner = null)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->lock($name, $seconds, $owner);
-        }
-                    /**
-         * Restore a lock instance using the owner identifier.
-         *
-         * @param string $name
-         * @param string $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function restoreLock($name, $owner)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->restoreLock($name, $owner);
-        }
-                    /**
          * Remove all items from the cache.
          *
          * @return bool 
@@ -3433,42 +3408,30 @@
          */ 
         public static function flush()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->flush();
         }
                     /**
-         * Get the Redis connection instance.
+         * Get the Filesystem instance.
          *
-         * @return \Illuminate\Redis\Connections\Connection 
+         * @return \Illuminate\Filesystem\Filesystem 
          * @static 
          */ 
-        public static function connection()
+        public static function getFilesystem()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->connection();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getFilesystem();
         }
                     /**
-         * Set the connection name to be used.
+         * Get the working directory of the cache.
          *
-         * @param string $connection
-         * @return void 
+         * @return string 
          * @static 
          */ 
-        public static function setConnection($connection)
+        public static function getDirectory()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        $instance->setConnection($connection);
-        }
-                    /**
-         * Get the Redis database instance.
-         *
-         * @return \Illuminate\Contracts\Redis\Factory 
-         * @static 
-         */ 
-        public static function getRedis()
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        return $instance->getRedis();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getDirectory();
         }
                     /**
          * Get the cache key prefix.
@@ -3478,20 +3441,8 @@
          */ 
         public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->getPrefix();
-        }
-                    /**
-         * Set the cache key prefix.
-         *
-         * @param string $prefix
-         * @return void 
-         * @static 
-         */ 
-        public static function setPrefix($prefix)
-        {
-                        /** @var \Illuminate\Cache\RedisStore $instance */
-                        $instance->setPrefix($prefix);
         }
          
     }
@@ -10150,6 +10101,8 @@
                     /**
          * 
          *
+         * @param array $rules
+         * @param mixed $params
          * @static 
          */ 
         public static function validate($rules, ...$params)
@@ -10159,6 +10112,9 @@
                     /**
          * 
          *
+         * @param string $errorBag
+         * @param array $rules
+         * @param mixed $params
          * @static 
          */ 
         public static function validateWithBag($errorBag, $rules, ...$params)
@@ -10168,6 +10124,7 @@
                     /**
          * 
          *
+         * @param mixed $absolute
          * @static 
          */ 
         public static function hasValidSignature($absolute = true)
@@ -11265,6 +11222,7 @@
                     /**
          * 
          *
+         * @param mixed $options
          * @static 
          */ 
         public static function auth($options = [])
@@ -14247,6 +14205,8 @@
                     /**
          * 
          *
+         * @param mixed $false
+         * @return bool 
          * @static 
          */ 
         public static function isFalse($false)
@@ -14256,6 +14216,8 @@
                     /**
          * 
          *
+         * @param mixed $json
+         * @return bool 
          * @static 
          */ 
         public static function isJsonArray($json)
@@ -14265,6 +14227,8 @@
                     /**
          * 
          *
+         * @param mixed $json
+         * @return bool 
          * @static 
          */ 
         public static function isJsonObject($json)
@@ -14274,6 +14238,8 @@
                     /**
          * 
          *
+         * @param mixed $null
+         * @return bool 
          * @static 
          */ 
         public static function isNull($null)
@@ -14283,11 +14249,38 @@
                     /**
          * 
          *
+         * @param mixed $true
+         * @return bool 
          * @static 
          */ 
         public static function isTrue($true)
         {
                         return \Illuminate\Support\Str::isTrue($true);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Collection {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function searchable()
+        {
+                        return \Illuminate\Support\Collection::searchable();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function unsearchable()
+        {
+                        return \Illuminate\Support\Collection::unsearchable();
         }
          
     }
@@ -14464,6 +14457,16 @@
      */ 
         class Markdown {
                     /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getEnvironment()
+        {
+                        /** @var \League\CommonMark\CommonMarkConverter $instance */
+                        return $instance->getEnvironment();
+        }
+                    /**
          * Converts CommonMark to HTML.
          *
          * @param string $commonMark
@@ -14473,8 +14476,8 @@
          * @static 
          */ 
         public static function convertToHtml($commonMark)
-        {
-                        /** @var \League\CommonMark\Converter $instance */
+        {            //Method inherited from \League\CommonMark\Converter         
+                        /** @var \League\CommonMark\CommonMarkConverter $instance */
                         return $instance->convertToHtml($commonMark);
         }
          
@@ -15804,6 +15807,128 @@
         {
                         /** @var \Sentry\State\Hub $instance */
                         return $instance->getIntegration($className);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Http { 
+            /**
+     * 
+     *
+     */ 
+        class Request {
+                    /**
+         * 
+         *
+         * @param array $rules
+         * @param mixed $params
+         * @static 
+         */ 
+        public static function validate($rules, ...$params)
+        {
+                        return \Illuminate\Http\Request::validate($rules, ...$params);
+        }
+                    /**
+         * 
+         *
+         * @param string $errorBag
+         * @param array $rules
+         * @param mixed $params
+         * @static 
+         */ 
+        public static function validateWithBag($errorBag, $rules, ...$params)
+        {
+                        return \Illuminate\Http\Request::validateWithBag($errorBag, $rules, ...$params);
+        }
+                    /**
+         * 
+         *
+         * @param mixed $absolute
+         * @static 
+         */ 
+        public static function hasValidSignature($absolute = true)
+        {
+                        return \Illuminate\Http\Request::hasValidSignature($absolute);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Routing\RouteRegistrar
+     */ 
+        class Router {
+                    /**
+         * 
+         *
+         * @param mixed $options
+         * @static 
+         */ 
+        public static function auth($options = [])
+        {
+                        return \Illuminate\Routing\Router::auth($options);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function resetPassword()
+        {
+                        return \Illuminate\Routing\Router::resetPassword();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function confirmPassword()
+        {
+                        return \Illuminate\Routing\Router::confirmPassword();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function emailVerification()
+        {
+                        return \Illuminate\Routing\Router::emailVerification();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Database\Schema { 
+            /**
+     * 
+     *
+     */ 
+        class Blueprint {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function nestedSet()
+        {
+                        return \Illuminate\Database\Schema\Blueprint::nestedSet();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function dropNestedSet()
+        {
+                        return \Illuminate\Database\Schema\Blueprint::dropNestedSet();
         }
          
     }

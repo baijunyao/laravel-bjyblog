@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Upgrade;
 
+use File;
 use Illuminate\Console\Command;
 
 class V6_4_0 extends Command
@@ -18,9 +19,9 @@ class V6_4_0 extends Command
 
     public function handle(): int
     {
-        $envContent = file_get_contents(base_path('.env'));
-        $env        = str_replace('ELASTICSEARCH_HOSTS', 'ELASTICSEARCH_HOST', $envContent);
-        file_put_contents(base_path('.env'), $env);
+        $envPath = base_path('.env');
+
+        File::put($envPath, str_replace('ELASTICSEARCH_HOSTS', 'ELASTICSEARCH_HOST', File::get($envPath)));
 
         return 0;
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Upgrade;
 
+use File;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,9 +21,9 @@ class V6_2_0 extends Command
 
     public function handle(): int
     {
-        $envContent = file_get_contents(base_path('.env'));
-        $env        = str_replace('QUEUE_DRIVER', 'QUEUE_CONNECTION', $envContent);
-        file_put_contents(base_path('.env'), $env);
+        $envPath = base_path('.env');
+
+        File::put($envPath, str_replace('QUEUE_DRIVER', 'QUEUE_CONNECTION', File::get($envPath)));
 
         Schema::table('tags', function (Blueprint $table) {
             $table->string('keywords')->default('')->after('slug');

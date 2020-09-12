@@ -5,18 +5,14 @@ declare(strict_types=1);
 // Home 模块
 Route::namespace('Home')->name('home.')->group(function () {
     Route::name('article.')->group(function () {
-        Route::get('article/{article}/comment', 'CommentController@index')->name('comment.index');
         Route::get('/', 'ArticleController@index')->name('index');
         Route::get('article/{article}/{slug?}', 'ArticleController@show')->name('show');
         Route::get('search', 'ArticleController@search')->name('search');
     });
-    Route::get('comment/{comment}', 'CommentController@show')->name('comment.show');
     Route::get('category/{category}/{slug?}', 'CategoryController@show')->name('category.show');
     Route::get('tag/{tag}/{slug?}', 'TagController@show')->name('tag.show');
     Route::get('note', 'NoteController@index')->name('note.index');
     Route::get('openSource', 'OpenSourceController@index')->name('openSource.index');
-    Route::get('socialiteUser', 'SocialiteUserController@index')->name('socialiteUser.index');
-    Route::get('friendshipLink', 'FriendshipLinkController@index')->name('friendshipLink.index');
     Route::get('feed', 'FeedController@index')->name('feed.index');
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/', 'SiteController@index')->name('index');
