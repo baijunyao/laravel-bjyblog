@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests\Commands\Upgrade\Databases\V12_0_0\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -27,7 +29,6 @@ class CreateSocialiteUsersTable extends Migration
                 $table->integer('login_times')->unsigned()->default(0)->comment('登录次数');
                 $table->string('email')->default('')->comment('邮箱');
                 $table->unsignedTinyInteger('is_admin')->default(0)->comment('是否是admin');
-                $table->unsignedTinyInteger('is_blocked')->default(0);
                 $table->rememberToken();
                 $table->timestamps();
                 $table->softDeletes();
