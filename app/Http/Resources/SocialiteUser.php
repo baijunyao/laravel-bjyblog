@@ -17,6 +17,7 @@ class SocialiteUser extends Base
             'email'            => $this->email,
             'avatar'           => $this->avatar,
             'is_admin'         => $this->is_admin,
+            'is_blocked'       => $this->is_blocked,
             'socialite_client' => [
                 'id'   => $this->socialiteClient->id,
                 'name' => $this->socialiteClient->name,

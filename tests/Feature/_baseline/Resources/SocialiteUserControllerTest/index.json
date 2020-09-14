@@ -24,6 +24,7 @@
                 "email": "baijunyao@baijunyao.com",
                 "avatar": "\/images\/default\/avatar.jpg",
                 "is_admin": 0,
+                "is_blocked": 0,
                 "socialite_client": {
                     "id": 1,
                     "name": "qq",
@@ -39,6 +40,7 @@
                 "email": "deleted@baijunyao.com",
                 "avatar": "\/images\/default\/avatar.jpg",
                 "is_admin": 0,
+                "is_blocked": 0,
                 "socialite_client": {
                     "id": 1,
                     "name": "qq",
