@@ -38,6 +38,7 @@ class Comment implements Rule
         }
 
         $commentModel = new CommentModel();
+
         if (empty($commentModel->imageToUbb($value))) {
             $this->message = translate('The content can not be empty');
 
@@ -46,6 +47,12 @@ class Comment implements Rule
 
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
+
+        if ($socialiteUser->is_blocked === 1) {
+            $this->message = translate('User is forbidden to comment');
+
+            return false;
+        }
 
         /** @var \Illuminate\Support\Carbon|null $lastCommentDate */
         $lastCommentDate = $commentModel->where('socialite_user_id', $socialiteUser->id)

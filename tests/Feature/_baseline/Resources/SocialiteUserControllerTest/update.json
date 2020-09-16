@@ -23,6 +23,7 @@
             "email": "update@baijunyao.com",
             "avatar": "\/uploads\/article\/default.jpg",
             "is_admin": 1,
+            "is_blocked": 0,
             "socialite_client": {
                 "id": 2,
                 "name": "weibo",
