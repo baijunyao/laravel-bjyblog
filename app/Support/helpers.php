@@ -121,7 +121,15 @@ if (!function_exists('mail_is_configured')) {
 }
 
 if (!function_exists('get_image_paths_from_html')) {
-    function get_image_paths_from_html($html)
+    /**
+     * @throws \PHPHtmlParser\Exceptions\ChildNotFoundException
+     * @throws \PHPHtmlParser\Exceptions\CircularException
+     * @throws \PHPHtmlParser\Exceptions\NotLoadedException
+     * @throws \PHPHtmlParser\Exceptions\StrictException
+     *
+     * @return array<int,string>
+     */
+    function get_image_paths_from_html(string $html): array
     {
         $dom = new Dom();
         $dom->loadStr($html);
@@ -130,7 +138,10 @@ if (!function_exists('get_image_paths_from_html')) {
         $image_paths = [];
 
         foreach ($image_tags as $image_tag) {
-            $image_paths[] = $image_tag->getAttribute('src');
+            $image_path = $image_tag->getAttribute('src');
+            if ($image_path !== null) {
+                $image_paths[] = $image_path;
+            }
         }
 
         return $image_paths;

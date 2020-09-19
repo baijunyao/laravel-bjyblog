@@ -143,6 +143,23 @@ class CommentControllerTest extends TestCase
         ]);
     }
 
+    public function testStoreWithBlockedUser()
+    {
+        SocialiteUser::where('id', 1)->update([
+            'is_blocked' => 1,
+        ]);
+
+        $comment = [
+            'article_id' => 1,
+            'parent_id'  => 0,
+            'content'    => 'Comment Content',
+        ];
+
+        $this->loginByUserId(1)
+            ->post('/comment', $comment)
+            ->assertStatus(302);
+    }
+
     public function testStoreEmptyContent()
     {
         $comment = [

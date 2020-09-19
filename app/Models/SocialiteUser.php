@@ -20,6 +20,7 @@ use Overtrue\LaravelFollow\Traits\CanLike;
  * @property int                             $login_times         登录次数
  * @property string                          $email               邮箱
  * @property int                             $is_admin            是否是admin
+ * @property int                             $is_blocked
  * @property string                          $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
