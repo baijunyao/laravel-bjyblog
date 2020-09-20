@@ -19,7 +19,6 @@
         "baidu/aip-sdk": "^2.2",
         "baijunyao/laravel-flash": "^2.0",
         "baijunyao/laravel-plugin-manager": "^3.0",
-        "baijunyao/laravel-print": "^3.0",
         "baijunyao/laravel-restful": "^2.3",
         "baijunyao/laravel-scout-elasticsearch": "^5.0",
         "baijunyao/laravel-support": "^1.3",

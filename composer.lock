@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95d05635e40dc2f4fec7c237836241ea",
+    "content-hash": "32d78239328a5bf747111bb893a550d1",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -517,54 +517,6 @@
             ],
             "description": "plugin manager",
             "time": "2020-09-06T04:40:21+00:00"
-        },
-        {
-            "name": "baijunyao/laravel-print",
-            "version": "v3.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/baijunyao/laravel-print.git",
-                "reference": "c2a8e0473634e6a19637d6ebc6c06b022ef62eaa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-print/zipball/c2a8e0473634e6a19637d6ebc6c06b022ef62eaa",
-                "reference": "c2a8e0473634e6a19637d6ebc6c06b022ef62eaa",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Baijunyao\\LaravelPrint\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "baijunyao",
-                    "email": "baijunyao@baijunyao.com"
-                }
-            ],
-            "description": "laravel print",
-            "keywords": [
-                "dump",
-                "laravel",
-                "print"
-            ],
-            "abandoned": true,
-            "time": "2018-09-28T04:31:50+00:00"
         },
         {
             "name": "baijunyao/laravel-restful",
