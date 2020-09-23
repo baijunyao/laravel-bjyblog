@@ -2021,21 +2021,6 @@ parameters:
 			path: app/Rules/Comment.php
 
 		-
-			message: "#^Parameter \\#2 \\$contents of method Illuminate\\\\Contracts\\\\Filesystem\\\\Filesystem\\:\\:put\\(\\) expects resource\\|string, string\\|false given\\.$#"
-			count: 1
-			path: app/Support/helpers.php
-
-		-
-			message: "#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: app/Support/helpers.php
-
-		-
-			message: "#^Function mail_is_configured\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Support/helpers.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"
 			count: 1
 			path: routes/web.php
