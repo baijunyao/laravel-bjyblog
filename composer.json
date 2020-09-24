@@ -37,7 +37,7 @@
         "kalnoy/nestedset": "^5.0",
         "laravel/framework": "^7.0",
         "laravel/passport": "^9.0",
-        "laravel/socialite": "^4.1",
+        "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelium/feed": "^7.0",
