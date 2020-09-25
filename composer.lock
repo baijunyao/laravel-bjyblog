@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5695656e3fa19627182c4730ee4085b8",
+    "content-hash": "1aaf5b8eb77e6e378ef2aafb845aac7e",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -790,56 +790,6 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
-        },
-        {
-            "name": "caouecs/laravel-lang",
-            "version": "4.0.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/caouecs/lang.git",
-                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/lang/zipball/134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
-                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "ext-json": "*"
-            },
-            "suggest": {
-                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
-                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
-                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
-                "overtrue/laravel-lang": "Command to add languages in your project"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "caouecs",
-                    "email": "caouecs@caouecs.net"
-                }
-            ],
-            "description": "Languages for Laravel",
-            "keywords": [
-                "lang",
-                "languages",
-                "laravel",
-                "lpm"
-            ],
-            "abandoned": "https://github.com/Laravel-Lang/lang",
-            "time": "2020-03-17T15:24:26+00:00"
         },
         {
             "name": "clue/stream-filter",
@@ -3474,6 +3424,53 @@
             "time": "2020-09-14T14:23:00+00:00"
         },
         {
+            "name": "laravel-lang/lang",
+            "version": "7.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Laravel-Lang/lang.git",
+                "reference": "fd5c53e0d9302d85b57d9a477274342662a22c53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/fd5c53e0d9302d85b57d9a477274342662a22c53",
+                "reference": "fd5c53e0d9302d85b57d9a477274342662a22c53",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "suggest": {
+                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
+                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laravel-Lang Team"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2020-09-23T18:24:32+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v7.28.3",
             "source": {
@@ -5289,16 +5286,16 @@
         },
         {
             "name": "overtrue/laravel-lang",
-            "version": "3.0.18",
+            "version": "4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-lang.git",
-                "reference": "d69824be235f6142e3e4226d9918da76e4727774"
+                "reference": "8db02bb782ff3f27198740a7a5f47b8934f949ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/d69824be235f6142e3e4226d9918da76e4727774",
-                "reference": "d69824be235f6142e3e4226d9918da76e4727774",
+                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/8db02bb782ff3f27198740a7a5f47b8934f949ea",
+                "reference": "8db02bb782ff3f27198740a7a5f47b8934f949ea",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5308,11 +5305,12 @@
                 ]
             },
             "require": {
-                "caouecs/laravel-lang": "~4.0",
+                "ext-json": "*",
+                "laravel-lang/lang": "~7.0",
                 "symfony/process": "^5.0.0"
             },
             "require-dev": {
-                "laravel/framework": "~7.0"
+                "laravel/framework": "~8.1"
             },
             "type": "library",
             "extra": {
@@ -5340,7 +5338,7 @@
                     "email": "anzhengchao@gmail.com"
                 }
             ],
-            "description": "List of 52 languages for Laravel 5",
+            "description": "List of 75 languages for Laravel 4, 5, 6 and 7",
             "keywords": [
                 "i18n",
                 "languages",
@@ -5354,7 +5352,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-06T02:39:28+00:00"
+            "time": "2020-09-16T03:00:55+00:00"
         },
         {
             "name": "paquettg/php-html-parser",
@@ -10939,6 +10937,56 @@
                 "laravel-dump-server"
             ],
             "time": "2020-09-14T07:14:12+00:00"
+        },
+        {
+            "name": "caouecs/laravel-lang",
+            "version": "4.0.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/lang.git",
+                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/lang/zipball/134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
+                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "suggest": {
+                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
+                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
+                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "abandoned": "https://github.com/Laravel-Lang/lang",
+            "time": "2020-03-17T15:24:26+00:00"
         },
         {
             "name": "composer/ca-bundle",

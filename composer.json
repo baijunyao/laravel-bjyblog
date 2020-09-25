@@ -44,7 +44,7 @@
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^3.0",
         "overtrue/laravel-follow": "^1.1",
-        "overtrue/laravel-lang": "^3.0",
+        "overtrue/laravel-lang": "^4.0",
         "paquettg/php-html-parser": "^2.1",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "1.7.0",
