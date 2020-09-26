@@ -36,7 +36,11 @@ if (!function_exists('watermark')) {
             $image->save($localFile);
 
             if (in_array('oss_uploads', config('bjyblog.upload_disks'))) {
-                Storage::disk('oss_uploads')->put($file, file_get_contents($localFile));
+                $content = file_get_contents($localFile);
+
+                if ($content !== false) {
+                    Storage::disk('oss_uploads')->put($file, $content);
+                }
             }
         }
     }
@@ -63,7 +67,7 @@ if (!function_exists('generate_english_slug')) {
                 ->translate($content);
         }
 
-        return Str::slug($content);
+        return Str::slug($content ?? '');
     }
 }
 
@@ -103,7 +107,7 @@ if (!function_exists('mail_is_configured')) {
     /**
      * Check mail config
      */
-    function mail_is_configured()
+    function mail_is_configured(): bool
     {
         $mailConfig = [
             config('mail.default'),

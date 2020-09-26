@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace Tests\Commands\Upgrade\Databases\V13_0_0\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +26,6 @@ class CreateOauthClientsTable extends Migration
             $table->integer('user_id')->index()->nullable();
             $table->string('name');
             $table->string('secret', 100);
-            $table->string('provider')->nullable();
             $table->text('redirect');
             $table->unsignedTinyInteger('personal_access_client');
             $table->unsignedTinyInteger('password_client');
