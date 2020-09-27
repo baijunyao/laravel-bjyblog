@@ -1986,41 +1986,6 @@ parameters:
 			path: app/Observers/TagObserver.php
 
 		-
-			message: "#^Property App\\\\Providers\\\\AuthServiceProvider\\:\\:\\$policies type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Providers/AuthServiceProvider.php
-
-		-
-			message: "#^Method App\\\\Providers\\\\ComposerServiceProvider\\:\\:assignBlueberryThemeData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Providers/ComposerServiceProvider.php
-
-		-
-			message: "#^Method App\\\\Providers\\\\ComposerServiceProvider\\:\\:getCountData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Providers/ComposerServiceProvider.php
-
-		-
-			message: "#^Method App\\\\Providers\\\\ComposerServiceProvider\\:\\:assignGithubThemeData\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Providers/ComposerServiceProvider.php
-
-		-
-			message: "#^Property App\\\\Providers\\\\EventServiceProvider\\:\\:\\$listen has no typehint specified\\.$#"
-			count: 1
-			path: app/Providers/EventServiceProvider.php
-
-		-
-			message: "#^Method App\\\\Providers\\\\ObserveServiceProvider\\:\\:boot\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Providers/ObserveServiceProvider.php
-
-		-
-			message: "#^Property App\\\\Rules\\\\Comment\\:\\:\\$message has no typehint specified\\.$#"
-			count: 1
-			path: app/Rules/Comment.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"
 			count: 1
 			path: routes/web.php
