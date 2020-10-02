@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
     /**
      * The event listener mappings for the application.
      *
-     * @var array
+     * @var array<string,array<int,string>>
      */
     protected $listen = [
         // 'Illuminate\Auth\Events\Registered' => [
@@ -26,9 +26,6 @@ class EventServiceProvider extends ServiceProvider
             'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite@handle',
         ],
 
-        /**
-         * 推荐博客审核通过
-         */
         'App\Events\SiteAudit' => [
             'App\Listeners\SendSiteAuditNotification',
         ],

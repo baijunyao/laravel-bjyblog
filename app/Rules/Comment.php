@@ -10,16 +10,10 @@ use Illuminate\Support\Facades\Date;
 
 class Comment implements Rule
 {
-    private $message;
-
     /**
-     * Create a new rule instance.
-     *
-     * @return void
+     * @var string
      */
-    public function __construct()
-    {
-    }
+    private $message;
 
     /**
      * Determine if the validation rule passes.

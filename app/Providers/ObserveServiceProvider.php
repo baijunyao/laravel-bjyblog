@@ -34,7 +34,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ObserveServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         Article::observe(ArticleObserver::class);
         Category::observe(CategoryObserver::class);
