@@ -41,16 +41,6 @@ parameters:
 			path: app/Exceptions/Handler.php
 
 		-
-			message: "#^Method App\\\\Extensions\\\\Illuminate\\\\View\\\\Factory\\:\\:make\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Extensions/Illuminate/View/Factory.php
-
-		-
-			message: "#^Method App\\\\Extensions\\\\Illuminate\\\\View\\\\Factory\\:\\:make\\(\\) has parameter \\$mergeData with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Extensions/Illuminate/View/Factory.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:index\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
@@ -1131,11 +1121,6 @@ parameters:
 			path: app/Http/Controllers/Home/ArticleController.php
 
 		-
-			message: "#^Cannot call method format\\(\\) on Carbon\\\\CarbonInterface\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/ArticleController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\ArticleController\\:\\:show\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/ArticleController.php
@@ -1149,21 +1134,6 @@ parameters:
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CategoryController\\:\\:show\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/CategoryController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:index\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/CommentController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:show\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/CommentController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/CommentController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\CommentController\\:\\:store\\(\\) has no return typehint specified\\.$#"
@@ -1184,11 +1154,6 @@ parameters:
 			message: "#^Cannot access property \\$created_at on App\\\\Models\\\\Article\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/FeedController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\FriendshipLinkController\\:\\:index\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/FriendshipLinkController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\LikeController\\:\\:store\\(\\) has no return typehint specified\\.$#"
@@ -1229,11 +1194,6 @@ parameters:
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SiteController\\:\\:store\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/SiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SocialiteUserController\\:\\:index\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/SocialiteUserController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Home\\\\SocialiteUserController\\:\\:show\\(\\) has no return typehint specified\\.$#"
@@ -1606,17 +1566,7 @@ parameters:
 			path: app/Models/Comment.php
 
 		-
-			message: "#^Method App\\\\Models\\\\Comment\\:\\:article\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Comment.php
-
-		-
 			message: "#^Method App\\\\Models\\\\Comment\\:\\:socialiteUser\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Comment.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Comment\\:\\:parentComment\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Models/Comment.php
 

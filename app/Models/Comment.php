@@ -56,6 +56,9 @@ class Comment extends Base
         $this->attributes['content'] = $this->imageToUbb($value);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function article()
     {
         return $this->belongsTo(Article::class)->withDefault();
@@ -66,6 +69,9 @@ class Comment extends Base
         return $this->belongsTo(SocialiteUser::class)->withDefault();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function parentComment()
     {
         return $this->belongsTo(self::class, 'parent_id', 'id')->withDefault();
