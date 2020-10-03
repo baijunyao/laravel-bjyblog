@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+namespace Database\Seeders;
+
+use File;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,10 +17,10 @@ class DatabaseSeeder extends Seeder
         $files = File::files(database_path('seeds'));
 
         foreach ($files as $file) {
-            $className = $file->getFilenameWithoutExtension();
+            $classFQCN = 'Database\\Seeders\\' . $file->getFilenameWithoutExtension();
 
-            if ($className !== __CLASS__) {
-                $this->call($className);
+            if ($classFQCN !== __CLASS__) {
+                $this->call($classFQCN);
             }
         }
     }
