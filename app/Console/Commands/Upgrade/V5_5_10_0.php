@@ -9,19 +9,9 @@ use Illuminate\Console\Command;
 
 class V5_5_10_0 extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'upgrade:v5.5.10.0';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $description = 'Upgrade to v5.5.10.0';
 
     public function handle(): int
     {

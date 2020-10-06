@@ -8,19 +8,8 @@ use Illuminate\Console\Command;
 
 class V5_5_6_0 extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'upgrade:v5.5.6.0';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $signature   = 'upgrade:v5.5.6.0';
+    protected $description = 'Upgrade to v5.5.6.0';
 
     public function handle(): int
     {

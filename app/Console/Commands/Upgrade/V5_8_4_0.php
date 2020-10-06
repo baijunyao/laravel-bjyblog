@@ -14,18 +14,8 @@ use Illuminate\Support\Facades\Schema;
 
 class V5_8_4_0 extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'upgrade:v5.8.4.0';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'upgrade to v5.8.4.0';
 
     public function handle(): int
