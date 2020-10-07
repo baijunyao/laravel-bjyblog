@@ -42,6 +42,7 @@
         "laravel/ui": "^3.0",
         "laravelium/feed": "^8.0",
         "league/html-to-markdown": "^4.6",
+        "mavinoo/laravel-batch": "^2.2",
         "mews/purifier": "^3.0",
         "overtrue/laravel-follow": "^1.1",
         "overtrue/laravel-lang": "^4.0",

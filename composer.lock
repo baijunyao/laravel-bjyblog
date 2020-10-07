@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e8015755835849d91183a3b8a444a85",
+    "content-hash": "df617b2f20900bd270ba5624240bb160",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -4636,6 +4636,61 @@
                 }
             ],
             "time": "2020-07-01T11:33:50+00:00"
+        },
+        {
+            "name": "mavinoo/laravel-batch",
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mavinoo/laravelBatch.git",
+                "reference": "c6949ca4ce60712389cd405b8717c9732ed3018a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mavinoo/laravelBatch/zipball/c6949ca4ce60712389cd405b8717c9732ed3018a",
+                "reference": "c6949ca4ce60712389cd405b8717c9732ed3018a",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mavinoo\\Batch\\BatchServiceProvider"
+                    ],
+                    "aliases": {
+                        "Batch": "Mavinoo\\Batch\\BatchFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mavinoo\\Batch\\": "src/"
+                },
+                "files": [
+                    "src/Common/Helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohammad Ghanbari",
+                    "email": "mavin.developer@gmail.com"
+                }
+            ],
+            "description": "Insert and update batch (bulk) in laravel",
+            "time": "2020-09-15T13:56:00+00:00"
         },
         {
             "name": "mews/purifier",

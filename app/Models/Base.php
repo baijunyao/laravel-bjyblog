@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Artisan;
+use Batch;
 use DateTimeInterface;
-use DB;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Base withoutTrashed()
  * @mixin \Eloquent
  */
-class Base extends Model
+abstract class Base extends Model
 {
     use SoftDeletes, Cachable;
 
@@ -60,38 +60,13 @@ class Base extends Model
             return 0;
         }
 
-        $tableName       = config('database.connections.mysql.prefix') . $this->getTable();
-        $updateColumn    = array_keys($multipleData[0]);
-        $referenceColumn = $updateColumn[0];
-
-        unset($updateColumn[0]);
-
-        $whereIn = '';
-        $sql     = 'UPDATE ' . $tableName . ' SET ';
-
-        foreach ($updateColumn as $uColumn) {
-            $sql .= $uColumn . ' = CASE ';
-
-            foreach ($multipleData as $data) {
-                $sql .= 'WHEN ' . $referenceColumn . " = '" . $data[$referenceColumn] . "' THEN '" . $data[$uColumn] . "' ";
-            }
-
-            $sql .= 'ELSE ' . $uColumn . ' END, ';
-        }
-
-        foreach ($multipleData as $data) {
-            $whereIn .= "'" . $data[$referenceColumn] . "', ";
-        }
-
-        $sql = rtrim($sql, ', ') . ' WHERE ' . $referenceColumn . ' IN (' . rtrim($whereIn, ', ') . ')';
-
-        $result = DB::update($sql);
+        $result = Batch::update(new static(), $multipleData, 'id');
 
         Artisan::call('modelCache:clear', [
             '--model' => static::class,
         ]);
 
-        return $result;
+        return intval($result);
     }
 
     /**
