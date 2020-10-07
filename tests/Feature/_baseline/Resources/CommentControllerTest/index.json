@@ -14,6 +14,9 @@
         "x-ratelimit-remaining": [
             59
         ],
+        "access-control-allow-origin": [
+            "http:\/\/laravel-bjyblog.test"
+        ],
         "set-cookie": "set-cookie_ignore"
     },
     "content": {
@@ -61,6 +64,23 @@
             "current_page": 1,
             "from": 1,
             "last_page": 1,
+            "links": [
+                {
+                    "url": null,
+                    "label": "Previous",
+                    "active": false
+                },
+                {
+                    "url": "http:\/\/laravel-bjyblog.test\/api\/comments?page=1",
+                    "label": 1,
+                    "active": true
+                },
+                {
+                    "url": null,
+                    "label": "Next",
+                    "active": false
+                }
+            ],
             "path": "http:\/\/laravel-bjyblog.test\/api\/comments",
             "per_page": 15,
             "to": 2,

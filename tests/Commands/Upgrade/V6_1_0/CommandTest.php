@@ -14,7 +14,7 @@ class CommandTest extends \Tests\Commands\Upgrade\TestCase
 
         File::delete($sitemapPath);
 
-        static::assertFileNotExists($sitemapPath);
+        static::assertFileDoesNotExist($sitemapPath);
 
         $this->artisan('upgrade:v6.1.0');
 
