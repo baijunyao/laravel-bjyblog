@@ -39,12 +39,16 @@ class V5_8_4_0 extends Command
         });
 
         Category::withTrashed()->get()->map(function ($category) {
+            assert($category instanceof Category);
+
             $category->update([
                 'slug' => generate_english_slug($category->name),
             ]);
         });
 
         Tag::withTrashed()->get()->map(function ($tag) {
+            assert($tag instanceof Tag);
+
             $tag->update([
                 'slug' => generate_english_slug($tag->name),
             ]);

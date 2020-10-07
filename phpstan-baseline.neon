@@ -6,11 +6,6 @@ parameters:
 			path: app/Console/Commands/Upgrade/V11_0_0.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Base\\:\\:\\$name\\.$#"
-			count: 2
-			path: app/Console/Commands/Upgrade/V5_8_4_0.php
-
-		-
 			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children has no typehint specified\\.$#"
 			count: 1
 			path: app/Console/Commands/Upgrade/V9_0_0.php
