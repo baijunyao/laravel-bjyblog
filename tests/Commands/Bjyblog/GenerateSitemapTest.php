@@ -20,7 +20,7 @@ class GenerateSitemapTest extends TestCase
 
         File::delete($sitemapPath);
 
-        static::assertFileNotExists($sitemapPath);
+        static::assertFileDoesNotExist($sitemapPath);
 
         $this->artisan('bjyblog:generate-sitemap');
 

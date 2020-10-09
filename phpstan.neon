@@ -9,13 +9,3 @@ parameters:
         - routes
     universalObjectCratesClasses:
         - Illuminate\Http\Resources\Json\JsonResource
-    ignoreErrors:
-        - '#Static call to instance method Illuminate\\Support\\Str::is(True|False|Null|JsonArray|JsonObject)\(\)#'
-        - '#Static method App\\Models\\\w+::select\(\) invoked with.*#'
-        - '#Method App\\Models\\\w+::select\(\) invoked with.*#'
-        -
-            message: '#Undefined variable: \$this#'
-            path: %currentWorkingDirectory%/routes/console.php
-        -
-            message: '#Using \$this outside a class#'
-            path: %currentWorkingDirectory%/routes/console.php

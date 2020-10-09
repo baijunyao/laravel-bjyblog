@@ -13,7 +13,7 @@ class Authenticate extends Middleware
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return string|void|null
+     * @return string|null
      */
     protected function redirectTo($request)
     {

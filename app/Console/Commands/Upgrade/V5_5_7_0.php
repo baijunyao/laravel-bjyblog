@@ -5,24 +5,13 @@ declare(strict_types=1);
 namespace App\Console\Commands\Upgrade;
 
 use App\Models\Config;
-use App\Models\Console;
 use Illuminate\Console\Command;
 
 class V5_5_7_0 extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'upgrade:v5.5.7.0';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $description = 'Upgrade to v5.5.7.0';
 
     public function handle(): int
     {

@@ -8,6 +8,9 @@
         "content-type": [
             "application\/json"
         ],
+        "access-control-allow-origin": [
+            "http:\/\/laravel-bjyblog.test"
+        ],
         "set-cookie": "set-cookie_ignore"
     },
     "content": {

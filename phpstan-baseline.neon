@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Parameter \\#1 \\$values of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:insertOrIgnore\\(\\) expects array\\<string, mixed\\>, array\\<int, array\\<string, int\\|string\\|null\\>\\> given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V11_0_0.php
+
+		-
 			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children has no typehint specified\\.$#"
 			count: 1
 			path: app/Console/Commands/Upgrade/V9_0_0.php
@@ -76,7 +81,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method setAttribute\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method setAttribute\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -91,7 +96,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -116,7 +121,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -131,7 +136,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -181,7 +186,7 @@ parameters:
 			path: app/Http/Controllers/Admin/CategoryController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CategoryController.php
 
@@ -211,7 +216,7 @@ parameters:
 			path: app/Http/Controllers/Admin/CategoryController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CategoryController.php
 
@@ -226,7 +231,7 @@ parameters:
 			path: app/Http/Controllers/Admin/CategoryController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CategoryController.php
 
@@ -256,7 +261,7 @@ parameters:
 			path: app/Http/Controllers/Admin/CommentController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CommentController.php
 
@@ -281,7 +286,7 @@ parameters:
 			path: app/Http/Controllers/Admin/CommentController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CommentController.php
 
@@ -296,7 +301,7 @@ parameters:
 			path: app/Http/Controllers/Admin/CommentController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CommentController.php
 
@@ -431,7 +436,7 @@ parameters:
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
@@ -461,7 +466,7 @@ parameters:
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
@@ -476,7 +481,7 @@ parameters:
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
@@ -551,7 +556,7 @@ parameters:
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NavController.php
 
@@ -576,7 +581,7 @@ parameters:
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NavController.php
 
@@ -591,7 +596,7 @@ parameters:
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NavController.php
 
@@ -636,7 +641,7 @@ parameters:
 			path: app/Http/Controllers/Admin/NoteController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
 
@@ -661,7 +666,7 @@ parameters:
 			path: app/Http/Controllers/Admin/NoteController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
 
@@ -676,7 +681,7 @@ parameters:
 			path: app/Http/Controllers/Admin/NoteController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
 
@@ -716,7 +721,7 @@ parameters:
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
@@ -746,7 +751,7 @@ parameters:
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
@@ -761,7 +766,7 @@ parameters:
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
@@ -801,7 +806,7 @@ parameters:
 			path: app/Http/Controllers/Admin/SiteController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SiteController.php
 
@@ -831,7 +836,7 @@ parameters:
 			path: app/Http/Controllers/Admin/SiteController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SiteController.php
 
@@ -846,7 +851,7 @@ parameters:
 			path: app/Http/Controllers/Admin/SiteController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SiteController.php
 
@@ -876,7 +881,7 @@ parameters:
 			path: app/Http/Controllers/Admin/SocialiteClientController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\SocialiteClient\\|array\\<App\\\\Models\\\\SocialiteClient\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\SocialiteClient\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\SocialiteClient\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SocialiteClientController.php
 
@@ -906,7 +911,7 @@ parameters:
 			path: app/Http/Controllers/Admin/SocialiteUserController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\SocialiteUser\\|array\\<App\\\\Models\\\\SocialiteUser\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\SocialiteUser\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\SocialiteUser\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SocialiteUserController.php
 
@@ -946,7 +951,7 @@ parameters:
 			path: app/Http/Controllers/Admin/TagController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/TagController.php
 
@@ -971,7 +976,7 @@ parameters:
 			path: app/Http/Controllers/Admin/TagController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/TagController.php
 
@@ -986,7 +991,7 @@ parameters:
 			path: app/Http/Controllers/Admin/TagController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|array\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/TagController.php
 
@@ -1016,7 +1021,7 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\UserBase\\|array\\<App\\\\Models\\\\UserBase\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\UserBase\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\UserBase\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
 
@@ -1041,7 +1046,7 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\UserBase\\|array\\<App\\\\Models\\\\UserBase\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\UserBase\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\UserBase\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
 
@@ -1056,7 +1061,7 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\UserBase\\|array\\<App\\\\Models\\\\UserBase\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null\\.$#"
+			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\UserBase\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\UserBase\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
 
@@ -1097,6 +1102,11 @@ parameters:
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) has parameter \\$service with no typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Result of function abort \\(void\\) is used\\.$#"
 			count: 1
 			path: app/Http/Controllers/Auth/SocialiteController.php
 
@@ -1161,7 +1171,7 @@ parameters:
 			path: app/Http/Controllers/Home/LikeController.php
 
 		-
-			message: "#^Parameter \\#1 \\$targets of method App\\\\Models\\\\SocialiteUser\\:\\:like\\(\\) expects array\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int, App\\\\Models\\\\Article\\|array\\<App\\\\Models\\\\Article\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$targets of method App\\\\Models\\\\SocialiteUser\\:\\:like\\(\\) expects array\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int, App\\\\Models\\\\Article\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Article\\>\\|null given\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/LikeController.php
 
@@ -1171,7 +1181,7 @@ parameters:
 			path: app/Http/Controllers/Home/LikeController.php
 
 		-
-			message: "#^Parameter \\#1 \\$targets of method App\\\\Models\\\\SocialiteUser\\:\\:unlike\\(\\) expects array\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int, App\\\\Models\\\\Article\\|array\\<App\\\\Models\\\\Article\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|null given\\.$#"
+			message: "#^Parameter \\#1 \\$targets of method App\\\\Models\\\\SocialiteUser\\:\\:unlike\\(\\) expects array\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int, App\\\\Models\\\\Article\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Article\\>\\|null given\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/LikeController.php
 
@@ -1206,7 +1216,7 @@ parameters:
 			path: app/Http/Controllers/Home/SocialiteUserController.php
 
 		-
-			message: "#^Cannot call method only\\(\\) on Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null\\.$#"
+			message: "#^Cannot call method only\\(\\) on App\\\\Models\\\\SocialiteUser\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/SocialiteUserController.php
 
@@ -1326,6 +1336,11 @@ parameters:
 			path: app/Http/Kernel.php
 
 		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:redirectTo\\(\\) should return string\\|null but return statement is missing\\.$#"
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\CheckForMaintenanceMode\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Middleware/CheckForMaintenanceMode.php
@@ -1336,9 +1351,19 @@ parameters:
 			path: app/Http/Middleware/EncryptCookies.php
 
 		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/PreventRequestsDuringMaintenance.php
+
+		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\TrimStrings\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Middleware/TrimStrings.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\TrustHosts\\:\\:hosts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Http/Middleware/TrustHosts.php
 
 		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\TrustProxies\\:\\:\\$proxies type has no value type specified in iterable type array\\.$#"
@@ -1536,6 +1561,11 @@ parameters:
 			path: app/Models/ArticleTag.php
 
 		-
+			message: "#^Unsafe usage of new static\\(\\)\\.$#"
+			count: 1
+			path: app/Models/Base.php
+
+		-
 			message: "#^Method App\\\\Models\\\\Category\\:\\:articles\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Models/Category.php
@@ -1651,12 +1681,17 @@ parameters:
 			path: app/Models/Site.php
 
 		-
-			message: "#^Property App\\\\Models\\\\User\\:\\:\\$hidden has no typehint specified\\.$#"
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$fillable type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Models/User.php
 
 		-
-			message: "#^Property App\\\\Models\\\\User\\:\\:\\$casts has no typehint specified\\.$#"
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$hidden type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$casts type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Models/User.php
 
@@ -1671,7 +1706,7 @@ parameters:
 			path: app/Models/User.php
 
 		-
-			message: "#^Property App\\\\Models\\\\UserBase\\:\\:\\$guarded has no typehint specified\\.$#"
+			message: "#^Property App\\\\Models\\\\UserBase\\:\\:\\$guarded type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Models/UserBase.php
 
@@ -1934,6 +1969,11 @@ parameters:
 			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/TagObserver.php
+
+		-
+			message: "#^Class App\\\\Providers\\\\SendEmailVerificationNotificationAlias not found\\.$#"
+			count: 1
+			path: app/Providers/EventServiceProvider.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"
