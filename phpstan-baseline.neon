@@ -6,31 +6,6 @@ parameters:
 			path: app/Console/Commands/Upgrade/V11_0_0.php
 
 		-
-			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children has no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getDataByArticleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getDataByArticleId\\(\\) has parameter \\$article_id with no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) has parameter \\$comment with no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
 			message: "#^Property App\\\\Console\\\\Kernel\\:\\:\\$commands type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Console/Kernel.php
