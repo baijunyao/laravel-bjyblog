@@ -130,7 +130,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: baijunyao/mysql:8.0
+          image: baijunyao/mysql:8.0-local
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: laravel_bjyblog
@@ -147,6 +147,7 @@ spec:
         - name: mysql-pvc
           persistentVolumeClaim:
             claimName: mysql-pvc
+
 ---
 
 apiVersion: v1
@@ -157,10 +158,12 @@ metadata:
   labels:
     app: mysql
 spec:
+  type: NodePort
   ports:
     - port: 3306
       protocol: TCP
       targetPort: 3306
+      nodePort: 30306
   selector:
     app: mysql
 
