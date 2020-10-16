@@ -130,7 +130,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: baijunyao/mysql:8.0-local
+          image: baijunyao/mysql:8.0-production
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: laravel_bjyblog
@@ -158,12 +158,10 @@ metadata:
   labels:
     app: mysql
 spec:
-  type: NodePort
   ports:
     - port: 3306
       protocol: TCP
       targetPort: 3306
-      nodePort: 30306
   selector:
     app: mysql
 
@@ -186,7 +184,7 @@ spec:
     spec:
       containers:
         - name: php
-          image: baijunyao/php:7.4-local
+          image: baijunyao/php:7.4-production
           volumeMounts:
             - mountPath: /app
               name: code-pvc
@@ -223,7 +221,7 @@ data:
   config: |
     server {
         listen       80;
-        server_name  laravel-bjyblog.test;
+        server_name  baijunyao.com;
         root   /app/public;
         index  index.php index.html;
 
@@ -301,7 +299,7 @@ metadata:
   namespace: blog
 spec:
   rules:
-    - host: laravel-bjyblog.test
+    - host: baijunyao.com
       http:
         paths:
           - path: /
