@@ -67,7 +67,7 @@
             "links": [
                 {
                     "url": null,
-                    "label": "Previous",
+                    "label": "&laquo; 上一页",
                     "active": false
                 },
                 {
@@ -77,7 +77,7 @@
                 },
                 {
                     "url": null,
-                    "label": "Next",
+                    "label": "下一页 &raquo;",
                     "active": false
                 }
             ],

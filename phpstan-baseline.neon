@@ -1681,11 +1681,6 @@ parameters:
 			path: app/Models/User.php
 
 		-
-			message: "#^Property App\\\\Models\\\\UserBase\\:\\:\\$guarded type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/UserBase.php
-
-		-
 			message: "#^Method App\\\\Notifications\\\\Comment\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Notifications/Comment.php
