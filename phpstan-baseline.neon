@@ -1946,11 +1946,6 @@ parameters:
 			path: app/Observers/TagObserver.php
 
 		-
-			message: "#^Class App\\\\Providers\\\\SendEmailVerificationNotificationAlias not found\\.$#"
-			count: 1
-			path: app/Providers/EventServiceProvider.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"
 			count: 1
 			path: routes/web.php
