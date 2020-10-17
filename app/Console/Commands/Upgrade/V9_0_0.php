@@ -15,12 +15,10 @@ class V9_0_0 extends Command
     protected $signature   = 'upgrade:v9.0.0';
     protected $description = 'Upgrade to v9.0.0';
 
+    /**
+     * @var array<int,array<string,mixed>>
+     */
     private $children = [];
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     public function handle(): int
     {
@@ -101,6 +99,11 @@ class V9_0_0 extends Command
         return 0;
     }
 
+    /**
+     * @param int $article_id
+     *
+     * @return array<int,array<string,mixed>>
+     */
     private function getDataByArticleId($article_id)
     {
         $comments = DB::table('comment_backups')
@@ -114,9 +117,9 @@ class V9_0_0 extends Command
             return (array) $comment;
         })->toArray();
 
-        foreach ($comments as $k => $v) {
+        foreach ($comments as $index => $comment) {
             $this->children = [];
-            $this->getTree($v);
+            $this->getTree($comment);
 
             if (!empty($children = $this->children)) {
                 uasort($children, function ($a, $b) {
@@ -132,14 +135,17 @@ class V9_0_0 extends Command
             }
 
             if ($children !== []) {
-                $comments[$k]['children'] = $children;
+                $comments[$index]['children'] = $children;
             }
         }
 
         return $comments;
     }
 
-    private function getTree($comment)
+    /**
+     * @param array<string,mixed> $comment
+     */
+    private function getTree(array $comment): void
     {
         $children = DB::table('comment_backups')
             ->select('id', 'socialite_user_id', 'parent_id', 'article_id', 'content', 'is_audited', 'created_at', 'updated_at', 'deleted_at')
@@ -151,11 +157,9 @@ class V9_0_0 extends Command
             return (array) $comment;
         })->toArray();
 
-        if (!empty($children)) {
-            foreach ($children as $k => $v) {
-                $this->children[] = $v;
-                $this->getTree($v);
-            }
+        foreach ($children as $child) {
+            $this->children[] = $child;
+            $this->getTree($child);
         }
     }
 }

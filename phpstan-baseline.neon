@@ -6,31 +6,6 @@ parameters:
 			path: app/Console/Commands/Upgrade/V11_0_0.php
 
 		-
-			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children has no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getDataByArticleId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getDataByArticleId\\(\\) has parameter \\$article_id with no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
-			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) has parameter \\$comment with no typehint specified\\.$#"
-			count: 1
-			path: app/Console/Commands/Upgrade/V9_0_0.php
-
-		-
 			message: "#^Property App\\\\Console\\\\Kernel\\:\\:\\$commands type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Console/Kernel.php
@@ -1706,11 +1681,6 @@ parameters:
 			path: app/Models/User.php
 
 		-
-			message: "#^Property App\\\\Models\\\\UserBase\\:\\:\\$guarded type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/UserBase.php
-
-		-
 			message: "#^Method App\\\\Notifications\\\\Comment\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Notifications/Comment.php
@@ -1969,11 +1939,6 @@ parameters:
 			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/TagObserver.php
-
-		-
-			message: "#^Class App\\\\Providers\\\\SendEmailVerificationNotificationAlias not found\\.$#"
-			count: 1
-			path: app/Providers/EventServiceProvider.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"

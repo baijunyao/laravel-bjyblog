@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.9.0.
+ * Generated for Laravel 8.10.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3380,6 +3380,17 @@
         {
                         /** @var \Illuminate\Cache\Repository $instance */
                         return $instance->tags($names);
+        }
+                    /**
+         * Determine if the current store supports tags.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function supportsTags()
+        {
+                        /** @var \Illuminate\Cache\Repository $instance */
+                        return $instance->supportsTags();
         }
                     /**
          * Get the default cache time.
@@ -11685,6 +11696,19 @@
                         $instance->dropIfExists($table);
         }
                     /**
+         * Drop columns from a table schema.
+         *
+         * @param string $table
+         * @param string|array $columns
+         * @return void 
+         * @static 
+         */ 
+        public static function dropColumns($table, $columns)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        $instance->dropColumns($table, $columns);
+        }
+                    /**
          * Drop all types from the database.
          *
          * @return void 
@@ -16829,6 +16853,21 @@ namespace  {
             }
              
                 /**
+             * Insert new records or update the existing ones.
+             *
+             * @param array $values
+             * @param array|string $uniqueBy
+             * @param array|null $update
+             * @return int 
+             * @static 
+             */ 
+            public static function upsert($values, $uniqueBy, $update = null)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->upsert($values, $uniqueBy, $update);
+            }
+             
+                /**
              * Register a replacement for the default delete function.
              *
              * @param \Closure $callback
@@ -19243,6 +19282,18 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->useWritePdo();
+            }
+             
+                /**
+             * Clone the query.
+             *
+             * @return static 
+             * @static 
+             */ 
+            public static function clone()
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->clone();
             }
              
                 /**

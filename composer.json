@@ -1,7 +1,7 @@
 {
     "name": "baijunyao/laravel-bjyblog",
     "description": "Laravel blog.",
-    "keywords": ["framework", "laravel", "bjyblog", "blog"],
+    "keywords": ["laravel", "blog", "php"],
     "authors": [
         {
             "name": "baijunyao",
