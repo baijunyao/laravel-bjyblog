@@ -6,37 +6,27 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
-    /*
-      |--------------------------------------------------------------------------
-      | Login Controller
-      |--------------------------------------------------------------------------
-      |
-      | This controller handles authenticating users for the application and
-      | redirecting them to your home screen. The controller uses a trait
-      | to conveniently provide its functionality to your applications.
-      |
-      */
-
-    use AuthenticatesUsers;
-
     /**
-     * Where to redirect users after login.
+     * @throws ValidationException
      *
-     * @var string
+     * @return \Illuminate\Http\RedirectResponse
      */
-    protected $redirectTo = '/admin/index/index';
-
-    /**
-     * 使用 admin guard
-     *
-     * @return \Illuminate\Contracts\Auth\Guard
-     */
-    protected function guard()
+    public function login(Request $request)
     {
-        return Auth::guard('admin');
+        $request->validate([
+            'email'    => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
+            return redirect()->intended(url('admin/index/index'));
+        } else {
+            throw ValidationException::withMessages(['email' => [translate('auth.failed')]]);
+        }
     }
 }

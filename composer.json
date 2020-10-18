@@ -39,7 +39,6 @@
         "laravel/passport": "^10.0",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0",
         "laravelium/feed": "^8.0",
         "league/html-to-markdown": "^4.6",
         "mavinoo/laravel-batch": "^2.2",
