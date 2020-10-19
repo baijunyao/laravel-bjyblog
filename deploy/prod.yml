@@ -306,3 +306,32 @@ spec:
             backend:
               serviceName: nginx-service
               servicePort: 80
+
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: generate-sitemap
+  namespace: blog
+spec:
+  schedule: "15 * * * *"
+  jobTemplate:
+    spec:
+      parallelism: 1
+      completions: 1
+      backoffLimit: 1
+      template:
+        spec:
+          containers:
+            - name: php
+              image: baijunyao/php:7.4-production
+              command: ["php", "artisan", "bjyblog:generate-sitemap"]
+              volumeMounts:
+                - mountPath: /app
+                  name: code-pvc
+          volumes:
+            - name: code-pvc
+              persistentVolumeClaim:
+                claimName: code-pvc
+          restartPolicy: Never
