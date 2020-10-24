@@ -1046,16 +1046,6 @@ parameters:
 			path: app/Http/Controllers/Auth/PassportController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\RegisterController\\:\\:validator\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/RegisterController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\RegisterController\\:\\:create\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/RegisterController.php
-
-		-
 			message: "#^Property App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:\\$socialiteClients has no typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Auth/SocialiteController.php
