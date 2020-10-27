@@ -19,7 +19,7 @@
         "baidu/aip-sdk": "^2.2",
         "baijunyao/laravel-flash": "^2.0",
         "baijunyao/laravel-plugin-manager": "^3.0",
-        "baijunyao/laravel-restful": "^2.4",
+        "baijunyao/laravel-restful": "^3.0",
         "baijunyao/laravel-scout-elasticsearch": "^5.0",
         "baijunyao/laravel-support": "^1.4",
         "composer/semver": "^1.4",

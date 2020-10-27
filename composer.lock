@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ea1c355948113199a6a1b5122988e0b",
+    "content-hash": "e91741c4b782bed62b82cba907ff22c8",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -520,16 +520,16 @@
         },
         {
             "name": "baijunyao/laravel-restful",
-            "version": "v2.4.0",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-restful.git",
-                "reference": "0afb393cb0f0f25831dbccd500856e5577ff76f2"
+                "reference": "ddd23d02754dd0e7596f7c5cf23abce0e452e2bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/0afb393cb0f0f25831dbccd500856e5577ff76f2",
-                "reference": "0afb393cb0f0f25831dbccd500856e5577ff76f2",
+                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/ddd23d02754dd0e7596f7c5cf23abce0e452e2bb",
+                "reference": "ddd23d02754dd0e7596f7c5cf23abce0e452e2bb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -540,7 +540,8 @@
             },
             "require": {
                 "laravel/framework": "^6.0|^7.0|^8.0",
-                "php": "^7.2"
+                "php": "^7.2",
+                "spatie/laravel-query-builder": "^3.3"
             },
             "type": "library",
             "autoload": {
@@ -563,7 +564,7 @@
                 "laravel",
                 "restful"
             ],
-            "time": "2020-09-28T14:11:16+00:00"
+            "time": "2020-10-27T15:42:14+00:00"
         },
         {
             "name": "baijunyao/laravel-scout-elasticsearch",
@@ -7449,6 +7450,78 @@
                 }
             ],
             "time": "2020-10-19T06:58:51+00:00"
+        },
+        {
+            "name": "spatie/laravel-query-builder",
+            "version": "3.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-query-builder.git",
+                "reference": "180f21151f1f95e596b6beda3aec457deb9ae077"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/180f21151f1f95e596b6beda3aec457deb9ae077",
+                "reference": "180f21151f1f95e596b6beda3aec457deb9ae077",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "laravel/legacy-factories": "^1.0.4",
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\QueryBuilder\\QueryBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\QueryBuilder\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Vanderbist",
+                    "email": "alex@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily build Eloquent queries from API requests",
+            "homepage": "https://github.com/spatie/laravel-query-builder",
+            "keywords": [
+                "laravel-query-builder",
+                "spatie"
+            ],
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-10-11T08:33:10+00:00"
         },
         {
             "name": "spatie/temporary-directory",

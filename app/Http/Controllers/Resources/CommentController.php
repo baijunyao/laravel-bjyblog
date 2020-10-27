@@ -15,6 +15,11 @@ class CommentController extends Controller
 {
     use Index, Show, Update, Destroy, Restore, ForceDelete;
 
-    protected const ORDER_BY_COLUMN    = 'created_at';
-    protected const ORDER_BY_DIRECTION = 'desc';
+    protected const FILTERS = [
+        'content',
+    ];
+
+    protected const SORTS = [
+        'created_at',
+    ];
 }

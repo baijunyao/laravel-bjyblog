@@ -16,6 +16,14 @@ class SocialiteUserController extends Controller
 {
     use Index, Update, Destroy, Restore, ForceDelete;
 
+    protected const FILTERS = [
+        'name',
+    ];
+
+    protected const SORTS = [
+        'created_at',
+    ];
+
     public function show($id)
     {
         if ($id === 'me') {
