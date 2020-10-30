@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e91741c4b782bed62b82cba907ff22c8",
+    "content-hash": "a28759a1d7b4abb9fca471d5b3e30a91",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -322,16 +322,16 @@
         },
         {
             "name": "baidu/aip-sdk",
-            "version": "2.2.12.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Baidu-AIP/php-sdk.git",
-                "reference": "17c7a72411d0fa5e31adb1cd08d1a07e179ffdea"
+                "reference": "84e5936eb6426b4cc9d9a96848568b9dd527b4a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Baidu-AIP/php-sdk/zipball/17c7a72411d0fa5e31adb1cd08d1a07e179ffdea",
-                "reference": "17c7a72411d0fa5e31adb1cd08d1a07e179ffdea",
+                "url": "https://api.github.com/repos/Baidu-AIP/php-sdk/zipball/84e5936eb6426b4cc9d9a96848568b9dd527b4a0",
+                "reference": "84e5936eb6426b4cc9d9a96848568b9dd527b4a0",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -368,7 +368,7 @@
                 }
             ],
             "description": "baidu pulic ai php sdk",
-            "time": "2019-01-25T08:29:48+00:00"
+            "time": "2019-06-20T07:57:25+00:00"
         },
         {
             "name": "baijunyao/laravel-flash",
@@ -14747,7 +14747,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "baidu/aip-sdk": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
