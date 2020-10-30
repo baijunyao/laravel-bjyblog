@@ -92,15 +92,6 @@
                 "created_at": "2017-10-26 22:07:47",
                 "updated_at": "2017-10-26 22:08:04",
                 "deleted_at": null
-            },
-            {
-                "id": 9,
-                "sort": 9,
-                "type": 2,
-                "name": "deleted\/deleted",
-                "created_at": "2019-01-04 16:35:12",
-                "updated_at": "2019-01-04 16:35:12",
-                "deleted_at": "2019-01-04 16:35:12"
             }
         ],
         "links": {
@@ -132,8 +123,8 @@
             ],
             "path": "http:\/\/laravel-bjyblog.test\/api\/openSources",
             "per_page": 15,
-            "to": 9,
-            "total": 9
+            "to": 8,
+            "total": 8
         }
     }
 }

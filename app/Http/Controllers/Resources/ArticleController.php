@@ -18,8 +18,13 @@ class ArticleController extends Controller
 {
     use Index, Show, Destroy, Restore, ForceDelete;
 
-    protected const ORDER_BY_COLUMN    = 'created_at';
-    protected const ORDER_BY_DIRECTION = 'desc';
+    protected const FILTERS = [
+        'title', 'keywords', 'markdown',
+    ];
+
+    protected const SORTS = [
+        'created_at',
+    ];
 
     public function store(Store $request, ArticleTag $articleTag)
     {
