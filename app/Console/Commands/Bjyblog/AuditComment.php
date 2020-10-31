@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Bjyblog;
 
-use AipImageCensor;
+use AipContentCensor;
 use App\Models\Comment;
 use Illuminate\Console\Command;
 
@@ -37,7 +37,7 @@ class AuditComment extends Command
                 ->select('id', 'content', 'is_audited')
                 ->get();
 
-            $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
+            $baiduClient = new AipContentCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
 
             $bar = $this->output->createProgressBar($comments->count());
             $bar->start();
@@ -54,13 +54,13 @@ class AuditComment extends Command
                 $count++;
 
                 $content = $comment->getRawOriginal('content');
-                $result  = $baiduClient->antiSpam($content);
+                $result  = $baiduClient->textCensorUserDefined($content);
 
-                if (!isset($result['result']['spam'])) {
-                    $this->error('error: ' . json_encode($result));
+                if (isset($result['error_code'])) {
+                    $this->error('error: ' . $result['error_msg']);
                 } else {
                     $comment->timestamps = false;
-                    $comment->setAttribute('is_audited', $result['result']['spam'] === 0 ? 1 : 0);
+                    $comment->setAttribute('is_audited', $result['conclusionType'] === 1 ? 1 : 0);
                     $comment->save();
 
                     $message = 'id:' . $comment->id . ' is_audited:' . $comment->is_audited . ' content:' . $content;

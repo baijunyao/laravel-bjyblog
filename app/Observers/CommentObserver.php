@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use AipImageCensor;
+use AipContentCensor;
 use App\Models\Article;
 use App\Models\Comment;
 use Notification;
@@ -26,11 +26,11 @@ class CommentObserver extends BaseObserver
             ];
 
             if (count(array_filter($baiduConfig)) === 3) {
-                $baiduClient = new AipImageCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
-                $result = $baiduClient->antiSpam($comment->content);
+                $baiduClient = new AipContentCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
+                $result = $baiduClient->textCensorUserDefined($comment->content);
 
-                // spam=0 audited
-                $comment->is_audited = $result['result']['spam'] === 0 ? 1 : 0;
+                // conclusionType=1 audited
+                $comment->is_audited = isset($result['conclusionType']) && $result['conclusionType'] === 1 ? 1 : 0;
             } else {
                 $comment->is_audited = 0;
             }
