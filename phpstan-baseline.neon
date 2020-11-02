@@ -1671,21 +1671,6 @@ parameters:
 			path: app/Models/User.php
 
 		-
-			message: "#^Method App\\\\Notifications\\\\Comment\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Notifications/Comment.php
-
-		-
-			message: "#^Method App\\\\Notifications\\\\SiteApply\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Notifications/SiteApply.php
-
-		-
-			message: "#^Method App\\\\Notifications\\\\SiteAudit\\:\\:via\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Notifications/SiteAudit.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
