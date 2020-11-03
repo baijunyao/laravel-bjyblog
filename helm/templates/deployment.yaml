@@ -1,0 +1,120 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:6.0
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: baijunyao/mysql:8.0-production
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: laravel_bjyblog
+            - name: MYSQL_DATABASE
+              value: laravel_bjyblog
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_PASSWORD
+              value: laravel_bjyblog
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-pvc
+      volumes:
+        - name: mysql-pvc
+          persistentVolumeClaim:
+            claimName: mysql-pvc
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      containers:
+        - name: php
+          image: baijunyao/php:7.4-production
+          volumeMounts:
+            - mountPath: /app
+              name: code-pvc
+      volumes:
+        - name: code-pvc
+          persistentVolumeClaim:
+            claimName: code-pvc
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+        - name: code-pvc
+          persistentVolumeClaim:
+            claimName: code-pvc
+        - name: config
+          configMap:
+            name: nginx-config
+            items:
+              - key: config
+                path: laravel-bjyblog.conf
+      containers:
+        - name: nginx
+          image: baijunyao/nginx:1.7
+          volumeMounts:
+            - name: code-pvc
+              mountPath: /app
+            - name: config
+              mountPath: /etc/nginx/conf.d
+
