@@ -54,9 +54,9 @@ class Comment extends Notification
      *
      * @param mixed $notifiable
      *
-     * @return array
+     * @return array<int,string>
      */
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         if (mail_is_configured()) {
             return ['mail'];

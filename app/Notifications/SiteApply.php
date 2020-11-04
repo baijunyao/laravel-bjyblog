@@ -14,22 +14,13 @@ class SiteApply extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-    }
-
-    /**
      * Get the notification's delivery channels.
      *
      * @param mixed $notifiable
      *
-     * @return array
+     * @return array<int,string>
      */
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         if (mail_is_configured()) {
             return ['mail'];
