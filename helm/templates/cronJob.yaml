@@ -1,0 +1,92 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: generate-sitemap
+  namespace: blog
+spec:
+  schedule: "0 3 * * *"
+  jobTemplate:
+    spec:
+      parallelism: 1
+      completions: 1
+      backoffLimit: 1
+      template:
+        spec:
+          containers:
+            - name: php
+              image: baijunyao/php:7.4-production
+              command: ["php", "artisan", "bjyblog:generate-sitemap"]
+              volumeMounts:
+                - mountPath: /app
+                  name: code-pvc
+          volumes:
+            - name: code-pvc
+              persistentVolumeClaim:
+                claimName: code-pvc
+          restartPolicy: Never
+
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: database-backup
+  namespace: blog
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      parallelism: 1
+      completions: 1
+      backoffLimit: 1
+      template:
+        spec:
+          containers:
+            - name: database-backup
+              image: baijunyao/mysql-client:1.0
+              command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -plaravel_bjyblog laravel_bjyblog > /backup/laravel_bjyblog_`date +%Y%m%d`.sql"]
+              volumeMounts:
+                - mountPath: /backup
+                  name: backup-pvc
+                  subPath: database
+          volumes:
+            - name: backup-pvc
+              persistentVolumeClaim:
+                claimName: backup-pvc
+          restartPolicy: Never
+
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: site-backup
+  namespace: blog
+spec:
+  schedule: "0 1 * * *"
+  jobTemplate:
+    spec:
+      parallelism: 1
+      completions: 1
+      backoffLimit: 1
+      template:
+        spec:
+          containers:
+            - name: site-backup
+              image: busybox:1.32
+              command: ["/bin/sh", "-c", "/bin/tar -czvf /backup/laravel_bjyblog_`date +%Y%m%d`.tar.gz /app"]
+              volumeMounts:
+                - mountPath: /backup
+                  name: backup-pvc
+                  subPath: site
+                - mountPath: /app
+                  name: code-pvc
+          volumes:
+            - name: backup-pvc
+              persistentVolumeClaim:
+                claimName: backup-pvc
+            - name: code-pvc
+              persistentVolumeClaim:
+                claimName: code-pvc
+          restartPolicy: Never
+

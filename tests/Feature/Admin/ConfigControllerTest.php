@@ -13,39 +13,15 @@ class ConfigControllerTest extends TestCase
         '101' => '网站名',
     ];
 
-    public function testBackup()
+    public function testView()
     {
-        $this->adminGet('backup')->assertStatus(200);
-    }
+        $views = [
+            'email', 'commentAudit', 'qqQun', 'backup', 'upload', 'seo', 'socialShare', 'socialLinks', 'search', 'licenses',
+        ];
 
-    public function testEdit()
-    {
-        $this->adminGet('edit')->assertStatus(200);
-    }
-
-    public function testEmail()
-    {
-        $this->adminGet('email')->assertStatus(200);
-    }
-
-    public function testQQQun()
-    {
-        $this->adminGet('qqQun')->assertStatus(200);
-    }
-
-    public function testSeo()
-    {
-        $this->adminGet('seo')->assertStatus(200);
-    }
-
-    public function testSocialShare()
-    {
-        $this->adminGet('socialShare')->assertStatus(200);
-    }
-
-    public function testCommentAudit()
-    {
-        $this->adminGet('commentAudit')->assertStatus(200);
+        foreach ($views as $view) {
+            $this->adminGet($view)->assertStatus(200);
+        }
     }
 
     public function testUpdate()
