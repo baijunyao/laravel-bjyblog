@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: php
-              image: baijunyao/php:7.4-production
+              image: baijunyao/php:7.4-{{ .Values.env }}
               command: ["php", "artisan", "bjyblog:generate-sitemap"]
               volumeMounts:
                 - mountPath: /app
