@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: baijunyao/mysql:8.0-{{ .Values.env }}
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql:8.0-{{ .Values.env }}
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: laravel_bjyblog
@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: php
-          image: baijunyao/php:7.4-{{ .Values.env }}
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/php:7.4-{{ .Values.env }}
           volumeMounts:
             - mountPath: /app
               name: code-pvc
@@ -111,7 +111,7 @@ spec:
                 path: laravel-bjyblog.conf
       containers:
         - name: nginx
-          image: baijunyao/nginx:1.7
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.7
           volumeMounts:
             - name: code-pvc
               mountPath: /app

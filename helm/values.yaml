@@ -6,4 +6,7 @@ host: laravel-bjyblog.test
 env: production
 
 # If it is "true", you need to add "tls.pem" and "tls.key" to the "helm/files" directory
-tls: false
+tls: true
+
+# Supported: "DockerHub", "Aliyun"
+container_registry: Aliyun
