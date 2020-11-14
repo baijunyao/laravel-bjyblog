@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.13.0.
+ * Generated for Laravel 8.14.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -17496,7 +17496,7 @@ namespace  {
                 /**
              * Add a subselect expression to the query.
              *
-             * @param \Closure|$this|string $query
+             * @param \Closure|\Illuminate\Database\Query\Builder|string $query
              * @param string $as
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
