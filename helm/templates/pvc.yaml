@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/var/www/laravel-bjyblog"
+    path: "/laravel-bjyblog/site"
 
 ---
 
@@ -46,7 +46,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/var/mysql"
+    path: "/laravel-bjyblog/mysql"
 
 ---
 
@@ -81,7 +81,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/var/backup"
+    path: "/laravel-bjyblog/backup"
 
 ---
 

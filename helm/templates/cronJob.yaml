@@ -14,7 +14,7 @@ spec:
         spec:
           containers:
             - name: php
-              image: baijunyao/php:7.4-production
+              image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/php:7.4-{{ .Values.env }}
               command: ["php", "artisan", "bjyblog:generate-sitemap"]
               volumeMounts:
                 - mountPath: /app
@@ -43,7 +43,7 @@ spec:
         spec:
           containers:
             - name: database-backup
-              image: baijunyao/mysql-client:1.0
+              image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql-client:1.0
               command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -plaravel_bjyblog laravel_bjyblog > /backup/laravel_bjyblog_`date +%Y%m%d`.sql"]
               volumeMounts:
                 - mountPath: /backup
