@@ -4,6 +4,12 @@ metadata:
   name: nginx-ingress
   namespace: blog
 spec:
+  {{- if .Values.tls }}
+  tls:
+    - hosts:
+        - {{ .Values.host }}
+      secretName: secret-tls
+  {{- end }}
   rules:
     - host: {{ .Values.host }}
       http:

@@ -1,2 +1,12 @@
 # Application URLs
 host: laravel-bjyblog.test
+
+# This value determines the "environment" your application is currently running in
+# Supported: "production", "local"
+env: production
+
+# If it is "true", you need to add "tls.pem" and "tls.key" to the "helm/files" directory
+tls: true
+
+# Supported: "DockerHub", "Aliyun"
+container_registry: Aliyun
