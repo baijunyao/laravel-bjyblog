@@ -3,11 +3,19 @@ kind: Ingress
 metadata:
   name: nginx-ingress
   namespace: blog
+  {{- if .Values.tls }}
+  annotations:
+    ingress.kubernetes.io/force-hsts: "true"
+    ingress.kubernetes.io/hsts-max-age: "63072000"
+    ingress.kubernetes.io/hsts-include-subdomains: "true"
+    ingress.kubernetes.io/hsts-preload: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"
+  {{- end }}
 spec:
   {{- if .Values.tls }}
   tls:
     - hosts:
-        - {{ .Values.host }}
+      - {{ .Values.host }}
       secretName: secret-tls
   {{- end }}
   rules:
