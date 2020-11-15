@@ -20,7 +20,7 @@ class AdminLogin
     {
         // 如果登录;则重定向到首页
         if (Auth::guard('admin')->check()) {
-            return redirect('admin/index/index');
+            return redirect(url('admin/index/index'));
         }
 
         return $next($request);

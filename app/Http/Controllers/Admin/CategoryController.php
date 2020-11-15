@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         Category::create($request->except('_token'));
 
-        return redirect('admin/category/index');
+        return redirect(url('admin/category/index'));
     }
 
     public function edit($id)
@@ -51,7 +51,7 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
 
-        return redirect('admin/category/index');
+        return redirect(url('admin/category/index'));
     }
 
     public function sort(Request $request, Category $categoryModel)
@@ -73,13 +73,13 @@ class CategoryController extends Controller
     {
         Category::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/category/index');
+        return redirect(url('admin/category/index'));
     }
 
     public function forceDelete($id)
     {
         Category::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/category/index');
+        return redirect(url('admin/category/index'));
     }
 }
