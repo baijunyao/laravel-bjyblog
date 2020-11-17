@@ -44,7 +44,7 @@ spec:
           containers:
             - name: database-backup
               image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql-client:1.0
-              command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -plaravel_bjyblog laravel_bjyblog > /backup/laravel_bjyblog_`date +%Y%m%d`.sql"]
+              command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -p{{ .Values.mysql.password }} laravel_bjyblog > /backup/laravel_bjyblog_`date +%Y%m%d`.sql"]
               volumeMounts:
                 - mountPath: /backup
                   name: backup-pvc

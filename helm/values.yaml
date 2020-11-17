@@ -10,3 +10,9 @@ tls: true
 
 # Supported: "DockerHub", "Aliyun"
 container_registry: Aliyun
+
+# MySQL
+mysql:
+  # Supported: "5.6", "5.7", "8.0"
+  version: 8.0
+  password: laravel_bjyblog
