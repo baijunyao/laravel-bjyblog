@@ -74,7 +74,7 @@ spec:
           containers:
             - name: site-backup
               image: busybox:1.32
-              command: ["/bin/sh", "-c", "/bin/tar -czvf /backup/laravel_bjyblog_`date +%Y%m%d`.tar.gz /app"]
+              command: ["/bin/sh", "-c", "/bin/tar -czvf /backup/laravel_bjyblog_`date +%Y%m%d`.tar.gz /app/.env /app/storage/app/public/uploads"]
               volumeMounts:
                 - mountPath: /backup
                   name: backup-pvc
