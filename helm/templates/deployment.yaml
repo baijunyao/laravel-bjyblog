@@ -94,6 +94,8 @@ spec:
     metadata:
       labels:
         app: nginx
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
     spec:
       volumes:
         - name: code-pvc
