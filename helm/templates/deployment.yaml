@@ -36,15 +36,11 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql:8.0-{{ .Values.env }}
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql:{{ .Values.mysql.version }}-{{ .Values.env }}
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: laravel_bjyblog
+              value: {{ .Values.mysql.password }}
             - name: MYSQL_DATABASE
-              value: laravel_bjyblog
-            - name: MYSQL_USER
-              value: root
-            - name: MYSQL_PASSWORD
               value: laravel_bjyblog
           volumeMounts:
             - mountPath: /var/lib/mysql
@@ -98,6 +94,8 @@ spec:
     metadata:
       labels:
         app: nginx
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
     spec:
       volumes:
         - name: code-pvc
@@ -111,7 +109,7 @@ spec:
                 path: laravel-bjyblog.conf
       containers:
         - name: nginx
-          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.7
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.19
           volumeMounts:
             - name: code-pvc
               mountPath: /app

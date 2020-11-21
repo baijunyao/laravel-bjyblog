@@ -31,7 +31,7 @@ class NoteController extends Controller
     {
         Note::create($request->only('content'));
 
-        return redirect('admin/note/index');
+        return redirect(url('admin/note/index'));
     }
 
     public function edit($id)
@@ -53,20 +53,20 @@ class NoteController extends Controller
     {
         Note::destroy($id);
 
-        return redirect('admin/note/index');
+        return redirect(url('admin/note/index'));
     }
 
     public function restore($id)
     {
         Note::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/note/index');
+        return redirect(url('admin/note/index'));
     }
 
     public function forceDelete($id)
     {
         Note::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/note/index');
+        return redirect(url('admin/note/index'));
     }
 }

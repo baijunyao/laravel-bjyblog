@@ -50,21 +50,21 @@ class NavController extends Controller
     {
         Nav::destroy($id);
 
-        return redirect('admin/nav/index');
+        return redirect(url('admin/nav/index'));
     }
 
     public function restore($id)
     {
         Nav::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/nav/index');
+        return redirect(url('admin/nav/index'));
     }
 
     public function forceDelete($id)
     {
         Nav::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/nav/index');
+        return redirect(url('admin/nav/index'));
     }
 
     public function sort(Request $request, Nav $navModel)

@@ -32,7 +32,7 @@ class TagController extends Controller
             return response()->json($tag);
         }
 
-        return redirect('admin/tag/index');
+        return redirect(url('admin/tag/index'));
     }
 
     public function edit($id)
@@ -54,20 +54,20 @@ class TagController extends Controller
     {
         Tag::destroy($id);
 
-        return redirect('admin/tag/index');
+        return redirect(url('admin/tag/index'));
     }
 
     public function restore($id)
     {
         Tag::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/tag/index');
+        return redirect(url('admin/tag/index'));
     }
 
     public function forceDelete($id)
     {
         Tag::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/tag/index');
+        return redirect(url('admin/tag/index'));
     }
 }
