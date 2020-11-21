@@ -37,7 +37,7 @@ class SiteController extends Controller
         }
         Site::create($data);
 
-        return redirect('admin/site/index');
+        return redirect(url('admin/site/index'));
     }
 
     public function edit($id)
@@ -85,13 +85,13 @@ class SiteController extends Controller
     {
         Site::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/site/index');
+        return redirect(url('admin/site/index'));
     }
 
     public function forceDelete($id)
     {
         Site::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/site/index');
+        return redirect(url('admin/site/index'));
     }
 }

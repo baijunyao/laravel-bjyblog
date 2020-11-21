@@ -14,7 +14,9 @@ class TrustProxies extends Middleware
      *
      * @var array|string|null
      */
-    protected $proxies;
+    protected $proxies = [
+        'REMOTE_ADDR', // https://symfony.com/doc/current/deployment/proxies.html#but-what-if-the-ip-of-my-reverse-proxy-changes-constantly
+    ];
 
     /**
      * The headers that should be used to detect proxies.

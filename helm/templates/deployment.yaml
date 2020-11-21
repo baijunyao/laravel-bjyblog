@@ -94,6 +94,8 @@ spec:
     metadata:
       labels:
         app: nginx
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
     spec:
       volumes:
         - name: code-pvc
@@ -107,7 +109,7 @@ spec:
                 path: laravel-bjyblog.conf
       containers:
         - name: nginx
-          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.7
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.19
           volumeMounts:
             - name: code-pvc
               mountPath: /app

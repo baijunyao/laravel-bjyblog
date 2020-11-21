@@ -37,14 +37,14 @@ class UserController extends Controller
     {
         User::destroy($id);
 
-        return redirect('admin/user/index');
+        return redirect(url('admin/user/index'));
     }
 
     public function restore($id)
     {
         User::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/user/index');
+        return redirect(url('admin/user/index'));
     }
 
     public function forceDelete($id)

@@ -31,7 +31,7 @@ class FriendshipLinkController extends Controller
     {
         FriendshipLink::create($request->except('_token'));
 
-        return redirect('admin/friendshipLink/index');
+        return redirect(url('admin/friendshipLink/index'));
     }
 
     public function edit($id)
@@ -85,13 +85,13 @@ class FriendshipLinkController extends Controller
     {
         FriendshipLink::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/friendshipLink/index');
+        return redirect(url('admin/friendshipLink/index'));
     }
 
     public function forceDelete($id)
     {
         FriendshipLink::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/friendshipLink/index');
+        return redirect(url('admin/friendshipLink/index'));
     }
 }

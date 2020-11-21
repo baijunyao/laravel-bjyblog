@@ -81,7 +81,7 @@ class ArticleController extends Controller
         $articleTag = new ArticleTag();
         $articleTag->addTagIds($article->id, $tag_ids);
 
-        return redirect('admin/article/index');
+        return redirect(url('admin/article/index'));
     }
 
     public function edit($id)

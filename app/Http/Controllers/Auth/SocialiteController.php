@@ -56,7 +56,7 @@ class SocialiteController extends Controller
         } catch (Exception $e) {
             app('sentry')->captureException($e);
 
-            return redirect('/');
+            return redirect(url('/'));
         }
 
         // 查找此用户是否已经登录过

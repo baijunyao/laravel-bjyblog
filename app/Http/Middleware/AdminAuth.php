@@ -20,7 +20,7 @@ class AdminAuth
     {
         // 如果不是管理员或者没有登录;则重定向到登录页面
         if (!Auth::guard('admin')->check()) {
-            return redirect('admin/login/index');
+            return redirect(url('admin/login/index'));
         }
 
         return $next($request);

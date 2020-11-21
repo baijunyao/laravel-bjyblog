@@ -35,7 +35,7 @@ class OpenSourceController extends Controller
     {
         OpenSource::create($request->except('_token'));
 
-        return redirect('admin/openSource/index');
+        return redirect(url('admin/openSource/index'));
     }
 
     public function edit($id)
@@ -83,13 +83,13 @@ class OpenSourceController extends Controller
     {
         OpenSource::onlyTrashed()->find($id)->restore();
 
-        return redirect('admin/openSource/index');
+        return redirect(url('admin/openSource/index'));
     }
 
     public function forceDelete($id)
     {
         OpenSource::onlyTrashed()->find($id)->forceDelete();
 
-        return redirect('admin/openSource/index');
+        return redirect(url('admin/openSource/index'));
     }
 }
