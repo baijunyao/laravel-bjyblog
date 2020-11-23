@@ -73,8 +73,11 @@ spec:
         spec:
           containers:
             - name: site-backup
-              image: busybox:1.32
+              image: baijunyao/alpine:3.12
               command: ["/bin/sh", "-c", "/bin/tar -czvf /backup/laravel_bjyblog_`date +%Y%m%d`.tar.gz /app/.env /app/storage/app/public/uploads"]
+              env:
+                - name: TZ
+                  value: {{ .Values.timezone }}
               volumeMounts:
                 - mountPath: /backup
                   name: backup-pvc
