@@ -1646,31 +1646,6 @@ parameters:
 			path: app/Models/Site.php
 
 		-
-			message: "#^Property App\\\\Models\\\\User\\:\\:\\$fillable type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/User.php
-
-		-
-			message: "#^Property App\\\\Models\\\\User\\:\\:\\$hidden type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/User.php
-
-		-
-			message: "#^Property App\\\\Models\\\\User\\:\\:\\$casts type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/User.php
-
-		-
-			message: "#^Method App\\\\Models\\\\User\\:\\:setPasswordAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/User.php
-
-		-
-			message: "#^Method App\\\\Models\\\\User\\:\\:setPasswordAttribute\\(\\) has parameter \\$password with no typehint specified\\.$#"
-			count: 1
-			path: app/Models/User.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
