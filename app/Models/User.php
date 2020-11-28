@@ -42,7 +42,7 @@ class User extends UserBase
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<int,string>
      */
     protected $fillable = [
         'name',
@@ -53,7 +53,7 @@ class User extends UserBase
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * @var array<int,string>
      */
     protected $hidden = [
         'password',
@@ -63,13 +63,16 @@ class User extends UserBase
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string,string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($password)
+    /**
+     * @param string $password
+     */
+    public function setPasswordAttribute($password): void
     {
         if (!empty($password)) {
             $this->attributes['password'] = bcrypt($password);

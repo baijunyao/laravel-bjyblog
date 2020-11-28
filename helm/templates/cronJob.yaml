@@ -43,8 +43,11 @@ spec:
         spec:
           containers:
             - name: database-backup
-              image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql-client:1.0
+              image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql-client:1.1
               command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -p{{ .Values.mysql.password }} laravel_bjyblog > /backup/laravel_bjyblog_`date +%Y%m%d`.sql"]
+              env:
+                - name: TZ
+                  value: {{ .Values.timezone }}
               volumeMounts:
                 - mountPath: /backup
                   name: backup-pvc
@@ -73,8 +76,11 @@ spec:
         spec:
           containers:
             - name: site-backup
-              image: busybox:1.32
+              image: baijunyao/alpine:3.12
               command: ["/bin/sh", "-c", "/bin/tar -czvf /backup/laravel_bjyblog_`date +%Y%m%d`.tar.gz /app/.env /app/storage/app/public/uploads"]
+              env:
+                - name: TZ
+                  value: {{ .Values.timezone }}
               volumeMounts:
                 - mountPath: /backup
                   name: backup-pvc

@@ -40,6 +40,7 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
         "laravelium/feed": "^8.0",
+        "lcobucci/jwt": "3.3.3",
         "league/html-to-markdown": "^4.6",
         "mavinoo/laravel-batch": "^2.2",
         "mews/purifier": "^3.0",
