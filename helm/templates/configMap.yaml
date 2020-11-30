@@ -22,3 +22,20 @@ data:
             include        fastcgi_params;
         }
     }
+
+{{- if .Values.oss.enabled }}
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ossutil-config
+  namespace: blog
+data:
+  config: |
+    [Credentials]
+    language=EN
+    endpoint={{ .Values.oss.endpoint }}
+    accessKeyID={{ .Values.oss.access_key_id }}
+    accessKeySecret={{ .Values.oss.access_key_secret }}
+{{- end }}
