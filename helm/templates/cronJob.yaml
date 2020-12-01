@@ -87,7 +87,7 @@ spec:
           containers:
             - name: database-backup
               image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/mysql-client:1.1
-              command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -p{{ .Values.mysql.password }} laravel_bjyblog > /backup/laravel_bjyblog_`date +%Y%m%d`.sql"]
+              command: ["/bin/sh", "-c", "/usr/bin/mysqldump -hmysql-service -uroot -p{{ .Values.mysql.password }} laravel_bjyblog | gzip > /backup/laravel_bjyblog_`date +%Y%m%d`.sql.gz"]
               env:
                 - name: TZ
                   value: {{ .Values.timezone }}
