@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04f5b426b877e446def677610f989efb",
+    "content-hash": "6b76b3e14de0ef5abffb3dc4c99b91c1",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -3308,23 +3308,17 @@
         },
         {
             "name": "kalnoy/nestedset",
-            "version": "v5.0.2",
+            "version": "v5.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lazychaser/laravel-nestedset.git",
-                "reference": "1edd06d0744251940240f28021de7651d7fa71d3"
+                "url": "https://github.com/urakozz/laravel-nestedset.git",
+                "reference": "b2c98cc1169dabda7400e620ae3f6a2f32140a5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/1edd06d0744251940240f28021de7651d7fa71d3",
-                "reference": "1edd06d0744251940240f28021de7651d7fa71d3",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/urakozz/laravel-nestedset/zipball/b2c98cc1169dabda7400e620ae3f6a2f32140a5c",
+                "reference": "b2c98cc1169dabda7400e620ae3f6a2f32140a5c",
+                "shasum": ""
             },
             "require": {
                 "illuminate/database": "~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
@@ -3351,7 +3345,6 @@
                     "Kalnoy\\Nestedset\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3369,7 +3362,10 @@
                 "nested sets",
                 "nsm"
             ],
-            "time": "2020-09-11T06:18:17+00:00"
+            "support": {
+                "source": "https://github.com/urakozz/laravel-nestedset/tree/v5.0.3"
+            },
+            "time": "2020-12-01T15:54:36+00:00"
         },
         {
             "name": "laravel-lang/lang",
@@ -3420,16 +3416,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.16.1",
+            "version": "v8.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f7dfc22e6c42e9ed4dda14c05814349af6943206"
+                "reference": "b89363b540bd8ad6e727ee165b510a19fe170a28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f7dfc22e6c42e9ed4dda14c05814349af6943206",
-                "reference": "f7dfc22e6c42e9ed4dda14c05814349af6943206",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b89363b540bd8ad6e727ee165b510a19fe170a28",
+                "reference": "b89363b540bd8ad6e727ee165b510a19fe170a28",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3585,7 +3581,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-11-25T15:01:02+00:00"
+            "time": "2020-12-03T13:47:59+00:00"
         },
         {
             "name": "laravel/passport",
