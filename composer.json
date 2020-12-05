@@ -34,7 +34,7 @@
         "iidestiny/laravel-filesystem-oss": "^1.2",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
-        "kalnoy/nestedset": "^5.0",
+        "kalnoy/nestedset": "5.0.3",
         "laravel/framework": "^8.0",
         "laravel/passport": "^10.0",
         "laravel/socialite": "^5.0",
@@ -72,6 +72,13 @@
         "phpstan/phpstan": "^0.12.34",
         "phpunit/phpunit": "^9.3"
     },
+    "repositories": [
+        {
+            "name": "kalnoy/nestedset",
+            "type": "vcs",
+            "url": "https://github.com/urakozz/laravel-nestedset"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

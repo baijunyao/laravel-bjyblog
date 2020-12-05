@@ -18,4 +18,18 @@ timezone: 'Asia/Shanghai'
 mysql:
   # Supported: "5.6", "5.7", "8.0"
   version: '8.0'
+  # Password of root
   password: laravel_bjyblog
+
+# Aliyun OSS
+oss:
+  # Upload backup files to Aliyun OSS
+  enabled: false
+  # https://help.aliyun.com/document_detail/31837.html
+  endpoint: 'oss-cn-beijing.aliyuncs.com'
+  # accessKeyID
+  access_key_id: ''
+  # accessKeySecret
+  access_key_secret: ''
+  # https://help.aliyun.com/document_detail/31827.html
+  bucket: ''
