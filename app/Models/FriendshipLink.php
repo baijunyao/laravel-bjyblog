@@ -31,17 +31,15 @@ namespace App\Models;
  */
 class FriendshipLink extends Base
 {
-    public function setSortAttribute($value)
+    /**
+     * @param int $value
+     */
+    public function setSortAttribute($value): void
     {
         $this->attributes['sort'] = empty($value) ? null : $value;
     }
 
-    /**
-     * 给url添加 http 或者删除 /
-     *
-     * @author hanmeimei
-     */
-    public function setUrlAttribute(string $value)
+    public function setUrlAttribute(string $value): void
     {
         $this->attributes['url'] = format_url($value);
     }

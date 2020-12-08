@@ -31,6 +31,11 @@ use Str;
  */
 class Config extends Base
 {
+    /**
+     * @param string $value
+     *
+     * @return array<mixed>|string
+     */
     public function getValueAttribute($value)
     {
         if (Str::isJsonArray($value)) {
@@ -40,7 +45,10 @@ class Config extends Base
         return $value;
     }
 
-    public function setValueAttribute($value)
+    /**
+     * @param array<mixed>|string $value
+     */
+    public function setValueAttribute($value): void
     {
         $this->attributes['value'] = is_array($value) ? json_encode($value) : $value;
     }
