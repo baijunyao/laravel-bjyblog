@@ -21,6 +21,18 @@ data:
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include        fastcgi_params;
         }
+
+        location ~ .*\.(gif|jpg|jpeg|png|bmp)$ {
+            expires 30d;
+            access_log off;
+            add_header Cache-Control public;
+        }
+
+        location ~ .*\.(js|css)?$ {
+            expires 1d;
+            access_log off;
+            add_header Cache-Control public;
+        }
     }
 
 {{- if .Values.oss.enabled }}
