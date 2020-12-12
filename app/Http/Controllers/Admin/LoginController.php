@@ -16,7 +16,7 @@ class LoginController extends Controller
         $count = $socialiteUserModel->where('is_admin', 1)->count();
         // 如果有第三方账号管理员；则通过第三方账号登录
         if ($count) {
-            die('请通过第三方账号登录');
+            exit('请通过第三方账号登录');
         } else {
             return view('admin.login.index');
         }
