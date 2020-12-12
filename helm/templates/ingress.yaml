@@ -3,23 +3,35 @@ kind: Ingress
 metadata:
   name: nginx-ingress
   namespace: blog
-  {{- if .Values.tls }}
   annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/redirect-regex: "^https?://{{ if .Values.force_non_www }}www.{{ end }}{{ .Values.host }}/?(.*)"
+    traefik.ingress.kubernetes.io/redirect-replacement: "http{{ if .Values.tls }}s{{ end }}://{{ if eq .Values.force_non_www false }}www.{{ end }}{{ .Values.host }}/$1"
+    ingress.kubernetes.io/redirect-permanent: "true"
+    {{- if .Values.tls }}
     ingress.kubernetes.io/force-hsts: "true"
     ingress.kubernetes.io/hsts-max-age: "63072000"
     ingress.kubernetes.io/hsts-include-subdomains: "true"
     ingress.kubernetes.io/hsts-preload: "true"
     ingress.kubernetes.io/ssl-redirect: "true"
-  {{- end }}
+    {{- end }}
 spec:
   {{- if .Values.tls }}
   tls:
     - hosts:
-      - {{ .Values.host }}
+        - {{ .Values.host }}
+        - www.{{ .Values.host }}
       secretName: secret-tls
   {{- end }}
   rules:
     - host: {{ .Values.host }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: nginx-service
+              servicePort: 80
+    - host: www.{{ .Values.host }}
       http:
         paths:
           - path: /

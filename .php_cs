@@ -67,7 +67,8 @@ return PhpCsFixer\Config::create()
         'string_line_ending' => true,
         'yoda_style' => false,
         'void_return' => false,
-        'single_trait_insert_per_statement' => false
+        'single_trait_insert_per_statement' => false,
+        'ordered_traits' => false,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()

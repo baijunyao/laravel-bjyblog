@@ -44,7 +44,7 @@ class FromThinkPHPBjyBlog extends Command
 
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
-            die('已经迁移过,如需重新迁移,请先删除 /storage/lock/migration.lock 文件');
+            exit('已经迁移过,如需重新迁移,请先删除 /storage/lock/migration.lock 文件');
         }
         Artisan::call('seeder:clear');
 

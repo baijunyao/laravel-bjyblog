@@ -1596,41 +1596,6 @@ parameters:
 			path: app/Models/Comment.php
 
 		-
-			message: "#^Method App\\\\Models\\\\Config\\:\\:getValueAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Config.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Config\\:\\:getValueAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
-			count: 1
-			path: app/Models/Config.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Config\\:\\:setValueAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Config.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Config\\:\\:setValueAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
-			count: 1
-			path: app/Models/Config.php
-
-		-
-			message: "#^Method App\\\\Models\\\\FriendshipLink\\:\\:setSortAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/FriendshipLink.php
-
-		-
-			message: "#^Method App\\\\Models\\\\FriendshipLink\\:\\:setSortAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
-			count: 1
-			path: app/Models/FriendshipLink.php
-
-		-
-			message: "#^Method App\\\\Models\\\\FriendshipLink\\:\\:setUrlAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/FriendshipLink.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
