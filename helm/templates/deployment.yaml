@@ -116,3 +116,36 @@ spec:
             - name: config
               mountPath: /etc/nginx/conf.d
 
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: prometheus-config
+            items:
+              - key: config
+                path: prometheus.yml
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.23.0
+          volumeMounts:
+            - name: config
+              mountPath: /etc/prometheus/prometheus.yml
+              subPath: prometheus.yml
