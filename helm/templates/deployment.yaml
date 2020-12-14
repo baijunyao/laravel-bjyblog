@@ -149,3 +149,44 @@ spec:
             - name: config
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: grafana-config
+            items:
+              - key: config
+                path: custom.ini
+      containers:
+        - name: grafana
+          image: grafana/grafana:7.3.4
+          volumeMounts:
+            - name: config
+              mountPath: /usr/share/grafana/conf/custom.ini
+              subPath: custom.ini
+          env:
+            - name: GF_SERVER_DOMAIN
+              value: {{ .Values.host }}
+            - name: GF_SERVER_ROOT_URL
+              value: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+            - name: GF_SERVER_SERVE_FROM_SUB_PATH
+              value: "true"

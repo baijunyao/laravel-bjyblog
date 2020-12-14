@@ -71,3 +71,17 @@ data:
       - job_name: 'node'
         static_configs:
           - targets: ['{{ .Values.ip }}:9100']
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: blog
+data:
+  config: |
+    [server]
+    domain = {{ .Values.host }}
+    root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
+    serve_from_sub_path = true
