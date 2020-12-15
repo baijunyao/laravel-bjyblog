@@ -136,6 +136,9 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
     spec:
       volumes:
+        - name: prometheus-pvc
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
         - name: config
           configMap:
             name: prometheus-config
@@ -146,6 +149,8 @@ spec:
         - name: prometheus
           image: prom/prometheus:v2.23.0
           volumeMounts:
+            - name: prometheus-pvc
+              mountPath: /prometheus
             - name: config
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
