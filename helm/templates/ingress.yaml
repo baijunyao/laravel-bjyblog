@@ -31,6 +31,10 @@ spec:
             backend:
               serviceName: nginx-service
               servicePort: 80
+          - path: /grafana
+            backend:
+              serviceName: grafana-service
+              servicePort: 3000
     - host: www.{{ .Values.host }}
       http:
         paths:
