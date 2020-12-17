@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Str;
 
 /**
@@ -45,12 +46,12 @@ class Category extends Base
     /**
      * 一对多关联文章
      */
-    public function articles()
+    public function articles(): HasMany
     {
         return $this->hasMany(Article::class);
     }
 
-    public function getUrlAttribute()
+    public function getUrlAttribute(): string
     {
         $parameters = [$this->id];
 
