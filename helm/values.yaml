@@ -37,6 +37,3 @@ oss:
   access_key_secret: ''
   # https://help.aliyun.com/document_detail/31827.html
   bucket: ''
-
-# Node ip
-ip: '127.0.0.1'

@@ -70,7 +70,7 @@ data:
           - targets: ['localhost:9090']
       - job_name: 'node'
         static_configs:
-          - targets: ['{{ .Values.ip }}:9100']
+          - targets: ['node_internal_ip:9100']
 
 ---
 

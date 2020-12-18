@@ -139,19 +139,32 @@ spec:
         - name: prometheus-pvc
           persistentVolumeClaim:
             claimName: prometheus-pvc
-        - name: config
-          configMap:
-            name: prometheus-config
-            items:
-              - key: config
-                path: prometheus.yml
+        - name: prometheus-config
+          emptyDir: {}
+      initContainers:
+        - name: busybox
+          image: busybox:1.32
+          command: ['sh', '-c', "echo \"${PROMETHEUS_CONFIG/node_internal_ip/$NODE_INTERNAL_IP}\" >> /prometheus/prometheus.yml"]
+          env:
+            - name: NODE_INTERNAL_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: PROMETHEUS_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus-config
+                  key: config
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /prometheus
       containers:
         - name: prometheus
           image: prom/prometheus:v2.23.0
           volumeMounts:
             - name: prometheus-pvc
               mountPath: /prometheus
-            - name: config
+            - name: prometheus-config
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
 
