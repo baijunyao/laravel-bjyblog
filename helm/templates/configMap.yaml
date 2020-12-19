@@ -51,3 +51,37 @@ data:
     accessKeyID={{ .Values.oss.access_key_id }}
     accessKeySecret={{ .Values.oss.access_key_secret }}
 {{- end }}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: blog
+data:
+  config: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+      - job_name: 'prometheus'
+        scrape_interval: 5s
+        static_configs:
+          - targets: ['localhost:9090']
+      - job_name: 'node'
+        static_configs:
+          - targets: ['node_internal_ip:9100']
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: blog
+data:
+  config: |
+    [server]
+    domain = {{ .Values.host }}
+    root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
+    serve_from_sub_path = true

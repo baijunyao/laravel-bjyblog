@@ -116,3 +116,95 @@ spec:
             - name: config
               mountPath: /etc/nginx/conf.d
 
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: prometheus-pvc
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
+        - name: prometheus-config
+          emptyDir: {}
+      initContainers:
+        - name: busybox
+          image: busybox:1.32
+          command: ['sh', '-c', "echo \"${PROMETHEUS_CONFIG/node_internal_ip/$NODE_INTERNAL_IP}\" >> /prometheus/prometheus.yml"]
+          env:
+            - name: NODE_INTERNAL_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: PROMETHEUS_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: prometheus-config
+                  key: config
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /prometheus
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v2.23.0
+          volumeMounts:
+            - name: prometheus-pvc
+              mountPath: /prometheus
+            - name: prometheus-config
+              mountPath: /etc/prometheus/prometheus.yml
+              subPath: prometheus.yml
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: grafana-config
+            items:
+              - key: config
+                path: custom.ini
+      containers:
+        - name: grafana
+          image: grafana/grafana:7.3.4
+          volumeMounts:
+            - name: config
+              mountPath: /usr/share/grafana/conf/custom.ini
+              subPath: custom.ini
+          env:
+            - name: GF_SERVER_DOMAIN
+              value: {{ .Values.host }}
+            - name: GF_SERVER_ROOT_URL
+              value: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
+            - name: GF_SERVER_SERVE_FROM_SUB_PATH
+              value: "true"

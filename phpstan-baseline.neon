@@ -1511,34 +1511,9 @@ parameters:
 			path: app/Models/Article.php
 
 		-
-			message: "#^Method App\\\\Models\\\\ArticleHistory\\:\\:article\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/ArticleHistory.php
-
-		-
-			message: "#^Method App\\\\Models\\\\ArticleTag\\:\\:addTagIds\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/ArticleTag.php
-
-		-
-			message: "#^Method App\\\\Models\\\\ArticleTag\\:\\:addTagIds\\(\\) has parameter \\$tag_ids with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Models/ArticleTag.php
-
-		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/Models/Base.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Category\\:\\:articles\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Category.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Category\\:\\:getUrlAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Category.php
 
 		-
 			message: "#^Method App\\\\Models\\\\Comment\\:\\:getContentAttribute\\(\\) has no return typehint specified\\.$#"
