@@ -188,6 +188,9 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
     spec:
       volumes:
+        - name: grafana-pvc
+          persistentVolumeClaim:
+            claimName: grafana-pvc
         - name: config
           configMap:
             name: grafana-config
@@ -198,6 +201,8 @@ spec:
         - name: grafana
           image: grafana/grafana:7.3.4
           volumeMounts:
+            - name: grafana-pvc
+              mountPath: /var/lib/grafana
             - name: config
               mountPath: /usr/share/grafana/conf/custom.ini
               subPath: custom.ini
