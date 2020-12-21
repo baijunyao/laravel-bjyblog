@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ef00cc59ea9b6556da31e36c8019677",
+    "content-hash": "59096ad254507d8bd7165c60456dfffd",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -12571,16 +12571,16 @@
         },
         {
             "name": "itsgoingd/clockwork",
-            "version": "v4.1.8",
+            "version": "v5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itsgoingd/clockwork.git",
-                "reference": "0dc2e5be39de88b18719bb4f3cdacfa605ad2146"
+                "reference": "1de3f9f9fc22217aa024f79ecbdf0fde418fc0a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/0dc2e5be39de88b18719bb4f3cdacfa605ad2146",
-                "reference": "0dc2e5be39de88b18719bb4f3cdacfa605ad2146",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/1de3f9f9fc22217aa024f79ecbdf0fde418fc0a1",
+                "reference": "1de3f9f9fc22217aa024f79ecbdf0fde418fc0a1",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12591,7 +12591,7 @@
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.5",
+                "php": ">=5.6",
                 "psr/log": "1.*"
             },
             "type": "library",
@@ -12621,7 +12621,7 @@
                     "homepage": "https://twitter.com/itsgoingd"
                 }
             ],
-            "description": "php dev tools integrated to your browser",
+            "description": "php dev tools in your browser",
             "homepage": "https://underground.works/clockwork",
             "keywords": [
                 "Devtools",
@@ -12634,7 +12634,7 @@
             ],
             "support": {
                 "issues": "https://github.com/itsgoingd/clockwork/issues",
-                "source": "https://github.com/itsgoingd/clockwork/tree/v4.1.8"
+                "source": "https://github.com/itsgoingd/clockwork/tree/v5.0.6"
             },
             "funding": [
                 {
@@ -12642,7 +12642,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-17T19:21:25+00:00"
+            "time": "2020-12-27T00:18:25+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
