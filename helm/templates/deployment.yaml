@@ -213,3 +213,29 @@ spec:
               value: "%(protocol)s://%(domain)s:%(http_port)s/grafana/"
             - name: GF_SERVER_SERVE_FROM_SUB_PATH
               value: "true"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+        - name: elasticsearch
+          image: baijunyao/elasticsearch:7.6
+          env:
+            - name: ES_JAVA_OPTS
+              value: -Xms512m -Xmx512m
+            - name: discovery.type
+              value: single-node
