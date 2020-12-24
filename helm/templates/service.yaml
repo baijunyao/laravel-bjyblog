@@ -97,3 +97,22 @@ spec:
       targetPort: 3000
   selector:
     app: grafana
+
+{{- if .Values.elasticsearch.enabled }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch-service
+  namespace: blog
+  labels:
+    app: elasticsearch
+spec:
+  ports:
+    - port: 9200
+      protocol: TCP
+      targetPort: 9200
+  selector:
+    app: elasticsearch
+{{- end }}
