@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:6.0
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/redis:6.0
 
 ---
 
@@ -143,7 +143,7 @@ spec:
           emptyDir: {}
       initContainers:
         - name: busybox
-          image: busybox:1.32
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
           command: ['sh', '-c', "echo \"${PROMETHEUS_CONFIG/node_internal_ip/$NODE_INTERNAL_IP}\" >> /prometheus/prometheus.yml"]
           env:
             - name: NODE_INTERNAL_IP
@@ -160,7 +160,7 @@ spec:
               mountPath: /prometheus
       containers:
         - name: prometheus
-          image: prom/prometheus:v2.23.0
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/prometheus:v2.23.0
           volumeMounts:
             - name: prometheus-pvc
               mountPath: /prometheus
@@ -199,7 +199,7 @@ spec:
                 path: custom.ini
       containers:
         - name: grafana
-          image: grafana/grafana:7.3.4
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/grafana:7.3.4
           volumeMounts:
             - name: grafana-pvc
               mountPath: /var/lib/grafana
@@ -214,6 +214,7 @@ spec:
             - name: GF_SERVER_SERVE_FROM_SUB_PATH
               value: "true"
 
+{{- if .Values.elasticsearch.enabled }}
 ---
 
 apiVersion: apps/v1
@@ -233,9 +234,10 @@ spec:
     spec:
       containers:
         - name: elasticsearch
-          image: baijunyao/elasticsearch:7.6
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/elasticsearch:7.6
           env:
             - name: ES_JAVA_OPTS
               value: -Xms512m -Xmx512m
             - name: discovery.type
               value: single-node
+{{- end }}
