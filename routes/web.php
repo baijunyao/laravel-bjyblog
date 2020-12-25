@@ -51,7 +51,7 @@ Route::prefix('admin')->group(function () {
     Route::redirect('/', url('admin/login/index'));
     Route::prefix('login')->group(function () {
         // 登录页面
-        Route::get('index', \App\Http\Controllers\Admin\LoginController::class . '@index')->middleware('admin.login');
+        Route::get('index', \App\Http\Controllers\Admin\LoginController::class . '@index')->middleware('guest:admin');
         // 退出
         Route::get('logout', \App\Http\Controllers\Admin\LoginController::class . '@logout');
     });
