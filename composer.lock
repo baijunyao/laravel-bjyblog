@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "2.7.2",
+            "version": "2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "a915109c76d5f4af67f10cd21855ea2d4c9aec9f"
+                "reference": "142a382e4649db0cb64d9eb8893872f1a4ba8dd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/a915109c76d5f4af67f10cd21855ea2d4c9aec9f",
-                "reference": "a915109c76d5f4af67f10cd21855ea2d4c9aec9f",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/142a382e4649db0cb64d9eb8893872f1a4ba8dd3",
+                "reference": "142a382e4649db0cb64d9eb8893872f1a4ba8dd3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -30,7 +30,7 @@
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": "^5.3 || ^7.0",
+                "php": "^5.3 || ^7.0 || ^8.0",
                 "psr/http-message": "^1.0",
                 "psr/log": "^1.0",
                 "psr/simple-cache": "^1.0"
@@ -38,7 +38,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "fzaninotto/faker": "^1.8",
-                "phpunit/phpunit": "^4.8",
+                "julienbourdeau/phpunit": "4.8.37",
                 "symfony/yaml": "^2.0 || ^4.0"
             },
             "suggest": {
@@ -80,7 +80,7 @@
                 "php",
                 "search"
             ],
-            "time": "2020-11-24T10:16:46+00:00"
+            "time": "2020-12-22T11:27:03+00:00"
         },
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -3422,16 +3422,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.19.0",
+            "version": "v8.20.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f5f331cee60f1bbe672503b7eb9ba5b22b2ceacb"
+                "reference": "b5d8573ab16027867eaa1ac148893833434f9b02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f5f331cee60f1bbe672503b7eb9ba5b22b2ceacb",
-                "reference": "f5f331cee60f1bbe672503b7eb9ba5b22b2ceacb",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b5d8573ab16027867eaa1ac148893833434f9b02",
+                "reference": "b5d8573ab16027867eaa1ac148893833434f9b02",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3587,7 +3587,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-12-15T16:16:31+00:00"
+            "time": "2020-12-22T21:21:19+00:00"
         },
         {
             "name": "laravel/passport",
@@ -3669,16 +3669,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v8.5.0",
+            "version": "v8.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "2f528597910f1c68e577a283afd99a9af51c9d26"
+                "reference": "b8b8a35cc3ac82cbc07dfa83955492d2ef6e237b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/2f528597910f1c68e577a283afd99a9af51c9d26",
-                "reference": "2f528597910f1c68e577a283afd99a9af51c9d26",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/b8b8a35cc3ac82cbc07dfa83955492d2ef6e237b",
+                "reference": "b8b8a35cc3ac82cbc07dfa83955492d2ef6e237b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3736,7 +3736,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2020-12-10T14:58:57+00:00"
+            "time": "2020-12-22T17:29:20+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -4881,16 +4881,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.42.0",
+            "version": "2.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d0463779663437392fe42ff339ebc0213bd55498"
+                "reference": "d32c57d8389113742f4a88725a170236470012e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d0463779663437392fe42ff339ebc0213bd55498",
-                "reference": "d0463779663437392fe42ff339ebc0213bd55498",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d32c57d8389113742f4a88725a170236470012e2",
+                "reference": "d32c57d8389113742f4a88725a170236470012e2",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4972,20 +4972,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-28T14:25:28+00:00"
+            "time": "2020-12-17T20:55:32+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.3",
+            "version": "v4.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984"
+                "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984",
-                "reference": "dbe56d23de8fcb157bbc0cfb3ad7c7de0cfb0984",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/c6d052fc58cb876152f89f532b95a8d7907e7f0e",
+                "reference": "c6d052fc58cb876152f89f532b95a8d7907e7f0e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5030,7 +5030,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-12-03T17:45:45+00:00"
+            "time": "2020-12-20T10:01:03+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -7365,16 +7365,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.14.1",
+            "version": "6.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "f8bd2e719a76bd197c5cdec0172b2c9a7b6436da"
+                "reference": "3374e1eeb09ef32c6bfd495ae1f2f4de4b594922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/f8bd2e719a76bd197c5cdec0172b2c9a7b6436da",
-                "reference": "f8bd2e719a76bd197c5cdec0172b2c9a7b6436da",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/3374e1eeb09ef32c6bfd495ae1f2f4de4b594922",
+                "reference": "3374e1eeb09ef32c6bfd495ae1f2f4de4b594922",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7452,7 +7452,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2020-12-16T07:40:24+00:00"
+            "time": "2020-12-23T10:13:12+00:00"
         },
         {
             "name": "spatie/laravel-query-builder",
@@ -7581,16 +7581,16 @@
         },
         {
             "name": "stichoza/google-translate-php",
-            "version": "v4.1.1",
+            "version": "v4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Stichoza/google-translate-php.git",
-                "reference": "2fc76c49b5f032c4210a98ced00e344d7d9022f2"
+                "reference": "28cc8bcf7e39069d2f41b3905dea9d8f04c30b82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/2fc76c49b5f032c4210a98ced00e344d7d9022f2",
-                "reference": "2fc76c49b5f032c4210a98ced00e344d7d9022f2",
+                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/28cc8bcf7e39069d2f41b3905dea9d8f04c30b82",
+                "reference": "28cc8bcf7e39069d2f41b3905dea9d8f04c30b82",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7603,7 +7603,7 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "guzzlehttp/guzzle": "~6.0|~7.0",
-                "php": "^7.1"
+                "php": "^7.1|^8"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.0"
@@ -7632,7 +7632,7 @@
                 "translate",
                 "translator"
             ],
-            "time": "2020-09-10T13:53:57+00:00"
+            "time": "2020-12-19T17:53:52+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -11566,16 +11566,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.17.2",
+            "version": "v2.17.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "aaee4f3d16a996fc0b570be0c69d3b80c909c507"
+                "reference": "bd32f5dd72cdfc7b53f54077f980e144bfa2f595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/aaee4f3d16a996fc0b570be0c69d3b80c909c507",
-                "reference": "aaee4f3d16a996fc0b570be0c69d3b80c909c507",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/bd32f5dd72cdfc7b53f54077f980e144bfa2f595",
+                "reference": "bd32f5dd72cdfc7b53f54077f980e144bfa2f595",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11607,7 +11607,7 @@
                 "justinrainbow/json-schema": "^5.0",
                 "keradus/cli-executor": "^1.4",
                 "mikey179/vfsstream": "^1.6",
-                "php-coveralls/php-coveralls": "^2.4.1",
+                "php-coveralls/php-coveralls": "^2.4.2",
                 "php-cs-fixer/accessible-object": "^1.0",
                 "php-cs-fixer/phpunit-constraint-isidenticalstring": "^1.2",
                 "php-cs-fixer/phpunit-constraint-xmlmatchesxsd": "^1.2.1",
@@ -11668,7 +11668,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-17T16:41:55+00:00"
+            "time": "2020-12-24T11:14:44+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -11925,16 +11925,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v6.10.0",
+            "version": "v6.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "68d0c889e4dc883a2661552234f8c7f03e6bd1e9"
+                "reference": "7e05b3ca4f17afcba528c4c5a2390a2dd9949b38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/68d0c889e4dc883a2661552234f8c7f03e6bd1e9",
-                "reference": "68d0c889e4dc883a2661552234f8c7f03e6bd1e9",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/7e05b3ca4f17afcba528c4c5a2390a2dd9949b38",
+                "reference": "7e05b3ca4f17afcba528c4c5a2390a2dd9949b38",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11995,7 +11995,7 @@
                 "testing",
                 "webdriver"
             ],
-            "time": "2020-12-15T18:35:13+00:00"
+            "time": "2020-12-22T16:57:45+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -12731,16 +12731,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.12.1",
+            "version": "1.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d"
+                "reference": "245710e971a030f42e08f4912863805570f23d39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/8ce87516be71aae9b956f81906aaf0338e0d8a2d",
-                "reference": "8ce87516be71aae9b956f81906aaf0338e0d8a2d",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/245710e971a030f42e08f4912863805570f23d39",
+                "reference": "245710e971a030f42e08f4912863805570f23d39",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12758,7 +12758,7 @@
             },
             "require-dev": {
                 "phpspec/phpspec": "^6.0",
-                "phpunit/phpunit": "^8.0 || ^9.0 <9.3"
+                "phpunit/phpunit": "^8.0 || ^9.0"
             },
             "type": "library",
             "extra": {
@@ -12796,20 +12796,20 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-09-29T09:10:42+00:00"
+            "time": "2020-12-19T10:15:11+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.63",
+            "version": "0.12.64",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c97ec4754bd53099a06c24847bd2870b99966b6a"
+                "reference": "23eb1cb7ae125f45f1d0e48051bcf67a9a9b08aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c97ec4754bd53099a06c24847bd2870b99966b6a",
-                "reference": "c97ec4754bd53099a06c24847bd2870b99966b6a",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/23eb1cb7ae125f45f1d0e48051bcf67a9a9b08aa",
+                "reference": "23eb1cb7ae125f45f1d0e48051bcf67a9a9b08aa",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12858,7 +12858,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-15T16:37:16+00:00"
+            "time": "2020-12-21T11:59:02+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
