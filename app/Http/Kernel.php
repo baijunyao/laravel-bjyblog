@@ -63,7 +63,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'auth.socialite' => \App\Http\Middleware\AuthenticateWithSocialiteGuard::class,
         'admin.auth' => \App\Http\Middleware\AdminAuth::class,
-        'admin.login' => \App\Http\Middleware\AdminLogin::class,
         'clean.xss' => \App\Http\Middleware\CleanXss::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kalnoy\Nestedset\NodeTrait;
 use Str;
 
@@ -46,38 +47,32 @@ class Comment extends Base
 {
     use NodeTrait;
 
-    public function getContentAttribute($value)
+    public function getContentAttribute(string $value): string
     {
         return $this->ubbToImage($value);
     }
 
-    public function setContentAttribute($value)
+    public function setContentAttribute(string $value): void
     {
         $this->attributes['content'] = $this->imageToUbb($value);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function article()
+    public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class)->withDefault();
     }
 
-    public function socialiteUser()
+    public function socialiteUser(): BelongsTo
     {
         return $this->belongsTo(SocialiteUser::class)->withDefault();
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function parentComment()
+    public function parentComment(): BelongsTo
     {
         return $this->belongsTo(self::class, 'parent_id', 'id')->withDefault();
     }
 
-    public function ubbToImage($content)
+    public function ubbToImage(string $content): string
     {
         $ubb   = ['[Kiss]', '[Love]', '[Yeah]', '[啊！]', '[背扭]', '[顶]', '[抖胸]', '[88]', '[汗]', '[瞌睡]', '[鲁拉]', '[拍砖]', '[揉脸]', '[生日快乐]', '[摊手]', '[睡觉]', '[瘫坐]', '[无聊]', '[星星闪]', '[旋转]', '[也不行]', '[郁闷]', '[正Music]', '[抓墙]', '[撞墙至死]', '[歪头]', '[戳眼]', '[飘过]', '[互相拍砖]', '[砍死你]', '[扔桌子]', '[少林寺]', '[什么？]', '[转头]', '[我爱牛奶]', '[我踢]', '[摇晃]', '[晕厥]', '[在笼子里]', '[震荡]'];
         $count = count($ubb);
@@ -91,7 +86,7 @@ class Comment extends Base
         return str_replace($ubb, $image, $content);
     }
 
-    public function imageToUbb($content)
+    public function imageToUbb(string $content): string
     {
         $content = html_entity_decode(htmlspecialchars_decode($content));
         // 删标签 去空格 转义
@@ -106,7 +101,10 @@ class Comment extends Base
         return clean(strip_tags($content));
     }
 
-    public function getLatestComments($number)
+    /**
+     * @return \Kalnoy\Nestedset\Collection<\App\Models\Comment>
+     */
+    public function getLatestComments(int $number)
     {
         return $this->with(['article', 'socialiteUser', 'socialiteUser.socialiteClient'])
             ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
