@@ -191,7 +191,9 @@ class CommentControllerTest extends TestCase
             'parent_id'  => 0,
             'content'    => '评论666',
         ];
-        $this->post('/comment', $comment)->assertStatus(401);
+        $this->post('/comment', $comment)
+            ->assertStatus(302)
+            ->assertRedirect(route('login'));
     }
 
     public function testCommentsRestricted()

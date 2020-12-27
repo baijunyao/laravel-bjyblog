@@ -19,6 +19,8 @@ class SocialiteUserControllerTest extends TestCase
 
     public function testCheckLoginWhenLogout()
     {
-        $this->get('/socialiteUser/me')->assertStatus(401);
+        $this->get('/socialiteUser/me')
+            ->assertStatus(302)
+            ->assertRedirect(route('login'));
     }
 }

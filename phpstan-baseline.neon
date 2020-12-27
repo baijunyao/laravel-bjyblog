@@ -1301,6 +1301,16 @@ parameters:
 			path: app/Http/Kernel.php
 
 		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
+			message: "#^Parameter \\#3 \\.\\.\\.\\$guards of method Illuminate\\\\Auth\\\\Middleware\\\\Authenticate\\:\\:handle\\(\\) expects string, array\\<string\\> given\\.$#"
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
 			message: "#^Method App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:redirectTo\\(\\) should return string\\|null but return statement is missing\\.$#"
 			count: 1
 			path: app/Http/Middleware/Authenticate.php
