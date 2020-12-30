@@ -1511,11 +1511,6 @@ parameters:
 			path: app/Models/Article.php
 
 		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:searchArticleGetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
 			message: "#^Method App\\\\Models\\\\Article\\:\\:getUrlAttribute\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Models/Article.php

@@ -19,18 +19,12 @@ class ArticleController extends Controller
 {
     public function index(Request $request, Article $articleModel)
     {
-        $wd = $request->input('wd', '');
-
-        if (empty($wd)) {
-            $id = [];
-        } else {
-            $id = $articleModel->searchArticleGetId($wd);
-        }
+        $wd = trim($request->input('wd', ''));
 
         $article = Article::with('category')
             ->orderBy('created_at', 'desc')
-            ->when($wd, function ($query) use ($id) {
-                return $query->whereIn('id', $id);
+            ->when($wd !== '', function ($query) use ($wd) {
+                return $query->whereIn('id', Article::getIdsGivenSearchWord($wd));
             })
             ->withTrashed()
             ->paginate(15);

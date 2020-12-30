@@ -92,27 +92,36 @@ class Article extends Base
         return $this->hasMany(ArticleHistory::class);
     }
 
-    public function searchArticleGetId(string $wd)
+    /**
+     * @return array<int,int>
+     */
+    public static function getIdsGivenSearchWord(string $wd): array
     {
+        if (trim($wd) === '') {
+            return [];
+        }
+
         // 如果 SCOUT_DRIVER 为 null 则使用 sql 搜索
         if (Str::isNull(config('scout.driver'))) {
             return self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")
                 ->orWhere('markdown', 'like', "%$wd%")
-                ->pluck('id');
+                ->pluck('id')
+                ->toArray();
         }
 
         // 如果全文搜索出错则降级使用 sql like
         try {
-            $id = self::search($wd)->keys();
+            $ids = self::search($wd)->keys()->toArray();
         } catch (Exception $e) {
-            $id = self::where('title', 'like', "%$wd%")
+            $ids = self::where('title', 'like', "%$wd%")
                 ->orWhere('description', 'like', "%$wd%")
                 ->orWhere('markdown', 'like', "%$wd%")
-                ->pluck('id');
+                ->pluck('id')
+                ->toArray();
         }
 
-        return $id;
+        return $ids;
     }
 
     public function getUrlAttribute()
