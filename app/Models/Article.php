@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Exception;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Scout\Searchable;
 use Overtrue\LaravelFollow\Traits\CanBeLiked;
 use Str;
@@ -62,32 +65,35 @@ class Article extends Base
 {
     use Searchable, CanBeLiked;
 
-    public function toSearchableArray()
+    /**
+     * @return array<string,mixed>
+     */
+    public function toSearchableArray(): array
     {
         return $this->only('id', 'title', 'keywords', 'description', 'markdown');
     }
 
-    public function getDescriptionAttribute($value)
+    public function getDescriptionAttribute(string $value): string
     {
         return str_replace(["\r", "\n", "\r\n"], '', $value);
     }
 
-    public function getHtmlAttribute($value)
+    public function getHtmlAttribute(string $value): string
     {
         return str_replace('<img src="/uploads/article', '<img src="' . cdn_url('uploads/article'), $value);
     }
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function tags()
+    public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class, 'article_tags');
     }
 
-    public function article_histories()
+    public function article_histories(): HasMany
     {
         return $this->hasMany(ArticleHistory::class);
     }
@@ -124,7 +130,7 @@ class Article extends Base
         return $ids;
     }
 
-    public function getUrlAttribute()
+    public function getUrlAttribute(): string
     {
         $parameters = [$this->id];
 
