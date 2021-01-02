@@ -114,14 +114,13 @@ class ArticleController extends Controller
         }
 
         $wd = clean($request->input('wd'));
-        $id = $articleModel->searchArticleGetId($wd);
 
         $articles = Article::select(
             'id', 'category_id', 'title',
             'author', 'description', 'cover',
             'is_top', 'created_at'
         )
-            ->whereIn('id', $id)
+            ->whereIn('id', Article::getIdsGivenSearchWord($wd))
             ->orderBy('created_at', 'desc')
             ->with(['category', 'tags'])
             ->paginate(10);

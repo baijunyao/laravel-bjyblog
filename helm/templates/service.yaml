@@ -64,6 +64,7 @@ spec:
   selector:
     app: nginx
 
+{{- if .Values.monitor.enabled }}
 ---
 
 apiVersion: v1
@@ -97,6 +98,7 @@ spec:
       targetPort: 3000
   selector:
     app: grafana
+{{- end }}
 
 {{- if .Values.elasticsearch.enabled }}
 ---

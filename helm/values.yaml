@@ -38,6 +38,10 @@ oss:
   # https://help.aliyun.com/document_detail/31827.html
   bucket: ''
 
+# Prometheus and Grafana
+monitor:
+  enabled: false
+
 # Elasticsearch
 elasticsearch:
   enabled: true

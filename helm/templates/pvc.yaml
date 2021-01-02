@@ -101,6 +101,7 @@ spec:
     matchLabels:
       pv: backup-pv
 
+{{- if .Values.monitor.enabled }}
 ---
 
 apiVersion: v1
@@ -170,3 +171,4 @@ spec:
   selector:
     matchLabels:
       pv: grafana-pv
+{{- end }}

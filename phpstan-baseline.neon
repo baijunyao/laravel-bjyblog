@@ -1301,6 +1301,16 @@ parameters:
 			path: app/Http/Kernel.php
 
 		-
+			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
+			message: "#^Parameter \\#3 \\.\\.\\.\\$guards of method Illuminate\\\\Auth\\\\Middleware\\\\Authenticate\\:\\:handle\\(\\) expects string, array\\<string\\> given\\.$#"
+			count: 1
+			path: app/Http/Middleware/Authenticate.php
+
+		-
 			message: "#^Method App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:redirectTo\\(\\) should return string\\|null but return statement is missing\\.$#"
 			count: 1
 			path: app/Http/Middleware/Authenticate.php
@@ -1459,56 +1469,6 @@ parameters:
 			message: "#^Method App\\\\Http\\\\Resources\\\\SocialiteUser\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: app/Http/Resources/SocialiteUser.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:toSearchableArray\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:getDescriptionAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:getDescriptionAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:getHtmlAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:getHtmlAttribute\\(\\) has parameter \\$value with no typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:category\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:tags\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:article_histories\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:searchArticleGetId\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
-
-		-
-			message: "#^Method App\\\\Models\\\\Article\\:\\:getUrlAttribute\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Models/Article.php
 
 		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"

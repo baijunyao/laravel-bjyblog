@@ -16,9 +16,9 @@ Route::name('home.')->group(function () {
     Route::get('feed', \App\Http\Controllers\Home\FeedController::class . '@index')->name('feed.index');
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/', \App\Http\Controllers\Home\SiteController::class . '@index')->name('index');
-        Route::post('store', \App\Http\Controllers\Home\SiteController::class . '@store')->middleware('auth.socialite', 'clean.xss')->name('store');
+        Route::post('store', \App\Http\Controllers\Home\SiteController::class . '@store')->middleware('auth:socialite', 'clean.xss')->name('store');
     });
-    Route::middleware('auth.socialite')->group(function () {
+    Route::middleware('auth:socialite')->group(function () {
         Route::get('socialiteUser/{socialiteUser}', \App\Http\Controllers\Home\SocialiteUserController::class . '@show')->name('socialiteUser.show');
         Route::post('comment', \App\Http\Controllers\Home\CommentController::class . '@store')->name('comment.store');
         Route::prefix('like')->name('like.')->group(function () {
@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function () {
 });
 
 // Admin 模块
-Route::prefix('admin')->middleware('admin.auth')->group(function () {
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
     // 首页控制器
     Route::prefix('index')->group(function () {
         // 后台首页

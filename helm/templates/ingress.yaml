@@ -31,10 +31,12 @@ spec:
             backend:
               serviceName: nginx-service
               servicePort: 80
+          {{- if .Values.monitor.enabled }}
           - path: /grafana
             backend:
               serviceName: grafana-service
               servicePort: 3000
+          {{- end }}
     - host: www.{{ .Values.host }}
       http:
         paths:
