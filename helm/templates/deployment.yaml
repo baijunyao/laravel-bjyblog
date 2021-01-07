@@ -240,7 +240,7 @@ spec:
             claimName: elasticsearch-pvc
       containers:
         - name: elasticsearch
-          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/elasticsearch:7.6
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/elasticsearch:7.10.1
           env:
             - name: ES_JAVA_OPTS
               value: -Xms512m -Xmx512m
