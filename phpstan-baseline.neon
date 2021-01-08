@@ -11,16 +11,6 @@ parameters:
 			path: app/Console/Kernel.php
 
 		-
-			message: "#^Property App\\\\Exceptions\\\\Handler\\:\\:\\$dontReport type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Exceptions/Handler.php
-
-		-
-			message: "#^Property App\\\\Exceptions\\\\Handler\\:\\:\\$dontFlash type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Exceptions/Handler.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:index\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
