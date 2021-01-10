@@ -118,3 +118,20 @@ spec:
   selector:
     app: elasticsearch
 {{- end }}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana-service
+  namespace: blog
+  labels:
+    app: kibana
+spec:
+  ports:
+    - port: 5601
+      targetPort: 5601
+  selector:
+    app: kibana
+

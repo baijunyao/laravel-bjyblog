@@ -87,3 +87,19 @@ data:
     root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
     serve_from_sub_path = true
 {{- end }}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+  namespace: blog
+data:
+  config: |
+    server.name: kibana
+    server.host: "0"
+    elasticsearch.hosts: ["http://elasticsearch-service:9200"]
+    monitoring.ui.container.elasticsearch.enabled: true
+    server.basePath: /kibana
+    server.rewriteBasePath: true
