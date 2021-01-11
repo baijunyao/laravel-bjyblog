@@ -103,3 +103,36 @@ data:
     monitoring.ui.container.elasticsearch.enabled: true
     server.basePath: /kibana
     server.rewriteBasePath: true
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: blog
+data:
+  config: |
+    <source>
+      @type tail
+      path /var/log/containers/nginx-*.log
+      pos_file /var/log/pos/nginx.log.pos
+      tag nginx
+      <parse>
+        @type regexp
+        expression /^(?<containerTime>[^ ]*) stdout F (?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \[(?<time>[^\]]*)\] "(?<method>\S+)(?: +(?<path>[^\"]*?)(?: +\S*)?)?" (?<code>[^ ]*) (?<size>[^ ]*)(?: "(?<referer>[^\"]*)" "(?<agent>[^\"]*)"(?:\s+(?<http_x_forwarded_for>[^ ]+))?)?$/
+        time_format %d/%b/%Y:%H:%M:%S %z
+      </parse>
+    </source>
+
+    <source>
+      @type tail
+      path /var/log/containers/php-*.log
+      pos_file /var/log/pos/php.log.pos
+      tag php
+      <parse>
+        @type regexp
+        expression /^(?<containerTime>[^ ]*) stderr F \[(?<time>[^\]]*)\] local\.(?<event>[^ ]*): (?<message>[^ ]*) (?<context>.*)$/
+        time_format %Y-%m-%d %H:%M:%S
+      </parse>
+    </source>
