@@ -110,6 +110,9 @@ spec:
       containers:
         - name: nginx
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.19
+          env:
+            - name: TZ
+              value: {{ .Values.timezone }}
           volumeMounts:
             - name: code-pvc
               mountPath: /app
