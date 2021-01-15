@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-daemonset
+  namespace: blog
+spec:
+  selector:
+    matchLabels:
+      app: fluentd
+  template:
+    metadata:
+      labels:
+        app: fluentd
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
+        - name: config
+          configMap:
+            name: fluentd-config
+            items:
+              - key: config
+                path: kubernetes.conf
+      containers:
+        - name: fluentd
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/fluentd:1.11
+          env:
+            - name:  FLUENT_ELASTICSEARCH_HOST
+              value: "elasticsearch-service"
+            - name:  FLUENT_ELASTICSEARCH_PORT
+              value: "9200"
+            - name:  FLUENT_ELASTICSEARCH_SSL_VERIFY
+              value: "false"
+            - name: FLUENTD_SYSTEMD_CONF
+              value: disable
+          volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+            - name: config
+              mountPath: /fluentd/etc/kubernetes.conf
+              subPath: kubernetes.conf

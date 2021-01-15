@@ -110,6 +110,9 @@ spec:
       containers:
         - name: nginx
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.19
+          env:
+            - name: TZ
+              value: {{ .Values.timezone }}
           volumeMounts:
             - name: code-pvc
               mountPath: /app
@@ -250,3 +253,38 @@ spec:
             - name: elasticsearch-pvc
               mountPath: /usr/share/elasticsearch/data
 {{- end }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana-deployment
+  namespace: blog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: kibana-config
+            items:
+              - key: config
+                path: kibana.yml
+      containers:
+        - name: kibana
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/kibana:7.10.1
+          volumeMounts:
+            - name: config
+              mountPath: /usr/share/kibana/config/kibana.yml
+              subPath: kibana.yml
+
