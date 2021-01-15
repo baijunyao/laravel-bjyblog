@@ -135,3 +135,19 @@ spec:
   selector:
     app: kibana
 
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluentd-service
+  namespace: blog
+  labels:
+    app: fluentd
+spec:
+  ports:
+    - port: 24224
+      targetPort: 24224
+  selector:
+    app: fluentd
+

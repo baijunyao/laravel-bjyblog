@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04f5b426b877e446def677610f989efb",
+    "content-hash": "24b98f2b91fe948fbf87bbd3beb60ac4",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2105,6 +2105,65 @@
                 "php"
             ],
             "time": "2020-03-25T18:49:23+00:00"
+        },
+        {
+            "name": "fluent/logger",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fluent/fluent-logger-php.git",
+                "reference": "c5a19ba8eb5e15f9ade72afeffba6b6e7eb51155"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fluent/fluent-logger-php/zipball/c5a19ba8eb5e15f9ade72afeffba6b6e7eb51155",
+                "reference": "c5a19ba8eb5e15f9ade72afeffba6b6e7eb51155",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.3",
+                "phpunit/phpunit-mock-objects": "2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fluent\\Logger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "Shuhei Tanuma",
+                    "email": "chobieee@gmail.com"
+                },
+                {
+                    "name": "Sotaro Karasawa",
+                    "email": "sotarok@crocos.co.jp"
+                },
+                {
+                    "name": "DQNEO",
+                    "email": "dqneoo@gmail.com"
+                }
+            ],
+            "description": "a logging library for Fluentd",
+            "homepage": "http://github.com/fluent/fluent-logger-php",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "time": "2017-02-15T07:14:53+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -6854,6 +6913,76 @@
                 "promises"
             ],
             "time": "2020-05-12T15:16:56+00:00"
+        },
+        {
+            "name": "ready2order/laravel-fluent-logger",
+            "version": "8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ready2order/Laravel-FluentLogger.git",
+                "reference": "6b07b2a01e36210c25b8ce3c6db3d12c10ffbede"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ready2order/Laravel-FluentLogger/zipball/6b07b2a01e36210c25b8ce3c6db3d12c10ffbede",
+                "reference": "6b07b2a01e36210c25b8ce3c6db3d12c10ffbede",
+                "shasum": ""
+            },
+            "require": {
+                "fluent/logger": "^1.0",
+                "illuminate/config": "^8.0",
+                "illuminate/container": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/events": "^8.0",
+                "illuminate/log": "^8.0",
+                "illuminate/support": "^8.0",
+                "monolog/monolog": "^2.0",
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "illuminate/filesystem": "^8.0",
+                "phpunit/phpunit": "^9.5",
+                "satooshi/php-coveralls": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ytake\\LaravelFluent\\LogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ytake\\LaravelFluent\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "classmap": [
+                    "tests/TestCase.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yuuki Takezawa",
+                    "email": "yuuki.takezawa@comnect.jp.net"
+                }
+            ],
+            "description": "fluent logger for laravel and lumen",
+            "keywords": [
+                "fluent",
+                "laravel",
+                "log",
+                "logging",
+                "lumen"
+            ],
+            "support": {
+                "source": "https://github.com/ready2order/Laravel-FluentLogger/tree/8.2"
+            },
+            "time": "2020-12-15T14:24:27+00:00"
         },
         {
             "name": "sentry/sdk",
