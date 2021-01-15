@@ -87,3 +87,46 @@ data:
     root_url = %(protocol)s://%(domain)s:%(http_port)s/grafana/
     serve_from_sub_path = true
 {{- end }}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+  namespace: blog
+data:
+  config: |
+    server.name: kibana
+    server.host: "0"
+    elasticsearch.hosts: ["http://elasticsearch-service:9200"]
+    monitoring.ui.container.elasticsearch.enabled: true
+    server.basePath: /kibana
+    server.rewriteBasePath: true
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: blog
+data:
+  config: |
+    <source>
+      @type tail
+      path /var/log/containers/nginx-*.log
+      pos_file /var/log/pos/nginx.log.pos
+      tag nginx
+      <parse>
+        @type cri
+        <parse>
+          @type nginx
+        </parse>
+      </parse>
+    </source>
+
+    <source>
+      @type forward
+      port 24224
+    </source>
