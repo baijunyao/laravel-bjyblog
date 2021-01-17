@@ -32,6 +32,10 @@ spec:
               value: "elasticsearch-service"
             - name:  FLUENT_ELASTICSEARCH_PORT
               value: "9200"
+            - name:  FLUENT_ELASTICSEARCH_USER
+              value: "{{ .Values.elasticsearch.username }}"
+            - name:  FLUENT_ELASTICSEARCH_PASSWORD
+              value: "{{ .Values.elasticsearch.password }}"
             - name:  FLUENT_ELASTICSEARCH_SSL_VERIFY
               value: "false"
             - name: FLUENTD_SYSTEMD_CONF

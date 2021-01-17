@@ -249,6 +249,8 @@ spec:
               value: -Xms512m -Xmx512m
             - name: discovery.type
               value: single-node
+            - name: xpack.security.enabled
+              value: "true"
           volumeMounts:
             - name: elasticsearch-pvc
               mountPath: /usr/share/elasticsearch/data

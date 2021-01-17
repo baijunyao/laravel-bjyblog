@@ -100,6 +100,8 @@ data:
     server.name: kibana
     server.host: "0"
     elasticsearch.hosts: ["http://elasticsearch-service:9200"]
+    elasticsearch.username: {{ .Values.elasticsearch.username }}
+    elasticsearch.password: {{ .Values.elasticsearch.password }}
     monitoring.ui.container.elasticsearch.enabled: true
     server.basePath: /kibana
     server.rewriteBasePath: true

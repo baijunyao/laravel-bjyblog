@@ -45,3 +45,5 @@ monitor:
 # Elasticsearch
 elasticsearch:
   enabled: true
+  username: ''
+  password: ''
