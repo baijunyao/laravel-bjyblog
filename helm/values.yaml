@@ -47,3 +47,7 @@ elasticsearch:
   enabled: true
   username: ''
   password: ''
+
+# Kibana
+kibana:
+  enabled: true

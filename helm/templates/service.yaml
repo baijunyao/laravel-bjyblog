@@ -119,6 +119,7 @@ spec:
     app: elasticsearch
 {{- end }}
 
+{{- if .Values.kibana.enabled }}
 ---
 
 apiVersion: v1
@@ -134,6 +135,7 @@ spec:
       targetPort: 5601
   selector:
     app: kibana
+{{- end }}
 
 ---
 

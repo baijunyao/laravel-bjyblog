@@ -88,6 +88,7 @@ data:
     serve_from_sub_path = true
 {{- end }}
 
+{{- if .Values.kibana.enabled }}
 ---
 
 apiVersion: v1
@@ -105,6 +106,7 @@ data:
     monitoring.ui.container.elasticsearch.enabled: true
     server.basePath: /kibana
     server.rewriteBasePath: true
+{{- end }}
 
 ---
 

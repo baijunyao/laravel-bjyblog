@@ -37,10 +37,12 @@ spec:
               serviceName: grafana-service
               servicePort: 3000
           {{- end }}
+          {{- if .Values.kibana.enabled }}
           - path: /kibana
             backend:
               serviceName: kibana-service
               servicePort: 5601
+          {{- end }}
     - host: www.{{ .Values.host }}
       http:
         paths:

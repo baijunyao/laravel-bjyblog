@@ -275,6 +275,7 @@ spec:
               mountPath: /usr/share/elasticsearch/data
 {{- end }}
 
+{{- if .Values.elasticsearch.enabled }}
 ---
 
 apiVersion: apps/v1
@@ -308,4 +309,4 @@ spec:
             - name: config
               mountPath: /usr/share/kibana/config/kibana.yml
               subPath: kibana.yml
-
+{{- end }}
