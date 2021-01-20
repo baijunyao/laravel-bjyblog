@@ -137,6 +137,7 @@ spec:
     app: kibana
 {{- end }}
 
+{{- if .Values.fluentd.enabled }}
 ---
 
 apiVersion: v1
@@ -152,4 +153,4 @@ spec:
       targetPort: 24224
   selector:
     app: fluentd
-
+{{- end }}

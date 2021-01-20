@@ -108,6 +108,7 @@ data:
     server.rewriteBasePath: true
 {{- end }}
 
+{{- if .Values.fluentd.enabled }}
 ---
 
 apiVersion: v1
@@ -134,3 +135,4 @@ data:
       @type forward
       port 24224
     </source>
+{{- end }}

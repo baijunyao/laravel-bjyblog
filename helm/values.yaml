@@ -51,3 +51,7 @@ elasticsearch:
 # Kibana
 kibana:
   enabled: true
+
+# Fluentd
+fluentd:
+  enabled: true
