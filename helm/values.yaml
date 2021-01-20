@@ -45,3 +45,13 @@ monitor:
 # Elasticsearch
 elasticsearch:
   enabled: true
+  username: ''
+  password: ''
+
+# Kibana
+kibana:
+  enabled: true
+
+# Fluentd
+fluentd:
+  enabled: true

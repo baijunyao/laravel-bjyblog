@@ -241,6 +241,25 @@ spec:
         - name: elasticsearch-pvc
           persistentVolumeClaim:
             claimName: elasticsearch-pvc
+      initContainers:
+        - name: fix-permissions
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: ["sh", "-c", "chown -R 1000:1000 /usr/share/elasticsearch/data"]
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - name: elasticsearch-pvc
+              mountPath: /usr/share/elasticsearch/data
+        - name: increase-vm-max-map
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: ["sysctl", "-w", "vm.max_map_count=262144"]
+          securityContext:
+            privileged: true
+        - name: increase-fd-ulimit
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: ["sh", "-c", "ulimit -n 65536"]
+          securityContext:
+            privileged: true
       containers:
         - name: elasticsearch
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/elasticsearch:7.10.1
@@ -249,11 +268,14 @@ spec:
               value: -Xms512m -Xmx512m
             - name: discovery.type
               value: single-node
+            - name: xpack.security.enabled
+              value: "true"
           volumeMounts:
             - name: elasticsearch-pvc
               mountPath: /usr/share/elasticsearch/data
 {{- end }}
 
+{{- if .Values.elasticsearch.enabled }}
 ---
 
 apiVersion: apps/v1
@@ -287,4 +309,4 @@ spec:
             - name: config
               mountPath: /usr/share/kibana/config/kibana.yml
               subPath: kibana.yml
-
+{{- end }}
