@@ -119,7 +119,7 @@ spec:
             - name: config
               mountPath: /etc/nginx/conf.d
 
-{{- if .Values.monitor.enabled }}
+{{- if .Values.prometheus.enabled }}
 ---
 
 apiVersion: apps/v1
@@ -171,7 +171,9 @@ spec:
             - name: prometheus-config
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
+{{- end }}
 
+{{- if .Values.grafana.enabled }}
 ---
 
 apiVersion: apps/v1
@@ -275,7 +277,7 @@ spec:
               mountPath: /usr/share/elasticsearch/data
 {{- end }}
 
-{{- if .Values.elasticsearch.enabled }}
+{{- if .Values.kibana.enabled }}
 ---
 
 apiVersion: apps/v1
