@@ -31,7 +31,7 @@ spec:
             backend:
               serviceName: nginx-service
               servicePort: 80
-          {{- if .Values.monitor.enabled }}
+          {{- if .Values.grafana.enabled }}
           - path: /grafana
             backend:
               serviceName: grafana-service

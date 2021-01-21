@@ -38,10 +38,6 @@ oss:
   # https://help.aliyun.com/document_detail/31827.html
   bucket: ''
 
-# Prometheus and Grafana
-monitor:
-  enabled: false
-
 # Elasticsearch
 elasticsearch:
   enabled: true
@@ -54,4 +50,12 @@ kibana:
 
 # Fluentd
 fluentd:
+  enabled: true
+
+# Prometheus
+prometheus:
+  enabled: true
+
+# Grafana
+grafana:
   enabled: true
