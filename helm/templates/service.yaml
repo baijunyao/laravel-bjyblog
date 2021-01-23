@@ -64,7 +64,7 @@ spec:
   selector:
     app: nginx
 
-{{- if .Values.monitor.enabled }}
+{{- if .Values.prometheus.enabled }}
 ---
 
 apiVersion: v1
@@ -81,7 +81,9 @@ spec:
       targetPort: 9090
   selector:
     app: prometheus
+{{- end }}
 
+{{- if .Values.grafana.enabled }}
 ---
 
 apiVersion: v1
@@ -119,6 +121,7 @@ spec:
     app: elasticsearch
 {{- end }}
 
+{{- if .Values.kibana.enabled }}
 ---
 
 apiVersion: v1
@@ -134,7 +137,9 @@ spec:
       targetPort: 5601
   selector:
     app: kibana
+{{- end }}
 
+{{- if .Values.fluentd.enabled }}
 ---
 
 apiVersion: v1
@@ -150,4 +155,4 @@ spec:
       targetPort: 24224
   selector:
     app: fluentd
-
+{{- end }}

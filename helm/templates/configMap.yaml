@@ -52,7 +52,7 @@ data:
     accessKeySecret={{ .Values.oss.access_key_secret }}
 {{- end }}
 
-{{- if .Values.monitor.enabled }}
+{{- if .Values.prometheus.enabled }}
 ---
 
 apiVersion: v1
@@ -72,7 +72,9 @@ data:
       - job_name: 'node'
         static_configs:
           - targets: ['node_internal_ip:9100']
+{{- end }}
 
+{{- if .Values.grafana.enabled }}
 ---
 
 apiVersion: v1
@@ -88,6 +90,7 @@ data:
     serve_from_sub_path = true
 {{- end }}
 
+{{- if .Values.kibana.enabled }}
 ---
 
 apiVersion: v1
@@ -100,10 +103,14 @@ data:
     server.name: kibana
     server.host: "0"
     elasticsearch.hosts: ["http://elasticsearch-service:9200"]
+    elasticsearch.username: {{ .Values.elasticsearch.username }}
+    elasticsearch.password: {{ .Values.elasticsearch.password }}
     monitoring.ui.container.elasticsearch.enabled: true
     server.basePath: /kibana
     server.rewriteBasePath: true
+{{- end }}
 
+{{- if .Values.fluentd.enabled }}
 ---
 
 apiVersion: v1
@@ -130,3 +137,4 @@ data:
       @type forward
       port 24224
     </source>
+{{- end }}

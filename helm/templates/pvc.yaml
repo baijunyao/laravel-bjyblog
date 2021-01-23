@@ -101,7 +101,7 @@ spec:
     matchLabels:
       pv: backup-pv
 
-{{- if .Values.monitor.enabled }}
+{{- if .Values.prometheus.enabled }}
 ---
 
 apiVersion: v1
@@ -136,7 +136,9 @@ spec:
   selector:
     matchLabels:
       pv: prometheus-pv
+{{- end }}
 
+{{- if .Values.grafana.enabled }}
 ---
 
 apiVersion: v1
