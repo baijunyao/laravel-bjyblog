@@ -14972,100 +14972,6 @@
      
 }
 
-    namespace Appstract\LushHttp { 
-            /**
-     * 
-     *
-     * @see \Appstract\LushHttp\Lush
-     */ 
-        class LushFacade {
-                    /**
-         * Set the url with parameters.
-         *
-         * @param $url
-         * @param array|object $parameters
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function url($url, $parameters = [])
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->url($url, $parameters);
-        }
-                    /**
-         * Set headers.
-         *
-         * @param array $headers
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function headers($headers)
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->headers($headers);
-        }
-                    /**
-         * Set options.
-         *
-         * @param array $options
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function options($options)
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->options($options);
-        }
-                    /**
-         * Reset all request options.
-         *
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function reset()
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->reset();
-        }
-                    /**
-         * Post as Json.
-         *
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function asJson()
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->asJson();
-        }
-                    /**
-         * Post as form params.
-         *
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function asFormParams()
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->asFormParams();
-        }
-                    /**
-         * Create a request.
-         *
-         * @param $method
-         * @return \Appstract\LushHttp\Response\LushResponse 
-         * @static 
-         */ 
-        public static function request($method)
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->request($method);
-        }
-         
-    }
-     
-}
-
     namespace DaveJamesMiller\Breadcrumbs\Facades { 
             /**
      * Breadcrumbs facade - allows easy access to the Manager instance.
@@ -19660,7 +19566,6 @@ namespace  {
             class Image extends \Intervention\Image\Facades\Image {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Markdown extends \GrahamCampbell\Markdown\Facades\Markdown {}
-            class Lush extends \Appstract\LushHttp\LushFacade {}
             class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}

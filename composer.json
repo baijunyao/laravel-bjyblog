@@ -15,7 +15,7 @@
     "require": {
         "php": "^7.3",
         "algolia/algoliasearch-client-php": "^2.5",
-        "appstract/laravel-opcache": "^3.0",
+        "appstract/laravel-opcache": "^4.0",
         "baidu/aip-sdk": "dev-master#84e5936eb6426b4cc9d9a96848568b9dd527b4a0",
         "baijunyao/laravel-flash": "^2.0",
         "baijunyao/laravel-plugin-manager": "^3.0",
