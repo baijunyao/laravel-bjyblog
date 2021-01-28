@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "511a8b4c6232b331740af9fab20e6f3c",
+    "content-hash": "d3cf2660ea4af3cb1f0158ca1eb77c01",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -3100,16 +3100,16 @@
         },
         {
             "name": "iidestiny/flysystem-oss",
-            "version": "1.4.0",
+            "version": "2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iiDestiny/flysystem-oss.git",
-                "reference": "62974d7fe2db288a3a131d4094d2358f072ae9b6"
+                "reference": "289214b9f26e0ee9a382e1be66b555deb123bb75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iiDestiny/flysystem-oss/zipball/62974d7fe2db288a3a131d4094d2358f072ae9b6",
-                "reference": "62974d7fe2db288a3a131d4094d2358f072ae9b6",
+                "url": "https://api.github.com/repos/iiDestiny/flysystem-oss/zipball/289214b9f26e0ee9a382e1be66b555deb123bb75",
+                "reference": "289214b9f26e0ee9a382e1be66b555deb123bb75",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3120,10 +3120,12 @@
             },
             "require": {
                 "aliyuncs/oss-sdk-php": "^2.3",
+                "ext-curl": "*",
                 "ext-json": "*",
+                "ext-openssl": "*",
                 "league/flysystem": "^1.0",
                 "nesbot/carbon": "^1.24.1 || ^2.0",
-                "php": "^7.0"
+                "php": "^7.0 || ^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
@@ -3155,22 +3157,22 @@
             ],
             "support": {
                 "issues": "https://github.com/iiDestiny/flysystem-oss/issues",
-                "source": "https://github.com/iiDestiny/flysystem-oss/tree/master"
+                "source": "https://github.com/iiDestiny/flysystem-oss/tree/2.5"
             },
-            "time": "2020-02-11T07:24:47+00:00"
+            "time": "2020-12-02T02:52:53+00:00"
         },
         {
             "name": "iidestiny/laravel-filesystem-oss",
-            "version": "1.3.0",
+            "version": "2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iiDestiny/laravel-filesystem-oss.git",
-                "reference": "f412871b62888c624a864c68f8130476adfa37d4"
+                "reference": "ae3cd6fd3cd727eedda0e2bcd0403a6d79fe4223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iiDestiny/laravel-filesystem-oss/zipball/f412871b62888c624a864c68f8130476adfa37d4",
-                "reference": "f412871b62888c624a864c68f8130476adfa37d4",
+                "url": "https://api.github.com/repos/iiDestiny/laravel-filesystem-oss/zipball/ae3cd6fd3cd727eedda0e2bcd0403a6d79fe4223",
+                "reference": "ae3cd6fd3cd727eedda0e2bcd0403a6d79fe4223",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3180,8 +3182,8 @@
                 ]
             },
             "require": {
-                "iidestiny/flysystem-oss": "~1.4",
-                "php": "^7.0"
+                "iidestiny/flysystem-oss": "~2.0",
+                "php": "^7.0|^8.0"
             },
             "type": "library",
             "extra": {
@@ -3209,9 +3211,9 @@
             "description": "Oss storage filesystem for Laravel.",
             "support": {
                 "issues": "https://github.com/iiDestiny/laravel-filesystem-oss/issues",
-                "source": "https://github.com/iiDestiny/laravel-filesystem-oss/tree/master"
+                "source": "https://github.com/iiDestiny/laravel-filesystem-oss/tree/2.1"
             },
-            "time": "2020-02-11T11:40:23+00:00"
+            "time": "2020-11-30T06:17:22+00:00"
         },
         {
             "name": "intervention/image",
