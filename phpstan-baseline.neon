@@ -1446,21 +1446,6 @@ parameters:
 			path: app/Http/Requests/User/Store.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Resources\\\\Article\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Resources/Article.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Resources\\\\Comment\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Resources/Comment.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Resources\\\\SocialiteUser\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Resources/SocialiteUser.php
-
-		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/Models/Base.php

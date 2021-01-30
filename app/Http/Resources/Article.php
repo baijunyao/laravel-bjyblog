@@ -6,6 +6,11 @@ namespace App\Http\Resources;
 
 class Article extends Base
 {
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array<string,mixed>
+     */
     public function toArray($request)
     {
         return [

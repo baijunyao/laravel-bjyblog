@@ -9,6 +9,11 @@ namespace App\Http\Resources;
  */
 class Comment extends Base
 {
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return array<string,mixed>
+     */
     public function toArray($request)
     {
         return [
