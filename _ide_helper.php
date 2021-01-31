@@ -16259,13 +16259,14 @@
                     /**
          * Captures a new event using the provided data.
          *
-         * @param \Sentry\State\array<string,  mixed> $payload The data of the event being captured
+         * @param \Event $event The event being captured
+         * @param \Sentry\State\EventHint|null $hint May contain additional information about the event
          * @static 
          */ 
-        public static function captureEvent($payload)
+        public static function captureEvent($event, $hint = null)
         {
                         /** @var \Sentry\State\Hub $instance */
-                        return $instance->captureEvent($payload);
+                        return $instance->captureEvent($event, $hint);
         }
                     /**
          * Captures an event that logs the last occurred error.
@@ -16292,29 +16293,6 @@
                         return $instance->addBreadcrumb($breadcrumb);
         }
                     /**
-         * Returns the current global Hub.
-         *
-         * @return \Sentry\State\HubInterface 
-         * @deprecated since version 2.2, to be removed in 3.0
-         * @static 
-         */ 
-        public static function getCurrent()
-        {
-                        return \Sentry\State\Hub::getCurrent();
-        }
-                    /**
-         * Sets the Hub as the current.
-         *
-         * @param \Sentry\State\HubInterface $hub The Hub that will become the current one
-         * @return \Sentry\State\HubInterface 
-         * @deprecated since version 2.2, to be removed in 3.0
-         * @static 
-         */ 
-        public static function setCurrent($hub)
-        {
-                        return \Sentry\State\Hub::setCurrent($hub);
-        }
-                    /**
          * Gets the integration whose FQCN matches the given one if it's available on the current client.
          *
          * @param string $className The FQCN of the integration
@@ -16327,6 +16305,64 @@
         {
                         /** @var \Sentry\State\Hub $instance */
                         return $instance->getIntegration($className);
+        }
+                    /**
+         * Starts a new `Transaction` and returns it. This is the entry point to manual
+         * tracing instrumentation.
+         * 
+         * A tree structure can be built by adding child spans to the transaction, and
+         * child spans to other spans. To start a new child span within the transaction
+         * or any span, call the respective `startChild()` method.
+         * 
+         * Every child span must be finished before the transaction is finished,
+         * otherwise the unfinished spans are discarded.
+         * 
+         * The transaction must be finished with a call to its `finish()` method, at
+         * which point the transaction with all its finished child spans will be sent to
+         * Sentry.
+         *
+         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @param \Sentry\State\TransactionContext $context Properties of the new transaction
+         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @static 
+         */ 
+        public static function startTransaction($context, $customSamplingContext = [])
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->startTransaction($context, $customSamplingContext);
+        }
+                    /**
+         * Returns the transaction that is on the Hub.
+         *
+         * @psalm-suppress MoreSpecificReturnType
+         * @psalm-suppress LessSpecificReturnStatement
+         * @static 
+         */ 
+        public static function getTransaction()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getTransaction();
+        }
+                    /**
+         * Sets the span on the Hub.
+         *
+         * @param \Sentry\State\Span|null $span The span
+         * @static 
+         */ 
+        public static function setSpan($span)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->setSpan($span);
+        }
+                    /**
+         * Returns the span that is on the Hub.
+         *
+         * @static 
+         */ 
+        public static function getSpan()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getSpan();
         }
          
     }

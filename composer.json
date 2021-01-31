@@ -49,7 +49,7 @@
         "paquettg/php-html-parser": "^2.1",
         "predis/predis": "^1.1",
         "ready2order/laravel-fluent-logger": "8.2",
-        "sentry/sentry-laravel": "1.9.0",
+        "sentry/sentry-laravel": "^2.3",
         "socialiteproviders/qq": "^3.0",
         "socialiteproviders/vkontakte": "^4.0",
         "socialiteproviders/weibo": "^3.0",
