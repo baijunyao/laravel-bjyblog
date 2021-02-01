@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c41b4e93df00f3bb0014c01ad6047db",
+    "content-hash": "6955c1ee05dea8c9a85f289ef1d722a5",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -7595,16 +7595,16 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "v3.6",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "fc8dbcf0061f12bfe0cc347e9655af932860ad36"
+                "reference": "0f5e82af0404df0080bdc5c105cef936c1711524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/fc8dbcf0061f12bfe0cc347e9655af932860ad36",
-                "reference": "fc8dbcf0061f12bfe0cc347e9655af932860ad36",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/0f5e82af0404df0080bdc5c105cef936c1711524",
+                "reference": "0f5e82af0404df0080bdc5c105cef936c1711524",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7616,11 +7616,11 @@
             "require": {
                 "illuminate/support": "^6.0|^7.0|^8.0",
                 "laravel/socialite": "~4.0|~5.0",
-                "php": "^7.2"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -7662,22 +7662,22 @@
             "homepage": "https://socialiteproviders.com/",
             "support": {
                 "issues": "https://github.com/SocialiteProviders/Manager/issues",
-                "source": "https://github.com/SocialiteProviders/Manager/tree/master"
+                "source": "https://github.com/SocialiteProviders/Manager/tree/4.0.1"
             },
-            "time": "2020-09-08T10:41:06+00:00"
+            "time": "2020-12-01T23:09:06+00:00"
         },
         {
             "name": "socialiteproviders/qq",
-            "version": "v3.0.1",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/QQ.git",
-                "reference": "fc338245c348189880911827c162ef73f651ba44"
+                "reference": "a588df598c81dbf917f8f99d6d685212774c5b1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/QQ/zipball/fc338245c348189880911827c162ef73f651ba44",
-                "reference": "fc338245c348189880911827c162ef73f651ba44",
+                "url": "https://api.github.com/repos/SocialiteProviders/QQ/zipball/a588df598c81dbf917f8f99d6d685212774c5b1b",
+                "reference": "a588df598c81dbf917f8f99d6d685212774c5b1b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7687,8 +7687,9 @@
                 ]
             },
             "require": {
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~2.0 || ~3.0"
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -7708,22 +7709,22 @@
             ],
             "description": "Qq.com OAuth2 Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/QQ/tree/v3.0.1"
+                "source": "https://github.com/SocialiteProviders/QQ/tree/4.1.0"
             },
-            "time": "2018-04-18T04:04:42+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "socialiteproviders/vkontakte",
-            "version": "v4.1.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/VKontakte.git",
-                "reference": "81f4b79c47c4c6aba8f1f2685dddeb0505f1e71a"
+                "reference": "660cba24aa7ddd2236e0192f74249017101382b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/VKontakte/zipball/81f4b79c47c4c6aba8f1f2685dddeb0505f1e71a",
-                "reference": "81f4b79c47c4c6aba8f1f2685dddeb0505f1e71a",
+                "url": "https://api.github.com/repos/SocialiteProviders/VKontakte/zipball/660cba24aa7ddd2236e0192f74249017101382b9",
+                "reference": "660cba24aa7ddd2236e0192f74249017101382b9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7734,8 +7735,8 @@
             },
             "require": {
                 "ext-json": "*",
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~2.0 || ~3.0"
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -7755,22 +7756,22 @@
             ],
             "description": "VKontakte OAuth2 Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/VKontakte/tree/master"
+                "source": "https://github.com/SocialiteProviders/VKontakte/tree/4.2.1"
             },
-            "time": "2019-12-08T14:15:15+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "socialiteproviders/weibo",
-            "version": "v3.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Weibo.git",
-                "reference": "9df4737ad28f220cc97ac5590ab78c8de46825ee"
+                "reference": "1fd406007f317be15ce5294d44915f6e490fdb75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Weibo/zipball/9df4737ad28f220cc97ac5590ab78c8de46825ee",
-                "reference": "9df4737ad28f220cc97ac5590ab78c8de46825ee",
+                "url": "https://api.github.com/repos/SocialiteProviders/Weibo/zipball/1fd406007f317be15ce5294d44915f6e490fdb75",
+                "reference": "1fd406007f317be15ce5294d44915f6e490fdb75",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7780,8 +7781,9 @@
                 ]
             },
             "require": {
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~3.0"
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -7801,9 +7803,9 @@
             ],
             "description": "weibo.com OAuth2 Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/Weibo/tree/master"
+                "source": "https://github.com/SocialiteProviders/Weibo/tree/4.1.0"
             },
-            "time": "2017-01-25T09:48:29+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "spatie/db-dumper",
