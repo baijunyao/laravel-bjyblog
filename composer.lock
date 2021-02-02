@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6955c1ee05dea8c9a85f289ef1d722a5",
+    "content-hash": "5a1955c3b5fd4ae57f682d0bb6cc62ed",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -12974,16 +12974,16 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "v0.6.4",
+            "version": "v0.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "a92f9e20f0aa7a62704ffb09f7445b45f1ad91f7"
+                "reference": "7a047f7974e6e16d04ee038d86e2c5e6c59e9dfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/a92f9e20f0aa7a62704ffb09f7445b45f1ad91f7",
-                "reference": "a92f9e20f0aa7a62704ffb09f7445b45f1ad91f7",
+                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/7a047f7974e6e16d04ee038d86e2c5e6c59e9dfe",
+                "reference": "7a047f7974e6e16d04ee038d86e2c5e6c59e9dfe",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12995,21 +12995,21 @@
             "require": {
                 "composer/composer": "^1.0 || ^2.0",
                 "ext-json": "*",
-                "illuminate/console": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/container": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/contracts": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/database": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/http": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/pipeline": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/console": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/container": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/contracts": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/database": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/http": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/pipeline": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
                 "mockery/mockery": "^0.9 || ^1.0",
-                "php": "^7.2",
-                "phpstan/phpstan": "^0.12.34",
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^0.12.65",
                 "symfony/process": "^4.3 || ^5.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
-                "phpunit/phpunit": "^7.3 || ^8.2"
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "phpunit/phpunit": "^7.3 || ^8.2 || ^9.3"
             },
             "suggest": {
                 "orchestra/testbench": "^4.0 || ^5.0"
@@ -13053,7 +13053,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/larastan/issues",
-                "source": "https://github.com/nunomaduro/larastan/tree/master"
+                "source": "https://github.com/nunomaduro/larastan/tree/v0.6.13"
             },
             "funding": [
                 {
@@ -13073,7 +13073,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-09-02T14:19:36+00:00"
+            "time": "2021-01-22T12:51:26+00:00"
         },
         {
             "name": "phar-io/manifest",
