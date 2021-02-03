@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ef00cc59ea9b6556da31e36c8019677",
+    "content-hash": "5a1955c3b5fd4ae57f682d0bb6cc62ed",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -139,16 +139,16 @@
         },
         {
             "name": "appstract/laravel-opcache",
-            "version": "3.2.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appstract/laravel-opcache.git",
-                "reference": "0807d573459ff8b5d209d35e7ebe459f64bfd6f3"
+                "reference": "d2ce88cddda6af54c14d1f9ceaaf94b54f38f9d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/0807d573459ff8b5d209d35e7ebe459f64bfd6f3",
-                "reference": "0807d573459ff8b5d209d35e7ebe459f64bfd6f3",
+                "url": "https://api.github.com/repos/appstract/laravel-opcache/zipball/d2ce88cddda6af54c14d1f9ceaaf94b54f38f9d3",
+                "reference": "d2ce88cddda6af54c14d1f9ceaaf94b54f38f9d3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -158,16 +158,13 @@
                 ]
             },
             "require": {
-                "appstract/lush-http": "^0.5",
-                "illuminate/console": ">=5.8",
-                "illuminate/filesystem": ">=5.8",
-                "illuminate/routing": ">=5.8",
-                "illuminate/support": ">=5.8",
-                "php": "^7.1.3"
+                "guzzlehttp/guzzle": "^6.3.1|^7.0",
+                "laravel/framework": ">=7.0",
+                "php": ">=7.2.5"
             },
             "require-dev": {
-                "orchestra/testbench": "^3.8",
-                "phpunit/phpunit": "^7.5"
+                "orchestra/testbench": "^5.0",
+                "phpunit/phpunit": "^8.5"
             },
             "type": "library",
             "extra": {
@@ -189,12 +186,12 @@
             "authors": [
                 {
                     "name": "Olav van Schie",
-                    "email": "hello@appstract.team",
-                    "homepage": "https://appstract.team",
+                    "email": "mail@appstract.nl",
+                    "homepage": "https://appstract.nl",
                     "role": "Developer"
                 }
             ],
-            "description": "OPcache helper for Laravel.",
+            "description": "PHP OPcache Artisan commands for Laravel.",
             "homepage": "https://github.com/appstract/laravel-opcache",
             "keywords": [
                 "Opcache",
@@ -204,79 +201,9 @@
             ],
             "support": {
                 "issues": "https://github.com/appstract/laravel-opcache/issues",
-                "source": "https://github.com/appstract/laravel-opcache/tree/master"
+                "source": "https://github.com/appstract/laravel-opcache/tree/4.0.2"
             },
-            "time": "2019-12-31T20:06:57+00:00"
-        },
-        {
-            "name": "appstract/lush-http",
-            "version": "0.5.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/appstract/lush-http.git",
-                "reference": "5e363176ba54751b58bcbcd821bae1912cc8fe7c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/appstract/lush-http/zipball/5e363176ba54751b58bcbcd821bae1912cc8fe7c",
-                "reference": "5e363176ba54751b58bcbcd821bae1912cc8fe7c",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "illuminate/support": ">=5.4",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": {
-                        "Lush": "Appstract\\LushHttp\\LushFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Appstract\\LushHttp\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Olav van Schie",
-                    "email": "hello@appstract.team",
-                    "homepage": "https://appstract.team",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Smart Http Client for PHP.",
-            "homepage": "https://github.com/appstract/lush-http",
-            "keywords": [
-                "appstract",
-                "client",
-                "curl",
-                "http",
-                "lush",
-                "lush-http",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/appstract/lush-http/issues",
-                "source": "https://github.com/appstract/lush-http/tree/0.5.5"
-            },
-            "abandoned": true,
-            "time": "2019-05-28T15:08:43+00:00"
+            "time": "2020-12-01T16:12:14+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -3173,16 +3100,16 @@
         },
         {
             "name": "iidestiny/flysystem-oss",
-            "version": "1.4.0",
+            "version": "2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iiDestiny/flysystem-oss.git",
-                "reference": "62974d7fe2db288a3a131d4094d2358f072ae9b6"
+                "reference": "289214b9f26e0ee9a382e1be66b555deb123bb75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iiDestiny/flysystem-oss/zipball/62974d7fe2db288a3a131d4094d2358f072ae9b6",
-                "reference": "62974d7fe2db288a3a131d4094d2358f072ae9b6",
+                "url": "https://api.github.com/repos/iiDestiny/flysystem-oss/zipball/289214b9f26e0ee9a382e1be66b555deb123bb75",
+                "reference": "289214b9f26e0ee9a382e1be66b555deb123bb75",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3193,10 +3120,12 @@
             },
             "require": {
                 "aliyuncs/oss-sdk-php": "^2.3",
+                "ext-curl": "*",
                 "ext-json": "*",
+                "ext-openssl": "*",
                 "league/flysystem": "^1.0",
                 "nesbot/carbon": "^1.24.1 || ^2.0",
-                "php": "^7.0"
+                "php": "^7.0 || ^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
@@ -3228,22 +3157,22 @@
             ],
             "support": {
                 "issues": "https://github.com/iiDestiny/flysystem-oss/issues",
-                "source": "https://github.com/iiDestiny/flysystem-oss/tree/master"
+                "source": "https://github.com/iiDestiny/flysystem-oss/tree/2.5"
             },
-            "time": "2020-02-11T07:24:47+00:00"
+            "time": "2020-12-02T02:52:53+00:00"
         },
         {
             "name": "iidestiny/laravel-filesystem-oss",
-            "version": "1.3.0",
+            "version": "2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iiDestiny/laravel-filesystem-oss.git",
-                "reference": "f412871b62888c624a864c68f8130476adfa37d4"
+                "reference": "ae3cd6fd3cd727eedda0e2bcd0403a6d79fe4223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iiDestiny/laravel-filesystem-oss/zipball/f412871b62888c624a864c68f8130476adfa37d4",
-                "reference": "f412871b62888c624a864c68f8130476adfa37d4",
+                "url": "https://api.github.com/repos/iiDestiny/laravel-filesystem-oss/zipball/ae3cd6fd3cd727eedda0e2bcd0403a6d79fe4223",
+                "reference": "ae3cd6fd3cd727eedda0e2bcd0403a6d79fe4223",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3253,8 +3182,8 @@
                 ]
             },
             "require": {
-                "iidestiny/flysystem-oss": "~1.4",
-                "php": "^7.0"
+                "iidestiny/flysystem-oss": "~2.0",
+                "php": "^7.0|^8.0"
             },
             "type": "library",
             "extra": {
@@ -3282,9 +3211,9 @@
             "description": "Oss storage filesystem for Laravel.",
             "support": {
                 "issues": "https://github.com/iiDestiny/laravel-filesystem-oss/issues",
-                "source": "https://github.com/iiDestiny/laravel-filesystem-oss/tree/master"
+                "source": "https://github.com/iiDestiny/laravel-filesystem-oss/tree/2.1"
             },
-            "time": "2020-02-11T11:40:23+00:00"
+            "time": "2020-11-30T06:17:22+00:00"
         },
         {
             "name": "intervention/image",
@@ -7401,16 +7330,16 @@
         },
         {
             "name": "sentry/sdk",
-            "version": "2.2.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php-sdk.git",
-                "reference": "089858b1b27d3705a5fd1c32d8d10beb55980190"
+                "reference": "f03133b067fdf03fed09ff03daf3f1d68f5f3673"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php-sdk/zipball/089858b1b27d3705a5fd1c32d8d10beb55980190",
-                "reference": "089858b1b27d3705a5fd1c32d8d10beb55980190",
+                "url": "https://api.github.com/repos/getsentry/sentry-php-sdk/zipball/f03133b067fdf03fed09ff03daf3f1d68f5f3673",
+                "reference": "f03133b067fdf03fed09ff03daf3f1d68f5f3673",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7421,7 +7350,7 @@
             },
             "require": {
                 "http-interop/http-factory-guzzle": "^1.0",
-                "sentry/sentry": "^2.5",
+                "sentry/sentry": "^3.1",
                 "symfony/http-client": "^4.3|^5.0"
             },
             "type": "metapackage",
@@ -7447,7 +7376,7 @@
                 "sentry"
             ],
             "support": {
-                "source": "https://github.com/getsentry/sentry-php-sdk/tree/2.2.0"
+                "source": "https://github.com/getsentry/sentry-php-sdk/tree/3.1.0"
             },
             "funding": [
                 {
@@ -7459,20 +7388,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-09-14T09:30:55+00:00"
+            "time": "2020-12-01T10:31:45+00:00"
         },
         {
             "name": "sentry/sentry",
-            "version": "2.5.1",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "62ef344463b2cceab745381214be353ee8ae5fc2"
+                "reference": "db8a322f87983bb4f3cd8db01f9a9a593efe72a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/62ef344463b2cceab745381214be353ee8ae5fc2",
-                "reference": "62ef344463b2cceab745381214be353ee8ae5fc2",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/db8a322f87983bb4f3cd8db01f9a9a593efe72a3",
+                "reference": "db8a322f87983bb4f3cd8db01f9a9a593efe72a3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7484,10 +7413,11 @@
             "require": {
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "guzzlehttp/promises": "^1.3",
+                "guzzlehttp/promises": "^1.4",
                 "guzzlehttp/psr7": "^1.7",
-                "jean85/pretty-package-versions": "^1.2",
-                "php": "^7.1",
+                "jean85/pretty-package-versions": "^1.5",
+                "ocramius/package-versions": "^1.8",
+                "php": "^7.2|^8.0",
                 "php-http/async-client-implementation": "^1.0",
                 "php-http/client-common": "^1.5|^2.0",
                 "php-http/discovery": "^1.6.1",
@@ -7496,7 +7426,8 @@
                 "psr/http-factory": "^1.0",
                 "psr/http-message-implementation": "^1.0",
                 "psr/log": "^1.0",
-                "symfony/options-resolver": "^2.7|^3.0|^4.0|^5.0",
+                "symfony/options-resolver": "^3.4.43|^4.4.11|^5.0.11",
+                "symfony/polyfill-php80": "^1.17",
                 "symfony/polyfill-uuid": "^1.13.1"
             },
             "conflict": {
@@ -7504,13 +7435,15 @@
                 "raven/raven": "*"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.16",
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "http-interop/http-factory-guzzle": "^1.0",
                 "monolog/monolog": "^1.3|^2.0",
-                "php-http/mock-client": "^1.4",
+                "nikic/php-parser": "^4.10.3",
+                "php-http/mock-client": "^1.3",
                 "phpstan/extension-installer": "^1.0",
                 "phpstan/phpstan": "^0.12",
                 "phpstan/phpstan-phpunit": "^0.12",
-                "phpunit/phpunit": "^7.5.20",
+                "phpunit/phpunit": "^8.5.13|^9.4",
                 "symfony/phpunit-bridge": "^5.2",
                 "vimeo/psalm": "^4.2"
             },
@@ -7520,7 +7453,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5.x-dev"
+                    "dev-master": "3.1.x-dev"
                 }
             },
             "autoload": {
@@ -7554,7 +7487,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-php/issues",
-                "source": "https://github.com/getsentry/sentry-php/tree/2.5.1"
+                "source": "https://github.com/getsentry/sentry-php/tree/3.1.3"
             },
             "funding": [
                 {
@@ -7566,20 +7499,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-12-11T11:51:58+00:00"
+            "time": "2021-01-25T08:47:45+00:00"
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "1.9.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "8567e70d03081cbc04e35eb3fa7389d06816196e"
+                "reference": "3c8b6c02fbb6b50cb8e236cd1845155b45fc881e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/8567e70d03081cbc04e35eb3fa7389d06816196e",
-                "reference": "8567e70d03081cbc04e35eb3fa7389d06816196e",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/3c8b6c02fbb6b50cb8e236cd1845155b45fc881e",
+                "reference": "3c8b6c02fbb6b50cb8e236cd1845155b45fc881e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7590,24 +7523,27 @@
             },
             "require": {
                 "illuminate/support": "5.0 - 5.8 | ^6.0 | ^7.0 | ^8.0",
-                "php": "^7.1",
-                "sentry/sdk": "^2.1"
+                "php": "^7.2 | ^8.0",
+                "sentry/sdk": "^3.1",
+                "sentry/sentry": "3.1.*"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "2.16.*",
-                "laravel/framework": "^7.0",
-                "orchestra/testbench": "^5.0",
-                "phpunit/phpunit": "^8.0"
+                "laravel/framework": "^8.0",
+                "mockery/mockery": "1.3.*",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.x-dev",
+                    "dev-master": "2.x-dev",
                     "dev-0.x": "0.x-dev"
                 },
                 "laravel": {
                     "providers": [
-                        "Sentry\\Laravel\\ServiceProvider"
+                        "Sentry\\Laravel\\ServiceProvider",
+                        "Sentry\\Laravel\\Tracing\\ServiceProvider"
                     ],
                     "aliases": {
                         "Sentry": "Sentry\\Laravel\\Facade"
@@ -7643,7 +7579,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-laravel/issues",
-                "source": "https://github.com/getsentry/sentry-laravel/tree/release/1.9.0"
+                "source": "https://github.com/getsentry/sentry-laravel/tree/2.3.1"
             },
             "funding": [
                 {
@@ -7655,20 +7591,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-09-07T07:16:41+00:00"
+            "time": "2020-12-07T09:19:29+00:00"
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "v3.6",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "fc8dbcf0061f12bfe0cc347e9655af932860ad36"
+                "reference": "0f5e82af0404df0080bdc5c105cef936c1711524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/fc8dbcf0061f12bfe0cc347e9655af932860ad36",
-                "reference": "fc8dbcf0061f12bfe0cc347e9655af932860ad36",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/0f5e82af0404df0080bdc5c105cef936c1711524",
+                "reference": "0f5e82af0404df0080bdc5c105cef936c1711524",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7680,11 +7616,11 @@
             "require": {
                 "illuminate/support": "^6.0|^7.0|^8.0",
                 "laravel/socialite": "~4.0|~5.0",
-                "php": "^7.2"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.2",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^9.0"
             },
             "type": "library",
             "extra": {
@@ -7726,22 +7662,22 @@
             "homepage": "https://socialiteproviders.com/",
             "support": {
                 "issues": "https://github.com/SocialiteProviders/Manager/issues",
-                "source": "https://github.com/SocialiteProviders/Manager/tree/master"
+                "source": "https://github.com/SocialiteProviders/Manager/tree/4.0.1"
             },
-            "time": "2020-09-08T10:41:06+00:00"
+            "time": "2020-12-01T23:09:06+00:00"
         },
         {
             "name": "socialiteproviders/qq",
-            "version": "v3.0.1",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/QQ.git",
-                "reference": "fc338245c348189880911827c162ef73f651ba44"
+                "reference": "a588df598c81dbf917f8f99d6d685212774c5b1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/QQ/zipball/fc338245c348189880911827c162ef73f651ba44",
-                "reference": "fc338245c348189880911827c162ef73f651ba44",
+                "url": "https://api.github.com/repos/SocialiteProviders/QQ/zipball/a588df598c81dbf917f8f99d6d685212774c5b1b",
+                "reference": "a588df598c81dbf917f8f99d6d685212774c5b1b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7751,8 +7687,9 @@
                 ]
             },
             "require": {
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~2.0 || ~3.0"
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -7772,22 +7709,22 @@
             ],
             "description": "Qq.com OAuth2 Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/QQ/tree/v3.0.1"
+                "source": "https://github.com/SocialiteProviders/QQ/tree/4.1.0"
             },
-            "time": "2018-04-18T04:04:42+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "socialiteproviders/vkontakte",
-            "version": "v4.1.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/VKontakte.git",
-                "reference": "81f4b79c47c4c6aba8f1f2685dddeb0505f1e71a"
+                "reference": "660cba24aa7ddd2236e0192f74249017101382b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/VKontakte/zipball/81f4b79c47c4c6aba8f1f2685dddeb0505f1e71a",
-                "reference": "81f4b79c47c4c6aba8f1f2685dddeb0505f1e71a",
+                "url": "https://api.github.com/repos/SocialiteProviders/VKontakte/zipball/660cba24aa7ddd2236e0192f74249017101382b9",
+                "reference": "660cba24aa7ddd2236e0192f74249017101382b9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7798,8 +7735,8 @@
             },
             "require": {
                 "ext-json": "*",
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~2.0 || ~3.0"
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -7819,22 +7756,22 @@
             ],
             "description": "VKontakte OAuth2 Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/VKontakte/tree/master"
+                "source": "https://github.com/SocialiteProviders/VKontakte/tree/4.2.1"
             },
-            "time": "2019-12-08T14:15:15+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "socialiteproviders/weibo",
-            "version": "v3.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Weibo.git",
-                "reference": "9df4737ad28f220cc97ac5590ab78c8de46825ee"
+                "reference": "1fd406007f317be15ce5294d44915f6e490fdb75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Weibo/zipball/9df4737ad28f220cc97ac5590ab78c8de46825ee",
-                "reference": "9df4737ad28f220cc97ac5590ab78c8de46825ee",
+                "url": "https://api.github.com/repos/SocialiteProviders/Weibo/zipball/1fd406007f317be15ce5294d44915f6e490fdb75",
+                "reference": "1fd406007f317be15ce5294d44915f6e490fdb75",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7844,8 +7781,9 @@
                 ]
             },
             "require": {
-                "php": "^5.6 || ^7.0",
-                "socialiteproviders/manager": "~3.0"
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0",
+                "socialiteproviders/manager": "~4.0"
             },
             "type": "library",
             "autoload": {
@@ -7865,9 +7803,9 @@
             ],
             "description": "weibo.com OAuth2 Provider for Laravel Socialite",
             "support": {
-                "source": "https://github.com/SocialiteProviders/Weibo/tree/master"
+                "source": "https://github.com/SocialiteProviders/Weibo/tree/4.1.0"
             },
-            "time": "2017-01-25T09:48:29+00:00"
+            "time": "2020-12-01T23:10:59+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -12571,16 +12509,16 @@
         },
         {
             "name": "itsgoingd/clockwork",
-            "version": "v4.1.8",
+            "version": "v5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itsgoingd/clockwork.git",
-                "reference": "0dc2e5be39de88b18719bb4f3cdacfa605ad2146"
+                "reference": "1de3f9f9fc22217aa024f79ecbdf0fde418fc0a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/0dc2e5be39de88b18719bb4f3cdacfa605ad2146",
-                "reference": "0dc2e5be39de88b18719bb4f3cdacfa605ad2146",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/1de3f9f9fc22217aa024f79ecbdf0fde418fc0a1",
+                "reference": "1de3f9f9fc22217aa024f79ecbdf0fde418fc0a1",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12591,7 +12529,7 @@
             },
             "require": {
                 "ext-json": "*",
-                "php": ">=5.5",
+                "php": ">=5.6",
                 "psr/log": "1.*"
             },
             "type": "library",
@@ -12621,7 +12559,7 @@
                     "homepage": "https://twitter.com/itsgoingd"
                 }
             ],
-            "description": "php dev tools integrated to your browser",
+            "description": "php dev tools in your browser",
             "homepage": "https://underground.works/clockwork",
             "keywords": [
                 "Devtools",
@@ -12634,7 +12572,7 @@
             ],
             "support": {
                 "issues": "https://github.com/itsgoingd/clockwork/issues",
-                "source": "https://github.com/itsgoingd/clockwork/tree/v4.1.8"
+                "source": "https://github.com/itsgoingd/clockwork/tree/v5.0.6"
             },
             "funding": [
                 {
@@ -12642,7 +12580,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-17T19:21:25+00:00"
+            "time": "2020-12-27T00:18:25+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -13036,16 +12974,16 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "v0.6.4",
+            "version": "v0.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "a92f9e20f0aa7a62704ffb09f7445b45f1ad91f7"
+                "reference": "7a047f7974e6e16d04ee038d86e2c5e6c59e9dfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/a92f9e20f0aa7a62704ffb09f7445b45f1ad91f7",
-                "reference": "a92f9e20f0aa7a62704ffb09f7445b45f1ad91f7",
+                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/7a047f7974e6e16d04ee038d86e2c5e6c59e9dfe",
+                "reference": "7a047f7974e6e16d04ee038d86e2c5e6c59e9dfe",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13057,21 +12995,21 @@
             "require": {
                 "composer/composer": "^1.0 || ^2.0",
                 "ext-json": "*",
-                "illuminate/console": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/container": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/contracts": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/database": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/http": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/pipeline": "^6.0 || ^7.0 || ^8.0",
-                "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+                "illuminate/console": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/container": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/contracts": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/database": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/http": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/pipeline": "^6.0 || ^7.0 || ^8.0 || ^9.0",
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
                 "mockery/mockery": "^0.9 || ^1.0",
-                "php": "^7.2",
-                "phpstan/phpstan": "^0.12.34",
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^0.12.65",
                 "symfony/process": "^4.3 || ^5.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
-                "phpunit/phpunit": "^7.3 || ^8.2"
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "phpunit/phpunit": "^7.3 || ^8.2 || ^9.3"
             },
             "suggest": {
                 "orchestra/testbench": "^4.0 || ^5.0"
@@ -13115,7 +13053,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/larastan/issues",
-                "source": "https://github.com/nunomaduro/larastan/tree/master"
+                "source": "https://github.com/nunomaduro/larastan/tree/v0.6.13"
             },
             "funding": [
                 {
@@ -13135,7 +13073,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-09-02T14:19:36+00:00"
+            "time": "2021-01-22T12:51:26+00:00"
         },
         {
             "name": "phar-io/manifest",

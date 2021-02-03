@@ -1,9 +1,19 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$values of method Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:insertOrIgnore\\(\\) expects array\\<string, mixed\\>, array\\<int, array\\<string, int\\|string\\|null\\>\\> given\\.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Filesystem\\\\Filesystem\\:\\:has\\(\\)\\.$#"
 			count: 1
-			path: app/Console/Commands/Upgrade/V11_0_0.php
+			path: app/Console/Commands/File/SyncToOss.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Filesystem\\\\Filesystem\\:\\:getTimestamp\\(\\)\\.$#"
+			count: 2
+			path: app/Console/Commands/File/SyncToOss.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:forceDelete\\(\\)\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_5_11_0.php
 
 		-
 			message: "#^Property App\\\\Console\\\\Kernel\\:\\:\\$commands type has no value type specified in iterable type array\\.$#"
@@ -26,7 +36,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 3
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -46,22 +56,12 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method setAttribute\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ArticleController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:update\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ArticleController.php
-
-		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -86,22 +86,12 @@ parameters:
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ArticleController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\ArticleController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/ArticleController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ArticleController.php
 
@@ -151,11 +141,6 @@ parameters:
 			path: app/Http/Controllers/Admin/CategoryController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/CategoryController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CategoryController.php
@@ -181,22 +166,12 @@ parameters:
 			path: app/Http/Controllers/Admin/CategoryController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/CategoryController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CategoryController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CategoryController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/CategoryController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CategoryController.php
 
@@ -226,11 +201,6 @@ parameters:
 			path: app/Http/Controllers/Admin/CommentController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/CommentController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CommentController.php
@@ -251,22 +221,12 @@ parameters:
 			path: app/Http/Controllers/Admin/CommentController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/CommentController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CommentController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\CommentController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/CommentController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/CommentController.php
 
@@ -351,7 +311,7 @@ parameters:
 			path: app/Http/Controllers/Admin/ConfigController.php
 
 		-
-			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/ConfigController.php
 
@@ -401,11 +361,6 @@ parameters:
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
@@ -431,22 +386,12 @@ parameters:
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/FriendshipLinkController.php
 
@@ -521,11 +466,6 @@ parameters:
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/NavController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NavController.php
@@ -546,11 +486,6 @@ parameters:
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/NavController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NavController.php
@@ -561,17 +496,17 @@ parameters:
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/NavController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NavController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NavController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Http/Controllers/Admin/NoteController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Note\\>\\:\\:withTrashed\\(\\)\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
 
@@ -606,11 +541,6 @@ parameters:
 			path: app/Http/Controllers/Admin/NoteController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/NoteController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
@@ -631,22 +561,12 @@ parameters:
 			path: app/Http/Controllers/Admin/NoteController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/NoteController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\NoteController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/NoteController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/NoteController.php
 
@@ -686,11 +606,6 @@ parameters:
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/OpenSourceController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/OpenSourceController.php
@@ -716,22 +631,12 @@ parameters:
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/OpenSourceController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\OpenSourceController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/OpenSourceController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/OpenSourceController.php
 
@@ -771,11 +676,6 @@ parameters:
 			path: app/Http/Controllers/Admin/SiteController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/SiteController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SiteController.php
@@ -801,22 +701,12 @@ parameters:
 			path: app/Http/Controllers/Admin/SiteController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/SiteController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SiteController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\SiteController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/SiteController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/SiteController.php
 
@@ -916,11 +806,6 @@ parameters:
 			path: app/Http/Controllers/Admin/TagController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/TagController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/TagController.php
@@ -941,22 +826,12 @@ parameters:
 			path: app/Http/Controllers/Admin/TagController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/TagController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/TagController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\TagController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/TagController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\Base\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Base\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/TagController.php
 
@@ -986,11 +861,6 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\UserBase\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\UserBase\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UserController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
@@ -1011,22 +881,12 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot call method restore\\(\\) on App\\\\Models\\\\UserBase\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\UserBase\\>\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UserController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Admin/UserController.php
-
-		-
-			message: "#^Cannot call method forceDelete\\(\\) on App\\\\Models\\\\UserBase\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\UserBase\\>\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
 
@@ -1241,7 +1101,7 @@ parameters:
 			path: app/Http/Controllers/Resources/ArticleImageController.php
 
 		-
-			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Resources/ArticleImageController.php
 
@@ -1251,7 +1111,7 @@ parameters:
 			path: app/Http/Controllers/Resources/ConfigController.php
 
 		-
-			message: "#^Cannot call method store\\(\\) on array\\<Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
+			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Resources/ConfigController.php
 
@@ -1501,12 +1361,22 @@ parameters:
 			path: app/Observers/ArticleObserver.php
 
 		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:forceDelete\\(\\)\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:restored\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
 
 		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:restored\\(\\) has parameter \\$article with no typehint specified\\.$#"
+			count: 1
+			path: app/Observers/ArticleObserver.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:restore\\(\\)\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
 
@@ -1602,6 +1472,11 @@ parameters:
 
 		-
 			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: app/Observers/CommentObserver.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:firstOrFail\\(\\)\\.$#"
 			count: 1
 			path: app/Observers/CommentObserver.php
 
