@@ -11,6 +11,9 @@ use App\Notifications\Comment as CommentNotification;
 
 class CommentObserver extends BaseObserver
 {
+    /**
+     * @param \App\Models\Comment $comment
+     */
     public function creating($comment)
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */

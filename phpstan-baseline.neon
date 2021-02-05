@@ -1311,27 +1311,7 @@ parameters:
 			path: app/Observers/ArticleObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:saving\\(\\) has parameter \\$article with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Parameter \\#1 \\$string of static method Illuminate\\\\Support\\\\Str\\:\\:substr\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Parameter \\#1 \\$value of static method Illuminate\\\\Support\\\\Str\\:\\:words\\(\\) expects string, array\\|string\\|null given\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
 
@@ -1341,17 +1321,7 @@ parameters:
 			path: app/Observers/ArticleObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:updated\\(\\) has parameter \\$article with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:deleted\\(\\) has parameter \\$article with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
 
@@ -1366,11 +1336,6 @@ parameters:
 			path: app/Observers/ArticleObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:restored\\(\\) has parameter \\$article with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
 			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:restore\\(\\)\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
@@ -1381,17 +1346,7 @@ parameters:
 			path: app/Observers/BaseObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:updated\\(\\) has parameter \\$model with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/BaseObserver.php
 
@@ -1401,7 +1356,7 @@ parameters:
 			path: app/Observers/BaseObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:isForceDeleting\\(\\)\\.$#"
 			count: 1
 			path: app/Observers/BaseObserver.php
 
@@ -1411,17 +1366,7 @@ parameters:
 			path: app/Observers/BaseObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:restored\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/CategoryObserver.php
 
@@ -1431,17 +1376,7 @@ parameters:
 			path: app/Observers/CategoryObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:saving\\(\\) has parameter \\$category with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleting\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleting\\(\\) has parameter \\$category with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/CategoryObserver.php
 
@@ -1451,17 +1386,7 @@ parameters:
 			path: app/Observers/CategoryObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:creating\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CommentObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:creating\\(\\) has parameter \\$comment with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/CommentObserver.php
 
@@ -1491,17 +1416,7 @@ parameters:
 			path: app/Observers/ConfigObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\ConfigObserver\\:\\:updated\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ConfigObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/NavObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/NavObserver.php
 
@@ -1511,17 +1426,7 @@ parameters:
 			path: app/Observers/NavObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/NavObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\SiteObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/SiteObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\SiteObserver\\:\\:updated\\(\\) has parameter \\$site with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/SiteObserver.php
 
@@ -1531,17 +1436,7 @@ parameters:
 			path: app/Observers/TagObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:created\\(\\) has parameter \\$model with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:saving\\(\\) has parameter \\$category with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/TagObserver.php
 
@@ -1551,17 +1446,7 @@ parameters:
 			path: app/Observers/TagObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleting\\(\\) has parameter \\$tag with no typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
 			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has parameter \\$model with no typehint specified\\.$#"
 			count: 1
 			path: app/Observers/TagObserver.php
 

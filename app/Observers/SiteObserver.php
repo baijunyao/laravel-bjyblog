@@ -6,6 +6,9 @@ use App\Notifications\SiteAudit;
 
 class SiteObserver extends BaseObserver
 {
+    /**
+     * @param \App\Models\Site $site
+     */
     public function updated($site)
     {
         // restore() triggering both restored() and updated()

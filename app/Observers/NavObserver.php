@@ -6,6 +6,9 @@ use Artisan;
 
 class NavObserver extends BaseObserver
 {
+    /**
+     * @param \App\Models\Nav $model
+     */
     public function created($model)
     {
         parent::created($model);
@@ -13,6 +16,9 @@ class NavObserver extends BaseObserver
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
+    /**
+     * @param \App\Models\Nav $model
+     */
     public function deleted($model)
     {
         parent::deleted($model);

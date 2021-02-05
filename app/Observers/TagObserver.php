@@ -7,20 +7,29 @@ use Artisan;
 
 class TagObserver extends BaseObserver
 {
-    public function created($model)
+    /**
+     * @param \App\Models\Tag $tag
+     */
+    public function created($tag)
     {
-        parent::created($model);
+        parent::created($tag);
 
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
-    public function saving($category)
+    /**
+     * @param \App\Models\Tag $tag
+     */
+    public function saving($tag)
     {
-        if ($category->isDirty('name') && empty($category->slug)) {
-            $category->slug = generate_english_slug($category->name);
+        if ($tag->isDirty('name') && empty($tag->slug)) {
+            $tag->slug = generate_english_slug($tag->name);
         }
     }
 
+    /**
+     * @param \App\Models\Tag $tag
+     */
     public function deleting($tag)
     {
         if (ArticleTag::where('tag_id', $tag->id)->count() !== 0) {
@@ -29,11 +38,14 @@ class TagObserver extends BaseObserver
         }
     }
 
-    public function deleted($model)
+    /**
+     * @param \App\Models\Tag $tag
+     */
+    public function deleted($tag)
     {
-        parent::deleted($model);
+        parent::deleted($tag);
 
-        if (! $model->isForceDeleting()) {
+        if (! $tag->isForceDeleting()) {
             Artisan::queue('bjyblog:generate-sitemap');
         }
     }

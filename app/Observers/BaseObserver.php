@@ -4,11 +4,17 @@ namespace App\Observers;
 
 class BaseObserver
 {
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model
+     */
     public function created($model)
     {
         flash_success(translate('Store Success'));
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model
+     */
     public function updated($model)
     {
         // restore() triggering both restored() and updated()
@@ -17,6 +23,9 @@ class BaseObserver
         }
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model
+     */
     public function deleted($model)
     {
         // delete() and forceDelete() will triggering deleted()
@@ -27,6 +36,9 @@ class BaseObserver
         }
     }
 
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $model
+     */
     public function restored($model)
     {
         flash_success(translate('Restore Success'));
