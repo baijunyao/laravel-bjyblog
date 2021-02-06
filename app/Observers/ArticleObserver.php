@@ -10,13 +10,19 @@ use Str;
 
 class ArticleObserver extends BaseObserver
 {
-    public function created($model)
+    /**
+     * @param \App\Models\Article $article
+     */
+    public function created($article)
     {
-        parent::created($model);
+        parent::created($article);
 
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
+    /**
+     * @param \App\Models\Article $article
+     */
     public function saving($article)
     {
         if (empty($article->description)) {
@@ -25,6 +31,8 @@ class ArticleObserver extends BaseObserver
                 '',
                 $article->markdown
             );
+
+            assert(is_string($content));
 
             if (config('app.locale') === 'zh-CN') {
                 $article->description = Str::substr($content, 0, 200);
@@ -56,6 +64,9 @@ class ArticleObserver extends BaseObserver
 
     }
 
+    /**
+     * @param \App\Models\Article $article
+     */
     public function updated($article)
     {
         parent::updated($article);
@@ -69,6 +80,9 @@ class ArticleObserver extends BaseObserver
         }
     }
 
+    /**
+     * @param \App\Models\Article $article
+     */
     public function deleted($article)
     {
         // 删除文章后同步删除关联表 article_tags 中的数据
@@ -82,6 +96,9 @@ class ArticleObserver extends BaseObserver
         }
     }
 
+    /**
+     * @param \App\Models\Article $article
+     */
     public function restored($article)
     {
         ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();

@@ -7,6 +7,9 @@ use Artisan;
 
 class CategoryObserver extends BaseObserver
 {
+    /**
+     * @param \App\Models\Category $model
+     */
     public function created($model)
     {
         parent::created($model);
@@ -14,6 +17,9 @@ class CategoryObserver extends BaseObserver
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
+    /**
+     * @param \App\Models\Category $category
+     */
     public function saving($category)
     {
         if ($category->isDirty('name') && empty($category->slug)) {
@@ -21,6 +27,9 @@ class CategoryObserver extends BaseObserver
         }
     }
 
+    /**
+     * @param \App\Models\Category $category
+     */
     public function deleting($category)
     {
         if (Article::where('category_id', $category->id)->count() !== 0) {
@@ -29,6 +38,9 @@ class CategoryObserver extends BaseObserver
         }
     }
 
+    /**
+     * @param \App\Models\Category $model
+     */
     public function deleted($model)
     {
         parent::deleted($model);

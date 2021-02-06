@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.25.0.
+ * Generated for Laravel 8.26.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -325,7 +325,7 @@
                         return $instance->environment(...$environments);
         }
                     /**
-         * Determine if application is in local environment.
+         * Determine if the application is in the local environment.
          *
          * @return bool 
          * @static 
@@ -336,7 +336,7 @@
                         return $instance->isLocal();
         }
                     /**
-         * Determine if application is in production environment.
+         * Determine if the application is in the production environment.
          *
          * @return bool 
          * @static 
@@ -858,7 +858,7 @@
                         $instance->setFallbackLocale($fallbackLocale);
         }
                     /**
-         * Determine if application locale is the given locale.
+         * Determine if the application locale is the given locale.
          *
          * @param string $locale
          * @return bool 
@@ -2051,7 +2051,7 @@
                         return $instance->setRequest($request);
         }
                     /**
-         * Determine if current user is authenticated. If not, throw an exception.
+         * Determine if the current user is authenticated. If not, throw an exception.
          *
          * @return \App\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
@@ -6450,7 +6450,7 @@
                         $instance->assertSent($callback);
         }
                     /**
-         * Assert that the given request were sent in the given order.
+         * Assert that the given request was sent in the given order.
          *
          * @param array $callbacks
          * @return void 
@@ -7347,7 +7347,7 @@
                     /**
          * Send a new message using a view.
          *
-         * @param string|array $view
+         * @param \Illuminate\Contracts\Mail\Mailable|string|array $view
          * @param array $data
          * @param \Closure|string|null $callback
          * @return void 
@@ -8680,7 +8680,7 @@
                         return $instance->routeIs(...$patterns);
         }
                     /**
-         * Determine if the current request URL and query string matches a pattern.
+         * Determine if the current request URL and query string match a pattern.
          *
          * @param mixed $patterns
          * @return bool 
@@ -8703,7 +8703,7 @@
                         return $instance->ajax();
         }
                     /**
-         * Determine if the request is the result of an PJAX call.
+         * Determine if the request is the result of a PJAX call.
          *
          * @return bool 
          * @static 
@@ -8714,7 +8714,7 @@
                         return $instance->pjax();
         }
                     /**
-         * Determine if the request is the result of an prefetch call.
+         * Determine if the request is the result of a prefetch call.
          *
          * @return bool 
          * @static 
@@ -14453,7 +14453,7 @@
                         return \Illuminate\View\Factory::parentPlaceholder($section);
         }
                     /**
-         * Check if section exists.
+         * Check if the section exists.
          *
          * @param string $name
          * @return bool 
@@ -14966,100 +14966,6 @@
         {            //Method inherited from \League\CommonMark\Converter         
                         /** @var \League\CommonMark\CommonMarkConverter $instance */
                         return $instance->convertToHtml($commonMark);
-        }
-         
-    }
-     
-}
-
-    namespace Appstract\LushHttp { 
-            /**
-     * 
-     *
-     * @see \Appstract\LushHttp\Lush
-     */ 
-        class LushFacade {
-                    /**
-         * Set the url with parameters.
-         *
-         * @param $url
-         * @param array|object $parameters
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function url($url, $parameters = [])
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->url($url, $parameters);
-        }
-                    /**
-         * Set headers.
-         *
-         * @param array $headers
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function headers($headers)
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->headers($headers);
-        }
-                    /**
-         * Set options.
-         *
-         * @param array $options
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function options($options)
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->options($options);
-        }
-                    /**
-         * Reset all request options.
-         *
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function reset()
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->reset();
-        }
-                    /**
-         * Post as Json.
-         *
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function asJson()
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->asJson();
-        }
-                    /**
-         * Post as form params.
-         *
-         * @return \Appstract\LushHttp\Lush 
-         * @static 
-         */ 
-        public static function asFormParams()
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->asFormParams();
-        }
-                    /**
-         * Create a request.
-         *
-         * @param $method
-         * @return \Appstract\LushHttp\Response\LushResponse 
-         * @static 
-         */ 
-        public static function request($method)
-        {
-                        /** @var \Appstract\LushHttp\Lush $instance */
-                        return $instance->request($method);
         }
          
     }
@@ -16353,13 +16259,14 @@
                     /**
          * Captures a new event using the provided data.
          *
-         * @param \Sentry\State\array<string,  mixed> $payload The data of the event being captured
+         * @param \Event $event The event being captured
+         * @param \Sentry\State\EventHint|null $hint May contain additional information about the event
          * @static 
          */ 
-        public static function captureEvent($payload)
+        public static function captureEvent($event, $hint = null)
         {
                         /** @var \Sentry\State\Hub $instance */
-                        return $instance->captureEvent($payload);
+                        return $instance->captureEvent($event, $hint);
         }
                     /**
          * Captures an event that logs the last occurred error.
@@ -16386,29 +16293,6 @@
                         return $instance->addBreadcrumb($breadcrumb);
         }
                     /**
-         * Returns the current global Hub.
-         *
-         * @return \Sentry\State\HubInterface 
-         * @deprecated since version 2.2, to be removed in 3.0
-         * @static 
-         */ 
-        public static function getCurrent()
-        {
-                        return \Sentry\State\Hub::getCurrent();
-        }
-                    /**
-         * Sets the Hub as the current.
-         *
-         * @param \Sentry\State\HubInterface $hub The Hub that will become the current one
-         * @return \Sentry\State\HubInterface 
-         * @deprecated since version 2.2, to be removed in 3.0
-         * @static 
-         */ 
-        public static function setCurrent($hub)
-        {
-                        return \Sentry\State\Hub::setCurrent($hub);
-        }
-                    /**
          * Gets the integration whose FQCN matches the given one if it's available on the current client.
          *
          * @param string $className The FQCN of the integration
@@ -16421,6 +16305,64 @@
         {
                         /** @var \Sentry\State\Hub $instance */
                         return $instance->getIntegration($className);
+        }
+                    /**
+         * Starts a new `Transaction` and returns it. This is the entry point to manual
+         * tracing instrumentation.
+         * 
+         * A tree structure can be built by adding child spans to the transaction, and
+         * child spans to other spans. To start a new child span within the transaction
+         * or any span, call the respective `startChild()` method.
+         * 
+         * Every child span must be finished before the transaction is finished,
+         * otherwise the unfinished spans are discarded.
+         * 
+         * The transaction must be finished with a call to its `finish()` method, at
+         * which point the transaction with all its finished child spans will be sent to
+         * Sentry.
+         *
+         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @param \Sentry\State\TransactionContext $context Properties of the new transaction
+         * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
+         * @static 
+         */ 
+        public static function startTransaction($context, $customSamplingContext = [])
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->startTransaction($context, $customSamplingContext);
+        }
+                    /**
+         * Returns the transaction that is on the Hub.
+         *
+         * @psalm-suppress MoreSpecificReturnType
+         * @psalm-suppress LessSpecificReturnStatement
+         * @static 
+         */ 
+        public static function getTransaction()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getTransaction();
+        }
+                    /**
+         * Sets the span on the Hub.
+         *
+         * @param \Sentry\State\Span|null $span The span
+         * @static 
+         */ 
+        public static function setSpan($span)
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->setSpan($span);
+        }
+                    /**
+         * Returns the span that is on the Hub.
+         *
+         * @static 
+         */ 
+        public static function getSpan()
+        {
+                        /** @var \Sentry\State\Hub $instance */
+                        return $instance->getSpan();
         }
          
     }
@@ -19660,7 +19602,6 @@ namespace  {
             class Image extends \Intervention\Image\Facades\Image {}
             class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Markdown extends \GrahamCampbell\Markdown\Facades\Markdown {}
-            class Lush extends \Appstract\LushHttp\LushFacade {}
             class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}
