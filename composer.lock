@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a1955c3b5fd4ae57f682d0bb6cc62ed",
+    "content-hash": "3d570e8b9474482b13b3284cc148a376",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -10915,6 +10915,106 @@
                 }
             ],
             "time": "2021-01-27T10:15:41+00:00"
+        },
+        {
+            "name": "tencentcloud/common",
+            "version": "3.0.286",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentcloud-sdk-php/common.git",
+                "reference": "0eb641f4b7bc4a27ab9b1641060d414100476bc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/0eb641f4b7bc4a27ab9b1641060d414100476bc9",
+                "reference": "0eb641f4b7bc4a27ab9b1641060d414100476bc9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3||^7.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TencentCloud\\": "./src/TencentCloud"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "tencentcloudapi",
+                    "email": "tencentcloudapi@tencent.com",
+                    "homepage": "https://cloud.tencent.com/document/sdk/PHP",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TencentCloudApi php sdk",
+            "homepage": "https://github.com/tencentcloud-sdk-php/common",
+            "support": {
+                "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.286"
+            },
+            "time": "2020-11-17T01:38:40+00:00"
+        },
+        {
+            "name": "tencentcloud/cvm",
+            "version": "3.0.286",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentcloud-sdk-php/cvm.git",
+                "reference": "32e4cd02c3c454625eb0854211b2ee4c14584ad0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/32e4cd02c3c454625eb0854211b2ee4c14584ad0",
+                "reference": "32e4cd02c3c454625eb0854211b2ee4c14584ad0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "tencentcloud/common": "3.0.286"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TencentCloud\\": "./src/TencentCloud"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "tencentcloudapi",
+                    "email": "tencentcloudapi@tencent.com",
+                    "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TencentCloudApi php sdk cvm",
+            "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
+            "support": {
+                "issues": "https://github.com/tencentcloud-sdk-php/cvm/issues",
+                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.286"
+            },
+            "time": "2020-11-17T01:39:16+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
