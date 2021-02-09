@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: nginx-ingress
-  namespace: blog
   annotations:
     kubernetes.io/ingress.class: "traefik"
     traefik.ingress.kubernetes.io/redirect-regex: "^https?://{{ if .Values.force_non_www }}www.{{ end }}{{ .Values.host }}/?(.*)"

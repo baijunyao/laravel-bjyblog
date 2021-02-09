@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -23,7 +22,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -56,7 +54,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -84,7 +81,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -126,7 +122,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: prometheus-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -180,7 +175,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -228,7 +222,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: elasticsearch-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
@@ -284,7 +277,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kibana-deployment
-  namespace: blog
 spec:
   replicas: 1
   selector:
