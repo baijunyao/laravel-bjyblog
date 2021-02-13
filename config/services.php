@@ -85,4 +85,12 @@ return [
         'client_secret' => env('VKONTAKTE_SECRET'),
         'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/vkontakte'
     ],
+
+    'tencentcloud' => [
+        'secret_id' => env('TENCENTCLOUD_SECRET_ID'),
+        'secret_key' => env('TENCENTCLOUD_SECRET_KEY'),
+        'instance_id' => env('TENCENTCLOUD_INSTANCE_ID'),
+        'region' => env('TENCENTCLOUD_REGION'),
+        'ssh_key_id' => env('TENCENTCLOUD_SSH_KEY_ID'),
+    ],
 ];

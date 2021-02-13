@@ -3,7 +3,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: upload-backup-to-oss
-  namespace: blog
 spec:
   schedule: "0 4 * * *"
   jobTemplate:
@@ -45,7 +44,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: generate-sitemap
-  namespace: blog
 spec:
   schedule: "0 3 * * *"
   jobTemplate:
@@ -74,7 +72,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: database-backup
-  namespace: blog
 spec:
   schedule: "0 2 * * *"
   jobTemplate:
@@ -107,7 +104,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: site-backup
-  namespace: blog
 spec:
   schedule: "0 1 * * *"
   jobTemplate:

@@ -10,7 +10,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   nginx:
-    image: baijunyao/nginx:1.7
+    image: baijunyao/nginx:1.19
     container_name: laravel-bjyblog-nginx
     volumes:
       - .:/app

@@ -55,7 +55,8 @@
         "socialiteproviders/weibo": "^4.1",
         "spatie/laravel-backup": "^6.3",
         "stichoza/google-translate-php": "^4.0",
-        "symfony/filesystem": "^5.1"
+        "symfony/filesystem": "^5.1",
+        "tencentcloud/cvm": "^3.0"
     },
     "require-dev": {
         "baijunyao/laravel-test-support": "^4.2",

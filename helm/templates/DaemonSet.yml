@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: fluentd-daemonset
-  namespace: blog
 spec:
   selector:
     matchLabels:

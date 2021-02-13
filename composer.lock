@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a1955c3b5fd4ae57f682d0bb6cc62ed",
+    "content-hash": "3d570e8b9474482b13b3284cc148a376",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1775,16 +1775,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v7.10.0",
+            "version": "v7.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "f4a5741f1d1966a4d0a3a3f68666e6d81432c343"
+                "reference": "277cd5e182827c59c23e146a836a30470c0f879d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/f4a5741f1d1966a4d0a3a3f68666e6d81432c343",
-                "reference": "f4a5741f1d1966a4d0a3a3f68666e6d81432c343",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/277cd5e182827c59c23e146a836a30470c0f879d",
+                "reference": "277cd5e182827c59c23e146a836a30470c0f879d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1796,17 +1796,17 @@
             "require": {
                 "ext-json": ">=1.3.7",
                 "ezimuel/ringphp": "^1.1.2",
-                "php": "^7.1",
+                "php": "^7.1 || ^8.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "cpliakas/git-wrapper": "~2.0",
+                "cpliakas/git-wrapper": "~2.0 || ~3.0",
                 "doctrine/inflector": "^1.3",
                 "ext-yaml": "*",
                 "ext-zip": "*",
                 "mockery/mockery": "^1.2",
                 "phpstan/phpstan": "^0.12",
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.3",
                 "squizlabs/php_codesniffer": "^3.4",
                 "symfony/finder": "~4.0",
                 "symfony/yaml": "~4.0"
@@ -1844,9 +1844,9 @@
             ],
             "support": {
                 "issues": "https://github.com/elastic/elasticsearch-php/issues",
-                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.10.0"
+                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.11.0"
             },
-            "time": "2020-11-11T16:31:00+00:00"
+            "time": "2021-02-11T11:04:51+00:00"
         },
         {
             "name": "ezimuel/guzzlestreams",
@@ -2152,16 +2152,16 @@
         },
         {
             "name": "firebase/php-jwt",
-            "version": "v5.2.0",
+            "version": "v5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/firebase/php-jwt.git",
-                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb"
+                "reference": "f42c9110abe98dd6cfe9053c49bc86acc70b2d23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/feb0e820b8436873675fd3aca04f3728eb2185cb",
-                "reference": "feb0e820b8436873675fd3aca04f3728eb2185cb",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/f42c9110abe98dd6cfe9053c49bc86acc70b2d23",
+                "reference": "f42c9110abe98dd6cfe9053c49bc86acc70b2d23",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2206,9 +2206,9 @@
             ],
             "support": {
                 "issues": "https://github.com/firebase/php-jwt/issues",
-                "source": "https://github.com/firebase/php-jwt/tree/master"
+                "source": "https://github.com/firebase/php-jwt/tree/v5.2.1"
             },
-            "time": "2020-03-25T18:49:23+00:00"
+            "time": "2021-02-12T00:02:00+00:00"
         },
         {
             "name": "fluent/logger",
@@ -3550,16 +3550,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.26.1",
+            "version": "v8.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "275c78c97e007e4a9d771d4d1caa1c77ebfdcf94"
+                "reference": "a6680d98f9dadaa363aa7d5218517a08706cee64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/275c78c97e007e4a9d771d4d1caa1c77ebfdcf94",
-                "reference": "275c78c97e007e4a9d771d4d1caa1c77ebfdcf94",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a6680d98f9dadaa363aa7d5218517a08706cee64",
+                "reference": "a6680d98f9dadaa363aa7d5218517a08706cee64",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3720,7 +3720,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-02-02T14:07:24+00:00"
+            "time": "2021-02-09T15:14:54+00:00"
         },
         {
             "name": "laravel/passport",
@@ -5086,16 +5086,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.44.0",
+            "version": "2.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd"
+                "reference": "528783b188bdb853eb21239b1722831e0f000a8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
-                "reference": "e6ef33cb1f67a4bed831ed6d0f7e156739a5d8cd",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/528783b188bdb853eb21239b1722831e0f000a8d",
+                "reference": "528783b188bdb853eb21239b1722831e0f000a8d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5181,7 +5181,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-26T20:46:41+00:00"
+            "time": "2021-02-11T18:30:17+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -10917,6 +10917,106 @@
             "time": "2021-01-27T10:15:41+00:00"
         },
         {
+            "name": "tencentcloud/common",
+            "version": "3.0.286",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentcloud-sdk-php/common.git",
+                "reference": "0eb641f4b7bc4a27ab9b1641060d414100476bc9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/0eb641f4b7bc4a27ab9b1641060d414100476bc9",
+                "reference": "0eb641f4b7bc4a27ab9b1641060d414100476bc9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3||^7.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TencentCloud\\": "./src/TencentCloud"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "tencentcloudapi",
+                    "email": "tencentcloudapi@tencent.com",
+                    "homepage": "https://cloud.tencent.com/document/sdk/PHP",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TencentCloudApi php sdk",
+            "homepage": "https://github.com/tencentcloud-sdk-php/common",
+            "support": {
+                "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.286"
+            },
+            "time": "2020-11-17T01:38:40+00:00"
+        },
+        {
+            "name": "tencentcloud/cvm",
+            "version": "3.0.286",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tencentcloud-sdk-php/cvm.git",
+                "reference": "32e4cd02c3c454625eb0854211b2ee4c14584ad0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/32e4cd02c3c454625eb0854211b2ee4c14584ad0",
+                "reference": "32e4cd02c3c454625eb0854211b2ee4c14584ad0",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "tencentcloud/common": "3.0.286"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TencentCloud\\": "./src/TencentCloud"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "tencentcloudapi",
+                    "email": "tencentcloudapi@tencent.com",
+                    "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TencentCloudApi php sdk cvm",
+            "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
+            "support": {
+                "issues": "https://github.com/tencentcloud-sdk-php/cvm/issues",
+                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.286"
+            },
+            "time": "2020-11-17T01:39:16+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.3",
             "source": {
@@ -12584,16 +12684,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v6.11.2",
+            "version": "v6.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "be45bc6e6e3cec6f617a422aa0bd92877afc8695"
+                "reference": "040c8ee2b8fae416843973565dbbcee75b6e84f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/be45bc6e6e3cec6f617a422aa0bd92877afc8695",
-                "reference": "be45bc6e6e3cec6f617a422aa0bd92877afc8695",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/040c8ee2b8fae416843973565dbbcee75b6e84f4",
+                "reference": "040c8ee2b8fae416843973565dbbcee75b6e84f4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12656,9 +12756,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/dusk/issues",
-                "source": "https://github.com/laravel/dusk/tree/v6.11.2"
+                "source": "https://github.com/laravel/dusk/tree/v6.11.3"
             },
-            "time": "2021-01-26T19:22:07+00:00"
+            "time": "2021-02-09T16:14:48+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -13511,16 +13611,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.71",
+            "version": "0.12.75",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5"
+                "reference": "2e4738cd67e0163861a065180eff7eb5c8417d6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5",
-                "reference": "d508fa3b0ecc5fc91ac70c6c7ac2862f968ba2b5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/2e4738cd67e0163861a065180eff7eb5c8417d6e",
+                "reference": "2e4738cd67e0163861a065180eff7eb5c8417d6e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13557,7 +13657,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.71"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.75"
             },
             "funding": [
                 {
@@ -13573,7 +13673,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-02-01T18:24:00+00:00"
+            "time": "2021-02-11T13:58:47+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

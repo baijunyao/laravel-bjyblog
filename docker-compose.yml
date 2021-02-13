@@ -29,7 +29,7 @@ services:
       - traefik.enable=false
 
   nginx:
-    image: baijunyao/nginx:1.7
+    image: baijunyao/nginx:1.19
     container_name: laravel-bjyblog-nginx
     volumes:
       - .:/app
