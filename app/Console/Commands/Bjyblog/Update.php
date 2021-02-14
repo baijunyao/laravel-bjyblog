@@ -38,7 +38,7 @@ class Update extends Command
         collect(File::files(app_path('Console/Commands/Upgrade')))->transform(function ($file) {
             return strtolower(str_replace('_', '.', basename($file->getFilename(), '.php')));
         })->sort(function ($prev, $next) {
-            return Comparator::greaterThan($prev, $next);
+            return Comparator::greaterThan($prev, $next) ? 1 : -1;
         })->each(function (string $version) use ($console) {
             $name = 'App\Console\Commands\Upgrade\\' . strtoupper(str_replace('.', '_', $version));
 

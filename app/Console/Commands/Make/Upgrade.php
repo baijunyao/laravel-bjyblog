@@ -6,6 +6,7 @@ namespace App\Console\Commands\Make;
 
 use File;
 use Illuminate\Console\Command;
+use RuntimeException;
 
 class Upgrade extends Command
 {
@@ -67,7 +68,17 @@ class Upgrade extends Command
 
         // endregion
 
-        $PreviousVersion = trim(shell_exec('git tag --sort=-v:refname | head -n 1') ?? '');
+        $previousVersion = shell_exec('git tag --sort=-v:refname | head -n 1');
+
+        if (!is_string($previousVersion)) {
+            throw new RuntimeException('Get previous version error.');
+        }
+
+        $previousVersion = trim($previousVersion);
+
+        if ($previousVersion === '') {
+            throw new RuntimeException('Get previous version error.');
+        }
 
         // region tests/Commands/Upgrade/databases/{version}
 
@@ -82,12 +93,12 @@ class Upgrade extends Command
         $testMigrationPath = $testDatabasePath . 'migrations';
         File::moveDirectory(database_path('migrations'), $testMigrationPath, true);
         File::deleteDirectory($databasePath, true);
-        shell_exec("git checkout $PreviousVersion -- $databasePath/migrations");
+        shell_exec("git checkout $previousVersion -- $databasePath/migrations");
         File::copyDirectory(database_path('migrations'), $testMigrationPath);
         File::deleteDirectory($databasePath, true);
 
         // Seeds
-        shell_exec("git checkout $PreviousVersion -- $databasePath/seeds");
+        shell_exec("git checkout $previousVersion -- $databasePath/seeds");
         $testSeedPath = $testDatabasePath . 'seeds';
         File::moveDirectory(database_path('seeds'), $testSeedPath, true);
         File::deleteDirectory($databasePath, true);

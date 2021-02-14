@@ -13,7 +13,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.3",
+        "php": "^7.4|^8.0",
         "algolia/algoliasearch-client-php": "^2.5",
         "appstract/laravel-opcache": "^4.0",
         "baidu/aip-sdk": "dev-master#84e5936eb6426b4cc9d9a96848568b9dd527b4a0",
@@ -40,7 +40,6 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
         "laravelium/feed": "^8.0",
-        "lcobucci/jwt": "3.3.3",
         "league/html-to-markdown": "^4.6",
         "mavinoo/laravel-batch": "^2.2",
         "mews/purifier": "^3.0",
@@ -76,10 +75,7 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true,
-        "platform": {
-            "php": "7.3"
-        }
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
