@@ -67,6 +67,15 @@ spec:
       containers:
         - name: php
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/php:8.0-{{ .Values.env }}
+          {{- if eq .Values.container_registry "Aliyun" }}
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/"]
+          {{- end }}
+          env:
+            - name: COMPOSER_ALLOW_SUPERUSER
+              value: '1'
           volumeMounts:
             - mountPath: /app
               name: code-pvc
