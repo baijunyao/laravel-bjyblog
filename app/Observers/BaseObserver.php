@@ -6,6 +6,8 @@ class BaseObserver
 {
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return void
      */
     public function created($model)
     {
@@ -14,6 +16,8 @@ class BaseObserver
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return void
      */
     public function updated($model)
     {
@@ -25,6 +29,8 @@ class BaseObserver
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return void
      */
     public function deleted($model)
     {
@@ -38,6 +44,8 @@ class BaseObserver
 
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
+     *
+     * @return void
      */
     public function restored($model)
     {

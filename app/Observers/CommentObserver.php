@@ -13,6 +13,8 @@ class CommentObserver extends BaseObserver
 {
     /**
      * @param \App\Models\Comment $comment
+     *
+     * @return void
      */
     public function creating($comment)
     {
@@ -42,6 +44,8 @@ class CommentObserver extends BaseObserver
 
     /**
      * @param \App\Models\Comment $comment
+     *
+     * @return void
      */
     public function created($comment)
     {
@@ -52,7 +56,7 @@ class CommentObserver extends BaseObserver
             $socialiteUser = auth()->guard('socialite')->user();
 
             /** @var \App\Models\Article $article */
-            $article       = Article::withTrashed()->where('id', $comment->article_id)->firstOrFail();
+            $article = Article::withTrashed()->where('id', $comment->article_id)->firstOrFail();
 
             // Send email to admin
             if ($socialiteUser->is_admin === 0) {
@@ -62,7 +66,7 @@ class CommentObserver extends BaseObserver
 
             // Here `$comment->parent_id` is string
             if (intval($comment->parent_id) !== 0) {
-                $parentComment = Comment::find($comment->parent_id);
+                $parentComment = Comment::findOrFail($comment->parent_id);
 
                 if ($socialiteUser->id !== $parentComment->socialite_user_id) {
                     // Send email to socialite user

@@ -8,6 +8,8 @@ class SiteObserver extends BaseObserver
 {
     /**
      * @param \App\Models\Site $site
+     *
+     * @return void
      */
     public function updated($site)
     {
