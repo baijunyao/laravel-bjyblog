@@ -33,7 +33,7 @@ services:
     container_name: laravel-bjyblog-nginx
     volumes:
       - .:/app
-      - ./docker/nginx/laravel-bjyblog.conf:/etc/nginx/conf.d/laravel-bjyblog.conf
+      - ./deploy/docker/nginx/laravel-bjyblog.conf:/etc/nginx/conf.d/laravel-bjyblog.conf
     labels:
       - traefik.port=80
       - "traefik.http.routers.laravel-bjyblog-nginx.rule=Host(`laravel-bjyblog.test`)"
