@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Database\Seeders;
+namespace Tests\Commands\Upgrade\Databases\V15_0_0\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -304,13 +304,6 @@ class ConsolesTableSeeder extends Seeder
                 'name'       => 'App\Console\Commands\Upgrade\V14_0_0',
                 'created_at' => '2020-10-04 23:21:00',
                 'updated_at' => '2020-10-04 23:21:00',
-                'deleted_at' => null,
-            ],
-            [
-                'id'         => 44,
-                'name'       => 'App\Console\Commands\Upgrade\V15_0_0',
-                'created_at' => '2021-02-18 23:16:00',
-                'updated_at' => '2021-02-18 23:16:00',
                 'deleted_at' => null,
             ],
         ]);

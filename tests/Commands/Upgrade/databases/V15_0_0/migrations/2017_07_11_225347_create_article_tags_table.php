@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
+namespace Tests\Commands\Upgrade\Databases\V15_0_0\Migrations;
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateArticleTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +17,9 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('socialite_user_id')->unsigned()->default(0);
-            $table->integer('article_id')->unsigned();
-            $table->text('content');
-            $table->unsignedTinyInteger('is_audited')->default(0);
-            $table->nestedSet();
+        Schema::create('article_tags', function (Blueprint $table) {
+            $table->integer('article_id')->unsigned()->default(0)->comment('文章id');
+            $table->integer('tag_id')->unsigned()->default(0)->comment('标签id');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +32,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('article_tags');
     }
 }
