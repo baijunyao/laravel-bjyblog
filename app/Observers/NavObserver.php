@@ -8,6 +8,8 @@ class NavObserver extends BaseObserver
 {
     /**
      * @param \App\Models\Nav $model
+     *
+     * @return void
      */
     public function created($model)
     {
@@ -18,6 +20,8 @@ class NavObserver extends BaseObserver
 
     /**
      * @param \App\Models\Nav $model
+     *
+     * @return void
      */
     public function deleted($model)
     {

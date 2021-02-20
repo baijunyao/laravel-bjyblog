@@ -9,6 +9,8 @@ class TagObserver extends BaseObserver
 {
     /**
      * @param \App\Models\Tag $tag
+     *
+     * @return void
      */
     public function created($tag)
     {
@@ -19,6 +21,8 @@ class TagObserver extends BaseObserver
 
     /**
      * @param \App\Models\Tag $tag
+     *
+     * @return void
      */
     public function saving($tag)
     {
@@ -29,6 +33,8 @@ class TagObserver extends BaseObserver
 
     /**
      * @param \App\Models\Tag $tag
+     *
+     * @return void|false
      */
     public function deleting($tag)
     {
@@ -40,6 +46,8 @@ class TagObserver extends BaseObserver
 
     /**
      * @param \App\Models\Tag $tag
+     *
+     * @return void
      */
     public function deleted($tag)
     {

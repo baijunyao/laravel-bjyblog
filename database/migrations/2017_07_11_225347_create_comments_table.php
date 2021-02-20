@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->integer('socialite_user_id')->unsigned()->default(0);
             $table->integer('article_id')->unsigned();
             $table->text('content');
-            $table->unsignedTinyInteger('is_audited');
+            $table->unsignedTinyInteger('is_audited')->default(0);
             $table->nestedSet();
             $table->timestamps();
             $table->softDeletes();

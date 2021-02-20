@@ -9,6 +9,8 @@ class CategoryObserver extends BaseObserver
 {
     /**
      * @param \App\Models\Category $model
+     *
+     * @return void
      */
     public function created($model)
     {
@@ -19,6 +21,8 @@ class CategoryObserver extends BaseObserver
 
     /**
      * @param \App\Models\Category $category
+     *
+     * @return void
      */
     public function saving($category)
     {
@@ -29,6 +33,8 @@ class CategoryObserver extends BaseObserver
 
     /**
      * @param \App\Models\Category $category
+     *
+     * @return void|false
      */
     public function deleting($category)
     {
@@ -40,6 +46,8 @@ class CategoryObserver extends BaseObserver
 
     /**
      * @param \App\Models\Category $model
+     *
+     * @return void
      */
     public function deleted($model)
     {

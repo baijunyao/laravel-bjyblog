@@ -1306,32 +1306,7 @@ parameters:
 			path: app/Models/Base.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
 			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:forceDelete\\(\\)\\.$#"
-			count: 1
-			path: app/Observers/ArticleObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ArticleObserver\\:\\:restored\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: app/Observers/ArticleObserver.php
 
@@ -1341,114 +1316,14 @@ parameters:
 			path: app/Observers/ArticleObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
 			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:isForceDeleting\\(\\)\\.$#"
 			count: 1
 			path: app/Observers/BaseObserver.php
 
 		-
-			message: "#^Method App\\\\Observers\\\\BaseObserver\\:\\:restored\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/BaseObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleting\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CategoryObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CategoryObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:creating\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CommentObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\CommentObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/CommentObserver.php
-
-		-
 			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Base\\>\\|Illuminate\\\\Database\\\\Query\\\\Builder\\:\\:firstOrFail\\(\\)\\.$#"
 			count: 1
 			path: app/Observers/CommentObserver.php
-
-		-
-			message: "#^Cannot access property \\$socialite_user_id on App\\\\Models\\\\Comment\\|null\\.$#"
-			count: 1
-			path: app/Observers/CommentObserver.php
-
-		-
-			message: "#^Cannot access property \\$socialiteUser on App\\\\Models\\\\Comment\\|null\\.$#"
-			count: 1
-			path: app/Observers/CommentObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\ConfigObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/ConfigObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/NavObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\NavObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/NavObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\SiteObserver\\:\\:updated\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/SiteObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:created\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:saving\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleting\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
-
-		-
-			message: "#^Method App\\\\Observers\\\\TagObserver\\:\\:deleted\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Observers/TagObserver.php
 
 		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"

@@ -12,6 +12,8 @@ class ArticleObserver extends BaseObserver
 {
     /**
      * @param \App\Models\Article $article
+     *
+     * @return void
      */
     public function created($article)
     {
@@ -22,6 +24,8 @@ class ArticleObserver extends BaseObserver
 
     /**
      * @param \App\Models\Article $article
+     *
+     * @return void
      */
     public function saving($article)
     {
@@ -66,6 +70,8 @@ class ArticleObserver extends BaseObserver
 
     /**
      * @param \App\Models\Article $article
+     *
+     * @return void
      */
     public function updated($article)
     {
@@ -82,6 +88,8 @@ class ArticleObserver extends BaseObserver
 
     /**
      * @param \App\Models\Article $article
+     *
+     * @return void
      */
     public function deleted($article)
     {
@@ -98,6 +106,8 @@ class ArticleObserver extends BaseObserver
 
     /**
      * @param \App\Models\Article $article
+     *
+     * @return void
      */
     public function restored($article)
     {
