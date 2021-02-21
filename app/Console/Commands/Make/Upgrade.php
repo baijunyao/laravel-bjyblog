@@ -13,11 +13,6 @@ class Upgrade extends Command
     protected $signature   = 'make:upgrade {version}';
     protected $description = 'Command description';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         /** @var string $version */

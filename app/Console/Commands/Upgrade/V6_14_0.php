@@ -14,11 +14,6 @@ class V6_14_0 extends Command
     protected $signature   = 'upgrade:v6.14.0';
     protected $description = 'Upgrade to v6.14.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         if (!Schema::hasColumn('articles', 'views')) {
