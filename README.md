@@ -9,6 +9,18 @@
     <a href="https://join.slack.com/t/baijunyao/shared_invite/enQtNjU3Nzk4Nzk4NjU3LWRhYmI4YmI3YjhjOTQyZGE2YTA3OTZjMjlhNGM4ZWQyNzNiOTMyYWI5YzAzYmE0ZDBhNmVjOWU1NTc4MWIxMzc"><img src="https://img.shields.io/badge/Slack%20%23laravel--bjyblog-join-orange.svg" alt="Chat on Slack"></a>
 </p>
 
+## Laravel PHP and MySQL Compatibility
+
+| Blog | Laravel | PHP | MySQL |
+| --- | --- | --- | --- |
+| v15 | 8.0 | 8.0 | 5.6 - 8.0 |
+| v14 | 8.0 | 7.3 - 7.4 | 5.6 - 8.0 |
+| v7 - v13 | 7.0 | 7.2 | 5.6 - 8.0 |
+| v6 | 6.0 | 7.2 | 5.6 - 8.0 |
+| v5.8 | 5.8 | 7.1 | 5.6 - 8.0 |
+| v5.5 | 5.5 | 7.0 | 5.6 - 8.0 |
+| v1 - v5.3 | 5.3 | 5.6 | 5.6 - 8.0 |
+
 ## Introduction
 
 ![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)
