@@ -6,6 +6,9 @@ namespace App\Http\Requests\FriendshipLink;
 
 class Update extends Store
 {
+    /**
+     * @return array<string,string>
+     */
     public function rules()
     {
         return [
