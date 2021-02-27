@@ -13,11 +13,6 @@ class Upgrade extends Command
     protected $signature   = 'make:upgrade {version}';
     protected $description = 'Command description';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         /** @var string $version */
@@ -126,7 +121,7 @@ class Upgrade extends Command
             File::put(
                 $testSeedFile->getPathname(),
                 str_replace([
-                    "declare(strict_types=1);\n\n",
+                    "declare(strict_types=1);\n\nnamespace Database\\Seeders;\n\n",
                 ], [
                     "declare(strict_types=1);\n\nnamespace Tests\\Commands\\Upgrade\\Databases\\$versionString\\Seeds;\n\n",
                 ],

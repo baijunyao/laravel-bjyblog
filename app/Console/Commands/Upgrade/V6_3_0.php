@@ -14,11 +14,6 @@ class V6_3_0 extends Command
     protected $signature   = 'upgrade:v6.3.0';
     protected $description = 'Upgrade to v6.3.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         Schema::table('comments', function (Blueprint $table) {

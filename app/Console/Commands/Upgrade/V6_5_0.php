@@ -12,11 +12,6 @@ class V6_5_0 extends Command
     protected $signature   = 'upgrade:v6.5.0';
     protected $description = 'Upgrade to v6.5.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         $scoutDriver = env('SCOUT_DRIVER') === null ? 'null' : env('SCOUT_DRIVER');

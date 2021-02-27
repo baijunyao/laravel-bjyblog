@@ -12,11 +12,6 @@ class V6_12_0 extends Command
     protected $signature   = 'upgrade:v6.12.0';
     protected $description = 'Upgrade to v6.12.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         DB::table('configs')->insert([

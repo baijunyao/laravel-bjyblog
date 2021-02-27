@@ -14,11 +14,6 @@ class V11_0_0 extends Command
     protected $signature   = 'upgrade:v11.0.0';
     protected $description = 'Upgrade to v11.0.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         if (File::isDirectory(public_path('uploads')) && !is_link(public_path('uploads'))) {

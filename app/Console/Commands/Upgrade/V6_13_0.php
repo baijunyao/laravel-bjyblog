@@ -13,11 +13,6 @@ class V6_13_0 extends Command
     protected $signature   = 'upgrade:v6.13.0';
     protected $description = 'Upgrade to v6.13.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         Schema::dropIfExists('open_sources');

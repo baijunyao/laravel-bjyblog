@@ -12,11 +12,6 @@ class V7_0_0 extends Command
     protected $signature   = 'upgrade:v7.0.0';
     protected $description = 'Upgrade to v7.0.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         $configNameById = [

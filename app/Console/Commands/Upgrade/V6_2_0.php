@@ -14,11 +14,6 @@ class V6_2_0 extends Command
     protected $signature   = 'upgrade:v6.2.0';
     protected $description = 'Upgrade to v6.2.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         $envPath = base_path('.env');

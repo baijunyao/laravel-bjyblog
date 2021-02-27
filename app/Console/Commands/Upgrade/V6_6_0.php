@@ -12,11 +12,6 @@ class V6_6_0 extends Command
     protected $signature   = 'upgrade:v6.6.0';
     protected $description = 'Upgrade to v6.6.0';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function handle(): int
     {
         $session_domain_confing = [
