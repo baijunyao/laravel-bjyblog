@@ -58,7 +58,7 @@
         "tencentcloud/cvm": "^3.0"
     },
     "require-dev": {
-        "baijunyao/laravel-test-support": "^4.2",
+        "baijunyao/laravel-test-support": "^5.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
         "facade/ignition": "^2.3.6",

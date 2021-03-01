@@ -4,6 +4,9 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
+    <extensions>
+        <extension class="Baijunyao\LaravelTestSupport\Extensions\CreateRandomDatabase"/>
+    </extensions>
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "818f09746ece7eb13c9f90e7e852b4d4",
+    "content-hash": "4c6bffdc4a8ea66762e4970bede0afb8",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -11464,16 +11464,16 @@
     "packages-dev": [
         {
             "name": "baijunyao/laravel-test-support",
-            "version": "v4.3.0",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-test-support.git",
-                "reference": "9d9124f729594e5f4894cf0928edb81db94e47a2"
+                "reference": "87b3c9bb1aa2f3caa46e40e683e8b263b24c1693"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/9d9124f729594e5f4894cf0928edb81db94e47a2",
-                "reference": "9d9124f729594e5f4894cf0928edb81db94e47a2",
+                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/87b3c9bb1aa2f3caa46e40e683e8b263b24c1693",
+                "reference": "87b3c9bb1aa2f3caa46e40e683e8b263b24c1693",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11485,7 +11485,8 @@
             "require": {
                 "baijunyao/laravel-support": "^1.3",
                 "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
-                "phpunit/phpunit": "^7.0|^8.0|^9.0"
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "vlucas/phpdotenv": "^5.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.16"
@@ -11514,9 +11515,9 @@
             ],
             "support": {
                 "issues": "https://github.com/baijunyao/laravel-test-support/issues",
-                "source": "https://github.com/baijunyao/laravel-test-support/tree/v4.3.0"
+                "source": "https://github.com/baijunyao/laravel-test-support/tree/v5.0.0"
             },
-            "time": "2020-09-30T14:00:01+00:00"
+            "time": "2021-02-28T13:21:35+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
