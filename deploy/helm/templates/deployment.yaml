@@ -64,6 +64,18 @@ spec:
       labels:
         app: php
     spec:
+      initContainers:
+        - name: init-redis
+          image: { { if eq .Values.container_registry "Aliyun" } }registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: [ 'sh', '-c', 'until nslookup redis-service; do echo waiting for Redis; sleep 2; done;' ]
+        - name: init-mysql
+          image: { { if eq .Values.container_registry "Aliyun" } }registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: [ 'sh', '-c', 'until nslookup mysql-service; do echo waiting for MySQL; sleep 2; done;' ]
+        {{- if .Values.elasticsearch.enabled }}
+        - name: init-elasticsearch
+          image: { { if eq .Values.container_registry "Aliyun" } }registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: [ 'sh', '-c', 'until nslookup elasticsearch-service; do echo waiting for Elasticsearch; sleep 2; done;' ]
+        {{- end }}
       containers:
         - name: php
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/php:8.0-{{ .Values.env }}
@@ -112,6 +124,10 @@ spec:
             items:
               - key: config
                 path: laravel-bjyblog.conf
+      initContainers:
+        - name: init-php
+          image: { { if eq .Values.container_registry "Aliyun" } }registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
+          command: [ 'sh', '-c', 'until nslookup php-service; do echo waiting for PHP; sleep 2; done;' ]
       containers:
         - name: nginx
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/nginx:1.19
