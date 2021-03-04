@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c6bffdc4a8ea66762e4970bede0afb8",
+    "content-hash": "fcee7007a72c2993c18e2e672c8932cc",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -7336,78 +7336,6 @@
             "time": "2020-05-12T15:16:56+00:00"
         },
         {
-            "name": "ready2order/laravel-fluent-logger",
-            "version": "8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ready2order/Laravel-FluentLogger.git",
-                "reference": "6b07b2a01e36210c25b8ce3c6db3d12c10ffbede"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ready2order/Laravel-FluentLogger/zipball/6b07b2a01e36210c25b8ce3c6db3d12c10ffbede",
-                "reference": "6b07b2a01e36210c25b8ce3c6db3d12c10ffbede",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "fluent/logger": "^1.0",
-                "illuminate/config": "^8.0",
-                "illuminate/container": "^8.0",
-                "illuminate/contracts": "^8.0",
-                "illuminate/events": "^8.0",
-                "illuminate/log": "^8.0",
-                "illuminate/support": "^8.0",
-                "monolog/monolog": "^2.0",
-                "php": "^7.1|^8.0"
-            },
-            "require-dev": {
-                "illuminate/filesystem": "^8.0",
-                "phpunit/phpunit": "^9.5",
-                "satooshi/php-coveralls": "*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Ytake\\LaravelFluent\\LogServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ytake\\LaravelFluent\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yuuki Takezawa",
-                    "email": "yuuki.takezawa@comnect.jp.net"
-                }
-            ],
-            "description": "fluent logger for laravel and lumen",
-            "keywords": [
-                "fluent",
-                "laravel",
-                "log",
-                "logging",
-                "lumen"
-            ],
-            "support": {
-                "source": "https://github.com/ready2order/Laravel-FluentLogger/tree/8.2"
-            },
-            "time": "2020-12-15T14:24:27+00:00"
-        },
-        {
             "name": "sentry/sdk",
             "version": "3.1.0",
             "source": {
@@ -11459,6 +11387,83 @@
                 "source": "https://github.com/webmozart/assert/tree/master"
             },
             "time": "2020-07-08T17:02:28+00:00"
+        },
+        {
+            "name": "ytake/laravel-fluent-logger",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ytake/Laravel-FluentLogger.git",
+                "reference": "4e5ae6c02ea17c44ab165af9ed200ecdd0f2cba8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ytake/Laravel-FluentLogger/zipball/4e5ae6c02ea17c44ab165af9ed200ecdd0f2cba8",
+                "reference": "4e5ae6c02ea17c44ab165af9ed200ecdd0f2cba8",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "fluent/logger": "^1.0",
+                "illuminate/config": "^8.0",
+                "illuminate/container": "^8.0",
+                "illuminate/contracts": "^8.0",
+                "illuminate/events": "^8.0",
+                "illuminate/log": "^8.0",
+                "illuminate/support": "^8.0",
+                "monolog/monolog": "^2.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^8.2",
+                "illuminate/filesystem": "^8.0",
+                "php-coveralls/php-coveralls": "^2.4",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^9.0",
+                "slevomat/coding-standard": "^6.4",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ytake\\LaravelFluent\\LogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ytake\\LaravelFluent\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yuuki Takezawa",
+                    "email": "yuuki.takezawa@comnect.jp.net"
+                }
+            ],
+            "description": "fluent logger for laravel and lumen",
+            "keywords": [
+                "fluent",
+                "laravel",
+                "log",
+                "logging",
+                "lumen"
+            ],
+            "support": {
+                "issues": "https://github.com/ytake/Laravel-FluentLogger/issues",
+                "source": "https://github.com/ytake/Laravel-FluentLogger/tree/5.0.0"
+            },
+            "time": "2021-03-03T17:11:56+00:00"
         }
     ],
     "packages-dev": [
