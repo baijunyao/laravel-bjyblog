@@ -1156,46 +1156,6 @@ parameters:
 			path: app/Http/Middleware/Authenticate.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:redirectTo\\(\\) should return string\\|null but return statement is missing\\.$#"
-			count: 1
-			path: app/Http/Middleware/Authenticate.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Middleware\\\\CheckForMaintenanceMode\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/CheckForMaintenanceMode.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Middleware\\\\EncryptCookies\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/EncryptCookies.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/PreventRequestsDuringMaintenance.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Middleware\\\\TrimStrings\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/TrimStrings.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Middleware\\\\TrustHosts\\:\\:hosts\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/TrustHosts.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Middleware\\\\TrustProxies\\:\\:\\$proxies type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/TrustProxies.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Middleware\\\\VerifyCsrfToken\\:\\:\\$except type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Middleware/VerifyCsrfToken.php
-
-		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/Models/Base.php
