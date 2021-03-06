@@ -47,7 +47,6 @@
         "overtrue/laravel-lang": "^4.0",
         "paquettg/php-html-parser": "^2.1",
         "predis/predis": "^1.1",
-        "ready2order/laravel-fluent-logger": "8.2",
         "sentry/sentry-laravel": "^2.3",
         "socialiteproviders/qq": "^4.1",
         "socialiteproviders/vkontakte": "^4.2",
@@ -55,10 +54,11 @@
         "spatie/laravel-backup": "^6.3",
         "stichoza/google-translate-php": "^4.0",
         "symfony/filesystem": "^5.1",
-        "tencentcloud/cvm": "^3.0"
+        "tencentcloud/cvm": "^3.0",
+        "ytake/laravel-fluent-logger": "^5.0"
     },
     "require-dev": {
-        "baijunyao/laravel-test-support": "^4.2",
+        "baijunyao/laravel-test-support": "^5.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
         "facade/ignition": "^2.3.6",
