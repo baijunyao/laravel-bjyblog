@@ -24,3 +24,4 @@ public/google*
 public/fileauth*
 .php_cs.cache
 deploy/helm/custom.yaml
+deploy/ansible/inventory.yml
