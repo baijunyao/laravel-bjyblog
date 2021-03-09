@@ -1131,21 +1131,6 @@ parameters:
 			path: app/Http/Controllers/Resources/UserController.php
 
 		-
-			message: "#^Property App\\\\Http\\\\Kernel\\:\\:\\$middleware type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Kernel.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Kernel\\:\\:\\$middlewareGroups type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Kernel.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Kernel\\:\\:\\$routeMiddleware type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: app/Http/Kernel.php
-
-		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"
 			count: 1
 			path: app/Http/Middleware/Authenticate.php
