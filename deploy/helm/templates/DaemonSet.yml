@@ -47,3 +47,31 @@ spec:
               mountPath: /fluentd/etc/kubernetes.conf
               subPath: kubernetes.conf
 {{- end }}
+
+{{- if .Values.prometheus.enabled }}
+---
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
+      containers:
+        - name: node-exporter
+          image: prom/node-exporter
+          volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+{{- end }}
