@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.31.0.
+ * Generated for Laravel 8.32.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -6367,6 +6367,8 @@
      * @method static \Illuminate\Http\Client\PendingRequest withToken(string $token, string $type = 'Bearer')
      * @method static \Illuminate\Http\Client\PendingRequest withoutRedirecting()
      * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
+     * @method static \Illuminate\Http\Client\PendingRequest dump()
+     * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response get(string $url, array $query = [])
      * @method static \Illuminate\Http\Client\Response head(string $url, array $query = [])
@@ -16275,24 +16277,26 @@
          * Captures a message event and sends it to Sentry.
          *
          * @param string $message The message
-         * @param \Sentry\State\Severity $level The severity level of the message
+         * @param \Sentry\State\Severity|null $level The severity level of the message
+         * @param \Sentry\State\EventHint|null $hint Object that can contain additional information about the event
          * @static 
          */ 
-        public static function captureMessage($message, $level = null)
+        public static function captureMessage($message, $level = null, $hint = null)
         {
                         /** @var \Sentry\State\Hub $instance */
-                        return $instance->captureMessage($message, $level);
+                        return $instance->captureMessage($message, $level, $hint);
         }
                     /**
          * Captures an exception event and sends it to Sentry.
          *
          * @param \Throwable $exception The exception
+         * @param \Sentry\State\EventHint|null $hint Object that can contain additional information about the event
          * @static 
          */ 
-        public static function captureException($exception)
+        public static function captureException($exception, $hint = null)
         {
                         /** @var \Sentry\State\Hub $instance */
-                        return $instance->captureException($exception);
+                        return $instance->captureException($exception, $hint);
         }
                     /**
          * Captures a new event using the provided data.
@@ -16309,12 +16313,13 @@
                     /**
          * Captures an event that logs the last occurred error.
          *
+         * @param \Sentry\State\EventHint|null $hint Object that can contain additional information about the event
          * @static 
          */ 
-        public static function captureLastError()
+        public static function captureLastError($hint = null)
         {
                         /** @var \Sentry\State\Hub $instance */
-                        return $instance->captureLastError();
+                        return $instance->captureLastError($hint);
         }
                     /**
          * Records a new breadcrumb which will be attached to future events. They
