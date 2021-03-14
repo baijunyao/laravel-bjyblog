@@ -40,7 +40,7 @@ oss:
 
 # Elasticsearch
 elasticsearch:
-  enabled: false
+  enabled: true
   username: ''
   password: ''
 
@@ -54,8 +54,8 @@ fluentd:
 
 # Prometheus
 prometheus:
-  enabled: false
+  enabled: true
 
 # Grafana
 grafana:
-  enabled: false
+  enabled: true

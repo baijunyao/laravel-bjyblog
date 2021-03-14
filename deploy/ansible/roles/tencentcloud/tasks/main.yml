@@ -125,7 +125,7 @@
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/laravel-bjyblog.git'
     dest: /laravel-bjyblog/site
-    version: feature/ansible
+    version: feature/kubernetes
     depth: 3
 
 - name: Create Helm custom.yaml
