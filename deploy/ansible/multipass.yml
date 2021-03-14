@@ -1,0 +1,5 @@
+- name: laravel-bjyblog-ansible
+  hosts: multipass
+  tasks:
+    - import_role:
+        name: multipass

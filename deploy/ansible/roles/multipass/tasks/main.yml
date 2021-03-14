@@ -1,3 +1,12 @@
+- name: Use Aliyun mirror
+  ansible.builtin.copy:
+    src: files/sources.list
+    dest: /etc/apt/sources.list
+
+- name: Apt update
+  apt:
+    update_cache: yes
+
 - name: Check that the k3s-install.sh exists
   ansible.builtin.stat:
     path: /tmp/k3s-install.sh
@@ -106,7 +115,7 @@
   ansible.builtin.file:
     path: '{{ item }}'
     state: directory
-    mode: '0755'
+    mode: '0777'
   loop:
     - /laravel-bjyblog/mysql
     - /laravel-bjyblog/grafana
@@ -119,14 +128,6 @@
   ansible.builtin.stat:
     path: /laravel-bjyblog/site
   register: site_stat
-
-- name: Git clone laravel-bjyblog
-  when: site_stat.stat.exists == False
-  ansible.builtin.git:
-    repo: 'https://gitee.com/baijunyao/laravel-bjyblog.git'
-    dest: /laravel-bjyblog/site
-    version: feature/kubernetes
-    depth: 3
 
 - name: Create Helm custom.yaml
   ansible.builtin.copy:
@@ -241,16 +242,6 @@
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
-
-- name: Ensure directories are 0755
-  command: find /laravel-bjyblog/site -type d -exec chmod -c 0755 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0644
-  command: find /laravel-bjyblog/site -type f -exec chmod -c 0644 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
 
 - name: Ensure directories are 0777
   command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;

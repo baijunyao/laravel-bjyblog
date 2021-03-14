@@ -5,3 +5,11 @@ tencentcloud:
       ansible_user: ubuntu
       ansible_become: true
       ansible_python_interpreter: /usr/bin/python3
+
+multipass:
+  hosts:
+    k3s:
+      ansible_host: laravel-bjyblog.test
+      ansible_user: ubuntu
+      ansible_become: true
+      ansible_python_interpreter: /usr/bin/python3
