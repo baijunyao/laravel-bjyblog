@@ -41,7 +41,7 @@ oss:
 # Elasticsearch
 elasticsearch:
   enabled: true
-  username: ''
+  username: elastic
   password: ''
 
 # Kibana

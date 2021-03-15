@@ -181,6 +181,74 @@
   pip:
     name: openshift
 
+- name: Read /laravel-bjyblog/site/deploy/helm/custom.yaml
+  ansible.builtin.shell: cat /laravel-bjyblog/site/deploy/helm/custom.yaml
+  register: helm_custom_value
+
+- name: Set elasticsearch_value variable
+  ansible.builtin.set_fact:
+    elasticsearch_value: "{{ (helm_custom_value.stdout | from_yaml_all).0.elasticsearch }}"
+
+- name: Get Elasticsearch pod name
+  when: elasticsearch_value.password == ''
+  community.kubernetes.k8s_info:
+    api_version: v1
+    kind: Pod
+    namespace: blog
+    wait: yes
+    wait_timeout: 600
+    wait_condition:
+      type: Ready
+      status: "True"
+    label_selectors:
+      - app = elasticsearch
+  register: elasticsearch_deployment
+
+- name: Elasticsearch setup passwords
+  when: elasticsearch_value.password == ''
+  community.kubernetes.k8s_exec:
+    namespace: blog
+    pod: '{{ elasticsearch_deployment.resources.0.metadata.name }}'
+    command: /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto -b
+  register: elasticsearch_setup_passwords
+
+- name: Set elasticsearch_value variable
+  when: elasticsearch_value.password == ''
+  ansible.builtin.set_fact:
+    elasticsearch_password: "{{ elasticsearch_setup_passwords.stdout | regex_search('(?<=PASSWORD elastic = )\\w+') | trim }}"
+
+- name: Set elasticsearch.password
+  when: elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  ansible.builtin.replace:
+    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
+    regexp: "^  username: elastic\n  password: ''"
+    replace: '  username: elastic\n  password: {{ elasticsearch_password }}'
+
+- name: Change kibana.enabled to true
+  when: elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  ansible.builtin.replace:
+    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
+    regexp: "^kibana\n  enabled: false"
+    replace: 'kibana\n  enabled: true'
+
+- name: Change fluentd.enabled to true
+  when: elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  ansible.builtin.replace:
+    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
+    regexp: "^fluentd\n  enabled: false"
+    replace: 'fluentd\n  enabled: true'
+
+- name: Helm install
+  when: elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  community.kubernetes.helm:
+    release_name: blog
+    release_namespace: blog
+    create_namespace: true
+    binary_path: /usr/local/bin/helm
+    chart_ref: /laravel-bjyblog/site/deploy/helm/
+    values_files:
+      - /laravel-bjyblog/site/deploy/helm/custom.yaml
+
 - name: Get PHP pod name
   community.kubernetes.k8s_info:
     api_version: v1
