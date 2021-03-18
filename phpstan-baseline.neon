@@ -1076,59 +1076,14 @@ parameters:
 			path: app/Http/Controllers/RedirectController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleController\\:\\:store\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/ArticleController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleController\\:\\:update\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/ArticleController.php
-
-		-
-			message: "#^Cannot call method update\\(\\) on App\\\\Models\\\\Article\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/ArticleController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ArticleImageController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Resources/ArticleImageController.php
 
 		-
 			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
-			path: app/Http/Controllers/Resources/ArticleImageController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\ConfigController\\:\\:uploadQqQunOrCode\\(\\) has no return typehint specified\\.$#"
-			count: 1
 			path: app/Http/Controllers/Resources/ConfigController.php
-
-		-
-			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/ConfigController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\SocialiteUserController\\:\\:show\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/SocialiteUserController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\SocialiteUserController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/SocialiteUserController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\UserController\\:\\:show\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/UserController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Resources\\\\UserController\\:\\:show\\(\\) has parameter \\$id with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/UserController.php
 
 		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"

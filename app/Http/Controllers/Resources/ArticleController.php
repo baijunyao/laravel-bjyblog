@@ -26,7 +26,7 @@ class ArticleController extends Controller
         'created_at',
     ];
 
-    public function store(Store $request, ArticleTag $articleTag)
+    public function store(Store $request, ArticleTag $articleTag): ArticleResource
     {
         $article = Article::create(
             $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')
@@ -37,9 +37,9 @@ class ArticleController extends Controller
         return new ArticleResource($article);
     }
 
-    public function update(Store $request, ArticleTag $articleTag)
+    public function update(Store $request, ArticleTag $articleTag): ArticleResource
     {
-        $article = Article::find($request->route('article'));
+        $article = Article::findOrFail($request->route('article'));
 
         $result = $article->update(
             $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')

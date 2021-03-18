@@ -17,7 +17,10 @@ class UserController extends Controller
 {
     use Index, Update, Destroy, Restore, ForceDelete;
 
-    public function show($id)
+    /**
+     * @param string|int $id
+     */
+    public function show($id): UserResource
     {
         if ($id === 'me') {
             /** @var \App\Models\User $user */
