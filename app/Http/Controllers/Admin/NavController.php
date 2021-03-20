@@ -33,7 +33,7 @@ class NavController extends Controller
 
     public function edit($id)
     {
-        $nav    = Nav::withTrashed()->find($id);
+        $nav    = Nav::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('nav');
 
         return view('admin.nav.edit', $assign);
@@ -41,7 +41,7 @@ class NavController extends Controller
 
     public function update(Request $request, $id)
     {
-        Nav::withTrashed()->find($id)->update($request->except('_token'));
+        Nav::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -55,14 +55,14 @@ class NavController extends Controller
 
     public function restore($id)
     {
-        Nav::onlyTrashed()->find($id)->restore();
+        Nav::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/nav/index'));
     }
 
     public function forceDelete($id)
     {
-        Nav::onlyTrashed()->find($id)->forceDelete();
+        Nav::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/nav/index'));
     }

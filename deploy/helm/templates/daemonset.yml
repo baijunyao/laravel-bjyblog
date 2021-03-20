@@ -1,0 +1,117 @@
+{{- if .Values.fluentd.enabled }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: fluentd
+  template:
+    metadata:
+      labels:
+        app: fluentd
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log
+        - name: config
+          configMap:
+            name: fluentd-config
+            items:
+              - key: config
+                path: kubernetes.conf
+      containers:
+        - name: fluentd
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/fluentd:1.11
+          env:
+            - name:  FLUENT_ELASTICSEARCH_HOST
+              value: "elasticsearch-service"
+            - name:  FLUENT_ELASTICSEARCH_PORT
+              value: "9200"
+            - name:  FLUENT_ELASTICSEARCH_USER
+              value: "{{ .Values.elasticsearch.username }}"
+            - name:  FLUENT_ELASTICSEARCH_PASSWORD
+              value: "{{ .Values.elasticsearch.password }}"
+            - name:  FLUENT_ELASTICSEARCH_SSL_VERIFY
+              value: "false"
+            - name: FLUENTD_SYSTEMD_CONF
+              value: disable
+          volumeMounts:
+            - name: varlog
+              mountPath: /var/log
+            - name: config
+              mountPath: /fluentd/etc/kubernetes.conf
+              subPath: kubernetes.conf
+{{- end }}
+
+{{- if .Values.prometheus.enabled }}
+---
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      hostNetwork: true
+      hostPID: true
+      volumes:
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: root-fs
+          hostPath:
+            path: /
+        - name: dbus
+          hostPath:
+            path: /var/run/dbus/system_bus_socket
+        - name: textfiles
+          hostPath:
+            path: /var/lib/prometheus/node-exporter/
+      containers:
+        - name: node-exporter
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/node-exporter:v1.1.2
+          args:
+            - --collector.textfile.directory=/var/lib/prometheus/node-exporter/
+            - --path.procfs=/host/proc
+            - --path.sysfs=/host/sys
+            - --path.rootfs=/rootfs
+            - --collector.netclass.ignored-devices=^(lo|docker[0-9]|kube-ipvs0|dummy0|veth.+|br\-.+)$
+            - --collector.filesystem.ignored-mount-points=^/(dev|sys|proc|host|etc|var/lib/kubelet|var/lib/docker/.+)($|/)
+            - --collector.filesystem.ignored-fs-types=^(autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|efivarfs|tmpfs|nsfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rootfs|rpc_pipefs|securityfs|sysfs|tracefs)$
+            - --collector.diskstats.ignored-devices=^(ram|loop|fd|(h|s|v|xv)d[a-z]|nvme\d+n\d+p|dm-|sr|nbd)\d+$
+            - --collector.systemd
+            - --no-collector.bcache
+            - --no-collector.infiniband
+            - --no-collector.wifi
+            - --no-collector.ipvs
+          volumeMounts:
+            - name: proc
+              mountPath: /host/proc
+              readOnly:  true
+            - name: sys
+              mountPath: /host/sys
+              readOnly: true
+            - mountPath: /rootfs
+              name: root-fs
+              readOnly: true
+            - mountPath: /var/run/dbus/system_bus_socket
+              name: dbus
+            - mountPath: /var/lib/prometheus/node-exporter/
+              name: textfiles
+
+{{- end }}

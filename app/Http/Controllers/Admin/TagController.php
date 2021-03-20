@@ -37,7 +37,7 @@ class TagController extends Controller
 
     public function edit($id)
     {
-        $data   = Tag::withTrashed()->find($id);
+        $data   = Tag::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.tag.edit', $assign);
@@ -45,7 +45,7 @@ class TagController extends Controller
 
     public function update(Request $request, $id)
     {
-        Tag::withTrashed()->find($id)->update($request->except('_token'));
+        Tag::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -59,14 +59,14 @@ class TagController extends Controller
 
     public function restore($id)
     {
-        Tag::onlyTrashed()->find($id)->restore();
+        Tag::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/tag/index'));
     }
 
     public function forceDelete($id)
     {
-        Tag::onlyTrashed()->find($id)->forceDelete();
+        Tag::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/tag/index'));
     }

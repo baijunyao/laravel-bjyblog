@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Resources;
 
 use App\Http\Requests\ArticleCover\Store;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Date;
 
 class ArticleImageController extends Controller
 {
-    public function store(Store $request)
+    public function store(Store $request): JsonResponse
     {
         $result = [
             'success' => 1,

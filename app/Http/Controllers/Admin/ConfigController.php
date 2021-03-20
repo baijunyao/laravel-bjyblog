@@ -86,7 +86,7 @@ class ConfigController extends Controller
         }
 
         foreach ($configs as $id => $config) {
-            Config::find($id)->update([
+            Config::where('id', $id)->firstOrFail()->update([
                 'value' => is_array($config) ? json_encode($config) : $config,
             ]);
         }

@@ -34,7 +34,7 @@ class CommentController extends Controller
 
     public function edit($id)
     {
-        $comment = Comment::withTrashed()->find($id);
+        $comment = Comment::withTrashed()->where('id', $id)->firstOrFail();
         $assign  = compact('comment');
 
         return view('admin.comment.edit', $assign);
@@ -42,7 +42,7 @@ class CommentController extends Controller
 
     public function update(Request $request, $id)
     {
-        Comment::withTrashed()->find($id)->update($request->except('_token'));
+        Comment::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -56,14 +56,14 @@ class CommentController extends Controller
 
     public function restore($id)
     {
-        Comment::onlyTrashed()->find($id)->restore();
+        Comment::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect()->back();
     }
 
     public function forceDelete($id)
     {
-        Comment::onlyTrashed()->find($id)->forceDelete();
+        Comment::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect()->back();
     }
@@ -80,7 +80,7 @@ class CommentController extends Controller
             ->where('content', 'like', "%$search%")
             ->get();
         foreach ($data as $k => $v) {
-            Comment::find($v->id)->update([
+            Comment::where('id', $v->id)->firstOrFail()->update([
                 'content' => str_replace($search, $request->input('replace'), $v->content),
             ]);
         }

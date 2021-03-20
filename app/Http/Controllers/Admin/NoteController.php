@@ -36,7 +36,7 @@ class NoteController extends Controller
 
     public function edit($id)
     {
-        $data   = Note::withTrashed()->find($id);
+        $data   = Note::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.note.edit', $assign);
@@ -44,7 +44,7 @@ class NoteController extends Controller
 
     public function update(Request $request, $id)
     {
-        Note::withTrashed()->find($id)->update($request->except('_token'));
+        Note::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -58,14 +58,14 @@ class NoteController extends Controller
 
     public function restore($id)
     {
-        Note::onlyTrashed()->find($id)->restore();
+        Note::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/note/index'));
     }
 
     public function forceDelete($id)
     {
-        Note::onlyTrashed()->find($id)->forceDelete();
+        Note::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/note/index'));
     }

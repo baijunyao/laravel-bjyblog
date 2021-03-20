@@ -14,7 +14,10 @@ class LikeController extends Controller
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
-        $socialiteUser->like(Article::find($request->input('article_id')));
+
+        /** @var \App\Models\Article $article */
+        $article = Article::findOrFail($request->input('article_id'));
+        $socialiteUser->like($article);
 
         return response()->json('');
     }
@@ -23,7 +26,9 @@ class LikeController extends Controller
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
-        $socialiteUser->unLike(Article::find($request->input('article_id')));
+        /** @var \App\Models\Article $article */
+        $article = Article::findOrFail($request->input('article_id'));
+        $socialiteUser->unLike($article);
 
         return response()->json('', 201);
     }

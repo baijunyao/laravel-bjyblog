@@ -82,7 +82,7 @@ class ArticleController extends Controller
     {
         $category = Category::all();
         $tag      = Tag::all();
-        $article  = Article::withTrashed()->find($id);
+        $article  = Article::withTrashed()->where('id', $id)->firstOrFail();
         $article->setAttribute('tag_ids', ArticleTag::where('article_id', $id)->pluck('tag_id')->toArray());
 
         return view('admin.article.edit', compact('article', 'category', 'tag'));
@@ -101,7 +101,7 @@ class ArticleController extends Controller
 
         $tag_ids = $article['tag_ids'];
         unset($article['tag_ids']);
-        $result = Article::withTrashed()->find($id)->update($article);
+        $result = Article::withTrashed()->where('id', $id)->firstOrFail()->update($article);
 
         if ($result) {
             ArticleTag::where('article_id', $id)->forceDelete();
@@ -120,14 +120,14 @@ class ArticleController extends Controller
 
     public function restore($id)
     {
-        Article::onlyTrashed()->find($id)->restore();
+        Article::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect()->back();
     }
 
     public function forceDelete($id)
     {
-        Article::onlyTrashed()->find($id)->forceDelete();
+        Article::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect()->back();
     }

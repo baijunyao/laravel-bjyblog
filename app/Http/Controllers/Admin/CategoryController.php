@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $data   = Category::withTrashed()->find($id);
+        $data   = Category::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.category.edit', $assign);
@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
     public function update(Update $request, $id)
     {
-        Category::withTrashed()->find($id)->update($request->except('_token'));
+        Category::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -71,14 +71,14 @@ class CategoryController extends Controller
 
     public function restore($id)
     {
-        Category::onlyTrashed()->find($id)->restore();
+        Category::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/category/index'));
     }
 
     public function forceDelete($id)
     {
-        Category::onlyTrashed()->find($id)->forceDelete();
+        Category::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/category/index'));
     }

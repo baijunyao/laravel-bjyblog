@@ -151,32 +151,19 @@ spec:
         - name: prometheus-pvc
           persistentVolumeClaim:
             claimName: prometheus-pvc
-        - name: prometheus-config
-          emptyDir: {}
-      initContainers:
-        - name: busybox
-          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/busybox:1.32
-          command: ['sh', '-c', "echo \"${PROMETHEUS_CONFIG/node_internal_ip/$NODE_INTERNAL_IP}\" >> /prometheus/prometheus.yml"]
-          env:
-            - name: NODE_INTERNAL_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.hostIP
-            - name: PROMETHEUS_CONFIG
-              valueFrom:
-                configMapKeyRef:
-                  name: prometheus-config
-                  key: config
-          volumeMounts:
-            - name: prometheus-config
-              mountPath: /prometheus
+        - name: config
+          configMap:
+            name: prometheus-config
+            items:
+              - key: config
+                path: prometheus.yml
       containers:
         - name: prometheus
           image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/prometheus:v2.23.0
           volumeMounts:
             - name: prometheus-pvc
               mountPath: /prometheus
-            - name: prometheus-config
+            - name: config
               mountPath: /etc/prometheus/prometheus.yml
               subPath: prometheus.yml
 {{- end }}

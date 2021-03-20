@@ -40,7 +40,7 @@ class OpenSourceController extends Controller
 
     public function edit($id)
     {
-        $data   = OpenSource::withTrashed()->find($id);
+        $data   = OpenSource::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.openSource.edit', $assign);
@@ -48,7 +48,7 @@ class OpenSourceController extends Controller
 
     public function update(Request $request, $id)
     {
-        OpenSource::withTrashed()->find($id)->update($request->except('_token'));
+        OpenSource::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -81,14 +81,14 @@ class OpenSourceController extends Controller
 
     public function restore($id)
     {
-        OpenSource::onlyTrashed()->find($id)->restore();
+        OpenSource::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/openSource/index'));
     }
 
     public function forceDelete($id)
     {
-        OpenSource::onlyTrashed()->find($id)->forceDelete();
+        OpenSource::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/openSource/index'));
     }

@@ -20,7 +20,7 @@ class SocialiteClientController extends Controller
 
     public function edit($id)
     {
-        $socialiteClient   = SocialiteClient::find($id);
+        $socialiteClient   = SocialiteClient::where('id', $id)->firstOrFail();
         $assign            = compact('socialiteClient');
 
         return view('admin.socialiteClient.edit', $assign);
@@ -29,7 +29,7 @@ class SocialiteClientController extends Controller
     public function update(Request $request, $id)
     {
         $socialiteClient = $request->only('client_id', 'client_secret');
-        SocialiteClient::find($id)->update($socialiteClient);
+        SocialiteClient::where('id', $id)->firstOrFail()->update($socialiteClient);
 
         return redirect()->back();
     }

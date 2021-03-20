@@ -81,7 +81,7 @@ if (!function_exists('cdn_url')) {
      */
     function cdn_url($path)
     {
-        return URL::assetFrom(config('bjyblog.cdn_domain'), $path);
+        return Str::startsWith($path, 'http') ? $path : URL::assetFrom(config('bjyblog.cdn_domain'), $path);
     }
 }
 

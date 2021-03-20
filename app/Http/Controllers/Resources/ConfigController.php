@@ -8,6 +8,7 @@ use App\Http\Requests\Config\QqQunOrCode;
 use Baijunyao\LaravelRestful\Traits\Index;
 use Baijunyao\LaravelRestful\Traits\Show;
 use Baijunyao\LaravelRestful\Traits\Update;
+use Illuminate\Http\JsonResponse;
 
 class ConfigController extends Controller
 {
@@ -15,7 +16,7 @@ class ConfigController extends Controller
 
     protected const PER_PAGE = 1000;
 
-    public function uploadQqQunOrCode(QqQunOrCode $request)
+    public function uploadQqQunOrCode(QqQunOrCode $request): JsonResponse
     {
         $result = [
             'success' => 1,

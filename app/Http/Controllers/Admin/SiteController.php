@@ -42,7 +42,7 @@ class SiteController extends Controller
 
     public function edit($id)
     {
-        $site   = Site::withTrashed()->find($id);
+        $site   = Site::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('site');
 
         return view('admin.site.edit', $assign);
@@ -50,7 +50,7 @@ class SiteController extends Controller
 
     public function update(Request $request, $id)
     {
-        Site::withTrashed()->find($id)->update($request->except('_token'));
+        Site::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -83,14 +83,14 @@ class SiteController extends Controller
 
     public function restore($id)
     {
-        Site::onlyTrashed()->find($id)->restore();
+        Site::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/site/index'));
     }
 
     public function forceDelete($id)
     {
-        Site::onlyTrashed()->find($id)->forceDelete();
+        Site::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/site/index'));
     }

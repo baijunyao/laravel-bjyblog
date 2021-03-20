@@ -24,12 +24,15 @@ class SocialiteUserController extends Controller
         'created_at',
     ];
 
-    public function show($id)
+    /**
+     * @param string|int $id
+     */
+    public function show($id): SocialiteUserResource
     {
         if ($id === 'me') {
             $socialiteUser = SocialiteUser::where('is_admin', 1)->firstOrFail();
         } else {
-            $socialiteUser = SocialiteUser::findorFail($id);
+            $socialiteUser = SocialiteUser::where('id', $id)->firstOrFail();
         }
 
         return new SocialiteUserResource($socialiteUser);
