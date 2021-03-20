@@ -59,20 +59,15 @@ class SocialiteController extends Controller
             return redirect(url('/'));
         }
 
-        // 查找此用户是否已经登录过
-        $countMap = [
-            'socialite_client_id'   => $type[$service],
-            'openid'                => $user->id,
-        ];
-
-        $socialiteUser = SocialiteUser::query()->select('id', 'login_times', 'is_admin', 'email')
-            ->where($countMap)
+        $socialiteUser = SocialiteUser::select('id', 'login_times', 'is_admin', 'email')
+            ->where('socialite_client_id', $type[$service])
+            ->where('openid', $user->id)
             ->first();
 
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         $name = $user->nickname ?? $user->name;
 
-        if ($socialiteUser) {
+        if ($socialiteUser !== null) {
             $userId  = $socialiteUser->id;
 
             // 更新数据

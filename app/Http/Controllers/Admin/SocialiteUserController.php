@@ -26,7 +26,7 @@ class SocialiteUserController extends Controller
 
     public function edit($id)
     {
-        $data   = SocialiteUser::find($id);
+        $data   = SocialiteUser::where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.socialiteUser.edit', $assign);
@@ -36,7 +36,7 @@ class SocialiteUserController extends Controller
     {
         $data             = $request->except('_token');
         $data['is_admin'] = $request->input('is_admin', 0);
-        SocialiteUser::find($id)->update($data);
+        SocialiteUser::where('id', $id)->firstOrFail()->update($data);
 
         return redirect()->back();
     }

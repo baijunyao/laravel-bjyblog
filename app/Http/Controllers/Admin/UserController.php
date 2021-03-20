@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $data   = User::withTrashed()->find($id);
+        $data   = User::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.user.edit', $assign);
@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        User::withTrashed()->find($id)->update($request->except('_token'));
+        User::withTrashed()->where('id', $id)->firstOrFail()->update($request->except('_token'));
 
         return redirect()->back();
     }
@@ -42,14 +42,14 @@ class UserController extends Controller
 
     public function restore($id)
     {
-        User::onlyTrashed()->find($id)->restore();
+        User::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/user/index'));
     }
 
     public function forceDelete($id)
     {
-        User::onlyTrashed()->find($id)->forceDelete();
+        User::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect('admin/user/index');
     }

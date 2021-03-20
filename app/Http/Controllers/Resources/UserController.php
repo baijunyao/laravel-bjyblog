@@ -26,7 +26,7 @@ class UserController extends Controller
             /** @var \App\Models\User $user */
             $user = Auth::user();
         } else {
-            $user = User::findorFail($id);
+            $user = User::where('id', $id)->firstOrFail();
         }
 
         return new UserResource($user);

@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.32.1.
+ * Generated for Laravel 8.33.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1255,6 +1255,7 @@
          * @param \Closure|string $concrete
          * @return mixed 
          * @throws \Illuminate\Contracts\Container\BindingResolutionException
+         * @throws \Illuminate\Contracts\Container\CircularDependencyException
          * @static 
          */ 
         public static function build($concrete)
@@ -1897,6 +1898,7 @@
          * @param string $password
          * @param string $attribute
          * @return bool|null 
+         * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
         public static function logoutOtherDevices($password, $attribute = 'password')
@@ -4570,6 +4572,17 @@
                         $instance->recordsHaveBeenModified($value);
         }
                     /**
+         * Reset the record modification state.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function forgetRecordModificationState()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        $instance->forgetRecordModificationState();
+        }
+                    /**
          * Is Doctrine available?
          *
          * @return bool 
@@ -7120,7 +7133,7 @@
          * Get a mailer instance by name.
          *
          * @param string|null $name
-         * @return \Illuminate\Mail\Mailer 
+         * @return \Illuminate\Contracts\Mail\Mailer 
          * @static 
          */ 
         public static function mailer($name = null)
@@ -15493,7 +15506,7 @@
                     /**
          * 
          *
-         * @return \Jenssegers\Agent\CrawlerDetect 
+         * @return \Jaybizzle\CrawlerDetect\CrawlerDetect 
          * @static 
          */ 
         public static function getCrawlerDetect()
@@ -16062,7 +16075,7 @@
                     /**
          * Update multiple rows
          *
-         * @param \Mavinoo\Batch\Model $table
+         * @param \Illuminate\Database\Eloquent\Model $table
          * @param array $values
          * @param string $index
          * @param string|null $index2
@@ -16095,7 +16108,7 @@
                     /**
          * Insert Multi rows.
          *
-         * @param \Mavinoo\Batch\Model $table
+         * @param \Illuminate\Database\Eloquent\Model $table
          * @param array $columns
          * @param array $values
          * @param int $batchSize
@@ -16265,7 +16278,7 @@
                     /**
          * Binds the given client to the current scope.
          *
-         * @param \Sentry\State\ClientInterface $client The client
+         * @param \Sentry\ClientInterface $client The client
          * @static 
          */ 
         public static function bindClient($client)
@@ -16277,8 +16290,8 @@
          * Captures a message event and sends it to Sentry.
          *
          * @param string $message The message
-         * @param \Sentry\State\Severity|null $level The severity level of the message
-         * @param \Sentry\State\EventHint|null $hint Object that can contain additional information about the event
+         * @param \Sentry\Severity|null $level The severity level of the message
+         * @param \Sentry\EventHint|null $hint Object that can contain additional information about the event
          * @static 
          */ 
         public static function captureMessage($message, $level = null, $hint = null)
@@ -16290,7 +16303,7 @@
          * Captures an exception event and sends it to Sentry.
          *
          * @param \Throwable $exception The exception
-         * @param \Sentry\State\EventHint|null $hint Object that can contain additional information about the event
+         * @param \Sentry\EventHint|null $hint Object that can contain additional information about the event
          * @static 
          */ 
         public static function captureException($exception, $hint = null)
@@ -16302,7 +16315,7 @@
          * Captures a new event using the provided data.
          *
          * @param \Event $event The event being captured
-         * @param \Sentry\State\EventHint|null $hint May contain additional information about the event
+         * @param \Sentry\EventHint|null $hint May contain additional information about the event
          * @static 
          */ 
         public static function captureEvent($event, $hint = null)
@@ -16313,7 +16326,7 @@
                     /**
          * Captures an event that logs the last occurred error.
          *
-         * @param \Sentry\State\EventHint|null $hint Object that can contain additional information about the event
+         * @param \Sentry\EventHint|null $hint Object that can contain additional information about the event
          * @static 
          */ 
         public static function captureLastError($hint = null)
@@ -16326,7 +16339,7 @@
          * will be added to subsequent events to provide more context on user's
          * actions prior to an error or crash.
          *
-         * @param \Sentry\State\Breadcrumb $breadcrumb The breadcrumb to record
+         * @param \Sentry\Breadcrumb $breadcrumb The breadcrumb to record
          * @return bool Whether the breadcrumb was actually added to the current scope
          * @static 
          */ 
@@ -16365,7 +16378,7 @@
          * Sentry.
          *
          * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
-         * @param \Sentry\State\TransactionContext $context Properties of the new transaction
+         * @param \Sentry\Tracing\TransactionContext $context Properties of the new transaction
          * @param \Sentry\State\array<string,  mixed> $customSamplingContext Additional context that will be passed to the {@see SamplingContext}
          * @static 
          */ 
@@ -16389,7 +16402,7 @@
                     /**
          * Sets the span on the Hub.
          *
-         * @param \Sentry\State\Span|null $span The span
+         * @param \Sentry\Tracing\Span|null $span The span
          * @static 
          */ 
         public static function setSpan($span)

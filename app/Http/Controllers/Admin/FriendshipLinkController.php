@@ -36,7 +36,7 @@ class FriendshipLinkController extends Controller
 
     public function edit($id)
     {
-        $data   = FriendshipLink::withTrashed()->find($id);
+        $data   = FriendshipLink::withTrashed()->where('id', $id)->firstOrFail();
         $assign = compact('data');
 
         return view('admin.friendshipLink.edit', $assign);
@@ -50,7 +50,7 @@ class FriendshipLinkController extends Controller
             $friendshipLink['sort'] = null;
         }
 
-        FriendshipLink::withTrashed()->find($id)->update($friendshipLink);
+        FriendshipLink::withTrashed()->where('id', $id)->firstOrFail()->update($friendshipLink);
 
         return redirect()->back();
     }
@@ -83,14 +83,14 @@ class FriendshipLinkController extends Controller
 
     public function restore($id)
     {
-        FriendshipLink::onlyTrashed()->find($id)->restore();
+        FriendshipLink::onlyTrashed()->where('id', $id)->firstOrFail()->restore();
 
         return redirect(url('admin/friendshipLink/index'));
     }
 
     public function forceDelete($id)
     {
-        FriendshipLink::onlyTrashed()->find($id)->forceDelete();
+        FriendshipLink::onlyTrashed()->where('id', $id)->firstOrFail()->forceDelete();
 
         return redirect(url('admin/friendshipLink/index'));
     }

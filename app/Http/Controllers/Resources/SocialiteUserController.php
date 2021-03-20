@@ -32,7 +32,7 @@ class SocialiteUserController extends Controller
         if ($id === 'me') {
             $socialiteUser = SocialiteUser::where('is_admin', 1)->firstOrFail();
         } else {
-            $socialiteUser = SocialiteUser::findorFail($id);
+            $socialiteUser = SocialiteUser::where('id', $id)->firstOrFail();
         }
 
         return new SocialiteUserResource($socialiteUser);

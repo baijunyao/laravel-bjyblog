@@ -33,7 +33,7 @@ class CommentController extends Controller
         if ($parent_id === 0) {
             $comment = Comment::create($newComment);
         } else {
-            $comment = Comment::find($parent_id)->children()->create($newComment);
+            $comment = Comment::where('id', $parent_id)->firstOrFail()->children()->create($newComment);
         }
 
         return response()->json(['id' => $comment->id]);
