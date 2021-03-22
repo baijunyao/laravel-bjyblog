@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Resources;
 
-use Baijunyao\LaravelTestSupport\Rest\TestDestroy;
-use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
-use Baijunyao\LaravelTestSupport\Rest\TestIndex;
-use Baijunyao\LaravelTestSupport\Rest\TestRestore;
-use Baijunyao\LaravelTestSupport\Rest\TestShow;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdateValidation;
+use Baijunyao\LaravelTestSupport\Restful\TestDestroy;
+use Baijunyao\LaravelTestSupport\Restful\TestForceDelete;
+use Baijunyao\LaravelTestSupport\Restful\TestIndex;
+use Baijunyao\LaravelTestSupport\Restful\TestRestore;
+use Baijunyao\LaravelTestSupport\Restful\TestShow;
+use Baijunyao\LaravelTestSupport\Restful\TestUpdate;
+use Baijunyao\LaravelTestSupport\Restful\TestUpdateValidation;
 
 class UserControllerTest extends TestCase
 {

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Resources;
 
-use Baijunyao\LaravelTestSupport\Rest\TestIndex;
-use Baijunyao\LaravelTestSupport\Rest\TestShow;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdate;
+use Baijunyao\LaravelTestSupport\Restful\TestIndex;
+use Baijunyao\LaravelTestSupport\Restful\TestShow;
+use Baijunyao\LaravelTestSupport\Restful\TestUpdate;
 
 class SocialiteClientControllerTest extends TestCase
 {

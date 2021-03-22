@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Resources;
 
-use Baijunyao\LaravelTestSupport\Rest\TestStore;
+use Baijunyao\LaravelTestSupport\Restful\TestStore;
 use Illuminate\Http\UploadedFile;
 
 class ArticleImageControllerTest extends TestCase

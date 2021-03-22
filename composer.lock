@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcee7007a72c2993c18e2e672c8932cc",
+    "content-hash": "473066d7f7b7f618b544d561ff853950",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -11737,16 +11737,16 @@
     "packages-dev": [
         {
             "name": "baijunyao/laravel-test-support",
-            "version": "v5.0.0",
+            "version": "v6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-test-support.git",
-                "reference": "87b3c9bb1aa2f3caa46e40e683e8b263b24c1693"
+                "reference": "7bfd73fcbaf2fa91aab280a0d9d3f1b538e13831"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/87b3c9bb1aa2f3caa46e40e683e8b263b24c1693",
-                "reference": "87b3c9bb1aa2f3caa46e40e683e8b263b24c1693",
+                "url": "https://api.github.com/repos/baijunyao/laravel-test-support/zipball/7bfd73fcbaf2fa91aab280a0d9d3f1b538e13831",
+                "reference": "7bfd73fcbaf2fa91aab280a0d9d3f1b538e13831",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11788,9 +11788,9 @@
             ],
             "support": {
                 "issues": "https://github.com/baijunyao/laravel-test-support/issues",
-                "source": "https://github.com/baijunyao/laravel-test-support/tree/v5.0.0"
+                "source": "https://github.com/baijunyao/laravel-test-support/tree/v6.0.0"
             },
-            "time": "2021-02-28T13:21:35+00:00"
+            "time": "2021-03-21T04:12:48+00:00"
         },
         {
             "name": "barryvdh/laravel-ide-helper",
