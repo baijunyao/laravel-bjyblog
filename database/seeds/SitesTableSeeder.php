@@ -16,7 +16,6 @@ class SitesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sites')->truncate();
         DB::table('sites')->insert([
             [
                 'id'                => 1,
