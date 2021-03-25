@@ -16,7 +16,6 @@ class OpenSourcesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('open_sources')->truncate();
         DB::table('open_sources')->insert([
             [
                 'id'         => 1,
