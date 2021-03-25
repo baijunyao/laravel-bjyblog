@@ -158,7 +158,13 @@
     values_files:
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
 
+- name: Check that the .env exists
+  ansible.builtin.stat:
+    path: /laravel-bjyblog/site/.env
+  register: env_stat
+
 - name: Create .env
+  when: env_stat.stat.exists == False
   ansible.builtin.copy:
     remote_src: yes
     force: no
@@ -167,6 +173,7 @@
     mode: '0644'
 
 - name: Edit .env
+  when: env_stat.stat.exists == False
   ansible.builtin.lineinfile:
     path: /laravel-bjyblog/site/.env
     regexp: '^APP_URL=http://laravel-bjyblog.test'
@@ -270,12 +277,7 @@
     command: composer install
 
 - name: Execute key:generate
-  community.kubernetes.k8s_exec:
-    namespace: blog
-    pod: '{{ php_deployment.resources.0.metadata.name }}'
-    command: php artisan key:generate
-
-- name: Execute key:generate
+  when: env_stat.stat.exists == False
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
@@ -288,6 +290,7 @@
     command: php artisan migrate
 
 - name: Execute php artisan db:seed
+  when: env_stat.stat.exists == False
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
@@ -306,6 +309,7 @@
     command: php artisan storage:link
 
 - name: Execute php artisan passport:keys
+  when: env_stat.stat.exists == False
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
