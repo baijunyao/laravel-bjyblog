@@ -1,5 +1,5 @@
 - name: laravel-bjyblog-ansible
-  hosts: tencentcloud
+  hosts: production
   tasks:
     - import_role:
-        name: tencentcloud
+        name: laravel
