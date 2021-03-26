@@ -1,0 +1,4 @@
+users:
+  - name: ubuntu
+    lock_passwd: false
+    hashed_passwd: '$6$mzvvSd6W0T$gKaJSr9UKm6rDlOYIxV6H0akXjhslLh1/KejhmQWs9Nywh3XAEl4pPVrcndWt5R8Ys4NdiGQb.v4S3Tj6OPOZ1'
