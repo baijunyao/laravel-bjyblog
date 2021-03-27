@@ -16,8 +16,6 @@ class ConfigsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('configs')->truncate();
-
         DB::table('configs')->insert([
             [
                 'id'         => 101,

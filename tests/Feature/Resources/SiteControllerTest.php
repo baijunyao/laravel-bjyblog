@@ -6,14 +6,14 @@ namespace Tests\Feature\Resources;
 
 use App\Models\SocialiteUser;
 use App\Notifications\SiteAudit;
-use Baijunyao\LaravelTestSupport\Rest\TestDestroy;
-use Baijunyao\LaravelTestSupport\Rest\TestForceDelete;
-use Baijunyao\LaravelTestSupport\Rest\TestIndex;
-use Baijunyao\LaravelTestSupport\Rest\TestRestore;
-use Baijunyao\LaravelTestSupport\Rest\TestShow;
-use Baijunyao\LaravelTestSupport\Rest\TestStore;
-use Baijunyao\LaravelTestSupport\Rest\TestStoreValidation;
-use Baijunyao\LaravelTestSupport\Rest\TestUpdateValidation;
+use Baijunyao\LaravelTestSupport\Restful\TestDestroy;
+use Baijunyao\LaravelTestSupport\Restful\TestForceDelete;
+use Baijunyao\LaravelTestSupport\Restful\TestIndex;
+use Baijunyao\LaravelTestSupport\Restful\TestRestore;
+use Baijunyao\LaravelTestSupport\Restful\TestShow;
+use Baijunyao\LaravelTestSupport\Restful\TestStore;
+use Baijunyao\LaravelTestSupport\Restful\TestStoreValidation;
+use Baijunyao\LaravelTestSupport\Restful\TestUpdateValidation;
 use Notification;
 
 class SiteControllerTest extends TestCase

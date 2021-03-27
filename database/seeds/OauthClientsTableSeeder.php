@@ -16,7 +16,6 @@ class OauthClientsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('oauth_clients')->truncate();
         DB::table('oauth_clients')->insert([
             [
                 'id'                     => 1,
