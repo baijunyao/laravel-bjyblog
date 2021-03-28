@@ -163,8 +163,8 @@
   when: inventory_hostname == 'tencentcloud'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
-    regexp: "^elasticsearch\n  enabled: true"
-    replace: 'elasticsearch\n  enabled: false'
+    regexp: "^elasticsearch:\n  enabled: true"
+    replace: 'elasticsearch:\n  enabled: false'
 
 - name: Remove /laravel-bjyblog/prometheus/lock
   ansible.builtin.file:
@@ -181,26 +181,25 @@
     values_files:
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
 
-- name: Check that the .env exists
-  ansible.builtin.stat:
-    path: /laravel-bjyblog/site/.env
-  register: env_stat
+- name: Ensure directories are 0777
+  command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
 
-- name: Create .env
-  when: env_stat.stat.exists == False
-  ansible.builtin.copy:
-    remote_src: yes
-    force: no
-    src: /laravel-bjyblog/site/.env.k8s
-    dest: /laravel-bjyblog/site/.env
-    mode: '0644'
+- name: Ensure directories are 0777
+  command: find /laravel-bjyblog/site/bootstrap -type d -exec chmod -c 0777 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
 
-- name: Edit .env
-  when: env_stat.stat.exists == False
-  ansible.builtin.lineinfile:
-    path: /laravel-bjyblog/site/.env
-    regexp: '^APP_URL=http://laravel-bjyblog.test'
-    line: 'APP_URL=http://{{ ansible_host }}'
+- name: Ensure files are 0666
+  command: find /laravel-bjyblog/site/storage -type f -exec chmod -c 0666 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
+
+- name: Ensure files are 0666
+  command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
 
 - name: Install pip3
   apt:
@@ -222,7 +221,7 @@
     elasticsearch_value: "{{ (helm_custom_value.stdout | from_yaml_all).0.elasticsearch }}"
 
 - name: Get Elasticsearch pod name
-  when: elasticsearch_value.password == '' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == ''
   community.kubernetes.k8s_info:
     api_version: v1
     kind: Pod
@@ -237,7 +236,7 @@
   register: elasticsearch_deployment
 
 - name: Elasticsearch setup passwords
-  when: elasticsearch_value.password == '' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == ''
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ elasticsearch_deployment.resources.0.metadata.name }}'
@@ -245,33 +244,33 @@
   register: elasticsearch_setup_passwords
 
 - name: Set elasticsearch_value variable
-  when: elasticsearch_value.password == '' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == ''
   ansible.builtin.set_fact:
     elasticsearch_password: "{{ elasticsearch_setup_passwords.stdout | regex_search('(?<=PASSWORD elastic = )\\w+') | trim }}"
 
 - name: Set elasticsearch.password
-  when: elasticsearch_value.password == '' and elasticsearch_password != 'None' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^  username: elastic\n  password: ''"
     replace: '  username: elastic\n  password: {{ elasticsearch_password }}'
 
 - name: Change kibana.enabled to true
-  when: elasticsearch_value.password == '' and elasticsearch_password != 'None' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
-    regexp: "^kibana\n  enabled: false"
-    replace: 'kibana\n  enabled: true'
+    regexp: "^kibana:\n  enabled: false"
+    replace: 'kibana:\n  enabled: true'
 
 - name: Change fluentd.enabled to true
-  when: elasticsearch_value.password == '' and elasticsearch_password != 'None' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
-    regexp: "^fluentd\n  enabled: false"
-    replace: 'fluentd\n  enabled: true'
+    regexp: "^fluentd:\n  enabled: false"
+    replace: 'fluentd:\n  enabled: true'
 
 - name: Helm install
-  when: elasticsearch_value.password == '' and elasticsearch_password != 'None' and inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   community.kubernetes.helm:
     release_name: blog
     release_namespace: blog
@@ -301,8 +300,33 @@
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: composer install
 
-- name: Execute key:generate
+- name: Check that the .env exists
+  ansible.builtin.stat:
+    path: /laravel-bjyblog/site/.env
+  register: env_stat
+
+- name: Create .env
   when: env_stat.stat.exists == False
+  ansible.builtin.copy:
+    remote_src: yes
+    force: no
+    src: /laravel-bjyblog/site/.env.k8s
+    dest: /laravel-bjyblog/site/.env
+    mode: '0644'
+
+- name: Edit .env
+  when: env_stat.stat.exists == False
+  ansible.builtin.lineinfile:
+    path: /laravel-bjyblog/site/.env
+    regexp: '^APP_URL=http://laravel-bjyblog.test'
+    line: 'APP_URL=http://{{ ansible_host }}'
+
+- name: Get Laravel APP_KEY
+  ansible.builtin.shell: set -o allexport && source /laravel-bjyblog/site/.env executable=/bin/bash && set +o allexport && printenv APP_KEY
+  register: app_key_result
+
+- name: Execute key:generate
+  when: app_key_result.stdout == ''
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
@@ -333,29 +357,14 @@
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan storage:link
 
+- name: Check that the oauth-private.key exists
+  ansible.builtin.stat:
+    path: /laravel-bjyblog/site/storage/oauth-private.key
+  register: oauth_key_stat
+
 - name: Execute php artisan passport:keys
-  when: env_stat.stat.exists == False
+  when: oauth_key_stat.stat.exists == False
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
-
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/bootstrap -type d -exec chmod -c 0777 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/storage -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
