@@ -16,6 +16,12 @@ class NavsTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('navs')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('navs')->insert([
             [
                 'id'         => 1,

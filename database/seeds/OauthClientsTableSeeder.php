@@ -16,6 +16,12 @@ class OauthClientsTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('oauth_clients')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('oauth_clients')->insert([
             [
                 'id'                     => 1,
