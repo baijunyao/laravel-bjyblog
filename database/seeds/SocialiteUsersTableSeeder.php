@@ -16,6 +16,12 @@ class SocialiteUsersTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('socialite_users')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('socialite_users')->insert([
             [
                 'id'                           => 1,

@@ -16,6 +16,12 @@ class ArticleTagsTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('article_tags')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('article_tags')->insert([
             [
                 'article_id' => 1,

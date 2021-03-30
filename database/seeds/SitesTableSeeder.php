@@ -16,6 +16,12 @@ class SitesTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('sites')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('sites')->insert([
             [
                 'id'                => 1,
