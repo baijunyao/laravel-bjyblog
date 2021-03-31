@@ -1,11 +1,11 @@
 - name: Use Aliyun mirror
-  when: inventory_hostname == 'multipass'
+  when: inventory_hostname == 'local'
   ansible.builtin.copy:
     src: files/sources.list
     dest: /etc/apt/sources.list
 
 - name: Apt update
-  when: inventory_hostname == 'multipass'
+  when: inventory_hostname == 'local'
   apt:
     update_cache: yes
 
@@ -153,14 +153,8 @@
     regexp: '^host: laravel-bjyblog.test'
     line: 'host: {{ ansible_host }}'
 
-- name: Edit host of Helm custom.yaml
-  ansible.builtin.lineinfile:
-    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
-    regexp: '^host: laravel-bjyblog.test'
-    line: 'host: {{ ansible_host }}'
-
 - name: Change elasticsearch.enabled to false
-  when: inventory_hostname == 'tencentcloud'
+  when: inventory_hostname == 'development'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^elasticsearch:\n  enabled: true"
@@ -181,26 +175,6 @@
     values_files:
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
 
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/bootstrap -type d -exec chmod -c 0777 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/storage -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
 - name: Install pip3
   apt:
     name: python3-pip
@@ -211,17 +185,17 @@
     name: openshift
 
 - name: Read /laravel-bjyblog/site/deploy/helm/custom.yaml
-  when: inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'development'
   ansible.builtin.shell: cat /laravel-bjyblog/site/deploy/helm/custom.yaml
   register: helm_custom_value
 
 - name: Set elasticsearch_value variable
-  when: inventory_hostname != 'tencentcloud'
+  when: inventory_hostname != 'development'
   ansible.builtin.set_fact:
     elasticsearch_value: "{{ (helm_custom_value.stdout | from_yaml_all).0.elasticsearch }}"
 
 - name: Get Elasticsearch pod name
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == ''
+  when: inventory_hostname != 'development' and elasticsearch_value.password == ''
   community.kubernetes.k8s_info:
     api_version: v1
     kind: Pod
@@ -236,7 +210,7 @@
   register: elasticsearch_deployment
 
 - name: Elasticsearch setup passwords
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == ''
+  when: inventory_hostname != 'development' and elasticsearch_value.password == ''
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ elasticsearch_deployment.resources.0.metadata.name }}'
@@ -244,33 +218,33 @@
   register: elasticsearch_setup_passwords
 
 - name: Set elasticsearch_value variable
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == ''
+  when: inventory_hostname != 'development' and elasticsearch_value.password == ''
   ansible.builtin.set_fact:
     elasticsearch_password: "{{ elasticsearch_setup_passwords.stdout | regex_search('(?<=PASSWORD elastic = )\\w+') | trim }}"
 
 - name: Set elasticsearch.password
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^  username: elastic\n  password: ''"
     replace: '  username: elastic\n  password: {{ elasticsearch_password }}'
 
 - name: Change kibana.enabled to true
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^kibana:\n  enabled: false"
     replace: 'kibana:\n  enabled: true'
 
 - name: Change fluentd.enabled to true
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^fluentd:\n  enabled: false"
     replace: 'fluentd:\n  enabled: true'
 
 - name: Helm install
-  when: inventory_hostname != 'tencentcloud' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
   community.kubernetes.helm:
     release_name: blog
     release_namespace: blog
@@ -360,3 +334,23 @@
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
+
+- name: Ensure directories are 0777
+  command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
+
+- name: Ensure directories are 0777
+  command: find /laravel-bjyblog/site/bootstrap -type d -exec chmod -c 0777 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
+
+- name: Ensure files are 0666
+  command: find /laravel-bjyblog/site/storage -type f -exec chmod -c 0666 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
+
+- name: Ensure files are 0666
+  command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
