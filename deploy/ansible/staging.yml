@@ -1,0 +1,5 @@
+- name: laravel-bjyblog-ansible
+  hosts: staging
+  tasks:
+    - import_role:
+        name: laravel

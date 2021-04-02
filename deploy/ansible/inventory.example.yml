@@ -1,23 +1,22 @@
-local:
+blog:
   hosts:
-    multipass:
-      ansible_host: laravel-bjyblog.test
+    local:
+      ansible_host: local.laravel-bjyblog.test
       ansible_user: ubuntu
       ansible_become: true
       ansible_python_interpreter: /usr/bin/python3
-
-development:
-  hosts:
-    tencentcloud:
-      ansible_host: laravel-bjyblog.test
+    development:
+      ansible_host: development.laravel-bjyblog.test
       ansible_user: ubuntu
       ansible_become: true
       ansible_python_interpreter: /usr/bin/python3
-
-production:
-  hosts:
-    aliyun:
-      ansible_host: laravel-bjyblog.test
+    staging:
+      ansible_host: staging.laravel-bjyblog.test
+      ansible_user: ubuntu
+      ansible_become: true
+      ansible_python_interpreter: /usr/bin/python3
+    production:
+      ansible_host: production.laravel-bjyblog.test
       ansible_user: ubuntu
       ansible_become: true
       ansible_python_interpreter: /usr/bin/python3
