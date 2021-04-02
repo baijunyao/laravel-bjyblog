@@ -16,6 +16,12 @@ class NotesTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('notes')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('notes')->insert([
             [
                 'id'         => 1,

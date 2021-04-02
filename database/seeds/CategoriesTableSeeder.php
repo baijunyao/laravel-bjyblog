@@ -16,6 +16,12 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('categories')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('categories')->insert([
             [
                 'id'          => 1,

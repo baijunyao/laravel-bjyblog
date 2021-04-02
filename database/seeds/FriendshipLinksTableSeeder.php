@@ -16,6 +16,12 @@ class FriendshipLinksTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('friendship_links')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('friendship_links')->insert([
             [
                 'id'         => 1,

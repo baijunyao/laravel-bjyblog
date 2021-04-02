@@ -16,6 +16,12 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('users')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('users')->insert([
             [
                 'id'             => 1,

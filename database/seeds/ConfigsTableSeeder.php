@@ -16,6 +16,12 @@ class ConfigsTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('configs')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('configs')->insert([
             [
                 'id'         => 101,

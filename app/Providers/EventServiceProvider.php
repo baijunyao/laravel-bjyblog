@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -16,18 +14,10 @@ class EventServiceProvider extends ServiceProvider
      * @var array<string,array<int,string>>
      */
     protected $listen = [
-        Registered::class => [
-            SendEmailVerificationNotification::class,
-        ],
-
         \SocialiteProviders\Manager\SocialiteWasCalled::class => [
-            'SocialiteProviders\\Weibo\\WeiboExtendSocialite@handle',
-            'SocialiteProviders\\QQ\\QqExtendSocialite@handle',
-            'SocialiteProviders\\VKontakte\\VKontakteExtendSocialite@handle',
-        ],
-
-        'App\Events\SiteAudit' => [
-            'App\Listeners\SendSiteAuditNotification',
+            \SocialiteProviders\Weibo\WeiboExtendSocialite::class,
+            \SocialiteProviders\QQ\QqExtendSocialite::class,
+            \SocialiteProviders\VKontakte\VKontakteExtendSocialite::class,
         ],
     ];
 

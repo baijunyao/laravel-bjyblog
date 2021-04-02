@@ -16,6 +16,12 @@ class OpenSourcesTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('open_sources')->exists()) {
+            $this->command->getOutput()->writeln('<question>Skipping: ' . __CLASS__ . '</question>');
+
+            return;
+        }
+
         DB::table('open_sources')->insert([
             [
                 'id'         => 1,
