@@ -996,46 +996,6 @@ parameters:
 			path: app/Http/Controllers/Home/TagController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:authOauthRedirectToProvider\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:authOauthRedirectToProvider\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:handleProviderCallback\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:handleProviderCallback\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:note\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:openSource\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\RedirectController\\:\\:login\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/RedirectController.php
-
-		-
 			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
 			count: 1
 			path: app/Http/Controllers/Resources/ArticleImageController.php
