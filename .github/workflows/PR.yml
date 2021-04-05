@@ -59,6 +59,19 @@ jobs:
         run: |
           ./vendor/bin/phpstan analyse --ansi
 
+  helm_lint:
+    name: Helm Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+      - name: Run Helm lint
+        run: |
+          cd deploy/helm
+          helm lint
+
   php_7_4_mysql_5_6:
     name: PHP7.4+MySQL5.6
     runs-on: ubuntu-latest
