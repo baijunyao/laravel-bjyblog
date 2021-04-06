@@ -136,8 +136,8 @@
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/laravel-bjyblog.git'
     dest: /laravel-bjyblog/site
-    version: develop
-    depth: 3
+    version: feature/ansible
+    depth: 1
 
 - name: Create Helm custom.yaml
   ansible.builtin.copy:
@@ -354,3 +354,9 @@
   command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
+
+- name: Edit host of Helm custom.yaml
+  ansible.builtin.lineinfile:
+    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
+    regexp: '^backup_before_update: false'
+    line: 'backup_before_update: true'
