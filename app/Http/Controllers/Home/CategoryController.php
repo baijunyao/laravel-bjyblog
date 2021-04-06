@@ -6,10 +6,11 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
-    public function show(Category $category)
+    public function show(Category $category): View
     {
         $articles = $category->articles()
             ->orderBy('created_at', 'desc')

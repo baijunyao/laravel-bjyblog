@@ -10,11 +10,13 @@ use App\Models\Article;
 use App\Models\Comment;
 use Cache;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Str;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $articles = Article::select(
             'id', 'category_id', 'title',
@@ -41,7 +43,7 @@ class ArticleController extends Controller
         return view('home.index.index', $assign);
     }
 
-    public function show(Article $article, Request $request, Comment $commentModel)
+    public function show(Article $article, Request $request): View
     {
         $ipAndId = 'articleRequestList' . $request->ip() . ':' . $article->id;
 
@@ -107,7 +109,7 @@ class ArticleController extends Controller
         return view('home.index.article', $assign);
     }
 
-    public function search(Request $request, Article $articleModel)
+    public function search(Request $request): Response
     {
         if (Agent::isRobot()) {
             abort(404);

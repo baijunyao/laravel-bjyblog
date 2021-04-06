@@ -8,11 +8,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Comment\Store;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Str;
 
 class CommentController extends Controller
 {
-    public function store(Store $request)
+    public function store(Store $request): JsonResponse
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();

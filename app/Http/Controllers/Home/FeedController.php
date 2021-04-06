@@ -7,14 +7,13 @@ namespace App\Http\Controllers\Home;
 use App;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use Illuminate\Http\Response;
 
 class FeedController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
-        $articles = Article::select('id', 'author', 'title', 'description', 'html', 'created_at')
-            ->latest()
-            ->get();
+        $articles = Article::latest()->get();
 
         $feed              = App::make('feed');
         $feed->title       = config('app.name');
@@ -22,7 +21,7 @@ class FeedController extends Controller
         $feed->logo        = asset('uploads/avatar/1.jpg');
         $feed->link        = url('feed');
         $feed->setDateFormat('carbon');
-        $feed->pubdate     = $articles->first()->created_at;
+        $feed->pubdate     = $articles->first()->created_at ?? '';
         $feed->lang        = config('app.locale');
         $feed->ctype       = 'application/xml';
         $feed->setShortening(true);

@@ -6,10 +6,11 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
+use Illuminate\View\View;
 
 class TagController extends Controller
 {
-    public function show(Tag $tag)
+    public function show(Tag $tag): View
     {
         $articles = $tag->articles()
             ->orderBy('created_at', 'desc')
