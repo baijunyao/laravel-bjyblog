@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   phpcs:
@@ -310,7 +310,7 @@ jobs:
     name: Slack Notify
     runs-on: ubuntu-latest
     needs: [phpcs, phpstan, helm_lint, php_7_4_mysql_5_6, php_7_4_mysql_5_7, php_7_4_mysql_8_0, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
-    if: always()
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Slack Notify
         uses: baijunyao/action-slack-notify@v3.0.0
