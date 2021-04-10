@@ -9,11 +9,13 @@ use App\Http\Requests\Site\Store;
 use App\Models\Site;
 use App\Models\SocialiteUser;
 use App\Notifications\SiteApply;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 use Notification;
 
 class SiteController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $site = Site::select('id', 'name', 'url', 'description')
             ->where('audit', 1)
@@ -34,7 +36,7 @@ class SiteController extends Controller
         return view('home.site.index', $assign);
     }
 
-    public function store(Store $request)
+    public function store(Store $request): JsonResponse
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
