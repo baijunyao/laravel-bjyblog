@@ -15,16 +15,17 @@
   register: k3s_install_stat
 
 - name: Download k3s-install.sh
-  when: k3s_install_stat.stat.exists == False
+  when: not k3s_install_stat.stat.exists
   ansible.builtin.get_url:
     url: http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh
     dest: /tmp/k3s-install.sh
     mode: 0700
 
 - name: Creates /var/lib/rancher/k3s/server/manifests/ directory
-  file:
+  ansible.builtin.file:
     path: /var/lib/rancher/k3s/server/manifests/
     state: directory
+    mode: '0644'
 
 - name: Copy traefik-config.yaml from local to remote
   ansible.builtin.copy:
@@ -33,7 +34,7 @@
     dest: /var/lib/rancher/k3s/server/manifests/traefik-config.yaml
 
 - name: Install k3s
-  when: k3s_install_stat.stat.exists == False
+  when: not k3s_install_stat.stat.exists
   ansible.builtin.shell: INSTALL_K3S_MIRROR=cn INSTALL_K3S_SKIP_START=true /tmp/k3s-install.sh --write-kubeconfig-mode 644
 
 - name: Start k3s
@@ -48,7 +49,7 @@
   register: containerd_config_stat
 
 - name: Copy containerd config.toml
-  when: containerd_config_stat.stat.exists == False
+  when: not containerd_config_stat.stat.exists
   ansible.builtin.copy:
     remote_src: yes
     force: no
@@ -56,7 +57,7 @@
     dest: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
 
 - name: Edit config.toml.tmpl
-  when: containerd_config_stat.stat.exists == False
+  when: not containerd_config_stat.stat.exists
   blockinfile:
     path: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
     block: |
@@ -65,7 +66,7 @@
           endpoint = ["https://mirror.ccs.tencentyun.com"]
 
 - name: Restart k3s
-  when: containerd_config_stat.stat.exists == False
+  when: not containerd_config_stat.stat.exists
   ansible.builtin.systemd:
     name: k3s
     state: restarted
@@ -77,21 +78,21 @@
   register: helm_stat
 
 - name: Download helm-v3.5.2-linux-amd64.tar.gz
-  when: helm_stat.stat.exists == False
+  when: not helm_stat.stat.exists
   ansible.builtin.get_url:
     url: https://repo.huaweicloud.com/helm/v3.5.2/helm-v3.5.2-linux-amd64.tar.gz
     dest: /tmp/helm-v3.5.2-linux-amd64.tar.gz
     mode: 0700
 
 - name: Unarchive helm-v3.5.2-linux-amd64.tar.gz
-  when: helm_stat.stat.exists == False
+  when: not helm_stat.stat.exists
   ansible.builtin.unarchive:
     src: /tmp/helm-v3.5.2-linux-amd64.tar.gz
     dest: /tmp
     remote_src: yes
 
 - name: Copy Helm binary to /usr/local/bin/helm
-  when: helm_stat.stat.exists == False
+  when: not helm_stat.stat.exists
   ansible.builtin.copy:
     remote_src: yes
     force: no
@@ -110,7 +111,7 @@
     state: directory
 
 - name: Generate kube config
-  when: kube_config_stat.stat.exists == False
+  when: not kube_config_stat.stat.exists
   ansible.builtin.shell: kubectl config view --raw > ~/.kube/config
 
 - name: Create laravel-bjyblog path
@@ -132,7 +133,7 @@
   register: site_stat
 
 - name: Git clone laravel-bjyblog
-  when: site_stat.stat.exists == False
+  when: not site_stat.stat.exists
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/laravel-bjyblog.git'
     dest: /laravel-bjyblog/site
@@ -195,7 +196,9 @@
     elasticsearch_value: "{{ (helm_custom_value.stdout | from_yaml_all).0.elasticsearch }}"
 
 - name: Get Elasticsearch pod name
-  when: inventory_hostname != 'development' and elasticsearch_value.password == ''
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
   community.kubernetes.k8s_info:
     api_version: v1
     kind: Pod
@@ -210,7 +213,9 @@
   register: elasticsearch_deployment
 
 - name: Elasticsearch setup passwords
-  when: inventory_hostname != 'development' and elasticsearch_value.password == ''
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ elasticsearch_deployment.resources.0.metadata.name }}'
@@ -218,33 +223,47 @@
   register: elasticsearch_setup_passwords
 
 - name: Set elasticsearch_value variable
-  when: inventory_hostname != 'development' and elasticsearch_value.password == ''
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
   ansible.builtin.set_fact:
     elasticsearch_password: "{{ elasticsearch_setup_passwords.stdout | regex_search('(?<=PASSWORD elastic = )\\w+') | trim }}"
 
 - name: Set elasticsearch.password
-  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
+    - elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^  username: elastic\n  password: ''"
     replace: '  username: elastic\n  password: {{ elasticsearch_password }}'
 
 - name: Change kibana.enabled to true
-  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
+    - elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^kibana:\n  enabled: false"
     replace: 'kibana:\n  enabled: true'
 
 - name: Change fluentd.enabled to true
-  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
+    - elasticsearch_password != 'None'
   ansible.builtin.replace:
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: "^fluentd:\n  enabled: false"
     replace: 'fluentd:\n  enabled: true'
 
 - name: Helm install
-  when: inventory_hostname != 'development' and elasticsearch_value.password == '' and elasticsearch_password != 'None'
+  when:
+    - inventory_hostname != 'development'
+    - not elasticsearch_value.password
+    - elasticsearch_password != 'None'
   community.kubernetes.helm:
     release_name: blog
     release_namespace: blog
@@ -293,7 +312,7 @@
   register: app_key_result
 
 - name: Execute key:generate
-  when: app_key_result.stdout == ''
+  when: not app_key_result.stdout
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
@@ -329,7 +348,7 @@
   register: oauth_key_stat
 
 - name: Execute php artisan passport:keys
-  when: oauth_key_stat.stat.exists == False
+  when: not oauth_key_stat.stat.exists
   community.kubernetes.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
