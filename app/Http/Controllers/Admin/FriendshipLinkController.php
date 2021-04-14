@@ -10,6 +10,9 @@ use App\Models\FriendshipLink;
 use Cache;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class FriendshipLinkController extends Controller
 {
     public function index()

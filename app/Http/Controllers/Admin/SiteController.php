@@ -10,6 +10,9 @@ use App\Models\Site;
 use Cache;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class SiteController extends Controller
 {
     public function index()

@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class CommentController extends Controller
 {
     public function index(Request $request)

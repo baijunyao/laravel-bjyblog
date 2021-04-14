@@ -6,17 +6,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
-    /**
-     * @throws ValidationException
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function login(Request $request)
+    public function login(Request $request): RedirectResponse
     {
         $request->validate([
             'email'    => 'required|string',

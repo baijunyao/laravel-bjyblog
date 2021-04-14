@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class UserController extends Controller
 {
     public function index()

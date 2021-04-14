@@ -15,6 +15,9 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
+/**
+ * @deprecated This will be removed.
+ */
 class ArticleController extends Controller
 {
     public function index(Request $request, Article $articleModel)

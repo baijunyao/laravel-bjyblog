@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Models\SocialiteUser;
 use Auth;
 
+/**
+ * @deprecated This will be removed.
+ */
 class LoginController extends Controller
 {
     public function index(SocialiteUser $socialiteUserModel)

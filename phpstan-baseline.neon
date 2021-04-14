@@ -861,51 +861,6 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\PassportController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/PassportController.php
-
-		-
-			message: "#^Property App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:\\$socialiteClients has no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:redirectToProvider\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:redirectToProvider\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) has parameter \\$service with no typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Result of function abort \\(void\\) is used\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:logout\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\DashboardController\\:\\:analysis\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: app/Http/Controllers/DashboardController.php
-
-		-
 			message: "#^Cannot call method fetchColumn\\(\\) on PDOStatement\\|false\\.$#"
 			count: 1
 			path: app/Http/Controllers/DashboardController.php

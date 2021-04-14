@@ -9,6 +9,9 @@ use App\Http\Requests\Config\Update;
 use App\Models\Config;
 use Artisan;
 
+/**
+ * @deprecated This will be removed.
+ */
 class ConfigController extends Controller
 {
     public function edit()
