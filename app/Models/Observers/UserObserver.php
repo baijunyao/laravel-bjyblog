@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace App\Models\Observers;
 
 class UserObserver extends BaseObserver
 {
