@@ -11,6 +11,9 @@ use Auth;
 use Composer\Semver\Comparator;
 use DB;
 
+/**
+ * @deprecated This will be removed.
+ */
 class IndexController extends Controller
 {
     public function index()

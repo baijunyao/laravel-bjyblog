@@ -10,6 +10,9 @@ use App\Http\Requests\Category\Update;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class CategoryController extends Controller
 {
     public function index()

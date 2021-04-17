@@ -10,6 +10,9 @@ use App\Models\OpenSource;
 use Cache;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class OpenSourceController extends Controller
 {
     public function index()

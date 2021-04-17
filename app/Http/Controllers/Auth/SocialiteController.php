@@ -11,6 +11,8 @@ use Auth;
 use Exception;
 use File;
 use GuzzleHttp\Client;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Socialite;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -18,7 +20,7 @@ use URL;
 
 class SocialiteController extends Controller
 {
-    private $socialiteClients;
+    private Collection $socialiteClients;
 
     public function __construct(Request $request)
     {
@@ -30,7 +32,10 @@ class SocialiteController extends Controller
         }
     }
 
-    public function redirectToProvider(Request $request, $service)
+    /**
+     * @param string $service
+     */
+    public function redirectToProvider(Request $request, $service): RedirectResponse
     {
         // 记录登录前的url
         $data = [
@@ -41,10 +46,15 @@ class SocialiteController extends Controller
         return Socialite::driver($service)->redirect();
     }
 
-    public function handleProviderCallback(Request $request, SocialiteUser $socialiteUserModel, $service)
+    /**
+     * @param string $service
+     *
+     * @return \Illuminate\Http\RedirectResponse|void
+     */
+    public function handleProviderCallback(Request $request, $service)
     {
-        if (!$request->has('code')) {
-            return abort(404);
+        if ($request->has('code') === false) {
+            abort(404);
         }
 
         // 定义各种第三方登录的type对应的数字
@@ -60,7 +70,7 @@ class SocialiteController extends Controller
         }
 
         $socialiteUser = SocialiteUser::select('id', 'login_times', 'is_admin', 'email')
-            ->where('socialite_client_id', $type[$service])
+            ->where('socialite_client_id', $type->get($service))
             ->where('openid', $user->id)
             ->first();
 
@@ -84,7 +94,7 @@ class SocialiteController extends Controller
             }
         } else {
             $userId = SocialiteUser::create([
-                'socialite_client_id'          => $type[$service],
+                'socialite_client_id'          => $type->get($service),
                 'name'                         => $name,
                 'openid'                       => $user->id,
                 'access_token'                 => $user->token,
@@ -123,7 +133,7 @@ class SocialiteController extends Controller
         return redirect(session('targetUrl', url('/')));
     }
 
-    public function logout()
+    public function logout(): RedirectResponse
     {
         Auth::guard('socialite')->logout();
         Auth::guard('admin')->logout();

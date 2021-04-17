@@ -9,6 +9,9 @@ use App\Http\Requests\Tag\Store;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class TagController extends Controller
 {
     public function index()

@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Models\SocialiteClient;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class SocialiteClientController extends Controller
 {
     public function index()

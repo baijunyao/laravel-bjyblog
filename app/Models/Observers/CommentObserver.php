@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Observers;
+namespace App\Models\Observers;
 
 use AipContentCensor;
 use App\Models\Article;

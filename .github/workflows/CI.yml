@@ -72,6 +72,18 @@ jobs:
           cd deploy/helm
           helm lint
 
+  ansible_lint:
+    name: Ansible Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run Ansible lint
+        run: |
+          pip3 install ansible
+          pip3 install ansible-lint
+          GITHUB_ACTIONS=true; ansible-lint -p deploy/ansible
+
   php_7_4_mysql_5_6:
     name: PHP7.4+MySQL5.6
     runs-on: ubuntu-latest
@@ -309,12 +321,12 @@ jobs:
   notify:
     name: Slack Notify
     runs-on: ubuntu-latest
-    needs: [phpcs, phpstan, helm_lint, php_7_4_mysql_5_6, php_7_4_mysql_5_7, php_7_4_mysql_8_0, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
-    if: ${{ github.event_name == 'push' }}
+    needs: [phpcs, phpstan, helm_lint, ansible_lint, php_7_4_mysql_5_6, php_7_4_mysql_5_7, php_7_4_mysql_8_0, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
+    if: always()
     steps:
       - name: Slack Notify
         uses: baijunyao/action-slack-notify@v3.0.0
-        if: always()
+        if: ${{ github.event_name == 'push' }}
         with:
           slack_channel_id: CEWJP77BP
           slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}

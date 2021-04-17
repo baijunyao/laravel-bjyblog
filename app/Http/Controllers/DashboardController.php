@@ -9,10 +9,11 @@ use App\Models\Comment;
 use App\Models\Note;
 use App\Models\SocialiteUser;
 use DB;
+use Illuminate\Http\JsonResponse;
 
 class DashboardController extends Controller
 {
-    public function analysis()
+    public function analysis(): JsonResponse
     {
         $version     = [
             'latest_socialite_users' => SocialiteUser::orderBy('updated_at', 'desc')->limit(5)->get(),

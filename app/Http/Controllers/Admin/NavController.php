@@ -9,6 +9,9 @@ use App\Http\Requests\Nav\Store;
 use App\Models\Nav;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class NavController extends Controller
 {
     public function index()

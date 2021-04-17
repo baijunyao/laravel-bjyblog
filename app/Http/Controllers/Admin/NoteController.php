@@ -9,6 +9,9 @@ use App\Http\Requests\Note\Store;
 use App\Models\Note;
 use Illuminate\Http\Request;
 
+/**
+ * @deprecated This will be removed.
+ */
 class NoteController extends Controller
 {
     public function index(Note $noteModel)
