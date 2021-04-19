@@ -109,6 +109,15 @@
     "scripts": {
         "phpcs": "vendor/bin/php-cs-fixer fix",
         "phpstan": "vendor/bin/phpstan analyse --ansi",
+        "test": "./vendor/bin/phpunit",
+        "test:coverage-html": [
+            "@putenv XDEBUG_MODE=coverage",
+            "./vendor/bin/phpunit --coverage-html storage/framework/testing/coverage"
+        ],
+        "test:coverage-xml": [
+            "@putenv XDEBUG_MODE=coverage",
+            "./vendor/bin/phpunit --coverage-clover storage/framework/testing/coverage.xml"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
