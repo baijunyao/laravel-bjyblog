@@ -27,7 +27,7 @@ class ComposerServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      *
-     * @throws Exception
+     * @throws \Exception
      *
      * @return void
      */

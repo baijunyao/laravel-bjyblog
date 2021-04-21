@@ -2,6 +2,9 @@
 
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
+    ->registerCustomFixers([
+            new \AdamWojs\PhpCsFixerPhpdocForceFQCN\Fixer\Phpdoc\ForceFQCNFixer()
+        ])
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
@@ -69,6 +72,7 @@ return PhpCsFixer\Config::create()
         'void_return' => false,
         'single_trait_insert_per_statement' => false,
         'ordered_traits' => false,
+        'AdamWojs/phpdoc_force_fqcn_fixer' => true,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
