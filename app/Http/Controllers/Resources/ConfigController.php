@@ -25,7 +25,11 @@ class ConfigController extends Controller
         ];
 
         foreach (config('bjyblog.upload_disks') as $disk) {
-            $result['url'] = '/' . $request->file('file')->store('uploads/images', $disk);
+            $file = $request->file('file');
+
+            assert($file instanceof \Illuminate\Http\UploadedFile);
+
+            $result['url'] = '/' . $file->store('uploads/images', $disk);
         }
 
         return response()->json($result);

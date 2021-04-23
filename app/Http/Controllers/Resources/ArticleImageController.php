@@ -19,7 +19,11 @@ class ArticleImageController extends Controller
         ];
 
         foreach (config('bjyblog.upload_disks') as $disk) {
-            $result['url'] = '/' . $request->file('image')->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
+            $image = $request->file('image');
+
+            assert($image instanceof \Illuminate\Http\UploadedFile);
+
+            $result['url'] = '/' . $image->store('uploads/article/' . Date::now()->format('Ymd'), $disk);
         }
 
         return response()->json($result);
