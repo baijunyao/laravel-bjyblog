@@ -121,7 +121,7 @@ jobs:
           php artisan storage:link --relative
       - name: Test
         run: |
-          ./vendor/bin/phpunit
+          composer test
 
   php_7_4_mysql_5_7:
     name: PHP7.4+MySQL5.7
@@ -160,7 +160,7 @@ jobs:
           php artisan storage:link --relative
       - name: Test
         run: |
-          ./vendor/bin/phpunit
+          composer test
 
   php_7_4_mysql_8_0:
     name: PHP7.4+MySQL8.0
@@ -199,7 +199,7 @@ jobs:
           php artisan storage:link --relative
       - name: Test
         run: |
-          ./vendor/bin/phpunit
+          composer test
 
   php_8_0_mysql_5_6:
     name: PHP8.0+MySQL5.6
@@ -238,7 +238,7 @@ jobs:
           php artisan storage:link --relative
       - name: Test
         run: |
-          ./vendor/bin/phpunit
+          composer test
 
   php_8_0_mysql_5_7:
     name: PHP8.0+MySQL5.7
@@ -277,7 +277,7 @@ jobs:
           php artisan storage:link --relative
       - name: Test
         run: |
-          ./vendor/bin/phpunit
+          composer test
 
   php_8_0_mysql_8_0:
     name: PHP8.0+MySQL8.0
@@ -316,7 +316,11 @@ jobs:
           php artisan storage:link --relative
       - name: Test
         run: |
-          ./vendor/bin/phpunit
+          composer test:coverage-xml
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          files: storage/framework/testing/coverage.xml
 
   notify:
     name: Slack Notify

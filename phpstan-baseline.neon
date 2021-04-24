@@ -866,16 +866,6 @@ parameters:
 			path: app/Http/Controllers/DashboardController.php
 
 		-
-			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/ArticleImageController.php
-
-		-
-			message: "#^Cannot call method store\\(\\) on array\\<int, Illuminate\\\\Http\\\\UploadedFile\\>\\|Illuminate\\\\Http\\\\UploadedFile\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Resources/ConfigController.php
-
-		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"
 			count: 1
 			path: app/Http/Middleware/Authenticate.php

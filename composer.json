@@ -58,6 +58,7 @@
         "ytake/laravel-fluent-logger": "^5.0"
     },
     "require-dev": {
+        "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^1.1",
         "baijunyao/laravel-test-support": "^6.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
@@ -109,6 +110,15 @@
     "scripts": {
         "phpcs": "vendor/bin/php-cs-fixer fix",
         "phpstan": "vendor/bin/phpstan analyse --ansi",
+        "test": "./vendor/bin/phpunit",
+        "test:coverage-html": [
+            "@putenv XDEBUG_MODE=coverage",
+            "./vendor/bin/phpunit --coverage-html storage/framework/testing/coverage"
+        ],
+        "test:coverage-xml": [
+            "@putenv XDEBUG_MODE=coverage",
+            "./vendor/bin/phpunit --coverage-clover storage/framework/testing/coverage.xml"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"

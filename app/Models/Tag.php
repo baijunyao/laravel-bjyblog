@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Contracts\Routing\UrlGenerator;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Str;
 
 /**
@@ -43,7 +41,7 @@ class Tag extends Base
     /**
      * 关联文章表
      *
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function articles()
     {
@@ -51,7 +49,7 @@ class Tag extends Base
     }
 
     /**
-     * @return UrlGenerator|string
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
      *
      * @author hanmeimei
      */

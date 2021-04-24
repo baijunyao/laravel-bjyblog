@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace App\Extensions\Illuminate\Foundation\Console;
 
+use App;
 use Illuminate\Foundation\Console\TestMakeCommand as BaseTestMakeCommand;
+use Symfony\Component\Console\Input\InputOption;
 
 class TestMakeCommand extends BaseTestMakeCommand
 {
-    protected $signature = 'make:test {name : The name of the class} {--unit : Create a unit test} {--command : Create a command test}';
+    public const TEST_PATH_IN_STORAGE = 'framework/testing/tests';
 
+    /**
+     * {@inheritdoc}
+     */
     protected function getDefaultNamespace($rootNamespace)
     {
         if ($this->option('command')) {
@@ -17,5 +22,29 @@ class TestMakeCommand extends BaseTestMakeCommand
         }
 
         return parent::getDefaultNamespace($rootNamespace);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getPath($name)
+    {
+        $path = parent::getPath($name);
+
+        if (App::runningUnitTests()) {
+            $path = str_replace(base_path('tests'), storage_path(static::TEST_PATH_IN_STORAGE), $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * @return array<int,array<int,string|int>>
+     */
+    protected function getOptions()
+    {
+        return array_merge(parent::getOptions(), [
+            ['command', 'c', InputOption::VALUE_NONE, 'Create a command test.'],
+        ]);
     }
 }
