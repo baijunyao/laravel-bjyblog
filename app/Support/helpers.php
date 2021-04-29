@@ -61,13 +61,17 @@ if (!function_exists('generate_english_slug')) {
         $locale = config('app.locale');
 
         if ('en' !== $locale) {
-            $googleTranslate = new GoogleTranslate();
-            $content         =  $googleTranslate->setUrl('http://translate.google.cn/translate_a/single')
-                ->setSource($locale)
-                ->translate($content);
+            try {
+                $googleTranslate = new GoogleTranslate();
+                $content         =  $googleTranslate->setUrl('http://translate.google.cn/translate_a/single')
+                    ->setSource($locale)
+                    ->translate($content) ?? '';
+            } catch (Exception $exception) {
+                $content = '';
+            }
         }
 
-        return Str::slug($content ?? '');
+        return $content === '' ? '' : Str::slug($content);
     }
 }
 
