@@ -2275,16 +2275,16 @@
         },
         {
             "name": "fruitcake/laravel-cors",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruitcake/laravel-cors.git",
-                "reference": "01de0fe5f71c70d1930ee9a80385f9cc28e0f63a"
+                "reference": "a8ccedc7ca95189ead0e407c43b530dc17791d6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/01de0fe5f71c70d1930ee9a80385f9cc28e0f63a",
-                "reference": "01de0fe5f71c70d1930ee9a80385f9cc28e0f63a",
+                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/a8ccedc7ca95189ead0e407c43b530dc17791d6a",
+                "reference": "a8ccedc7ca95189ead0e407c43b530dc17791d6a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2303,8 +2303,8 @@
             },
             "require-dev": {
                 "laravel/framework": "^6|^7|^8",
-                "orchestra/testbench-dusk": "^4|^5|^6",
-                "phpunit/phpunit": "^6|^7|^8",
+                "orchestra/testbench-dusk": "^4|^5|^6|^7",
+                "phpunit/phpunit": "^6|^7|^8|^9",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
@@ -2346,7 +2346,7 @@
             ],
             "support": {
                 "issues": "https://github.com/fruitcake/laravel-cors/issues",
-                "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.3"
+                "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.4"
             },
             "funding": [
                 {
@@ -2354,7 +2354,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-22T13:57:20+00:00"
+            "time": "2021-04-26T11:24:25+00:00"
         },
         {
             "name": "fukuball/jieba-php",
@@ -2881,16 +2881,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "35ea11d335fd638b5882ff1725228b3d35496ab1"
+                "reference": "dc960a912984efb74d0a90222870c72c87f10c91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/35ea11d335fd638b5882ff1725228b3d35496ab1",
-                "reference": "35ea11d335fd638b5882ff1725228b3d35496ab1",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/dc960a912984efb74d0a90222870c72c87f10c91",
+                "reference": "dc960a912984efb74d0a90222870c72c87f10c91",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -2956,9 +2956,9 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/1.8.1"
+                "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
-            "time": "2021-03-21T16:25:00+00:00"
+            "time": "2021-04-26T09:17:50+00:00"
         },
         {
             "name": "http-interop/http-factory-guzzle",
@@ -3500,16 +3500,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "7.0.9",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "679a65755db37b35acd36a5e0ca51e055815a00a"
+                "reference": "96d7868069de7823a680710cc09d51fed24a5dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/679a65755db37b35acd36a5e0ca51e055815a00a",
-                "reference": "679a65755db37b35acd36a5e0ca51e055815a00a",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/96d7868069de7823a680710cc09d51fed24a5dbd",
+                "reference": "96d7868069de7823a680710cc09d51fed24a5dbd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3522,6 +3522,7 @@
                 "ext-json": "*"
             },
             "suggest": {
+                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
                 "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
                 "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
                 "overtrue/laravel-lang": "Command to add languages in your project"
@@ -3533,7 +3534,8 @@
             ],
             "authors": [
                 {
-                    "name": "Laravel-Lang Team"
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
                 }
             ],
             "description": "Languages for Laravel",
@@ -3545,22 +3547,22 @@
             ],
             "support": {
                 "issues": "https://github.com/Laravel-Lang/lang/issues",
-                "source": "https://github.com/Laravel-Lang/lang/tree/7.0.9"
+                "source": "https://github.com/Laravel-Lang/lang/tree/5.0.0"
             },
-            "time": "2020-11-30T20:35:41+00:00"
+            "time": "2020-03-17T15:25:41+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v8.38.0",
+            "version": "v8.40.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "26a73532c54d2c090692bf2e3e64e449669053ba"
+                "reference": "a654897ad7f97aea9d7ef292803939798c4a02a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/26a73532c54d2c090692bf2e3e64e449669053ba",
-                "reference": "26a73532c54d2c090692bf2e3e64e449669053ba",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/a654897ad7f97aea9d7ef292803939798c4a02a4",
+                "reference": "a654897ad7f97aea9d7ef292803939798c4a02a4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3721,7 +3723,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-04-20T13:50:21+00:00"
+            "time": "2021-04-28T14:38:56+00:00"
         },
         {
             "name": "laravel/passport",
@@ -4850,16 +4852,16 @@
         },
         {
             "name": "mavinoo/laravel-batch",
-            "version": "v2.2.6",
+            "version": "v2.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mavinoo/laravelBatch.git",
-                "reference": "b7c9a35aba3586ee19a21399a4f181bf0cf8677c"
+                "reference": "8fb12e1602def1126238e190bb874df0d97e22bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mavinoo/laravelBatch/zipball/b7c9a35aba3586ee19a21399a4f181bf0cf8677c",
-                "reference": "b7c9a35aba3586ee19a21399a4f181bf0cf8677c",
+                "url": "https://api.github.com/repos/mavinoo/laravelBatch/zipball/8fb12e1602def1126238e190bb874df0d97e22bd",
+                "reference": "8fb12e1602def1126238e190bb874df0d97e22bd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4903,9 +4905,9 @@
             "description": "Insert and update batch (bulk) in laravel",
             "support": {
                 "issues": "https://github.com/mavinoo/laravelBatch/issues",
-                "source": "https://github.com/mavinoo/laravelBatch/tree/v2.2.6"
+                "source": "https://github.com/mavinoo/laravelBatch/tree/v2.2.7"
             },
-            "time": "2021-04-07T06:07:19+00:00"
+            "time": "2021-04-24T06:22:17+00:00"
         },
         {
             "name": "mews/purifier",
@@ -5539,16 +5541,16 @@
         },
         {
             "name": "overtrue/laravel-lang",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-lang.git",
-                "reference": "653189caa6eac682fa5d15482f271489721231c7"
+                "reference": "d8c35f9c21df83a9f418a80b3be5e131bae29494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/653189caa6eac682fa5d15482f271489721231c7",
-                "reference": "653189caa6eac682fa5d15482f271489721231c7",
+                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/d8c35f9c21df83a9f418a80b3be5e131bae29494",
+                "reference": "d8c35f9c21df83a9f418a80b3be5e131bae29494",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -5559,8 +5561,8 @@
             },
             "require": {
                 "ext-json": "*",
-                "laravel-lang/lang": "^7.0",
-                "symfony/process": "^5.0.0"
+                "laravel-lang/lang": "^5.0",
+                "symfony/process": "^4.0|^5.0"
             },
             "require-dev": {
                 "laravel/framework": "~8.1"
@@ -5598,7 +5600,7 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/laravel-lang/issues",
-                "source": "https://github.com/overtrue/laravel-lang/tree/4.2.1"
+                "source": "https://github.com/overtrue/laravel-lang/tree/4.2.2"
             },
             "funding": [
                 {
@@ -5606,7 +5608,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-12T01:44:31+00:00"
+            "time": "2021-04-28T03:50:38+00:00"
         },
         {
             "name": "paquettg/php-html-parser",
@@ -7491,16 +7493,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "2.4.2",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "1bb0bcc240d25e72f3cf0321f3d6064f24dec504"
+                "reference": "2af8a531f202f0ac014f5fad532815ed34f730a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/1bb0bcc240d25e72f3cf0321f3d6064f24dec504",
-                "reference": "1bb0bcc240d25e72f3cf0321f3d6064f24dec504",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/2af8a531f202f0ac014f5fad532815ed34f730a9",
+                "reference": "2af8a531f202f0ac014f5fad532815ed34f730a9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7569,7 +7571,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-laravel/issues",
-                "source": "https://github.com/getsentry/sentry-laravel/tree/2.4.2"
+                "source": "https://github.com/getsentry/sentry-laravel/tree/2.5.1"
             },
             "funding": [
                 {
@@ -7581,7 +7583,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-24T19:36:23+00:00"
+            "time": "2021-04-29T11:10:22+00:00"
         },
         {
             "name": "socialiteproviders/manager",
@@ -10991,16 +10993,16 @@
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.372",
+            "version": "3.0.378",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/common.git",
-                "reference": "b965a9a957ed7156156a3956b61a2af70bfa48cf"
+                "reference": "e38152561995718c2ab4bfda16b68f161a6dbbe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/b965a9a957ed7156156a3956b61a2af70bfa48cf",
-                "reference": "b965a9a957ed7156156a3956b61a2af70bfa48cf",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/e38152561995718c2ab4bfda16b68f161a6dbbe6",
+                "reference": "e38152561995718c2ab4bfda16b68f161a6dbbe6",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11036,22 +11038,22 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/common",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.372"
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.378"
             },
-            "time": "2021-04-23T03:38:04+00:00"
+            "time": "2021-04-30T00:37:58+00:00"
         },
         {
             "name": "tencentcloud/cvm",
-            "version": "3.0.372",
+            "version": "3.0.378",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/cvm.git",
-                "reference": "2ba95392d9a0d5b5133dcce3803f12bc692323c2"
+                "reference": "5f2e38eb6d4684e6e66f4fcfcc71a17c5b56239b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/2ba95392d9a0d5b5133dcce3803f12bc692323c2",
-                "reference": "2ba95392d9a0d5b5133dcce3803f12bc692323c2",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/5f2e38eb6d4684e6e66f4fcfcc71a17c5b56239b",
+                "reference": "5f2e38eb6d4684e6e66f4fcfcc71a17c5b56239b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11061,7 +11063,7 @@
                 ]
             },
             "require": {
-                "tencentcloud/common": "3.0.372"
+                "tencentcloud/common": "3.0.378"
             },
             "type": "library",
             "autoload": {
@@ -11085,9 +11087,9 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/cvm/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.372"
+                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.378"
             },
-            "time": "2021-04-23T03:38:34+00:00"
+            "time": "2021-04-30T00:38:21+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -11869,16 +11871,16 @@
         },
         {
             "name": "composer/composer",
-            "version": "1.10.21",
+            "version": "1.10.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "04021432f4a9cbd9351dd166b8c193f42c36a39c"
+                "reference": "28c9dfbe2351635961f670773e8d7b17bc5eda25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/04021432f4a9cbd9351dd166b8c193f42c36a39c",
-                "reference": "04021432f4a9cbd9351dd166b8c193f42c36a39c",
+                "url": "https://api.github.com/repos/composer/composer/zipball/28c9dfbe2351635961f670773e8d7b17bc5eda25",
+                "reference": "28c9dfbe2351635961f670773e8d7b17bc5eda25",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11954,7 +11956,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/composer/issues",
-                "source": "https://github.com/composer/composer/tree/1.10.21"
+                "source": "https://github.com/composer/composer/tree/1.10.22"
             },
             "funding": [
                 {
@@ -11970,7 +11972,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-01T07:16:35+00:00"
+            "time": "2021-04-27T11:10:45+00:00"
         },
         {
             "name": "composer/spdx-licenses",
@@ -12280,16 +12282,16 @@
         },
         {
             "name": "facade/flare-client-php",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "6bf380035890cb0a09b9628c491ae3866b858522"
+                "reference": "69742118c037f34ee1ef86dc605be4a105d9e984"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/6bf380035890cb0a09b9628c491ae3866b858522",
-                "reference": "6bf380035890cb0a09b9628c491ae3866b858522",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/69742118c037f34ee1ef86dc605be4a105d9e984",
+                "reference": "69742118c037f34ee1ef86dc605be4a105d9e984",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12339,7 +12341,7 @@
             ],
             "support": {
                 "issues": "https://github.com/facade/flare-client-php/issues",
-                "source": "https://github.com/facade/flare-client-php/tree/1.7.0"
+                "source": "https://github.com/facade/flare-client-php/tree/1.8.0"
             },
             "funding": [
                 {
@@ -12347,20 +12349,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-12T09:30:36+00:00"
+            "time": "2021-04-30T11:11:50+00:00"
         },
         {
             "name": "facade/ignition",
-            "version": "2.8.3",
+            "version": "2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "a8201d51aae83addceaef9344592a3b068b5d64d"
+                "reference": "87fb348dab0ae1a7c206c3e902a5a44ba541742f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/a8201d51aae83addceaef9344592a3b068b5d64d",
-                "reference": "a8201d51aae83addceaef9344592a3b068b5d64d",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/87fb348dab0ae1a7c206c3e902a5a44ba541742f",
+                "reference": "87fb348dab0ae1a7c206c3e902a5a44ba541742f",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12430,7 +12432,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-04-09T20:45:59+00:00"
+            "time": "2021-04-29T13:55:26+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -12505,16 +12507,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.12.0",
+            "version": "2.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "d501fd2658d55491a2295ff600ae5978eaad7403"
+                "reference": "c13c0be93cff50f88bbd70827d993026821914dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/d501fd2658d55491a2295ff600ae5978eaad7403",
-                "reference": "d501fd2658d55491a2295ff600ae5978eaad7403",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/c13c0be93cff50f88bbd70827d993026821914dd",
+                "reference": "c13c0be93cff50f88bbd70827d993026821914dd",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12570,7 +12572,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.12.0"
+                "source": "https://github.com/filp/whoops/tree/2.12.1"
             },
             "funding": [
                 {
@@ -12578,7 +12580,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-30T12:00:00+00:00"
+            "time": "2021-04-25T12:00:00+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -12749,16 +12751,16 @@
         },
         {
             "name": "itsgoingd/clockwork",
-            "version": "v5.0.7",
+            "version": "v5.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itsgoingd/clockwork.git",
-                "reference": "e41ee368ff4dcc30d3f4563fe8bd80ed72b293b4"
+                "reference": "01686ebbf75d8e121dfb1b60e52f334858793830"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/e41ee368ff4dcc30d3f4563fe8bd80ed72b293b4",
-                "reference": "e41ee368ff4dcc30d3f4563fe8bd80ed72b293b4",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/01686ebbf75d8e121dfb1b60e52f334858793830",
+                "reference": "01686ebbf75d8e121dfb1b60e52f334858793830",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12812,7 +12814,7 @@
             ],
             "support": {
                 "issues": "https://github.com/itsgoingd/clockwork/issues",
-                "source": "https://github.com/itsgoingd/clockwork/tree/v5.0.7"
+                "source": "https://github.com/itsgoingd/clockwork/tree/v5.0.8"
             },
             "funding": [
                 {
@@ -12820,7 +12822,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-14T16:29:40+00:00"
+            "time": "2021-04-27T22:00:25+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -13828,16 +13830,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.84",
+            "version": "0.12.85",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "9c43f15da8798c8f30a4b099e6a94530a558cfd5"
+                "reference": "20e6333c0067875ad7697cd8acdf245c6ef69d03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9c43f15da8798c8f30a4b099e6a94530a558cfd5",
-                "reference": "9c43f15da8798c8f30a4b099e6a94530a558cfd5",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/20e6333c0067875ad7697cd8acdf245c6ef69d03",
+                "reference": "20e6333c0067875ad7697cd8acdf245c6ef69d03",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13874,7 +13876,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/0.12.84"
+                "source": "https://github.com/phpstan/phpstan/tree/0.12.85"
             },
             "funding": [
                 {
@@ -13890,7 +13892,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-04-19T17:10:54+00:00"
+            "time": "2021-04-27T14:13:16+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
