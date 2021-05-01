@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Support;
 
+use ErrorException;
 use Illuminate\Http\UploadedFile;
+use Mockery;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Storage;
 use Tests\TestCase;
 
@@ -23,6 +26,28 @@ class HelpersTest extends TestCase
         watermark('/uploads/for_watermark.jpg', 'test');
 
         static::assertFileExists(storage_path('app/public/uploads/for_watermark.jpg'));
+    }
+
+    public function testGenerateEnglishSlug()
+    {
+        config([
+            'app.locale' => 'zh-CN',
+        ]);
+        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andReturn('Test title');
+
+        static::assertEquals('test-title', generate_english_slug('测试标题'));
+    }
+
+    public function testGenerateEnglishSlugWhenTranslateError()
+    {
+        config([
+            'app.locale' => 'zh-CN',
+        ]);
+        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andThrow(new ErrorException('error'));
+
+        static::assertEquals('', generate_english_slug('测试标题'));
     }
 
     public function testFormatUrl()
