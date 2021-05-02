@@ -1,11 +1,10 @@
 <h1 align="center">laravel-bjyblog</h1>
 <p align="center">
-    <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/baijunyao/laravel-bjyblog.svg"/></a>
+    <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="Latest Stable Version" src="https://img.shields.io/packagist/v/baijunyao/laravel-bjyblog.svg?logo=packagist"/></a>
     <a href="https://github.com/baijunyao/laravel-bjyblog/actions?query=branch%3Amaster"><img alt="Build Status" src="https://github.com/baijunyao/laravel-bjyblog/workflows/CI/badge.svg?branch=master"/></a>
-    <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog?ref=badge_shield"><img alt="FOSSA Status" src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Fbaijunyao%2Flaravel-bjyblog.svg?type=shield"/></a>
-    <a href="https://github.com/baijunyao/laravel-bjyblog"><img alt="License" src="https://img.shields.io/github/license/baijunyao/laravel-bjyblog.svg"/></a>
-    <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="PHP version" src="https://img.shields.io/packagist/php-v/baijunyao/laravel-bjyblog.svg"/></a>
-    <a href="https://join.slack.com/t/baijunyao/shared_invite/enQtNjU3Nzk4Nzk4NjU3LWRhYmI4YmI3YjhjOTQyZGE2YTA3OTZjMjlhNGM4ZWQyNzNiOTMyYWI5YzAzYmE0ZDBhNmVjOWU1NTc4MWIxMzc"><img src="https://img.shields.io/badge/Slack%20%23laravel--bjyblog-join-orange.svg" alt="Chat on Slack"></a>
+    <a href="https://codecov.io/gh/baijunyao/laravel-bjyblog/branch/master"><img alt="master Code Coverage" src="https://img.shields.io/codecov/c/github/baijunyao/laravel-bjyblog?logo=codecov"/></a>
+    <a href="https://packagist.org/packages/baijunyao/laravel-bjyblog"><img alt="PHP version" src="https://img.shields.io/packagist/php-v/baijunyao/laravel-bjyblog.svg?logo=php"/></a>
+    <a href="https://join.slack.com/t/baijunyao/shared_invite/enQtNjU3Nzk4Nzk4NjU3LWRhYmI4YmI3YjhjOTQyZGE2YTA3OTZjMjlhNGM4ZWQyNzNiOTMyYWI5YzAzYmE0ZDBhNmVjOWU1NTc4MWIxMzc"><img src="https://img.shields.io/badge/Slack%20%23laravel--bjyblog-join-orange.svg?logo=slack" alt="Chat on Slack"></a>
 </p>
 
 ## Laravel PHP and MySQL Compatibility
