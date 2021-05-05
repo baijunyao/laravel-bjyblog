@@ -19,9 +19,9 @@
 | v5.5 | 5.5 | 7.0 | 5.6 - 8.0 |
 | v1 - v5.3 | 5.3 | 5.6 | 5.6 - 8.0 |
 
-## Introduction
+## Preview
 
-![laravel-bjyblog](https://baijunyao.com/uploads/article/20171210/5a2d533982e36.jpg)
+![laravel-bjyblog](./resources/readme/preview.jpg)
 
 ## Documentation
 [English](https://baijunyao.com/docs/laravel-bjyblog/en) [中文文档](https://baijunyao.com/docs/laravel-bjyblog)  
@@ -92,3 +92,6 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 ## License
 laravel-bjyblog is open-sourced software licensed under the MIT license.
+
+## Sponsors
+![PHPStorm](./resources/readme/phpstorm.png) ![laravel-idea](./resources/readme/laravel-idea.png)
