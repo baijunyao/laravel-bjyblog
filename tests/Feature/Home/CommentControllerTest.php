@@ -37,7 +37,7 @@ class CommentControllerTest extends TestCase
         $this->assertDatabaseHas('comments', [
             'article_id' => 1,
             'parent_id'  => null,
-            'content'    => (new Comment())->imageToUbb($content),
+            'content'    => Comment::imageToUbb($content),
         ]);
 
         static::assertEquals($email, SocialiteUser::where('id', 1)->value('email'));
@@ -86,7 +86,7 @@ class CommentControllerTest extends TestCase
             ->assertStatus(200);
 
         $this->assertDatabaseHas('comments', $comment + [
-            'content' => (new Comment())->imageToUbb($content),
+            'content' => Comment::imageToUbb($content),
         ]);
 
         Notification::assertSentTo($socialiteUser2, CommentNotification::class, function (CommentNotification $notification) {
@@ -116,7 +116,7 @@ class CommentControllerTest extends TestCase
             ->assertStatus(200);
 
         $this->assertDatabaseHas('comments', $comment + [
-            'content' => (new Comment())->imageToUbb($content),
+            'content' => Comment::imageToUbb($content),
         ]);
 
         Notification::assertNotSentTo(new AnonymousNotifiable(), CommentNotification::class);
