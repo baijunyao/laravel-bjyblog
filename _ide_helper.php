@@ -15380,7 +15380,7 @@
          * @static 
          */ 
         public static function getEnvironment()
-        {
+        {            //Method inherited from \League\CommonMark\MarkdownConverter         
                         /** @var \League\CommonMark\CommonMarkConverter $instance */
                         return $instance->getEnvironment();
         }
