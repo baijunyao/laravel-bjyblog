@@ -31,9 +31,7 @@ class Comment implements Rule
             return false;
         }
 
-        $commentModel = new CommentModel();
-
-        if (empty($commentModel->imageToUbb($value))) {
+        if (empty(CommentModel::imageToUbb($value))) {
             $this->message = translate('The content can not be empty');
 
             return false;
@@ -49,7 +47,7 @@ class Comment implements Rule
         }
 
         /** @var \Illuminate\Support\Carbon|null $lastCommentDate */
-        $lastCommentDate = $commentModel->where('socialite_user_id', $socialiteUser->id)
+        $lastCommentDate = CommentModel::where('socialite_user_id', $socialiteUser->id)
             ->orderBy('created_at', 'desc')
             ->value('created_at');
 
@@ -59,8 +57,7 @@ class Comment implements Rule
             return false;
         }
 
-        $count = $commentModel
-            ->where('socialite_user_id', $socialiteUser->id)
+        $count = CommentModel::where('socialite_user_id', $socialiteUser->id)
             ->whereDate('created_at', '=', Date::today())
             ->count();
 

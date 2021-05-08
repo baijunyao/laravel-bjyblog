@@ -881,11 +881,6 @@ parameters:
 			path: app/Models/Base.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:isForceDeleting\\(\\)\\.$#"
-			count: 1
-			path: app/Models/Observers/BaseObserver.php
-
-		-
 			message: "#^Cannot call method name\\(\\) on array\\|Illuminate\\\\Routing\\\\Route\\.$#"
 			count: 1
 			path: routes/web.php

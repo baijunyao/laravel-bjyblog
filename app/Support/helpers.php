@@ -13,13 +13,9 @@ if (!function_exists('watermark')) {
     /**
      * 给图片添加文字水印
      *
-     * @param string $file  e.g. /images/default/article.png
-     * @param string $text
-     * @param string $color
-     *
-     * @return mixed
+     * @param string $file e.g. /images/default/article.png
      */
-    function watermark($file, $text, $color = '#0B94C1')
+    function watermark(string $file, string $text, string $color = '#0B94C1'): void
     {
         $localFile = public_path($file);
         $extension = strtolower(pathinfo($localFile, PATHINFO_EXTENSION));
@@ -49,14 +45,8 @@ if (!function_exists('watermark')) {
 if (!function_exists('generate_english_slug')) {
     /**
      * Generate English slug
-     *
-     * @param string $content
-     *
-     * @throws ErrorException
-     *
-     * @return string
      */
-    function generate_english_slug($content)
+    function generate_english_slug(string $content): string
     {
         $locale = config('app.locale');
 
@@ -78,12 +68,8 @@ if (!function_exists('generate_english_slug')) {
 if (!function_exists('cdn_url')) {
     /**
      * Generate a url for the CDN.
-     *
-     * @param string $path
-     *
-     * @return string
      */
-    function cdn_url($path)
+    function cdn_url(string $path): string
     {
         return Str::startsWith($path, 'http') ? $path : URL::assetFrom(config('bjyblog.cdn_domain'), $path);
     }
@@ -92,12 +78,8 @@ if (!function_exists('cdn_url')) {
 if (!function_exists('format_url')) {
     /**
      * Format URL
-     *
-     * @param string $url
-     *
-     * @return string
      */
-    function format_url($url)
+    function format_url(string $url): string
     {
         if (preg_match('/^http(s)?:\/\//', $url) === 0) {
             $url = 'http://' . $url;
@@ -160,13 +142,9 @@ if (!function_exists('translate')) {
     /**
      * Translate the given message, only return string (for PHPStan).
      *
-     * @param string|null          $key
      * @param array<string,string> $replace
-     * @param string|null          $locale
-     *
-     * @return string
      */
-    function translate($key = null, $replace = [], $locale = null)
+    function translate(string $key, $replace = [], string $locale = null): string
     {
         $result = __($key, $replace, $locale);
 

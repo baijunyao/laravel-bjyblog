@@ -54,7 +54,7 @@ class Comment extends Base
 
     public function setContentAttribute(string $value): void
     {
-        $this->attributes['content'] = $this->imageToUbb($value);
+        $this->attributes['content'] = static::imageToUbb($value);
     }
 
     public function article(): BelongsTo
@@ -86,7 +86,7 @@ class Comment extends Base
         return str_replace($ubb, $image, $content);
     }
 
-    public function imageToUbb(string $content): string
+    public static function imageToUbb(string $content): string
     {
         $content = html_entity_decode(htmlspecialchars_decode($content));
         // 删标签 去空格 转义

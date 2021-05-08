@@ -35,7 +35,7 @@ class BaseObserver
     public function deleted($model)
     {
         // delete() and forceDelete() will triggering deleted()
-        if ($model->isForceDeleting()) {
+        if (method_exists($model, 'isForceDeleting') && $model->isForceDeleting()) {
             flash_success(translate('Force Delete Success'));
         } else {
             flash_success(translate('Delete Success'));
