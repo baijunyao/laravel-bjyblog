@@ -110,6 +110,10 @@
     "scripts": {
         "phpcs": "vendor/bin/php-cs-fixer fix",
         "phpstan": "vendor/bin/phpstan analyse --ansi",
+        "lint": [
+            "composer phpcs",
+            "composer phpstan"
+        ],
         "test": "./vendor/bin/phpunit",
         "test:coverage-html": [
             "@putenv XDEBUG_MODE=coverage",
