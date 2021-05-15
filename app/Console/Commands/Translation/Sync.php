@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Translation;
 
+use App;
 use File;
 use Illuminate\Console\Command;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class Sync extends Command
 {
@@ -34,18 +36,27 @@ class Sync extends Command
         $googleTranslate->setUrl('http://translate.google.cn/translate_a/single');
 
         foreach ($langs as $lang) {
-            $content = json_decode(File::get(resource_path("lang/{$lang}.json")), true);
+            $originalContent = json_decode(File::get(resource_path("lang/{$lang}.json")), true);
 
             /** @var array<int, string> $diffKeys */
-            $diffKeys = array_diff($zhKeys, array_keys($content));
+            $diffKeys = array_diff($zhKeys, array_keys($originalContent));
+
+            $updatedContent = $originalContent;
 
             foreach ($diffKeys as $diffKey) {
-                $content[$diffKey] = $googleTranslate->setTarget($lang)->translate($diffKey);
+                $updatedContent[$diffKey] = $googleTranslate->setTarget($lang)->translate($diffKey);
             }
 
-            ksort($content);
+            ksort($updatedContent);
 
-            File::put(resource_path("lang/{$lang}.json"), json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
+            if (App::runningUnitTests() && $originalContent !== $updatedContent) {
+                $output = new ConsoleOutput();
+                $output->writeln('<error>Please execute `php artisan translation:sync` command.</error>');
+
+                return 1;
+            }
+
+            File::put(resource_path("lang/{$lang}.json"), json_encode($updatedContent, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
 
         $this->call('translation:remove-unused');

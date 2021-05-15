@@ -133,12 +133,12 @@
   register: site_stat
 
 - name: Git clone laravel-bjyblog
-  when: not site_stat.stat.exists
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/laravel-bjyblog.git'
     dest: /laravel-bjyblog/site
     version: develop
     depth: 3
+    force: yes
 
 - name: Create Helm custom.yaml
   ansible.builtin.copy:
@@ -329,6 +329,12 @@
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan db:seed
+
+- name: Execute php artisan bjyblog:update
+  community.kubernetes.k8s_exec:
+    namespace: blog
+    pod: '{{ php_deployment.resources.0.metadata.name }}'
+    command: php artisan bjyblog:update
 
 - name: Execute php artisan cache:clear
   community.kubernetes.k8s_exec:

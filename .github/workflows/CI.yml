@@ -84,123 +84,6 @@ jobs:
           pip3 install ansible-lint
           GITHUB_ACTIONS=true; ansible-lint -p deploy/ansible
 
-  php_7_4_mysql_5_6:
-    name: PHP7.4+MySQL5.6
-    runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:5.6
-        env:
-          MYSQL_ROOT_PASSWORD: laravel_bjyblog
-          MYSQL_DATABASE: laravel_bjyblog
-    container:
-      image: baijunyao/php:7.4-local
-      volumes:
-        - /__w/laravel-bjyblog/laravel-bjyblog:/app
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-      - name: Initial
-        run: |
-          cp .env.actions .env
-          composer install
-          php artisan key:generate
-          php artisan passport:keys
-          php artisan migrate
-          php artisan db:seed
-          php artisan storage:link --relative
-      - name: Test
-        run: |
-          composer test
-
-  php_7_4_mysql_5_7:
-    name: PHP7.4+MySQL5.7
-    runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: laravel_bjyblog
-          MYSQL_DATABASE: laravel_bjyblog
-    container:
-      image: baijunyao/php:7.4-local
-      volumes:
-        - /__w/laravel-bjyblog/laravel-bjyblog:/app
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-      - name: Initial
-        run: |
-          cp .env.actions .env
-          composer install
-          php artisan key:generate
-          php artisan passport:keys
-          php artisan migrate
-          php artisan db:seed
-          php artisan storage:link --relative
-      - name: Test
-        run: |
-          composer test
-
-  php_7_4_mysql_8_0:
-    name: PHP7.4+MySQL8.0
-    runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: baijunyao/mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: laravel_bjyblog
-          MYSQL_DATABASE: laravel_bjyblog
-    container:
-      image: baijunyao/php:7.4-local
-      volumes:
-        - /__w/laravel-bjyblog/laravel-bjyblog:/app
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-composer-
-      - name: Initial
-        run: |
-          cp .env.actions .env
-          composer install
-          php artisan key:generate
-          php artisan passport:keys
-          php artisan migrate
-          php artisan db:seed
-          php artisan storage:link --relative
-      - name: Test
-        run: |
-          composer test
-
   php_8_0_mysql_5_6:
     name: PHP8.0+MySQL5.6
     runs-on: ubuntu-latest
@@ -325,7 +208,7 @@ jobs:
   notify:
     name: Slack Notify
     runs-on: ubuntu-latest
-    needs: [phpcs, phpstan, helm_lint, ansible_lint, php_7_4_mysql_5_6, php_7_4_mysql_5_7, php_7_4_mysql_8_0, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
+    needs: [phpcs, phpstan, helm_lint, ansible_lint, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
     if: always()
     steps:
       - name: Slack Notify
