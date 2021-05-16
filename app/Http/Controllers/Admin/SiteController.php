@@ -32,13 +32,7 @@ class SiteController extends Controller
 
     public function store(Store $request)
     {
-        $data = $request->except('_token');
-        if (empty($data['sort'])) {
-            // 获取序号
-            $sort         = Site::orderBy('sort', 'desc')->value('sort');
-            $data['sort'] = (int) $sort + 1;
-        }
-        Site::create($data);
+        Site::create($request->except('_token'));
 
         return redirect(url('admin/site/index'));
     }

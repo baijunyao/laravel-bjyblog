@@ -22,12 +22,12 @@ class SiteControllerTest extends TestCase
     protected $urlPrefix = 'admin/site/';
     protected $table     = 'sites';
     protected $storeData = [
-        'socialite_user_id' => 1,
+        'socialite_user_id' => 0,
         'name'              => '测试',
         'description'       => '用于测试',
         'url'               => 'https://test.com',
         'audit'             => 1,
-        'sort'              => 1,
+        'sort'              => 2,
     ];
 
     public function testUpdate()
