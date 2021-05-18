@@ -16,7 +16,7 @@ Route::name('home.')->group(function () {
     Route::get('feed', \App\Http\Controllers\Home\FeedController::class . '@index')->name('feed.index');
     Route::prefix('site')->name('site.')->group(function () {
         Route::get('/', \App\Http\Controllers\Home\SiteController::class . '@index')->name('index');
-        Route::post('store', \App\Http\Controllers\Home\SiteController::class . '@store')->middleware('auth:socialite', 'clean.xss')->name('store');
+        Route::post('store', \App\Http\Controllers\Home\SiteController::class . '@store')->name('store')->middleware('auth:socialite', 'clean.xss');
     });
     Route::middleware('auth:socialite')->group(function () {
         Route::get('socialiteUser/{socialiteUser}', \App\Http\Controllers\Home\SocialiteUserController::class . '@show')->name('socialiteUser.show');
