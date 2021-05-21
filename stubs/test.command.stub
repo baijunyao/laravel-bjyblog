@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Tests\Commands\TestCase;
+
+class {{ class }} extends TestCase
+{
+    public function testCommand()
+    {
+        $this->assertTrue(true);
+    }
+}

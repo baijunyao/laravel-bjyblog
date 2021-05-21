@@ -38,6 +38,13 @@ class TestMakeCommand extends BaseTestMakeCommand
         return $path;
     }
 
+    protected function getStub()
+    {
+        return $this->option('command')
+            ? $this->resolveStubPath('/stubs/test.command.stub')
+            : parent::getStub();
+    }
+
     /**
      * @return array<int,array<int,string|int>>
      */
