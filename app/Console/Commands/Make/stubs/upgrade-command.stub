@@ -11,7 +11,8 @@ class ClassName extends Command
     protected $signature   = 'upgrade:version';
     protected $description = 'Upgrade to version';
 
-    public function handle()
+    public function handle(): int
     {
+        return 0;
     }
 }

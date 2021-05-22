@@ -7,11 +7,8 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Store;
 use App\Models\Site;
-use App\Models\SocialiteUser;
-use App\Notifications\SiteApply;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
-use Notification;
 
 class SiteController extends Controller
 {
@@ -41,19 +38,10 @@ class SiteController extends Controller
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
 
-        $siteData                      = $request->only('name', 'url', 'description');
-        $siteData['socialite_user_id'] = $socialiteUser->id;
-        $sort                          = Site::orderBy('sort', 'desc')->value('sort');
-        $siteData['sort']              = (int) $sort + 1;
-        $newSite                       = Site::create($siteData);
-
-        SocialiteUser::where('id', $socialiteUser->id)->update([
+        $socialiteUser->update([
             'email' => $request->input('email'),
         ]);
 
-        Notification::route('mail', config('bjyblog.notification_email'))
-            ->notify(new SiteApply());
-
-        return response()->json($newSite);
+        return response()->json(Site::create($request->only('name', 'url', 'description')));
     }
 }

@@ -7,14 +7,14 @@ namespace App\Console\Commands\Make;
 use File;
 use Illuminate\Console\Command;
 
-class Rest extends Command
+class Restful extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'make:rest {name}';
+    protected $signature = 'make:restful {name}';
 
     /**
      * The console command description.

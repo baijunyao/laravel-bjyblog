@@ -52,7 +52,7 @@
                 },
                 {
                     "url": "http:\/\/laravel-bjyblog.test\/api\/sites?page=1",
-                    "label": 1,
+                    "label": "1",
                     "active": true
                 },
                 {

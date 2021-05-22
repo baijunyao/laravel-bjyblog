@@ -21,12 +21,12 @@ class SiteControllerTest extends TestCase
     use TestIndex, TestShow, TestStore, TestStoreValidation, TestUpdateValidation, TestDestroy, TestRestore, TestForceDelete;
 
     protected $storeData = [
-        'socialite_user_id' => 1,
+        'socialite_user_id' => 0,
         'name'              => 'Store',
         'description'       => 'Store',
         'url'               => 'https://test.test',
         'audit'             => 1,
-        'sort'              => 1,
+        'sort'              => 2,
     ];
     protected $updateData = [
         'socialite_user_id' => 1,
