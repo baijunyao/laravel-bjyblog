@@ -25,13 +25,19 @@ class SyncToOss extends Command
 
     public function handle(): int
     {
-        $localFilePaths = Storage::disk('public')->allFiles('uploads');
+        $ossDisk   = Storage::disk('oss_uploads');
+        $localDisk = Storage::disk('public');
+
+        assert($ossDisk instanceof \Illuminate\Filesystem\FilesystemAdapter);
+        assert($localDisk instanceof \Illuminate\Filesystem\FilesystemAdapter);
+
+        $localFilePaths = $localDisk->allFiles('uploads');
 
         foreach ($localFilePaths as $localFilePath) {
             $needSync = false;
 
-            if (Storage::disk('oss_uploads')->has($localFilePath)) {
-                if (Storage::disk('public')->getTimestamp($localFilePath) > Storage::disk('oss_uploads')->getTimestamp($localFilePath)) {
+            if ($ossDisk->has($localFilePath)) {
+                if ($localDisk->getTimestamp($localFilePath) > $ossDisk->getTimestamp($localFilePath)) {
                     $needSync = true;
                 }
             } else {
@@ -39,7 +45,7 @@ class SyncToOss extends Command
             }
 
             if ($needSync) {
-                Storage::disk('oss_uploads')->put($localFilePath, Storage::disk('public')->get($localFilePath));
+                $ossDisk->put($localFilePath, $localDisk->get($localFilePath));
 
                 $this->info('Uploaded file: ' . $localFilePath);
             }
