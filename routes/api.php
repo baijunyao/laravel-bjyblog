@@ -52,9 +52,9 @@ Route::middleware('auth:api')->group(function () {
     Route::put('configs/{config}', \App\Http\Controllers\Resources\ConfigController::class . '@update')->name('configs.update');
     Route::post('configs/uploadQqQunOrCode', \App\Http\Controllers\Resources\ConfigController::class . '@uploadQqQunOrCode')->name('configs.uploadQqQunOrCode');
 
-    Route::apiResource('friendshipLinks', \App\Http\Controllers\Resources\FriendshipLinkController::class);
-    Route::patch('friendshipLinks/{friendshipLink}/restore', \App\Http\Controllers\Resources\FriendshipLinkController::class . '@restore')->name('friendshipLinks.restore');
-    Route::delete('friendshipLinks/{friendshipLink}/forceDelete', \App\Http\Controllers\Resources\FriendshipLinkController::class . '@forceDelete')->name('friendshipLinks.forceDelete');
+    Route::apiResource('friends', \App\Http\Controllers\Resources\FriendController::class);
+    Route::patch('friends/{friend}/restore', \App\Http\Controllers\Resources\FriendController::class . '@restore')->name('friends.restore');
+    Route::delete('friends/{friend}/forceDelete', \App\Http\Controllers\Resources\FriendController::class . '@forceDelete')->name('friends.forceDelete');
 
     Route::apiResource('openSources', \App\Http\Controllers\Resources\OpenSourceController::class);
     Route::patch('openSources/{openSource}/restore', \App\Http\Controllers\Resources\OpenSourceController::class . '@restore')->name('openSources.restore');

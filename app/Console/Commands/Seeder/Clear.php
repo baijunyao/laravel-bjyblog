@@ -8,7 +8,7 @@ use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Comment;
-use App\Models\FriendshipLink;
+use App\Models\Friend;
 use App\Models\Note;
 use App\Models\OpenSource;
 use App\Models\SocialiteUser;
@@ -43,7 +43,7 @@ class Clear extends Command
             SocialiteUser::truncate();
             Tag::truncate();
             OpenSource::truncate();
-            FriendshipLink::truncate();
+            Friend::truncate();
 
             Artisan::call('cache:clear');
             Artisan::call('config:clear');

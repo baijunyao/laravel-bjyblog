@@ -9,7 +9,7 @@ use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
-use App\Models\FriendshipLink;
+use App\Models\Friend;
 use App\Models\Note;
 use App\Models\SocialiteUser;
 use App\Models\Tag;
@@ -177,7 +177,7 @@ class FromThinkPHPBjyBlog extends Command
                 $linkData['deleted_at'] = date('Y-m-d H:i:s', time());
             }
 
-            FriendshipLink::create($linkData);
+            Friend::create($linkData);
         }
 
         // 迁移配置项

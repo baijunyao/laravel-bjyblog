@@ -151,7 +151,7 @@
             <div class="b-link">
                 <h4 class="b-title">{{ translate('Links') }}</h4>
                 <p>
-                    @foreach($friendshipLink as $v)
+                    @foreach($friend as $v)
                         <a class="b-link-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
                     @endforeach
                         <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> {{ translate('More') }} </a>
