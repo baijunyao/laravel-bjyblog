@@ -12,7 +12,7 @@ class Controller extends RestfulController
     /**
      * @return array<int,mixed>
      */
-    protected function getFilters()
+    protected function getFilters(): array
     {
         $filters = parent::getFilters();
 
