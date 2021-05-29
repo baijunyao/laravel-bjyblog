@@ -32,26 +32,16 @@ class SocialiteController extends Controller
         }
     }
 
-    /**
-     * @param string $service
-     */
-    public function redirectToProvider(Request $request, $service): RedirectResponse
+    public function redirectToProvider(string $service): RedirectResponse
     {
-        // 记录登录前的url
-        $data = [
+        session([
             'targetUrl' => URL::previous(),
-        ];
-        session($data);
+        ]);
 
         return Socialite::driver($service)->redirect();
     }
 
-    /**
-     * @param string $service
-     *
-     * @return \Illuminate\Http\RedirectResponse|void
-     */
-    public function handleProviderCallback(Request $request, $service)
+    public function handleProviderCallback(Request $request, string $service): RedirectResponse
     {
         if ($request->has('code') === false) {
             abort(404);

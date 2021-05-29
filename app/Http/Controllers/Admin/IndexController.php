@@ -37,7 +37,7 @@ class IndexController extends Controller
     public function upgrade()
     {
         $data = file_get_contents('https://gitee.com/baijunyao/laravel-bjyblog/raw/master/config/bjyblog.php');
-        preg_match('/v\\d+(\\.\\d+){3}/', $data, $version);
+        preg_match('/v\d+(\.\d+){2,}/', $data, $version);
         $newVersion = $version[0];
         $oldVersion = config('bjyblog.version');
 

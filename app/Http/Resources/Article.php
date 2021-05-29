@@ -14,7 +14,7 @@ class Article extends Base
      *
      * @return array<string,mixed>
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id'          => $this->id,
