@@ -133,6 +133,7 @@
   register: site_stat
 
 - name: Git clone laravel-bjyblog
+  when: inventory_hostname != 'local'
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/laravel-bjyblog.git'
     dest: /laravel-bjyblog/site
