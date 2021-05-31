@@ -6,7 +6,7 @@ namespace Tests\Commands\Upgrade\VersionString;
 
 class UpgradeTest extends \Tests\Commands\Upgrade\TestCase
 {
-    public function testUpgrade()
+    public function testUpgrade(): void
     {
         $this->artisan('bjyblog:update')->assertExitCode(0);
     }
