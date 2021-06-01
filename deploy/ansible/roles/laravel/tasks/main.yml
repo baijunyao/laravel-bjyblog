@@ -100,6 +100,11 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
+- name: Install Helm diff plugin
+  community.kubernetes.helm_plugin:
+    plugin_path: https://github.91chifun.workers.dev//https://github.com/databus23/helm-diff.git
+    state: present
+
 - name: Check that the .kube/config exists
   ansible.builtin.stat:
     path: ~/.kube/config
