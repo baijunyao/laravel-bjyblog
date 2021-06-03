@@ -851,11 +851,6 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot call method fetchColumn\\(\\) on PDOStatement\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/DashboardController.php
-
-		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"
 			count: 1
 			path: app/Http/Middleware/Authenticate.php
