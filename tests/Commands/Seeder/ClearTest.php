@@ -8,7 +8,7 @@ use App\Models\Article;
 use App\Models\ArticleTag;
 use App\Models\Category;
 use App\Models\Comment;
-use App\Models\FriendshipLink;
+use App\Models\Friend;
 use App\Models\Note;
 use App\Models\OpenSource;
 use App\Models\SocialiteUser;
@@ -36,6 +36,6 @@ class ClearTest extends TestCase
         static::assertEquals(0, SocialiteUser::count());
         static::assertEquals(0, Tag::count());
         static::assertEquals(0, OpenSource::count());
-        static::assertEquals(0, FriendshipLink::count());
+        static::assertEquals(0, Friend::count());
     }
 }

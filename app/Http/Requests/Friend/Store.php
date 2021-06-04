@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\OpenSource;
+namespace App\Http\Requests\Friend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,6 +27,7 @@ class Store extends FormRequest
     {
         return [
             'name' => 'required|unique:friends,name',
+            'url'  => 'required|unique:friends,url',
         ];
     }
 }
