@@ -8,7 +8,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Config;
-use App\Models\FriendshipLink;
+use App\Models\Friend;
 use App\Models\Nav;
 use App\Models\Note;
 use App\Models\OpenSource;
@@ -106,7 +106,7 @@ class ComposerServiceProvider extends ServiceProvider
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-            $friendshipLink = FriendshipLink::select('name', 'url')
+            $friend = Friend::select('name', 'url')
                 ->orderBy('sort')
                 ->get();
 
@@ -129,7 +129,7 @@ class ComposerServiceProvider extends ServiceProvider
             $homeFootColNumber = array_filter(config('bjyblog.social_links')) === [] ? 4 : 3;
 
             // 分配数据
-            $assign = compact('category', 'tag', 'topArticle', 'friendshipLink', 'nav', 'qqQunArticle', 'socialiteClients', 'homeFootColNumber');
+            $assign = compact('category', 'tag', 'topArticle', 'friend', 'nav', 'qqQunArticle', 'socialiteClients', 'homeFootColNumber');
             $view->with($assign);
         });
 

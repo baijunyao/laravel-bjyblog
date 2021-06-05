@@ -68,7 +68,7 @@
                                 <li>
                                     <a><i class="fa fa-link"></i> {{ translate('Link') }} <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="{{ url('admin/friendshipLink/index') }}">{{ translate('Link') }}</a></li>
+                                        <li><a href="{{ url('admin/friend/index') }}">{{ translate('Link') }}</a></li>
                                         <li><a href="{{ url('admin/site/index') }}">{{ translate('Recommend Blog') }}</a></li>
                                     </ul>
                                 </li>

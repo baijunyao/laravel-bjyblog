@@ -182,23 +182,23 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     });
 
     // 友情链接管理
-    Route::prefix('friendshipLink')->group(function () {
+    Route::prefix('friend')->group(function () {
         // 友情链接列表
-        Route::get('index', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@index');
+        Route::get('index', \App\Http\Controllers\Admin\FriendController::class . '@index');
         // 添加友情链接
-        Route::get('create', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@create');
-        Route::post('store', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@store');
+        Route::get('create', \App\Http\Controllers\Admin\FriendController::class . '@create');
+        Route::post('store', \App\Http\Controllers\Admin\FriendController::class . '@store');
         // 编辑友情链接
-        Route::get('edit/{id}', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@edit');
-        Route::post('update/{id}', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@update');
+        Route::get('edit/{id}', \App\Http\Controllers\Admin\FriendController::class . '@edit');
+        Route::post('update/{id}', \App\Http\Controllers\Admin\FriendController::class . '@update');
         // 排序
-        Route::post('sort', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@sort');
+        Route::post('sort', \App\Http\Controllers\Admin\FriendController::class . '@sort');
         // 删除友情链接
-        Route::get('destroy/{id}', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@destroy');
+        Route::get('destroy/{id}', \App\Http\Controllers\Admin\FriendController::class . '@destroy');
         // 恢复删除的友情链接
-        Route::get('restore/{id}', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@restore');
+        Route::get('restore/{id}', \App\Http\Controllers\Admin\FriendController::class . '@restore');
         // 彻底删除友情链接
-        Route::get('forceDelete/{id}', \App\Http\Controllers\Admin\FriendshipLinkController::class . '@forceDelete');
+        Route::get('forceDelete/{id}', \App\Http\Controllers\Admin\FriendController::class . '@forceDelete');
     });
 
     // 推荐博客管理

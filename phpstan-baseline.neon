@@ -296,74 +296,74 @@ parameters:
 			path: app/Http/Controllers/Admin/ConfigController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:index\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:index\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:create\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:create\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:store\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:store\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:edit\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:edit\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:update\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:update\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:update\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:sort\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:destroy\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:destroy\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:restore\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:restore\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:forceDelete\\(\\) has no return typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendshipLinkController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\FriendController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
-			path: app/Http/Controllers/Admin/FriendshipLinkController.php
+			path: app/Http/Controllers/Admin/FriendController.php
 
 		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\IndexController\\:\\:index\\(\\) has no return typehint specified\\.$#"
@@ -849,11 +849,6 @@ parameters:
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Admin\\\\UserController\\:\\:forceDelete\\(\\) has parameter \\$id with no typehint specified\\.$#"
 			count: 1
 			path: app/Http/Controllers/Admin/UserController.php
-
-		-
-			message: "#^Cannot call method fetchColumn\\(\\) on PDOStatement\\|false\\.$#"
-			count: 1
-			path: app/Http/Controllers/DashboardController.php
 
 		-
 			message: "#^Property App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:\\$guards \\(array\\<int, string\\>\\) does not accept array\\<int, array\\<string\\>\\>\\.$#"
