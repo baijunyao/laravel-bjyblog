@@ -385,3 +385,8 @@
   command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
+
+- name: Ensure files are 0666
+  command: find /laravel-bjyblog/site/public/images/default/article.png -type f -exec chmod -c 0666 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
