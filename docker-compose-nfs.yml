@@ -23,7 +23,7 @@ services:
       DOCUMENT_ROOT: /app/public
 
   php:
-    image: baijunyao/php:7.4-${APP_ENV}
+    image: baijunyao/php:8.0-${APP_ENV}
     container_name: laravel-bjyblog-php
     tty: true
     volumes:

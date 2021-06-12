@@ -4,48 +4,41 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use Closure;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
 {
     /**
-     * @var array<int,string>
-     */
-    private $guards = [];
-
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param string[]                 ...$guards
-     *
-     * @throws \Illuminate\Auth\AuthenticationException
-     *
-     * @return mixed
-     */
-    public function handle($request, Closure $next, ...$guards)
-    {
-        $this->guards = $guards;
-
-        return parent::handle($request, $next, ...$guards);
-    }
-
-    /**
      * Get the path the user should be redirected to when they are not authenticated.
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return string|void|null
+     * @return string|null
      */
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            if (current($this->guards) === 'admin') {
-                return url('admin/login/index');
-            } else {
-                return route('login');
-            }
+            return route('login');
         }
+
+        return null;
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param array<int,string>        $guards
+     *
+     * @throws \Illuminate\Auth\AuthenticationException
+     */
+    protected function unauthenticated($request, array $guards)
+    {
+        if (current($guards) === 'admin') {
+            $redirectTo = $request->expectsJson() === false ? url('admin/login/index') : null;
+        } else {
+            $redirectTo = $this->redirectTo($request);
+        }
+
+        throw new AuthenticationException('Unauthenticated.', $guards, $redirectTo);
     }
 }
