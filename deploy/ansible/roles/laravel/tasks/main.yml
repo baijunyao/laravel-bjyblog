@@ -102,7 +102,7 @@
 
 - name: Check that the Helm diff exists
   ansible.builtin.stat:
-    path: $HOME/.local/share/helm/plugins/helm-diff
+    path: $HOME/.local/share/helm/plugins/diff
   register: helm_diff_stat
 
 - name: Download Helm diff binary
@@ -380,32 +380,20 @@
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
 
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/bootstrap -type d -exec chmod -c 0777 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/storage -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Change public path permissions
+- name: Change path ownership and group to www-data
   ansible.builtin.file:
-    path: /laravel-bjyblog/site/public
-    mode: '0777'
+    path: /laravel-bjyblog/site
+    owner: www-data
+    group: www-data
+    recurse: true
 
-- name: Change article.png permissions
-  ansible.builtin.file:
-    path: /laravel-bjyblog/site/public/images/default/article.png
-    mode: '0666'
+- name: Ensure directories are 0755
+  command: find /laravel-bjyblog/site -type d -exec chmod -c 0755 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
+
+- name: Ensure files are 0644
+  command: find /laravel-bjyblog/site -type f -exec chmod -c 0644 {} \;
+  register: chmod_result
+  changed_when: "chmod_result.stdout != \"\""
+
