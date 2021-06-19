@@ -100,10 +100,24 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
-- name: Install Helm diff plugin
-  community.kubernetes.helm_plugin:
-    plugin_path: https://github.91chifun.workers.dev//https://github.com/databus23/helm-diff.git
-    state: present
+- name: Check that the Helm diff exists
+  ansible.builtin.stat:
+    path: $HOME/.local/share/helm/plugins/diff
+  register: helm_diff_stat
+
+- name: Download Helm diff binary
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.get_url:
+    url: https://gh.api.99988866.xyz/https://github.com/databus23/helm-diff/releases/download/v3.1.3/helm-diff-linux.tgz
+    dest: /tmp/helm-diff-v3.1.3.tgz
+    mode: 0700
+
+- name: Unarchive helm-diff-v3.1.3.tgz
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.unarchive:
+    src: /tmp/helm-diff-v3.1.3.tgz
+    dest: $HOME/.local/share/helm/plugins/
+    remote_src: yes
 
 - name: Check that the .kube/config exists
   ansible.builtin.stat:
@@ -366,27 +380,20 @@
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
 
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/storage -type d -exec chmod -c 0777 {} \;
+- name: Change path ownership and group to www-data
+  ansible.builtin.file:
+    path: /laravel-bjyblog/site
+    owner: www-data
+    group: www-data
+    recurse: true
+
+- name: Ensure directories are 0755
+  command: find /laravel-bjyblog/site -type d -exec chmod -c 0755 {} \;
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
 
-- name: Ensure directories are 0777
-  command: find /laravel-bjyblog/site/bootstrap -type d -exec chmod -c 0777 {} \;
+- name: Ensure files are 0644
+  command: find /laravel-bjyblog/site -type f -exec chmod -c 0644 {} \;
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
 
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/storage -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/bootstrap -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
-
-- name: Ensure files are 0666
-  command: find /laravel-bjyblog/site/public/images/default/article.png -type f -exec chmod -c 0666 {} \;
-  register: chmod_result
-  changed_when: "chmod_result.stdout != \"\""
