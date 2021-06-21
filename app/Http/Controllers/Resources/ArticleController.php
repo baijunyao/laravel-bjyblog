@@ -29,7 +29,7 @@ class ArticleController extends Controller
     public function store(Store $request, ArticleTag $articleTag): ArticleResource
     {
         $article = Article::create(
-            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')
+            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top', 'cover')
         );
 
         $articleTag->addTagIds($article->id, $request->input('tag_ids'));
@@ -42,7 +42,7 @@ class ArticleController extends Controller
         $article = Article::findOrFail($request->route('article'));
 
         $result = $article->update(
-            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top')
+            $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top', 'cover')
         );
 
         if ($result) {

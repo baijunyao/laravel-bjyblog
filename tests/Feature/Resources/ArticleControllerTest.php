@@ -34,6 +34,6 @@ class ArticleControllerTest extends TestCase
         'markdown'    => 'updated content',
         'tag_ids'     => [1],
         'description' => '',
-        'cover'       => '',
+        'cover'       => '/updated.jpg',
     ];
 }
