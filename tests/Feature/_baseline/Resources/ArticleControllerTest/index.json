@@ -115,7 +115,7 @@
                 },
                 {
                     "url": "http:\/\/laravel-bjyblog.test\/api\/articles?page=1",
-                    "label": 1,
+                    "label": "1",
                     "active": true
                 },
                 {
