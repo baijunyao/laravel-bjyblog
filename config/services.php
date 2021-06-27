@@ -92,5 +92,7 @@ return [
         'instance_id' => env('TENCENTCLOUD_INSTANCE_ID'),
         'region' => env('TENCENTCLOUD_REGION'),
         'ssh_key_id' => env('TENCENTCLOUD_SSH_KEY_ID'),
+        'image_id' => env('TENCENTCLOUD_IMAGE_ID'),
+        'host_name' => env('TENCENTCLOUD_HOST_NAME', 'development'),
     ],
 ];
