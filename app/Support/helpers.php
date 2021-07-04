@@ -17,11 +17,11 @@ if (!function_exists('watermark')) {
      */
     function watermark(string $file, string $text, string $color = '#0B94C1'): void
     {
-        $localFile = public_path($file);
-        $extension = strtolower(pathinfo($localFile, PATHINFO_EXTENSION));
+        $local_file = public_path($file);
+        $extension  = strtolower(pathinfo($local_file, PATHINFO_EXTENSION));
 
         if ($extension !== 'gif') {
-            $image = Image::make($localFile);
+            $image = Image::make($local_file);
             $image->text($text, $image->width() - 20, $image->height() - 30, function ($font) use ($color) {
                 $font->file(public_path('fonts/msyh.ttf'));
                 $font->size(15);
@@ -29,10 +29,10 @@ if (!function_exists('watermark')) {
                 $font->align('right');
                 $font->valign('bottom');
             });
-            $image->save($localFile);
+            $image->save($local_file);
 
             if (in_array('oss_uploads', config('bjyblog.upload_disks'))) {
-                $content = file_get_contents($localFile);
+                $content = file_get_contents($local_file);
 
                 if ($content !== false) {
                     Storage::disk('oss_uploads')->put($file, $content);
@@ -52,8 +52,8 @@ if (!function_exists('generate_english_slug')) {
 
         if ('en' !== $locale) {
             try {
-                $googleTranslate = new GoogleTranslate();
-                $content         =  $googleTranslate->setUrl('http://translate.google.cn/translate_a/single')
+                $google_translate = new GoogleTranslate();
+                $content          =  $google_translate->setUrl('http://translate.google.cn/translate_a/single')
                     ->setSource($locale)
                     ->translate($content) ?? '';
             } catch (Exception $exception) {
@@ -95,7 +95,7 @@ if (!function_exists('mail_is_configured')) {
      */
     function mail_is_configured(): bool
     {
-        $mailConfig = [
+        $mail_config = [
             config('mail.default'),
             config('mail.mailers.smtp.encryption'),
             config('mail.mailers.smtp.port'),
@@ -106,7 +106,7 @@ if (!function_exists('mail_is_configured')) {
             config('mail.from.name'),
         ];
 
-        return count(array_filter($mailConfig)) === 8;
+        return count(array_filter($mail_config)) === 8;
     }
 }
 

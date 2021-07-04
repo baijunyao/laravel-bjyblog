@@ -33,153 +33,153 @@ class V5_5_5_0 extends Command
         }
 
         if (Config::where('id', '>', 100)->count() === 0) {
-            $oldConfigs = Config::where('id', '<', 100)->pluck('value', 'name');
-            $newConfigs = [
+            $old_configs = Config::where('id', '<', 100)->pluck('value', 'name');
+            $new_configs = [
                 [
                     'id'    => 101,
                     'name'  => 'bjyblog.web_name',
-                    'value' => $oldConfigs['WEB_NAME'],
+                    'value' => $old_configs['WEB_NAME'],
                 ],
                 [
                     'id'    => 102,
                     'name'  => 'bjyblog.head.keywords',
-                    'value' => $oldConfigs['WEB_KEYWORDS'],
+                    'value' => $old_configs['WEB_KEYWORDS'],
                 ],
                 [
                     'id'    => 103,
                     'name'  => 'bjyblog.head.description',
-                    'value' => $oldConfigs['WEB_DESCRIPTION'],
+                    'value' => $old_configs['WEB_DESCRIPTION'],
                 ],
                 [
                     'id'    => 107,
                     'name'  => 'bjyblog.water.text',
-                    'value' => $oldConfigs['TEXT_WATER_WORD'],
+                    'value' => $old_configs['TEXT_WATER_WORD'],
                 ],
                 [
                     'id'    => 109,
                     'name'  => 'bjyblog.water.size',
-                    'value' => $oldConfigs['TEXT_WATER_FONT_SIZE'],
+                    'value' => $old_configs['TEXT_WATER_FONT_SIZE'],
                 ],
                 [
                     'id'    => 110,
                     'name'  => 'bjyblog.water.color',
-                    'value' => $oldConfigs['TEXT_WATER_COLOR'],
+                    'value' => $old_configs['TEXT_WATER_COLOR'],
                 ],
                 [
                     'id'    => 117,
                     'name'  => 'bjyblog.icp',
-                    'value' => $oldConfigs['WEB_ICP_NUMBER'],
+                    'value' => $old_configs['WEB_ICP_NUMBER'],
                 ],
                 [
                     'id'    => 118,
                     'name'  => 'bjyblog.admin_email',
-                    'value' => $oldConfigs['ADMIN_EMAIL'],
+                    'value' => $old_configs['ADMIN_EMAIL'],
                 ],
                 [
                     'id'    => 119,
                     'name'  => 'bjyblog.copyright_word',
-                    'value' => $oldConfigs['COPYRIGHT_WORD'],
+                    'value' => $old_configs['COPYRIGHT_WORD'],
                 ],
                 [
                     'id'    => 120,
                     'name'  => 'services.qq.client_id',
-                    'value' => $oldConfigs['QQ_APP_ID'],
+                    'value' => $old_configs['QQ_APP_ID'],
                 ],
                 [
                     'id'    => 123,
                     'name'  => 'bjyblog.statistics',
-                    'value' => $oldConfigs['WEB_STATISTICS'],
+                    'value' => $old_configs['WEB_STATISTICS'],
                 ],
                 [
                     'id'    => 125,
                     'name'  => 'bjyblog.author',
-                    'value' => $oldConfigs['AUTHOR'],
+                    'value' => $old_configs['AUTHOR'],
                 ],
                 [
                     'id'    => 126,
                     'name'  => 'services.qq.client_secret',
-                    'value' => $oldConfigs['QQ_APP_KEY'],
+                    'value' => $old_configs['QQ_APP_KEY'],
                 ],
                 [
                     'id'    => 128,
                     'name'  => 'bjyblog.baidu_site_url',
-                    'value' => $oldConfigs['BAIDU_SITE_URL'],
+                    'value' => $old_configs['BAIDU_SITE_URL'],
                 ],
                 [
                     'id'    => 133,
                     'name'  => 'services.weibo.client_id',
-                    'value' => $oldConfigs['SINA_API_KEY'],
+                    'value' => $old_configs['SINA_API_KEY'],
                 ],
                 [
                     'id'    => 134,
                     'name'  => 'services.weibo.client_secret',
-                    'value' => $oldConfigs['SINA_SECRET'],
+                    'value' => $old_configs['SINA_SECRET'],
                 ],
                 [
                     'id'    => 139,
                     'name'  => 'services.github.client_id',
-                    'value' => $oldConfigs['GITHUB_CLIENT_ID'],
+                    'value' => $old_configs['GITHUB_CLIENT_ID'],
                 ],
                 [
                     'id'    => 140,
                     'name'  => 'services.github.client_secret',
-                    'value' => $oldConfigs['GITHUB_CLIENT_SECRET'],
+                    'value' => $old_configs['GITHUB_CLIENT_SECRET'],
                 ],
                 [
                     'id'    => 141,
                     'name'  => 'bjyblog.alt_word',
-                    'value' => $oldConfigs['IMAGE_TITLE_ALT_WORD'],
+                    'value' => $old_configs['IMAGE_TITLE_ALT_WORD'],
                 ],
                 [
                     'id'    => 142,
                     'name'  => 'email.host',
-                    'value' => $oldConfigs['EMAIL_SMTP'],
+                    'value' => $old_configs['EMAIL_SMTP'],
                 ],
                 [
                     'id'    => 143,
                     'name'  => 'email.username',
-                    'value' => $oldConfigs['EMAIL_USERNAME'],
+                    'value' => $old_configs['EMAIL_USERNAME'],
                 ],
                 [
                     'id'    => 144,
                     'name'  => 'email.password',
-                    'value' => $oldConfigs['EMAIL_PASSWORD'],
+                    'value' => $old_configs['EMAIL_PASSWORD'],
                 ],
                 [
                     'id'    => 145,
                     'name'  => 'email.from.name',
-                    'value' => $oldConfigs['EMAIL_FROM_NAME'],
+                    'value' => $old_configs['EMAIL_FROM_NAME'],
                 ],
                 [
                     'id'    => 148,
                     'name'  => 'bjyblog.notification_email',
-                    'value' => $oldConfigs['EMAIL_RECEIVE'],
+                    'value' => $old_configs['EMAIL_RECEIVE'],
                 ],
                 [
                     'id'    => 149,
                     'name'  => 'bjyblog.head.title',
-                    'value' => $oldConfigs['WEB_TITLE'],
+                    'value' => $old_configs['WEB_TITLE'],
                 ],
                 [
                     'id'    => 150,
                     'name'  => 'bjyblog.qq_qun.article_id',
-                    'value' => $oldConfigs['QQ_QUN_ARTICLE_ID'],
+                    'value' => $old_configs['QQ_QUN_ARTICLE_ID'],
                 ],
 
                 [
                     'id'    => 151,
                     'name'  => 'bjyblog.qq_qun.number',
-                    'value' => $oldConfigs['QQ_QUN_NUMBER'],
+                    'value' => $old_configs['QQ_QUN_NUMBER'],
                 ],
                 [
                     'id'    => 152,
                     'name'  => 'bjyblog.qq_qun.code',
-                    'value' => $oldConfigs['QQ_QUN_CODE'],
+                    'value' => $old_configs['QQ_QUN_CODE'],
                 ],
                 [
                     'id'    => 153,
                     'name'  => 'bjyblog.qq_qun.or_code',
-                    'value' => $oldConfigs['QQ_QUN_OR_CODE'],
+                    'value' => $old_configs['QQ_QUN_OR_CODE'],
                 ],
 
                 [
@@ -194,7 +194,7 @@ class V5_5_5_0 extends Command
                 ],
             ];
 
-            foreach ($newConfigs as $newConfig) {
+            foreach ($new_configs as $newConfig) {
                 Config::firstOrCreate($newConfig);
             }
         }
@@ -207,11 +207,11 @@ class V5_5_5_0 extends Command
             ]);
         }
 
-        $mailConfigs = Config::where('name', 'like', 'email.%')->get();
+        $mail_configs = Config::where('name', 'like', 'email.%')->get();
 
-        foreach ($mailConfigs as $mailConfig) {
-            Config::where('id', $mailConfig->id)->update([
-                'name' => str_replace('email.', 'mail.', $mailConfig->name),
+        foreach ($mail_configs as $mail_config) {
+            Config::where('id', $mail_config->id)->update([
+                'name' => str_replace('email.', 'mail.', $mail_config->name),
             ]);
         }
 

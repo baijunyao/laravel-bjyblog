@@ -16,9 +16,9 @@ class V6_2_0 extends Command
 
     public function handle(): int
     {
-        $envPath = base_path('.env');
+        $env_path = base_path('.env');
 
-        File::put($envPath, str_replace('QUEUE_DRIVER', 'QUEUE_CONNECTION', File::get($envPath)));
+        File::put($env_path, str_replace('QUEUE_DRIVER', 'QUEUE_CONNECTION', File::get($env_path)));
 
         Schema::table('tags', function (Blueprint $table) {
             $table->string('keywords')->default('')->after('slug');

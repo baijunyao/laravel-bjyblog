@@ -28,14 +28,14 @@ class V11_0_0 extends Command
             Artisan::call('storage:link --relative');
         }
 
-        $updatedConfigs = [
+        $updated_configs = [
             160 => 'filesystems.disks.oss_backups.access_key',
             161 => 'filesystems.disks.oss_backups.secret_key',
             162 => 'filesystems.disks.oss_backups.bucket',
             163 => 'filesystems.disks.oss_backups.endpoint',
         ];
 
-        foreach ($updatedConfigs as $id => $name) {
+        foreach ($updated_configs as $id => $name) {
             DB::table('configs')->where('id', $id)->update([
                 'name' => $name,
             ]);

@@ -93,7 +93,7 @@ class Article extends Base
         return $this->belongsToMany(Tag::class, 'article_tags');
     }
 
-    public function article_histories(): HasMany
+    public function articleHistories(): HasMany
     {
         return $this->hasMany(ArticleHistory::class);
     }

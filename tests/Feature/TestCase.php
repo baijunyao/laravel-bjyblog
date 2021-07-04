@@ -79,7 +79,7 @@ abstract class TestCase extends \Tests\TestCase
 
     public function setupEmail()
     {
-        $mailConfigs = [
+        $mail_configs = [
             'mail.default'                 => 'smtp',
             'mail.mailers.smtp.encryption' => 'ssl',
             'mail.mailers.smtp.port'       => '465',
@@ -90,6 +90,6 @@ abstract class TestCase extends \Tests\TestCase
             'mail.from.name'               => 'd2d524466@inbox.mailtrap.io',
         ];
 
-        config($mailConfigs);
+        config($mail_configs);
     }
 }

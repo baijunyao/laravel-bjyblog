@@ -25,29 +25,29 @@ class SyncToOss extends Command
 
     public function handle(): int
     {
-        $ossDisk   = Storage::disk('oss_uploads');
-        $localDisk = Storage::disk('public');
+        $oss_disk   = Storage::disk('oss_uploads');
+        $local_disk = Storage::disk('public');
 
-        assert($ossDisk instanceof \Illuminate\Filesystem\FilesystemAdapter);
-        assert($localDisk instanceof \Illuminate\Filesystem\FilesystemAdapter);
+        assert($oss_disk instanceof \Illuminate\Filesystem\FilesystemAdapter);
+        assert($local_disk instanceof \Illuminate\Filesystem\FilesystemAdapter);
 
-        $localFilePaths = $localDisk->allFiles('uploads');
+        $local_file_paths = $local_disk->allFiles('uploads');
 
-        foreach ($localFilePaths as $localFilePath) {
-            $needSync = false;
+        foreach ($local_file_paths as $local_file_path) {
+            $need_sync = false;
 
-            if ($ossDisk->has($localFilePath)) {
-                if ($localDisk->getTimestamp($localFilePath) > $ossDisk->getTimestamp($localFilePath)) {
-                    $needSync = true;
+            if ($oss_disk->has($local_file_path)) {
+                if ($local_disk->getTimestamp($local_file_path) > $oss_disk->getTimestamp($local_file_path)) {
+                    $need_sync = true;
                 }
             } else {
-                $needSync = true;
+                $need_sync = true;
             }
 
-            if ($needSync) {
-                $ossDisk->put($localFilePath, $localDisk->get($localFilePath));
+            if ($need_sync) {
+                $oss_disk->put($local_file_path, $local_disk->get($local_file_path));
 
-                $this->info('Uploaded file: ' . $localFilePath);
+                $this->info('Uploaded file: ' . $local_file_path);
             }
         }
 

@@ -15,7 +15,7 @@ class DashboardController extends Controller
 {
     public function analysis(): JsonResponse
     {
-        $mysqlVersion = DB::connection()->getPdo()->query('SELECT VERSION();');
+        $mysql_version = DB::connection()->getPdo()->query('SELECT VERSION();');
 
         $version     = [
             'latest_socialite_users' => SocialiteUser::orderBy('updated_at', 'desc')->limit(5)->get(),
@@ -24,7 +24,7 @@ class DashboardController extends Controller
                 'system'     => PHP_OS,
                 'web_server' => $_SERVER['SERVER_SOFTWARE'] ?? '',
                 'php'        => PHP_VERSION,
-                'mysql'      => $mysqlVersion === false ? '' : $mysqlVersion->fetchColumn(),
+                'mysql'      => $mysql_version === false ? '' : $mysql_version->fetchColumn(),
             ],
             'counts' => [
                 'articles'        => Article::withTrashed()->count(),

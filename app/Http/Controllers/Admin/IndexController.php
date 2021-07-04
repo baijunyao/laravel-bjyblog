@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function index()
     {
         // 最新登录的5个用户
-        $socialiteUserData = SocialiteUser::select('name', 'avatar', 'login_times', 'updated_at')
+        $socialite_users = SocialiteUser::select('name', 'avatar', 'login_times', 'updated_at')
             ->orderBy('updated_at', 'desc')
             ->limit(5)
             ->get();
@@ -29,7 +29,7 @@ class IndexController extends Controller
             'php'       => PHP_VERSION,
             'mysql'     => DB::connection()->getPdo()->query('SELECT VERSION();')->fetchColumn(),
         ];
-        $assign = compact('socialiteUserData', 'version');
+        $assign = compact('socialite_users', 'version');
 
         return view('admin.index.index', $assign);
     }
@@ -38,10 +38,10 @@ class IndexController extends Controller
     {
         $data = file_get_contents('https://gitee.com/baijunyao/laravel-bjyblog/raw/master/config/bjyblog.php');
         preg_match('/v\d+(\.\d+){2,}/', $data, $version);
-        $newVersion = $version[0];
-        $oldVersion = config('bjyblog.version');
+        $new_version = $version[0];
+        $old_version = config('bjyblog.version');
 
-        if (Comparator::greaterThan($newVersion, $oldVersion)) {
+        if (Comparator::greaterThan($new_version, $old_version)) {
             return redirect('https://baijunyao.com/docs/laravel-bjyblog/更新记录.html');
         } else {
             flash_error('没有需要更新的版本');

@@ -26,23 +26,23 @@ class Restful extends Command
     public function handle(): int
     {
         /** @var string $name */
-        $name         = $this->argument('name');
-        $resourcePath = app_path("Http/Resources/{$name}.php");
+        $name          = $this->argument('name');
+        $resource_path = app_path("Http/Resources/{$name}.php");
 
-        if (!File::exists($resourcePath)) {
-            File::put($resourcePath, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource.stub'))));
+        if (!File::exists($resource_path)) {
+            File::put($resource_path, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource.stub'))));
         }
 
-        $resourceControllerPath = app_path("Http/Controllers/Resources/{$name}Controller.php");
+        $resource_controller_path = app_path("Http/Controllers/Resources/{$name}Controller.php");
 
-        if (!File::exists($resourceControllerPath)) {
-            File::put($resourceControllerPath, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource-controller.stub'))));
+        if (!File::exists($resource_controller_path)) {
+            File::put($resource_controller_path, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource-controller.stub'))));
         }
 
-        $resourceTestPath = base_path("tests/Feature/Resources/{$name}ControllerTest.php");
+        $resource_test_path = base_path("tests/Feature/Resources/{$name}ControllerTest.php");
 
-        if (!File::exists($resourceTestPath)) {
-            File::put($resourceTestPath, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource-controller-test.stub'))));
+        if (!File::exists($resource_test_path)) {
+            File::put($resource_test_path, str_replace('{name}', $name, File::get(app_path('Console/Commands/Make/stubs/resource-controller-test.stub'))));
         }
 
         return 0;

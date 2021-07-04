@@ -26,18 +26,18 @@ class AuditComment extends Command
 
     public function handle(): int
     {
-        $baiduConfig = [
+        $baidu_config = [
             config('services.baidu.appid'),
             config('services.baidu.appkey'),
             config('services.baidu.secret'),
         ];
 
-        if (count(array_filter($baiduConfig)) === 3) {
+        if (count(array_filter($baidu_config)) === 3) {
             $comments = Comment::withTrashed()
                 ->select('id', 'content', 'is_audited')
                 ->get();
 
-            $baiduClient = new AipContentCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
+            $baidu_client = new AipContentCensor(config('services.baidu.appid'), config('services.baidu.appkey'), config('services.baidu.secret'));
 
             $bar = $this->output->createProgressBar($comments->count());
             $bar->start();
@@ -54,7 +54,7 @@ class AuditComment extends Command
                 $count++;
 
                 $content = $comment->getRawOriginal('content');
-                $result  = $baiduClient->textCensorUserDefined($content);
+                $result  = $baidu_client->textCensorUserDefined($content);
 
                 if (isset($result['error_code'])) {
                     $this->error('error: ' . $result['error_msg']);

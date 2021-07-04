@@ -14,7 +14,7 @@ class V7_0_0 extends Command
 
     public function handle(): int
     {
-        $configNameById = [
+        $config_name_by_id = [
             142 => 'mail.mailers.smtp.host',
             143 => 'mail.mailers.smtp.username',
             144 => 'mail.mailers.smtp.password',
@@ -23,7 +23,7 @@ class V7_0_0 extends Command
             156 => 'mail.mailers.smtp.encryption',
         ];
 
-        foreach ($configNameById as $id => $name) {
+        foreach ($config_name_by_id as $id => $name) {
             DB::table('configs')->where('id', $id)->update([
                 'name' => $name,
             ]);

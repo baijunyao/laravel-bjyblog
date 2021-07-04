@@ -26,18 +26,18 @@ class ArticleController extends Controller
         'created_at',
     ];
 
-    public function store(Store $request, ArticleTag $articleTag): ArticleResource
+    public function store(Store $request, ArticleTag $article_tag): ArticleResource
     {
         $article = Article::create(
             $request->only('category_id', 'title', 'author', 'keywords', 'description', 'markdown', 'is_top', 'cover')
         );
 
-        $articleTag->addTagIds($article->id, $request->input('tag_ids'));
+        $article_tag->addTagIds($article->id, $request->input('tag_ids'));
 
         return new ArticleResource($article);
     }
 
-    public function update(Store $request, ArticleTag $articleTag): ArticleResource
+    public function update(Store $request, ArticleTag $article_tag): ArticleResource
     {
         $article = Article::findOrFail($request->route('article'));
 
@@ -47,7 +47,7 @@ class ArticleController extends Controller
 
         if ($result) {
             ArticleTag::where('article_id', $request->route('article'))->forceDelete();
-            $articleTag->addTagIds((int) $request->route('article'), $request->input('tag_ids'));
+            $article_tag->addTagIds((int) $request->route('article'), $request->input('tag_ids'));
         }
 
         return new ArticleResource($article);

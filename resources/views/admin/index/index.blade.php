@@ -39,28 +39,28 @@
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-comments-o"></i></div>
-                <div class="count">{{ $commentCount }}</div>
+                <div class="count">{{ $comment_count }}</div>
                 <h3>{{ translate('Number of comments') }}</h3>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-users"></i></div>
-                <div class="count">{{ $socialiteUserCount }}</div>
+                <div class="count">{{ $socialite_user_count }}</div>
                 <h3>{{ translate('Number of Socialite users') }}</h3>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-book"></i></div>
-                <div class="count">{{ $articleCount }}</div>
+                <div class="count">{{ $article_count }}</div>
                 <h3>{{ translate('Number of articles') }}</h3>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-wechat"></i></div>
-                <div class="count">{{ $chatCount }}</div>
+                <div class="count">{{ $chat_count }}</div>
                 <h3>{{ translate('Number of chats') }}</h3>
             </div>
         </div>
@@ -73,16 +73,16 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @foreach($socialiteUserData as $k => $v)
+                    @foreach($socialite_users as $socialite_user)
                         <article class="media event">
                             <a class="pull-left">
-                                <img class="bjy-img" src="{{ url($v->avatar) }}" alt="">
+                                <img class="bjy-img" src="{{ url($socialite_user->avatar) }}" alt="">
                             </a>
                             <div class="media-body">
-                                {{ $v->name }}
+                                {{ $socialite_user->name }}
                                 <p>
-                                    {{ translate('Login times') }}：{{ $v->login_times }} <br>
-                                    {{ translate('Log in time') }}：{{ $v->updated_at }}
+                                    {{ translate('Login times') }}：{{ $socialite_user->login_times }} <br>
+                                    {{ translate('Log in time') }}：{{ $socialite_user->updated_at }}
                                 </p>
                             </div>
                         </article>
@@ -98,7 +98,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @foreach($latestComments as $comment)
+                    @foreach($latest_comments as $comment)
                         <article class="media event">
                             <a class="pull-left">
                                 <img class="bjy-img" src="{{ asset($comment->socialiteUser->avatar) }}" alt="">

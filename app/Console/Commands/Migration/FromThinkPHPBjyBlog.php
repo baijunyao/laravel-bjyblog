@@ -39,8 +39,8 @@ class FromThinkPHPBjyBlog extends Command
 
     public function handle(): int
     {
-        $articleModel        = new Article();
-        $commentModel        = new Comment();
+        $article_model = new Article();
+        $comment_model = new Comment();
 
         // 防止误操作清空数据库
         if (file_exists(storage_path('lock/migration.lock'))) {
@@ -71,12 +71,12 @@ class FromThinkPHPBjyBlog extends Command
         }
 
         // 从旧系统中迁移文章
-        $htmlConverter = new HtmlConverter();
-        $data          = DB::connection('old')
+        $html_converter = new HtmlConverter();
+        $data           = DB::connection('old')
             ->table('article')
             ->get()
             ->toArray();
-        $articleModel->where('id', '<', 87)->forceDelete();
+        $article_model->where('id', '<', 87)->forceDelete();
         foreach ($data as $k => $v) {
             $content  = htmlspecialchars_decode($v->content);
             $content  = str_replace('<br style="box-sizing: inherit; margin-bottom: 0px;"/>', '', $content);
@@ -87,7 +87,7 @@ class FromThinkPHPBjyBlog extends Command
             $content  = str_replace('<p>', '', $content);
             $content  = str_replace('</p>', '|rn|', $content);
             $content  = str_replace('&nbsp;', '|nbsp|', $content);
-            $markdown = $htmlConverter->convert($content);
+            $markdown = $html_converter->convert($content);
             $markdown = htmlspecialchars($markdown);
             $markdown = str_replace(['|rn|', '\*', '\_', "\n "], ["\r\n", '*', '_', "\n    "], $markdown);
             $markdown = str_replace("\r\n\r\n", "\r\n", $markdown);
@@ -116,7 +116,7 @@ class FromThinkPHPBjyBlog extends Command
                 'is_top'      => $v->is_top,
                 'views'       => $v->click,
             ];
-            $articleModel->create($article);
+            $article_model->create($article);
 
             Article::where('id', $v->aid)->update([
                 'created_at' => date('Y-m-d H:i:s', $v->addtime),
@@ -150,7 +150,7 @@ class FromThinkPHPBjyBlog extends Command
             }, $img[1]);
             $content      = str_replace($search, $replace, $content);
             $content      = strip_tags($content);
-            $commentModel->insert([
+            $comment_model->insert([
                 'id'                => $v->cmtid,
                 'socialite_user_id' => $v->ouid,
                 'parent_id'         => $v->pid,
@@ -166,7 +166,7 @@ class FromThinkPHPBjyBlog extends Command
         $data = DB::connection('old')->table('link')->get()->toArray();
 
         foreach ($data as $v) {
-            $linkData = [
+            $link_data = [
                 'id'   => $v->lid,
                 'name' => $v->lname,
                 'url'  => $v->url,
@@ -174,10 +174,10 @@ class FromThinkPHPBjyBlog extends Command
             ];
 
             if ($v->is_show === 0) {
-                $linkData['deleted_at'] = date('Y-m-d H:i:s', time());
+                $link_data['deleted_at'] = date('Y-m-d H:i:s', time());
             }
 
-            Friend::create($linkData);
+            Friend::create($link_data);
         }
 
         // 迁移配置项
@@ -246,18 +246,18 @@ class FromThinkPHPBjyBlog extends Command
 
         foreach ($data as $k => $v) {
             if (strpos($v->avatar, 'http') !== false) {
-                $avatarPath = 'uploads/avatar/' . $v->id . '.jpg';
+                $avatar_path = 'uploads/avatar/' . $v->id . '.jpg';
 
                 try {
                     $client->request('GET', $v->avatar, [
-                        'sink' => public_path($avatarPath),
+                        'sink' => public_path($avatar_path),
                     ]);
                 } catch (ClientException $e) {
-                    copy(public_path('images/default/avatar.jpg'), public_path($avatarPath));
+                    copy(public_path('images/default/avatar.jpg'), public_path($avatar_path));
                 }
 
                 SocialiteUser::where('id', $v->id)->update([
-                    'avatar' => '/' . $avatarPath,
+                    'avatar' => '/' . $avatar_path,
                 ]);
             }
         }

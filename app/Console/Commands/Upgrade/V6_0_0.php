@@ -21,9 +21,9 @@ class V6_0_0 extends Command
             'batch'     => 1,
         ]);
 
-        $envPath = base_path('.env');
+        $env_path = base_path('.env');
 
-        File::put($envPath, str_replace('SCOUT_DRIVER=tntsearch', 'SCOUT_DRIVER=null', File::get($envPath)));
+        File::put($env_path, str_replace('SCOUT_DRIVER=tntsearch', 'SCOUT_DRIVER=null', File::get($env_path)));
 
         return 0;
     }

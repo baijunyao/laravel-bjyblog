@@ -34,11 +34,11 @@ class Authenticate extends Middleware
     protected function unauthenticated($request, array $guards)
     {
         if (current($guards) === 'admin') {
-            $redirectTo = $request->expectsJson() === false ? url('admin/login/index') : null;
+            $redirect_to = $request->expectsJson() === false ? url('admin/login/index') : null;
         } else {
-            $redirectTo = $this->redirectTo($request);
+            $redirect_to = $this->redirectTo($request);
         }
 
-        throw new AuthenticationException('Unauthenticated.', $guards, $redirectTo);
+        throw new AuthenticationException('Unauthenticated.', $guards, $redirect_to);
     }
 }

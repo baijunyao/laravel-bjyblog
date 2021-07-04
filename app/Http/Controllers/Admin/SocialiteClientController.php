@@ -15,24 +15,24 @@ class SocialiteClientController extends Controller
 {
     public function index()
     {
-        $socialiteClients   = SocialiteClient::all();
-        $assign             = compact('socialiteClients');
+        $socialite_clients   = SocialiteClient::all();
+        $assign              = compact('socialite_clients');
 
         return view('admin.socialiteClient.index', $assign);
     }
 
     public function edit($id)
     {
-        $socialiteClient   = SocialiteClient::where('id', $id)->firstOrFail();
-        $assign            = compact('socialiteClient');
+        $socialite_client   = SocialiteClient::where('id', $id)->firstOrFail();
+        $assign             = compact('socialite_client');
 
         return view('admin.socialiteClient.edit', $assign);
     }
 
     public function update(Request $request, $id)
     {
-        $socialiteClient = $request->only('client_id', 'client_secret');
-        SocialiteClient::where('id', $id)->firstOrFail()->update($socialiteClient);
+        $socialite_client = $request->only('client_id', 'client_secret');
+        SocialiteClient::where('id', $id)->firstOrFail()->update($socialite_client);
 
         return redirect()->back();
     }

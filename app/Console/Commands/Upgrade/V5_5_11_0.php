@@ -15,17 +15,17 @@ class V5_5_11_0 extends Command
 
     public function handle(): int
     {
-        $webName = Config::where('name', 'bjyblog.web_name')->first();
+        $web_name = Config::where('name', 'bjyblog.web_name')->first();
 
-        if (!empty($webName)) {
-            $webName->update([
+        if (!empty($web_name)) {
+            $web_name->update([
                 'name' => 'app.name',
             ]);
         }
 
-        $appLocale = Config::where('name', 'app.locale')->first();
+        $app_locale = Config::where('name', 'app.locale')->first();
 
-        if (empty($appLocale)) {
+        if (empty($app_locale)) {
             Config::create([
                 'name'  => 'app.locale',
                 'value' => 'zh-CN',

@@ -48,29 +48,29 @@ class GenerateSitemap extends Command
             ->latest('updated_at')
             ->get();
 
-        $urlBlock = '';
+        $url_block = '';
 
         foreach ($articles as $article) {
             /** @var \App\Models\Article $article */
-            $urlBlock .= $this->generateUrl(url('article', $article->id), $article->updated_at);
+            $url_block .= $this->generateUrl(url('article', $article->id), $article->updated_at);
         }
 
         foreach ($categories as $category) {
             /** @var \App\Models\Category $category */
-            $urlBlock .= $this->generateUrl(url('category', $category->id), $category->updated_at);
+            $url_block .= $this->generateUrl(url('category', $category->id), $category->updated_at);
         }
 
         foreach ($tags as $tag) {
             /** @var \App\Models\Tag $tag */
-            $urlBlock .= $this->generateUrl(url('tag', $tag->id), $tag->updated_at);
+            $url_block .= $this->generateUrl(url('tag', $tag->id), $tag->updated_at);
         }
 
         foreach ($navs as $nav) {
             /** @var \App\Models\Nav $nav */
-            $urlBlock .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at);
+            $url_block .= $this->generateUrl(url('nav', $nav->id), $nav->updated_at);
         }
 
-        File::put(public_path('sitemap.xml'), str_replace('{urlBlock}', rtrim($urlBlock), rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap.stub')))));
+        File::put(public_path('sitemap.xml'), str_replace('{url_block}', rtrim($url_block), rtrim(File::get(app_path('Console/Commands/Bjyblog/stubs/sitemap.stub')))));
 
         $this->info('Generating the sitemap completed.');
         $this->info('Path: ' . public_path('sitemap.xml'));

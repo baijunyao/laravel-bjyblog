@@ -45,11 +45,11 @@ class ArticleController extends Controller
 
     public function show(Article $article, Request $request): View
     {
-        $ipAndId = 'articleRequestList' . $request->ip() . ':' . $article->id;
+        $ip_and_id = 'articleRequestList' . $request->ip() . ':' . $article->id;
 
-        if (!Cache::has($ipAndId)) {
+        if (!Cache::has($ip_and_id)) {
             // TODO
-            Cache::put($ipAndId, '', 1400);
+            Cache::put($ip_and_id, '', 1400);
             $article->increment('views');
         }
 
@@ -65,7 +65,7 @@ class ArticleController extends Controller
             ->limit(1)
             ->first();
 
-        $commentFlatTree = Comment::where('article_id', $article->id)
+        $comment_flat_tree = Comment::where('article_id', $article->id)
             ->with('socialiteUser', 'socialiteUser.socialiteClient', 'parentComment', 'parentComment.socialiteUser')
             ->when(Str::isTrue(config('bjyblog.comment_audit')), function ($query) {
                 return $query->where('is_audited', 1);
@@ -74,37 +74,37 @@ class ArticleController extends Controller
             ->get()
             ->toFlatTree();
 
-        $parentComments = $commentFlatTree->whereNull('parent_id')
+        $parent_comments = $comment_flat_tree->whereNull('parent_id')
             ->sortByDesc('created_at')
             ->values();
 
-        $childrenComments = $commentFlatTree->whereNotNull('parent_id')->values();
+        $children_comments = $comment_flat_tree->whereNotNull('parent_id')->values();
 
         $comments = collect([]);
 
-        foreach ($parentComments as $parentComment) {
-            $comments->push($parentComment);
+        foreach ($parent_comments as $parent_comment) {
+            $comments->push($parent_comment);
 
-            foreach ($childrenComments as $childrenComment) {
-                if ($childrenComment->isDescendantOf($parentComment)) {
-                    $comments->push($childrenComment);
+            foreach ($children_comments as $children_comment) {
+                if ($children_comment->isDescendantOf($parent_comment)) {
+                    $comments->push($children_comment);
                 }
             }
         }
 
         $category_id = $article->category->id;
 
-        /** @var \App\Models\SocialiteUser|null $socialiteUser */
-        $socialiteUser = auth()->guard('socialite')->user();
+        /** @var \App\Models\SocialiteUser|null $socialite_user */
+        $socialite_user = auth()->guard('socialite')->user();
 
-        if ($socialiteUser === null) {
+        if ($socialite_user === null) {
             $is_liked = false;
         } else {
-            $is_liked = $socialiteUser->hasLiked($article);
+            $is_liked = $socialite_user->hasLiked($article);
         }
 
-        $likes       = $article->likers()->get();
-        $assign      = compact('category_id', 'article', 'prev', 'next', 'comments', 'is_liked', 'likes');
+        $likes  = $article->likers()->get();
+        $assign = compact('category_id', 'article', 'prev', 'next', 'comments', 'is_liked', 'likes');
 
         return view('home.index.article', $assign);
     }

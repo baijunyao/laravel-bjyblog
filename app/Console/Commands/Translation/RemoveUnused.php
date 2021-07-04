@@ -36,15 +36,15 @@ class RemoveUnused extends Command
             $languages[$language] = json_decode(File::get(resource_path("lang/{$language}.json")), true);
         }
 
-        $allFileContents = '';
+        $all_file_contents = '';
 
         foreach (array_merge(File::allFiles(app_path()), File::allFiles(resource_path('views'))) as $file) {
             /** @var \Symfony\Component\Finder\SplFileInfo $file */
-            $allFileContents .= $file->getContents();
+            $all_file_contents .= $file->getContents();
         }
 
         foreach ($languages['zh-CN'] as $key => $value) {
-            if (!Str::contains($allFileContents, "translate('$key')")) {
+            if (!Str::contains($all_file_contents, "translate('$key')")) {
                 foreach ($languages as $language => $content) {
                     unset($languages[$language][$key]);
                 }
