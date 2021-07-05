@@ -15,26 +15,6 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-/**
- * App\Models\UserBase
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
- * @property-read int|null $clients_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
- * @property-read int|null $tokens_count
- *
- * @method static bool|null forceDelete()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserBase newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserBase newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\UserBase onlyTrashed()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\UserBase query()
- * @method static bool|null restore()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\UserBase withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\UserBase withoutTrashed()
- * @mixin \Eloquent
- */
 class UserBase extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, Notifiable, HasApiTokens, HasFactory, SoftDeletes;
