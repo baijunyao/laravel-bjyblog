@@ -919,9 +919,3 @@ parameters:
 			message: "#^Cannot call method notify\\(\\) on App\\\\Models\\\\SocialiteUser\\|null\\.$#"
 			count: 1
 			path: app/Models/Observers/SiteObserver.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Comment\\:\\:\\$parent_id\\.$#"
-			count: 1
-			path: app/Notifications/Comment.php
-
