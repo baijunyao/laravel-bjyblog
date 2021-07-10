@@ -59,7 +59,7 @@ class SocialiteController extends Controller
             return redirect(url('/'));
         }
 
-        $socialiteUser = SocialiteUser::select('id', 'login_times', 'is_admin', 'email')
+        $socialite_user = SocialiteUser::select('id', 'login_times', 'is_admin', 'email')
             ->where('socialite_client_id', $type->get($service))
             ->where('openid', $user->id)
             ->first();
@@ -67,23 +67,23 @@ class SocialiteController extends Controller
         // 如果已经存在;则更新用户资料  如果不存在;则插入数据
         $name = $user->nickname ?? $user->name;
 
-        if ($socialiteUser !== null) {
-            $userId  = $socialiteUser->id;
+        if ($socialite_user !== null) {
+            $user_id  = $socialite_user->id;
 
             // 更新数据
-            SocialiteUser::where('id', $userId)->update([
+            SocialiteUser::where('id', $user_id)->update([
                 'name'          => $name,
                 'access_token'  => $user->token,
                 'last_login_ip' => $request->getClientIp(),
-                'login_times'   => $socialiteUser->login_times + 1,
+                'login_times'   => $socialite_user->login_times + 1,
             ]);
 
             // 如果是管理员；则自动登录后台
-            if ($socialiteUser->is_admin) {
+            if ($socialite_user->is_admin) {
                 Auth::guard('admin')->loginUsingId(1, true);
             }
         } else {
-            $userId = SocialiteUser::create([
+            $user_id = SocialiteUser::create([
                 'socialite_client_id'          => $type->get($service),
                 'name'                         => $name,
                 'openid'                       => $user->id,
@@ -95,18 +95,18 @@ class SocialiteController extends Controller
             ])->id;
 
             // 更新头像
-            SocialiteUser::where('id', $userId)->update([
-                'avatar' => '/uploads/avatar/' . $userId . '.jpg',
+            SocialiteUser::where('id', $user_id)->update([
+                'avatar' => '/uploads/avatar/' . $user_id . '.jpg',
             ]);
         }
 
-        $avatarPath = storage_path('app/public/uploads/avatar/' . $userId . '.jpg');
+        $avatar_path = storage_path('app/public/uploads/avatar/' . $user_id . '.jpg');
 
         try {
             // 下载最新的头像到本地
             $client = new Client();
             $client->request('GET', $user->avatar, [
-                'sink' => $avatarPath,
+                'sink' => $avatar_path,
             ]);
         } catch (Exception $e) {
             // 如果下载失败；则使用默认图片
@@ -115,10 +115,10 @@ class SocialiteController extends Controller
                 File::makeDirectory(storage_path('app/public/uploads/avatar'), 0755, true);
             }
 
-            File::copy(public_path('images/default/avatar.jpg'), $avatarPath);
+            File::copy(public_path('images/default/avatar.jpg'), $avatar_path);
         }
 
-        Auth::guard('socialite')->loginUsingId($userId, true);
+        Auth::guard('socialite')->loginUsingId($user_id, true);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(session('targetUrl', url('/')));
     }

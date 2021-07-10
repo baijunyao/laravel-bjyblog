@@ -33,8 +33,8 @@ class HelpersTest extends TestCase
         config([
             'app.locale' => 'zh-CN',
         ]);
-        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
-        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andReturn('Test title');
+        $google_translate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $google_translate->shouldReceive('setUrl->setSource->translate')->andReturn('Test title');
 
         static::assertEquals('test-title', generate_english_slug('测试标题'));
     }
@@ -44,8 +44,8 @@ class HelpersTest extends TestCase
         config([
             'app.locale' => 'zh-CN',
         ]);
-        $googleTranslate = Mockery::mock('overload:' . GoogleTranslate::class);
-        $googleTranslate->shouldReceive('setUrl->setSource->translate')->andThrow(new ErrorException('error'));
+        $google_translate = Mockery::mock('overload:' . GoogleTranslate::class);
+        $google_translate->shouldReceive('setUrl->setSource->translate')->andThrow(new ErrorException('error'));
 
         static::assertEquals('', generate_english_slug('测试标题'));
     }

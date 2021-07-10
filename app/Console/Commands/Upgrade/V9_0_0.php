@@ -47,14 +47,14 @@ class V9_0_0 extends Command
             'bjyblog.comment_audit'      => false,
         ]);
 
-        $deletedComments = DB::table('comment_backups')
+        $deleted_comments = DB::table('comment_backups')
             ->whereNotNull('deleted_at')
             ->pluck('deleted_at', 'id');
 
-        if ($deletedComments->isNotEmpty()) {
-            $deletedComment_ids = $deletedComments->keys();
+        if ($deleted_comments->isNotEmpty()) {
+            $deleted_comment_ids = $deleted_comments->keys();
 
-            DB::table('comment_backups')->whereIn('id', $deletedComment_ids)->update([
+            DB::table('comment_backups')->whereIn('id', $deleted_comment_ids)->update([
                 'deleted_at' => null,
             ]);
         }
@@ -78,8 +78,8 @@ class V9_0_0 extends Command
             }
         }
 
-        if ($deletedComments->isNotEmpty()) {
-            foreach ($deletedComments as $id => $deleted_at) {
+        if ($deleted_comments->isNotEmpty()) {
+            foreach ($deleted_comments as $id => $deleted_at) {
                 DB::table('comment_backups')->where('id', $id)->update([
                     'deleted_at' => $deleted_at,
                 ]);
@@ -120,8 +120,9 @@ class V9_0_0 extends Command
         foreach ($comments as $index => $comment) {
             $this->children = [];
             $this->getTree($comment);
+            $children = $this->children;
 
-            if (!empty($children = $this->children)) {
+            if (!empty($children)) {
                 uasort($children, function ($a, $b) {
                     $prev = $a['created_at'] ?? 0;
                     $next = $b['created_at'] ?? 0;

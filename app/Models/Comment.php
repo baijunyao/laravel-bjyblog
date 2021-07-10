@@ -8,41 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kalnoy\Nestedset\NodeTrait;
 use Str;
 
-/**
- * Class Comment
- *
- * @property int                             $id                主键id
- * @property int                             $socialite_user_id 评论用户id
- * @property bool                            $type              1：文章评论
- * @property int                             $_lft
- * @property int                             $_rgt
- * @property int|null                        $parent_id
- * @property int                             $article_id        文章id
- * @property string                          $content           内容
- * @property int                             $is_audited        是否已审核
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- * @property-read \App\Models\Article $article
- * @property-read \App\Models\SocialiteUser $socialiteUser
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base disableCache()
- * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|\App\Models\Comment newModelQuery()
- * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|\App\Models\Comment newQuery()
- * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|\App\Models\Comment query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereArticleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereIsAudited($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment wherePid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereSocialiteUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Comment whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base withCacheCooldownSeconds($seconds = null)
- * @mixin \Eloquent
- */
 class Comment extends Base
 {
     use NodeTrait;

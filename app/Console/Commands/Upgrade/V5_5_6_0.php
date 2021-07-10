@@ -13,10 +13,10 @@ class V5_5_6_0 extends Command
 
     public function handle(): int
     {
-        $envContent = file_get_contents(base_path('.env'));
+        $env_content = file_get_contents(base_path('.env'));
 
-        if ($envContent !== false) {
-            $env = str_replace('BLOG_BRANCH', 'DEPLOY_BRANCH', $envContent);
+        if ($env_content !== false) {
+            $env = str_replace('BLOG_BRANCH', 'DEPLOY_BRANCH', $env_content);
             file_put_contents(base_path('.env'), $env);
         }
 

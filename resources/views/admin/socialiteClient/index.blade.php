@@ -13,13 +13,13 @@
             <th>{{ translate('Client Secret') }}</th>
             <th>{{ translate('Handle') }}</th>
         </tr>
-        @foreach($socialiteClients as $socialiteClient)
+        @foreach($socialite_clients as $socialite_client)
             <tr>
-                <td>{{ $socialiteClient->id }}</td>
-                <td>{{ $socialiteClient->name }}</td>
-                <td>{{ $socialiteClient->client_id }}</td>
-                <td>{{ $socialiteClient->client_secret }}</td>
-                <td><a href="{{ url('admin/socialiteClient/edit', [$socialiteClient->id]) }}">{{ translate('Edit') }}</a></td>
+                <td>{{ $socialite_client->id }}</td>
+                <td>{{ $socialite_client->name }}</td>
+                <td>{{ $socialite_client->client_id }}</td>
+                <td>{{ $socialite_client->client_secret }}</td>
+                <td><a href="{{ url('admin/socialiteClient/edit', [$socialite_client->id]) }}">{{ translate('Edit') }}</a></td>
             </tr>
         @endforeach
     </table>

@@ -37,31 +37,31 @@ class Comment implements Rule
             return false;
         }
 
-        /** @var \App\Models\SocialiteUser $socialiteUser */
-        $socialiteUser = auth()->guard('socialite')->user();
+        /** @var \App\Models\SocialiteUser $socialite_user */
+        $socialite_user = auth()->guard('socialite')->user();
 
-        if ($socialiteUser->is_blocked === 1) {
+        if ($socialite_user->is_blocked === 1) {
             $this->message = translate('User is forbidden to comment');
 
             return false;
         }
 
-        /** @var \Illuminate\Support\Carbon|null $lastCommentDate */
-        $lastCommentDate = CommentModel::where('socialite_user_id', $socialiteUser->id)
+        /** @var \Illuminate\Support\Carbon|null $last_comment_date */
+        $last_comment_date = CommentModel::where('socialite_user_id', $socialite_user->id)
             ->orderBy('created_at', 'desc')
             ->value('created_at');
 
-        if ($socialiteUser->is_admin !== 1 && $lastCommentDate !== null && $lastCommentDate->diffInMinutes() === 0) {
+        if ($socialite_user->is_admin !== 1 && $last_comment_date !== null && $last_comment_date->diffInMinutes() === 0) {
             $this->message = translate('Comments are too frequent, please try again later.');
 
             return false;
         }
 
-        $count = CommentModel::where('socialite_user_id', $socialiteUser->id)
+        $count = CommentModel::where('socialite_user_id', $socialite_user->id)
             ->whereDate('created_at', '=', Date::today())
             ->count();
 
-        if ($socialiteUser->is_admin !== 1 && $count > 10) {
+        if ($socialite_user->is_admin !== 1 && $count > 10) {
             $this->message = translate('Comments have been restricted');
 
             return false;

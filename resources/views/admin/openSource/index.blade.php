@@ -32,7 +32,7 @@
                         <input class="form-control" type="text" name="{{ $v->id }}" value="{{ $v->sort }}">
                     </td>
                     <td>{{ $v->name }}</td>
-                    <td>{{ $openSourceType[$v->type] }}</td>
+                    <td>{{ $open_source_type[$v->type] }}</td>
                     <td>
                         @if(is_null($v->deleted_at))
                             √

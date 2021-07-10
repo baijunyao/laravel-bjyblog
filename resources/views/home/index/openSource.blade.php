@@ -29,11 +29,11 @@
         @endif
         <div class="row b-chat">
             <div class="col-xs-12 col-md-12 col-lg-12 b-breadcrumb">
-                @foreach($openSources as $openSource)
-                    @if($openSource->type == 1)
-                        <div class="github-widget" data-repo="{{ $openSource->name }}"></div>
-                    @elseif($openSource->type == 2)
-                        <script src='//gitee.com/{{ $openSource->name }}/widget_preview'></script>
+                @foreach($open_sources as $open_source)
+                    @if($open_source->type == 1)
+                        <div class="github-widget" data-repo="{{ $open_source->name }}"></div>
+                    @elseif($open_source->type == 2)
+                        <script src='//gitee.com/{{ $open_source->name }}/widget_preview'></script>
                     @endif
                 @endforeach
             </div>

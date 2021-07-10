@@ -35,10 +35,10 @@ class SiteController extends Controller
 
     public function store(Store $request): JsonResponse
     {
-        /** @var \App\Models\SocialiteUser $socialiteUser */
-        $socialiteUser = auth()->guard('socialite')->user();
+        /** @var \App\Models\SocialiteUser $socialite_user */
+        $socialite_user = auth()->guard('socialite')->user();
 
-        $socialiteUser->update([
+        $socialite_user->update([
             'email' => $request->input('email'),
         ]);
 

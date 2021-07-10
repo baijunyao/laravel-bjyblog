@@ -20,11 +20,11 @@ class OpenSourceController extends Controller
         $data = OpenSource::withTrashed()
             ->orderBy('sort')
             ->get();
-        $openSourceType = [
+        $open_source_type = [
             1 => 'github',
             2 => 'gitee',
         ];
-        $assign = compact('data', 'openSourceType');
+        $assign = compact('data', 'open_source_type');
 
         return view('admin.openSource.index', $assign);
     }

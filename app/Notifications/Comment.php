@@ -38,7 +38,10 @@ class Comment extends Notification
 
     public function __construct(SocialiteUser $socialiteUser, Article $article, CommentModel $comment)
     {
-        if (intval($comment->parent_id) === 0) {
+        /** @var string|int|null $parent_id */
+        $parent_id = $comment->getAttribute('parent_id');
+
+        if (intval($parent_id) === 0) {
             $this->subject = $socialiteUser->name . ' ' . translate('Comment') . ' ' . $article->title;
         } else {
             $this->subject = $socialiteUser->name . ' ' . translate('Reply') . ' ' . $article->title;

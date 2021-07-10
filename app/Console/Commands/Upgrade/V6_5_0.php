@@ -14,13 +14,13 @@ class V6_5_0 extends Command
 
     public function handle(): int
     {
-        $scoutDriver = env('SCOUT_DRIVER') === null ? 'null' : env('SCOUT_DRIVER');
+        $scout_driver = env('SCOUT_DRIVER') === null ? 'null' : env('SCOUT_DRIVER');
 
         Config::insert([
             [
                 'id'         => 177,
                 'name'       => 'scout.driver',
-                'value'      => $scoutDriver,
+                'value'      => $scout_driver,
                 'created_at' => '2019-11-19 22:45:00',
                 'updated_at' => '2019-11-19 22:45:00',
                 'deleted_at' => null,

@@ -103,8 +103,8 @@
                                 3. 点击{!! config('bjyblog.qq_qun.code') !!}
                             </p>
                             <p class="b-qun-article">
-                                @if(!empty($qqQunArticle['id']))
-                                    <a href="{{ url('article', [$qqQunArticle['id']]) }}" target="{{ config('bjyblog.link_target') }}">{{ $qqQunArticle['title'] }}</a>
+                                @if(!empty($qq_qun_article['id']))
+                                    <a href="{{ url('article', [$qq_qun_article['id']]) }}" target="{{ config('bjyblog.link_target') }}">{{ $qq_qun_article['title'] }}</a>
                                 @endif
                             </p>
                         </li>
@@ -124,7 +124,7 @@
             <div class="b-recommend">
                 <h4 class="b-title">{{ translate('Top Articles') }}</h4>
                 <p class="b-recommend-p">
-                    @foreach($topArticle as $v)
+                    @foreach($top_article as $v)
                         <a class="b-recommend-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
                     @endforeach
                 </p>
@@ -132,7 +132,7 @@
             <div class="b-comment-list">
                 <h4 class="b-title">{{ translate('Recent Comments') }}</h4>
                 <div>
-                    @foreach($latestComments as $comment)
+                    @foreach($latest_comments as $comment)
                         <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
                             <img class="b-head-img bjy-lazyload" src="{{ cdn_url('images/default/avatar.jpg') }}" data-src="{{ cdn_url($comment->socialiteUser->avatar) }}" alt="{{ $comment->socialiteUser->name }}">
                             <li class="b-nickname">
@@ -164,7 +164,7 @@
 <footer id="b-foot">
     <div class="container">
         <div class="row b-content">
-            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $home_foot_col_number }} col-lg-{{ $home_foot_col_number }}">
                 <dt>{{ translate('Rights') }}</dt>
                 <dd>{{ translate('Licenses') }}：<a rel="nofollow" href="https://creativecommons.org/licenses/by{{ config('bjyblog.licenses.allow_commercial') . config('bjyblog.licenses.allow_adaptation') }}/4.0/deed.{{ config('bjyblog.licenses.language') }}" target="{{ config('bjyblog.link_target') }}">CC BY-NC 4.0</a></dd>
                 <dd>{{ translate('Copyright') }}：© 2014-{{ date('Y') }}</dd>
@@ -176,7 +176,7 @@
                 @endif
             </dl>
 
-            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $home_foot_col_number }} col-lg-{{ $home_foot_col_number }}">
                 <dt>{{ translate('Structure') }}</dt>
                 <dd>{{ translate('Project Name') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">laravel-bjyblog</a></dd>
                 <dd>{{ translate('Blog Version') }}：<a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="{{ config('bjyblog.link_target') }}">{{ config('bjyblog.version') }}-{{ config('bjyblog.branch') }}</a></dd>
@@ -186,16 +186,16 @@
                 <dd>{{ translate('Theme Author') }}：<a href="https://baijunyao.com">{{ translate('Junyao Bai') }}</a></dd>
             </dl>
 
-            <dl class="col-xs-12 col-sm-6 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }}">
+            <dl class="col-xs-12 col-sm-6 col-md-{{ $home_foot_col_number }} col-lg-{{ $home_foot_col_number }}">
                 <dt>{{ translate('Counts') }}</dt>
-                <dd>{{ translate('Article Counts') }}：{{ $articleCount }}</dd>
-                <dd>{{ translate('Comment Counts') }}：{{ $commentCount }}</dd>
-                <dd>{{ translate('User Counts') }}：{{ $socialiteUserCount }}</dd>
-                <dd>{{ translate('Note Counts') }}：{{ $chatCount }}</dd>
+                <dd>{{ translate('Article Counts') }}：{{ $article_count }}</dd>
+                <dd>{{ translate('Comment Counts') }}：{{ $comment_count }}</dd>
+                <dd>{{ translate('User Counts') }}：{{ $socialite_user_count }}</dd>
+                <dd>{{ translate('Note Counts') }}：{{ $chat_count }}</dd>
             </dl>
 
-            @if($homeFootColNumber === 3)
-                <dl class="col-xs-12 col-sm-12 col-md-{{ $homeFootColNumber }} col-lg-{{ $homeFootColNumber }} b-social">
+            @if($home_foot_col_number === 3)
+                <dl class="col-xs-12 col-sm-12 col-md-{{ $home_foot_col_number }} col-lg-{{ $home_foot_col_number }} b-social">
                     <dt>{{ translate('Social') }}</dt>
                     <dd class="b-small-logo">
                         @foreach(config('bjyblog.social_links') as $name => $link)
@@ -221,11 +221,11 @@
                 </div>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
-                @foreach($socialiteClients as $socialiteClient)
+                @foreach($socialite_clients as $socialiteClient)
                     <a class="fa fa-{{ $socialiteClient->icon }}" href="{{ url('auth/socialite/redirectToProvider/' . $socialiteClient->name) }}" alt="{{ $socialiteClient->name }}" title="{{ $socialiteClient->name }}"></a>
                 @endforeach
 
-                @if($socialiteClients->isEmpty())
+                @if($socialite_clients->isEmpty())
                     {{ translate('Need to add socialite client first.') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ translate('Click to go') }}</a>
                 @endif
             </div>

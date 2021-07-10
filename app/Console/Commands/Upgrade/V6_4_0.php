@@ -14,9 +14,9 @@ class V6_4_0 extends Command
 
     public function handle(): int
     {
-        $envPath = base_path('.env');
+        $env_path = base_path('.env');
 
-        File::put($envPath, str_replace('ELASTICSEARCH_HOSTS', 'ELASTICSEARCH_HOST', File::get($envPath)));
+        File::put($env_path, str_replace('ELASTICSEARCH_HOSTS', 'ELASTICSEARCH_HOST', File::get($env_path)));
 
         return 0;
     }

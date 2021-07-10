@@ -9,6 +9,11 @@ use Spatie\QueryBuilder\AllowedFilter;
 
 class Controller extends RestfulController
 {
+    protected const SORTS = [
+        'id',
+        'created_at',
+    ];
+
     /**
      * @return array<int,mixed>
      */

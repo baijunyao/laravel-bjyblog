@@ -11,25 +11,6 @@ use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * App\Models\Base
- *
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property \Illuminate\Support\Carbon|null $deleted_at
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base disableCache()
- * @method static bool|null forceDelete()
- * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|\App\Models\Base newModelQuery()
- * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|\App\Models\Base newQuery()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Base onlyTrashed()
- * @method static \GeneaLabs\LaravelModelCaching\CachedBuilder|\App\Models\Base query()
- * @method static bool|null restore()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base withCacheCooldownSeconds($seconds = null)
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Base withTrashed()
- * @method static \Illuminate\Database\Query\Builder|\App\Models\Base withoutTrashed()
- * @mixin \Eloquent
- */
 abstract class Base extends Model
 {
     use SoftDeletes, Cachable;

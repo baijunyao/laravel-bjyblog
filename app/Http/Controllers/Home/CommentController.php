@@ -16,26 +16,26 @@ class CommentController extends Controller
 {
     public function store(Store $request): JsonResponse
     {
-        /** @var \App\Models\SocialiteUser $socialiteUser */
-        $socialiteUser = auth()->guard('socialite')->user();
-        $email         = $request->input('email', '');
+        /** @var \App\Models\SocialiteUser $socialite_user */
+        $socialite_user = auth()->guard('socialite')->user();
+        $email          = $request->input('email', '');
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
-            SocialiteUser::where('id', $socialiteUser->id)->update([
+            SocialiteUser::where('id', $socialite_user->id)->update([
                 'email' => $email,
             ]);
         }
 
-        $parent_id  = (int) $request->input('parent_id');
-        $newComment = $request->only('article_id', 'content', 'parent_id') + [
-            'socialite_user_id' => $socialiteUser->id,
+        $parent_id   = (int) $request->input('parent_id');
+        $new_comment = $request->only('article_id', 'content', 'parent_id') + [
+            'socialite_user_id' => $socialite_user->id,
             'is_audited'        => Str::isTrue(config('bjyblog.comment_audit')) ? 0 : 1,
         ];
 
         if ($parent_id === 0) {
-            $comment = Comment::create($newComment);
+            $comment = Comment::create($new_comment);
         } else {
-            $comment = Comment::where('id', $parent_id)->firstOrFail()->children()->create($newComment);
+            $comment = Comment::where('id', $parent_id)->firstOrFail()->children()->create($new_comment);
         }
 
         return response()->json(['id' => $comment->id]);
