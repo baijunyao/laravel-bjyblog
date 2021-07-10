@@ -15225,7 +15225,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::all()
+         * @see \App\Models\Article::updateBatch()
          * @static 
          */ 
         public static function searchable()
@@ -15235,7 +15235,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::all()
+         * @see \App\Models\Article::updateBatch()
          * @static 
          */ 
         public static function unsearchable()
