@@ -31,8 +31,6 @@ class SiteObserver extends BaseObserver
      */
     public function created($site)
     {
-        parent::created($site);
-
         Notification::route('mail', config('bjyblog.notification_email'))
             ->notify(new SiteApply());
     }
@@ -52,8 +50,6 @@ class SiteObserver extends BaseObserver
 
                 $site->socialiteUser->notify(new SiteAudit());
             }
-
-            flash_success('修改成功');
         }
     }
 }

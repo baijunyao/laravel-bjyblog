@@ -162,8 +162,6 @@ class ArticleController extends Controller
             ]);
         }
 
-        flash_success(translate('Update Success'));
-
         return redirect()->back();
     }
 }

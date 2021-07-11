@@ -13,8 +13,6 @@ class NavObserver extends BaseObserver
      */
     public function created($model)
     {
-        parent::created($model);
-
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
@@ -25,8 +23,6 @@ class NavObserver extends BaseObserver
      */
     public function deleted($model)
     {
-        parent::deleted($model);
-
         if (! $model->isForceDeleting()) {
             Artisan::queue('bjyblog:generate-sitemap');
         }

@@ -14,8 +14,6 @@ class TagObserver extends BaseObserver
      */
     public function created($tag)
     {
-        parent::created($tag);
-
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
@@ -34,13 +32,12 @@ class TagObserver extends BaseObserver
     /**
      * @param \App\Models\Tag $tag
      *
-     * @return void|false
+     * @return void
      */
     public function deleting($tag)
     {
         if (ArticleTag::where('tag_id', $tag->id)->count() !== 0) {
-            flash_error('此标签下有文章，不可以删除。');
-            return false;
+            abort(403, translate('Please delete articles with this tag first'));
         }
     }
 
@@ -51,8 +48,6 @@ class TagObserver extends BaseObserver
      */
     public function deleted($tag)
     {
-        parent::deleted($tag);
-
         if (! $tag->isForceDeleting()) {
             Artisan::queue('bjyblog:generate-sitemap');
         }

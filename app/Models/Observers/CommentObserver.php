@@ -50,8 +50,6 @@ class CommentObserver extends BaseObserver
      */
     public function created($comment)
     {
-        parent::created($comment);
-
         if (mail_is_configured()) {
             /** @var \App\Models\SocialiteUser $socialiteUser */
             $socialiteUser = auth()->guard('socialite')->user();

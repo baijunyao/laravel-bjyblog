@@ -105,7 +105,6 @@ class ConfigController extends Controller
         Artisan::call('view:clear');
         Artisan::call('clear-compiled');
         Artisan::call('modelCache:clear');
-        flash_success('操作成功');
 
         return redirect()->back();
     }

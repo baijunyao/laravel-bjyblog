@@ -44,8 +44,6 @@ class IndexController extends Controller
         if (Comparator::greaterThan($new_version, $old_version)) {
             return redirect('https://baijunyao.com/docs/laravel-bjyblog/更新记录.html');
         } else {
-            flash_error('没有需要更新的版本');
-
             return redirect(url('admin/index/index'));
         }
     }
@@ -53,8 +51,6 @@ class IndexController extends Controller
     public function loginUserForTest()
     {
         if (!App::environment('local')) {
-            flash_error('For local testing only.');
-
             return redirect(url('admin/index/index'));
         }
 

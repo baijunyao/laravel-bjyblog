@@ -17,8 +17,6 @@ class ArticleObserver extends BaseObserver
      */
     public function created($article)
     {
-        parent::created($article);
-
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
@@ -75,8 +73,6 @@ class ArticleObserver extends BaseObserver
      */
     public function updated($article)
     {
-        parent::updated($article);
-
         // restore() triggering both restored() and updated()
         if(! $article->isDirty('deleted_at') && $article->isDirty('markdown')){
             ArticleHistory::create([
@@ -96,11 +92,9 @@ class ArticleObserver extends BaseObserver
         // 删除文章后同步删除关联表 article_tags 中的数据
         if ($article->isForceDeleting()) {
             ArticleTag::onlyTrashed()->where('article_id', $article->id)->forceDelete();
-            flash_success('彻底删除成功');
         } else {
             Artisan::queue('bjyblog:generate-sitemap');
             ArticleTag::where('article_id', $article->id)->delete();
-            flash_success('删除成功');
         }
     }
 
@@ -112,6 +106,5 @@ class ArticleObserver extends BaseObserver
     public function restored($article)
     {
         ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();
-        flash_success('恢复成功');
     }
 }
