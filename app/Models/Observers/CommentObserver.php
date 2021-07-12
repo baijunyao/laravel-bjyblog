@@ -5,6 +5,7 @@ namespace App\Models\Observers;
 use AipContentCensor;
 use App\Models\Article;
 use App\Models\Comment;
+use App\Models\SocialiteUser;
 use Notification;
 use Str;
 use App\Notifications\Comment as CommentNotification;
@@ -69,6 +70,8 @@ class CommentObserver extends BaseObserver
                 $parentComment = Comment::findOrFail($comment->parent_id);
 
                 if ($socialiteUser->id !== $parentComment->socialite_user_id) {
+                    assert($parentComment->socialiteUser instanceof SocialiteUser);
+
                     // Send email to socialite user
                     $parentComment->socialiteUser->notify(new CommentNotification($socialiteUser, $article, $comment));
                 }

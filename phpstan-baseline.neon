@@ -909,13 +909,3 @@ parameters:
 			message: "#^Access to an undefined property App\\\\Models\\\\Comment\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Comment\\>\\:\\:\\$socialite_user_id\\.$#"
 			count: 1
 			path: app/Models/Observers/CommentObserver.php
-
-		-
-			message: "#^Cannot call method notify\\(\\) on App\\\\Models\\\\SocialiteUser\\|null\\.$#"
-			count: 1
-			path: app/Models/Observers/CommentObserver.php
-
-		-
-			message: "#^Cannot call method notify\\(\\) on App\\\\Models\\\\SocialiteUser\\|null\\.$#"
-			count: 1
-			path: app/Models/Observers/SiteObserver.php
