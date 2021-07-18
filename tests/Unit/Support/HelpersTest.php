@@ -107,7 +107,7 @@ HTML;
     {
         static::expectException('InvalidArgumentException');
 
-        static::assertSame(translate('Article'), '文章');
+        static::assertSame(translate('Comment'), '评论');
 
         translate('validation.between');
     }
