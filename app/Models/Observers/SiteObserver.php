@@ -48,6 +48,8 @@ class SiteObserver extends BaseObserver
         if(! $site->isDirty('deleted_at')) {
             // $site->audit is string
             if ($site->isDirty('audit') && intval($site->audit) === 1) {
+                assert($site->socialiteUser instanceof SocialiteUser);
+
                 $site->socialiteUser->notify(new SiteAudit());
             }
 
