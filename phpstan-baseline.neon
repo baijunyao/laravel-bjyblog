@@ -895,17 +895,3 @@ parameters:
 			count: 1
 			path: app/Models/Base.php
 
-		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Comment\\:\\:\\$parent_id\\.$#"
-			count: 2
-			path: app/Models/Observers/CommentObserver.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Comment\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Comment\\>\\:\\:\\$socialiteUser\\.$#"
-			count: 1
-			path: app/Models/Observers/CommentObserver.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Comment\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Models\\\\Comment\\>\\:\\:\\$socialite_user_id\\.$#"
-			count: 1
-			path: app/Models/Observers/CommentObserver.php

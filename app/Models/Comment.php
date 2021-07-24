@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kalnoy\Nestedset\NodeTrait;
 use Str;
 
+/**
+ * @property int|null $parent_id
+ */
 class Comment extends Base
 {
     use NodeTrait;
