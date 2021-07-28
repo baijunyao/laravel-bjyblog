@@ -876,21 +876,6 @@ parameters:
 			path: app/Http/Resources/Comment.php
 
 		-
-			message: "#^Cannot access property \\$icon on App\\\\Models\\\\SocialiteClient\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/SocialiteUser.php
-
-		-
-			message: "#^Cannot access property \\$id on App\\\\Models\\\\SocialiteClient\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/SocialiteUser.php
-
-		-
-			message: "#^Cannot access property \\$name on App\\\\Models\\\\SocialiteClient\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/SocialiteUser.php
-
-		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/Models/Base.php
