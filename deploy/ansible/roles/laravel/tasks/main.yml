@@ -108,9 +108,14 @@
 - name: Download Helm diff binary
   when: not helm_diff_stat.stat.exists
   ansible.builtin.get_url:
-    url: https://gh.api.99988866.xyz/https://github.com/databus23/helm-diff/releases/download/v3.1.3/helm-diff-linux.tgz
+    url: https://github.com/databus23/helm-diff/releases/download/v3.1.3/helm-diff-linux.tgz
     dest: /tmp/helm-diff-v3.1.3.tgz
     mode: 0700
+
+- name: Create Helm plugin path
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins/
+    state: directory
 
 - name: Unarchive helm-diff-v3.1.3.tgz
   when: not helm_diff_stat.stat.exists
