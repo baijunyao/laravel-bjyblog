@@ -16,6 +16,9 @@ class SocialiteUser extends Base
      */
     public function toArray($request): array
     {
+        /** @var SocialiteClient $socialite_client */
+        $socialite_client = $this->socialiteClient;
+
         return [
             'id'               => $this->id,
             'name'             => $this->name,
@@ -23,14 +26,10 @@ class SocialiteUser extends Base
             'avatar'           => $this->avatar,
             'is_admin'         => $this->is_admin,
             'is_blocked'       => $this->is_blocked,
-            'socialite_client' => [
-                'id'   => $this->socialiteClient->id,
-                'name' => $this->socialiteClient->name,
-                'icon' => $this->socialiteClient->icon,
-            ],
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            'deleted_at' => $this->deleted_at,
+            'socialite_client' => $socialite_client->only('id', 'name', 'icon'),
+            'created_at'       => $this->created_at,
+            'updated_at'       => $this->updated_at,
+            'deleted_at'       => $this->deleted_at,
         ];
     }
 }
