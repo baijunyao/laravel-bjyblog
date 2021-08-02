@@ -856,26 +856,6 @@ parameters:
 			path: app/Http/Controllers/Home/ArticleController.php
 
 		-
-			message: "#^Cannot access property \\$id on App\\\\Models\\\\Article\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/Comment.php
-
-		-
-			message: "#^Cannot access property \\$id on App\\\\Models\\\\SocialiteUser\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/Comment.php
-
-		-
-			message: "#^Cannot access property \\$name on App\\\\Models\\\\SocialiteUser\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/Comment.php
-
-		-
-			message: "#^Cannot access property \\$title on App\\\\Models\\\\Article\\|null\\.$#"
-			count: 1
-			path: app/Http/Resources/Comment.php
-
-		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/Models/Base.php

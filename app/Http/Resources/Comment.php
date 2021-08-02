@@ -16,17 +16,23 @@ class Comment extends Base
      */
     public function toArray($request): array
     {
+        /** @var SocialiteUser $socialite_user */
+        $socialite_user = $this->socialiteUser;
+
+        /** @var Article $article */
+        $article = $this->article;
+
         return [
             'id'             => $this->id,
             'content'        => $this->content,
             'is_audited'     => $this->is_audited,
             'socialite_user' => [
-                'id'   => $this->socialiteUser->id,
-                'name' => $this->socialiteUser->name,
+                'id'   => $socialite_user->id,
+                'name' => $socialite_user->name,
             ],
             'article' => [
-                'id'    => $this->article->id,
-                'title' => $this->article->title,
+                'id'    => $article->id,
+                'title' => $article->title,
             ],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
