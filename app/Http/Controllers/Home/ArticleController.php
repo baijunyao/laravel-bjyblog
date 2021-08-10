@@ -92,7 +92,10 @@ class ArticleController extends Controller
             }
         }
 
-        $category_id = $article->category->id;
+        /** @var \App\Models\Category $category */
+        $category = $article->category;
+
+        $category_id = $category->id;
 
         /** @var \App\Models\SocialiteUser|null $socialite_user */
         $socialite_user = auth()->guard('socialite')->user();
