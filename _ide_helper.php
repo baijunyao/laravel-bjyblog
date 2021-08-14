@@ -16716,6 +16716,7 @@
             /**
      * 
      *
+     * @see \Sentry\State\HubInterface
      */ 
         class Facade {
                     /**

@@ -851,11 +851,6 @@ parameters:
 			path: app/Http/Controllers/Admin/UserController.php
 
 		-
-			message: "#^Cannot access property \\$id on App\\\\Models\\\\Category\\|null\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/ArticleController.php
-
-		-
 			message: "#^Unsafe usage of new static\\(\\)\\.$#"
 			count: 1
 			path: app/Models/Base.php

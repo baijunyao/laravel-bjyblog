@@ -94,4 +94,5 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 laravel-bjyblog is open-sourced software licensed under the MIT license.
 
 ## Sponsors
-![PHPStorm](./resources/readme/phpstorm.png) ![laravel-idea](./resources/readme/laravel-idea.png)
+[![PHPStorm](./resources/readme/phpstorm.png)](https://www.jetbrains.com/phpstorm)
+[![Laravel-idea](./resources/readme/laravel-idea.png)](https://laravel-idea.com)

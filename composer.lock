@@ -3900,16 +3900,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v5.2.3",
+            "version": "v5.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "1960802068f81e44b2ae9793932181cf1cb91b5c"
+                "reference": "59e2f8d9d9663029c7746a92d60bbb7697953bb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/1960802068f81e44b2ae9793932181cf1cb91b5c",
-                "reference": "1960802068f81e44b2ae9793932181cf1cb91b5c",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/59e2f8d9d9663029c7746a92d60bbb7697953bb9",
+                "reference": "59e2f8d9d9663029c7746a92d60bbb7697953bb9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3971,7 +3971,7 @@
                 "issues": "https://github.com/laravel/socialite/issues",
                 "source": "https://github.com/laravel/socialite"
             },
-            "time": "2021-04-06T14:38:16+00:00"
+            "time": "2021-08-10T17:44:52+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -7187,16 +7187,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.2.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "7231612a5221f5524d3575bebdce20eeef8547a1"
+                "reference": "fe665a03df4f056aa65af552a96e1976df8c8dae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/7231612a5221f5524d3575bebdce20eeef8547a1",
-                "reference": "7231612a5221f5524d3575bebdce20eeef8547a1",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/fe665a03df4f056aa65af552a96e1976df8c8dae",
+                "reference": "fe665a03df4f056aa65af552a96e1976df8c8dae",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7274,7 +7274,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.2.0"
+                "source": "https://github.com/ramsey/uuid/tree/4.2.1"
             },
             "funding": [
                 {
@@ -7286,7 +7286,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-06T22:30:43+00:00"
+            "time": "2021-08-11T01:06:55+00:00"
         },
         {
             "name": "react/promise",
@@ -7518,16 +7518,16 @@
         },
         {
             "name": "sentry/sentry-laravel",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-laravel.git",
-                "reference": "91d6644fee3ba447769dc73eda2487a93218c04e"
+                "reference": "21dd07bdd2956e182ffde32d22872ce1a4b3eca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/91d6644fee3ba447769dc73eda2487a93218c04e",
-                "reference": "91d6644fee3ba447769dc73eda2487a93218c04e",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/21dd07bdd2956e182ffde32d22872ce1a4b3eca9",
+                "reference": "21dd07bdd2956e182ffde32d22872ce1a4b3eca9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7599,7 +7599,7 @@
             ],
             "support": {
                 "issues": "https://github.com/getsentry/sentry-laravel/issues",
-                "source": "https://github.com/getsentry/sentry-laravel/tree/2.7.0"
+                "source": "https://github.com/getsentry/sentry-laravel/tree/2.8.0"
             },
             "funding": [
                 {
@@ -7611,7 +7611,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-06-16T09:26:40+00:00"
+            "time": "2021-08-08T09:03:08+00:00"
         },
         {
             "name": "socialiteproviders/manager",
@@ -7895,16 +7895,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.16.1",
+            "version": "6.16.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "11a3fdb6938566ba75f3dd9ab790319d5e90b0fc"
+                "reference": "409acef61feedb47bf47da961740217071d22107"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/11a3fdb6938566ba75f3dd9ab790319d5e90b0fc",
-                "reference": "11a3fdb6938566ba75f3dd9ab790319d5e90b0fc",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/409acef61feedb47bf47da961740217071d22107",
+                "reference": "409acef61feedb47bf47da961740217071d22107",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7975,7 +7975,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-backup/issues",
-                "source": "https://github.com/spatie/laravel-backup/tree/6.16.1"
+                "source": "https://github.com/spatie/laravel-backup/tree/6.16.2"
             },
             "funding": [
                 {
@@ -7987,7 +7987,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-07-10T14:54:21+00:00"
+            "time": "2021-08-11T21:09:11+00:00"
         },
         {
             "name": "spatie/laravel-query-builder",
@@ -11113,16 +11113,16 @@
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.451",
+            "version": "3.0.456",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/common.git",
-                "reference": "48ea0bf634f1b7a1e0ad40f4c6b17103172050a9"
+                "reference": "3bbc871ae876c31bfb6ad10f38bc78687b39195b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/48ea0bf634f1b7a1e0ad40f4c6b17103172050a9",
-                "reference": "48ea0bf634f1b7a1e0ad40f4c6b17103172050a9",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/3bbc871ae876c31bfb6ad10f38bc78687b39195b",
+                "reference": "3bbc871ae876c31bfb6ad10f38bc78687b39195b",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11158,22 +11158,22 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/common",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.451"
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.456"
             },
-            "time": "2021-08-06T01:21:34+00:00"
+            "time": "2021-08-13T00:32:12+00:00"
         },
         {
             "name": "tencentcloud/cvm",
-            "version": "3.0.451",
+            "version": "3.0.456",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/cvm.git",
-                "reference": "93a0259bc746e06085642ecefa39d45b0255b395"
+                "reference": "0c6b2141182c881d8583827ef65e27d5970f4492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/93a0259bc746e06085642ecefa39d45b0255b395",
-                "reference": "93a0259bc746e06085642ecefa39d45b0255b395",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/0c6b2141182c881d8583827ef65e27d5970f4492",
+                "reference": "0c6b2141182c881d8583827ef65e27d5970f4492",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11183,7 +11183,7 @@
                 ]
             },
             "require": {
-                "tencentcloud/common": "3.0.451"
+                "tencentcloud/common": "3.0.456"
             },
             "type": "library",
             "autoload": {
@@ -11207,9 +11207,9 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/cvm/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.451"
+                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.456"
             },
-            "time": "2021-08-06T01:21:50+00:00"
+            "time": "2021-08-13T00:32:28+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -12877,16 +12877,16 @@
         },
         {
             "name": "itsgoingd/clockwork",
-            "version": "v5.0.8",
+            "version": "v5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itsgoingd/clockwork.git",
-                "reference": "01686ebbf75d8e121dfb1b60e52f334858793830"
+                "reference": "b963dee47429a49c9669981cfa9a8362ce209278"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/01686ebbf75d8e121dfb1b60e52f334858793830",
-                "reference": "01686ebbf75d8e121dfb1b60e52f334858793830",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/b963dee47429a49c9669981cfa9a8362ce209278",
+                "reference": "b963dee47429a49c9669981cfa9a8362ce209278",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12940,7 +12940,7 @@
             ],
             "support": {
                 "issues": "https://github.com/itsgoingd/clockwork/issues",
-                "source": "https://github.com/itsgoingd/clockwork/tree/v5.0.8"
+                "source": "https://github.com/itsgoingd/clockwork/tree/v5.1.0"
             },
             "funding": [
                 {
@@ -12948,7 +12948,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-27T22:00:25+00:00"
+            "time": "2021-08-07T23:04:17+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -13028,16 +13028,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v6.16.0",
+            "version": "v6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "2bc1035170f0a119521f9e09b82bba4889ee67b0"
+                "reference": "8563c4e853c32649919b09a6568cdf914284c129"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/2bc1035170f0a119521f9e09b82bba4889ee67b0",
-                "reference": "2bc1035170f0a119521f9e09b82bba4889ee67b0",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/8563c4e853c32649919b09a6568cdf914284c129",
+                "reference": "8563c4e853c32649919b09a6568cdf914284c129",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13101,9 +13101,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/dusk/issues",
-                "source": "https://github.com/laravel/dusk/tree/v6.16.0"
+                "source": "https://github.com/laravel/dusk/tree/v6.17.0"
             },
-            "time": "2021-08-03T15:21:19+00:00"
+            "time": "2021-08-10T17:13:15+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -13249,16 +13249,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.6.0",
+            "version": "v5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "0122ac6b03c75279ef78d1c0ad49725dfc52a8d2"
+                "reference": "0c3c393462eada1233513664e2d22bb9f69ca393"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0122ac6b03c75279ef78d1c0ad49725dfc52a8d2",
-                "reference": "0122ac6b03c75279ef78d1c0ad49725dfc52a8d2",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0c3c393462eada1233513664e2d22bb9f69ca393",
+                "reference": "0c3c393462eada1233513664e2d22bb9f69ca393",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13276,7 +13276,7 @@
             "require-dev": {
                 "brianium/paratest": "^6.1",
                 "fideloper/proxy": "^4.4.1",
-                "friendsofphp/php-cs-fixer": "^2.17.3",
+                "friendsofphp/php-cs-fixer": "^3.0",
                 "fruitcake/laravel-cors": "^2.0.3",
                 "laravel/framework": "^8.0 || ^9.0",
                 "nunomaduro/larastan": "^0.6.2",
@@ -13339,7 +13339,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-07-26T20:39:06+00:00"
+            "time": "2021-08-13T14:23:01+00:00"
         },
         {
             "name": "nunomaduro/larastan",
