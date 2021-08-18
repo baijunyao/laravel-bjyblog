@@ -3,6 +3,18 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  dotenv_lint:
+    name: Dotenv Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run dotenv-linter
+        uses: dotenv-linter/action-dotenv-linter@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          dotenv_linter_flags: --skip UnorderedKey
+
   phpcs:
     name: PHPCS
     runs-on: ubuntu-latest
