@@ -23,5 +23,6 @@ public/baidu*
 public/google*
 public/fileauth*
 .php_cs.cache
+.php-cs-fixer.cache
 deploy/helm/custom.yaml
 deploy/ansible/inventory.yml
