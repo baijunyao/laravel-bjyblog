@@ -100,13 +100,13 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
-- name: Check that the Helm diff exists
+- name: Check that the Helm diff tgz exists
   ansible.builtin.stat:
-    path: $HOME/.local/share/helm/plugins/diff
-  register: helm_diff_stat
+    path: /tmp/helm-diff-v3.1.3.tgz
+  register: helm_diff_tgz_stat
 
 - name: Download Helm diff binary
-  when: not helm_diff_stat.stat.exists
+  when: not helm_diff_tgz_stat.stat.exists
   ansible.builtin.get_url:
     url: https://github.com/databus23/helm-diff/releases/download/v3.1.3/helm-diff-linux.tgz
     dest: /tmp/helm-diff-v3.1.3.tgz
@@ -116,6 +116,11 @@
   ansible.builtin.file:
     path: $HOME/.local/share/helm/plugins/
     state: directory
+
+- name: Check that the Helm diff exists
+  ansible.builtin.stat:
+    path: $HOME/.local/share/helm/plugins/diff
+  register: helm_diff_stat
 
 - name: Unarchive helm-diff-v3.1.3.tgz
   when: not helm_diff_stat.stat.exists
