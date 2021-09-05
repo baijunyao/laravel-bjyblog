@@ -9,7 +9,6 @@ use App\Http\Requests\Comment\Store;
 use App\Models\Comment;
 use App\Models\SocialiteUser;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
 use Str;
 
 class CommentController extends Controller

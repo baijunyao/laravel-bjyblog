@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Resources;
 
 use App\Models\Article;
-use Baijunyao\LaravelTestSupport\Restful\TestDestroy;
 use Baijunyao\LaravelTestSupport\Restful\TestForceDelete;
 use Baijunyao\LaravelTestSupport\Restful\TestIndex;
 use Baijunyao\LaravelTestSupport\Restful\TestRestore;

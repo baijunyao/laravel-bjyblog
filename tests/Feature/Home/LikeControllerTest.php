@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Home;
 
 use App\Models\Article;
-use Tests\Feature\Admin\CURD\TestStore;
 
 class LikeControllerTest extends TestCase
 {
