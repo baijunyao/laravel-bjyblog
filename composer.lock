@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33c3af3647d32b4cbdaee80467eb7532",
+    "content-hash": "4e0d5672110b03145be2efbcfe3f3f30",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -11588,6 +11588,52 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "adamwojs/php-cs-fixer-phpdoc-force-fqcn",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adamwojs/php-cs-fixer-phpdoc-force-fqcn.git",
+                "reference": "b69a5875d2b67f912715ceac37a5a321701fbe5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adamwojs/php-cs-fixer-phpdoc-force-fqcn/zipball/b69a5875d2b67f912715ceac37a5a321701fbe5a",
+                "reference": "b69a5875d2b67f912715ceac37a5a321701fbe5a",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "php": "^7.1||^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AdamWojs\\PhpCsFixerPhpdocForceFQCN\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Wójs",
+                    "email": "adam@wojs.pl"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/adamwojs/php-cs-fixer-phpdoc-force-fqcn/issues",
+                "source": "https://github.com/adamwojs/php-cs-fixer-phpdoc-force-fqcn/tree/v2.0"
+            },
+            "time": "2021-08-23T07:54:35+00:00"
+        },
         {
             "name": "baijunyao/laravel-test-support",
             "version": "v6.0.0",
