@@ -9,7 +9,9 @@ return [
                 'article/*',
                 'category/*',
                 'tag/*',
-                'site'
+                'site',
+                'note',
+                'openSource',
             ]
         ],
     ]
