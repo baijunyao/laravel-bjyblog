@@ -58,6 +58,7 @@
         "ytake/laravel-fluent-logger": "^5.0"
     },
     "require-dev": {
+        "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
         "baijunyao/laravel-test-support": "^6.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
