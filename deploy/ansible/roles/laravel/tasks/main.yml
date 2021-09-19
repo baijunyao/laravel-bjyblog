@@ -407,3 +407,10 @@
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
 
+- name: Ensure public are 0775
+  ansible.builtin.file:
+    state: directory
+    path: /laravel-bjyblog/site/public
+    owner: www-data
+    group: www-data
+    mode: '0775'
