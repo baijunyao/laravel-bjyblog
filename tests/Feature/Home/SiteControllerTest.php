@@ -7,12 +7,9 @@ namespace Tests\Feature\Home;
 use App\Notifications\SiteApply;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Facades\Notification;
-use Tests\Feature\Admin\CURD\TestStore;
 
 class SiteControllerTest extends TestCase
 {
-    use TestStore;
-
     protected $urlPrefix = 'site/';
     protected $table     = 'sites';
     protected $storeData = [
