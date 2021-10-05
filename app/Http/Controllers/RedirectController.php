@@ -40,4 +40,9 @@ class RedirectController extends Controller
     {
         return redirect()->route('auth.socialite.redirectToProvider', ['github']);
     }
+
+    public function ant(): RedirectResponse
+    {
+        return redirect(url('admin'));
+    }
 }

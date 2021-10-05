@@ -11,3 +11,5 @@ Route::get('chat', \App\Http\Controllers\RedirectController::class . '@note')->n
 Route::get('git', \App\Http\Controllers\RedirectController::class . '@openSource')->name('home.git');
 
 Route::get('login', \App\Http\Controllers\RedirectController::class . '@login')->name('login');
+
+Route::get('ant', \App\Http\Controllers\RedirectController::class . '@ant');
