@@ -15,6 +15,17 @@ jobs:
           github_token: ${{ secrets.github_token }}
           dotenv_linter_flags: --skip UnorderedKey
 
+  markdown_lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run markdownlint
+        uses: docker://avtodev/markdown-lint:v1
+        with:
+          args: './README.md'
+
   phpcs:
     name: PHPCS
     runs-on: ubuntu-latest

@@ -24,15 +24,19 @@
 ![laravel-bjyblog](./resources/readme/preview.jpg)
 
 ## Documentation
+
 [English](https://baijunyao.com/docs/laravel-bjyblog/en) [中文文档](https://baijunyao.com/docs/laravel-bjyblog)  
 
 ## Testing
-Run the tests with  
-```
+
+Run the tests with
+
+```bash
 ./vendor/bin/phpunit
 ```
 
 ## Example
+
 - [白俊遥博客](https://baijunyao.com)
 - [larwas](https://www.larwas.com)
 - [冯奎博客](https://fengkui.net)
@@ -54,9 +58,10 @@ Run the tests with
 Welcome to submit a PR or tell me to include your blog
 
 ## Links
-- Blog：[https://baijunyao.com](https://baijunyao.com)   
-- GitHub：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)   
-- Gitee：[https://gitee.com/baijunyao/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)   
+
+- Blog：[https://baijunyao.com](https://baijunyao.com)
+- GitHub：[https://github.com/baijunyao/laravel-bjyblog](https://github.com/baijunyao/laravel-bjyblog)
+- Gitee：[https://gitee.com/baijunyao/laravel-bjyblog](https://gitee.com/baijunyao/laravel-bjyblog)
 
 ## Contributors
 
@@ -91,8 +96,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 ## License
+
 laravel-bjyblog is open-sourced software licensed under the MIT license.
 
 ## Sponsors
+
 [![PHPStorm](./resources/readme/phpstorm.png)](https://www.jetbrains.com/phpstorm)
 [![Laravel-idea](./resources/readme/laravel-idea.png)](https://laravel-idea.com)
