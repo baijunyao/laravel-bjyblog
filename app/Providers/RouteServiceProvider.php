@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
         if (Str::contains(request()->getRequestUri(), '/index.php/')) {
             $url = str_replace('index.php/', '', request()->getRequestUri());
 
-            if (strlen($url) > 0) {
+            if ($url !== '') {
                 header("Location: $url", true, 301);
                 exit;
             }
