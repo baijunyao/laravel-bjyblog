@@ -37,4 +37,9 @@ class RedirectControllerTest extends TestCase
     {
         $this->get('login')->assertRedirect('auth/socialite/redirectToProvider/github');
     }
+
+    public function testAnt()
+    {
+        $this->get('ant')->assertRedirect('admin');
+    }
 }

@@ -1,0 +1,6 @@
+no-inline-html: false
+first-header-h1: false
+required-headers: false
+first-line-heading: false
+line-length:
+  line_length: 800
