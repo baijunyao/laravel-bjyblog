@@ -28,12 +28,12 @@ class RedirectController extends Controller
 
     public function note(): RedirectResponse
     {
-        return redirect()->route('home.note.index');
+        return redirect()->route('home.notes.index');
     }
 
     public function openSource(): RedirectResponse
     {
-        return redirect()->route('home.openSource.index');
+        return redirect()->route('home.openSources.index');
     }
 
     public function login(): RedirectResponse

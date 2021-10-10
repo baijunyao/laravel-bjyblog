@@ -25,12 +25,12 @@ class RedirectControllerTest extends TestCase
 
     public function testNote()
     {
-        $this->get('chat')->assertRedirect('note');
+        $this->get('chat')->assertRedirect('notes');
     }
 
     public function testOpenSource()
     {
-        $this->get('git')->assertRedirect('openSource');
+        $this->get('git')->assertRedirect('openSources');
     }
 
     public function testLogin()

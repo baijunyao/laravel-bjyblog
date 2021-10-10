@@ -13,12 +13,12 @@ class ArticleControllerTest extends TestCase
 
     public function testShow()
     {
-        $this->get('/article/1')->assertStatus(200);
+        $this->get('/articles/1')->assertStatus(200);
     }
 
     public function testShowNotFound()
     {
-        $this->get('/article/100')->assertNotFound();
+        $this->get('/articles/100')->assertNotFound();
     }
 
     public function testSearch()

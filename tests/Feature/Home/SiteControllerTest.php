@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Notification;
 
 class SiteControllerTest extends TestCase
 {
-    protected $urlPrefix = 'site/';
+    protected $urlPrefix = 'sites/';
     protected $table     = 'sites';
     protected $storeData = [
         'name'        => '新增',

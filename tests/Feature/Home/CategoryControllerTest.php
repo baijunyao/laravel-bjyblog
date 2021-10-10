@@ -8,11 +8,11 @@ class CategoryControllerTest extends TestCase
 {
     public function testShow()
     {
-        $this->get('/category/1')->assertStatus(200);
+        $this->get('/categories/1')->assertStatus(200);
     }
 
     public function testShowNotFound()
     {
-        $this->get('/category/100')->assertNotFound();
+        $this->get('/categories/100')->assertNotFound();
     }
 }

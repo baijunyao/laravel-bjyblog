@@ -8,6 +8,6 @@ class OpenSourceControllerTest extends TestCase
 {
     public function testIndex()
     {
-        $this->get('/openSource')->assertStatus(200);
+        $this->get('/openSources')->assertStatus(200);
     }
 }
