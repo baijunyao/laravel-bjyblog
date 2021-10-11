@@ -65,7 +65,7 @@
                                     <img class="bjy-lazyload" src="{{ cdn_url('/images/home/loading.gif') }}" data-src="{{ cdn_url($v->cover)  }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
                                 </a>
                                 <figcaption>
-                                    <a href="{{ url('article', [$v->id]) }}" target="{{ config('bjyblog.link_target') }}"></a>
+                                    <a href="{{ url('articles', [$v->id]) }}" target="{{ config('bjyblog.link_target') }}"></a>
                                 </figcaption>
                             </figure>
                             @if(1 == $v->is_top)

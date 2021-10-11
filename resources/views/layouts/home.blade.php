@@ -104,7 +104,7 @@
                             </p>
                             <p class="b-qun-article">
                                 @if(!empty($qq_qun_article['id']))
-                                    <a href="{{ url('article', [$qq_qun_article['id']]) }}" target="{{ config('bjyblog.link_target') }}">{{ $qq_qun_article['title'] }}</a>
+                                    <a href="{{ url('articles', [$qq_qun_article['id']]) }}" target="{{ config('bjyblog.link_target') }}">{{ $qq_qun_article['title'] }}</a>
                                 @endif
                             </p>
                         </li>
@@ -154,7 +154,7 @@
                     @foreach($friend as $v)
                         <a class="b-link-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
                     @endforeach
-                        <a class="b-link-a" href="{{ url('site') }}"><span class="fa fa-link b-black"></span> {{ translate('More') }} </a>
+                        <a class="b-link-a" href="{{ url('sites') }}"><span class="fa fa-link b-black"></span> {{ translate('More') }} </a>
                 </p>
             </div>
         </div>
@@ -226,7 +226,7 @@
                 @endforeach
 
                 @if($socialite_clients->isEmpty())
-                    {{ translate('Need to add socialite client first.') }} <a href="{{ url('admin/socialiteClient/index') }}">{{ translate('Click to go') }}</a>
+                    {{ translate('Need to add socialite client first.') }} <a href="{{ url('admin/#/admin/socialiteClient/index') }}">{{ translate('Click to go') }}</a>
                 @endif
             </div>
         </div>
@@ -234,10 +234,10 @@
 </div>
 <script>
     // 定义评论url
-    ajaxCommentUrl = "{{ url('comment') }}";
-    ajaxLikeUrl = "{{ url('like/store') }}";
-    ajaxUnLikeUrl = "{{ url('like/destroy') }}";
-    socialiteUserShowUrl = "{{ url('socialiteUser/me') }}";
+    ajaxCommentUrl = "{{ url('comments') }}";
+    ajaxLikeUrl = "{{ url('likes/store') }}";
+    ajaxUnLikeUrl = "{{ url('likes/destroy') }}";
+    socialiteUserShowUrl = "{{ url('socialiteUsers/me') }}";
     titleName = '{{ config('app.name') }}';
     jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
     sharejsConfig = {!! config('bjyblog.social_share.sharejs_config') !!};

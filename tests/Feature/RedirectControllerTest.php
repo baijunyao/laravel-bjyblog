@@ -23,19 +23,94 @@ class RedirectControllerTest extends TestCase
         $this->get('auth/oauth/logout')->assertRedirect('auth/socialite/logout');
     }
 
-    public function testNote()
+    public function testLogin()
+    {
+        $this->get('login')->assertRedirect('auth/socialite/redirectToProvider/github');
+    }
+
+    public function testCategory()
+    {
+        $this->get('category/1')->assertRedirect('categories/1');
+    }
+
+    public function testCategoryWithSlug()
+    {
+        $this->get('category/1/slug')->assertRedirect('categories/1/slug');
+    }
+
+    public function testTag()
+    {
+        $this->get('tag/1')->assertRedirect('tags/1');
+    }
+
+    public function testTagWithSlug()
+    {
+        $this->get('tag/1/slug')->assertRedirect('tags/1/slug');
+    }
+
+    public function testArticle()
+    {
+        $this->get('article/1')->assertRedirect('articles/1');
+    }
+
+    public function testArticleWithSlug()
+    {
+        $this->get('article/1/slug')->assertRedirect('articles/1/slug');
+    }
+
+    public function testComment()
+    {
+        $this->get('comment')->assertRedirect('comments');
+    }
+
+    public function testLikeStore()
+    {
+        $this->get('like/store')->assertRedirect('likes/store');
+    }
+
+    public function testLikeDestroy()
+    {
+        $this->get('like/destroy')->assertRedirect('likes/destroy');
+    }
+
+    public function testChat()
     {
         $this->get('chat')->assertRedirect('notes');
     }
 
-    public function testOpenSource()
+    public function testNote()
+    {
+        $this->get('note')->assertRedirect('notes');
+    }
+
+    public function testGit()
     {
         $this->get('git')->assertRedirect('openSources');
     }
 
-    public function testLogin()
+    public function testOpenSource()
     {
-        $this->get('login')->assertRedirect('auth/socialite/redirectToProvider/github');
+        $this->get('openSource')->assertRedirect('openSources');
+    }
+
+    public function testSite()
+    {
+        $this->get('site')->assertRedirect('sites');
+    }
+
+    public function testSiteStore()
+    {
+        $this->get('site/store')->assertRedirect('sites/store');
+    }
+
+    public function testSocialiteUser()
+    {
+        $this->get('socialiteUser/1')->assertRedirect('socialiteUsers/1');
+    }
+
+    public function testFeed()
+    {
+        $this->get('feed')->assertRedirect('feeds');
     }
 
     public function testAnt()

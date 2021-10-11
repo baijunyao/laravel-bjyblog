@@ -26,23 +26,8 @@ class RedirectController extends Controller
         return redirect()->route('auth.socialite.logout')->withInput();
     }
 
-    public function note(): RedirectResponse
-    {
-        return redirect()->route('home.notes.index');
-    }
-
-    public function openSource(): RedirectResponse
-    {
-        return redirect()->route('home.openSources.index');
-    }
-
     public function login(): RedirectResponse
     {
         return redirect()->route('auth.socialite.redirectToProvider', ['github']);
-    }
-
-    public function ant(): RedirectResponse
-    {
-        return redirect(url('admin'));
     }
 }
