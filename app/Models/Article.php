@@ -96,6 +96,6 @@ class Article extends Base
             $parameters[] = $this->slug;
         }
 
-        return url('article', $parameters);
+        return url('articles', $parameters);
     }
 }

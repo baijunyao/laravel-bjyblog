@@ -16,14 +16,14 @@
             </div>
         @endif
         <div class="row" id="b-content-site">
-            @foreach($site as $k => $v)
+            @foreach($sites as $site)
                 <div class="col-xs-12 col-md-4 col-lg-4 b-site">
                     <ul class="b-s-inside">
-                        <li class="b-si-name">{{ $v->name }}</li>
-                        <li class="b-si-url">{{ $v->url }}</li>
-                        <li class="b-si-description">{{ $v->description }}</li>
+                        <li class="b-si-name">{{ $site->name }}</li>
+                        <li class="b-si-url">{{ $site->url }}</li>
+                        <li class="b-si-description">{{ $site->description }}</li>
                     </ul>
-                    <a class="b-s-url" href="{{ $v->url }}" target="_blank"></a>
+                    <a class="b-s-url" href="{{ $site->url }}" target="_blank"></a>
                 </div>
             @endforeach
             <div class="col-xs-12 col-md-4 col-lg-4 b-site">

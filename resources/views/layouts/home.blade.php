@@ -44,14 +44,14 @@
                 <li class="b-nav-cname  @if(request()->path() === '/') b-nav-active @endif">
                     <a href="/">{{ translate('Home') }}</a>
                 </li>
-                @foreach($category as $v)
-                    <li class="b-nav-cname @if((request()->fullUrl() === $v->url) || (isset($article) && $article->category_id ===$v->id)) b-nav-active @endif">
-                        <a href="{{ $v->url }}">{{ $v->name }}</a>
+                @foreach($categories as $category)
+                    <li class="b-nav-cname @if((request()->fullUrl() === $category->url) || (isset($article) && $article->category_id ===$category->id)) b-nav-active @endif">
+                        <a href="{{ $category->url }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
-                @foreach($nav as $v)
-                    <li class="b-nav-cname @if(request()->path() === $v->url) b-nav-active @endif">
-                        <a href="{{ url($v->url) }}">{{ $v->name }}</a>
+                @foreach($navs as $nav)
+                    <li class="b-nav-cname @if(request()->path() === $nav->url) b-nav-active @endif">
+                        <a href="{{ url($nav->url) }}">{{ $nav->name }}</a>
                     </li>
                 @endforeach
             </ul>
@@ -114,9 +114,9 @@
             <div class="b-tags">
                 <h4 class="b-title">{{ translate('Hot Tags') }}</h4>
                 <ul class="b-all-tname">
-                    @foreach($tag as $v)
+                    @foreach($tags as $tag)
                         <li class="b-tname">
-                            <a class="b-tag-style-{{ $loop->index%4 }}" href="{{ $v->url }}">{{ $v->name }} ({{ $v->articles_count }})</a>
+                            <a class="b-tag-style-{{ $loop->index%4 }}" href="{{ $tag->url }}">{{ $tag->name }} ({{ $tag->articles_count }})</a>
                         </li>
                     @endforeach
                 </ul>
@@ -124,8 +124,8 @@
             <div class="b-recommend">
                 <h4 class="b-title">{{ translate('Top Articles') }}</h4>
                 <p class="b-recommend-p">
-                    @foreach($top_article as $v)
-                        <a class="b-recommend-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                    @foreach($top_article as $article)
+                        <a class="b-recommend-a" href="{{ $article->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-th-list b-black"></span> {{ $article->title }}</a>
                     @endforeach
                 </p>
             </div>
@@ -151,8 +151,8 @@
             <div class="b-link">
                 <h4 class="b-title">{{ translate('Links') }}</h4>
                 <p>
-                    @foreach($friend as $v)
-                        <a class="b-link-a" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-link b-black"></span> {{ $v->name }}</a>
+                    @foreach($friends as $friend)
+                        <a class="b-link-a" href="{{ $friend->url }}" target="{{ config('bjyblog.link_target') }}"><span class="fa fa-link b-black"></span> {{ $friend->name }}</a>
                     @endforeach
                         <a class="b-link-a" href="{{ url('sites') }}"><span class="fa fa-link b-black"></span> {{ translate('More') }} </a>
                 </p>
