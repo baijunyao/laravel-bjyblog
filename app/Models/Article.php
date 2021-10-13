@@ -17,6 +17,13 @@ class Article extends Base
     use Searchable, CanBeLiked;
 
     /**
+     * @var array<string,mixed>
+     */
+    protected $attributes = [
+        'description' => '',
+    ];
+
+    /**
      * @return array<string,mixed>
      */
     public function toSearchableArray(): array
