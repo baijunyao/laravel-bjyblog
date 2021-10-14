@@ -33,7 +33,17 @@ class ArticleControllerTest extends TestCase
         'keywords'    => 'updated keywords',
         'markdown'    => 'updated content',
         'tag_ids'     => [1],
-        'description' => '',
+        'description' => 'updated description',
         'cover'       => '/updated.jpg',
     ];
+
+    public function testUpdateClearDescription(): void
+    {
+        $article                = $this->updateData;
+        $article['description'] = '';
+
+        $this->assertResponse(
+            $this->putJson(route($this->getRoute() . '.update', $this->updateId), $article)
+        );
+    }
 }
