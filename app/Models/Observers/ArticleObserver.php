@@ -25,9 +25,9 @@ class ArticleObserver extends BaseObserver
      *
      * @return void
      */
-    public function saving($article)
+    public function creating($article)
     {
-        if (empty($article->description)) {
+        if ($article->description === '') {
             $content = preg_replace(
                 ['/[~*>#-]*/', '/!?\[.*\]\(.*\)/', '/\[.*\]/'],
                 '',
@@ -42,7 +42,15 @@ class ArticleObserver extends BaseObserver
                 $article->description = Str::words($content, 30, '');
             }
         }
+    }
 
+    /**
+     * @param \App\Models\Article $article
+     *
+     * @return void
+     */
+    public function saving($article)
+    {
         if (empty($article->is_top)) {
             $article->is_top = 0;
         }
@@ -63,7 +71,6 @@ class ArticleObserver extends BaseObserver
         if (empty($article->cover)) {
             $article->cover = $image_paths[0] ?? '/uploads/article/default.jpg';
         }
-
     }
 
     /**

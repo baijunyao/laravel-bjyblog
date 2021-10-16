@@ -3088,16 +3088,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.106",
+            "version": "v1.2.107",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "78bf6792cbf9c569dc0bf2465481978fd2ed0de9"
+                "reference": "62b9055b555be9e1479d7c37515d7c58975c2aa4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/78bf6792cbf9c569dc0bf2465481978fd2ed0de9",
-                "reference": "78bf6792cbf9c569dc0bf2465481978fd2ed0de9",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/62b9055b555be9e1479d7c37515d7c58975c2aa4",
+                "reference": "62b9055b555be9e1479d7c37515d7c58975c2aa4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -3140,9 +3140,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JayBizzle/Crawler-Detect/issues",
-                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.2.106"
+                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.2.107"
             },
-            "time": "2021-05-24T20:30:32+00:00"
+            "time": "2021-10-12T16:06:07+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -4628,16 +4628,16 @@
         },
         {
             "name": "league/oauth2-server",
-            "version": "8.3.2",
+            "version": "8.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "0809487d33dd8a2c8c8c04e4a599ba4aadba1ae6"
+                "reference": "f5698a3893eda9a17bcd48636990281e7ca77b2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/0809487d33dd8a2c8c8c04e4a599ba4aadba1ae6",
-                "reference": "0809487d33dd8a2c8c8c04e4a599ba4aadba1ae6",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/f5698a3893eda9a17bcd48636990281e7ca77b2a",
+                "reference": "f5698a3893eda9a17bcd48636990281e7ca77b2a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4650,7 +4650,7 @@
                 "defuse/php-encryption": "^2.2.1",
                 "ext-json": "*",
                 "ext-openssl": "*",
-                "lcobucci/jwt": "^3.4 || ^4.0",
+                "lcobucci/jwt": "^3.4.6 || ^4.0.4",
                 "league/event": "^2.2",
                 "php": "^7.2 || ^8.0",
                 "psr/http-message": "^1.0.1"
@@ -4709,7 +4709,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/oauth2-server/issues",
-                "source": "https://github.com/thephpleague/oauth2-server/tree/8.3.2"
+                "source": "https://github.com/thephpleague/oauth2-server/tree/8.3.3"
             },
             "funding": [
                 {
@@ -4717,7 +4717,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-27T08:17:08+00:00"
+            "time": "2021-10-11T20:41:49+00:00"
         },
         {
             "name": "mavinoo/laravel-batch",
@@ -4783,16 +4783,16 @@
         },
         {
             "name": "mews/purifier",
-            "version": "3.3.5",
+            "version": "3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mewebstudio/Purifier.git",
-                "reference": "53f2be3b94cf8940d23970f0aeb907ce8c9760f7"
+                "reference": "1d033fc32b98036226002c38747d4a45424d5f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mewebstudio/Purifier/zipball/53f2be3b94cf8940d23970f0aeb907ce8c9760f7",
-                "reference": "53f2be3b94cf8940d23970f0aeb907ce8c9760f7",
+                "url": "https://api.github.com/repos/mewebstudio/Purifier/zipball/1d033fc32b98036226002c38747d4a45424d5f28",
+                "reference": "1d033fc32b98036226002c38747d4a45424d5f28",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -4864,9 +4864,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mewebstudio/Purifier/issues",
-                "source": "https://github.com/mewebstudio/Purifier/tree/3.3.5"
+                "source": "https://github.com/mewebstudio/Purifier/tree/3.3.6"
             },
-            "time": "2021-05-17T00:17:01+00:00"
+            "time": "2021-10-14T15:27:18+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6828,16 +6828,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.8",
+            "version": "v0.10.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3"
+                "reference": "01281336c4ae557fe4a994544f30d3a1bc204375"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/e4573f47750dd6c92dca5aee543fa77513cbd8d3",
-                "reference": "e4573f47750dd6c92dca5aee543fa77513cbd8d3",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/01281336c4ae557fe4a994544f30d3a1bc204375",
+                "reference": "01281336c4ae557fe4a994544f30d3a1bc204375",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -6903,9 +6903,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.10.8"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.10.9"
             },
-            "time": "2021-04-10T16:23:39+00:00"
+            "time": "2021-10-10T13:37:39+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6959,16 +6959,16 @@
         },
         {
             "name": "ramsey/collection",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/collection.git",
-                "reference": "eaca1dc1054ddd10cbd83c1461907bee6fb528fa"
+                "reference": "cccc74ee5e328031b15640b51056ee8d3bb66c0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/collection/zipball/eaca1dc1054ddd10cbd83c1461907bee6fb528fa",
-                "reference": "eaca1dc1054ddd10cbd83c1461907bee6fb528fa",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/cccc74ee5e328031b15640b51056ee8d3bb66c0a",
+                "reference": "cccc74ee5e328031b15640b51056ee8d3bb66c0a",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -7028,7 +7028,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/collection/issues",
-                "source": "https://github.com/ramsey/collection/tree/1.2.1"
+                "source": "https://github.com/ramsey/collection/tree/1.2.2"
             },
             "funding": [
                 {
@@ -7040,7 +7040,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-06T03:41:06+00:00"
+            "time": "2021-10-10T03:01:02+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -10980,16 +10980,16 @@
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.493",
+            "version": "3.0.498",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/common.git",
-                "reference": "e452286be16d1ceb1ef7872d7186ed13091fb74a"
+                "reference": "2e654ef6d355c23095ef101d96ad69a9b55037a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/e452286be16d1ceb1ef7872d7186ed13091fb74a",
-                "reference": "e452286be16d1ceb1ef7872d7186ed13091fb74a",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/2e654ef6d355c23095ef101d96ad69a9b55037a4",
+                "reference": "2e654ef6d355c23095ef101d96ad69a9b55037a4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11024,22 +11024,22 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/common",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.493"
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.498"
             },
-            "time": "2021-10-09T04:13:47+00:00"
+            "time": "2021-10-15T01:26:03+00:00"
         },
         {
             "name": "tencentcloud/cvm",
-            "version": "3.0.493",
+            "version": "3.0.498",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/cvm.git",
-                "reference": "4928efa8b425a98a429278cfeecddb02584a368e"
+                "reference": "3c9a02a1ec9d2b9dc8bbc35653ae039b0d314eb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/4928efa8b425a98a429278cfeecddb02584a368e",
-                "reference": "4928efa8b425a98a429278cfeecddb02584a368e",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/3c9a02a1ec9d2b9dc8bbc35653ae039b0d314eb9",
+                "reference": "3c9a02a1ec9d2b9dc8bbc35653ae039b0d314eb9",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11049,7 +11049,7 @@
                 ]
             },
             "require": {
-                "tencentcloud/common": "3.0.493"
+                "tencentcloud/common": "3.0.498"
             },
             "type": "library",
             "autoload": {
@@ -11073,9 +11073,9 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/cvm/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.493"
+                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.498"
             },
-            "time": "2021-10-09T04:14:18+00:00"
+            "time": "2021-10-15T01:26:35+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -12413,16 +12413,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.14.1",
+            "version": "2.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "6d89c4c99537f487ad29f646d57ebf107ef714ed"
+                "reference": "3ee6e94815462bcf09bca0efc1c9069685df8da3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/6d89c4c99537f487ad29f646d57ebf107ef714ed",
-                "reference": "6d89c4c99537f487ad29f646d57ebf107ef714ed",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/3ee6e94815462bcf09bca0efc1c9069685df8da3",
+                "reference": "3ee6e94815462bcf09bca0efc1c9069685df8da3",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -12432,6 +12432,7 @@
                 ]
             },
             "require": {
+                "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "facade/flare-client-php": "^1.9.1",
@@ -12491,7 +12492,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-10-08T12:34:52+00:00"
+            "time": "2021-10-11T15:24:06+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -12947,16 +12948,16 @@
         },
         {
             "name": "laravel/dusk",
-            "version": "v6.18.1",
+            "version": "v6.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/dusk.git",
-                "reference": "c99116b354a93faf9e75aeeeadc73445df705570"
+                "reference": "b55a5720d256f3d71da7fb559a9f5b330a895cd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/dusk/zipball/c99116b354a93faf9e75aeeeadc73445df705570",
-                "reference": "c99116b354a93faf9e75aeeeadc73445df705570",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/b55a5720d256f3d71da7fb559a9f5b330a895cd4",
+                "reference": "b55a5720d256f3d71da7fb559a9f5b330a895cd4",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13020,9 +13021,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/dusk/issues",
-                "source": "https://github.com/laravel/dusk/tree/v6.18.1"
+                "source": "https://github.com/laravel/dusk/tree/v6.19.0"
             },
-            "time": "2021-09-07T14:28:13+00:00"
+            "time": "2021-10-11T15:25:08+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -13545,16 +13546,16 @@
         },
         {
             "name": "php-webdriver/webdriver",
-            "version": "1.11.1",
+            "version": "1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-webdriver/php-webdriver.git",
-                "reference": "da16e39968f8dd5cfb7d07eef91dc2b731c69880"
+                "reference": "99d4856ed7dffcdf6a52eccd6551e83d8d557ceb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/da16e39968f8dd5cfb7d07eef91dc2b731c69880",
-                "reference": "da16e39968f8dd5cfb7d07eef91dc2b731c69880",
+                "url": "https://api.github.com/repos/php-webdriver/php-webdriver/zipball/99d4856ed7dffcdf6a52eccd6551e83d8d557ceb",
+                "reference": "99d4856ed7dffcdf6a52eccd6551e83d8d557ceb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -13569,20 +13570,19 @@
                 "ext-zip": "*",
                 "php": "^5.6 || ~7.0 || ^8.0",
                 "symfony/polyfill-mbstring": "^1.12",
-                "symfony/process": "^2.8 || ^3.1 || ^4.0 || ^5.0"
+                "symfony/process": "^2.8 || ^3.1 || ^4.0 || ^5.0 || ^6.0"
             },
             "replace": {
                 "facebook/webdriver": "*"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
                 "ondram/ci-detector": "^2.1 || ^3.5 || ^4.0",
                 "php-coveralls/php-coveralls": "^2.4",
                 "php-mock/php-mock-phpunit": "^1.1 || ^2.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpunit/phpunit": "^5.7 || ^7 || ^8 || ^9",
                 "squizlabs/php_codesniffer": "^3.5",
-                "symfony/var-dumper": "^3.3 || ^4.0 || ^5.0"
+                "symfony/var-dumper": "^3.3 || ^4.0 || ^5.0 || ^6.0"
             },
             "suggest": {
                 "ext-SimpleXML": "For Firefox profile creation"
@@ -13611,9 +13611,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-webdriver/php-webdriver/issues",
-                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.11.1"
+                "source": "https://github.com/php-webdriver/php-webdriver/tree/1.12.0"
             },
-            "time": "2021-05-21T15:12:49+00:00"
+            "time": "2021-10-14T09:30:02+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -15384,6 +15384,7 @@
                     "type": "github"
                 }
             ],
+            "abandoned": true,
             "time": "2020-09-28T06:45:17+00:00"
         },
         {
