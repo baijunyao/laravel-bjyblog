@@ -15235,7 +15235,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::updateBatch()
+         * @see \App\Models\Article::category()
          * @static 
          */ 
         public static function unsearchable()
