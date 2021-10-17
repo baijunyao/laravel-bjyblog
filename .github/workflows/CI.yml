@@ -231,7 +231,7 @@ jobs:
   notify:
     name: Slack Notify
     runs-on: ubuntu-latest
-    needs: [phpcs, phpstan, helm_lint, ansible_lint, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
+    needs: [dotenv_lint, markdown_lint, helm_lint, ansible_lint, phpcs, phpstan, php_8_0_mysql_5_6, php_8_0_mysql_5_7, php_8_0_mysql_8_0,]
     if: always()
     steps:
       - name: Slack Notify
