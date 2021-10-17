@@ -33,24 +33,24 @@
             </div>
         @endif
         <!-- 循环文章列表开始 -->
-        @foreach($articles as $k => $v)
+        @foreach($articles as $article)
             <div class="row b-one-article">
                 <h3 class="col-xs-12 col-md-12 col-lg-12">
-                    <a class="b-oa-title" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}">{{ $v->title }}</a>
+                    <a class="b-oa-title" href="{{ $article->url }}" target="{{ config('bjyblog.link_target') }}">{{ $article->title }}</a>
                 </h3>
                 <div class="col-xs-12 col-md-12 col-lg-12 b-date">
                     <ul class="row">
                         <li class="col-xs-5 col-md-2 col-lg-3">
-                            <i class="fa fa-user"></i> {{ $v->author }}
+                            <i class="fa fa-user"></i> {{ $article->author }}
                         </li>
                         <li class="col-xs-7 col-md-3 col-lg-3">
-                            <i class="fa fa-calendar"></i> {{ $v->created_at }}
+                            <i class="fa fa-calendar"></i> {{ $article->created_at }}
                         </li>
                         <li class="col-xs-5 col-md-2 col-lg-2">
-                            <i class="fa fa-list-alt"></i> <a href="{{ $v->category->url }}" target="{{ config('bjyblog.link_target') }}">{{ $v->category->name }}</a>
+                            <i class="fa fa-list-alt"></i> <a href="{{ $article->category->url }}" target="{{ config('bjyblog.link_target') }}">{{ $article->category->name }}</a>
                         </li>
                         <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
-                            @foreach($v->tags as $n)
+                            @foreach($article->tags as $n)
                                 <a class="b-tag-name" href="{{ $n->url }}" target="{{ config('bjyblog.link_target') }}">{{ $n->name }}</a>
                             @endforeach
                         </li>
@@ -61,14 +61,14 @@
                         <!-- 文章封面图片开始 -->
                         <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs b-oa-thumbnail">
                             <figure class="b-oa-pic b-style1">
-                                <a href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}">
-                                    <img class="bjy-lazyload" src="{{ cdn_url('/images/home/loading.gif') }}" data-src="{{ cdn_url($v->cover)  }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
+                                <a href="{{ $article->url }}" target="{{ config('bjyblog.link_target') }}">
+                                    <img class="bjy-lazyload" src="{{ cdn_url('/images/home/loading.gif') }}" data-src="{{ cdn_url($article->cover)  }}" alt="{{ config('bjyblog.alt_word') }}" title="{{ config('bjyblog.alt_word') }}">
                                 </a>
                                 <figcaption>
-                                    <a href="{{ url('article', [$v->id]) }}" target="{{ config('bjyblog.link_target') }}"></a>
+                                    <a href="{{ url('articles', [$article->id]) }}" target="{{ config('bjyblog.link_target') }}"></a>
                                 </figcaption>
                             </figure>
-                            @if(1 == $v->is_top)
+                            @if(1 == $article->is_top)
                                 <img class="b-top-icon" src="{{ cdn_url('/images/home/top.png')  }}" alt="top">
                             @endif
                         </div>
@@ -76,12 +76,12 @@
 
                         <!-- 文章描述开始 -->
                         <div class="col-xs-12 col-sm-6  col-md-6 col-lg-8 b-des-read">
-                            {{ $v->description }}
+                            {{ $article->description }}
                         </div>
                         <!-- 文章描述结束 -->
                     </div>
                 </div>
-                <a class=" b-readall" href="{{ $v->url }}" target="{{ config('bjyblog.link_target') }}">{{ translate('Read More') }}</a>
+                <a class=" b-readall" href="{{ $article->url }}" target="{{ config('bjyblog.link_target') }}">{{ translate('Read More') }}</a>
             </div>
         @endforeach
         <!-- 循环文章列表结束 -->

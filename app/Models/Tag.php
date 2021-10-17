@@ -18,12 +18,7 @@ class Tag extends Base
         return $this->belongsToMany(Article::class, 'article_tags');
     }
 
-    /**
-     * @return \Illuminate\Contracts\Routing\UrlGenerator|string
-     *
-     * @author hanmeimei
-     */
-    public function getUrlAttribute()
+    public function getUrlAttribute(): string
     {
         $parameters = [$this->id];
 
@@ -31,6 +26,6 @@ class Tag extends Base
             $parameters[] = $this->slug;
         }
 
-        return url('tag', $parameters);
+        return url('tags', $parameters);
     }
 }

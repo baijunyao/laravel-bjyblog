@@ -25,6 +25,6 @@ class Category extends Base
             $parameters[] = $this->slug;
         }
 
-        return url('category', $parameters);
+        return url('categories', $parameters);
     }
 }

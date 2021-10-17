@@ -6,10 +6,20 @@ declare(strict_types=1);
 Route::get('auth/oauth/redirectToProvider/{service}', App\Http\Controllers\RedirectController::class . '@authOauthRedirectToProvider');
 Route::get('auth/oauth/handleProviderCallback/{service}', App\Http\Controllers\RedirectController::class . '@handleProviderCallback');
 Route::get('auth/oauth/logout', \App\Http\Controllers\RedirectController::class . '@logout');
-
-Route::get('chat', \App\Http\Controllers\RedirectController::class . '@note')->name('home.chat');
-Route::get('git', \App\Http\Controllers\RedirectController::class . '@openSource')->name('home.git');
-
 Route::get('login', \App\Http\Controllers\RedirectController::class . '@login')->name('login');
 
-Route::get('ant', \App\Http\Controllers\RedirectController::class . '@ant');
+Route::redirect('/category/{category}/{slug?}', '/categories/{category}/{slug?}', 301);
+Route::redirect('/tag/{tag}/{slug?}', '/tags/{tag}/{slug?}', 301);
+Route::redirect('/article/{article}/{slug?}', '/articles/{article}/{slug?}', 301);
+Route::redirect('/comment', '/comments', 301);
+Route::redirect('/like/store', '/likes/store', 301);
+Route::redirect('/like/destroy', '/likes/destroy', 301);
+Route::redirect('/chat', '/notes', 301);
+Route::redirect('/note', '/notes', 301);
+Route::redirect('/git', '/openSources', 301);
+Route::redirect('/openSource', '/openSources', 301);
+Route::redirect('/site', '/sites', 301);
+Route::redirect('/site/store', '/sites/store', 301);
+Route::redirect('/socialiteUser/{socialiteUser}', '/socialiteUsers/{socialiteUser}', 301);
+Route::redirect('/feed', '/feeds', 301);
+Route::redirect('/ant', '/admin', 301);

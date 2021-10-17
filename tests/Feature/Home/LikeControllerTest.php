@@ -8,7 +8,7 @@ use App\Models\Article;
 
 class LikeControllerTest extends TestCase
 {
-    protected $urlPrefix = 'like/';
+    protected $urlPrefix = 'likes/';
     protected $storeData = [
         'article_id' => 1,
     ];

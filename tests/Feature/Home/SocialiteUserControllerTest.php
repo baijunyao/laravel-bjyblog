@@ -12,14 +12,14 @@ class SocialiteUserControllerTest extends TestCase
     {
         auth()->guard('socialite')->loginUsingId(1);
 
-        $this->get('/socialiteUser/me')
+        $this->get('/socialiteUsers/me')
             ->assertStatus(200)
             ->assertJson(SocialiteUser::find(1)->only('id', 'name', 'avatar', 'email'));
     }
 
     public function testCheckLoginWhenLogout()
     {
-        $this->get('/socialiteUser/me')
+        $this->get('/socialiteUsers/me')
             ->assertStatus(302)
             ->assertRedirect(route('login'));
     }
