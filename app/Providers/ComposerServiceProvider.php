@@ -98,24 +98,25 @@ class ComposerServiceProvider extends ServiceProvider
 
         //分配前台通用的数据
         view()->composer('layouts/home', function ($view) use ($socialite_clients) {
-            $category = Category::select('id', 'name', 'slug')->orderBy('sort')->get();
-            $tag = Tag::has('articles')->withCount('articles')->get();
+            $categories = Category::select('id', 'name', 'slug')->orderBy('sort')->get();
+            $tags = Tag::has('articles')->withCount('articles')->get();
 
             $top_article = Article::select('id', 'title', 'slug')
                 ->where('is_top', 1)
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-            $friend = Friend::select('name', 'url')
+            $friends = Friend::select('name', 'url')
                 ->orderBy('sort')
                 ->get();
 
-            $nav = Nav::select('name', 'url')
+            $navs = Nav::select('name', 'url')
                 ->orderBy('sort')
                 ->get();
 
             // 获取赞赏捐款文章
             $qun_article_id = config('bjyblog.qq_qun.article_id');
+
             if (empty($qun_article_id)) {
                 $qq_qun_article = [];
             } else {
@@ -129,7 +130,7 @@ class ComposerServiceProvider extends ServiceProvider
             $home_foot_col_number = array_filter(config('bjyblog.social_links')) === [] ? 4 : 3;
 
             // 分配数据
-            $assign = compact('category', 'tag', 'top_article', 'friend', 'nav', 'qq_qun_article', 'socialite_clients', 'home_foot_col_number');
+            $assign = compact('categories', 'tags', 'top_article', 'friends', 'navs', 'qq_qun_article', 'socialite_clients', 'home_foot_col_number');
             $view->with($assign);
         });
 

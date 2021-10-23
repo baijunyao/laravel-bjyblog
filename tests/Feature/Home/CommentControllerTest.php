@@ -28,7 +28,7 @@ class CommentControllerTest extends TestCase
         ];
 
         $this->loginByUserId(1)
-            ->post('/comment', $comment + [
+            ->post('/comments', $comment + [
                 'content' => $content,
                 'email'   => $email,
             ])
@@ -47,7 +47,7 @@ class CommentControllerTest extends TestCase
         });
 
         $this->loginByUserId(1)
-            ->post('/comment', $comment + [
+            ->post('/comments', $comment + [
                 'content' => $content,
                 'email'   => $email,
             ])
@@ -79,7 +79,7 @@ class CommentControllerTest extends TestCase
         ];
 
         $this->loginByUserId($socialiteUser1->id)
-            ->post('/comment', $comment + [
+            ->post('/comments', $comment + [
                 'content' => $content,
                 'email'   => $email,
             ])
@@ -110,7 +110,7 @@ class CommentControllerTest extends TestCase
         ]);
 
         $this->loginByUserId(1)
-            ->post('/comment', $comment + [
+            ->post('/comments', $comment + [
                 'content' => $content,
             ])
             ->assertStatus(200);
@@ -134,7 +134,7 @@ class CommentControllerTest extends TestCase
             'content'    => 'no audited comment',
         ];
         $this->loginByUserId(1)
-            ->post('/comment', $comment)
+            ->post('/comments', $comment)
             ->assertStatus(200);
 
         static::assertDatabaseHas('comments', [
@@ -156,7 +156,7 @@ class CommentControllerTest extends TestCase
         ];
 
         $this->loginByUserId(1)
-            ->post('/comment', $comment)
+            ->post('/comments', $comment)
             ->assertStatus(302);
     }
 
@@ -168,7 +168,7 @@ class CommentControllerTest extends TestCase
             'content'    => '',
         ];
         $this->loginByUserId(1)
-            ->post('/comment', $comment)
+            ->post('/comments', $comment)
             ->assertStatus(302);
     }
 
@@ -180,7 +180,7 @@ class CommentControllerTest extends TestCase
             'content'    => 'test',
         ];
         $this->loginByUserId(1)
-            ->post('/comment', $comment)
+            ->post('/comments', $comment)
             ->assertStatus(302);
     }
 
@@ -191,7 +191,7 @@ class CommentControllerTest extends TestCase
             'parent_id'  => 0,
             'content'    => '评论666',
         ];
-        $this->post('/comment', $comment)
+        $this->post('/comments', $comment)
             ->assertStatus(302)
             ->assertRedirect(route('login'));
     }
@@ -206,7 +206,7 @@ class CommentControllerTest extends TestCase
             ];
 
             $this->loginByUserId(1)
-                ->post('/comment', $comment)
+                ->post('/comments', $comment)
                 ->assertOk();
 
             DB::table('comments')->update([
@@ -221,7 +221,7 @@ class CommentControllerTest extends TestCase
         ];
 
         $this->loginByUserId(1)
-            ->post('/comment', $comment)
+            ->post('/comments', $comment)
             ->assertStatus(302);
     }
 }

@@ -14,7 +14,7 @@ class SiteController extends Controller
 {
     public function index(): View
     {
-        $site = Site::select('id', 'name', 'url', 'description')
+        $sites = Site::select('id', 'name', 'url', 'description')
             ->where('audit', 1)
             ->orderBy('sort')
             ->get();
@@ -24,7 +24,7 @@ class SiteController extends Controller
             'description' => translate('Recommend Blog'),
         ];
         $assign = [
-            'site'        => $site,
+            'sites'       => $sites,
             'head'        => $head,
             'category_id' => 'index',
             'tagName'     => '',

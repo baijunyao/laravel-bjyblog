@@ -19,7 +19,7 @@
 
         <div class="row b-article">
             @if(auth()->guard('admin')->check())
-                <a class="fa fa-edit b-edit-icon" href="{{ url('admin/article/edit', [$article->id]) }}"></a>
+                <a class="fa fa-edit b-edit-icon" href="{{ url('/admin/#/admin/article/edit', [$article->id]) }}"></a>
             @endif
             <h1 class="col-xs-12 col-md-12 col-lg-12 b-title">{{ $article->title }}</h1>
             <div class="col-xs-12 col-md-12 col-lg-12">

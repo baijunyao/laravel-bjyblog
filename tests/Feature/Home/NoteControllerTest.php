@@ -8,6 +8,6 @@ class NoteControllerTest extends TestCase
 {
     public function testIndex()
     {
-        $this->get('/note')->assertStatus(200);
+        $this->get('/notes')->assertStatus(200);
     }
 }
