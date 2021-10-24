@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "animate.css": "^3.6.1",
-        "bootstrap-sass": ">=3.4.1",
+        "bootstrap": "^3.4.1",
         "emojify.js": "^1.1.0",
         "fluidbox": "^2.0.5",
         "font-awesome": "^4.7.0",
