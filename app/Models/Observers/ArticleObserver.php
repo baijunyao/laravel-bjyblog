@@ -2,6 +2,7 @@
 
 namespace App\Models\Observers;
 
+use App\Models\Article;
 use App\Models\ArticleHistory;
 use App\Models\ArticleTag;
 use Artisan;
@@ -10,22 +11,12 @@ use Str;
 
 class ArticleObserver extends BaseObserver
 {
-    /**
-     * @param \App\Models\Article $article
-     *
-     * @return void
-     */
-    public function created($article)
+    public function created(Article $article): void
     {
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
-    /**
-     * @param \App\Models\Article $article
-     *
-     * @return void
-     */
-    public function creating($article)
+    public function creating(Article $article): void
     {
         if ($article->description === '') {
             $content = preg_replace(
@@ -44,12 +35,7 @@ class ArticleObserver extends BaseObserver
         }
     }
 
-    /**
-     * @param \App\Models\Article $article
-     *
-     * @return void
-     */
-    public function saving($article)
+    public function saving(Article $article): void
     {
         if (empty($article->is_top)) {
             $article->is_top = 0;
@@ -73,12 +59,7 @@ class ArticleObserver extends BaseObserver
         }
     }
 
-    /**
-     * @param \App\Models\Article $article
-     *
-     * @return void
-     */
-    public function updated($article)
+    public function updated(Article $article): void
     {
         // restore() triggering both restored() and updated()
         if(! $article->isDirty('deleted_at') && $article->isDirty('markdown')){
@@ -89,12 +70,7 @@ class ArticleObserver extends BaseObserver
         }
     }
 
-    /**
-     * @param \App\Models\Article $article
-     *
-     * @return void
-     */
-    public function deleted($article)
+    public function deleted(Article $article): void
     {
         // 删除文章后同步删除关联表 article_tags 中的数据
         if ($article->isForceDeleting()) {
@@ -105,12 +81,7 @@ class ArticleObserver extends BaseObserver
         }
     }
 
-    /**
-     * @param \App\Models\Article $article
-     *
-     * @return void
-     */
-    public function restored($article)
+    public function restored(Article $article): void
     {
         ArticleTag::onlyTrashed()->where('article_id', $article->id)->restore();
     }

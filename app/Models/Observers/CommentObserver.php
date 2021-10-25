@@ -12,12 +12,7 @@ use App\Notifications\Comment as CommentNotification;
 
 class CommentObserver extends BaseObserver
 {
-    /**
-     * @param \App\Models\Comment $comment
-     *
-     * @return void
-     */
-    public function creating($comment)
+    public function creating(Comment $comment): void
     {
         /** @var \App\Models\SocialiteUser $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
@@ -43,12 +38,7 @@ class CommentObserver extends BaseObserver
         }
     }
 
-    /**
-     * @param \App\Models\Comment $comment
-     *
-     * @return void
-     */
-    public function created($comment)
+    public function created(Comment $comment): void
     {
         if (mail_is_configured()) {
             /** @var \App\Models\SocialiteUser $socialiteUser */

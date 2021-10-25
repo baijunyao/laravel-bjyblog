@@ -2,16 +2,12 @@
 
 namespace App\Models\Observers;
 
+use App\Models\Config;
 use Artisan;
 
 class ConfigObserver extends BaseObserver
 {
-    /**
-     * @param \App\Models\Config $model
-     *
-     * @return void
-     */
-    public function updated($model)
+    public function updated(Config $config): void
     {
         Artisan::call('config:clear');
     }
