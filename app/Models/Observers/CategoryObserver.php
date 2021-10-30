@@ -3,52 +3,33 @@
 namespace App\Models\Observers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Artisan;
 
 class CategoryObserver extends BaseObserver
 {
-    /**
-     * @param \App\Models\Category $model
-     *
-     * @return void
-     */
-    public function created($model)
+    public function created(Category $category): void
     {
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
-    /**
-     * @param \App\Models\Category $category
-     *
-     * @return void
-     */
-    public function saving($category)
+    public function saving(Category $category): void
     {
         if ($category->isDirty('name') && empty($category->slug)) {
             $category->slug = generate_english_slug($category->name);
         }
     }
 
-    /**
-     * @param \App\Models\Category $category
-     *
-     * @return void|false
-     */
-    public function deleting($category)
+    public function deleting(Category $category): void
     {
         if (Article::where('category_id', $category->id)->count() !== 0) {
             abort(403, translate('Please delete articles with this category first'));
         }
     }
 
-    /**
-     * @param \App\Models\Category $model
-     *
-     * @return void
-     */
-    public function deleted($model)
+    public function deleted(Category $category): void
     {
-        if (! $model->isForceDeleting()) {
+        if (! $category->isForceDeleting()) {
             Artisan::queue('bjyblog:generate-sitemap');
         }
     }

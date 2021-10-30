@@ -3,50 +3,31 @@
 namespace App\Models\Observers;
 
 use App\Models\ArticleTag;
+use App\Models\Tag;
 use Artisan;
 
 class TagObserver extends BaseObserver
 {
-    /**
-     * @param \App\Models\Tag $tag
-     *
-     * @return void
-     */
-    public function created($tag)
+    public function created(Tag $tag): void
     {
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
-    /**
-     * @param \App\Models\Tag $tag
-     *
-     * @return void
-     */
-    public function saving($tag)
+    public function saving(Tag $tag): void
     {
         if ($tag->isDirty('name') && empty($tag->slug)) {
             $tag->slug = generate_english_slug($tag->name);
         }
     }
 
-    /**
-     * @param \App\Models\Tag $tag
-     *
-     * @return void
-     */
-    public function deleting($tag)
+    public function deleting(Tag $tag): void
     {
         if (ArticleTag::where('tag_id', $tag->id)->count() !== 0) {
             abort(403, translate('Please delete articles with this tag first'));
         }
     }
 
-    /**
-     * @param \App\Models\Tag $tag
-     *
-     * @return void
-     */
-    public function deleted($tag)
+    public function deleted(Tag $tag): void
     {
         if (! $tag->isForceDeleting()) {
             Artisan::queue('bjyblog:generate-sitemap');

@@ -2,28 +2,19 @@
 
 namespace App\Models\Observers;
 
+use App\Models\Nav;
 use Artisan;
 
 class NavObserver extends BaseObserver
 {
-    /**
-     * @param \App\Models\Nav $model
-     *
-     * @return void
-     */
-    public function created($model)
+    public function created(Nav $nav): void
     {
         Artisan::queue('bjyblog:generate-sitemap');
     }
 
-    /**
-     * @param \App\Models\Nav $model
-     *
-     * @return void
-     */
-    public function deleted($model)
+    public function deleted(Nav $nav): void
     {
-        if (! $model->isForceDeleting()) {
+        if (! $nav->isForceDeleting()) {
             Artisan::queue('bjyblog:generate-sitemap');
         }
     }

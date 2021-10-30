@@ -10,12 +10,7 @@ use Notification;
 
 class SiteObserver extends BaseObserver
 {
-    /**
-     * @param Site $site
-     *
-     * @return void
-     */
-    public function creating(Site $site)
+    public function creating(Site $site): void
     {
         /** @var \App\Models\SocialiteUser|null $socialiteUser */
         $socialiteUser = auth()->guard('socialite')->user();
@@ -24,23 +19,13 @@ class SiteObserver extends BaseObserver
         $site->sort              = intval(Site::orderBy('sort', 'desc')->limit(1)->value('sort')) + 1;
     }
 
-    /**
-     * @param \App\Models\Site $site
-     *
-     * @return void
-     */
-    public function created($site)
+    public function created(Site $site): void
     {
         Notification::route('mail', config('bjyblog.notification_email'))
             ->notify(new SiteApply());
     }
 
-    /**
-     * @param \App\Models\Site $site
-     *
-     * @return void
-     */
-    public function updated($site)
+    public function updated(Site $site): void
     {
         // restore() triggering both restored() and updated()
         if(! $site->isDirty('deleted_at')) {

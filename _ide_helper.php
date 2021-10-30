@@ -8801,10 +8801,6 @@
             /**
      * 
      *
-     * @method static \Illuminate\Redis\Limiters\ConcurrencyLimiterBuilder funnel(string $name)
-     * @method static \Illuminate\Redis\Limiters\DurationLimiterBuilder throttle(string $name)
-     * @see \Illuminate\Redis\RedisManager
-     * @see \Illuminate\Contracts\Redis\Factory
      */ 
         class Redis {
                     /**
@@ -15225,7 +15221,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::updateBatch()
+         * @see \App\Models\Article::all()
          * @static 
          */ 
         public static function searchable()
@@ -16535,141 +16531,6 @@
      * @license http://opensource.org/licenses/mit-license.php MIT License
      */ 
         class Feed {
-         
-    }
-     
-}
-
-    namespace Mavinoo\Batch { 
-            /**
-     * 
-     *
-     */ 
-        class BatchFacade {
-                    /**
-         * <h2>Update multiple rows.</h2>
-         * 
-         * Example:<br>
-         * ```
-         * $userInstance = new \App\Models\User;
-         * $value = [
-         *     [
-         *         'id' => 1,
-         *         'status' => 'active',
-         *         'nickname' => 'Mohammad'
-         *     ],
-         *     [
-         *         'id' => 5,
-         *         'status' => 'deactive',
-         *         'nickname' => 'Ghanbari'
-         *     ],
-         *     [
-         *         'id' => 7,
-         *         'balance' => ['+', 500]
-         *     ]
-         * ];
-         * $index = 'id';
-         * Batch::update($userInstance, $value, $index);
-         * ```
-         *
-         * @param \Illuminate\Database\Eloquent\Model $table
-         * @param array $values
-         * @param string $index
-         * @param bool $raw
-         * @return bool|int 
-         * @updatedBy Ibrahim Sakr <ebrahimes@gmail.com>
-         * @static 
-         */ 
-        public static function update($table, $values, $index = null, $raw = false)
-        {
-                        /** @var \Mavinoo\Batch\Batch $instance */
-                        return $instance->update($table, $values, $index, $raw);
-        }
-                    /**
-         * Update multiple rows
-         *
-         * @param \Illuminate\Database\Eloquent\Model $table
-         * @param array $values
-         * @param string $index
-         * @param string|null $index2
-         * @param bool $raw
-         * @return bool|int 
-         * @updatedBy Ibrahim Sakr <ebrahimes@gmail.com>
-         * @desc Example
-         * $table = 'users';
-         * $value = [
-         *     [
-         *         'id' => 1,
-         *         'status' => 'active',
-         *         'nickname' => 'Mohammad'
-         *     ] ,
-         *     [
-         *         'id' => 5,
-         *         'status' => 'deactive',
-         *         'nickname' => 'Ghanbari'
-         *     ] ,
-         * ];
-         * $index = 'id';
-         * $index2 = 'user_id';
-         * @static 
-         */ 
-        public static function updateWithTwoIndex($table, $values, $index = null, $index2 = null, $raw = false)
-        {
-                        /** @var \Mavinoo\Batch\Batch $instance */
-                        return $instance->updateWithTwoIndex($table, $values, $index, $index2, $raw);
-        }
-                    /**
-         * Insert Multi rows.
-         *
-         * @param \Illuminate\Database\Eloquent\Model $table
-         * @param array $columns
-         * @param array $values
-         * @param int $batchSize
-         * @param bool $insertIgnore
-         * @return bool|mixed 
-         * @throws \Throwable
-         * @updatedBy Ibrahim Sakr <ebrahimes@gmail.com>
-         * @desc Example
-         * 
-         * $table = 'users';
-         * $columns = [
-         *      'firstName',
-         *      'lastName',
-         *      'email',
-         *      'isActive',
-         *      'status',
-         * ];
-         * $values = [
-         *     [
-         *         'Mohammad',
-         *         'Ghanbari',
-         *         'emailSample_1@gmail.com',
-         *         '1',
-         *         '0',
-         *     ] ,
-         *     [
-         *         'Saeed',
-         *         'Mohammadi',
-         *         'emailSample_2@gmail.com',
-         *         '1',
-         *         '0',
-         *     ] ,
-         *     [
-         *         'Avin',
-         *         'Ghanbari',
-         *         'emailSample_3@gmail.com',
-         *         '1',
-         *         '0',
-         *     ] ,
-         * ];
-         * $batchSize = 500; // insert 500 (default), 100 minimum rows in one query
-         * @static 
-         */ 
-        public static function insert($table, $columns, $values, $batchSize = 500, $insertIgnore = false)
-        {
-                        /** @var \Mavinoo\Batch\Batch $instance */
-                        return $instance->insert($table, $columns, $values, $batchSize, $insertIgnore);
-        }
          
     }
      
@@ -20264,7 +20125,6 @@ namespace  {
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}
             class Feed extends \Laravelium\Feed\Feed {}
-            class Batch extends \Mavinoo\Batch\BatchFacade {}
             class Purifier extends \Mews\Purifier\Facades\Purifier {}
             class Sentry extends \Sentry\Laravel\Facade {}
      
