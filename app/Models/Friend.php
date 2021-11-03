@@ -7,6 +7,18 @@ namespace App\Models;
 class Friend extends Base
 {
     /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'name',
+        'url',
+        'sort',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
      * @param int $value
      */
     public function setSortAttribute($value): void

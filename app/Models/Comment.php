@@ -15,6 +15,22 @@ class Comment extends Base
 {
     use NodeTrait;
 
+    /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'socialite_user_id',
+        'article_id',
+        'content',
+        'is_audited',
+        '_lft',
+        '_rgt',
+        'parent_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     public function getContentAttribute(string $value): string
     {
         return $this->ubbToImage($value);
