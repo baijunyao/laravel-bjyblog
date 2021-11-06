@@ -9,6 +9,17 @@ use Str;
 class Config extends Base
 {
     /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'name',
+        'value',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
      * @param string $value
      *
      * @return array<mixed>|string

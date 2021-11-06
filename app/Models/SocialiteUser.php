@@ -11,6 +11,26 @@ class SocialiteUser extends UserBase
 {
     use CanLike;
 
+    /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'socialite_client_id',
+        'name',
+        'avatar',
+        'openid',
+        'access_token',
+        'last_login_ip',
+        'login_times',
+        'email',
+        'is_admin',
+        'is_blocked',
+        'remember_token',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
     public function socialiteClient(): BelongsTo
     {
         return $this->belongsTo(SocialiteClient::class);

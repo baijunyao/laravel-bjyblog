@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Console\Commands\Upgrade;
 
-use App\Models\Comment;
 use DB;
 use Illuminate\Console\Command;
 use Illuminate\Database\Schema\Blueprint;
@@ -22,7 +21,7 @@ class V9_0_0 extends Command
 
     public function handle(): int
     {
-        if (!Schema::hasTable('comment_backups')) {
+        if (Schema::hasTable('comment_backups') === false) {
             Schema::rename('comments', 'comment_backups');
             Schema::table('comment_backups', function (Blueprint $table) {
                 $table->renameColumn('pid', 'parent_id');
@@ -71,11 +70,8 @@ class V9_0_0 extends Command
 
         foreach ($article_ids as $article_id) {
             $bar->advance();
-            $comments = $this->getDataByArticleId($article_id);
 
-            foreach ($comments as $comment) {
-                Comment::create($comment);
-            }
+            DB::table('comments')->insert($this->getCommentsByArticleId($article_id));
         }
 
         if ($deleted_comments->isNotEmpty()) {
@@ -104,7 +100,7 @@ class V9_0_0 extends Command
      *
      * @return array<int,array<string,mixed>>
      */
-    private function getDataByArticleId($article_id)
+    private function getCommentsByArticleId($article_id)
     {
         $comments = DB::table('comment_backups')
             ->select('id', 'socialite_user_id', 'parent_id', 'article_id', 'content', 'is_audited', 'created_at', 'updated_at', 'deleted_at')

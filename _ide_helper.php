@@ -15231,7 +15231,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::category()
+         * @see \App\Models\Article::all()
          * @static 
          */ 
         public static function unsearchable()

@@ -19,8 +19,6 @@ class UserBase extends Model implements AuthenticatableContract, AuthorizableCon
 {
     use Authenticatable, Authorizable, Notifiable, HasApiTokens, HasFactory, SoftDeletes;
 
-    protected $guarded = [];
-
     /**
      * Prepare a date for array / JSON serialization.
      *

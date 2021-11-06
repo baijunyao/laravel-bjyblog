@@ -24,6 +24,26 @@ class Article extends Base
     ];
 
     /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'category_id',
+        'title',
+        'slug',
+        'author',
+        'markdown',
+        'html',
+        'description',
+        'keywords',
+        'cover',
+        'is_top',
+        'views',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
      * @return array<string,mixed>
      */
     public function toSearchableArray(): array

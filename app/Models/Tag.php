@@ -9,6 +9,19 @@ use Str;
 class Tag extends Base
 {
     /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+        'keywords',
+        'description',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
      * 关联文章表
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

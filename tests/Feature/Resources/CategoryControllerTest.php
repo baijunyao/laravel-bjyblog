@@ -36,4 +36,14 @@ class CategoryControllerTest extends TestCase
             $this->delete(route($this->getRoute() . '.destroy', $this->destroyId))
         );
     }
+
+    public function testStoreWithUnknownKey()
+    {
+        $store_data      = $this->storeData;
+        $store_data['s'] = 'unknown key';
+
+        $this->assertResponse(
+            $this->postJson(route($this->getRoute() . '.store'), $store_data)
+        );
+    }
 }

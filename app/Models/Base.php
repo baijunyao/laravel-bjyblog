@@ -14,11 +14,6 @@ abstract class Base extends Model
     use SoftDeletes, Cachable;
 
     /**
-     * @var array<int,string>
-     */
-    protected $guarded = [];
-
-    /**
      * Prepare a date for array / JSON serialization.
      *
      * @return string
