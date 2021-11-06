@@ -10,6 +10,18 @@ use Str;
 class Category extends Base
 {
     /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'name',
+        'slug',
+        'keywords',
+        'description',
+        'sort',
+        'pid',
+    ];
+
+    /**
      * 一对多关联文章
      */
     public function articles(): HasMany

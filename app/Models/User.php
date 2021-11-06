@@ -7,14 +7,15 @@ namespace App\Models;
 class User extends UserBase
 {
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array<int,string>
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     /**

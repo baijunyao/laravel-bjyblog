@@ -7,6 +7,21 @@ namespace App\Models;
 class Site extends Base
 {
     /**
+     * @var array<int,string>
+     */
+    protected $fillable = [
+        'socialite_user_id',
+        'name',
+        'description',
+        'url',
+        'audit',
+        'sort',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function socialiteUser()
