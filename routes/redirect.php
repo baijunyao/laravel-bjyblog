@@ -5,7 +5,6 @@ declare(strict_types=1);
 // oauth to socialite
 Route::get('auth/oauth/redirectToProvider/{service}', App\Http\Controllers\RedirectController::class . '@authOauthRedirectToProvider');
 Route::get('auth/oauth/handleProviderCallback/{service}', App\Http\Controllers\RedirectController::class . '@handleProviderCallback');
-Route::get('auth/oauth/logout', \App\Http\Controllers\RedirectController::class . '@logout');
 Route::get('login', \App\Http\Controllers\RedirectController::class . '@login')->name('login');
 
 Route::redirect('/category/{category}/{slug?}', '/categories/{category}/{slug?}', 301);

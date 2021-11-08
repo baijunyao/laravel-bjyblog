@@ -130,7 +130,7 @@ class SocialiteControllerTest extends TestCase
     {
         $this->loginByUserId(1, 'socialite');
         $this->assertAuthenticated('socialite');
-        $this->get('auth/socialite/logout')->assertStatus(302);
+        $this->post('auth/socialite/logout')->assertStatus(302);
         $this->assertGuest('socialite');
     }
 }
