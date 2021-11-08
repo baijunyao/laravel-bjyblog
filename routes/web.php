@@ -37,6 +37,6 @@ Route::prefix('auth')->as('auth.')->group(function () {
         // 获取用户资料并登录
         Route::get('handleProviderCallback/{service}', \App\Http\Controllers\Auth\SocialiteController::class . '@handleProviderCallback')->name('handleProviderCallback');
         // 退出登录
-        Route::get('logout', \App\Http\Controllers\Auth\SocialiteController::class . '@logout')->name('logout');
+        Route::post('logout', \App\Http\Controllers\Auth\SocialiteController::class . '@logout')->name('logout');
     });
 });

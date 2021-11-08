@@ -60,7 +60,7 @@
                     <li class="b-user-info" data-user-id="{{ auth()->guard('socialite')->user()->id }}">
                         <span><img class="b-head_img" src="{{ auth()->guard('socialite')->user()->avatar }}" alt="{{ auth()->guard('socialite')->user()->name }}" title="{{ auth()->guard('socialite')->user()->name }}" /></span>
                         <span class="b-nickname">{{ auth()->guard('socialite')->user()->name }}</span>
-                        <span><a href="{{ url('auth/socialite/logout') }}">{{ translate('Sign out') }}</a></span>
+                        <span><a class="js-logout-btn" href="javascript:;">{{ translate('Sign out') }}</a></span>
                     </li>
                 @else
                     <li class="b-nav-cname b-nav-login">
@@ -237,6 +237,7 @@
     ajaxCommentUrl = "{{ url('comments') }}";
     ajaxLikeUrl = "{{ url('likes/store') }}";
     ajaxUnLikeUrl = "{{ url('likes/destroy') }}";
+    ajaxLogoutUrl = "{{ url('auth/socialite/logout') }}";
     socialiteUserShowUrl = "{{ url('socialiteUsers/me') }}";
     titleName = '{{ config('app.name') }}';
     jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
