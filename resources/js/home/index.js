@@ -73,6 +73,12 @@ $(function(){
         }
     });
 
+    $('.js-logout-btn').click(function () {
+        $.post(ajaxLogoutUrl, function () {
+            window.location.reload();
+        });
+    })
+
     // 百度自动提交
     (function(){
         var bp = document.createElement('script');

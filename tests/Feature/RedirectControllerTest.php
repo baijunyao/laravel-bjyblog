@@ -18,11 +18,6 @@ class RedirectControllerTest extends TestCase
         $this->get('auth/oauth/handleProviderCallback/github?code=xxx')->assertRedirect('auth/socialite/handleProviderCallback/github?code=xxx');
     }
 
-    public function testLogout()
-    {
-        $this->get('auth/oauth/logout')->assertRedirect('auth/socialite/logout');
-    }
-
     public function testLogin()
     {
         $this->get('login')->assertRedirect('auth/socialite/redirectToProvider/github');
