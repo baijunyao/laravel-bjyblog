@@ -26,7 +26,7 @@ class NavsTableSeeder extends Seeder
             [
                 'id'         => 1,
                 'name'       => '随言碎语',
-                'url'        => 'note',
+                'url'        => 'notes',
                 'created_at' => '2018-08-04 12:41:26',
                 'updated_at' => '2018-08-04 12:41:26',
                 'deleted_at' => null,
@@ -34,7 +34,7 @@ class NavsTableSeeder extends Seeder
             [
                 'id'         => 2,
                 'name'       => '开源项目',
-                'url'        => 'openSource',
+                'url'        => 'openSources',
                 'created_at' => '2018-08-04 12:41:26',
                 'updated_at' => '2018-08-04 12:41:26',
                 'deleted_at' => null,

@@ -41,16 +41,16 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
-                <li class="b-nav-cname  @if(request()->path() === '/') b-nav-active @endif">
+                <li class="b-nav-cname  @if(request()->route()->named('home.articles.index')) b-nav-active @endif">
                     <a href="/">{{ translate('Home') }}</a>
                 </li>
                 @foreach($categories as $category)
-                    <li class="b-nav-cname @if((request()->fullUrl() === $category->url) || (isset($article) && $article->category_id ===$category->id)) b-nav-active @endif">
+                    <li class="b-nav-cname @if((request()->fullUrl() === $category->url) || (request()->route()->named('home.articles.show') && $article->category_id === $category->id)) b-nav-active @endif">
                         <a href="{{ $category->url }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
                 @foreach($navs as $nav)
-                    <li class="b-nav-cname @if(request()->path() === $nav->url) b-nav-active @endif">
+                    <li class="b-nav-cname @if(request()->fullUrl() === url($nav->url)) b-nav-active @endif">
                         <a href="{{ url($nav->url) }}">{{ $nav->name }}</a>
                     </li>
                 @endforeach
