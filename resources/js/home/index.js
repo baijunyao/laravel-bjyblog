@@ -66,18 +66,19 @@ $(function(){
     $('.js-login-btn').click(function () {
         $('#b-modal-login').modal('show');
     })
-    // 发送 ajax 请求时添加 headers
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
     $('.js-logout-btn').click(function () {
         $.post(ajaxLogoutUrl, function () {
             window.location.reload();
         });
     })
+
+    // 发送 ajax 请求时添加 headers
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
     // 百度自动提交
     (function(){
