@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9535b1b2f0eac4fbb69dd2756050f271",
+    "content-hash": "ed51745d3c01dfc0a7cb721227c50997",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -324,16 +324,16 @@
         },
         {
             "name": "baijunyao/laravel-restful",
-            "version": "v4.0.0",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/baijunyao/laravel-restful.git",
-                "reference": "e5e3967e661af3883bf99f0c1fe649824d2c4b0f"
+                "reference": "ecae9b5d393a3012793ce2a1b381dc596f394dcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/e5e3967e661af3883bf99f0c1fe649824d2c4b0f",
-                "reference": "e5e3967e661af3883bf99f0c1fe649824d2c4b0f",
+                "url": "https://api.github.com/repos/baijunyao/laravel-restful/zipball/ecae9b5d393a3012793ce2a1b381dc596f394dcb",
+                "reference": "ecae9b5d393a3012793ce2a1b381dc596f394dcb",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -373,9 +373,9 @@
             ],
             "support": {
                 "issues": "https://github.com/baijunyao/laravel-restful/issues",
-                "source": "https://github.com/baijunyao/laravel-restful/tree/v4.0.0"
+                "source": "https://github.com/baijunyao/laravel-restful/tree/v5.0.0"
             },
-            "time": "2021-11-05T15:37:21+00:00"
+            "time": "2021-11-18T15:53:16+00:00"
         },
         {
             "name": "baijunyao/laravel-scout-elasticsearch",

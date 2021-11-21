@@ -1,13 +1,10 @@
 {
-    "status_code": 200,
+    "status_code": 204,
     "headers": {
         "cache-control": [
             "no-cache, private"
         ],
         "date": "Tue, 01 Jan 2019 00:00:00 CST",
-        "content-type": [
-            "text\/html; charset=UTF-8"
-        ],
         "x-ratelimit-limit": [
             60
         ],
