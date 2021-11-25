@@ -161,6 +161,11 @@
     path: /laravel-bjyblog/site
   register: site_stat
 
+- name: Install Git
+  apt:
+    name: git
+    update_cache: yes
+
 - name: Git clone laravel-bjyblog
   when: inventory_hostname != 'local'
   ansible.builtin.git:
