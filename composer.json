@@ -17,7 +17,7 @@
         "algolia/algoliasearch-client-php": "^2.5",
         "appstract/laravel-opcache": "^4.0",
         "baidu/aip-sdk": "dev-master#84e5936eb6426b4cc9d9a96848568b9dd527b4a0",
-        "baijunyao/laravel-restful": "^4.0",
+        "baijunyao/laravel-restful": "^5.0",
         "baijunyao/laravel-scout-elasticsearch": "^5.0",
         "baijunyao/laravel-support": "^1.4",
         "composer/semver": "^3.0",
@@ -56,7 +56,7 @@
     },
     "require-dev": {
         "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
-        "baijunyao/laravel-test-support": "^6.0",
+        "baijunyao/laravel-test-support": "^7.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "beyondcode/laravel-dump-server": "^1.0",
         "facade/ignition": "^2.3.6",
@@ -76,6 +76,13 @@
         "process-timeout": 0,
         "sort-packages": true
     },
+    "repositories": [
+        {
+            "name": "spatie/phpunit-snapshot-assertions",
+            "type": "vcs",
+            "url": "https://github.com/baijunyao/phpunit-snapshot-assertions"
+        }
+    ],
     "extra": {
         "laravel": {
             "dont-discover": [
