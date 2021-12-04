@@ -1,0 +1,6 @@
+{
+    "baseUrl": "http://laravel-bjyblog.test",
+    "nodeVersion": "bundled",
+    "viewportWidth": 1200,
+    "viewportHeight": 800
+}

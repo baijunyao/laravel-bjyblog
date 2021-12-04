@@ -7,11 +7,13 @@
         "watch-poll": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix watch -- --watch-options-poll=1000",
         "hot": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix watch --hot",
         "prod": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run production",
-        "production": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix --production"
+        "production": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix --production",
+        "cypress": "cypress open"
     },
     "devDependencies": {
         "axios": "^0.23.0",
         "cross-env": "^7.0.3",
+        "cypress": "^9.1.0",
         "laravel-mix": "^6.0.34",
         "lodash": "^4.17.21",
         "postcss": "^8.3.11",
