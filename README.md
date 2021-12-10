@@ -82,6 +82,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/KKKyle97"><img src="https://avatars3.githubusercontent.com/u/68265288?v=4?s=100" width="100px;" alt=""/><br /><sub><b>KKKyle97</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=KKKyle97" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/xianhenyuan"><img src="https://avatars2.githubusercontent.com/u/46096860?v=4?s=100" width="100px;" alt=""/><br /><sub><b>仙痕缘</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=xianhenyuan" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/huanghao9015"><img src="https://avatars.githubusercontent.com/u/22438602?v=4?s=100" width="100px;" alt=""/><br /><sub><b>黄浩</b></sub></a><br /><a href="https://github.com/baijunyao/laravel-bjyblog/commits?author=huanghao9015" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/HDVinnie"><img src="https://avatars.githubusercontent.com/u/12850699?v=4?s=100" width="100px;" alt=""/><br /><sub><b>HDVinnie</b></sub></a><br /><a href="#security-HDVinnie" title="Security">🛡️</a></td>
   </tr>
 </table>
 
