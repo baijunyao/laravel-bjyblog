@@ -25,7 +25,6 @@
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
-        "fukuball/jieba-php": "~0.25",
         "genealabs/laravel-model-caching": "^0.11",
         "graham-campbell/markdown": "^13.1",
         "guzzlehttp/guzzle": "^7.0.1",
