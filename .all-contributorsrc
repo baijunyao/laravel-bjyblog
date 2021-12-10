@@ -126,6 +126,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "HDVinnie",
+      "name": "HDVinnie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12850699?v=4",
+      "profile": "https://github.com/HDVinnie",
+      "contributions": [
+        "security"
+      ]
     }
   ],
   "contributorsPerLine": 7,
