@@ -1563,16 +1563,16 @@
         },
         {
             "name": "elasticsearch/elasticsearch",
-            "version": "v7.15.0",
+            "version": "v7.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/elastic/elasticsearch-php.git",
-                "reference": "77a4ade87aef8e8e6b84bafb6704cd35ac15742a"
+                "reference": "f87f93f71f564d4bbdc5f008d296d1c37d828e10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/77a4ade87aef8e8e6b84bafb6704cd35ac15742a",
-                "reference": "77a4ade87aef8e8e6b84bafb6704cd35ac15742a",
+                "url": "https://api.github.com/repos/elastic/elasticsearch-php/zipball/f87f93f71f564d4bbdc5f008d296d1c37d828e10",
+                "reference": "f87f93f71f564d4bbdc5f008d296d1c37d828e10",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1611,7 +1611,8 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "Apache-2.0",
+                "LGPL-2.1-only"
             ],
             "authors": [
                 {
@@ -1629,9 +1630,9 @@
             ],
             "support": {
                 "issues": "https://github.com/elastic/elasticsearch-php/issues",
-                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.15.0"
+                "source": "https://github.com/elastic/elasticsearch-php/tree/v7.16.0"
             },
-            "time": "2021-09-23T07:05:35+00:00"
+            "time": "2021-12-09T20:04:01+00:00"
         },
         {
             "name": "ezimuel/guzzlestreams",
@@ -10961,16 +10962,16 @@
         },
         {
             "name": "tencentcloud/common",
-            "version": "3.0.537",
+            "version": "3.0.538",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/common.git",
-                "reference": "e32abbf41af24c6685d5f9450b7f72951566b3a9"
+                "reference": "ce4e4b7e42595a0b450ef7c8968aac8b122de295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/e32abbf41af24c6685d5f9450b7f72951566b3a9",
-                "reference": "e32abbf41af24c6685d5f9450b7f72951566b3a9",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/common/zipball/ce4e4b7e42595a0b450ef7c8968aac8b122de295",
+                "reference": "ce4e4b7e42595a0b450ef7c8968aac8b122de295",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11005,22 +11006,22 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/common",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/common/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.537"
+                "source": "https://github.com/tencentcloud-sdk-php/common/tree/3.0.538"
             },
-            "time": "2021-12-09T00:39:16+00:00"
+            "time": "2021-12-10T01:13:29+00:00"
         },
         {
             "name": "tencentcloud/cvm",
-            "version": "3.0.537",
+            "version": "3.0.538",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentcloud-sdk-php/cvm.git",
-                "reference": "c0b53ed51bbdf2a340f0833403ee7bfc913df0e9"
+                "reference": "ee5d7148dbbba800d4e5eb0779615a0535d344dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/c0b53ed51bbdf2a340f0833403ee7bfc913df0e9",
-                "reference": "c0b53ed51bbdf2a340f0833403ee7bfc913df0e9",
+                "url": "https://api.github.com/repos/tencentcloud-sdk-php/cvm/zipball/ee5d7148dbbba800d4e5eb0779615a0535d344dc",
+                "reference": "ee5d7148dbbba800d4e5eb0779615a0535d344dc",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -11030,7 +11031,7 @@
                 ]
             },
             "require": {
-                "tencentcloud/common": "3.0.537"
+                "tencentcloud/common": "3.0.538"
             },
             "type": "library",
             "autoload": {
@@ -11054,9 +11055,9 @@
             "homepage": "https://github.com/tencentcloud-sdk-php/cvm",
             "support": {
                 "issues": "https://github.com/tencentcloud-sdk-php/cvm/issues",
-                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.537"
+                "source": "https://github.com/tencentcloud-sdk-php/cvm/tree/3.0.538"
             },
-            "time": "2021-12-09T00:39:48+00:00"
+            "time": "2021-12-10T01:14:02+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -15645,16 +15646,16 @@
         },
         {
             "name": "seld/phar-utils",
-            "version": "1.1.2",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/phar-utils.git",
-                "reference": "749042a2315705d2dfbbc59234dd9ceb22bf3ff0"
+                "reference": "9f3452c93ff423469c0d56450431562ca423dcee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/749042a2315705d2dfbbc59234dd9ceb22bf3ff0",
-                "reference": "749042a2315705d2dfbbc59234dd9ceb22bf3ff0",
+                "url": "https://api.github.com/repos/Seldaek/phar-utils/zipball/9f3452c93ff423469c0d56450431562ca423dcee",
+                "reference": "9f3452c93ff423469c0d56450431562ca423dcee",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -15693,9 +15694,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/phar-utils/issues",
-                "source": "https://github.com/Seldaek/phar-utils/tree/1.1.2"
+                "source": "https://github.com/Seldaek/phar-utils/tree/1.2.0"
             },
-            "time": "2021-08-19T21:01:38+00:00"
+            "time": "2021-12-10T11:20:11+00:00"
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",

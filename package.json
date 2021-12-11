@@ -1,13 +1,13 @@
 {
     "private": true,
     "scripts": {
-        "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run development",
-        "development": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix",
-        "watch": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix watch",
-        "watch-poll": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix watch -- --watch-options-poll=1000",
-        "hot": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix watch --hot",
-        "prod": "cross-env NODE_OPTIONS=--openssl-legacy-provider npm run production",
-        "production": "cross-env NODE_OPTIONS=--openssl-legacy-provider mix --production",
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
         "cypress": "cypress open"
     },
     "devDependencies": {
