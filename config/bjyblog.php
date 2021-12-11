@@ -2,7 +2,7 @@
 
 return [
     // 博客版本
-    'version' => 'v16.1.9',
+    'version' => 'v16.1.10',
     'branch' => env('DEPLOY_BRANCH', 'master'),
     /**
      * 以下配置项会在 @see \App\Providers\ComposerServiceProvider::boot() 中被覆盖
