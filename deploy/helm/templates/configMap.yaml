@@ -18,6 +18,8 @@ data:
             fastcgi_pass php-service:9000;
             fastcgi_index index.php;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            #fixes timeouts
+            fastcgi_read_timeout 600;
             include        fastcgi_params;
         }
 
