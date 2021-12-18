@@ -30,7 +30,7 @@ jobs:
     name: PHPCS
     runs-on: ubuntu-latest
     container:
-      image: baijunyao/php:8.0-local
+      image: baijunyao/php:8.1-local
       volumes:
         - /__w/laravel-bjyblog/laravel-bjyblog:/app
     steps:
@@ -58,7 +58,7 @@ jobs:
     name: PHPStan
     runs-on: ubuntu-latest
     container:
-      image: baijunyao/php:8.0-local
+      image: baijunyao/php:8.1-local
       volumes:
         - /__w/laravel-bjyblog/laravel-bjyblog:/app
     steps:
