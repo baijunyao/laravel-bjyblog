@@ -60,6 +60,24 @@ spec:
   selector:
     app: nginx
 
+{{- if .Values.docs.enabled }}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: docs-service
+  labels:
+    app: docs
+spec:
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: docs
+{{- end }}
+
 {{- if .Values.prometheus.enabled }}
 ---
 

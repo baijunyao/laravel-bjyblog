@@ -128,6 +128,43 @@ spec:
             - name: config
               mountPath: /etc/nginx/conf.d
 
+{{- if .Values.docs.enabled }}
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docs-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docs
+  template:
+    metadata:
+      labels:
+        app: docs
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configMap.yaml") . | sha256sum }}
+    spec:
+      volumes:
+        - name: prometheus-pvc
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
+        - name: config
+          configMap:
+            name: docs-config
+            items:
+              - key: config
+                path: docs.conf
+      containers:
+        - name: docs
+          image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/docs
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/conf.d
+{{- end }}
+
 {{- if .Values.prometheus.enabled }}
 ---
 

@@ -36,6 +36,36 @@ data:
         }
     }
 
+{{- if .Values.docs.enabled }}
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: docs-config
+data:
+  config: |
+    server {
+        listen       80;
+        server_name  {{ .Values.host }};
+        root   /app;
+        index  index.php index.html;
+
+        location ~ .*\.(gif|jpg|jpeg|png|bmp)$ {
+            expires 30d;
+            access_log off;
+            add_header Cache-Control public;
+        }
+
+        location ~ .*\.(js|css)?$ {
+            expires 1d;
+            access_log off;
+            add_header Cache-Control public;
+        }
+    }
+
+{{- end }}
+
 {{- if .Values.oss.enabled }}
 ---
 
