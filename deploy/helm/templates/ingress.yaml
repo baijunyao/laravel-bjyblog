@@ -30,6 +30,12 @@ spec:
             backend:
               serviceName: nginx-service
               servicePort: 80
+          {{- if .Values.docs.enabled }}
+          - path: /docs
+            backend:
+              serviceName: docs-service
+              servicePort: 8081
+          {{- end }}
           {{- if .Values.grafana.enabled }}
           - path: /grafana
             backend:

@@ -52,6 +52,10 @@ kibana:
 fluentd:
   enabled: false
 
+# Docs
+docs:
+  enabled: false
+
 # Prometheus
 prometheus:
   enabled: true
