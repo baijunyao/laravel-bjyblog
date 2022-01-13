@@ -23,7 +23,7 @@ $(function () {
         // ajax 申请
         $.ajax({
             type: 'POST',
-            url: storeSite,
+            url: ajaxSiteUrl,
             data: postData,
             success: (data, status) => {
                 // 关闭loading

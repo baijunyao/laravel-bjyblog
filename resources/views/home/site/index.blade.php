@@ -46,8 +46,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-12 col-lg-12 b-submit-site">
-                    <form class="form-horizontal" role="form" action="{{ url('sites/store') }}" method="post">
-                        {{ csrf_field() }}
+                    <form class="form-horizontal" role="form" method="post">
                         <div class="form-group">
                             <label for="name" class="col-sm-3 control-label">{{ translate('Site Name') }}</label>
                             <div class="col-sm-9">
@@ -72,7 +71,6 @@
                                 <input type="text" class="form-control" name="email" placeholder="{{ translate('Notification Email') }}">
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="col-xs-12 col-md-12 col-lg-12">
@@ -87,8 +85,5 @@
 @endsection
 
 @section('js')
-    <script>
-        storeSite = "{{ url('sites/store') }}";
-    </script>
     <script src="{{ asset('statics/layer-2.4/layer.js') }}"></script>
 @endsection

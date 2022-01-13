@@ -58,11 +58,6 @@ class RedirectControllerTest extends TestCase
         $this->get('comment')->assertRedirect('comments');
     }
 
-    public function testLikeStore()
-    {
-        $this->get('like/store')->assertRedirect('likes/store');
-    }
-
     public function testLikeDestroy()
     {
         $this->get('like/destroy')->assertRedirect('likes/destroy');
@@ -91,11 +86,6 @@ class RedirectControllerTest extends TestCase
     public function testSite()
     {
         $this->get('site')->assertRedirect('sites');
-    }
-
-    public function testSiteStore()
-    {
-        $this->get('site/store')->assertRedirect('sites/store');
     }
 
     public function testSocialiteUser()

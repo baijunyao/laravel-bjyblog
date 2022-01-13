@@ -238,6 +238,7 @@
     ajaxLikeUrl = "{{ url('likes/store') }}";
     ajaxUnLikeUrl = "{{ url('likes/destroy') }}";
     ajaxLogoutUrl = "{{ url('auth/socialite/logout') }}";
+    ajaxSiteUrl = "{{ url('sites') }}";
     socialiteUserShowUrl = "{{ url('socialiteUsers/me') }}";
     titleName = '{{ config('app.name') }}';
     jsSocialsConfig = {!! config('bjyblog.social_share.jssocials_config') !!};
