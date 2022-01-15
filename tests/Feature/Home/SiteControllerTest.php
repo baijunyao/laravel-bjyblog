@@ -30,7 +30,7 @@ class SiteControllerTest extends TestCase
         Notification::fake();
         $this->setupEmail();
 
-        $this->UserPost('store', $this->storeData)
+        $this->UserPost('', $this->storeData)
             ->assertStatus(200);
         $this->assertDatabaseHas($this->table, [
             'name'        => '新增',
