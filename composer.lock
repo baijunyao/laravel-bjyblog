@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8f694b7dd69aee6c59154c1def99daa",
+    "content-hash": "841808c044992b3afecb3aea5d27a724",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -11492,6 +11492,54 @@
             "time": "2021-11-18T14:54:41+00:00"
         },
         {
+            "name": "baijunyao/php-cs-fixer-config",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baijunyao/php-cs-fixer-config.git",
+                "reference": "07b9a6dfa590859d2ff650cab693048d8b18ea32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baijunyao/php-cs-fixer-config/zipball/07b9a6dfa590859d2ff650cab693048d8b18ea32",
+                "reference": "07b9a6dfa590859d2ff650cab693048d8b18ea32",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
+                "friendsofphp/php-cs-fixer": "^3.5",
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Baijunyao\\PhpCsFixer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "baijunyao",
+                    "email": "baijunyao@baijunyao.com"
+                }
+            ],
+            "description": "Custom PHP CS Fixer",
+            "support": {
+                "issues": "https://github.com/baijunyao/php-cs-fixer-config/issues",
+                "source": "https://github.com/baijunyao/php-cs-fixer-config/tree/v0.1.0"
+            },
+            "time": "2022-02-06T12:43:56+00:00"
+        },
+        {
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.12.1",
             "source": {
@@ -16702,5 +16750,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }
