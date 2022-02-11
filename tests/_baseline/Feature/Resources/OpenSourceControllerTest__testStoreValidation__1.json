@@ -9,17 +9,17 @@
             "application\/json"
         ],
         "x-ratelimit-limit": [
-            60
+            "60"
         ],
         "x-ratelimit-remaining": [
-            59
+            "59"
         ],
         "access-control-allow-origin": [
             "http:\/\/laravel-bjyblog.test"
         ]
     },
     "content": {
-        "message": "The given data was invalid.",
+        "message": "名称 不能为空。",
         "errors": {
             "name": [
                 "名称 不能为空。"

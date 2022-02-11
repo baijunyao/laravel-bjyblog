@@ -13,6 +13,19 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(\Clockwork\Support\Laravel\ClockworkServiceProvider::class);
+        }
+    }
+
+    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -38,18 +51,5 @@ class AppServiceProvider extends ServiceProvider
         $contextual_binding_builder->needs('$secret_key')->giveConfig('services.tencent_cloud.secret_key');
         $contextual_binding_builder->needs('$region')->giveConfig('services.tencent_cloud.region');
         $contextual_binding_builder->needs('$project_id')->giveConfig('services.tencent_cloud.project_id');
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-            $this->app->register(\Clockwork\Support\Laravel\ClockworkServiceProvider::class);
-        }
     }
 }
