@@ -52,7 +52,7 @@ if (!function_exists('generate_english_slug')) {
 
         if ('en' !== $locale) {
             try {
-                $google_translate = new GoogleTranslate();
+                $google_translate = new GoogleTranslate('en', $locale, ['connect_timeout' => 3]);
                 $content          =  $google_translate->setUrl('http://translate.google.cn/translate_a/single')
                     ->setSource($locale)
                     ->translate($content) ?? '';
