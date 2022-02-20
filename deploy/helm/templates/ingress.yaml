@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-ingress
@@ -27,31 +27,46 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: nginx-service
-              servicePort: 80
+              service:
+                name: nginx-ingress
+                port:
+                  number: 80
           {{- if .Values.docs.enabled }}
           - path: /docs
+            pathType: Prefix
             backend:
-              serviceName: docs-service
-              servicePort: 8081
+              service:
+                name: docs-service
+                port:
+                  number: 8081
           {{- end }}
           {{- if .Values.grafana.enabled }}
           - path: /grafana
+            pathType: Prefix
             backend:
-              serviceName: grafana-service
-              servicePort: 3000
+              service:
+                name: grafana-service
+                port:
+                  number: 3000
           {{- end }}
           {{- if .Values.kibana.enabled }}
           - path: /kibana
+            pathType: Prefix
             backend:
-              serviceName: kibana-service
-              servicePort: 5601
+              service:
+                name: kibana-service
+                port:
+                  number: 5601
           {{- end }}
     - host: www.{{ .Values.host }}
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: nginx-service
-              servicePort: 80
+              service:
+                name: nginx-service
+                port:
+                  number: 80
