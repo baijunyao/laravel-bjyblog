@@ -1,11 +1,10 @@
 - name: Use Aliyun mirror
-  when: inventory_hostname == 'local'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version == '20'
   ansible.builtin.copy:
     src: files/sources.list
     dest: /etc/apt/sources.list
 
 - name: Apt update
-  when: inventory_hostname == 'local'
   apt:
     update_cache: yes
 
