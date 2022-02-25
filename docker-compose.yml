@@ -47,6 +47,7 @@ services:
     tty: true
     volumes:
       - .:/app
+      - ~/.composer:/root/.composer
     environment:
       REDIS_HOST: redis
       DB_HOST: mysql
