@@ -28,6 +28,7 @@ services:
     tty: true
     volumes:
       - "nfsmount:/app"
+      - "composer:/root/.composer"
     environment:
       REDIS_HOST: docker.for.mac.host.internal
       DB_HOST: docker.for.mac.host.internal
@@ -41,3 +42,9 @@ volumes:
       type: nfs
       o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
       device: ":/System/Volumes/Data/${PWD}"
+  composer:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":/System/Volumes/Data/Users/${LOGNAME}/.composer"
