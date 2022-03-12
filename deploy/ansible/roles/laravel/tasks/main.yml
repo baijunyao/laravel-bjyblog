@@ -8,6 +8,15 @@
   apt:
     update_cache: yes
 
+- name: Apt install packages
+  apt:
+    update_cache: yes
+    pkg:
+      - git
+      - python3-pip
+      - golang-go
+      - golint
+
 - name: Check that the k3s-install.sh exists
   ansible.builtin.stat:
     path: /tmp/k3s-install.sh
@@ -99,34 +108,49 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
-- name: Check that the Helm diff tgz exists
+- name: Check that the helm diff directory exists
   ansible.builtin.stat:
-    path: /tmp/helm-diff-v3.1.3.tgz
-  register: helm_diff_tgz_stat
-
-- name: Download Helm diff binary
-  when: not helm_diff_tgz_stat.stat.exists
-  ansible.builtin.get_url:
-    url: https://github.com/databus23/helm-diff/releases/download/v3.1.3/helm-diff-linux.tgz
-    dest: /tmp/helm-diff-v3.1.3.tgz
-    mode: 0700
-
-- name: Create Helm plugin path
-  ansible.builtin.file:
-    path: $HOME/.local/share/helm/plugins/
-    state: directory
-
-- name: Check that the Helm diff exists
-  ansible.builtin.stat:
-    path: $HOME/.local/share/helm/plugins/diff
+    path: $HOME/.local/share/helm/plugins/helm-diff
   register: helm_diff_stat
 
-- name: Unarchive helm-diff-v3.1.3.tgz
+- name: Git clone helm-diff
   when: not helm_diff_stat.stat.exists
-  ansible.builtin.unarchive:
-    src: /tmp/helm-diff-v3.1.3.tgz
-    dest: $HOME/.local/share/helm/plugins/
+  ansible.builtin.git:
+    repo: 'https://github.com/databus23/helm-diff.git'
+    dest: /tmp/helm-diff
+    version: v3.4.2
+    depth: 3
+    force: yes
+
+- name: Build helm diff
+  when: not helm_diff_stat.stat.exists
+  shell: |
+    export GOPROXY=https://mirrors.aliyun.com/goproxy/
+    cd /tmp/helm-diff
+    make bootstrap
+    make install/helm3
+
+- name: Create Helm plugin path
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins/helm-diff
+    state: directory
+
+- name: Copy helm-diff bin
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.copy:
     remote_src: yes
+    force: no
+    src: /tmp/helm-diff/bin
+    dest: $HOME/.local/share/helm/plugins/helm-diff
+
+- name: Copy plugin.yaml
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.copy:
+    remote_src: yes
+    force: no
+    src: /tmp/helm-diff/plugin.yaml
+    dest: $HOME/.local/share/helm/plugins/helm-diff/plugin.yaml
 
 - name: Check that the .kube/config exists
   ansible.builtin.stat:
@@ -159,11 +183,6 @@
   ansible.builtin.stat:
     path: /laravel-bjyblog/site
   register: site_stat
-
-- name: Install Git
-  apt:
-    name: git
-    update_cache: yes
 
 - name: Git clone laravel-bjyblog
   when: inventory_hostname != 'local'
@@ -209,11 +228,6 @@
     chart_ref: /laravel-bjyblog/site/deploy/helm/
     values_files:
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
-
-- name: Install pip3
-  apt:
-    name: python3-pip
-    update_cache: yes
 
 - name: Install OpenShift
   pip:
