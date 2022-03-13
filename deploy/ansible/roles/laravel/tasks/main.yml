@@ -17,6 +17,11 @@
       - golang-go
       - golint
 
+- name: Use PyPI mirror
+  ansible.builtin.copy:
+    src: files/pip.conf
+    dest: $HOME/.pip/pip.conf
+
 - name: Check that the k3s-install.sh exists
   ansible.builtin.stat:
     path: /tmp/k3s-install.sh
