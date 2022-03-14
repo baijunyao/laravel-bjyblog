@@ -225,7 +225,7 @@
     state: absent
 
 - name: Helm install
-  community.kubernetes.helm:
+  kubernetes.core.helm:
     release_name: blog
     release_namespace: blog
     create_namespace: true
@@ -252,7 +252,7 @@
   when:
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
-  community.kubernetes.k8s_info:
+  kubernetes.core.k8s_info:
     api_version: v1
     kind: Pod
     namespace: blog
@@ -269,7 +269,7 @@
   when:
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ elasticsearch_deployment.resources.0.metadata.name }}'
     command: /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto -b
@@ -317,7 +317,7 @@
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
     - elasticsearch_password != 'None'
-  community.kubernetes.helm:
+  kubernetes.core.helm:
     release_name: blog
     release_namespace: blog
     create_namespace: true
@@ -327,7 +327,7 @@
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
 
 - name: Get PHP pod name
-  community.kubernetes.k8s_info:
+  kubernetes.core.k8s_info:
     api_version: v1
     kind: Pod
     namespace: blog
@@ -341,7 +341,7 @@
   register: php_deployment
 
 - name: Composer install
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: composer install
@@ -366,37 +366,37 @@
 
 - name: Execute key:generate
   when: not app_key_result.stdout
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan key:generate
 
 - name: Execute php artisan migrate
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan migrate
 
 - name: Execute php artisan db:seed
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan db:seed
 
 - name: Execute php artisan bjyblog:update
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan bjyblog:update
 
 - name: Execute php artisan cache:clear
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan cache:clear
 
 - name: Execute php artisan storage:link
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan storage:link
@@ -408,7 +408,7 @@
 
 - name: Execute php artisan passport:keys
   when: not oauth_key_stat.stat.exists
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
