@@ -219,6 +219,37 @@
     regexp: "^elasticsearch:\n  enabled: true"
     replace: 'elasticsearch:\n  enabled: false'
 
+- name: Check that the ssl key exists
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: roles/laravel/files/ssl/{{inventory_hostname}}.key
+  register: ssl_key_stat
+
+- name: Copy ssl key from local to remote
+  when: ssl_key_stat.stat.exists
+  ansible.builtin.copy:
+    src: files/ssl/{{inventory_hostname}}.key
+    dest: /laravel-bjyblog/site/deploy/helm/files/tls.key
+
+- name: Check that the ssl pem exists
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: roles/laravel/files/ssl/{{inventory_hostname}}.pem
+  register: ssl_pem_stat
+
+- name: Copy ssl pem from local to remote
+  when: ssl_pem_stat.stat.exists
+  ansible.builtin.copy:
+    src: files/ssl/{{inventory_hostname}}.pem
+    dest: /laravel-bjyblog/site/deploy/helm/files/tls.pem
+
+- name: Edit tls of Helm custom.yaml
+  when: ssl_key_stat.stat.exists and ssl_pem_stat.stat.exists
+  ansible.builtin.lineinfile:
+    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
+    regexp: '^tls: '
+    line: 'tls: true'
+
 - name: Remove /laravel-bjyblog/prometheus/lock
   ansible.builtin.file:
     path: /laravel-bjyblog/prometheus/lock
