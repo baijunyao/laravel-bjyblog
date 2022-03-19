@@ -84,7 +84,7 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(['layouts/home', 'admin/index/index'], function ($view) {
             $article_count = Article::count('id');
             $comment_count = Comment::count('id');
-            $chat_count = Note::count('id');
+            $chat_count    = Note::count('id');
 
             /* SocialiteUser model not use @see \GeneaLabs\LaravelModelCaching\Traits\Cachable */
             $socialite_user_count = Cache::remember('count:socialiteUser', static::CACHE_EXPIRE, function () {
@@ -96,10 +96,10 @@ class ComposerServiceProvider extends ServiceProvider
             $view->with($assign);
         });
 
-        //分配前台通用的数据
+        // 分配前台通用的数据
         view()->composer('layouts/home', function ($view) use ($socialite_clients) {
             $categories = Category::select('id', 'name', 'slug')->orderBy('sort')->get();
-            $tags = Tag::has('articles')->withCount('articles')->get();
+            $tags       = Tag::has('articles')->withCount('articles')->get();
 
             $top_article = Article::select('id', 'title', 'slug')
                 ->where('is_top', 1)
