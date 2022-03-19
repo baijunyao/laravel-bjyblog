@@ -13,15 +13,15 @@ blog:
       ansible_user: ubuntu
       ansible_become: true
       ansible_python_interpreter: /usr/bin/python3
-      app_host: development.baijunyao.com
-      app_url: http:://development.baijunyao.com
+      app_host: development.laravel-bjyblog.test
+      app_url: http:://development.laravel-bjyblog.test
     staging:
       ansible_host: staging.laravel-bjyblog.test
       ansible_user: ubuntu
       ansible_become: true
       ansible_python_interpreter: /usr/bin/python3
-      app_host: staging.baijunyao.com
-      app_url: http:://staging.baijunyao.com
+      app_host: staging.laravel-bjyblog.test
+      app_url: https:://staging.laravel-bjyblog.test
     production:
       ansible_host: production.laravel-bjyblog.test
       ansible_user: ubuntu

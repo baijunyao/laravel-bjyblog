@@ -1,13 +1,34 @@
 - name: Use Aliyun mirror
-  when: inventory_hostname == 'local'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version == '20'
   ansible.builtin.copy:
     src: files/sources.list
     dest: /etc/apt/sources.list
+    mode: '0644'
 
 - name: Apt update
-  when: inventory_hostname == 'local'
-  apt:
+  ansible.builtin.apt:
     update_cache: yes
+
+- name: Apt install packages
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - git
+      - python3-pip
+      - golang-go
+      - golint
+
+- name: Creates ~/.pip dir exists
+  ansible.builtin.file:
+    path: $HOME/.pip
+    state: directory
+    mode: '0644'
+
+- name: Use PyPI mirror
+  ansible.builtin.copy:
+    src: files/pip.conf
+    dest: $HOME/.pip/pip.conf
+    mode: '0644'
 
 - name: Check that the k3s-install.sh exists
   ansible.builtin.stat:
@@ -19,7 +40,7 @@
   ansible.builtin.get_url:
     url: http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh
     dest: /tmp/k3s-install.sh
-    mode: 0700
+    mode: '0700'
 
 - name: Creates /var/lib/rancher/k3s/server/manifests/ directory
   ansible.builtin.file:
@@ -32,10 +53,14 @@
     force: no
     src: files/traefik-config.yaml
     dest: /var/lib/rancher/k3s/server/manifests/traefik-config.yaml
+    mode: '0644'
 
 - name: Install k3s
   when: not k3s_install_stat.stat.exists
-  ansible.builtin.shell: INSTALL_K3S_MIRROR=cn INSTALL_K3S_SKIP_START=true /tmp/k3s-install.sh --write-kubeconfig-mode 644
+  environment:
+    INSTALL_K3S_MIRROR: cn
+    INSTALL_K3S_SKIP_START: true
+  ansible.builtin.command: /tmp/k3s-install.sh --write-kubeconfig-mode 644
 
 - name: Start k3s
   ansible.builtin.systemd:
@@ -55,10 +80,11 @@
     force: no
     src: /var/lib/rancher/k3s/agent/etc/containerd/config.toml
     dest: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+    mode: '0644'
 
 - name: Edit config.toml.tmpl
   when: not containerd_config_stat.stat.exists
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
     block: |
       [plugins.cri.registry.mirrors]
@@ -82,7 +108,7 @@
   ansible.builtin.get_url:
     url: https://repo.huaweicloud.com/helm/v3.5.2/helm-v3.5.2-linux-amd64.tar.gz
     dest: /tmp/helm-v3.5.2-linux-amd64.tar.gz
-    mode: 0700
+    mode: '0700'
 
 - name: Unarchive helm-v3.5.2-linux-amd64.tar.gz
   when: not helm_stat.stat.exists
@@ -100,34 +126,52 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
-- name: Check that the Helm diff tgz exists
+- name: Check that the helm diff directory exists
   ansible.builtin.stat:
-    path: /tmp/helm-diff-v3.1.3.tgz
-  register: helm_diff_tgz_stat
-
-- name: Download Helm diff binary
-  when: not helm_diff_tgz_stat.stat.exists
-  ansible.builtin.get_url:
-    url: https://github.com/databus23/helm-diff/releases/download/v3.1.3/helm-diff-linux.tgz
-    dest: /tmp/helm-diff-v3.1.3.tgz
-    mode: 0700
-
-- name: Create Helm plugin path
-  ansible.builtin.file:
-    path: $HOME/.local/share/helm/plugins/
-    state: directory
-
-- name: Check that the Helm diff exists
-  ansible.builtin.stat:
-    path: $HOME/.local/share/helm/plugins/diff
+    path: $HOME/.local/share/helm/plugins/helm-diff
   register: helm_diff_stat
 
-- name: Unarchive helm-diff-v3.1.3.tgz
+- name: Git clone helm-diff
   when: not helm_diff_stat.stat.exists
-  ansible.builtin.unarchive:
-    src: /tmp/helm-diff-v3.1.3.tgz
-    dest: $HOME/.local/share/helm/plugins/
+  ansible.builtin.git:
+    repo: 'https://github.com/databus23/helm-diff.git'
+    dest: /tmp/helm-diff
+    version: v3.4.2
+    depth: 3
+    force: yes
+
+- name: Build helm diff
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.shell: |
+    export GOPROXY=https://mirrors.aliyun.com/goproxy/
+    cd /tmp/helm-diff
+    make bootstrap
+    make install/helm3
+
+- name: Create Helm plugin path
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins/helm-diff
+    state: directory
+    mode: '0644'
+
+- name: Copy helm-diff bin
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.copy:
     remote_src: yes
+    force: no
+    src: /tmp/helm-diff/bin
+    dest: $HOME/.local/share/helm/plugins/helm-diff
+    mode: '0644'
+
+- name: Copy plugin.yaml
+  when: not helm_diff_stat.stat.exists
+  ansible.builtin.copy:
+    remote_src: yes
+    force: no
+    src: /tmp/helm-diff/plugin.yaml
+    dest: $HOME/.local/share/helm/plugins/helm-diff/plugin.yaml
+    mode: '0644'
 
 - name: Check that the .kube/config exists
   ansible.builtin.stat:
@@ -138,6 +182,7 @@
   ansible.builtin.file:
     path: ~/.kube/
     state: directory
+    mode: '0644'
 
 - name: Generate kube config
   when: not kube_config_stat.stat.exists
@@ -160,11 +205,6 @@
   ansible.builtin.stat:
     path: /laravel-bjyblog/site
   register: site_stat
-
-- name: Install Git
-  apt:
-    name: git
-    update_cache: yes
 
 - name: Git clone laravel-bjyblog
   when: inventory_hostname != 'local'
@@ -196,13 +236,46 @@
     regexp: "^elasticsearch:\n  enabled: true"
     replace: 'elasticsearch:\n  enabled: false'
 
+- name: Check that the ssl key exists
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: roles/laravel/files/ssl/{{ inventory_hostname }}.key
+  register: ssl_key_stat
+
+- name: Copy ssl key from local to remote
+  when: ssl_key_stat.stat.exists
+  ansible.builtin.copy:
+    src: files/ssl/{{ inventory_hostname }}.key
+    dest: /laravel-bjyblog/site/deploy/helm/files/tls.key
+    mode: '0644'
+
+- name: Check that the ssl pem exists
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: roles/laravel/files/ssl/{{ inventory_hostname }}.pem
+  register: ssl_pem_stat
+
+- name: Copy ssl pem from local to remote
+  when: ssl_pem_stat.stat.exists
+  ansible.builtin.copy:
+    src: files/ssl/{{ inventory_hostname }}.pem
+    dest: /laravel-bjyblog/site/deploy/helm/files/tls.pem
+    mode: '0644'
+
+- name: Edit tls of Helm custom.yaml
+  when: ssl_key_stat.stat.exists and ssl_pem_stat.stat.exists
+  ansible.builtin.lineinfile:
+    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
+    regexp: '^tls: '
+    line: 'tls: true'
+
 - name: Remove /laravel-bjyblog/prometheus/lock
   ansible.builtin.file:
     path: /laravel-bjyblog/prometheus/lock
     state: absent
 
 - name: Helm install
-  community.kubernetes.helm:
+  kubernetes.core.helm:
     release_name: blog
     release_namespace: blog
     create_namespace: true
@@ -211,18 +284,13 @@
     values_files:
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
 
-- name: Install pip3
-  apt:
-    name: python3-pip
-    update_cache: yes
-
 - name: Install OpenShift
-  pip:
+  ansible.builtin.pip:
     name: openshift
 
 - name: Read /laravel-bjyblog/site/deploy/helm/custom.yaml
   when: inventory_hostname != 'development'
-  ansible.builtin.shell: cat /laravel-bjyblog/site/deploy/helm/custom.yaml
+  ansible.builtin.command: cat /laravel-bjyblog/site/deploy/helm/custom.yaml
   register: helm_custom_value
 
 - name: Set elasticsearch_value variable
@@ -234,12 +302,12 @@
   when:
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
-  community.kubernetes.k8s_info:
+  kubernetes.core.k8s_info:
     api_version: v1
     kind: Pod
     namespace: blog
     wait: yes
-    wait_timeout: 600
+    wait_timeout: 1200
     wait_condition:
       type: Ready
       status: "True"
@@ -251,7 +319,7 @@
   when:
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ elasticsearch_deployment.resources.0.metadata.name }}'
     command: /usr/share/elasticsearch/bin/elasticsearch-setup-passwords auto -b
@@ -299,7 +367,7 @@
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
     - elasticsearch_password != 'None'
-  community.kubernetes.helm:
+  kubernetes.core.helm:
     release_name: blog
     release_namespace: blog
     create_namespace: true
@@ -309,7 +377,7 @@
       - /laravel-bjyblog/site/deploy/helm/custom.yaml
 
 - name: Get PHP pod name
-  community.kubernetes.k8s_info:
+  kubernetes.core.k8s_info:
     api_version: v1
     kind: Pod
     namespace: blog
@@ -323,7 +391,7 @@
   register: php_deployment
 
 - name: Composer install
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: composer install
@@ -343,42 +411,47 @@
     line: 'APP_URL={{ app_url }}'
 
 - name: Get Laravel APP_KEY
-  ansible.builtin.shell: set -o allexport && source /laravel-bjyblog/site/.env executable=/bin/bash && set +o allexport && printenv APP_KEY
+  ansible.builtin.lineinfile:
+    path: /laravel-bjyblog/site/.env
+    state: absent
+    regexp: '^APP_KEY=\w+'
+  check_mode: yes
+  changed_when: false
   register: app_key_result
 
 - name: Execute key:generate
-  when: not app_key_result.stdout
-  community.kubernetes.k8s_exec:
+  when: not app_key_result.found
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan key:generate
 
 - name: Execute php artisan migrate
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan migrate
 
 - name: Execute php artisan db:seed
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan db:seed
 
 - name: Execute php artisan bjyblog:update
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan bjyblog:update
 
 - name: Execute php artisan cache:clear
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan cache:clear
 
 - name: Execute php artisan storage:link
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan storage:link
@@ -390,7 +463,7 @@
 
 - name: Execute php artisan passport:keys
   when: not oauth_key_stat.stat.exists
-  community.kubernetes.k8s_exec:
+  kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
     command: php artisan passport:keys
@@ -403,12 +476,12 @@
     recurse: true
 
 - name: Ensure directories are 0755
-  command: find /laravel-bjyblog/site -type d -exec chmod -c 0755 {} \;
+  ansible.builtin.command: find /laravel-bjyblog/site -type d -exec chmod -c 0755 {} \;
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
 
 - name: Ensure files are 0644
-  command: find /laravel-bjyblog/site -type f -exec chmod -c 0644 {} \;
+  ansible.builtin.command: find /laravel-bjyblog/site -type f -exec chmod -c 0644 {} \;
   register: chmod_result
   changed_when: "chmod_result.stdout != \"\""
 
