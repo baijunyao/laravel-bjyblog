@@ -30,7 +30,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: nginx-ingress
+                name: nginx-service
                 port:
                   number: 80
           {{- if .Values.docs.enabled }}
