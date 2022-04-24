@@ -46,7 +46,6 @@
         "socialiteproviders/qq": "^4.1",
         "socialiteproviders/vkontakte": "^4.2",
         "socialiteproviders/weibo": "^4.1",
-        "spatie/laravel-backup": "^6.3",
         "stichoza/google-translate-php": "^4.0",
         "symfony/filesystem": "^5.1",
         "tencentcloud/cvm": "^3.0",
