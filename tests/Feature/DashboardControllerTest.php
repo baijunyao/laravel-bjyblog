@@ -19,7 +19,6 @@ class DashboardControllerTest extends TestCase
     {
         $this->assertResponse(
             $this->get(route('dashboard.analysis')),
-            [],
             [
                 '/"system":".*?"/'     => '"system":"system_in_ignore"',
                 '/"web_server":".*?"/' => '"web_server":"web_server_in_ignore"',
