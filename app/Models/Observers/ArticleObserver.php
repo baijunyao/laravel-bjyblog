@@ -45,7 +45,7 @@ class ArticleObserver extends BaseObserver
             $article->slug = generate_english_slug($article->title);
         }
 
-        $article->html = Markdown::convertToHtml($article->markdown);
+        $article->html = Markdown::convert($article->markdown)->getContent();
         $image_paths = get_image_paths_from_html($article->html);
 
         foreach ($image_paths as $image_path) {

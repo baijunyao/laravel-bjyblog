@@ -16147,7 +16147,7 @@
 
     namespace GrahamCampbell\Markdown\Facades { 
             /**
-     * This is the markdown facade class.
+     * 
      *
      * @author Graham Campbell <hello@gjcampbell.co.uk>
      */ 
@@ -16158,23 +16158,36 @@
          * @static 
          */ 
         public static function getEnvironment()
-        {            //Method inherited from \League\CommonMark\MarkdownConverter         
-                        /** @var \League\CommonMark\CommonMarkConverter $instance */
+        {
+                        /** @var \League\CommonMark\MarkdownConverter $instance */
                         return $instance->getEnvironment();
         }
                     /**
-         * Converts CommonMark to HTML.
+         * Converts Markdown to HTML.
          *
-         * @param string $commonMark
+         * @param string $input The Markdown to convert
+         * @return \League\CommonMark\Output\RenderedContentInterface Rendered HTML
          * @throws \RuntimeException
-         * @return string 
-         * @api 
          * @static 
          */ 
-        public static function convertToHtml($commonMark)
-        {            //Method inherited from \League\CommonMark\Converter         
-                        /** @var \League\CommonMark\CommonMarkConverter $instance */
-                        return $instance->convertToHtml($commonMark);
+        public static function convert($input)
+        {
+                        /** @var \League\CommonMark\MarkdownConverter $instance */
+                        return $instance->convert($input);
+        }
+                    /**
+         * Converts Markdown to HTML.
+         *
+         * @deprecated since 2.2; use {@link convert()} instead
+         * @param string $markdown The Markdown to convert
+         * @return \League\CommonMark\Output\RenderedContentInterface Rendered HTML
+         * @throws \RuntimeException
+         * @static 
+         */ 
+        public static function convertToHtml($markdown)
+        {
+                        /** @var \League\CommonMark\MarkdownConverter $instance */
+                        return $instance->convertToHtml($markdown);
         }
          
     }
