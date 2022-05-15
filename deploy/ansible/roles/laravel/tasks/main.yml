@@ -134,7 +134,7 @@
 - name: Git clone helm-diff
   when: not helm_diff_stat.stat.exists
   ansible.builtin.git:
-    repo: 'https://github.com/databus23/helm-diff.git'
+    repo: 'https://gitee.com/baijunyao/helm-diff.git'
     dest: /tmp/helm-diff
     version: v3.4.2
     depth: 3
