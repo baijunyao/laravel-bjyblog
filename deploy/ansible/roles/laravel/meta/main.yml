@@ -3,7 +3,7 @@ galaxy_info:
   description: laravel-bjyblog ansible
   company: baijunyao
   license: MIT
-  min_ansible_version: 2.1
+  min_ansible_version: '2.1'
   platforms:
     - name: Ubuntu
       versions:
