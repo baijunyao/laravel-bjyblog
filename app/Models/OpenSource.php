@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class OpenSource extends Base
+use App\Models\Schemas\OpenSourceSchema;
+
+class OpenSource extends OpenSourceSchema
 {
     /**
      * @var array<int,string>

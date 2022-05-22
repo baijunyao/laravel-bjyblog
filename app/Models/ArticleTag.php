@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class ArticleTag extends Base
+use App\Models\Schemas\ArticleTagSchema;
+
+class ArticleTag extends ArticleTagSchema
 {
     /**
      * @param array<int,int> $tag_ids

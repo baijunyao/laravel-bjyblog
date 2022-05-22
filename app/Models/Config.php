@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\ConfigSchema;
 use Str;
 
-class Config extends Base
+class Config extends ConfigSchema
 {
     /**
      * @var array<int,string>

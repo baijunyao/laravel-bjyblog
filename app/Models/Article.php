@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\ArticleSchema;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
@@ -16,7 +17,7 @@ use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Str;
 
-class Article extends Base implements Feedable
+class Article extends ArticleSchema implements Feedable
 {
     use Searchable, CanBeLiked;
 

@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class SocialiteClient extends Base
+use App\Models\Schemas\SocialiteClientSchema;
+
+class SocialiteClient extends SocialiteClientSchema
 {
     /**
      * @var array<int,string>
