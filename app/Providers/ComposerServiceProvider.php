@@ -50,7 +50,7 @@ class ComposerServiceProvider extends ServiceProvider
          * 所以此处需要清空缓存并不再向下执行
          */
         if ($config->isEmpty()) {
-            Artisan::call('modelCache:clear');
+            Artisan::call('cache:clear');
 
             return;
         }
@@ -86,7 +86,6 @@ class ComposerServiceProvider extends ServiceProvider
             $comment_count = Comment::count('id');
             $chat_count    = Note::count('id');
 
-            /* SocialiteUser model not use @see \GeneaLabs\LaravelModelCaching\Traits\Cachable */
             $socialite_user_count = Cache::remember('count:socialiteUser', static::CACHE_EXPIRE, function () {
                 return SocialiteUser::count('id');
             });

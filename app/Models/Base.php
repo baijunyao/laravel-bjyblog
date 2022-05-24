@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace App\Models;
 
 use DateTimeInterface;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 abstract class Base extends Model
 {
-    use SoftDeletes, Cachable;
+    use SoftDeletes;
 
     /**
      * Prepare a date for array / JSON serialization.
