@@ -12593,6 +12593,17 @@
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->macroCall($method, $parameters);
         }
+                    /**
+         * 
+         *
+         * @see \Spatie\Feed\FeedServiceProvider::registerRouteMacro()
+         * @param mixed $baseUrl
+         * @static 
+         */ 
+        public static function feeds($baseUrl = '')
+        {
+                        return \Illuminate\Routing\Router::feeds($baseUrl);
+        }
          
     }
             /**
@@ -17251,21 +17262,6 @@
      
 }
 
-    namespace Laravelium\Feed { 
-            /**
-     * Feed generator class for laravel-feed package.
-     *
-     * @author Rumen Damyanov <r@alfamatter.com>
-     * @version 7.0.1
-     * @link https://laravelium.com
-     * @license http://opensource.org/licenses/mit-license.php MIT License
-     */ 
-        class Feed {
-         
-    }
-     
-}
-
     namespace Mews\Purifier\Facades { 
             /**
      * 
@@ -17610,6 +17606,29 @@
         public static function dropNestedSet()
         {
                         return \Illuminate\Database\Schema\Blueprint::dropNestedSet();
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     * @mixin \Illuminate\Routing\RouteRegistrar
+     */ 
+        class Router {
+                    /**
+         * 
+         *
+         * @see \Spatie\Feed\FeedServiceProvider::registerRouteMacro()
+         * @param mixed $baseUrl
+         * @static 
+         */ 
+        public static function feeds($baseUrl = '')
+        {
+                        return \Illuminate\Routing\Router::feeds($baseUrl);
         }
          
     }
@@ -21098,7 +21117,6 @@ namespace  {
             class Breadcrumbs extends \DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
             class Agent extends \Jenssegers\Agent\Facades\Agent {}
-            class Feed extends \Laravelium\Feed\Feed {}
             class Purifier extends \Mews\Purifier\Facades\Purifier {}
             class Sentry extends \Sentry\Laravel\Facade {}
      

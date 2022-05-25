@@ -1,57 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title type="text">白俊遥博客</title>
-  <subtitle type="html"><![CDATA[白俊遥的php博客,个人技术博客,bjyblog,bjyadmin官方网站]]></subtitle>
-  <link href="http://laravel-bjyblog.test/feeds"/>
-  <id>http://laravel-bjyblog.test/feed</id>
-  <link rel="alternate" type="text/html" href="http://laravel-bjyblog.test/feeds"/>
-  <link rel="self" type="application/atom+xml" href="http://laravel-bjyblog.test/feed"/>
-  <logo>http://laravel-bjyblog.test/uploads/avatar/1.jpg</logo>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+  <id>http://laravel-bjyblog.test/feeds</id>
+  <link href="http://laravel-bjyblog.test/feeds" rel="self"/>
+  <title><![CDATA[白俊遥博客,技术博客,个人博客模板, php博客系统]]></title>
+  <subtitle>白俊遥的php博客,个人技术博客,bjyblog,bjyadmin官方网站</subtitle>
   <updated>2019-10-05T14:35:12+08:00</updated>
   <entry>
+    <title><![CDATA[Welcome to laravel-bjyblog]]></title>
+    <link rel="alternate" href="http://laravel-bjyblog.test/articles/3"/>
+    <id>http://laravel-bjyblog.test/3</id>
     <author>
-      <name>baijunyao</name>
+      <name><![CDATA[baijunyao]]></name>
     </author>
-    <title type="text"><![CDATA[Welcome to laravel-bjyblog]]></title>
-    <link rel="alternate" type="text/html" href="http://laravel-bjyblog.test/article/3"/>
-    <id>http://laravel-bjyblog.test/article/3</id>
     <summary type="html"><![CDATA[welcome to laravel-bjyblog]]></summary>
-    <content type="html"><![CDATA[<ol>
-<li>
-<a href="https://baijunyao.com/docs/laravel-bjyblog/en/OtherConfig.html">Switch language</a>
-<img src="/images/default/article.png" alt="" />
-</li>
-<li>
-<a href="https://baijunyao.com/docs/laravel-bjyblog/en/ClearTestData.html">Clear test data</a>
-</li>
-<li>
-<a href="https://baijunyao.com/docs/laravel-bjyblog/en/Upgrade.html">Upgrade version</a>
-</li>
-</ol>
-]]></content>
-    <updated>2019-10-05 14:35:12</updated>
+    <updated>2019-10-05T14:35:12+08:00</updated>
   </entry>
   <entry>
+    <title><![CDATA[欢迎使用 laravel-bjyblog]]></title>
+    <link rel="alternate" href="http://laravel-bjyblog.test/articles/1"/>
+    <id>http://laravel-bjyblog.test/1</id>
     <author>
-      <name>白俊遥</name>
+      <name><![CDATA[白俊遥]]></name>
     </author>
-    <title type="text"><![CDATA[欢迎使用 laravel-bjyblog]]></title>
-    <link rel="alternate" type="text/html" href="http://laravel-bjyblog.test/article/1"/>
-    <id>http://laravel-bjyblog.test/article/1</id>
     <summary type="html"><![CDATA[欢迎使用 laravel-bjyblog]]></summary>
-    <content type="html"><![CDATA[<ol>
-<li>
-<a href="https://baijunyao.com/docs/laravel-bjyblog/%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE.html">切换语言</a>
-<img src="/images/default/article.png" alt="" />
-</li>
-<li>
-<a href="https://baijunyao.com/docs/laravel-bjyblog/%E6%B8%85%E7%A9%BA%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE.html">清空测试数据</a>
-</li>
-<li>
-<a href="https://baijunyao.com/docs/laravel-bjyblog/%E5%8D%87%E7%BA%A7%E7%89%88%E6%9C%AC.html">升级版本</a>
-</li>
-</ol>
-]]></content>
-    <updated>2017-07-16 07:35:12</updated>
+    <updated>2016-07-16T07:35:12+08:00</updated>
   </entry>
 </feed>
