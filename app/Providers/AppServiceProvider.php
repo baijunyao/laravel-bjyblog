@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         ini_set('memory_limit', '512M');
 
         $local = config('app.locale');
-        app('translator')->setLocale($local);
+        $this->app->setLocale($local);
         Carbon::setLocale($local);
 
         Carbon::serializeUsing(function (Carbon $timestamp) {

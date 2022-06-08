@@ -12,6 +12,6 @@ abstract class TestCase extends \Baijunyao\LaravelTestSupport\TestCase
     {
         parent::setUp();
 
-        app('translator')->setLocale('zh-CN');
+        $this->app->setLocale('zh-CN');
     }
 }
