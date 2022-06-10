@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         ini_set('memory_limit', '512M');
 
         $local = config('app.locale');
+        $this->app->useLangPath(base_path('lang'));
         $this->app->setLocale($local);
         Carbon::setLocale($local);
 

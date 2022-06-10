@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     /*
     |--------------------------------------------------------------------------
-    | Password Reminder Language Lines
+    | Password Reset Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -12,9 +14,9 @@ return [
     |
     */
 
-    'password' => '密码至少是八位字符并且应与确认密码匹配。',
-    'reset'    => '密码重置成功！',
-    'sent'     => '密码重置邮件已发送！',
-    'token'    => '密码重置令牌无效。',
-    'user'     => '找不到该邮箱对应的用户。',
+    'reset'     => 'Your password has been reset!',
+    'sent'      => 'We have emailed your password reset link!',
+    'throttled' => 'Please wait before retrying.',
+    'token'     => 'This password reset token is invalid.',
+    'user'      => "We can't find a user with that email address.",
 ];

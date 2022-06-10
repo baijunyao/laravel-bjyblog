@@ -28,15 +28,15 @@ class Sync extends Command
 
     public function handle(): int
     {
-        $langs = ['fr', 'ru'];
-
-        $zhKeys = array_keys(json_decode(File::get(resource_path('lang/zh-CN.json')), true));
+        $langPath = app()->langPath();
+        $langs    = ['fr', 'ru'];
+        $zhKeys   = array_keys(json_decode(File::get($langPath . '/zh-CN.json'), true));
 
         $google_translate = new GoogleTranslate('en');
         $google_translate->setUrl('http://translate.google.cn/translate_a/single');
 
         foreach ($langs as $lang) {
-            $original_content = json_decode(File::get(resource_path("lang/{$lang}.json")), true);
+            $original_content = json_decode(File::get($langPath . "/{$lang}.json"), true);
 
             /** @var array<int, string> $diff_keys */
             $diff_keys = array_diff($zhKeys, array_keys($original_content));
@@ -56,7 +56,7 @@ class Sync extends Command
                 return 1;
             }
 
-            File::put(resource_path("lang/{$lang}.json"), json_encode($updated_content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
+            File::put($langPath . "/{$lang}.json", json_encode($updated_content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
 
         $this->call('translation:remove-unused');
