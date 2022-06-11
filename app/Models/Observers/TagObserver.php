@@ -15,7 +15,7 @@ class TagObserver extends BaseObserver
 
     public function saving(Tag $tag): void
     {
-        if ($tag->isDirty('name') && empty($tag->slug)) {
+        if (($tag->slug === null || $tag->slug === '') && $tag->isDirty('name')) {
             $tag->slug = generate_english_slug($tag->name);
         }
     }
