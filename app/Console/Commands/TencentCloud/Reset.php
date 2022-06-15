@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Console\Commands\Tencentcloud;
+namespace App\Console\Commands\TencentCloud;
 
 use Illuminate\Console\Command;
 use TencentCloud\Common\Credential;
@@ -33,7 +33,7 @@ class Reset extends Command
      */
     public function handle()
     {
-        $tencentcloud_config = config('services.tencentcloud');
+        $tencent_cloud_config = config('services.tencent_cloud');
 
         [
             'secret_id'   => $secret_id,
@@ -43,11 +43,11 @@ class Reset extends Command
             'instance_id' => $instance_id,
             'image_id'    => $image_id,
             'host_name'   => $host_name
-        ] = $tencentcloud_config;
+        ] = $tencent_cloud_config;
 
         $this->table(
             ['Name', 'Value'],
-            collect($tencentcloud_config)->map(fn ($value, $key) => ['name' => $key, 'value' => $value]),
+            collect($tencent_cloud_config)->map(fn ($value, $key) => ['name' => $key, 'value' => $value]),
         );
 
         $client                 = new CvmClient(new Credential($secret_id, $secret_key), $region);
