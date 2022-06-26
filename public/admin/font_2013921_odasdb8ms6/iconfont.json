@@ -1,0 +1,114 @@
+{
+  "id": "2013921",
+  "name": "laravel-bjyblog-admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18592403",
+      "name": "cloud-service",
+      "font_class": "cloud-service",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "6076919",
+      "name": "cloud service",
+      "font_class": "cloudservice",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "27356695",
+      "name": "menu",
+      "font_class": "menu",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "595481",
+      "name": "setting",
+      "font_class": "setting",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "502468",
+      "name": "博客",
+      "font_class": "blog",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "1395853",
+      "name": "友情链接",
+      "font_class": "link",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "11524877",
+      "name": "third-login",
+      "font_class": "third-login",
+      "unicode": "e655",
+      "unicode_decimal": 58965
+    },
+    {
+      "icon_id": "1262342",
+      "name": "users",
+      "font_class": "user",
+      "unicode": "e730",
+      "unicode_decimal": 59184
+    },
+    {
+      "icon_id": "1556249",
+      "name": "note",
+      "font_class": "note",
+      "unicode": "e896",
+      "unicode_decimal": 59542
+    },
+    {
+      "icon_id": "7457544",
+      "name": "comments",
+      "font_class": "comment",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "7736420",
+      "name": "tags",
+      "font_class": "tag",
+      "unicode": "e920",
+      "unicode_decimal": 59680
+    },
+    {
+      "icon_id": "9566821",
+      "name": "article-fill",
+      "font_class": "article",
+      "unicode": "e8b9",
+      "unicode_decimal": 59577
+    },
+    {
+      "icon_id": "15591657",
+      "name": "open-source-line",
+      "font_class": "open-source",
+      "unicode": "e984",
+      "unicode_decimal": 59780
+    },
+    {
+      "icon_id": "16553465",
+      "name": "category-fill",
+      "font_class": "category",
+      "unicode": "e856",
+      "unicode_decimal": 59478
+    },
+    {
+      "icon_id": "13554332",
+      "name": "admin-fill",
+      "font_class": "admin-user",
+      "unicode": "ef8c",
+      "unicode_decimal": 61324
+    }
+  ]
+}
