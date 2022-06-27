@@ -26,6 +26,7 @@ class RemoveUnused extends Command
 
     public function handle(): int
     {
+        $langPath  = app()->langPath();
         $languages = [
             'zh-CN' => [],
             'ru'    => [],
@@ -33,7 +34,7 @@ class RemoveUnused extends Command
         ];
 
         foreach ($languages as $language => $content) {
-            $languages[$language] = json_decode(File::get(resource_path("lang/{$language}.json")), true);
+            $languages[$language] = json_decode(File::get($langPath . "/{$language}.json"), true);
         }
 
         $all_file_contents = '';
@@ -56,7 +57,7 @@ class RemoveUnused extends Command
         foreach ($languages as $language => $content) {
             ksort($content);
 
-            File::put(resource_path("lang/{$language}.json"), json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
+            File::put($langPath . "/{$language}.json", json_encode($content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
 
         return 0;

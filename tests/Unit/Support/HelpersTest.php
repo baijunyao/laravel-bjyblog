@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Support;
 
-use ErrorException;
 use Illuminate\Http\UploadedFile;
-use Mockery;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 use Storage;
 use Tests\TestCase;
 
@@ -33,8 +30,6 @@ class HelpersTest extends TestCase
         config([
             'app.locale' => 'zh-CN',
         ]);
-        $google_translate = Mockery::mock('overload:' . GoogleTranslate::class);
-        $google_translate->shouldReceive('setUrl->setSource->translate')->andReturn('Test title');
 
         static::assertEquals('test-title', generate_english_slug('测试标题'));
     }
@@ -44,10 +39,8 @@ class HelpersTest extends TestCase
         config([
             'app.locale' => 'zh-CN',
         ]);
-        $google_translate = Mockery::mock('overload:' . GoogleTranslate::class);
-        $google_translate->shouldReceive('setUrl->setSource->translate')->andThrow(new ErrorException('error'));
 
-        static::assertEquals('', generate_english_slug('测试标题'));
+        static::assertEquals('', generate_english_slug('Throw Error'));
     }
 
     public function testFormatUrl()

@@ -43,7 +43,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -71,7 +71,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -130,7 +130,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -169,7 +169,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -208,7 +208,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -251,7 +251,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -290,7 +290,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial
@@ -329,7 +329,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
       - name: Initial

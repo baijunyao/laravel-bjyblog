@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
+  <id>http://laravel-bjyblog.test/feeds</id>
+  <link href="http://laravel-bjyblog.test/feeds" rel="self"/>
+  <title><![CDATA[白俊遥博客,技术博客,个人博客模板, php博客系统]]></title>
+  <subtitle>白俊遥的php博客,个人技术博客,bjyblog,bjyadmin官方网站</subtitle>
+  <updated>2019-10-05T14:35:12+08:00</updated>
+  <entry>
+    <title><![CDATA[Welcome to laravel-bjyblog]]></title>
+    <link rel="alternate" href="http://laravel-bjyblog.test/articles/3"/>
+    <id>http://laravel-bjyblog.test/3</id>
+    <author>
+      <name><![CDATA[baijunyao]]></name>
+    </author>
+    <summary type="html"><![CDATA[welcome to laravel-bjyblog]]></summary>
+    <updated>2019-10-05T14:35:12+08:00</updated>
+  </entry>
+  <entry>
+    <title><![CDATA[欢迎使用 laravel-bjyblog]]></title>
+    <link rel="alternate" href="http://laravel-bjyblog.test/articles/1"/>
+    <id>http://laravel-bjyblog.test/1</id>
+    <author>
+      <name><![CDATA[白俊遥]]></name>
+    </author>
+    <summary type="html"><![CDATA[欢迎使用 laravel-bjyblog]]></summary>
+    <updated>2016-07-16T07:35:12+08:00</updated>
+  </entry>
+</feed>

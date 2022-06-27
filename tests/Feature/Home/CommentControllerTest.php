@@ -72,7 +72,6 @@ class CommentControllerTest extends TestCase
         ]);
 
         $content = '评论666<img src="http://baijunyao.com/statics/emote/tuzki/3.gif" title="Yeah" alt="test">';
-        $email   = 'comment@test.com';
         $comment = [
             'article_id' => 1,
             'parent_id'  => 1,
@@ -81,7 +80,7 @@ class CommentControllerTest extends TestCase
         $this->loginByUserId($socialiteUser1->id)
             ->post('/comments', $comment + [
                 'content' => $content,
-                'email'   => $email,
+                'email'   => 'comment@test.com',
             ])
             ->assertStatus(200);
 

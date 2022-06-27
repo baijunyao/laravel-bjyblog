@@ -100,7 +100,7 @@ class FromThinkPHPBjyBlog extends Command
             }
             $markdown = str_replace($arr[0], $tmp, $markdown);
             // markdown 转html
-            $html    = Markdown::convertToHtml($markdown);
+            $html    = Markdown::convert($markdown)->getContent();
             $html    = html_entity_decode($html);
             $html    = str_replace(['<code class="', '\\\\'], ['<code class="lang-', '\\'], $html);
             $article = [

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Console\Commands\Translation;
 
 use App;
+use App\Support\TencentTranslate;
 use File;
 use Illuminate\Console\Command;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 class Sync extends Command
@@ -28,35 +28,34 @@ class Sync extends Command
 
     public function handle(): int
     {
-        $langs = ['fr', 'ru'];
+        $langPath = app()->langPath();
+        $langs    = ['fr', 'ru'];
+        $zhKeys   = array_keys(json_decode(File::get($langPath . '/zh-CN.json'), true));
 
-        $zhKeys = array_keys(json_decode(File::get(resource_path('lang/zh-CN.json')), true));
-
-        $google_translate = new GoogleTranslate('en');
-        $google_translate->setUrl('http://translate.google.cn/translate_a/single');
+        $tencent_translate = app()->make(TencentTranslate::class);
 
         foreach ($langs as $lang) {
-            $original_content = json_decode(File::get(resource_path("lang/{$lang}.json")), true);
+            $original_content = json_decode(File::get($langPath . "/{$lang}.json"), true);
 
             /** @var array<int, string> $diff_keys */
             $diff_keys = array_diff($zhKeys, array_keys($original_content));
 
             $updated_content = $original_content;
 
-            foreach ($diff_keys as $diffKey) {
-                $updated_content[$diffKey] = $google_translate->setTarget($lang)->translate($diffKey);
+            foreach ($diff_keys as $diff_key) {
+                $updated_content[$diff_key] = $tencent_translate->toEnglish($diff_key);
             }
 
             ksort($updated_content);
 
-            if (App::runningUnitTests() && $original_content !== $updated_content) {
+            if ($original_content !== $updated_content && App::runningUnitTests()) {
                 $output = new ConsoleOutput();
                 $output->writeln('<error>Please execute `php artisan translation:sync` command.</error>');
 
                 return 1;
             }
 
-            File::put(resource_path("lang/{$lang}.json"), json_encode($updated_content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
+            File::put($langPath . "/{$lang}.json", json_encode($updated_content, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n");
         }
 
         $this->call('translation:remove-unused');

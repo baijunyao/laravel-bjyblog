@@ -1,0 +1,646 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$appId of class AipContentCensor constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/AuditComment.php
+
+		-
+			message: "#^Parameter \\#1 \\$text of method AipImageCensor\\:\\:textCensorUserDefined\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/AuditComment.php
+
+		-
+			message: "#^Parameter \\#2 \\$apiKey of class AipContentCensor constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/AuditComment.php
+
+		-
+			message: "#^Parameter \\#3 \\$secretKey of class AipContentCensor constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/AuditComment.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Symfony\\\\Component\\\\Finder\\\\SplFileInfo\\>\\:\\:each\\(\\) expects callable\\(Symfony\\\\Component\\\\Finder\\\\SplFileInfo, \\(int\\|string\\)\\)\\: mixed, Closure\\(string\\)\\: void given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/Update.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),Symfony\\\\Component\\\\Finder\\\\SplFileInfo\\>\\:\\:transform\\(\\) expects callable\\(Symfony\\\\Component\\\\Finder\\\\SplFileInfo, \\(int\\|string\\)\\)\\: Symfony\\\\Component\\\\Finder\\\\SplFileInfo, Closure\\(mixed\\)\\: string given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/Update.php
+
+		-
+			message: "#^Parameter \\#1 \\$version1 of static method Composer\\\\Semver\\\\Comparator\\:\\:greaterThan\\(\\) expects string, Symfony\\\\Component\\\\Finder\\\\SplFileInfo given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/Update.php
+
+		-
+			message: "#^Parameter \\#2 \\$version2 of static method Composer\\\\Semver\\\\Comparator\\:\\:greaterThan\\(\\) expects string, Symfony\\\\Component\\\\Finder\\\\SplFileInfo given\\.$#"
+			count: 1
+			path: app/Console/Commands/Bjyblog/Update.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Filesystem\\\\FilesystemAdapter\\:\\:getTimestamp\\(\\)\\.$#"
+			count: 2
+			path: app/Console/Commands/File/SyncToOss.php
+
+		-
+			message: "#^Parameter \\#2 \\$contents of method Illuminate\\\\Filesystem\\\\FilesystemAdapter\\:\\:put\\(\\) expects Illuminate\\\\Http\\\\File\\|Illuminate\\\\Http\\\\UploadedFile\\|Psr\\\\Http\\\\Message\\\\StreamInterface\\|resource\\|string, string\\|null given\\.$#"
+			count: 1
+			path: app/Console/Commands/File/SyncToOss.php
+
+		-
+			message: "#^Cannot access property \\$access_token on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$addtime on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$aid on mixed\\.$#"
+			count: 4
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$author on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$chid on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$cid on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$click on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$cmtid on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$cname on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$content on mixed\\.$#"
+			count: 3
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$create_time on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$date on mixed\\.$#"
+			count: 4
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$description on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$email on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$head_img on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$is_admin on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$is_show on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$is_top on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$keywords on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$last_login_ip on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$lid on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$lname on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$login_times on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$name on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$nickname on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$openid on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$ouid on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$pid on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$sort on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$status on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$tid on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$title on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$tname on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$type on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$url on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot access property \\$value on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Migration/FromThinkPHPBjyBlog.php
+
+		-
+			message: "#^Cannot use array destructuring on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Parameter \\#1 \\$secretId of class TencentCloud\\\\Common\\\\Credential constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Parameter \\#1 \\$value of function collect expects Illuminate\\\\Contracts\\\\Support\\\\Arrayable\\<\\(int\\|string\\), mixed\\>\\|iterable\\<\\(int\\|string\\), mixed\\>\\|null, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Parameter \\#2 \\$region of class TencentCloud\\\\Cvm\\\\V20170312\\\\CvmClient constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Parameter \\#2 \\$secretKey of class TencentCloud\\\\Common\\\\Credential constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Property TencentCloud\\\\Cvm\\\\V20170312\\\\Models\\\\ResetInstanceRequest\\:\\:\\$HostName \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Property TencentCloud\\\\Cvm\\\\V20170312\\\\Models\\\\ResetInstanceRequest\\:\\:\\$ImageId \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Property TencentCloud\\\\Cvm\\\\V20170312\\\\Models\\\\ResetInstanceRequest\\:\\:\\$InstanceId \\(string\\) does not accept mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 1
+			path: app/Console/Commands/TencentCloud/Reset.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/RemoveUnused.php
+
+		-
+			message: "#^Cannot access offset mixed on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/RemoveUnused.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function ksort expects array, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/RemoveUnused.php
+
+		-
+			message: "#^Part \\$key \\(mixed\\) of encapsed string cannot be cast to string\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/RemoveUnused.php
+
+		-
+			message: "#^Cannot access offset string on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/Sync.php
+
+		-
+			message: "#^Cannot call method toEnglish\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/Sync.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_keys expects array, mixed given\\.$#"
+			count: 2
+			path: app/Console/Commands/Translation/Sync.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function ksort expects array, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Translation/Sync.php
+
+		-
+			message: "#^Parameter \\#3 \\$subject of function str_replace expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V11_0_0.php
+
+		-
+			message: "#^Parameter \\#1 \\$values of static method Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Models\\\\Friend\\>\\:\\:insertOrIgnore\\(\\) expects array, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V16_0_0.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_8_4_0.php
+
+		-
+			message: "#^Cannot access property \\$title on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V5_8_4_0.php
+
+		-
+			message: "#^Cannot access property \\$id on mixed\\.$#"
+			count: 2
+			path: app/Console/Commands/Upgrade/V6_14_0.php
+
+		-
+			message: "#^Cannot access offset 'children' on mixed\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getCommentsByArticleId\\(\\) should return array\\<int, array\\<string, mixed\\>\\> but returns array\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Parameter \\#1 \\$article_id of method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getCommentsByArticleId\\(\\) expects int, mixed given\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Parameter \\#1 \\$comment of method App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:getTree\\(\\) expects array\\<string, mixed\\>, mixed given\\.$#"
+			count: 2
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Property App\\\\Console\\\\Commands\\\\Upgrade\\\\V9_0_0\\:\\:\\$children \\(array\\<int, array\\<string, mixed\\>\\>\\) does not accept array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: app/Console/Commands/Upgrade/V9_0_0.php
+
+		-
+			message: "#^Cannot call method revoke\\(\\) on Laravel\\\\Passport\\\\Token\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/PassportController.php
+
+		-
+			message: "#^Cannot call method token\\(\\) on App\\\\Models\\\\User\\|null\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/PassportController.php
+
+		-
+			message: "#^Cannot call method redirect\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Cannot call method user\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) should return Illuminate\\\\Http\\\\RedirectResponse but returns Illuminate\\\\Http\\\\RedirectResponse\\|Illuminate\\\\Routing\\\\Redirector\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:get\\(\\) expects int, string given\\.$#"
+			count: 2
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Parameter \\#1 \\$to of function redirect expects string\\|null, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Property App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:\\$socialiteClients with generic class Illuminate\\\\Database\\\\Eloquent\\\\Collection does not specify its types\\: TKey, TModel$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Property Laravel\\\\Socialite\\\\AbstractUser\\:\\:\\$nickname \\(string\\) on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: app/Http/Controllers/Auth/SocialiteController.php
+
+		-
+			message: "#^Cannot call method withDepth\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/ArticleController.php
+
+		-
+			message: "#^Cannot cast mixed to int\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/CommentController.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of class Spatie\\\\Feed\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Parameter \\#4 \\$view of class Spatie\\\\Feed\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Parameter \\#5 \\$description of class Spatie\\\\Feed\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Parameter \\#6 \\$language of class Spatie\\\\Feed\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Parameter \\#7 \\$image of class Spatie\\\\Feed\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Parameter \\#8 \\$format of class Spatie\\\\Feed\\\\Feed constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Home/FeedController.php
+
+		-
+			message: "#^Cannot cast object\\|string\\|null to int\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleController.php
+
+		-
+			message: "#^Parameter \\#2 \\$tag_ids of method App\\\\Models\\\\ArticleTag\\:\\:addTagIds\\(\\) expects array\\<int, int\\>, mixed given\\.$#"
+			count: 2
+			path: app/Http/Controllers/Resources/ArticleController.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleImageController.php
+
+		-
+			message: "#^Parameter \\#2 \\$options of method Illuminate\\\\Http\\\\UploadedFile\\:\\:store\\(\\) expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ArticleImageController.php
+
+		-
+			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ConfigController.php
+
+		-
+			message: "#^Parameter \\#2 \\$options of method Illuminate\\\\Http\\\\UploadedFile\\:\\:store\\(\\) expects array\\|string, mixed given\\.$#"
+			count: 1
+			path: app/Http/Controllers/Resources/ConfigController.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, mixed given\\.$#"
+			count: 2
+			path: app/Http/Requests/Config/Update.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:articleHistories\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:category\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getFeedItems\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Collection does not specify its types\\: TKey, TModel$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:getIdsGivenSearchWord\\(\\) should return array\\<int, int\\> but returns array\\.$#"
+			count: 2
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Article\\:\\:tags\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: app/Models/Article.php
+
+		-
+			message: "#^Method App\\\\Models\\\\ArticleHistory\\:\\:article\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/ArticleHistory.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Category\\:\\:articles\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: app/Models/Category.php
+
+		-
+			message: "#^Cannot call method whereHas\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:article\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:parentComment\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Comment\\:\\:socialiteUser\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/Comment.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Config\\:\\:getValueAttribute\\(\\) should return array\\|string but returns mixed\\.$#"
+			count: 1
+			path: app/Models/Config.php
+
+		-
+			message: "#^Parameter \\#2 \\$text of function watermark expects string, mixed given\\.$#"
+			count: 1
+			path: app/Models/Observers/ArticleObserver.php
+
+		-
+			message: "#^Parameter \\#1 \\$appId of class AipContentCensor constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Models/Observers/CommentObserver.php
+
+		-
+			message: "#^Parameter \\#2 \\$apiKey of class AipContentCensor constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Models/Observers/CommentObserver.php
+
+		-
+			message: "#^Parameter \\#3 \\$secretKey of class AipContentCensor constructor expects string, mixed given\\.$#"
+			count: 1
+			path: app/Models/Observers/CommentObserver.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Site\\:\\:socialiteUser\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/Site.php
+
+		-
+			message: "#^Method App\\\\Models\\\\SocialiteUser\\:\\:socialiteClient\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
+			count: 1
+			path: app/Models/SocialiteUser.php
+
+		-
+			message: "#^Method App\\\\Models\\\\Tag\\:\\:articles\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany does not specify its types\\: TRelatedModel$#"
+			count: 1
+			path: app/Models/Tag.php
+
+		-
+			message: "#^Parameter \\#1 \\$locale of method Illuminate\\\\Contracts\\\\Foundation\\\\Application\\:\\:setLocale\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$locale of static method Carbon\\\\Carbon\\:\\:setLocale\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_filter expects array, mixed given\\.$#"
+			count: 1
+			path: app/Providers/ComposerServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Cache\\\\RateLimiting\\\\Limit\\:\\:by\\(\\) expects string, int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string\\|null given\\.$#"
+			count: 1
+			path: app/Providers/RouteServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$content of static method App\\\\Models\\\\Comment\\:\\:imageToUbb\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Rules/Comment.php
+
+		-
+			message: "#^Cannot call method toEnglish\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Parameter \\#1 \\$root of static method Illuminate\\\\Routing\\\\UrlGenerator\\:\\:assetFrom\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, mixed given\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: config/cache.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: config/database.php
+
+		-
+			message: "#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: config/session.php

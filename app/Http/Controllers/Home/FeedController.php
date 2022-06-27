@@ -4,40 +4,29 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Home;
 
-use App;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Spatie\Feed\Feed;
+use Spatie\Feed\Helpers\ResolveFeedItems;
 
 class FeedController extends Controller
 {
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $articles = Article::latest()->get();
+        $items = ResolveFeedItems::resolve('main', config('feed.feeds.main.items'));
 
-        $feed              = App::make('feed');
-        $feed->title       = config('app.name');
-        $feed->description = config('bjyblog.head.description');
-        $feed->logo        = asset('uploads/avatar/1.jpg');
-        $feed->link        = url('feed');
-        $feed->setDateFormat('carbon');
-        $feed->pubdate     = $articles->first()->created_at ?? '';
-        $feed->lang        = config('app.locale');
-        $feed->ctype       = 'application/xml';
-        $feed->setShortening(true);
-        $feed->setTextLimit(100);
+        $feed = new Feed(
+            config('bjyblog.head.title', ''),
+            $items,
+            $request->url(),
+            config('feed.feeds.main.view', 'feed::atom'),
+            config('bjyblog.head.description', ''),
+            config('feed.feeds.main.language', 'en-US'),
+            config('feed.feeds.main.image', ''),
+            config('feed.feeds.main.format', 'atom')
+        );
 
-        foreach ($articles as $article) {
-            $feed->addItem([
-                'title'       => $article->title,
-                'author'      => $article->author,
-                'link'        => url('article', $article->id),
-                'description' => $article->description,
-                'content'     => $article->html,
-                'pubdate'     => $article->created_at,
-            ]);
-        }
-
-        return $feed->render('atom');
+        return $feed->toResponse($request);
     }
 }
