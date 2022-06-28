@@ -16665,7 +16665,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::all()
+         * @see \App\Models\Article::updateTimestamps()
          * @static 
          */ 
         public static function unsearchable()
