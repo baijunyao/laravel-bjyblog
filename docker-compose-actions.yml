@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  mysql:
+    image: baijunyao/mysql:8.0
+    container_name: laravel-bjyblog-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=laravel_bjyblog
+      - MYSQL_DATABASE=laravel_bjyblog
+
+  nginx:
+    image: baijunyao/nginx:1.19
+    container_name: laravel-bjyblog-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+      - ./deploy/docker/nginx/laravel-bjyblog.conf:/etc/nginx/conf.d/laravel-bjyblog.conf
+    depends_on:
+      - php
+
+  php:
+    image: baijunyao/php:8.1-${APP_ENV}
+    container_name: laravel-bjyblog-php
+    tty: true
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql
