@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\CategorySchema;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Str;
 
-class Category extends Base
+class Category extends CategorySchema
 {
     /**
      * @var array<int,string>

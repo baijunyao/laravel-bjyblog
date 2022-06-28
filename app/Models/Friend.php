@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class Friend extends Base
+use App\Models\Schemas\FriendSchema;
+
+class Friend extends FriendSchema
 {
     /**
      * @var array<int,string>

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\CommentSchema;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Kalnoy\Nestedset\NodeTrait;
 use Str;
@@ -11,7 +12,7 @@ use Str;
 /**
  * @property int|null $parent_id
  */
-class Comment extends Base
+class Comment extends CommentSchema
 {
     use NodeTrait;
 

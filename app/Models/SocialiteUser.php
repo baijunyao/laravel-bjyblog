@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\SocialiteUserSchema;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Overtrue\LaravelFollow\Traits\CanLike;
 
-class SocialiteUser extends UserBase
+class SocialiteUser extends SocialiteUserSchema
 {
     use CanLike;
 

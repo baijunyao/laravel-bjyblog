@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class Console extends Base
+use App\Models\Schemas\ConsoleSchema;
+
+class Console extends ConsoleSchema
 {
     /**
      * @var array<int,string>

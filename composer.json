@@ -22,7 +22,6 @@
         "composer/semver": "^3.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^2.5",
-        "genealabs/laravel-model-caching": "^0.12",
         "graham-campbell/markdown": "14.0.x-dev",
         "guzzlehttp/guzzle": "^7.2",
         "iidestiny/laravel-filesystem-oss": "^3.1",

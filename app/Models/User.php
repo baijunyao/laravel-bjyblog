@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class User extends UserBase
+use App\Models\Schemas\UserSchema;
+
+class User extends UserSchema
 {
     /**
      * The attributes that are mass assignable.
