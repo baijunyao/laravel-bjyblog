@@ -8,6 +8,6 @@ class FeedControllerTest extends TestCase
 {
     public function testFeed()
     {
-        $this->get('/feeds')->assertStatus(200);
+        $this->assertMatchesXmlSnapshot($this->get('/feeds')->assertStatus(200)->getContent());
     }
 }

@@ -25,7 +25,9 @@ class CategoryControllerTest extends TestCase
         'pid'         => 1,
     ];
     protected $updateData = [
-        'name' => 'Updated Name',
+        'name'        => 'Updated name',
+        'keywords'    => 'Updated keywords',
+        'description' => 'Updated description',
     ];
 
     public function testDestroy()

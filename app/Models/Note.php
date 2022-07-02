@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class Note extends Base
+use App\Models\Schemas\NoteSchema;
+
+class Note extends NoteSchema
 {
     /**
      * @var array<int,string>

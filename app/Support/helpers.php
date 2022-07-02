@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
+use App\Support\TencentTranslate;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use PHPHtmlParser\Dom;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 
 if (!function_exists('watermark')) {
     /**
@@ -31,7 +31,7 @@ if (!function_exists('watermark')) {
             });
             $image->save($local_file);
 
-            if (in_array('oss_uploads', config('bjyblog.upload_disks'))) {
+            if (in_array('oss_uploads', config('bjyblog.upload_disks'), true)) {
                 $content = file_get_contents($local_file);
 
                 if ($content !== false) {
@@ -52,10 +52,8 @@ if (!function_exists('generate_english_slug')) {
 
         if ('en' !== $locale) {
             try {
-                $google_translate = new GoogleTranslate('en', $locale, ['connect_timeout' => 3]);
-                $content          =  $google_translate->setUrl('http://translate.google.cn/translate_a/single')
-                    ->setSource($locale)
-                    ->translate($content) ?? '';
+                $tencent_translate = app()->make(TencentTranslate::class);
+                $content           = $tencent_translate->toEnglish($content);
             } catch (Exception $exception) {
                 $content = '';
             }

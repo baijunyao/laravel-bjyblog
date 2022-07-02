@@ -1,0 +1,13 @@
+extends: default
+
+rules:
+  document-start:
+    present: false
+  line-length:
+    max: 200
+  truthy:
+    allowed-values:
+      - 'true'
+      - 'false'
+      - 'yes'
+      - 'no'

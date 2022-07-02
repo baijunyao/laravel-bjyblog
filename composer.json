@@ -1,7 +1,9 @@
 {
     "name": "baijunyao/laravel-bjyblog",
+    "type": "project",
     "description": "Laravel blog.",
     "keywords": ["laravel", "blog", "php"],
+    "license": "MIT",
     "authors": [
         {
             "name": "baijunyao",
@@ -10,83 +12,53 @@
             "role": "Developer"
         }
     ],
-    "license": "MIT",
-    "type": "project",
     "require": {
-        "php": "^8.0",
+        "php": "^8.0.2",
         "algolia/algoliasearch-client-php": "^2.5",
         "baidu/aip-sdk": "dev-master#84e5936eb6426b4cc9d9a96848568b9dd527b4a0",
-        "baijunyao/laravel-restful": "^5.0",
-        "baijunyao/laravel-scout-elasticsearch": "^5.0",
-        "baijunyao/laravel-support": "^1.4",
+        "baijunyao/laravel-restful": "^6.1",
+        "baijunyao/laravel-scout-elasticsearch": "^5.3",
+        "baijunyao/laravel-support": "^1.5",
         "composer/semver": "^3.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^2.5",
-        "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^2.0",
-        "genealabs/laravel-model-caching": "^0.11",
-        "graham-campbell/markdown": "^13.1",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "iidestiny/laravel-filesystem-oss": "^2.0",
+        "graham-campbell/markdown": "14.0.x-dev",
+        "guzzlehttp/guzzle": "^7.2",
+        "iidestiny/laravel-filesystem-oss": "^3.1",
         "intervention/image": "^2.4",
         "jenssegers/agent": "^2.6",
         "kalnoy/nestedset": "^6.0",
-        "laravel/framework": "^8.0",
+        "laravel/framework": "^9.11",
         "laravel/passport": "^10.0",
         "laravel/socialite": "^5.0",
-        "laravel/tinker": "^2.0",
-        "laravelium/feed": "^8.0",
+        "laravel/tinker": "^2.7",
         "league/html-to-markdown": "^4.6",
         "mews/purifier": "^3.0",
         "overtrue/laravel-follow": "^1.1",
-        "overtrue/laravel-lang": "^4.0",
         "paquettg/php-html-parser": "^2.1",
         "predis/predis": "^1.1",
         "sentry/sentry-laravel": "^2.3",
         "socialiteproviders/qq": "^4.1",
-        "socialiteproviders/vkontakte": "^4.2",
+        "socialiteproviders/vkontakte": "^4.2.2",
         "socialiteproviders/weibo": "^4.1",
-        "spatie/laravel-backup": "^6.3",
-        "stichoza/google-translate-php": "^4.0",
+        "spatie/laravel-feed": "^4.1",
         "symfony/filesystem": "^5.1",
         "tencentcloud/cvm": "^3.0",
-        "ytake/laravel-fluent-logger": "^5.0"
+        "tencentcloud/tmt": "^3.0",
+        "ytake/laravel-fluent-logger": "dev-main#de6041edab0617d876f99c9c1a58033787f4a890"
     },
     "require-dev": {
-        "baijunyao/laravel-test-support": "^7.0",
+        "baijunyao/laravel-test-support": "^8.0",
         "baijunyao/php-cs-fixer-config": "^0.1.0",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "beyondcode/laravel-dump-server": "^1.0",
-        "facade/ignition": "^2.3.6",
         "fakerphp/faker": "^1.9.1",
         "filp/whoops": "^2.0",
-        "itsgoingd/clockwork": "^5.0",
-        "laravel/dusk": "^6.7",
-        "mockery/mockery": "^1.3.1",
-        "nunomaduro/collision": "^5.0",
-        "nunomaduro/larastan": "^0.6",
-        "phpunit/phpunit": "^9.3",
-        "roave/security-advisories": "dev-latest"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "process-timeout": 0,
-        "sort-packages": true
-    },
-    "repositories": [
-        {
-            "name": "spatie/phpunit-snapshot-assertions",
-            "type": "vcs",
-            "url": "https://github.com/baijunyao/phpunit-snapshot-assertions"
-        }
-    ],
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-                "itsgoingd/clockwork"
-            ]
-        }
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "nunomaduro/larastan": "^2.0",
+        "phpunit/phpunit": "^9.5.10",
+        "roave/security-advisories": "dev-latest",
+        "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -108,9 +80,22 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
         "phpcs": "vendor/bin/php-cs-fixer fix",
         "phpstan": "vendor/bin/phpstan analyse --ansi",
         "lint": [
@@ -125,20 +110,31 @@
         "test:coverage-xml": [
             "@putenv XDEBUG_MODE=coverage",
             "./vendor/bin/phpunit --coverage-clover storage/framework/testing/coverage.xml"
-        ],
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan ide-helper:generate",
-            "@php artisan ide-helper:meta"
         ]
-    }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "itsgoingd/clockwork"
+            ]
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.2"
+        },
+        "process-timeout": 0
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "name": "spatie/phpunit-snapshot-assertions",
+            "type": "vcs",
+            "url": "https://github.com/baijunyao/phpunit-snapshot-assertions"
+        }
+    ]
 }

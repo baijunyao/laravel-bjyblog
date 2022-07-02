@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\TagSchema;
 use Str;
 
-class Tag extends Base
+class Tag extends TagSchema
 {
     /**
      * @var array<int,string>

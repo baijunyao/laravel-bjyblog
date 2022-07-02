@@ -18,6 +18,7 @@ return [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        'scheme' => 'https',
     ],
 
     'postmark' => [
@@ -48,6 +49,17 @@ return [
         'appid' => env('BAIDU_APPID'),
         'appkey' => env('BAIDU_APPKEY'),
         'secret' => env('BAIDU_SECRET')
+    ],
+
+    'tencent_cloud' => [
+        'secret_id' => env('TENCENT_CLOUD_SECRET_ID'),
+        'secret_key' => env('TENCENT_CLOUD_SECRET_KEY'),
+        'region' => env('TENCENT_CLOUD_REGION'),
+        'project_id' => env('TENCENT_CLOUD_PROJECT_ID'),
+        'instance_id' => env('TENCENT_CLOUD_INSTANCE_ID'),
+        'ssh_key_id' => env('TENCENT_CLOUD_SSH_KEY_ID'),
+        'image_id' => env('TENCENT_CLOUD_IMAGE_ID'),
+        'host_name' => env('TENCENT_CLOUD_HOST_NAME', 'development'),
     ],
 
     'weibo' => [
@@ -84,15 +96,5 @@ return [
         'client_id' => env('VKONTAKTE_KEY'),
         'client_secret' => env('VKONTAKTE_SECRET'),
         'redirect' => env('APP_URL').'/auth/oauth/handleProviderCallback/vkontakte'
-    ],
-
-    'tencentcloud' => [
-        'secret_id' => env('TENCENTCLOUD_SECRET_ID'),
-        'secret_key' => env('TENCENTCLOUD_SECRET_KEY'),
-        'instance_id' => env('TENCENTCLOUD_INSTANCE_ID'),
-        'region' => env('TENCENTCLOUD_REGION'),
-        'ssh_key_id' => env('TENCENTCLOUD_SSH_KEY_ID'),
-        'image_id' => env('TENCENTCLOUD_IMAGE_ID'),
-        'host_name' => env('TENCENTCLOUD_HOST_NAME', 'development'),
     ],
 ];

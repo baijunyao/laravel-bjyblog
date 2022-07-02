@@ -1,0 +1,18 @@
+{
+    "status_code": 401,
+    "headers": {
+        "cache-control": [
+            "no-cache, private"
+        ],
+        "date": "Tue, 01 Jan 2019 00:00:00 CST",
+        "content-type": [
+            "application\/json"
+        ],
+        "access-control-allow-origin": [
+            "http:\/\/laravel-bjyblog.test"
+        ]
+    },
+    "content": {
+        "message": "Unauthenticated."
+    }
+}

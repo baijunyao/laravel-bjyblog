@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class User extends UserBase
+use App\Models\Schemas\UserSchema;
+
+class User extends UserSchema
 {
     /**
-     * @var array<int,string>
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -19,7 +23,7 @@ class User extends UserBase
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes that should be hidden for serialization.
      *
      * @var array<int,string>
      */
@@ -29,7 +33,7 @@ class User extends UserBase
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The attributes that should be cast.
      *
      * @var array<string,string>
      */

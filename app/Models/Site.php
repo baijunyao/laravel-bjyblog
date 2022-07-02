@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class Site extends Base
+use App\Models\Schemas\SiteSchema;
+
+class Site extends SiteSchema
 {
     /**
      * @var array<int,string>

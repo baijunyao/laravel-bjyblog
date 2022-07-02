@@ -4,15 +4,20 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Schemas\ArticleSchema;
+use Carbon\Carbon;
 use Exception;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Scout\Searchable;
 use Overtrue\LaravelFollow\Traits\CanBeLiked;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Str;
 
-class Article extends Base
+class Article extends ArticleSchema implements Feedable
 {
     use Searchable, CanBeLiked;
 
@@ -117,5 +122,21 @@ class Article extends Base
         }
 
         return url('articles', $parameters);
+    }
+
+    public function toFeedItem(): FeedItem
+    {
+        return FeedItem::create()
+            ->id((string) $this->id)
+            ->title($this->title)
+            ->summary($this->description)
+            ->updated($this->updated_at ?? Carbon::now())
+            ->link($this->url)
+            ->authorName($this->author);
+    }
+
+    public static function getFeedItems(): Collection
+    {
+        return self::withoutTrashed()->latest()->get();
     }
 }

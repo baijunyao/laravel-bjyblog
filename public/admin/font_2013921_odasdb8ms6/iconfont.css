@@ -1,0 +1,75 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2013921 */
+  src: url('iconfont.woff2?t=1655733800935') format('woff2'),
+       url('iconfont.woff?t=1655733800935') format('woff'),
+       url('iconfont.ttf?t=1655733800935') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cloud-service:before {
+  content: "\e682";
+}
+
+.icon-cloudservice:before {
+  content: "\e68f";
+}
+
+.icon-menu:before {
+  content: "\e603";
+}
+
+.icon-setting:before {
+  content: "\e608";
+}
+
+.icon-blog:before {
+  content: "\e60e";
+}
+
+.icon-link:before {
+  content: "\e636";
+}
+
+.icon-third-login:before {
+  content: "\e655";
+}
+
+.icon-user:before {
+  content: "\e730";
+}
+
+.icon-note:before {
+  content: "\e896";
+}
+
+.icon-comment:before {
+  content: "\e613";
+}
+
+.icon-tag:before {
+  content: "\e920";
+}
+
+.icon-article:before {
+  content: "\e8b9";
+}
+
+.icon-open-source:before {
+  content: "\e984";
+}
+
+.icon-category:before {
+  content: "\e856";
+}
+
+.icon-admin-user:before {
+  content: "\ef8c";
+}
+

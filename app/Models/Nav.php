@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-class Nav extends Base
+use App\Models\Schemas\NavSchema;
+
+class Nav extends NavSchema
 {
     /**
      * @var array<int,string>

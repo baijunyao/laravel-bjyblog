@@ -622,6 +622,38 @@ class ConfigsTableSeeder extends Seeder
                 'updated_at' => '2018-12-04 22:29:52',
                 'deleted_at' => null,
             ],
+            [
+                'id'         => 205,
+                'name'       => 'services.tencent_cloud.secret_id',
+                'value'      => '',
+                'created_at' => '2022-06-15 20:06:00',
+                'updated_at' => '2022-06-15 20:06:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 206,
+                'name'       => 'services.tencent_cloud.secret_key',
+                'value'      => '',
+                'created_at' => '2022-06-15 20:06:00',
+                'updated_at' => '2022-06-15 20:06:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 207,
+                'name'       => 'services.tencent_cloud.region',
+                'value'      => '',
+                'created_at' => '2022-06-15 20:06:00',
+                'updated_at' => '2022-06-15 20:06:00',
+                'deleted_at' => null,
+            ],
+            [
+                'id'         => 208,
+                'name'       => 'services.tencent_cloud.project_id',
+                'value'      => '',
+                'created_at' => '2022-06-15 20:06:00',
+                'updated_at' => '2022-06-15 20:06:00',
+                'deleted_at' => null,
+            ],
         ]);
     }
 }
