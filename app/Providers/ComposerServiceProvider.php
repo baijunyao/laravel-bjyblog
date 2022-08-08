@@ -55,6 +55,10 @@ class ComposerServiceProvider extends ServiceProvider
             return;
         }
 
+        /** @var string $tencent_cloud_project_id */
+        $tencent_cloud_project_id                    = $config['services.tencent_cloud.project_id'] ?? '';
+        $config['services.tencent_cloud.project_id'] = (int) $tencent_cloud_project_id;
+
         // 动态替换 /config 目录下的配置项
         config($config->toArray());
 
