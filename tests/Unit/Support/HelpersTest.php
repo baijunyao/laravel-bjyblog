@@ -40,7 +40,7 @@ class HelpersTest extends TestCase
             'app.locale' => 'zh-CN',
         ]);
 
-        static::assertEquals('', generate_english_slug('Throw Error'));
+        static::assertEquals('', generate_english_slug('抛出错误'));
     }
 
     public function testFormatUrl()

@@ -55,7 +55,7 @@ return [
         'secret_id' => env('TENCENT_CLOUD_SECRET_ID'),
         'secret_key' => env('TENCENT_CLOUD_SECRET_KEY'),
         'region' => env('TENCENT_CLOUD_REGION'),
-        'project_id' => env('TENCENT_CLOUD_PROJECT_ID'),
+        'project_id' => env('TENCENT_CLOUD_PROJECT_ID'), // https://cloud.tencent.com/document/api/551/15615#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8
         'instance_id' => env('TENCENT_CLOUD_INSTANCE_ID'),
         'ssh_key_id' => env('TENCENT_CLOUD_SSH_KEY_ID'),
         'image_id' => env('TENCENT_CLOUD_IMAGE_ID'),
