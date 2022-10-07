@@ -55,7 +55,7 @@ spec:
         spec:
           containers:
             - name: php
-              image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/php:7.4-{{ .Values.env }}
+              image: {{ if eq .Values.container_registry "Aliyun" }}registry.cn-beijing.aliyuncs.com/{{ end }}baijunyao/php:8.1-{{ .Values.env }}
               command: ["php", "artisan", "bjyblog:generate-sitemap"]
               volumeMounts:
                 - mountPath: /app
