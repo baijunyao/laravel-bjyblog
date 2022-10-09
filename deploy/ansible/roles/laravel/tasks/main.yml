@@ -430,9 +430,10 @@
   kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
-    command: php artisan migrate
+    command: php artisan migrate --force
 
 - name: Execute php artisan db:seed
+  when: inventory_hostname != 'production'
   kubernetes.core.k8s_exec:
     namespace: blog
     pod: '{{ php_deployment.resources.0.metadata.name }}'
