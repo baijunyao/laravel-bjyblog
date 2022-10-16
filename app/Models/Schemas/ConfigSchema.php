@@ -13,6 +13,7 @@ namespace App\Models\Schemas;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ *
  * @mixin \Eloquent
  */
 abstract class ConfigSchema extends BaseSchema

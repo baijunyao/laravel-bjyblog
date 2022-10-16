@@ -26,6 +26,7 @@ namespace App\Models\Schemas;
  *
  * @method static \Kalnoy\Nestedset\Collection|static[] all($columns = ['*'])
  * @method static \Kalnoy\Nestedset\Collection|static[] get($columns = ['*'])
+ *
  * @mixin \Eloquent
  */
 abstract class CommentSchema extends BaseSchema

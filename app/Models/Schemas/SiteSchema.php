@@ -18,6 +18,7 @@ namespace App\Models\Schemas;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\SocialiteUser|null $socialiteUser
+ *
  * @mixin \Eloquent
  */
 abstract class SiteSchema extends BaseSchema

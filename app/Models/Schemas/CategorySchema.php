@@ -19,6 +19,7 @@ namespace App\Models\Schemas;
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
  * @property-read string $url
+ *
  * @mixin \Eloquent
  */
 abstract class CategorySchema extends BaseSchema

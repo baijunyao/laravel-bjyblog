@@ -26,6 +26,7 @@ namespace App\Models\Schemas;
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \App\Models\SocialiteClient|null $socialiteClient
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
+ *
  * @mixin \Eloquent
  */
 abstract class SocialiteUserSchema extends UserBaseSchema
