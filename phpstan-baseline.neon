@@ -421,11 +421,6 @@ parameters:
 			path: app/Http/Controllers/Auth/SocialiteController.php
 
 		-
-			message: "#^Cannot call method withDepth\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/Controllers/Home/ArticleController.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 1
 			path: app/Http/Controllers/Home/CommentController.php
@@ -531,11 +526,6 @@ parameters:
 			path: app/Models/Category.php
 
 		-
-			message: "#^Cannot call method whereHas\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Models/Comment.php
-
-		-
 			message: "#^Method App\\\\Models\\\\Comment\\:\\:article\\(\\) return type with generic class Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo does not specify its types\\: TRelatedModel, TChildModel$#"
 			count: 1
 			path: app/Models/Comment.php
@@ -606,17 +596,17 @@ parameters:
 			path: app/Providers/ComposerServiceProvider.php
 
 		-
-			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Cache\\\\RateLimiting\\\\Limit\\:\\:by\\(\\) expects string, int\\<min, \\-1\\>\\|int\\<1, max\\>\\|string\\|null given\\.$#"
-			count: 1
-			path: app/Providers/RouteServiceProvider.php
-
-		-
 			message: "#^Parameter \\#1 \\$content of static method App\\\\Models\\\\Comment\\:\\:imageToUbb\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Rules/Comment.php
 
 		-
 			message: "#^Cannot call method toEnglish\\(\\) on mixed\\.$#"
+			count: 1
+			path: app/Support/helpers.php
+
+		-
+			message: "#^Function translate\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: app/Support/helpers.php
 

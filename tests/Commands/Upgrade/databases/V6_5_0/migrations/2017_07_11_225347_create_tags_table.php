@@ -14,6 +14,7 @@ class CreateTagsTable extends Migration
      * Run the migrations.
      *
      * @update 2019年10月15日 11:28:45 by jason
+     *
      * @desc 添加 标签的关键字和描述。
      *
      * @return void

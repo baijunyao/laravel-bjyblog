@@ -14,6 +14,7 @@ namespace App\Models\Schemas;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \App\Models\Article|null $article
+ *
  * @mixin \Eloquent
  */
 abstract class ArticleHistorySchema extends BaseSchema

@@ -27,6 +27,7 @@ namespace App\Models\Schemas;
  * @property-read string $url
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SocialiteUser[] $likers
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
+ *
  * @mixin \Eloquent
  */
 abstract class ArticleSchema extends BaseSchema
