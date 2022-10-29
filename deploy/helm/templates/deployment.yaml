@@ -305,6 +305,11 @@ spec:
           volumeMounts:
             - name: elasticsearch-pvc
               mountPath: /usr/share/elasticsearch/data
+          resources:
+            limits:
+              cpu: "2"
+            requests:
+              cpu: "1"
 {{- end }}
 
 {{- if .Values.kibana.enabled }}
