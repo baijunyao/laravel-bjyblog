@@ -38,7 +38,7 @@
 - name: Download k3s-install.sh
   when: not k3s_install_stat.stat.exists
   ansible.builtin.get_url:
-    url: http://rancher-mirror.cnrancher.com/k3s/k3s-install.sh
+    url: https://rancher-mirror.oss-cn-beijing.aliyuncs.com/k3s/k3s-install.sh
     dest: /tmp/k3s-install.sh
     mode: '0700'
 
