@@ -17,16 +17,8 @@ class CategoryController extends Controller
             ->with('tags')
             ->paginate(10);
 
-        if ($articles->isNotEmpty()) {
-            $articles->setCollection(
-                collect(
-                    $articles->items()
-                )->map(function ($v) use ($category) {
-                    $v->category = $category;
-
-                    return $v;
-                })
-            );
+        foreach ($articles as $article) {
+            $article->setRelation('category', $category);
         }
 
         $head = [
