@@ -49,7 +49,7 @@
     },
     "require-dev": {
         "baijunyao/laravel-test-support": "^8.0",
-        "baijunyao/php-cs-fixer-config": "^0.1.0",
+        "baijunyao/php-cs-fixer-config": "^0.2.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "fakerphp/faker": "^1.9.1",
         "filp/whoops": "^2.0",
