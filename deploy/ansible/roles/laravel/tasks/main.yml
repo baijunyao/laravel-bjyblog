@@ -60,6 +60,7 @@
   environment:
     INSTALL_K3S_MIRROR: cn
     INSTALL_K3S_SKIP_START: true
+    INSTALL_K3S_VERSION: 'v1.20.15+k3s1'
   ansible.builtin.command: /tmp/k3s-install.sh --write-kubeconfig-mode 644
 
 - name: Start k3s
@@ -362,7 +363,7 @@
     regexp: "^fluentd:\n  enabled: false"
     replace: 'fluentd:\n  enabled: true'
 
-- name: Helm install
+- name: Helm upgrade
   when:
     - inventory_hostname != 'development'
     - not elasticsearch_value.password
