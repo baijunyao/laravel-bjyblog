@@ -50,7 +50,6 @@
 
 - name: Copy traefik-config.yaml from local to remote
   ansible.builtin.copy:
-    force: no
     src: files/traefik-config.yaml
     dest: /var/lib/rancher/k3s/server/manifests/traefik-config.yaml
     mode: '0644'
@@ -127,13 +126,32 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
-- name: Check that the helm diff directory exists
+- name: Create Helm plugin path
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins
+    state: directory
+    mode: '0644'
+
+- name: Check that the local helm diff exists
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: roles/laravel/files/helm-diff/bin/diff
+  register: local_helm_diff_stat
+
+- name: Copy helm diff from local to remote
+  when: local_helm_diff_stat.stat.exists
+  ansible.builtin.copy:
+    src: files/helm-diff
+    dest: $HOME/.local/share/helm/plugins
+    mode: '0644'
+
+- name: Check that the remote helm diff exists
   ansible.builtin.stat:
     path: $HOME/.local/share/helm/plugins/helm-diff
-  register: helm_diff_stat
+  register: remote_helm_diff_stat
 
 - name: Git clone helm-diff
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/helm-diff.git'
     dest: /tmp/helm-diff
@@ -142,22 +160,15 @@
     force: yes
 
 - name: Build helm diff
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.shell: |
     export GOPROXY=https://mirrors.aliyun.com/goproxy/
     cd /tmp/helm-diff
     make bootstrap
     make install/helm3
 
-- name: Create Helm plugin path
-  when: not helm_diff_stat.stat.exists
-  ansible.builtin.file:
-    path: $HOME/.local/share/helm/plugins/helm-diff
-    state: directory
-    mode: '0644'
-
 - name: Copy helm-diff bin
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.copy:
     remote_src: yes
     force: no
@@ -166,13 +177,18 @@
     mode: '0644'
 
 - name: Copy plugin.yaml
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.copy:
     remote_src: yes
     force: no
     src: /tmp/helm-diff/plugin.yaml
     dest: $HOME/.local/share/helm/plugins/helm-diff/plugin.yaml
     mode: '0644'
+
+- name: Change helm diff bin permissions
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins/helm-diff/bin/diff
+    mode: '0700'
 
 - name: Check that the .kube/config exists
   ansible.builtin.stat:
