@@ -311,11 +311,6 @@ parameters:
 			path: app/Console/Commands/Translation/Sync.php
 
 		-
-			message: "#^Cannot call method toEnglish\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Console/Commands/Translation/Sync.php
-
-		-
 			message: "#^Parameter \\#1 \\$array of function array_keys expects array, mixed given\\.$#"
 			count: 2
 			path: app/Console/Commands/Translation/Sync.php
@@ -386,23 +381,13 @@ parameters:
 			path: app/Http/Controllers/Auth/PassportController.php
 
 		-
-			message: "#^Cannot call method redirect\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
-			message: "#^Cannot call method user\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Http/Controllers/Auth/SocialiteController.php
-
-		-
 			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:handleProviderCallback\\(\\) should return Illuminate\\\\Http\\\\RedirectResponse but returns Illuminate\\\\Http\\\\RedirectResponse\\|Illuminate\\\\Routing\\\\Redirector\\.$#"
 			count: 1
 			path: app/Http/Controllers/Auth/SocialiteController.php
 
 		-
-			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<int,mixed\\>\\:\\:get\\(\\) expects int, string given\\.$#"
-			count: 2
+			message: "#^Method App\\\\Http\\\\Controllers\\\\Auth\\\\SocialiteController\\:\\:redirectToProvider\\(\\) should return Illuminate\\\\Http\\\\RedirectResponse but returns Symfony\\\\Component\\\\HttpFoundation\\\\RedirectResponse\\.$#"
+			count: 1
 			path: app/Http/Controllers/Auth/SocialiteController.php
 
 		-
@@ -601,17 +586,12 @@ parameters:
 			path: app/Rules/Comment.php
 
 		-
-			message: "#^Cannot call method toEnglish\\(\\) on mixed\\.$#"
-			count: 1
-			path: app/Support/helpers.php
-
-		-
 			message: "#^Function translate\\(\\) should return string but returns mixed\\.$#"
 			count: 1
 			path: app/Support/helpers.php
 
 		-
-			message: "#^Parameter \\#1 \\$root of static method Illuminate\\\\Routing\\\\UrlGenerator\\:\\:assetFrom\\(\\) expects string, mixed given\\.$#"
+			message: "#^Parameter \\#1 \\$root of static method Illuminate\\\\Support\\\\Facades\\\\URL\\:\\:assetFrom\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: app/Support/helpers.php
 

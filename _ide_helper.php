@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.40.1.
+ * Generated for Laravel 9.52.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16,7 +16,7 @@
             /**
      * 
      *
-     * @see \Illuminate\Contracts\Foundation\Application
+     * @see \Illuminate\Foundation\Application
      */ 
         class App {
                     /**
@@ -1547,7 +1547,7 @@
             /**
      * 
      *
-     * @see \Illuminate\Contracts\Console\Kernel
+     * @see \Illuminate\Foundation\Console\Kernel
      */ 
         class Artisan {
                     /**
@@ -1577,7 +1577,7 @@
                         $instance->terminate($input, $status);
         }
                     /**
-         * Register a callback to be invoked when the command lifecyle duration exceeds a given amount of time.
+         * Register a callback to be invoked when the command lifecycle duration exceeds a given amount of time.
          *
          * @param \DateTimeInterface|\Carbon\CarbonInterval|float|int $threshold
          * @param callable $handler
@@ -1715,9 +1715,7 @@
      * 
      *
      * @see \Illuminate\Auth\AuthManager
-     * @see \Illuminate\Contracts\Auth\Factory
-     * @see \Illuminate\Contracts\Auth\Guard
-     * @see \Illuminate\Contracts\Auth\StatefulGuard
+     * @see \Illuminate\Auth\SessionGuard
      */ 
         class Auth {
                     /**
@@ -2016,7 +2014,7 @@
          * Attempt to authenticate a user with credentials and additional callbacks.
          *
          * @param array $credentials
-         * @param array|callable $callbacks
+         * @param array|callable|null $callbacks
          * @param bool $remember
          * @return bool 
          * @static 
@@ -2321,6 +2319,17 @@
                         return $instance->guest();
         }
                     /**
+         * Forget the current user.
+         *
+         * @return \Illuminate\Auth\SessionGuard 
+         * @static 
+         */ 
+        public static function forgetUser()
+        {
+                        /** @var \Illuminate\Auth\SessionGuard $instance */
+                        return $instance->forgetUser();
+        }
+                    /**
          * Get the user provider used by the guard.
          *
          * @return \Illuminate\Contracts\Auth\UserProvider 
@@ -2520,7 +2529,7 @@
          * Check the result of a condition.
          *
          * @param string $name
-         * @param array $parameters
+         * @param mixed $parameters
          * @return bool 
          * @static 
          */ 
@@ -2568,6 +2577,19 @@
                         return $instance->getClassComponentAliases();
         }
                     /**
+         * Register a new anonymous component path.
+         *
+         * @param string $path
+         * @param string|null $prefix
+         * @return void 
+         * @static 
+         */ 
+        public static function anonymousComponentPath($path, $prefix = null)
+        {
+                        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
+                        $instance->anonymousComponentPath($path, $prefix);
+        }
+                    /**
          * Register an anonymous component namespace.
          *
          * @param string $directory
@@ -2592,6 +2614,17 @@
         {
                         /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
                         $instance->componentNamespace($namespace, $prefix);
+        }
+                    /**
+         * Get the registered anonymous component paths.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getAnonymousComponentPaths()
+        {
+                        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
+                        return $instance->getAnonymousComponentPaths();
         }
                     /**
          * Get the registered anonymous component namespaces.
@@ -2860,10 +2893,14 @@
             /**
      * 
      *
-     * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(string $channel, callable|string $callback, array $options = [])
      * @method static mixed auth(\Illuminate\Http\Request $request)
+     * @method static mixed validAuthenticationResponse(\Illuminate\Http\Request $request, mixed $result)
+     * @method static void broadcast(array $channels, string $event, array $payload = [])
+     * @method static array|null resolveAuthenticatedUser(\Illuminate\Http\Request $request)
      * @method static void resolveAuthenticatedUserUsing(\Closure $callback)
-     * @see \Illuminate\Contracts\Broadcasting\Factory
+     * @method static \Illuminate\Broadcasting\Broadcasters\Broadcaster channel(\Illuminate\Contracts\Broadcasting\HasBroadcastChannel|string $channel, callable|string $callback, array $options = [])
+     * @see \Illuminate\Broadcasting\BroadcastManager
+     * @see \Illuminate\Broadcasting\Broadcasters\Broadcaster
      */ 
         class Broadcast {
                     /**
@@ -3075,7 +3112,8 @@
             /**
      * 
      *
-     * @see \Illuminate\Contracts\Bus\Dispatcher
+     * @see \Illuminate\Bus\Dispatcher
+     * @see \Illuminate\Support\Testing\Fakes\BusFake
      */ 
         class Bus {
                     /**
@@ -3256,7 +3294,7 @@
                     /**
          * Assert if a job was pushed a number of times.
          *
-         * @param string $command
+         * @param string|\Closure $command
          * @param int $times
          * @return void 
          * @static 
@@ -3306,7 +3344,7 @@
                     /**
          * Assert if a job was pushed synchronously a number of times.
          *
-         * @param string $command
+         * @param string|\Closure $command
          * @param int $times
          * @return void 
          * @static 
@@ -3345,7 +3383,7 @@
                     /**
          * Assert if a job was pushed after the response was sent a number of times.
          *
-         * @param string $command
+         * @param string|\Closure $command
          * @param int $times
          * @return void 
          * @static 
@@ -3545,7 +3583,7 @@
      * 
      *
      * @see \Illuminate\Cache\CacheManager
-     * @see \Illuminate\Cache\Repository
+     * @mixin \Illuminate\Cache\Repository
      */ 
         class Cache {
                     /**
@@ -3658,7 +3696,7 @@
                     /**
          * Determine if an item exists in the cache.
          *
-         * @param string $key
+         * @param array|string $key
          * @return bool 
          * @static 
          */ 
@@ -3682,9 +3720,10 @@
                     /**
          * Retrieve an item from the cache by key.
          *
+         * @template TCacheValue
          * @param array|string $key
-         * @param mixed $default
-         * @return mixed 
+         * @param \Illuminate\Cache\TCacheValue|\Illuminate\Cache\(\Closure():  TCacheValue)  $default
+         * @return \Illuminate\Cache\(TCacheValue is null ? mixed : TCacheValue)
          * @static 
          */ 
         public static function get($key, $default = null)
@@ -3726,9 +3765,10 @@
                     /**
          * Retrieve an item from the cache and delete it.
          *
-         * @param string $key
-         * @param mixed $default
-         * @return mixed 
+         * @template TCacheValue
+         * @param array|string $key
+         * @param \Illuminate\Cache\TCacheValue|\Illuminate\Cache\(\Closure():  TCacheValue)  $default
+         * @return \Illuminate\Cache\(TCacheValue is null ? mixed : TCacheValue)
          * @static 
          */ 
         public static function pull($key, $default = null)
@@ -3857,10 +3897,11 @@
                     /**
          * Get an item from the cache, or execute the given Closure and store the result.
          *
+         * @template TCacheValue
          * @param string $key
          * @param \Closure|\DateTimeInterface|\DateInterval|int|null $ttl
-         * @param \Closure $callback
-         * @return mixed 
+         * @param \Closure():  TCacheValue  $callback
+         * @return \Illuminate\Cache\TCacheValue 
          * @static 
          */ 
         public static function remember($key, $ttl, $callback)
@@ -3871,9 +3912,10 @@
                     /**
          * Get an item from the cache, or execute the given Closure and store the result forever.
          *
+         * @template TCacheValue
          * @param string $key
-         * @param \Closure $callback
-         * @return mixed 
+         * @param \Closure():  TCacheValue  $callback
+         * @return \Illuminate\Cache\TCacheValue 
          * @static 
          */ 
         public static function sear($key, $callback)
@@ -3884,9 +3926,10 @@
                     /**
          * Get an item from the cache, or execute the given Closure and store the result forever.
          *
+         * @template TCacheValue
          * @param string $key
-         * @param \Closure $callback
-         * @return mixed 
+         * @param \Closure():  TCacheValue  $callback
+         * @return \Illuminate\Cache\TCacheValue 
          * @static 
          */ 
         public static function rememberForever($key, $callback)
@@ -4140,6 +4183,33 @@
                         return $instance->macroCall($method, $parameters);
         }
                     /**
+         * Get a lock instance.
+         *
+         * @param string $name
+         * @param int $seconds
+         * @param string|null $owner
+         * @return \Illuminate\Contracts\Cache\Lock 
+         * @static 
+         */ 
+        public static function lock($name, $seconds = 0, $owner = null)
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->lock($name, $seconds, $owner);
+        }
+                    /**
+         * Restore a lock instance using the owner identifier.
+         *
+         * @param string $name
+         * @param string $owner
+         * @return \Illuminate\Contracts\Cache\Lock 
+         * @static 
+         */ 
+        public static function restoreLock($name, $owner)
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->restoreLock($name, $owner);
+        }
+                    /**
          * Remove all items from the cache.
          *
          * @return bool 
@@ -4182,33 +4252,6 @@
         {
                         /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->getPrefix();
-        }
-                    /**
-         * Get a lock instance.
-         *
-         * @param string $name
-         * @param int $seconds
-         * @param string|null $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function lock($name, $seconds = 0, $owner = null)
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->lock($name, $seconds, $owner);
-        }
-                    /**
-         * Restore a lock instance using the owner identifier.
-         *
-         * @param string $name
-         * @param string $owner
-         * @return \Illuminate\Contracts\Cache\Lock 
-         * @static 
-         */ 
-        public static function restoreLock($name, $owner)
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->restoreLock($name, $owner);
         }
          
     }
@@ -4491,7 +4534,7 @@
                     /**
          * Queue a cookie to send with the next response.
          *
-         * @param array $parameters
+         * @param mixed $parameters
          * @return void 
          * @static 
          */ 
@@ -4531,8 +4574,8 @@
          * Set the default path and domain for the jar.
          *
          * @param string $path
-         * @param string $domain
-         * @param bool $secure
+         * @param string|null $domain
+         * @param bool|null $secure
          * @param string|null $sameSite
          * @return \Illuminate\Cookie\CookieJar 
          * @static 
@@ -4715,75 +4758,76 @@
      * @see https://github.com/briannesbitt/Carbon/blob/master/src/Carbon/Factory.php
      * @method static \Illuminate\Support\Carbon create($year = 0, $month = 1, $day = 1, $hour = 0, $minute = 0, $second = 0, $tz = null)
      * @method static \Illuminate\Support\Carbon createFromDate($year = null, $month = null, $day = null, $tz = null)
+     * @method static \Illuminate\Support\Carbon|false createFromFormat($format, $time, $tz = null)
      * @method static \Illuminate\Support\Carbon createFromTime($hour = 0, $minute = 0, $second = 0, $tz = null)
      * @method static \Illuminate\Support\Carbon createFromTimeString($time, $tz = null)
      * @method static \Illuminate\Support\Carbon createFromTimestamp($timestamp, $tz = null)
      * @method static \Illuminate\Support\Carbon createFromTimestampMs($timestamp, $tz = null)
      * @method static \Illuminate\Support\Carbon createFromTimestampUTC($timestamp)
      * @method static \Illuminate\Support\Carbon createMidnightDate($year = null, $month = null, $day = null, $tz = null)
+     * @method static \Illuminate\Support\Carbon|false createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
      * @method static void disableHumanDiffOption($humanDiffOption)
      * @method static void enableHumanDiffOption($humanDiffOption)
+     * @method static mixed executeWithLocale($locale, $func)
      * @method static \Illuminate\Support\Carbon fromSerialized($value)
-     * @method static array getLastErrors()
-     * @method static \Illuminate\Support\Carbon|null getTestNow()
-     * @method static \Illuminate\Support\Carbon instance($date)
-     * @method static bool isMutable()
-     * @method static \Illuminate\Support\Carbon maxValue()
-     * @method static \Illuminate\Support\Carbon minValue()
-     * @method static \Illuminate\Support\Carbon now($tz = null)
-     * @method static \Illuminate\Support\Carbon parse($time = null, $tz = null)
-     * @method static void setHumanDiffOptions($humanDiffOptions)
-     * @method static void setTestNow($testNow = null)
-     * @method static void setUtf8($utf8)
-     * @method static \Illuminate\Support\Carbon today($tz = null)
-     * @method static \Illuminate\Support\Carbon tomorrow($tz = null)
-     * @method static void useStrictMode($strictModeEnabled = true)
-     * @method static \Illuminate\Support\Carbon yesterday($tz = null)
-     * @method static \Illuminate\Support\Carbon|false createFromFormat($format, $time, $tz = null)
-     * @method static \Illuminate\Support\Carbon|false createSafe($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $tz = null)
-     * @method static \Illuminate\Support\Carbon|null make($var)
-     * @method static \Symfony\Component\Translation\TranslatorInterface getTranslator()
      * @method static array getAvailableLocales()
      * @method static array getDays()
+     * @method static int getHumanDiffOptions()
      * @method static array getIsoUnits()
+     * @method static array getLastErrors()
+     * @method static string getLocale()
+     * @method static int getMidDayAt()
+     * @method static \Illuminate\Support\Carbon|null getTestNow()
+     * @method static \Symfony\Component\Translation\TranslatorInterface getTranslator()
+     * @method static int getWeekEndsAt()
+     * @method static int getWeekStartsAt()
      * @method static array getWeekendDays()
      * @method static bool hasFormat($date, $format)
      * @method static bool hasMacro($name)
      * @method static bool hasRelativeKeywords($time)
      * @method static bool hasTestNow()
+     * @method static \Illuminate\Support\Carbon instance($date)
      * @method static bool isImmutable()
      * @method static bool isModifiableUnit($unit)
+     * @method static bool isMutable()
      * @method static bool isStrictModeEnabled()
      * @method static bool localeHasDiffOneDayWords($locale)
      * @method static bool localeHasDiffSyntax($locale)
      * @method static bool localeHasDiffTwoDayWords($locale)
      * @method static bool localeHasPeriodSyntax($locale)
      * @method static bool localeHasShortUnits($locale)
-     * @method static bool setLocale($locale)
-     * @method static bool shouldOverflowMonths()
-     * @method static bool shouldOverflowYears()
-     * @method static int getHumanDiffOptions()
-     * @method static int getMidDayAt()
-     * @method static int getWeekEndsAt()
-     * @method static int getWeekStartsAt()
-     * @method static mixed executeWithLocale($locale, $func)
-     * @method static string getLocale()
-     * @method static string pluralUnit(string $unit)
-     * @method static string singularUnit(string $unit)
      * @method static void macro($name, $macro)
+     * @method static \Illuminate\Support\Carbon|null make($var)
+     * @method static \Illuminate\Support\Carbon maxValue()
+     * @method static \Illuminate\Support\Carbon minValue()
      * @method static void mixin($mixin)
+     * @method static \Illuminate\Support\Carbon now($tz = null)
+     * @method static \Illuminate\Support\Carbon parse($time = null, $tz = null)
+     * @method static string pluralUnit(string $unit)
      * @method static void resetMonthsOverflow()
      * @method static void resetToStringFormat()
      * @method static void resetYearsOverflow()
      * @method static void serializeUsing($callback)
+     * @method static void setHumanDiffOptions($humanDiffOptions)
+     * @method static bool setLocale($locale)
      * @method static void setMidDayAt($hour)
+     * @method static void setTestNow($testNow = null)
      * @method static void setToStringFormat($format)
      * @method static void setTranslator(\Symfony\Component\Translation\TranslatorInterface $translator)
+     * @method static void setUtf8($utf8)
      * @method static void setWeekEndsAt($day)
      * @method static void setWeekStartsAt($day)
      * @method static void setWeekendDays($days)
+     * @method static bool shouldOverflowMonths()
+     * @method static bool shouldOverflowYears()
+     * @method static string singularUnit(string $unit)
+     * @method static \Illuminate\Support\Carbon today($tz = null)
+     * @method static \Illuminate\Support\Carbon tomorrow($tz = null)
      * @method static void useMonthsOverflow($monthsOverflow = true)
+     * @method static void useStrictMode($strictModeEnabled = true)
      * @method static void useYearsOverflow($yearsOverflow = true)
+     * @method static \Illuminate\Support\Carbon yesterday($tz = null)
+     * @see \Illuminate\Support\DateFactory
      */ 
         class Date {
                     /**
@@ -4847,7 +4891,6 @@
      * 
      *
      * @see \Illuminate\Database\DatabaseManager
-     * @see \Illuminate\Database\Connection
      */ 
         class DB {
                     /**
@@ -5534,6 +5577,17 @@
                         return $instance->isDoctrineAvailable();
         }
                     /**
+         * Indicates whether native alter operations will be used when dropping or renaming columns, even if Doctrine DBAL is installed.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function usingNativeSchemaOperations()
+        {            //Method inherited from \Illuminate\Database\Connection         
+                        /** @var \Illuminate\Database\MySqlConnection $instance */
+                        return $instance->usingNativeSchemaOperations();
+        }
+                    /**
          * Get a Doctrine Schema Column instance.
          *
          * @param string $table
@@ -6047,6 +6101,7 @@
      * 
      *
      * @see \Illuminate\Events\Dispatcher
+     * @see \Illuminate\Support\Testing\Fakes\EventFake
      */ 
         class Event {
                     /**
@@ -6511,13 +6566,14 @@
          *
          * @param string $path
          * @param string $content
+         * @param int|null $mode
          * @return void 
          * @static 
          */ 
-        public static function replace($path, $content)
+        public static function replace($path, $content, $mode = null)
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        $instance->replace($path, $content);
+                        $instance->replace($path, $content, $mode);
         }
                     /**
          * Replace a given string within a given file.
@@ -6972,7 +7028,7 @@
          *
          * @template TWhenParameter
          * @template TWhenReturnType
-         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null  $value
          * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
          * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
          * @return $this|\Illuminate\Filesystem\TWhenReturnType 
@@ -7050,7 +7106,7 @@
             /**
      * 
      *
-     * @see \Illuminate\Contracts\Auth\Access\Gate
+     * @see \Illuminate\Auth\Access\Gate
      */ 
         class Gate {
                     /**
@@ -7353,8 +7409,8 @@
          * Deny with a HTTP status code.
          *
          * @param int $status
-         * @param \Illuminate\Auth\Access\?string $message
-         * @param \Illuminate\Auth\Access\?int $code
+         * @param string|null $message
+         * @param int|null $code
          * @return \Illuminate\Auth\Access\Response 
          * @static 
          */ 
@@ -7366,8 +7422,8 @@
                     /**
          * Deny with a 404 HTTP status code.
          *
-         * @param \Illuminate\Auth\Access\?string $message
-         * @param \Illuminate\Auth\Access\?int $code
+         * @param string|null $message
+         * @param int|null $code
          * @return \Illuminate\Auth\Access\Response 
          * @static 
          */ 
@@ -7382,6 +7438,7 @@
      * 
      *
      * @see \Illuminate\Hashing\HashManager
+     * @see \Illuminate\Hashing\AbstractHasher
      */ 
         class Hash {
                     /**
@@ -7556,47 +7613,63 @@
             /**
      * 
      *
-     * @method static \Illuminate\Http\Client\PendingRequest accept(string $contentType)
-     * @method static \Illuminate\Http\Client\PendingRequest acceptJson()
-     * @method static \Illuminate\Http\Client\PendingRequest asForm()
-     * @method static \Illuminate\Http\Client\PendingRequest asJson()
-     * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
-     * @method static \Illuminate\Http\Client\PendingRequest async()
-     * @method static \Illuminate\Http\Client\PendingRequest attach(string|array $name, string|resource $contents = '', string|null $filename = null, array $headers = [])
      * @method static \Illuminate\Http\Client\PendingRequest baseUrl(string $url)
-     * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
+     * @method static \Illuminate\Http\Client\PendingRequest withBody(string $content, string $contentType)
+     * @method static \Illuminate\Http\Client\PendingRequest asJson()
+     * @method static \Illuminate\Http\Client\PendingRequest asForm()
+     * @method static \Illuminate\Http\Client\PendingRequest attach(string|array $name, string|resource $contents = '', string|null $filename = null, array $headers = [])
+     * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
      * @method static \Illuminate\Http\Client\PendingRequest bodyFormat(string $format)
-     * @method static \Illuminate\Http\Client\PendingRequest connectTimeout(int $seconds)
      * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
-     * @method static \Illuminate\Http\Client\PendingRequest dd()
-     * @method static \Illuminate\Http\Client\PendingRequest dump()
-     * @method static \Illuminate\Http\Client\PendingRequest maxRedirects(int $max)
-     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleepMilliseconds = 0, ?callable $when = null, bool $throw = true)
-     * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
-     * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
-     * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
-     * @method static \Illuminate\Http\Client\PendingRequest withBasicAuth(string $username, string $password)
-     * @method static \Illuminate\Http\Client\PendingRequest withBody(resource|string $content, string $contentType)
-     * @method static \Illuminate\Http\Client\PendingRequest withCookies(array $cookies, string $domain)
-     * @method static \Illuminate\Http\Client\PendingRequest withDigestAuth(string $username, string $password)
+     * @method static \Illuminate\Http\Client\PendingRequest acceptJson()
+     * @method static \Illuminate\Http\Client\PendingRequest accept(string $contentType)
      * @method static \Illuminate\Http\Client\PendingRequest withHeaders(array $headers)
-     * @method static \Illuminate\Http\Client\PendingRequest withMiddleware(callable $middleware)
-     * @method static \Illuminate\Http\Client\PendingRequest withOptions(array $options)
+     * @method static \Illuminate\Http\Client\PendingRequest withBasicAuth(string $username, string $password)
+     * @method static \Illuminate\Http\Client\PendingRequest withDigestAuth(string $username, string $password)
      * @method static \Illuminate\Http\Client\PendingRequest withToken(string $token, string $type = 'Bearer')
      * @method static \Illuminate\Http\Client\PendingRequest withUserAgent(string $userAgent)
+     * @method static \Illuminate\Http\Client\PendingRequest withUrlParameters(array $parameters = [])
+     * @method static \Illuminate\Http\Client\PendingRequest withCookies(array $cookies, string $domain)
+     * @method static \Illuminate\Http\Client\PendingRequest maxRedirects(int $max)
      * @method static \Illuminate\Http\Client\PendingRequest withoutRedirecting()
      * @method static \Illuminate\Http\Client\PendingRequest withoutVerifying()
-     * @method static \Illuminate\Http\Client\PendingRequest throw(callable $callback = null)
-     * @method static \Illuminate\Http\Client\PendingRequest throwIf($condition)
-     * @method \Illuminate\Http\Client\PendingRequest throwUnless($condition)
-     * @method static array pool(callable $callback)
-     * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
+     * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
+     * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
+     * @method static \Illuminate\Http\Client\PendingRequest connectTimeout(int $seconds)
+     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleepMilliseconds = 0, callable|null $when = null, bool $throw = true)
+     * @method static \Illuminate\Http\Client\PendingRequest withOptions(array $options)
+     * @method static \Illuminate\Http\Client\PendingRequest withMiddleware(callable $middleware)
+     * @method static \Illuminate\Http\Client\PendingRequest beforeSending(callable $callback)
+     * @method static \Illuminate\Http\Client\PendingRequest throw(callable|null $callback = null)
+     * @method static \Illuminate\Http\Client\PendingRequest throwIf(callable|bool $condition, callable|null $throwCallback = null)
+     * @method static \Illuminate\Http\Client\PendingRequest throwUnless(bool $condition)
+     * @method static \Illuminate\Http\Client\PendingRequest dump()
+     * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @method static \Illuminate\Http\Client\Response get(string $url, array|string|null $query = null)
      * @method static \Illuminate\Http\Client\Response head(string $url, array|string|null $query = null)
-     * @method static \Illuminate\Http\Client\Response patch(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response post(string $url, array $data = [])
+     * @method static \Illuminate\Http\Client\Response patch(string $url, array $data = [])
      * @method static \Illuminate\Http\Client\Response put(string $url, array $data = [])
+     * @method static \Illuminate\Http\Client\Response delete(string $url, array $data = [])
+     * @method static array pool(callable $callback)
      * @method static \Illuminate\Http\Client\Response send(string $method, string $url, array $options = [])
+     * @method static \GuzzleHttp\Client buildClient()
+     * @method static \GuzzleHttp\Client createClient(\GuzzleHttp\HandlerStack $handlerStack)
+     * @method static \GuzzleHttp\HandlerStack buildHandlerStack()
+     * @method static \GuzzleHttp\HandlerStack pushHandlers(\GuzzleHttp\HandlerStack $handlerStack)
+     * @method static \Closure buildBeforeSendingHandler()
+     * @method static \Closure buildRecorderHandler()
+     * @method static \Closure buildStubHandler()
+     * @method static \GuzzleHttp\Psr7\RequestInterface runBeforeSendingCallbacks(\GuzzleHttp\Psr7\RequestInterface $request, array $options)
+     * @method static array mergeOptions(array ...$options)
+     * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
+     * @method static \Illuminate\Http\Client\PendingRequest async(bool $async = true)
+     * @method static \GuzzleHttp\Promise\PromiseInterface|null getPromise()
+     * @method static \Illuminate\Http\Client\PendingRequest setClient(\GuzzleHttp\Client $client)
+     * @method static \Illuminate\Http\Client\PendingRequest setHandler(callable $handler)
+     * @method static array getOptions()
+     * @method static \Illuminate\Http\Client\PendingRequest|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
+     * @method static \Illuminate\Http\Client\PendingRequest|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
      * @see \Illuminate\Http\Client\Factory
      */ 
         class Http {
@@ -8098,6 +8171,19 @@
                         $instance->setLoaded($loaded);
         }
                     /**
+         * Add a handler to be executed in order to format a given class to a string during translation replacements.
+         *
+         * @param callable|string $class
+         * @param callable|null $handler
+         * @return void 
+         * @static 
+         */ 
+        public static function stringable($class, $handler = null)
+        {
+                        /** @var \Illuminate\Translation\Translator $instance */
+                        $instance->stringable($class, $handler);
+        }
+                    /**
          * Set the parsed value of a key.
          *
          * @param string $key
@@ -8172,11 +8258,14 @@
             /**
      * 
      *
+     * @method static void write(string $level, \Illuminate\Contracts\Support\Arrayable|\Illuminate\Contracts\Support\Jsonable|\Illuminate\Support\Stringable|array|string $message, array $context = [])
      * @method static \Illuminate\Log\Logger withContext(array $context = [])
      * @method static \Illuminate\Log\Logger withoutContext()
-     * @method static void write(string $level, string $message, array $context = [])
      * @method static void listen(\Closure $callback)
-     * @see \Illuminate\Log\Logger
+     * @method static \Psr\Log\LoggerInterface getLogger()
+     * @method static \Illuminate\Contracts\Events\Dispatcher getEventDispatcher()
+     * @method static void setEventDispatcher(\Illuminate\Contracts\Events\Dispatcher $dispatcher)
+     * @see \Illuminate\Log\LogManager
      */ 
         class Log {
                     /**
@@ -8302,13 +8391,13 @@
          * Unset the given channel instance.
          *
          * @param string|null $driver
-         * @return \Illuminate\Log\LogManager 
+         * @return void 
          * @static 
          */ 
         public static function forgetChannel($driver = null)
         {
                         /** @var \Illuminate\Log\LogManager $instance */
-                        return $instance->forgetChannel($driver);
+                        $instance->forgetChannel($driver);
         }
                     /**
          * Get all of the resolved log channels.
@@ -8459,11 +8548,21 @@
      * @method static void alwaysReplyTo(string $address, string|null $name = null)
      * @method static void alwaysReturnPath(string $address)
      * @method static void alwaysTo(string $address, string|null $name = null)
-     * @method static \Illuminate\Mail\SentMessage|null plain(string $view, array $data, $callback)
-     * @method static \Illuminate\Mail\SentMessage|null html(string $html, $callback)
-     * @method static mixed laterOn(string $queue, \DateTimeInterface|\DateInterval|int $delay, \Illuminate\Contracts\Mail\Mailable|string|array $view)
-     * @method static mixed queueOn(string $queue, \Illuminate\Contracts\Mail\Mailable|string|array $view)
-     * @see \Illuminate\Mail\Mailer
+     * @method static \Illuminate\Mail\SentMessage|null html(string $html, mixed $callback)
+     * @method static \Illuminate\Mail\SentMessage|null plain(string $view, array $data, mixed $callback)
+     * @method static string render(string|array $view, array $data = [])
+     * @method static mixed onQueue(string $queue, \Illuminate\Contracts\Mail\Mailable $view)
+     * @method static mixed queueOn(string $queue, \Illuminate\Contracts\Mail\Mailable $view)
+     * @method static mixed laterOn(string $queue, \DateTimeInterface|\DateInterval|int $delay, \Illuminate\Contracts\Mail\Mailable $view)
+     * @method static \Symfony\Component\Mailer\Transport\TransportInterface getSymfonyTransport()
+     * @method static \Illuminate\Contracts\View\Factory getViewFactory()
+     * @method static void setSymfonyTransport(\Symfony\Component\Mailer\Transport\TransportInterface $transport)
+     * @method static \Illuminate\Mail\Mailer setQueue(\Illuminate\Contracts\Queue\Factory $queue)
+     * @method static void macro(string $name, object|callable $macro)
+     * @method static void mixin(object $mixin, bool $replace = true)
+     * @method static bool hasMacro(string $name)
+     * @method static void flushMacros()
+     * @see \Illuminate\Mail\MailManager
      * @see \Illuminate\Support\Testing\Fakes\MailFake
      */ 
         class Mail {
@@ -8841,6 +8940,7 @@
      * 
      *
      * @see \Illuminate\Notifications\ChannelManager
+     * @see \Illuminate\Support\Testing\Fakes\NotificationFake
      */ 
         class Notification {
                     /**
@@ -9222,13 +9322,14 @@
             /**
      * 
      *
+     * @method static string sendResetLink(array $credentials, \Closure|null $callback = null)
      * @method static mixed reset(array $credentials, \Closure $callback)
-     * @method static string sendResetLink(array $credentials, \Closure $callback = null)
-     * @method static \Illuminate\Contracts\Auth\CanResetPassword getUser(array $credentials)
+     * @method static \Illuminate\Contracts\Auth\CanResetPassword|null getUser(array $credentials)
      * @method static string createToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
      * @method static void deleteToken(\Illuminate\Contracts\Auth\CanResetPassword $user)
      * @method static bool tokenExists(\Illuminate\Contracts\Auth\CanResetPassword $user, string $token)
      * @method static \Illuminate\Auth\Passwords\TokenRepositoryInterface getRepository()
+     * @see \Illuminate\Auth\Passwords\PasswordBrokerManager
      * @see \Illuminate\Auth\Passwords\PasswordBroker
      */ 
         class Password {
@@ -9274,6 +9375,7 @@
      *
      * @see \Illuminate\Queue\QueueManager
      * @see \Illuminate\Queue\Queue
+     * @see \Illuminate\Support\Testing\Fakes\QueueFake
      */ 
         class Queue {
                     /**
@@ -10225,7 +10327,7 @@
             /**
      * 
      *
-     * @method static mixed filterFiles(mixed $files)
+     * @method static string|null getContentTypeFormat()
      * @see \Illuminate\Http\Request
      */ 
         class Request {
@@ -12044,6 +12146,20 @@
                         return $instance->missing($key);
         }
                     /**
+         * Apply the callback if the request is missing the given input item key.
+         *
+         * @param string $key
+         * @param callable $callback
+         * @param callable|null $default
+         * @return $this|mixed 
+         * @static 
+         */ 
+        public static function whenMissing($key, $callback, $default = null)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->whenMissing($key, $callback, $default);
+        }
+                    /**
          * Get the keys for all of the input and files.
          *
          * @return array 
@@ -12431,7 +12547,7 @@
             /**
      * 
      *
-     * @see \Illuminate\Contracts\Routing\ResponseFactory
+     * @see \Illuminate\Routing\ResponseFactory
      */ 
         class Response {
                     /**
@@ -12510,7 +12626,7 @@
                     /**
          * Create a new streamed response instance.
          *
-         * @param \Closure $callback
+         * @param callable $callback
          * @param int $status
          * @param array $headers
          * @return \Symfony\Component\HttpFoundation\StreamedResponse 
@@ -12524,7 +12640,7 @@
                     /**
          * Create a new streamed response instance as a file download.
          *
-         * @param \Closure $callback
+         * @param callable $callback
          * @param string|null $name
          * @param array $headers
          * @param string|null $disposition
@@ -12690,6 +12806,13 @@
             /**
      * 
      *
+     * @method static \Illuminate\Routing\RouteRegistrar attribute(string $key, mixed $value)
+     * @method static \Illuminate\Routing\RouteRegistrar whereAlpha(array|string $parameters)
+     * @method static \Illuminate\Routing\RouteRegistrar whereAlphaNumeric(array|string $parameters)
+     * @method static \Illuminate\Routing\RouteRegistrar whereNumber(array|string $parameters)
+     * @method static \Illuminate\Routing\RouteRegistrar whereUlid(array|string $parameters)
+     * @method static \Illuminate\Routing\RouteRegistrar whereUuid(array|string $parameters)
+     * @method static \Illuminate\Routing\RouteRegistrar whereIn(array|string $parameters, array $values)
      * @method static \Illuminate\Routing\RouteRegistrar as(string $value)
      * @method static \Illuminate\Routing\RouteRegistrar controller(string $controller)
      * @method static \Illuminate\Routing\RouteRegistrar domain(string $value)
@@ -12917,6 +13040,60 @@
         {
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->apiResource($name, $controller, $options);
+        }
+                    /**
+         * Register an array of singleton resource controllers.
+         *
+         * @param array $singletons
+         * @param array $options
+         * @return void 
+         * @static 
+         */ 
+        public static function singletons($singletons, $options = [])
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        $instance->singletons($singletons, $options);
+        }
+                    /**
+         * Route a singleton resource to a controller.
+         *
+         * @param string $name
+         * @param string $controller
+         * @param array $options
+         * @return \Illuminate\Routing\PendingSingletonResourceRegistration 
+         * @static 
+         */ 
+        public static function singleton($name, $controller, $options = [])
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        return $instance->singleton($name, $controller, $options);
+        }
+                    /**
+         * Register an array of API singleton resource controllers.
+         *
+         * @param array $singletons
+         * @param array $options
+         * @return void 
+         * @static 
+         */ 
+        public static function apiSingletons($singletons, $options = [])
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        $instance->apiSingletons($singletons, $options);
+        }
+                    /**
+         * Route an API singleton resource to a controller.
+         *
+         * @param string $name
+         * @param string $controller
+         * @param array $options
+         * @return \Illuminate\Routing\PendingSingletonResourceRegistration 
+         * @static 
+         */ 
+        public static function apiSingleton($name, $controller, $options = [])
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        return $instance->apiSingleton($name, $controller, $options);
         }
                     /**
          * Create a route group with shared attributes.
@@ -13757,6 +13934,17 @@
                         \Illuminate\Database\Schema\MySqlBuilder::morphUsingUlids();
         }
                     /**
+         * Attempt to use native schema operations for dropping and renaming columns, even if Doctrine DBAL is installed.
+         *
+         * @param bool $value
+         * @return void 
+         * @static 
+         */ 
+        public static function useNativeSchemaOperationsIfPossible($value = true)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        \Illuminate\Database\Schema\MySqlBuilder::useNativeSchemaOperationsIfPossible($value);
+        }
+                    /**
          * Determine if the given table has a given column.
          *
          * @param string $table
@@ -13934,6 +14122,18 @@
                         return $instance->disableForeignKeyConstraints();
         }
                     /**
+         * Disable foreign key constraints during the execution of a callback.
+         *
+         * @param \Closure $callback
+         * @return mixed 
+         * @static 
+         */ 
+        public static function withoutForeignKeyConstraints($callback)
+        {            //Method inherited from \Illuminate\Database\Schema\Builder         
+                        /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+                        return $instance->withoutForeignKeyConstraints($callback);
+        }
+                    /**
          * Get the database connection instance.
          *
          * @return \Illuminate\Database\Connection 
@@ -13974,7 +14174,6 @@
      * 
      *
      * @see \Illuminate\Session\SessionManager
-     * @see \Illuminate\Session\Store
      */ 
         class Session {
                     /**
@@ -14503,7 +14702,7 @@
                     /**
          * Set the session ID.
          *
-         * @param string $id
+         * @param string|null $id
          * @return void 
          * @static 
          */ 
@@ -14515,7 +14714,7 @@
                     /**
          * Determine if this is a valid session ID.
          *
-         * @param string $id
+         * @param string|null $id
          * @return bool 
          * @static 
          */ 
@@ -14607,13 +14806,13 @@
          * Set the underlying session handler implementation.
          *
          * @param \SessionHandlerInterface $handler
-         * @return void 
+         * @return \SessionHandlerInterface 
          * @static 
          */ 
         public static function setHandler($handler)
         {
                         /** @var \Illuminate\Session\Store $instance */
-                        $instance->setHandler($handler);
+                        return $instance->setHandler($handler);
         }
                     /**
          * Determine if the session handler needs a request.
@@ -14638,11 +14837,64 @@
                         /** @var \Illuminate\Session\Store $instance */
                         $instance->setRequestOnHandler($request);
         }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Illuminate\Session\Store::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Illuminate\Session\Store::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Illuminate\Session\Store::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {
+                        \Illuminate\Session\Store::flushMacros();
+        }
          
     }
             /**
      * 
      *
+     * @method static bool has(string $location)
+     * @method static string read(string $location)
+     * @method static \League\Flysystem\DirectoryListing listContents(string $location, bool $deep = false)
+     * @method static int fileSize(string $path)
+     * @method static string visibility(string $path)
+     * @method static void write(string $location, string $contents, array $config = [])
+     * @method static void createDirectory(string $location, array $config = [])
      * @see \Illuminate\Filesystem\FilesystemManager
      */ 
         class Storage {
@@ -15248,6 +15500,21 @@
                         return $instance->temporaryUrl($path, $expiration, $options);
         }
                     /**
+         * Get a temporary upload URL for the file at the given path.
+         *
+         * @param string $path
+         * @param \DateTimeInterface $expiration
+         * @param array $options
+         * @return array 
+         * @throws \RuntimeException
+         * @static 
+         */ 
+        public static function temporaryUploadUrl($path, $expiration, $options = [])
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+                        return $instance->temporaryUploadUrl($path, $expiration, $options);
+        }
+                    /**
          * Get an array of all files in a directory.
          *
          * @param string|null $directory
@@ -15371,7 +15638,7 @@
          *
          * @template TWhenParameter
          * @template TWhenReturnType
-         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null  $value
          * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
          * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
          * @return $this|\Illuminate\Filesystem\TWhenReturnType 
@@ -17132,7 +17399,7 @@
                     /**
          * Get the preloaded assets.
          *
-         * @var array
+         * @return array 
          * @static 
          */ 
         public static function preloadedAssets()
@@ -17154,7 +17421,7 @@
                     /**
          * Generate or set a Content Security Policy nonce to apply to all generated tags.
          *
-         * @param \Illuminate\Foundation\?string $nonce
+         * @param string|null $nonce
          * @return string 
          * @static 
          */ 
@@ -17186,6 +17453,18 @@
         {
                         /** @var \Illuminate\Foundation\Vite $instance */
                         return $instance->withEntryPoints($entryPoints);
+        }
+                    /**
+         * Set the filename for the manifest file.
+         *
+         * @param string $filename
+         * @return \Illuminate\Foundation\Vite 
+         * @static 
+         */ 
+        public static function useManifestFilename($filename)
+        {
+                        /** @var \Illuminate\Foundation\Vite $instance */
+                        return $instance->useManifestFilename($filename);
         }
                     /**
          * Get the Vite "hot" file path.
@@ -17249,7 +17528,7 @@
                     /**
          * Use the given callback to resolve attributes for preload tags.
          *
-         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): array)|array  $attributes
+         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): (array|false))|array|false  $attributes
          * @return \Illuminate\Foundation\Vite 
          * @static 
          */ 
@@ -17285,6 +17564,7 @@
                     /**
          * Get a unique hash representing the current manifest, or null if there is no manifest.
          *
+         * @param string|null $buildDirectory
          * @return string|null 
          * @static 
          */ 
@@ -17470,7 +17750,7 @@
                     /**
          * 
          *
-         * @see \App\Models\Article::registerSearchableMacros()
+         * @see \App\Models\Article::forceDelete()
          * @static 
          */ 
         public static function unsearchable()
@@ -19758,7 +20038,7 @@ namespace  {
             }
              
                 /**
-             * Get an array with the values of a given column.
+             * Get a collection with the values of a given column.
              *
              * @param string|\Illuminate\Database\Query\Expression $column
              * @param string|null $key
@@ -20292,7 +20572,7 @@ namespace  {
              *
              * @template TWhenParameter
              * @template TWhenReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter|null  $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TWhenReturnType 
@@ -20959,6 +21239,45 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->from($table, $as);
+            }
+             
+                /**
+             * Add an index hint to suggest a query index.
+             *
+             * @param string $index
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function useIndex($index)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->useIndex($index);
+            }
+             
+                /**
+             * Add an index hint to force a query index.
+             *
+             * @param string $index
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function forceIndex($index)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->forceIndex($index);
+            }
+             
+                /**
+             * Add an index hint to ignore a query index.
+             *
+             * @param string $index
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function ignoreIndex($index)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->ignoreIndex($index);
             }
              
                 /**
@@ -22228,7 +22547,7 @@ namespace  {
                 /**
              * Put the query's results in random order.
              *
-             * @param string $seed
+             * @param string|int $seed
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
@@ -22739,6 +23058,36 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->updateOrInsert($attributes, $values);
+            }
+             
+                /**
+             * Increment the given column's values by the given amounts.
+             *
+             * @param \Illuminate\Database\Query\array<string,  float|int|numeric-string>  $columns
+             * @param \Illuminate\Database\Query\array<string,  mixed>  $extra
+             * @return int 
+             * @throws \InvalidArgumentException
+             * @static 
+             */ 
+            public static function incrementEach($columns, $extra = [])
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->incrementEach($columns, $extra);
+            }
+             
+                /**
+             * Decrement the given column's values by the given amounts.
+             *
+             * @param \Illuminate\Database\Query\array<string,  float|int|numeric-string>  $columns
+             * @param \Illuminate\Database\Query\array<string,  mixed>  $extra
+             * @return int 
+             * @throws \InvalidArgumentException
+             * @static 
+             */ 
+            public static function decrementEach($columns, $extra = [])
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->decrementEach($columns, $extra);
             }
              
                 /**
