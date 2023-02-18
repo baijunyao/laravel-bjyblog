@@ -50,17 +50,18 @@
 
 - name: Copy traefik-config.yaml from local to remote
   ansible.builtin.copy:
-    force: no
     src: files/traefik-config.yaml
     dest: /var/lib/rancher/k3s/server/manifests/traefik-config.yaml
     mode: '0644'
 
 - name: Install k3s
   when: not k3s_install_stat.stat.exists
+  changed_when: false
+  ansible.builtin.command: /tmp/k3s-install.sh --write-kubeconfig-mode 644
   environment:
     INSTALL_K3S_MIRROR: cn
-    INSTALL_K3S_SKIP_START: true
-  ansible.builtin.command: /tmp/k3s-install.sh --write-kubeconfig-mode 644
+    INSTALL_K3S_SKIP_START: "true"
+    INSTALL_K3S_VERSION: 'v1.20.15+k3s1'
 
 - name: Start k3s
   ansible.builtin.systemd:
@@ -126,13 +127,32 @@
     dest: /usr/local/bin/helm
     mode: '0700'
 
-- name: Check that the helm diff directory exists
+- name: Create Helm plugin path
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins
+    state: directory
+    mode: '0644'
+
+- name: Check that the local helm diff exists
+  delegate_to: localhost
+  ansible.builtin.stat:
+    path: roles/laravel/files/helm-diff/bin/diff
+  register: local_helm_diff_stat
+
+- name: Copy helm diff from local to remote
+  when: local_helm_diff_stat.stat.exists
+  ansible.builtin.copy:
+    src: files/helm-diff
+    dest: $HOME/.local/share/helm/plugins
+    mode: '0644'
+
+- name: Check that the remote helm diff exists
   ansible.builtin.stat:
     path: $HOME/.local/share/helm/plugins/helm-diff
-  register: helm_diff_stat
+  register: remote_helm_diff_stat
 
 - name: Git clone helm-diff
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.git:
     repo: 'https://gitee.com/baijunyao/helm-diff.git'
     dest: /tmp/helm-diff
@@ -141,22 +161,16 @@
     force: yes
 
 - name: Build helm diff
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
+  changed_when: false
   ansible.builtin.shell: |
     export GOPROXY=https://mirrors.aliyun.com/goproxy/
     cd /tmp/helm-diff
     make bootstrap
     make install/helm3
 
-- name: Create Helm plugin path
-  when: not helm_diff_stat.stat.exists
-  ansible.builtin.file:
-    path: $HOME/.local/share/helm/plugins/helm-diff
-    state: directory
-    mode: '0644'
-
 - name: Copy helm-diff bin
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.copy:
     remote_src: yes
     force: no
@@ -165,13 +179,18 @@
     mode: '0644'
 
 - name: Copy plugin.yaml
-  when: not helm_diff_stat.stat.exists
+  when: not remote_helm_diff_stat.stat.exists
   ansible.builtin.copy:
     remote_src: yes
     force: no
     src: /tmp/helm-diff/plugin.yaml
     dest: $HOME/.local/share/helm/plugins/helm-diff/plugin.yaml
     mode: '0644'
+
+- name: Change helm diff bin permissions
+  ansible.builtin.file:
+    path: $HOME/.local/share/helm/plugins/helm-diff/bin/diff
+    mode: '0700'
 
 - name: Check that the .kube/config exists
   ansible.builtin.stat:
@@ -186,6 +205,7 @@
 
 - name: Generate kube config
   when: not kube_config_stat.stat.exists
+  changed_when: false
   ansible.builtin.shell: kubectl config view --raw > ~/.kube/config
 
 - name: Create laravel-bjyblog path
@@ -228,13 +248,6 @@
     path: /laravel-bjyblog/site/deploy/helm/custom.yaml
     regexp: '^host: '
     line: 'host: {{ app_host }}'
-
-- name: Change elasticsearch.enabled to false
-  when: inventory_hostname == 'development'
-  ansible.builtin.replace:
-    path: /laravel-bjyblog/site/deploy/helm/custom.yaml
-    regexp: "^elasticsearch:\n  enabled: true"
-    replace: 'elasticsearch:\n  enabled: false'
 
 - name: Check that the ssl key exists
   delegate_to: localhost
@@ -289,18 +302,17 @@
     name: openshift
 
 - name: Read /laravel-bjyblog/site/deploy/helm/custom.yaml
-  when: inventory_hostname != 'development'
   ansible.builtin.command: cat /laravel-bjyblog/site/deploy/helm/custom.yaml
   register: helm_custom_value
+  changed_when: false
 
 - name: Set elasticsearch_value variable
-  when: inventory_hostname != 'development'
   ansible.builtin.set_fact:
     elasticsearch_value: "{{ (helm_custom_value.stdout | from_yaml_all).0.elasticsearch }}"
 
 - name: Get Elasticsearch pod name
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
   kubernetes.core.k8s_info:
     api_version: v1
@@ -317,7 +329,7 @@
 
 - name: Elasticsearch setup passwords
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
   kubernetes.core.k8s_exec:
     namespace: blog
@@ -327,14 +339,14 @@
 
 - name: Set elasticsearch_value variable
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
   ansible.builtin.set_fact:
     elasticsearch_password: "{{ elasticsearch_setup_passwords.stdout | regex_search('(?<=PASSWORD elastic = )\\w+') | trim }}"
 
 - name: Set elasticsearch.password
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
     - elasticsearch_password != 'None'
   ansible.builtin.replace:
@@ -344,7 +356,7 @@
 
 - name: Change kibana.enabled to true
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
     - elasticsearch_password != 'None'
   ansible.builtin.replace:
@@ -354,7 +366,7 @@
 
 - name: Change fluentd.enabled to true
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
     - elasticsearch_password != 'None'
   ansible.builtin.replace:
@@ -362,9 +374,9 @@
     regexp: "^fluentd:\n  enabled: false"
     replace: 'fluentd:\n  enabled: true'
 
-- name: Helm install
+- name: Helm upgrade
   when:
-    - inventory_hostname != 'development'
+    - elasticsearch_value.enabled
     - not elasticsearch_value.password
     - elasticsearch_password != 'None'
   kubernetes.core.helm:
