@@ -135,6 +135,15 @@
       "contributions": [
         "security"
       ]
+    },
+    {
+      "login": "hen8y",
+      "name": "Ogbonna Henry",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66043917?v=4",
+      "profile": "https://github.com/hen8y",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -143,5 +152,7 @@
   "projectOwner": "baijunyao",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": false
+  "skipCi": false,
+  "commitType": "docs",
+  "commitConvention": "angular"
 }
